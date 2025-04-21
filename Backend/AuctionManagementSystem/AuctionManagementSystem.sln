@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{B4145396-4692-4706-B31B-A1802601E25D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5F0FC49F-8FD7-484D-AF64-06D78517BDE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{9624D928-AEBB-4104-8EA1-D1697E319319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionManagementSystem.Api", "AuctionManagementSystem.Api\AuctionManagementSystem.Api.csproj", "{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionManagementSystem.Domain", "AuctionManagementSystem.Domain\AuctionManagementSystem.Domain.csproj", "{41492C59-CE5D-42B4-98A9-3E36382978CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionManagementSystem.Application", "AuctionManagementSystem.Application\AuctionManagementSystem.Application.csproj", "{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionManagementSystem.Persistence", "AuctionManagementSystem.Persistence\AuctionManagementSystem.Persistence.csproj", "{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41492C59-CE5D-42B4-98A9-3E36382978CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41492C59-CE5D-42B4-98A9-3E36382978CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41492C59-CE5D-42B4-98A9-3E36382978CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41492C59-CE5D-42B4-98A9-3E36382978CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379} = {B4145396-4692-4706-B31B-A1802601E25D}
+		{41492C59-CE5D-42B4-98A9-3E36382978CC} = {5F0FC49F-8FD7-484D-AF64-06D78517BDE2}
+		{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D} = {5F0FC49F-8FD7-484D-AF64-06D78517BDE2}
+		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7} = {9624D928-AEBB-4104-8EA1-D1697E319319}
+	EndGlobalSection
+EndGlobal

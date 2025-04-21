@@ -1,0 +1,43 @@
+.sidebar-nav {
+    position: fixed;
+    left: 0;
+    top: 80px; 
+    bottom: 60px;
+    width: 300px; 
+    background-color: #fcfcfc;
+    padding: 15px;
+    border-radius: 0 12px 12px 0;
+    border: 1px solid #ddd;
+    overflow-y: auto;
+    
+    .nav-item {
+      margin-bottom: 8px;
+    }
+  
+    .nav-link {
+      display: block;
+      background-color: white;
+      padding: 12px 15px;
+      border-radius: 10px;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 2px solid #ddd;
+      font-weight: 500;
+      font-size: 18px;
+      
+      }
+      .nav-link:hover {
+        :hover {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+      }
+      
+      .nav-link:active {
+        background-color: #000000;
+        color: white;
+        border-color: #000000;
+        font-weight: 500;
+      }
+    }
+  }
