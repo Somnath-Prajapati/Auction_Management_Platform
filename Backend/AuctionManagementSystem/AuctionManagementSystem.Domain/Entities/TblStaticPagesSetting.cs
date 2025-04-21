@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AuctionManagementSystem.Persistence.TempEntities;
+namespace AuctionManagementSystem.Domain.Entities;
 
 public partial class TblStaticPagesSetting
 {
