@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace AuctionManagementSystem.Domain.Entities.Settings;
+
+public partial class TblSystemSetting
+{
+    public int Id { get; set; }
+
+    public int? GlobalIncrementalTimeInMinutes { get; set; }
+
+    public DateTime? CreatedAt { get; set; }
+
+    public DateTime? UpdatedAt { get; set; }
+}
