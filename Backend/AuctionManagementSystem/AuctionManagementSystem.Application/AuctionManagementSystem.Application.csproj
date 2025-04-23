@@ -8,13 +8,24 @@
 
   <ItemGroup>
     <Folder Include="Exceptions\" />
-    <Folder Include="Features\Settings\Command\" />
-    <Folder Include="Features\Settings\Query\" />
+    <Folder Include="Features\Transactions\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="EventStore.Client" Version="22.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="MediatR" Version="12.5.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AuctionManagementSystem.Domain\AuctionManagementSystem.Domain.csproj" />
   </ItemGroup>
-
 </Project>
+
+
+
+
+

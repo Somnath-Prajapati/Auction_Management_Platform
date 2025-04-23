@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AuctionManagementSystem.Persistence.TempEntities;
+using AuctionManagementSystem.Domain.Entities;
+using AuctionManagementSystem.Domain.Entities.User;
 
 namespace AuctionManagementSystem.Application.Contracts
 {

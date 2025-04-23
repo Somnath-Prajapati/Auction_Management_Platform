@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AuctionManagementSystem.Domain.Entities.Asset;
 
 namespace AuctionManagementSystem.Domain.Entities;
 
