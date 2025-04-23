@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using AuctionManagementSystem.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuctionManagementSystem.Persistence.TempEntities;
+namespace AuctionManagementSystem.Persistence;
 
 public partial class AuctionManagementDbContext : DbContext
 {

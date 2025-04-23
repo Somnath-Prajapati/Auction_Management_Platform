@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AuctionManagementSystem.Persistence.TempEntities;
+using AuctionManagementSystem.Domain.Entities;
 
 namespace AuctionManagementSystem.Application.Contracts
 {
@@ -11,9 +11,11 @@ namespace AuctionManagementSystem.Application.Contracts
     {
         Task<IEnumerable<TblUser>> GetAllUsersAsync();
         Task<TblUser> GetUserById(int id);
-        Task<TblUser> CreateUserAsync(TblUser tblUser);
-        Task<bool> UpdateUserAsync(int id, TblUser tblUser);
-        Task<bool> DeleteUserAsync(int id);
+        Task<int> AddUserAsync(TblUser tblUser);
+        Task<int> UpdateUserAsync(TblUser tblUser);
+        Task<bool> DeleteUserAsync(TblUser user);
+        Task<int> GenerateNextUidAsync(int startFrom = 1003);
+        Task<TblUser?> GetByEmailOrMobileAsync(string email, string mobileNumber);
 
     }
 }
