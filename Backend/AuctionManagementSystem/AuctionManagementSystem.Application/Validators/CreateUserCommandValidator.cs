@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Contracts;
+using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Features.UserFeature.Command.CreateUser;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;

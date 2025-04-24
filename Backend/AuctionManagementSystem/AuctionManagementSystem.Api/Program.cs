@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Builder;
 using AuctionManagementSystem.Application;
 using Microsoft.Extensions.DependencyInjection;
 using AuctionManagementSystem.Api.Services;
-using AuctionManagementSystem.Application.Contracts;
 using Microsoft.Extensions.FileProviders;
+using AuctionManagementSystem.Application.Contracts.User;
 
 namespace AuctionManagementSystem.Api
 {
@@ -24,7 +24,7 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddApplicationServices();
 
             // Ensure the AddPersistanceServices method is implemented and accessible
-            builder.Services.AddPersistanceServices(builder.Configuration);
+            builder.Services.AddPersistenceServices(builder.Configuration);
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();

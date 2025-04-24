@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace AuctionManagementSystem.Application.Contracts
+namespace AuctionManagementSystem.Application.Contracts.User
 {
     public interface IFileService
     {
