@@ -1,6 +1,8 @@
-﻿
 using System.Reflection;
 using FluentValidation;
+using AuctionManagementSystem.Application.Dtos.Settings;
+using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Command.CreateFinanceSettings;
+using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Command.UpdateFinanceSettings;
 using AuctionManagementSystem.Application.Validators;
 using Microsoft.Extensions.DependencyInjection;
 using MediatR;
@@ -16,6 +18,9 @@ namespace AuctionManagementSystem.Application
             services.AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             services.AddHttpContextAccessor();
+             services.AddTransient<IValidator<FinanceSettingsDto>, UpdateFinanceSettingsCommandValidator>();
+            services.AddTransient<IValidator<FinanceSettingsDto>, CreateFinanceSettingsCommandValidator>();
+
             return services;
         }
     }
