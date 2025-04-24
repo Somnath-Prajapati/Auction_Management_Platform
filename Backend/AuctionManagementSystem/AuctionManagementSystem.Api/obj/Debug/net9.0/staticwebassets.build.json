@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "dywunosQddI5BdTAwt3Psu2Z2xWGZ12BM3IHFIsyixQ=",
+  "Source": "AuctionManagementSystem.Api",
+  "BasePath": "_content/AuctionManagementSystem.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
