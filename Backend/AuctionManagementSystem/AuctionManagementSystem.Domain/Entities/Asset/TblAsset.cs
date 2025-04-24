@@ -93,6 +93,4 @@ public partial class TblAsset
 
     public virtual ICollection<TblRequest> TblRequests { get; set; } = new List<TblRequest>();
 
-    //public virtual TblRequest? TblRequests { get; set; }
-    //public virtual TblTransactionAsset? TblTransactionAssets  { get; set; }
 }
