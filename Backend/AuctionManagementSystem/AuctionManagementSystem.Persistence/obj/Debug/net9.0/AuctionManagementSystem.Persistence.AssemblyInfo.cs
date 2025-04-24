@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AuctionManagementSystem.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+367d84c2b7fdaca9c50267812894aab5eb331afc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a65848ad17d79bf946c1c82437f49526d049a487")]
 [assembly: System.Reflection.AssemblyProductAttribute("AuctionManagementSystem.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AuctionManagementSystem.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
