@@ -34,14 +34,14 @@ namespace AuctionManagementSystem.Api.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> CreateUser([FromForm] UserDto dto)
+        public async Task<IActionResult> CreateUser([FromBody] UserDto dto)
         {
             var command = new CreateUserCommand(dto);
             var userId = await _mediator.Send(command);
             return Ok(new { UserId = userId });
         }
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromForm] UserDto dto)
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserDto dto)
         {
                 var result = await _mediator.Send(new UpdateUserCommand(id, dto));
             return Ok(result);
