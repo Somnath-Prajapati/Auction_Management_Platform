@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
+using AuctionManagementSystem.Application.Dtos.UserDtos;
 using AuctionManagementSystem.Application.Features.Settings.DirectSaleSettings.Commands.CreateDirectSaleSettings;
 using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Command.CreateFinanceSettings;
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.CreateFooterLinksSettings;
@@ -12,6 +13,7 @@ using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
+using AuctionManagementSystem.Domain.Entities.User;
 using AutoMapper;
 using EventStore.ClientAPI;
 

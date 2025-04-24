@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Persistence.Repositories;
 using AuctionManagementSystem.Application.Contracts.Settings;
 using AuctionManagementSystem.Application.Contracts.Transactions;
@@ -12,11 +6,12 @@ using AuctionManagementSystem.Application.Repositories;
 using AuctionManagementSystem.Domain.Interfaces;
 using AuctionManagementSystem.Infrastructure.Persistence.Repositories;
 using AuctionManagementSystem.Persistence.Context;
-using AuctionManagementSystem.Persistence.Repositories;
 using AuctionManagementSystem.Persistence.Repositories.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AuctionManagementSystem.Persistence.Repositories.User;
+using AuctionManagementSystem.Application.Contracts.User;
 
 namespace AuctionManagementSystem.Persistence
 {

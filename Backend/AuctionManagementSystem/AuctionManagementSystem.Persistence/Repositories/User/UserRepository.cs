@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Contracts;
-using AuctionManagementSystem.Domain.Entities;
+﻿using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Domain.Entities.User;
+using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuctionManagementSystem.Persistence.Repositories
+namespace AuctionManagementSystem.Persistence.Repositories.User
 {
     public class UserRepository : IUserRepository
-    {      private readonly AuctionManagementDbContext _context;
+    {
+        private readonly AuctionManagementDbContext _context;
         public UserRepository(AuctionManagementDbContext context)
         {
             _context = context;
@@ -48,7 +45,7 @@ namespace AuctionManagementSystem.Persistence.Repositories
         }
         public async Task<int> GenerateNextUidAsync(int startFrom = 1003)
         {
-            var maxUid = await _context.TblUsers.MaxAsync(u => (int?)u.Uid) ?? (startFrom - 1);
+            var maxUid = await _context.TblUsers.MaxAsync(u => (int?)u.Uid) ?? startFrom - 1;
             return maxUid + 1;
         }
         public async Task<TblUser?> GetByEmailOrMobileAsync(string email, string mobileNumber)

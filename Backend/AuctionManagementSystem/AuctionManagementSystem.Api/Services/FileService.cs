@@ -1,7 +1,7 @@
-﻿using AuctionManagementSystem.Application.Contracts;
+﻿using AuctionManagementSystem.Application.Contracts.User;
 
 namespace AuctionManagementSystem.Api.Services
-{   
+{
     public class FileService : IFileService
     {
         public async Task<string> SaveFileAsync(IFormFile file, string folderName)

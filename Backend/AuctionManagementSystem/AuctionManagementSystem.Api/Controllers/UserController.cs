@@ -1,4 +1,4 @@
-﻿using AuctionManagementSystem.Application.Dtos;
+﻿using AuctionManagementSystem.Application.Dtos.UserDtos;
 using AuctionManagementSystem.Application.Features.UserFeature.Command.CreateUser;
 using AuctionManagementSystem.Application.Features.UserFeature.Command.DeleteUser;
 using AuctionManagementSystem.Application.Features.UserFeature.Command.UpdateUser;
