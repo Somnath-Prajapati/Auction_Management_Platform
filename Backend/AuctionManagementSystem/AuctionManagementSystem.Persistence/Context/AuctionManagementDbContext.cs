@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using AuctionManagementSystem.Domain.Entities;
+using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Domain.Entities.Auction;
+using AuctionManagementSystem.Domain.Entities.Request;
+using AuctionManagementSystem.Domain.Entities.Settings;
+using AuctionManagementSystem.Domain.Entities.Transaction;
+using AuctionManagementSystem.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuctionManagementSystem.Persistence;
+namespace AuctionManagementSystem.Persistence.Context;
 
 public partial class AuctionManagementDbContext : DbContext
 {
@@ -40,6 +46,8 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<TblAuctionView> TblAuctionViews { get; set; }
 
+    public virtual DbSet<TblCardType> TblCardTypes { get; set; }
+
     public virtual DbSet<TblCountry> TblCountries { get; set; }
 
     public virtual DbSet<TblDirectSaleSetting> TblDirectSaleSettings { get; set; }
@@ -48,6 +56,16 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<TblFooterLinksSetting> TblFooterLinksSettings { get; set; }
 
+    public virtual DbSet<TblPaymentMethod> TblPaymentMethods { get; set; }
+
+    public virtual DbSet<TblRequest> TblRequests { get; set; }
+
+    public virtual DbSet<TblRequestStatus> TblRequestStatuses { get; set; }
+
+    public virtual DbSet<TblRequestStatusHistory> TblRequestStatusHistories { get; set; }
+
+    public virtual DbSet<TblRequestType> TblRequestTypes { get; set; }
+
     public virtual DbSet<TblRole> TblRoles { get; set; }
 
     public virtual DbSet<TblSeller> TblSellers { get; set; }
@@ -55,6 +73,16 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblStaticPagesSetting> TblStaticPagesSettings { get; set; }
 
     public virtual DbSet<TblSystemSetting> TblSystemSettings { get; set; }
+
+    public virtual DbSet<TblTransaction> TblTransactions { get; set; }
+
+    public virtual DbSet<TblTransactionAsset> TblTransactionAssets { get; set; }
+
+    public virtual DbSet<TblTransactionDocument> TblTransactionDocuments { get; set; }
+
+    public virtual DbSet<TblTransactionStatus> TblTransactionStatuses { get; set; }
+
+    public virtual DbSet<TblTransactionType> TblTransactionTypes { get; set; }
 
     public virtual DbSet<TblUser> TblUsers { get; set; }
 
@@ -289,6 +317,19 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK__tblAuctio__Aucti__6B24EA82");
         });
 
+        modelBuilder.Entity<TblCardType>(entity =>
+        {
+            entity.HasKey(e => e.CardTypeId).HasName("PK__tblCardT__AB0A3D117F774D59");
+
+            entity.ToTable("tblCardTypes");
+
+            entity.HasIndex(e => e.CardTypeName, "UQ__tblCardT__7F70364E6610CB47").IsUnique();
+
+            entity.Property(e => e.CardTypeName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<TblCountry>(entity =>
         {
             entity.HasKey(e => e.CountryId).HasName("PK__tblCount__10D1609F81F3F3B3");
@@ -344,6 +385,126 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.YouTubeLink).HasMaxLength(255);
         });
 
+        modelBuilder.Entity<TblPaymentMethod>(entity =>
+        {
+            entity.HasKey(e => e.PaymentMethodId).HasName("PK__tblPayme__DC31C1D36E6B9DFB");
+
+            entity.ToTable("tblPaymentMethods");
+
+            entity.HasIndex(e => e.PaymentMethodName, "UQ__tblPayme__612080EDB9885BC1").IsUnique();
+
+            entity.Property(e => e.PaymentMethodName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<TblRequest>(entity =>
+        {
+            entity.HasKey(e => e.RequestId).HasName("PK__tblReque__33A8517AFFB28830");
+
+            entity.ToTable("tblRequests");
+
+            entity.HasIndex(e => e.RequestNumber, "UQ__tblReque__9ADA6BE06F914861").IsUnique();
+
+            entity.Property(e => e.CreatedOn)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.MobileNumber)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.RequestDateTime).HasColumnType("datetime");
+            entity.Property(e => e.RequestNumber)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.UpdatedOn)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Username)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Asset).WithMany(p => p.TblRequests)
+                .HasForeignKey(d => d.AssetId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblReques__Asset__7FEAFD3E");
+
+            entity.HasOne(d => d.RequestStatus).WithMany(p => p.TblRequests)
+                .HasForeignKey(d => d.RequestStatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblReques__Reque__02C769E9");
+
+            entity.HasOne(d => d.RequestType).WithMany(p => p.TblRequests)
+                .HasForeignKey(d => d.RequestTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblReques__Reque__01D345B0");
+
+            entity.HasOne(d => d.Transaction).WithMany(p => p.TblRequests)
+                .HasForeignKey(d => d.TransactionId)
+                .HasConstraintName("FK__tblReques__Trans__00DF2177");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TblRequests) 
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblReques__UserI__7EF6D905");
+        });
+
+        modelBuilder.Entity<TblRequestStatus>(entity =>
+        {
+            entity.HasKey(e => e.RequestStatusId).HasName("PK__tblReque__7094B79B7A164D64");
+
+            entity.ToTable("tblRequestStatuses");
+
+            entity.Property(e => e.StatusName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.RequestType).WithMany(p => p.TblRequestStatuses)
+                .HasForeignKey(d => d.RequestTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblReques__Reque__7849DB76");
+        });
+
+        modelBuilder.Entity<TblRequestStatusHistory>(entity =>
+        {
+            entity.HasKey(e => e.StatusHistoryId).HasName("PK__tblReque__DB973491C09D1BC3");
+
+            entity.ToTable("tblRequestStatusHistory");
+
+            entity.Property(e => e.ChangeDateTime)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.NewRequestStatus).WithMany(p => p.TblRequestStatusHistoryNewRequestStatuses)
+                .HasForeignKey(d => d.NewRequestStatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblReques__NewRe__0880433F");
+
+            entity.HasOne(d => d.PreviousRequestStatus).WithMany(p => p.TblRequestStatusHistoryPreviousRequestStatuses)
+                .HasForeignKey(d => d.PreviousRequestStatusId)
+                .HasConstraintName("FK__tblReques__Previ__078C1F06");
+
+            entity.HasOne(d => d.Request).WithMany(p => p.TblRequestStatusHistories)
+                .HasForeignKey(d => d.RequestId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblReques__Reque__0697FACD");
+        });
+
+        modelBuilder.Entity<TblRequestType>(entity =>
+        {
+            entity.HasKey(e => e.RequestTypeId).HasName("PK__tblReque__4D328B836DD3F310");
+
+            entity.ToTable("tblRequestTypes");
+
+            entity.HasIndex(e => e.TypeName, "UQ__tblReque__D4E7DFA8911F864D").IsUnique();
+
+            entity.Property(e => e.TypeName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<TblRole>(entity =>
         {
             entity.HasKey(e => e.RoleId).HasName("PK__tblRoles__8AFACE1A5E190086");
@@ -389,6 +550,129 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasColumnType("datetime");
         });
 
+        modelBuilder.Entity<TblTransaction>(entity =>
+        {
+            entity.HasKey(e => e.TransactionId).HasName("PK__tblTrans__55433A6B2E2D976E");
+
+            entity.ToTable("tblTransactions");
+
+            entity.HasIndex(e => e.TransactionNumber, "UQ__tblTrans__E733A2BFC8CBFDE8").IsUnique();
+
+            entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.CreatedByAdminId).HasColumnName("CreatedByAdminID");
+            entity.Property(e => e.DocumentPath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.MerchantTransactionId)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Notes).HasColumnType("text");
+            entity.Property(e => e.TransactionDateTime).HasColumnType("datetime");
+            entity.Property(e => e.TransactionNumber)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.CardType).WithMany(p => p.TblTransactions)
+                .HasForeignKey(d => d.CardTypeId)
+                .HasConstraintName("FK__tblTransa__CardT__56E8E7AB");
+
+            entity.HasOne(d => d.PaymentMethod).WithMany(p => p.TblTransactions)
+                .HasForeignKey(d => d.PaymentMethodId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblTransa__Payme__55F4C372");
+
+            entity.HasOne(d => d.Status).WithMany(p => p.TblTransactions)
+                .HasForeignKey(d => d.StatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblTransa__Statu__57DD0BE4");
+
+            entity.HasOne(d => d.TransactionType).WithMany(p => p.TblTransactions)
+                .HasForeignKey(d => d.TransactionTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblTransa__Trans__55009F39");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TblTransactions)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblTransa__UserI__540C7B00");
+        });
+
+        modelBuilder.Entity<TblTransactionAsset>(entity =>
+        {
+            entity.HasKey(e => e.TransactionAssetsId).HasName("PK__tblTrans__835ED2B593C79289");
+
+            entity.ToTable("tblTransactionAssets");
+
+            entity.Property(e => e.BidPrice).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.Asset).WithMany( p => p.TblTransactionAssets)
+                .HasForeignKey(d => d.AssetId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblTransa__Asset__607251E5");
+
+            entity.HasOne(d => d.Transaction).WithMany(p => p.TblTransactionAssets)
+                .HasForeignKey(d => d.TransactionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblTransa__Trans__5F7E2DAC");
+        });
+
+        modelBuilder.Entity<TblTransactionDocument>(entity =>
+        {
+            entity.HasKey(e => e.DocumentId).HasName("PK__tblTrans__1ABEEF0F9B5905EF");
+
+            entity.ToTable("tblTransactionDocuments");
+
+            entity.Property(e => e.DocumentType)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FilePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.UploadedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.Transaction).WithMany(p => p.TblTransactionDocuments)
+                .HasForeignKey(d => d.TransactionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblTransa__Trans__5BAD9CC8");
+        });
+
+        modelBuilder.Entity<TblTransactionStatus>(entity =>
+        {
+            entity.HasKey(e => e.StatusId).HasName("PK__tblTrans__C8EE206351457432");
+
+            entity.ToTable("tblTransactionStatuses");
+
+            entity.HasIndex(e => e.StatusName, "UQ__tblTrans__05E7698A4561ED20").IsUnique();
+
+            entity.Property(e => e.StatusName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<TblTransactionType>(entity =>
+        {
+            entity.HasKey(e => e.TransactionTypeId).HasName("PK__tblTrans__20266D0B25AD456E");
+
+            entity.ToTable("tblTransactionTypes");
+
+            entity.HasIndex(e => e.TransactionTypeName, "UQ__tblTrans__2BE3AC2432109A6B").IsUnique();
+
+            entity.Property(e => e.TransactionTypeName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<TblUser>(entity =>
         {
             entity.HasKey(e => e.UserId).HasName("PK__tblUsers__1788CC4CA0D5030C");
@@ -406,7 +690,9 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.Gender).HasMaxLength(20);
             entity.Property(e => e.LastOnline).HasColumnType("datetime");
-            entity.Property(e => e.MobileNumber).HasMaxLength(4);
+            entity.Property(e => e.MobileNumber)
+                .HasMaxLength(15)
+                .IsUnicode(false);
             entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.PersonalIdImage).HasMaxLength(255);
             entity.Property(e => e.PersonalIdNumber).HasMaxLength(100);

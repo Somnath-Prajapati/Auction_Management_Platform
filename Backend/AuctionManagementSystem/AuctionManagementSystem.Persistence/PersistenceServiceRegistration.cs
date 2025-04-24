@@ -1,10 +1,19 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Persistence.Repositories;
+using AuctionManagementSystem.Application.Contracts.Settings;
+using AuctionManagementSystem.Application.Contracts.Transactions;
+using AuctionManagementSystem.Application.Interfaces.Repositories;
+using AuctionManagementSystem.Application.Repositories;
+using AuctionManagementSystem.Domain.Interfaces;
+using AuctionManagementSystem.Infrastructure.Persistence.Repositories;
+using AuctionManagementSystem.Persistence.Context;
+using AuctionManagementSystem.Persistence.Repositories;
+using AuctionManagementSystem.Persistence.Repositories.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +29,13 @@ namespace AuctionManagementSystem.Persistence
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
+             services.AddScoped<ISystemSettingsRepository, SystemSettingsRepository>();
+            services.AddScoped<IDirectSaleSettingsRepository, DirectSaleSettingsRepository>();
+            services.AddScoped<IFinanceSettingsRepository, FinanceSettingsRepository>();
+            services.AddScoped<IFooterLinksSettingsRepository, FooterLinksSettingsRepository>();
+            services.AddScoped<IStaticPagesSettingsRepository, StaticPagesSettingsRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+
             return services;
         }
     }
