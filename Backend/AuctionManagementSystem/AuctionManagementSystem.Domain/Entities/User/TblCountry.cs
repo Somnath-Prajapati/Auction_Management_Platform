@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using AuctionManagementSystem.Domain.Entities.User;
 
-namespace AuctionManagementSystem.Domain.Entities;
+namespace AuctionManagementSystem.Domain.Entities.User;
 
 public partial class TblCountry
 {
