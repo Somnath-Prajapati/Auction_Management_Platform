@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Application.Features.Settings.DirectSaleSettings.Commands.CreateDirectSaleSettings;
@@ -10,6 +11,7 @@ using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Comm
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.CreateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.UpdateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
+using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AutoMapper;
@@ -45,10 +47,12 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<UpdateTransactionDto, TblTransaction>().ForMember(dest => dest.TransactionId, opt => opt.Ignore()); // ID shouldn't be overwritten
 
 
+            CreateMap<GetAssetsDto, TblAsset>().ReverseMap();
 
 
+            CreateMap<CreateAssetsDto, TblAsset>().ReverseMap();
 
-
+            CreateMap<UpdateAssetDto, TblAsset>().ReverseMap();
 
         }
     }
