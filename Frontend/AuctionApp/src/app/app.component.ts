@@ -4,11 +4,13 @@ import { HeaderComponent } from "./component/header/header.component";
 import { FooterComponent } from "./component/footer/footer.component";
 import { SidebarComponent } from "./component/sidebar/sidebar.component";
 import { HomeComponent } from "./component/home/home.component";
+import { routes } from './app.routes';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, SidebarComponent, HomeComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

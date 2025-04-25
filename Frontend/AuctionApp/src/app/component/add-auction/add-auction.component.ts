@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './add-auction.component.css'
 })
 export class AddAuctionComponent {
-
+  
 }
