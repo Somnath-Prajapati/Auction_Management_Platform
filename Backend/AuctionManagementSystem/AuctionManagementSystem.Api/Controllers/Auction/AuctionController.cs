@@ -1,0 +1,77 @@
+﻿using AuctionManagementSystem.Application.Features.Auctions.Queries.GetAllAuctions;
+using AuctionManagementSystem.Application.Features.Auctions.Commands.CreateAuction;
+using AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateAuction;
+using AuctionManagementSystem.Application.Features.Auctions.Commands.DeleteAuction;
+using AuctionManagementSystem.Application.Features.Auctions.Queries.GetAuctionById;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using AuctionManagementSystem.Application.Dtos.Auctions;
+
+namespace AuctionManagementSystem.Api.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class AuctionController : ControllerBase
+    {
+        private readonly IMediator _mediator;
+
+        public AuctionController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        // GET: api/auction
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<AuctionDto>>> GetAllAuctions()
+        {
+            var auctions = await _mediator.Send(new GetAllAuctionsQuery());
+            return Ok(auctions);
+        }
+
+        // GET: api/auction/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<AuctionDto>> GetAuctionById(int id)
+        {
+            var auction = await _mediator.Send(new GetAuctionByIdQuery { AuctionId = id });
+            if (auction == null)
+                return NotFound();
+            return Ok(auction);
+        }
+
+        // POST: api/auction
+        [HttpPost]
+        public async Task<ActionResult<int>> CreateAuction([FromBody] CreateAuctionCommand command)
+        {
+            if (command == null)
+            {
+                return BadRequest("Invalid request");
+            }
+            var newAuctionId = await _mediator.Send(command);
+            return CreatedAtAction(nameof(GetAuctionById), new { id = newAuctionId }, command);
+        }
+
+        // PUT: api/auction/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateAuction(int id, [FromBody] UpdateAuctionCommand command)
+        {
+            if (id != command.AuctionId)
+                return BadRequest("ID mismatch");
+
+            var result = await _mediator.Send(command);
+            if (!result)
+                return NotFound();
+
+            return NoContent();
+        }
+
+        // DELETE: api/auction/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var command = new DeleteAuctionCommand { AuctionId = id };
+            var result = await _mediator.Send(command);
+            return result ? Ok() : NotFound();
+        }
+
+    }
+}

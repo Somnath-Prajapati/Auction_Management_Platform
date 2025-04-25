@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Application.Dtos.Auctions;
 using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Application.Dtos.UserDtos;
+using AuctionManagementSystem.Application.Features.Auctions.Commands.CreateAuction;
+using AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateAuction;
 using AuctionManagementSystem.Application.Features.Settings.DirectSaleSettings.Commands.CreateDirectSaleSettings;
 using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Command.CreateFinanceSettings;
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.CreateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.UpdateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
+using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
@@ -49,8 +53,20 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<UpdateTransactionDto, TblTransaction>().ForMember(dest => dest.TransactionId, opt => opt.Ignore()); // ID shouldn't be overwritten
 
 
+            //Aution Mapping
+            CreateMap<TblAuction, AuctionDto>().ReverseMap();
+            CreateMap<AuctionBaseCommand, TblAuction>();
 
+            CreateMap<CreateAuctionCommand, TblAuction>()
+                .IncludeBase<AuctionBaseCommand, TblAuction>();
 
+            CreateMap<UpdateAuctionCommand, TblAuction>()
+                .IncludeBase<AuctionBaseCommand, TblAuction>()
+                .ForMember(dest => dest.AuctionId, opt => opt.MapFrom(src => src.AuctionId));
+
+            // Optional: DTO -> Commands if you want reverse mapping
+            CreateMap<AuctionDto, CreateAuctionCommand>();
+            CreateMap<AuctionDto, UpdateAuctionCommand>();
 
 
 

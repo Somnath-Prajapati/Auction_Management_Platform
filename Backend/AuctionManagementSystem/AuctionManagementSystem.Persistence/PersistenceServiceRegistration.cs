@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AuctionManagementSystem.Persistence.Repositories.User;
 using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Application.Contracts;
+using AuctionManagementSystem.Infrastructure.UoW;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -30,6 +32,9 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IFooterLinksSettingsRepository, FooterLinksSettingsRepository>();
             services.AddScoped<IStaticPagesSettingsRepository, StaticPagesSettingsRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<IAuctionRepository, AuctionRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
             return services;
         }

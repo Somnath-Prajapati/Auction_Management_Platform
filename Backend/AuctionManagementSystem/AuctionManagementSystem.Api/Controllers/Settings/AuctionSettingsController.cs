@@ -12,11 +12,11 @@ namespace AuctionManagementSystem.Api.Controllers.Settings
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class SystemSettingsController : ControllerBase
+    public class AuctionSettingsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public SystemSettingsController(IMediator mediator)
+        public AuctionSettingsController(IMediator mediator)
         {
             _mediator = mediator;
         }
