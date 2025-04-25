@@ -1,4 +1,5 @@
-﻿using AuctionManagementSystem.Application.Contracts.Settings;
+﻿using AuctionManagementSystem.Application.Contracts.Request;
+using AuctionManagementSystem.Application.Contracts.Settings;
 using AuctionManagementSystem.Application.Contracts.Transactions;
 using AuctionManagementSystem.Application.Interfaces.Repositories;
 using AuctionManagementSystem.Application.Repositories;
@@ -6,10 +7,12 @@ using AuctionManagementSystem.Domain.Interfaces;
 using AuctionManagementSystem.Infrastructure.Persistence.Repositories;
 using AuctionManagementSystem.Persistence.Context;
 using AuctionManagementSystem.Persistence.Repositories;
+using AuctionManagementSystem.Persistence.Repositories.Requests;
 using AuctionManagementSystem.Persistence.Repositories.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProtoBuf.Meta;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -27,6 +30,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IFooterLinksSettingsRepository, FooterLinksSettingsRepository>();
             services.AddScoped<IStaticPagesSettingsRepository, StaticPagesSettingsRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
+           services.AddScoped<IRequestRepository, RequestRepository>();
 
 
             return services;

@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Application.Dtos.RequestsDtos;
 using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
+using AuctionManagementSystem.Application.Features.Requests.Command.AddRequest;
+using AuctionManagementSystem.Application.Features.Requests.Command.UpdRequest;
 using AuctionManagementSystem.Application.Features.Settings.DirectSaleSettings.Commands.CreateDirectSaleSettings;
 using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Command.CreateFinanceSettings;
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.CreateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.UpdateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
+using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AutoMapper;
@@ -43,6 +47,12 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<CreateTransactionDto, TblTransaction>();
             // Update
             CreateMap<UpdateTransactionDto, TblTransaction>().ForMember(dest => dest.TransactionId, opt => opt.Ignore()); // ID shouldn't be overwritten
+
+            //Mapping for Create,Upadte Request Dto
+            CreateMap<CreateRequestDto, AddRequestCommand>();
+            CreateMap<UpdateRequestDto, UdpRequestCommand>();
+            CreateMap<TblRequest, RequestDto>();
+            
 
 
 

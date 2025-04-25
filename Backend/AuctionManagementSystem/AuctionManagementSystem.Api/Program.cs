@@ -17,6 +17,19 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddApplicationServices();
 
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin()
+                              .AllowAnyHeader()
+                              .AllowAnyMethod();
+                    });
+            });
+
+
             // Ensure the AddPersistanceServices method is implemented and accessible
             builder.Services.AddPersistanceServices(builder.Configuration);
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -26,6 +39,7 @@ namespace AuctionManagementSystem.Api
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
+            
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -35,6 +49,7 @@ namespace AuctionManagementSystem.Api
                 });
             }
 
+            app.UseCors("AllowAll");
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
