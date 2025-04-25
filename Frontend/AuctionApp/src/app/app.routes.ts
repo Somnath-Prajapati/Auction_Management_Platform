@@ -15,11 +15,8 @@ import { StartPageComponent } from './component/start-page/start-page.component'
 export const routes: Routes = [
     { path: '', component: StartPageComponent },
     {path:'dashboard', component:DashboardComponent},
-    {path:'assets', component:ManageAssetComponent},
-    { path: 'landing-page', component: LandingPageComponent },
-    {path:'auctions', component:ManageAuctionComponent},
-    { path: 'users', component: AddUserComponent },
-    {path:'login', component:LoginComponent},
+    {path:'users', component:ManageUserComponent},
+    {path:'updateUser', component:UpdateUserComponent},
     {path:'settings', component:SettingsComponent},
     {path:'newUser', component:AddUserComponent},
     {path:'newAuction', component:AddAuctionComponent},

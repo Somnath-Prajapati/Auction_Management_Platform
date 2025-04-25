@@ -5,20 +5,14 @@ import { NgIf } from '@angular/common';
 import { HeaderComponent } from "./component/header/header.component";
 import { FooterComponent } from "./component/footer/footer.component";
 import { SidebarComponent } from "./component/sidebar/sidebar.component";
-import { CommonModule } from '@angular/common';
+import { HomeComponent } from "./component/home/home.component";
+import { routes } from './app.routes';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    RouterOutlet,
-    HeaderComponent,
-    FooterComponent,
-    SidebarComponent,
-    NgIf
-  ],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
