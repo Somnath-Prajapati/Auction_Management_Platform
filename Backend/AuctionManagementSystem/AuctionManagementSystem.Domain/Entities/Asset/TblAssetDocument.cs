@@ -15,3 +15,4 @@ public partial class TblAssetDocument
 
     public virtual TblAsset? Asset { get; set; }
 }
+    

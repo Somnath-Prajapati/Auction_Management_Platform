@@ -182,3 +182,7 @@ C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManage
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Api\obj\Debug\net9.0\AuctionManagementSystem.Api.pdb
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Api\obj\Debug\net9.0\AuctionManagementSystem.Api.genruntimeconfig.cache
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Api\obj\Debug\net9.0\ref\AuctionManagementSystem.Api.dll
+C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Api\bin\Debug\net9.0\AuctionManagementSystem.Api.staticwebassets.runtime.json
+C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Api\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Server.Kestrel.Https.dll
+C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
