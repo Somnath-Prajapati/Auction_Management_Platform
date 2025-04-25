@@ -1,0 +1,14 @@
+<section class="mt-5 category-section">
+  <h2 class="text-center section-heading">Direct-Sale</h2>
+
+  <div class="category-cards">
+    <div class="category-card" *ngFor="let card of cards">
+      <!-- <div class="notification-badge">{{ card.notification }}</div> -->
+      <div class="icon-container">
+        <i class="{{ card.icon }} card-icon"></i>
+      </div>
+      <h3>{{ card.title }}</h3>
+      <p>{{ card.description }}</p>
+    </div>
+  </div>
+</section>
