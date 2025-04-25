@@ -33,6 +33,8 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IStaticPagesSettingsRepository, StaticPagesSettingsRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
             services.AddScoped<IAssetsRepository, AssetRepository>();
+            services.AddScoped<IAssetGalleryRepository, AssetGalleryRepository>();
+            services.AddScoped<IAssetDocumentRepository, AssetDocumentRepository>();
 
             return services;
         }
