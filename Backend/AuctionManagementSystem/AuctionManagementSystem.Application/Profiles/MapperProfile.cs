@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Dtos.Auctions;
+using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Application.Dtos.UserDtos;
@@ -14,7 +14,7 @@ using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Comm
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.CreateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.UpdateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
-using AuctionManagementSystem.Domain.Entities.Auction;
+using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
@@ -53,23 +53,22 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<UpdateTransactionDto, TblTransaction>().ForMember(dest => dest.TransactionId, opt => opt.Ignore()); // ID shouldn't be overwritten
 
 
-            //Aution Mapping
-            CreateMap<TblAuction, AuctionDto>().ReverseMap();
-            CreateMap<AuctionBaseCommand, TblAuction>();
+            CreateMap<GetAssetsDto, TblAsset>().ReverseMap();
 
             CreateMap<CreateAuctionCommand, TblAuction>()
                 .IncludeBase<AuctionBaseCommand, TblAuction>();
 
-            CreateMap<UpdateAuctionCommand, TblAuction>()
-                .IncludeBase<AuctionBaseCommand, TblAuction>()
-                .ForMember(dest => dest.AuctionId, opt => opt.MapFrom(src => src.AuctionId));
+            CreateMap<CreateAssetsDto, TblAsset>().ReverseMap();
 
-            // Optional: DTO -> Commands if you want reverse mapping
-            CreateMap<AuctionDto, CreateAuctionCommand>();
-            CreateMap<AuctionDto, UpdateAuctionCommand>();
+            CreateMap<UpdateAssetDto, TblAsset>().ReverseMap();
 
+            CreateMap<AssetsGalleryDto , TblAssetGallery>().ReverseMap();
 
+            CreateMap<AssetsGalleryDto, TblAssetGallery>()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
+            CreateMap<AssetDocumentDto, TblAssetDocument>().ReverseMap();
+            CreateMap<AssetDocumentUploadDto, TblAssetDocument>().ReverseMap();
         }
     }
 }

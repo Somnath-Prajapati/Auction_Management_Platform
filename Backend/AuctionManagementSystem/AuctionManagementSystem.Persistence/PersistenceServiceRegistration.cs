@@ -1,3 +1,4 @@
+using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Persistence.Repositories;
 using AuctionManagementSystem.Application.Contracts.Settings;
 using AuctionManagementSystem.Application.Contracts.Transactions;
@@ -6,6 +7,7 @@ using AuctionManagementSystem.Application.Repositories;
 using AuctionManagementSystem.Domain.Interfaces;
 using AuctionManagementSystem.Infrastructure.Persistence.Repositories;
 using AuctionManagementSystem.Persistence.Context;
+using AuctionManagementSystem.Persistence.Repositories.Assets;
 using AuctionManagementSystem.Persistence.Repositories.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +37,9 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAuctionRepository, AuctionRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            services.AddScoped<IAssetsRepository, AssetRepository>();
+            services.AddScoped<IAssetGalleryRepository, AssetGalleryRepository>();
+            services.AddScoped<IAssetDocumentRepository, AssetDocumentRepository>();
 
             return services;
         }

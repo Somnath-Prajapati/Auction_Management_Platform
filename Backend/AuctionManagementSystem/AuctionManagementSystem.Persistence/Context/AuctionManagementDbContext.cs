@@ -445,7 +445,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasForeignKey(d => d.TransactionId)
                 .HasConstraintName("FK__tblReques__Trans__00DF2177");
 
-            entity.HasOne(d => d.User).WithMany(p => p.TblRequests) 
+            entity.HasOne(d => d.User).WithMany(p => p.TblRequests)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__tblReques__UserI__7EF6D905");
@@ -614,7 +614,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
 
-            entity.HasOne(d => d.Asset).WithMany( p => p.TblTransactionAssets)
+            entity.HasOne(d => d.Asset).WithMany(p => p.TblTransactionAssets)
                 .HasForeignKey(d => d.AssetId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__tblTransa__Asset__607251E5");
