@@ -1,1 +1,141 @@
-<p>add-user works!</p>
+<form (ngSubmit)="onSubmit()" #userForm="ngForm" class="container mt-4 p-4 bg-light rounded shadow">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Name</label>
+          <input type="text" class="form-control form-control-lg" [(ngModel)]="user.name" name="name" required>
+        </div>
+      </div>
+   
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Email</label>
+          <input type="email" class="form-control form-control-lg" [(ngModel)]="user.email" name="email" required>
+        </div>
+      </div>
+    </div>
+   
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Mobile Number</label>
+          <div class="input-group">
+            <select class="form-select form-select-lg" [(ngModel)]="selectedPhoneCode" name="phoneCode" required>
+              <option *ngFor="let country of countries" [value]="country.phoneCode">
+                {{ country.phoneCode }} ({{ country.countryName }})
+              </option>
+            </select>
+            <input type="text" class="form-control form-control-lg" [(ngModel)]="user.mobileNumber" name="mobileNumber" required>
+          </div>
+        </div>
+      </div>
+   
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Country</label>
+          <select class="form-select form-select-lg" [(ngModel)]="user.countryId" name="countryId" required>
+            <option *ngFor="let country of countries" [value]="country.countryId">
+              {{ country.countryName }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+   
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Company Name</label>
+          <input type="text" class="form-control form-control-lg" [(ngModel)]="user.companyName" name="companyName">
+        </div>
+      </div>
+   
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Company Number</label>
+          <input type="text" class="form-control form-control-lg" [(ngModel)]="user.companyNumber" name="companyNumber">
+        </div>
+      </div>
+    </div>
+   
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Status</label>
+          <select class="form-select form-select-lg" [(ngModel)]="user.statusId" name="statusId" required>
+            <option *ngFor="let status of statuses" [value]="status.statusId">{{ status.statusName }}</option>
+          </select>
+        </div>
+      </div>
+   
+      <div class="col-md-4 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Role</label>
+          <select class="form-select form-select-lg" [(ngModel)]="user.roleId" name="roleId" required>
+            <option *ngFor="let role of roles" [value]="role.roleId">{{ role.roleName }}</option>
+          </select>
+        </div>
+      </div>
+   
+      <div class="col-md-4 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Gender</label>
+          <select class="form-select form-select-lg" [(ngModel)]="user.gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+      </div>
+    </div>
+   
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Personal ID Number</label>
+          <input type="text" class="form-control form-control-lg" [(ngModel)]="user.personalIdNumber" name="personalIdNumber">
+        </div>
+      </div>
+   
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Personal ID Expiry Date</label>
+          <input type="date" class="form-control form-control-lg" [(ngModel)]="user.personalIdExpiryDate" name="personalIdExpiryDate">
+        </div>
+      </div>
+    </div>
+   
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Chat Enabled</label><br>
+          <div class="btn-group" role="group">
+            <input type="radio" class="btn-check" id="chatYes" [(ngModel)]="user.chatEnabled" name="chatEnabled" [value]="true" autocomplete="off">
+            <label class="btn btn-outline-primary" for="chatYes">Yes</label>
+           
+            <input type="radio" class="btn-check" id="chatNo" [(ngModel)]="user.chatEnabled" name="chatEnabled" [value]="false" autocomplete="off">
+            <label class="btn btn-outline-primary" for="chatNo">No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Profile Image</label>
+          <input type="file" class="form-control form-control-lg" (change)="onFileChange($event, 'profileImage')">
+        </div>
+      </div>
+   
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <label class="form-label fw-bold">Personal ID Image</label>
+          <input type="file" class="form-control form-control-lg" (change)="onFileChange($event, 'personalIdImage')">
+        </div>
+      </div>
+    </div>
+   
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+      <button type="submit" class="btn btn-primary btn-lg px-4" [disabled]="userForm.invalid">Submit</button>
+    </div>
+  </form>

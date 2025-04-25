@@ -1,56 +1,102 @@
-<div class="container-fluid">
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <h2 class="mb-4">Dashboard</h2>
-        <div class="row">
-            <div class="col-12">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Dashboard Stats</h5>
-                        <div class="row text-center">
-                            <div class="col-md-4">
-                                <p class="h3 text-primary">250,000 BHD</p>
-                                <p class="text-muted">Total Revenue</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p class="h3 text-success">12,540</p>
-                                <p class="text-muted">Total Auctions</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p class="h3 text-info">25,000 BHD</p>
-                                <p class="text-muted">This Month</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="container-fluid dashboard">
+    <main class="main-content">
+      <h2 class="mb-4 text-purple">Auction Management Dashboard</h2>
+  
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card stat-card text-center">
+            <div class="card-body">
+              <h3 class="text-purple">250,000 BHD</h3>
+              <p>Total Revenue</p>
             </div>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title mb-4">Categories in Process</h5>
-                        <div class=" d-flex justify-content-center align-items-center flex-grow-1">
-                            <img src="/assets/chart1.png" 
-                                 alt="Bar Chart Placeholder">
-                                 </div>
-                    </div>
-                </div>
+        <div class="col-md-4">
+          <div class="card stat-card text-center">
+            <div class="card-body">
+              <h3 class="text-success">12,540</h3>
+              <p>Total Auctions</p>
             </div>
-
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title mb-4">Revenue Overview</h5>
-                        <div class=" d-flex justify-content-center align-items-center flex-grow-1">
-                            <img src="/assets/chart2.png" 
-                            alt="Line Chart Placeholder" 
-                            >
-                        </div>
-                          
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-       
+        <div class="col-md-4">
+          <div class="card stat-card text-center">
+            <div class="card-body">
+              <h3 class="text-info">25,000 BHD</h3>
+              <p>This Month</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card section-card">
+            <div class="card-body">
+              <h5 class="card-title text-purple mb-3">Recent Activities</h5>
+              <ul class="list-unstyled activity-list">
+                <li><span class="dot purple"></span> Auction "Rolex Watch" created.</li>
+                <li><span class="dot green"></span> Payment of 3,000 BHD received.</li>
+                <li><span class="dot blue"></span> Auction "Land in Manama" completed.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card section-card">
+            <div class="card-body">
+              <h5 class="card-title text-purple mb-3">Top Categories</h5>
+              <div class="d-flex flex-wrap gap-3">
+                <span class="badge bg-purple">Electronics</span>
+                <span class="badge bg-purple">Cars</span>
+                <span class="badge bg-purple">Watches</span>
+                <span class="badge bg-purple">Real Estate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card section-card">
+            <div class="card-body">
+              <h5 class="card-title text-purple mb-3">Auction Highlights</h5>
+              <table class="table table-borderless mb-0">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Bid Count</th>
+                    <th>Revenue</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Luxury Villa</td>
+                    <td><span class="badge bg-success">Active</span></td>
+                    <td>54</td>
+                    <td>85,000 BHD</td>
+                  </tr>
+                  <tr>
+                    <td>Vintage Car</td>
+                    <td><span class="badge bg-secondary">Ended</span></td>
+                    <td>39</td>
+                    <td>40,000 BHD</td>
+                  </tr>
+                  <tr>
+                    <td>Smartphone Bundle</td>
+                    <td><span class="badge bg-warning text-dark">Upcoming</span></td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
-</div>
+  </div>
+  

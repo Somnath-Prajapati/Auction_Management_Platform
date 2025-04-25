@@ -1,0 +1,51 @@
+.text-purple {
+    color: #6f42c1;
+  }
+  
+  .btn-purple {
+    background-color: #6f42c1;
+    color: #fff;
+    border: none;
+  }
+  
+  .btn-purple:hover {
+    background-color: #5936a0;
+  }
+  
+  .btn-outline-purple {
+    border: 1px solid #6f42c1;
+    color: #6f42c1;
+    background: transparent;
+  }
+  
+  .btn-outline-purple:hover {
+    background-color: #f1e9ff;
+  }
+  
+  .settings-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  fieldset {
+    border: none;
+  }
+  
+  legend {
+    font-weight: bold;
+    color: #6f42c1;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card {
+    background-color: #f9f5ff;
+    border: 1px solid #e3d9fa;
+    border-radius: 12px;
+  }
+  
+  .full-width {
+    grid-column: 1 / -1;
+  }
+  
