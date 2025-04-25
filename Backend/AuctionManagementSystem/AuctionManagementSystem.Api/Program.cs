@@ -46,10 +46,10 @@ namespace AuctionManagementSystem.Api
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseCors("AllowAngularDev"); //  CORS must come before authorization
+            //app.UseCors("AllowAngularDev"); //  CORS must come before authorization
 
-            app.UseStaticFiles();
-            app.UseHttpsRedirection();
+            //app.UseStaticFiles();
+            //app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
             app.Run();

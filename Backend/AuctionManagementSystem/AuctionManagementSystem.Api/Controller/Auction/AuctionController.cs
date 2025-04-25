@@ -7,7 +7,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using AuctionManagementSystem.Application.Dtos.Auctions;
 
-namespace AuctionManagementSystem.Api.Controllers
+namespace AuctionManagementSystem.Api.Controller.Auction
 {
     [ApiController]
     [Route("api/[controller]")]

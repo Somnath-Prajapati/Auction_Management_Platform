@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetDocumentController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetDocumentController",
     "Method": "Add",
     "RelativePath": "api/AssetDocument",
     "HttpMethod": "POST",
@@ -26,7 +26,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetDocumentController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetDocumentController",
     "Method": "GetAll",
     "RelativePath": "api/AssetDocument",
     "HttpMethod": "GET",
@@ -36,7 +36,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetDocumentController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetDocumentController",
     "Method": "Update",
     "RelativePath": "api/AssetDocument/{id}",
     "HttpMethod": "PUT",
@@ -67,7 +67,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetDocumentController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetDocumentController",
     "Method": "Delete",
     "RelativePath": "api/AssetDocument/{id}",
     "HttpMethod": "DELETE",
@@ -83,7 +83,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetDocumentController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetDocumentController",
     "Method": "GetById",
     "RelativePath": "api/AssetDocument/{id}",
     "HttpMethod": "GET",
@@ -99,7 +99,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetGalleryController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetGalleryController",
     "Method": "GetAll",
     "RelativePath": "api/AssetGallery",
     "HttpMethod": "GET",
@@ -109,7 +109,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetGalleryController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetGalleryController",
     "Method": "GetById",
     "RelativePath": "api/AssetGallery/{id}",
     "HttpMethod": "GET",
@@ -125,7 +125,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetGalleryController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetGalleryController",
     "Method": "Add",
     "RelativePath": "api/AssetGallery/add",
     "HttpMethod": "POST",
@@ -156,7 +156,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetGalleryController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetGalleryController",
     "Method": "Delete",
     "RelativePath": "api/AssetGallery/delete/{id}",
     "HttpMethod": "DELETE",
@@ -172,7 +172,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetGalleryController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetGalleryController",
     "Method": "Update",
     "RelativePath": "api/AssetGallery/update/{id}",
     "HttpMethod": "PUT",
@@ -208,7 +208,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetsController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetsController",
     "Method": "CreateAsset",
     "RelativePath": "api/Assets",
     "HttpMethod": "POST",
@@ -234,7 +234,7 @@
     ]
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetsController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetsController",
     "Method": "DeleteAsset",
     "RelativePath": "api/Assets",
     "HttpMethod": "DELETE",
@@ -260,7 +260,7 @@
     ]
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetsController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetsController",
     "Method": "GetAsset",
     "RelativePath": "api/Assets/{id}",
     "HttpMethod": "GET",
@@ -286,7 +286,7 @@
     ]
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetsController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetsController",
     "Method": "UpdateAsset",
     "RelativePath": "api/Assets/{id}",
     "HttpMethod": "PUT",
@@ -317,7 +317,7 @@
     ]
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetsController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetsController",
     "Method": "GetAllAssets",
     "RelativePath": "api/Assets/GetAll",
     "HttpMethod": "GET",
@@ -337,9 +337,9 @@
     ]
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Assets.AssetsController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Assets.AssetsController",
     "Method": "SearchAsset",
-    "RelativePath": "api/Assets/Search Asset",
+    "RelativePath": "api/Assets/Name:Search Asset",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -361,6 +361,283 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Auction.AuctionController",
+    "Method": "GetAllAuctions",
+    "RelativePath": "api/Auction",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[AuctionManagementSystem.Application.Dtos.Auctions.AuctionDto, AuctionManagementSystem.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Auction.AuctionController",
+    "Method": "CreateAuction",
+    "RelativePath": "api/Auction",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "AuctionManagementSystem.Application.Features.Auctions.Commands.CreateAuction.CreateAuctionCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controllers.Settings.AuctionSettingsController",
+    "Method": "GetAll",
+    "RelativePath": "api/auction-settings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controllers.Settings.AuctionSettingsController",
+    "Method": "Create",
+    "RelativePath": "api/auction-settings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AuctionManagementSystem.Application.Dtos.Settings.SystemSettingsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controllers.Settings.AuctionSettingsController",
+    "Method": "GetSystemSettingById",
+    "RelativePath": "api/auction-settings/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controllers.Settings.AuctionSettingsController",
+    "Method": "Update",
+    "RelativePath": "api/auction-settings/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "AuctionManagementSystem.Application.Dtos.Settings.SystemSettingsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controllers.Settings.AuctionSettingsController",
+    "Method": "Delete",
+    "RelativePath": "api/auction-settings/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Auction.AuctionController",
+    "Method": "GetAuctionById",
+    "RelativePath": "api/Auction/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "AuctionManagementSystem.Application.Dtos.Auctions.AuctionDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Auction.AuctionController",
+    "Method": "UpdateAuction",
+    "RelativePath": "api/Auction/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "command",
+        "Type": "AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateAuction.UpdateAuctionCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Auction.AuctionController",
+    "Method": "Delete",
+    "RelativePath": "api/Auction/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Settings.AuctionSettingsController",
+    "Method": "GetAll",
+    "RelativePath": "api/AuctionSettings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Settings.AuctionSettingsController",
+    "Method": "Create",
+    "RelativePath": "api/AuctionSettings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AuctionManagementSystem.Application.Dtos.Settings.SystemSettingsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Settings.AuctionSettingsController",
+    "Method": "GetSystemSettingById",
+    "RelativePath": "api/AuctionSettings/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Settings.AuctionSettingsController",
+    "Method": "Update",
+    "RelativePath": "api/AuctionSettings/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "AuctionManagementSystem.Application.Dtos.Settings.SystemSettingsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.Settings.AuctionSettingsController",
+    "Method": "Delete",
+    "RelativePath": "api/AuctionSettings/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.User.CountryController",
+    "Method": "GetAllCountries",
+    "RelativePath": "api/Country",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "AuctionManagementSystem.Api.Controllers.Settings.DirectSaleSettingsController",
@@ -713,85 +990,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Settings.SystemSettingsController",
-    "Method": "GetAll",
-    "RelativePath": "api/SystemSettings",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Settings.SystemSettingsController",
-    "Method": "Create",
-    "RelativePath": "api/SystemSettings",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "AuctionManagementSystem.Application.Dtos.Settings.SystemSettingsDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Settings.SystemSettingsController",
-    "Method": "GetSystemSettingById",
-    "RelativePath": "api/SystemSettings/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Settings.SystemSettingsController",
-    "Method": "Update",
-    "RelativePath": "api/SystemSettings/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "dto",
-        "Type": "AuctionManagementSystem.Application.Dtos.Settings.SystemSettingsDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.Settings.SystemSettingsController",
-    "Method": "Delete",
-    "RelativePath": "api/SystemSettings/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "AuctionManagementSystem.API.Controllers.TransactionsController",
     "Method": "GetAll",
     "RelativePath": "api/Transactions",
@@ -916,7 +1114,7 @@
     "EndpointName": "Delete Transaction"
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.UserController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.User.UserController",
     "Method": "AllUser",
     "RelativePath": "api/User",
     "HttpMethod": "GET",
@@ -926,7 +1124,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.UserController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.User.UserController",
     "Method": "GetUserById",
     "RelativePath": "api/User/{id}",
     "HttpMethod": "GET",
@@ -942,7 +1140,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.UserController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.User.UserController",
     "Method": "CreateUser",
     "RelativePath": "api/User/Add",
     "HttpMethod": "POST",
@@ -950,15 +1148,80 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "AuctionManagementSystem.Application.Dtos.UserDtos.UserDto",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "MobileNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "StatusId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ChatEnabled",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "RoleId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PersonalIdNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gender",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PersonalIdExpiryDate",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "CountryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProfileImage",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "PersonalIdImage",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.UserController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.User.UserController",
     "Method": "DeleteUser",
     "RelativePath": "api/User/delete/{id}",
     "HttpMethod": "DELETE",
@@ -974,7 +1237,27 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuctionManagementSystem.Api.Controllers.UserController",
+    "ContainingType": "AuctionManagementSystem.Api.Controller.User.UserController",
+    "Method": "GetAllRoles",
+    "RelativePath": "api/User/roles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.User.UserController",
+    "Method": "GetAllStatuses",
+    "RelativePath": "api/User/statuses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuctionManagementSystem.Api.Controller.User.UserController",
     "Method": "UpdateUser",
     "RelativePath": "api/User/update/{id}",
     "HttpMethod": "PUT",
@@ -987,9 +1270,74 @@
         "IsRequired": true
       },
       {
-        "Name": "dto",
-        "Type": "AuctionManagementSystem.Application.Dtos.UserDtos.UserDto",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "MobileNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "StatusId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ChatEnabled",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "RoleId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PersonalIdNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gender",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PersonalIdExpiryDate",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "CountryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProfileImage",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "PersonalIdImage",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

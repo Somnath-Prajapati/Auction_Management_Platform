@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Assets;
+using AuctionManagementSystem.Application.Dtos.Auctions;
 using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Application.Dtos.UserDtos;
@@ -15,6 +16,7 @@ using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.UpdateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
 using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
@@ -61,7 +63,8 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<CreateAssetsDto, TblAsset>().ReverseMap();
 
             CreateMap<UpdateAssetDto, TblAsset>().ReverseMap();
-
+            CreateMap<AuctionBaseCommand, TblAuction>()
+            .ForMember(dest => dest.AuctionId, opt => opt.Ignore());
             CreateMap<AssetsGalleryDto , TblAssetGallery>().ReverseMap();
 
             CreateMap<AssetsGalleryDto, TblAssetGallery>()
