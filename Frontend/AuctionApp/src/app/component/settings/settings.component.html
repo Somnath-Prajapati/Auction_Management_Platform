@@ -1,1 +1,92 @@
-<p>settings works!</p>
+<form [formGroup]="settingsForm" (ngSubmit)="onSubmit()" class="settings-form">
+    <fieldset formGroupName="auctionSettings">
+      <legend>Auction Settings</legend>
+      <label>Global Incremental Time</label>
+      <input formControlName="globalIncrementalTime" type="number" />
+    </fieldset>
+  
+    <fieldset formGroupName="financeSettings">
+      <legend>Finance Settings</legend>
+      <label>VAT %</label>
+      <input formControlName="vat" type="number" />
+  
+      <label>Credit Card Fee</label>
+      <input formControlName="creditCardFee" type="number" />
+  
+      <label>Debit Card Fee</label>
+      <input formControlName="debitCardFee" type="number" />
+  
+      <label>Admin Fees</label>
+      <input formControlName="adminFees" type="number" />
+  
+      <label>Auction Fees</label>
+      <input formControlName="auctionFees" type="number" />
+  
+      <label>Buyer Commission</label>
+      <input formControlName="buyerCommission" type="number" />
+    </fieldset>
+  
+    <fieldset formGroupName="directSaleSettings">
+      <legend>Direct Sale Settings</legend>
+      <label>Cart Items Limit</label>
+      <input formControlName="cartItemsLimit" type="number" />
+  
+      <label>Cart Items Timer</label>
+      <input formControlName="cartItemsTimer" type="number" />
+    </fieldset>
+  
+    <fieldset formGroupName="staticPages">
+      <legend>Static Pages</legend>
+      <label>Privacy Policy</label>
+      <input formControlName="privacyPolicy" type="text" />
+  
+      <label>Terms & Conditions</label>
+      <input formControlName="termsAndConditions" type="text" />
+  
+      <label>Cookies Policy</label>
+      <input formControlName="cookiesPolicy" type="text" />
+    </fieldset>
+  
+    <fieldset formGroupName="footerLinks">
+      <legend>Footer Links</legend>
+      <label>FAQ</label>
+      <input formControlName="faq" type="text" />
+  
+      <label>Blog</label>
+      <input formControlName="blog" type="text" />
+  
+      <label>Status</label>
+      <input formControlName="status" type="text" />
+  
+      <label>Twitter Link</label>
+      <input formControlName="twitter" type="text" />
+  
+      <label>Instagram Link</label>
+      <input formControlName="instagram" type="text" />
+  
+      <label>Facebook Link</label>
+      <input formControlName="facebook" type="text" />
+  
+      <label>LinkedIn Link</label>
+      <input formControlName="linkedin" type="text" />
+  
+      <label>YouTube Link</label>
+      <input formControlName="youtube" type="text" />
+  
+      <label>App Store Link</label>
+      <input formControlName="appstore" type="text" />
+  
+      <label>Google Play Link</label>
+      <input formControlName="googlePlay" type="text" />
+    </fieldset>
+  
+    <div class="form-actions">
+      <button type="submit">Update Settings</button>
+    </div>
+  </form>
+  
+  
+  <script lang="ts">
+  
+  </script>
+  

@@ -18,8 +18,9 @@ namespace AuctionManagementSystem.Application
             services.AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             services.AddHttpContextAccessor();
-             services.AddTransient<IValidator<FinanceSettingsDto>, UpdateFinanceSettingsCommandValidator>();
+            services.AddTransient<IValidator<FinanceSettingsDto>, UpdateFinanceSettingsCommandValidator>();
             services.AddTransient<IValidator<FinanceSettingsDto>, CreateFinanceSettingsCommandValidator>();
+
 
             return services;
         }
