@@ -3,15 +3,17 @@ using AuctionManagementSystem.Application.Features.UserFeature.Command.CreateUse
 using AuctionManagementSystem.Application.Features.UserFeature.Command.DeleteUser;
 using AuctionManagementSystem.Application.Features.UserFeature.Command.UpdateUser;
 using AuctionManagementSystem.Application.Features.UserFeature.Query.GetAllUser;
+using AuctionManagementSystem.Application.Features.UserFeature.Query.GetRoles;
+using AuctionManagementSystem.Application.Features.UserFeature.Query.GetStatus;
 using AuctionManagementSystem.Application.Features.UserFeature.Query.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AuctionManagementSystem.Api.Controllers
+namespace AuctionManagementSystem.Api.Controller.User
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : Controller
+    public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
 
@@ -28,29 +30,43 @@ namespace AuctionManagementSystem.Api.Controllers
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(int id)
-        { 
-                var result = await _mediator.Send(new GetUserByIdQuery(id));
-                return Ok(result);
+        {
+            var result = await _mediator.Send(new GetUserByIdQuery(id));
+            return Ok(result);
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> CreateUser([FromBody] UserDto dto)
+        public async Task<IActionResult> CreateUser([FromForm] UserDto dto)
         {
             var command = new CreateUserCommand(dto);
             var userId = await _mediator.Send(command);
             return Ok(new { UserId = userId });
         }
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserDto dto)
+        public async Task<IActionResult> UpdateUser(int id, [FromForm] UserDto dto)
         {
-                var result = await _mediator.Send(new UpdateUserCommand(id, dto));
+            var result = await _mediator.Send(new UpdateUserCommand(id, dto));
             return Ok(result);
         }
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-                var result = await _mediator.Send(new DeleteUserCommand(id));
-                return result ? Ok() : NotFound();
+            var result = await _mediator.Send(new DeleteUserCommand(id));
+            return result ? Ok() : NotFound();
+        }
+        //status table and Role table
+        [HttpGet("roles")]
+        public async Task<IActionResult> GetAllRoles()
+        {
+            var roles = await _mediator.Send(new GetAllRolesQuery());
+            return Ok(roles);
+        }
+
+        [HttpGet("statuses")]
+        public async Task<IActionResult> GetAllStatuses()
+        {
+            var statuses = await _mediator.Send(new GetAllStatusesQuery());
+            return Ok(statuses);
         }
 
     }

@@ -30,6 +30,8 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IFooterLinksSettingsRepository, FooterLinksSettingsRepository>();
             services.AddScoped<IStaticPagesSettingsRepository, StaticPagesSettingsRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped< IUserStatusRepository,UserStatusRepository> ();
+            services.AddScoped<IRoleRepository, RoleRepository>();
 
             return services;
         }
