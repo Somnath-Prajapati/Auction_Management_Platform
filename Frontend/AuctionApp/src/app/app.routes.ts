@@ -10,6 +10,7 @@ import { AddUserComponent } from './component/add-user/add-user.component';
 import { AddAuctionComponent } from './component/add-auction/add-auction.component';
 import { AddAssetComponent } from './component/add-asset/add-asset.component';
 import { HomeComponent } from './component/home/home.component';
+import { UpdateUserComponent } from './component/update-user/update-user.component';
 
 export const routes: Routes = [
     {path:'', component:LoginComponent},
@@ -17,6 +18,7 @@ export const routes: Routes = [
     {path:'auctions', component:ManageAuctionComponent},
     {path:'dashboard', component:DashboardComponent},
     {path:'users', component:ManageUserComponent},
+    {path:'updateUser', component:UpdateUserComponent},
     {path:'settings', component:SettingsComponent},
     {path:'newUser', component:AddUserComponent},
     {path:'newAuction', component:AddAuctionComponent},
