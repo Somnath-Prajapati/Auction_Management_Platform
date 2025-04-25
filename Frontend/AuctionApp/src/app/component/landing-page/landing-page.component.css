@@ -1,0 +1,42 @@
+.help-resources-section {
+    background-color: #f9f9f9;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+    border-top: 1px solid #ddd;
+  }
+  
+  .tabs-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .tab h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tab ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .tab ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .tab ul li a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .tab ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .app-content {
+    padding: 24px;
+    background-color: #fff;
+  }
+  
