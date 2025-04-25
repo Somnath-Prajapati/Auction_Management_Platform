@@ -1,1 +1,44 @@
-<p>add-auction works!</p>
+<div class="container auction-form-container">
+  <h3 class="auction-form-title">Add Auction</h3>
+  <form [formGroup]="auctionForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="auctionNumber" class="form-label">Auction Number</label>
+        <input type="text" formControlName="auctionNumber" id="auctionNumber" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" formControlName="title" id="title" class="form-control">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="type" class="form-label">Type</label>
+        <input type="text" formControlName="type" id="type" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="statusId" class="form-label">Status ID</label>
+        <input type="text" formControlName="statusId" id="statusId" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="categoryId" class="form-label">Category ID</label>
+        <input type="text" formControlName="categoryId" id="categoryId" class="form-control">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="startDateTime" class="form-label">Start Date & Time</label>
+        <input type="datetime-local" formControlName="startDateTime" id="startDateTime" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="endDateTime" class="form-label">End Date & Time</label>
+        <input type="datetime-local" formControlName="endDateTime" id="endDateTime" class="form-control">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="incrementalTime" class="form-label">Incremental Time</label>
+        <input type="text" formControlName="incrementalTime" id="incrementalTime" class="form-control">
+      </div>
+    </div>
+
+    <button class="btn btn-primary w-100 mt-3" type="submit" [disabled]="auctionForm.invalid">Create Auction</button>
+  </form>
+</div>
