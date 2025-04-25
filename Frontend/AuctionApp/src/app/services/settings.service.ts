@@ -1,39 +1,73 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import {
   AuctionSettings,
   FinanceSettings,
   DirectSaleSettings,
   StaticPagesSettings,
-  FooterLinksSettings
-} from '../models/settings';
+  FooterLinksSettings,
+  AllSettings
+} from '../modals/settings';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SettingsService {
-  private baseUrl = 'https://your-api-url.com/api'; // Replace with your actual backend API base URL
+  private baseUrl = 'https://10.0.102.118:44384/api';
 
   constructor(private http: HttpClient) {}
 
-  updateAuctionSettings(data: AuctionSettings): Observable<any> {
-    return this.http.put(`${this.baseUrl}/AuctionSettings`, data);
+  // Individual GET methods
+  getAuctionSettings(): Observable<AuctionSettings> {
+    return this.http.get<AuctionSettings>(`${this.baseUrl}/AuctionSettings`);
   }
 
-  updateFinanceSettings(data: FinanceSettings): Observable<any> {
-    return this.http.put(`${this.baseUrl}/FinanceSettings`, data);
+  getFinanceSettings(): Observable<FinanceSettings> {
+    return this.http.get<FinanceSettings>(`${this.baseUrl}/FinanceSettings/GetAll`);
   }
 
-  updateDirectSaleSettings(data: DirectSaleSettings): Observable<any> {
-    return this.http.put(`${this.baseUrl}/DirectSaleSettings`, data);
+  getDirectSaleSettings(): Observable<DirectSaleSettings> {
+    return this.http.get<DirectSaleSettings>(`${this.baseUrl}/DirectSaleSettings`);
   }
 
-  updateStaticPagesSettings(data: StaticPagesSettings): Observable<any> {
-    return this.http.put(`${this.baseUrl}/StaticPagesSettings`, data);
+  getStaticPagesSettings(): Observable<StaticPagesSettings> {
+    return this.http.get<StaticPagesSettings>(`${this.baseUrl}/StaticPagesSettings`);
   }
 
-  updateFooterLinksSettings(data: FooterLinksSettings): Observable<any> {
-    return this.http.put(`${this.baseUrl}/FooterLinksSettings`, data);
+  getFooterLinksSettings(): Observable<FooterLinksSettings> {
+    return this.http.get<FooterLinksSettings>(`${this.baseUrl}/FooterLinksSettings/Get`);
+  }
+
+  // Combined GET method
+  getAllSettings(): Observable<AllSettings> {
+    return forkJoin({
+      auctionSettings: this.getAuctionSettings(),
+      financeSettings: this.getFinanceSettings(),
+      directSaleSettings: this.getDirectSaleSettings(),
+      staticPages: this.getStaticPagesSettings(),
+      footerLinks: this.getFooterLinksSettings()
+    });
+  }
+
+  // Individual UPDATE methods
+  updateAuctionSettings(settings: AuctionSettings): Observable<any> {
+    return this.http.put(`${this.baseUrl}/AuctionSettings`, settings);
+  }
+
+  updateFinanceSettings(settings: FinanceSettings): Observable<any> {
+    return this.http.put(`${this.baseUrl}/FinanceSettings`, settings);
+  }
+
+  updateDirectSaleSettings(settings: DirectSaleSettings): Observable<any> {
+    return this.http.put(`${this.baseUrl}/DirectSaleSettings`, settings);
+  }
+
+  updateStaticPagesSettings(settings: StaticPagesSettings): Observable<any> {
+    return this.http.put(`${this.baseUrl}/StaticPagesSettings`, settings);
+  }
+
+  updateFooterLinksSettings(settings: FooterLinksSettings): Observable<any> {
+    return this.http.put(`${this.baseUrl}/FooterLinksSettings`, settings);
   }
 }
