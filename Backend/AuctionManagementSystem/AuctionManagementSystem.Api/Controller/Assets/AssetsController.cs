@@ -11,7 +11,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AuctionManagementSystem.Api.Controllers.Assets
+namespace AuctionManagementSystem.Api.Controller.Assets
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -47,23 +47,23 @@ namespace AuctionManagementSystem.Api.Controllers.Assets
         }
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<UpdateAssetDto>> UpdateAsset(int id,[FromBody] UpdateAssetDto assetsDto)
+        public async Task<ActionResult<UpdateAssetDto>> UpdateAsset(int id, [FromBody] UpdateAssetDto assetsDto)
         {
-            if(id != assetsDto.AssetId)
-                return BadRequest("ID in URL does not match ID in body");   
+            if (id != assetsDto.AssetId)
+                return BadRequest("ID in URL does not match ID in body");
             await _mediator.Send(new UpdateAssetCommand(id, assetsDto));
             return Ok();
         }
 
-        [Route("Search Asset")]
-        [HttpPost]
+        //[Route("Search Asset")]
+        [HttpPost("Name:Search Asset")]
         public async Task<ActionResult<UpdateAssetDto>> SearchAsset(string name)
         {
             var assets = await _mediator.Send(new SearchAssetQuery(name));
             return Ok(assets);
         }
 
-      
+
         [HttpDelete]
         public async Task<ActionResult<UpdateAssetDto>> DeleteAsset(int id)
         {

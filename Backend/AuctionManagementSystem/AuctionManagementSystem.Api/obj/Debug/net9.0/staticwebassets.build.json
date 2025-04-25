@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IQe3EqcuQmIGip+KDQjJ5vutLEzgLOkkGH2K1V4CzIg=",
+  "Hash": "TmeaRLnXTASbCv1w+D48NpFB6etgvf8dMAgnPlEku8M=",
   "Source": "AuctionManagementSystem.Api",
   "BasePath": "_content/AuctionManagementSystem.Api",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "AuctionManagementSystem.Api\\wwwroot",
       "Source": "AuctionManagementSystem.Api",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\371fccf4-27f1-4865-a61f-3a98a41a510b.pdf",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\371fccf4-27f1-4865-a61f-3a98a41a510b.pdf",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "AssetDocuments/371fccf4-27f1-4865-a61f-3a98a41a510b#[.{fingerprint}]?.pdf",
       "AssetKind": "All",
@@ -38,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\AssetDocuments\\371fccf4-27f1-4865-a61f-3a98a41a510b.pdf"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\92792a2d-0a3c-4b08-8a91-7c54aa0a09c9.pdf",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\92792a2d-0a3c-4b08-8a91-7c54aa0a09c9.pdf",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "AssetDocuments/92792a2d-0a3c-4b08-8a91-7c54aa0a09c9#[.{fingerprint}]?.pdf",
       "AssetKind": "All",
@@ -59,10 +59,10 @@
       "OriginalItemSpec": "wwwroot\\AssetDocuments\\92792a2d-0a3c-4b08-8a91-7c54aa0a09c9.pdf"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\a37ee058-9fbe-463c-9113-0f8f6649bd02.pdf",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\a37ee058-9fbe-463c-9113-0f8f6649bd02.pdf",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "AssetDocuments/a37ee058-9fbe-463c-9113-0f8f6649bd02#[.{fingerprint}]?.pdf",
       "AssetKind": "All",
@@ -80,10 +80,10 @@
       "OriginalItemSpec": "wwwroot\\AssetDocuments\\a37ee058-9fbe-463c-9113-0f8f6649bd02.pdf"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\53d3de52-c282-4540-8a73-eceb9664015c.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\53d3de52-c282-4540-8a73-eceb9664015c.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "AssetGallery/53d3de52-c282-4540-8a73-eceb9664015c#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -101,10 +101,10 @@
       "OriginalItemSpec": "wwwroot\\AssetGallery\\53d3de52-c282-4540-8a73-eceb9664015c.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\64a3461e-eee3-4574-9820-4ae2e888d227.jpg",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\64a3461e-eee3-4574-9820-4ae2e888d227.jpg",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "AssetGallery/64a3461e-eee3-4574-9820-4ae2e888d227#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -122,10 +122,10 @@
       "OriginalItemSpec": "wwwroot\\AssetGallery\\64a3461e-eee3-4574-9820-4ae2e888d227.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\6667c0d0-8c67-49d4-8958-ad085a500b98.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\6667c0d0-8c67-49d4-8958-ad085a500b98.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "AssetGallery/6667c0d0-8c67-49d4-8958-ad085a500b98#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -143,10 +143,10 @@
       "OriginalItemSpec": "wwwroot\\AssetGallery\\6667c0d0-8c67-49d4-8958-ad085a500b98.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\74a8c259-1e3c-475a-9d95-bbd9ba15be26.jpg",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\74a8c259-1e3c-475a-9d95-bbd9ba15be26.jpg",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "AssetGallery/74a8c259-1e3c-475a-9d95-bbd9ba15be26#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -164,10 +164,10 @@
       "OriginalItemSpec": "wwwroot\\AssetGallery\\74a8c259-1e3c-475a-9d95-bbd9ba15be26.jpg"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\9abf1d59-2a5e-41a6-be20-58f80c74a0dc.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\9abf1d59-2a5e-41a6-be20-58f80c74a0dc.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "AssetGallery/9abf1d59-2a5e-41a6-be20-58f80c74a0dc#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -185,10 +185,10 @@
       "OriginalItemSpec": "wwwroot\\AssetGallery\\9abf1d59-2a5e-41a6-be20-58f80c74a0dc.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\d7bd5ebf-48dd-4567-a0fa-ecd8e4e0c495.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\d7bd5ebf-48dd-4567-a0fa-ecd8e4e0c495.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "AssetGallery/d7bd5ebf-48dd-4567-a0fa-ecd8e4e0c495#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -206,10 +206,10 @@
       "OriginalItemSpec": "wwwroot\\AssetGallery\\d7bd5ebf-48dd-4567-a0fa-ecd8e4e0c495.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\70895489-6c8a-47d4-b7e6-a659ddc1eef8.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\70895489-6c8a-47d4-b7e6-a659ddc1eef8.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "PersonalIdImages/70895489-6c8a-47d4-b7e6-a659ddc1eef8#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -227,10 +227,10 @@
       "OriginalItemSpec": "wwwroot\\PersonalIdImages\\70895489-6c8a-47d4-b7e6-a659ddc1eef8.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\90e624ad-4c73-411e-b21c-b82f55e51cbf.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\90e624ad-4c73-411e-b21c-b82f55e51cbf.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "PersonalIdImages/90e624ad-4c73-411e-b21c-b82f55e51cbf#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -248,10 +248,10 @@
       "OriginalItemSpec": "wwwroot\\PersonalIdImages\\90e624ad-4c73-411e-b21c-b82f55e51cbf.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\a2c314c6-6b0e-4d02-8b94-bf5dfb4a978e.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\a2c314c6-6b0e-4d02-8b94-bf5dfb4a978e.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "PersonalIdImages/a2c314c6-6b0e-4d02-8b94-bf5dfb4a978e#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -269,10 +269,31 @@
       "OriginalItemSpec": "wwwroot\\PersonalIdImages\\a2c314c6-6b0e-4d02-8b94-bf5dfb4a978e.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\b31879d7-8df5-4680-92ef-bd54f481ad1c.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\abeb18e6-6ea3-4782-88c7-95645facbfea.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "BasePath": "_content/AuctionManagementSystem.Api",
+      "RelativePath": "PersonalIdImages/abeb18e6-6ea3-4782-88c7-95645facbfea#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "sd281qvxfn",
+      "Integrity": "8MhHBUhra3KVf5BvC9wIQTC0xb/isPbWT89tTwp7su8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PersonalIdImages\\abeb18e6-6ea3-4782-88c7-95645facbfea.png"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\b31879d7-8df5-4680-92ef-bd54f481ad1c.png",
+      "SourceId": "AuctionManagementSystem.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "PersonalIdImages/b31879d7-8df5-4680-92ef-bd54f481ad1c#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -290,10 +311,10 @@
       "OriginalItemSpec": "wwwroot\\PersonalIdImages\\b31879d7-8df5-4680-92ef-bd54f481ad1c.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\bf2ec708-d074-4b57-95c5-aaa271ae2040.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\bf2ec708-d074-4b57-95c5-aaa271ae2040.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "PersonalIdImages/bf2ec708-d074-4b57-95c5-aaa271ae2040#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -311,10 +332,10 @@
       "OriginalItemSpec": "wwwroot\\PersonalIdImages\\bf2ec708-d074-4b57-95c5-aaa271ae2040.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\c77b920c-8f43-48ad-b6ab-440eaeb30f09.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\c77b920c-8f43-48ad-b6ab-440eaeb30f09.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "PersonalIdImages/c77b920c-8f43-48ad-b6ab-440eaeb30f09#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -332,10 +353,10 @@
       "OriginalItemSpec": "wwwroot\\PersonalIdImages\\c77b920c-8f43-48ad-b6ab-440eaeb30f09.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e197855a-9765-4e3f-b93f-4d852c66aae4.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e197855a-9765-4e3f-b93f-4d852c66aae4.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "PersonalIdImages/e197855a-9765-4e3f-b93f-4d852c66aae4#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -353,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\PersonalIdImages\\e197855a-9765-4e3f-b93f-4d852c66aae4.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e8acec9b-0530-42f0-a6c5-082b5ed21fe8.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e8acec9b-0530-42f0-a6c5-082b5ed21fe8.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "PersonalIdImages/e8acec9b-0530-42f0-a6c5-082b5ed21fe8#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -374,10 +395,10 @@
       "OriginalItemSpec": "wwwroot\\PersonalIdImages\\e8acec9b-0530-42f0-a6c5-082b5ed21fe8.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\f0acf0af-3cad-4f5f-af02-926e4d489d9d.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\f0acf0af-3cad-4f5f-af02-926e4d489d9d.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "PersonalIdImages/f0acf0af-3cad-4f5f-af02-926e4d489d9d#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -395,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\PersonalIdImages\\f0acf0af-3cad-4f5f-af02-926e4d489d9d.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\132a20c0-1f50-4c4d-b423-a019ec09b6bd.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\132a20c0-1f50-4c4d-b423-a019ec09b6bd.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "ProfileImages/132a20c0-1f50-4c4d-b423-a019ec09b6bd#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -416,10 +437,10 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\132a20c0-1f50-4c4d-b423-a019ec09b6bd.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\159b7add-c98e-4a8a-818f-e04ca2456226.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\159b7add-c98e-4a8a-818f-e04ca2456226.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "ProfileImages/159b7add-c98e-4a8a-818f-e04ca2456226#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -437,10 +458,10 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\159b7add-c98e-4a8a-818f-e04ca2456226.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\2c08c6ca-466f-44dc-a32a-c250b81f752a.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\2c08c6ca-466f-44dc-a32a-c250b81f752a.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "ProfileImages/2c08c6ca-466f-44dc-a32a-c250b81f752a#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -458,10 +479,10 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\2c08c6ca-466f-44dc-a32a-c250b81f752a.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\3b05a1ca-e72a-4c68-a66d-543fc9f51c3d.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\3b05a1ca-e72a-4c68-a66d-543fc9f51c3d.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "ProfileImages/3b05a1ca-e72a-4c68-a66d-543fc9f51c3d#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -479,10 +500,10 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\3b05a1ca-e72a-4c68-a66d-543fc9f51c3d.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\6a1e9cca-d60a-4a3f-924c-12574098cb13.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\6a1e9cca-d60a-4a3f-924c-12574098cb13.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "ProfileImages/6a1e9cca-d60a-4a3f-924c-12574098cb13#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -500,10 +521,10 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\6a1e9cca-d60a-4a3f-924c-12574098cb13.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\78811498-e4bf-4f08-b1a3-3376f49e1be5.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\78811498-e4bf-4f08-b1a3-3376f49e1be5.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "ProfileImages/78811498-e4bf-4f08-b1a3-3376f49e1be5#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -521,10 +542,10 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\78811498-e4bf-4f08-b1a3-3376f49e1be5.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\803d4e85-b151-426c-9bda-dbde99b087b6.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\803d4e85-b151-426c-9bda-dbde99b087b6.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "ProfileImages/803d4e85-b151-426c-9bda-dbde99b087b6#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -542,10 +563,10 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\803d4e85-b151-426c-9bda-dbde99b087b6.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\84ac9ac0-9e4a-4c3f-a8e2-aed1f07f038a.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\84ac9ac0-9e4a-4c3f-a8e2-aed1f07f038a.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "ProfileImages/84ac9ac0-9e4a-4c3f-a8e2-aed1f07f038a#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -563,10 +584,10 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\84ac9ac0-9e4a-4c3f-a8e2-aed1f07f038a.png"
     },
     {
-      "Identity": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.png",
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
       "BasePath": "_content/AuctionManagementSystem.Api",
       "RelativePath": "ProfileImages/e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -582,12 +603,33 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\ProfileImages\\e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.png"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\eddb965c-6a52-4480-88ce-bd9f4d7a7887.png",
+      "SourceId": "AuctionManagementSystem.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "BasePath": "_content/AuctionManagementSystem.Api",
+      "RelativePath": "ProfileImages/eddb965c-6a52-4480-88ce-bd9f4d7a7887#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3990r0fhll",
+      "Integrity": "KabuRNC9TBvdzcTJaNSwmcq60BsYJ4HR9LSF1xAfCrc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ProfileImages\\eddb965c-6a52-4480-88ce-bd9f4d7a7887.png"
     }
   ],
   "Endpoints": [
     {
       "Route": "AssetDocuments/371fccf4-27f1-4865-a61f-3a98a41a510b.3f2ydv0ker.pdf",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\371fccf4-27f1-4865-a61f-3a98a41a510b.pdf",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\371fccf4-27f1-4865-a61f-3a98a41a510b.pdf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -608,7 +650,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 20:33:04 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -632,7 +674,7 @@
     },
     {
       "Route": "AssetDocuments/371fccf4-27f1-4865-a61f-3a98a41a510b.pdf",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\371fccf4-27f1-4865-a61f-3a98a41a510b.pdf",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\371fccf4-27f1-4865-a61f-3a98a41a510b.pdf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -653,7 +695,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 20:33:04 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -669,7 +711,7 @@
     },
     {
       "Route": "AssetDocuments/92792a2d-0a3c-4b08-8a91-7c54aa0a09c9.685iz31nw2.pdf",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\92792a2d-0a3c-4b08-8a91-7c54aa0a09c9.pdf",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\92792a2d-0a3c-4b08-8a91-7c54aa0a09c9.pdf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -690,7 +732,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 19:24:35 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -714,7 +756,7 @@
     },
     {
       "Route": "AssetDocuments/92792a2d-0a3c-4b08-8a91-7c54aa0a09c9.pdf",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\92792a2d-0a3c-4b08-8a91-7c54aa0a09c9.pdf",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\92792a2d-0a3c-4b08-8a91-7c54aa0a09c9.pdf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -735,7 +777,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 19:24:35 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -751,7 +793,7 @@
     },
     {
       "Route": "AssetDocuments/a37ee058-9fbe-463c-9113-0f8f6649bd02.3f2ydv0ker.pdf",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\a37ee058-9fbe-463c-9113-0f8f6649bd02.pdf",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\a37ee058-9fbe-463c-9113-0f8f6649bd02.pdf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -772,7 +814,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 19:49:17 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -796,7 +838,7 @@
     },
     {
       "Route": "AssetDocuments/a37ee058-9fbe-463c-9113-0f8f6649bd02.pdf",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\a37ee058-9fbe-463c-9113-0f8f6649bd02.pdf",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetDocuments\\a37ee058-9fbe-463c-9113-0f8f6649bd02.pdf",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -817,7 +859,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 19:49:17 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -833,7 +875,7 @@
     },
     {
       "Route": "AssetGallery/53d3de52-c282-4540-8a73-eceb9664015c.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\53d3de52-c282-4540-8a73-eceb9664015c.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\53d3de52-c282-4540-8a73-eceb9664015c.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -854,7 +896,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 18:52:39 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -870,7 +912,7 @@
     },
     {
       "Route": "AssetGallery/53d3de52-c282-4540-8a73-eceb9664015c.y1nw8jwp8i.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\53d3de52-c282-4540-8a73-eceb9664015c.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\53d3de52-c282-4540-8a73-eceb9664015c.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -891,7 +933,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 18:52:39 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -915,7 +957,7 @@
     },
     {
       "Route": "AssetGallery/64a3461e-eee3-4574-9820-4ae2e888d227.jpg",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\64a3461e-eee3-4574-9820-4ae2e888d227.jpg",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\64a3461e-eee3-4574-9820-4ae2e888d227.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -936,7 +978,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 18:28:54 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -952,7 +994,7 @@
     },
     {
       "Route": "AssetGallery/64a3461e-eee3-4574-9820-4ae2e888d227.w6ncbt8aul.jpg",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\64a3461e-eee3-4574-9820-4ae2e888d227.jpg",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\64a3461e-eee3-4574-9820-4ae2e888d227.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -973,7 +1015,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 18:28:54 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -997,7 +1039,7 @@
     },
     {
       "Route": "AssetGallery/6667c0d0-8c67-49d4-8958-ad085a500b98.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\6667c0d0-8c67-49d4-8958-ad085a500b98.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\6667c0d0-8c67-49d4-8958-ad085a500b98.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1018,7 +1060,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 18:31:07 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1034,7 +1076,7 @@
     },
     {
       "Route": "AssetGallery/6667c0d0-8c67-49d4-8958-ad085a500b98.y1nw8jwp8i.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\6667c0d0-8c67-49d4-8958-ad085a500b98.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\6667c0d0-8c67-49d4-8958-ad085a500b98.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1055,7 +1097,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 18:31:07 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1079,7 +1121,7 @@
     },
     {
       "Route": "AssetGallery/74a8c259-1e3c-475a-9d95-bbd9ba15be26.jpg",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\74a8c259-1e3c-475a-9d95-bbd9ba15be26.jpg",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\74a8c259-1e3c-475a-9d95-bbd9ba15be26.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1100,7 +1142,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 18:01:41 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1116,7 +1158,7 @@
     },
     {
       "Route": "AssetGallery/74a8c259-1e3c-475a-9d95-bbd9ba15be26.w6ncbt8aul.jpg",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\74a8c259-1e3c-475a-9d95-bbd9ba15be26.jpg",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\74a8c259-1e3c-475a-9d95-bbd9ba15be26.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1137,7 +1179,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 18:01:41 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1161,7 +1203,7 @@
     },
     {
       "Route": "AssetGallery/9abf1d59-2a5e-41a6-be20-58f80c74a0dc.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\9abf1d59-2a5e-41a6-be20-58f80c74a0dc.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\9abf1d59-2a5e-41a6-be20-58f80c74a0dc.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1182,7 +1224,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 18:45:52 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1198,7 +1240,7 @@
     },
     {
       "Route": "AssetGallery/9abf1d59-2a5e-41a6-be20-58f80c74a0dc.y1nw8jwp8i.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\9abf1d59-2a5e-41a6-be20-58f80c74a0dc.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\9abf1d59-2a5e-41a6-be20-58f80c74a0dc.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1219,7 +1261,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 18:45:52 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1243,7 +1285,7 @@
     },
     {
       "Route": "AssetGallery/d7bd5ebf-48dd-4567-a0fa-ecd8e4e0c495.mg1xghus2f.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\d7bd5ebf-48dd-4567-a0fa-ecd8e4e0c495.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\d7bd5ebf-48dd-4567-a0fa-ecd8e4e0c495.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1264,7 +1306,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 19:45:02 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1288,7 +1330,7 @@
     },
     {
       "Route": "AssetGallery/d7bd5ebf-48dd-4567-a0fa-ecd8e4e0c495.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\d7bd5ebf-48dd-4567-a0fa-ecd8e4e0c495.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\AssetGallery\\d7bd5ebf-48dd-4567-a0fa-ecd8e4e0c495.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1309,7 +1351,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 19:45:02 GMT"
+          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1325,7 +1367,7 @@
     },
     {
       "Route": "PersonalIdImages/70895489-6c8a-47d4-b7e6-a659ddc1eef8.i1c3twn245.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\70895489-6c8a-47d4-b7e6-a659ddc1eef8.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\70895489-6c8a-47d4-b7e6-a659ddc1eef8.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1346,7 +1388,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1370,7 +1412,7 @@
     },
     {
       "Route": "PersonalIdImages/70895489-6c8a-47d4-b7e6-a659ddc1eef8.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\70895489-6c8a-47d4-b7e6-a659ddc1eef8.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\70895489-6c8a-47d4-b7e6-a659ddc1eef8.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1391,7 +1433,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1407,7 +1449,7 @@
     },
     {
       "Route": "PersonalIdImages/90e624ad-4c73-411e-b21c-b82f55e51cbf.3990r0fhll.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\90e624ad-4c73-411e-b21c-b82f55e51cbf.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\90e624ad-4c73-411e-b21c-b82f55e51cbf.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1428,7 +1470,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1452,7 +1494,7 @@
     },
     {
       "Route": "PersonalIdImages/90e624ad-4c73-411e-b21c-b82f55e51cbf.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\90e624ad-4c73-411e-b21c-b82f55e51cbf.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\90e624ad-4c73-411e-b21c-b82f55e51cbf.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1473,7 +1515,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1489,7 +1531,7 @@
     },
     {
       "Route": "PersonalIdImages/a2c314c6-6b0e-4d02-8b94-bf5dfb4a978e.3990r0fhll.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\a2c314c6-6b0e-4d02-8b94-bf5dfb4a978e.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\a2c314c6-6b0e-4d02-8b94-bf5dfb4a978e.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1510,7 +1552,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1534,7 +1576,7 @@
     },
     {
       "Route": "PersonalIdImages/a2c314c6-6b0e-4d02-8b94-bf5dfb4a978e.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\a2c314c6-6b0e-4d02-8b94-bf5dfb4a978e.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\a2c314c6-6b0e-4d02-8b94-bf5dfb4a978e.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1555,7 +1597,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1570,8 +1612,90 @@
       ]
     },
     {
+      "Route": "PersonalIdImages/abeb18e6-6ea3-4782-88c7-95645facbfea.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\abeb18e6-6ea3-4782-88c7-95645facbfea.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "87420"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8MhHBUhra3KVf5BvC9wIQTC0xb/isPbWT89tTwp7su8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 25 Apr 2025 11:25:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8MhHBUhra3KVf5BvC9wIQTC0xb/isPbWT89tTwp7su8="
+        }
+      ]
+    },
+    {
+      "Route": "PersonalIdImages/abeb18e6-6ea3-4782-88c7-95645facbfea.sd281qvxfn.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\abeb18e6-6ea3-4782-88c7-95645facbfea.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "87420"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8MhHBUhra3KVf5BvC9wIQTC0xb/isPbWT89tTwp7su8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 25 Apr 2025 11:25:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sd281qvxfn"
+        },
+        {
+          "Name": "label",
+          "Value": "PersonalIdImages/abeb18e6-6ea3-4782-88c7-95645facbfea.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8MhHBUhra3KVf5BvC9wIQTC0xb/isPbWT89tTwp7su8="
+        }
+      ]
+    },
+    {
       "Route": "PersonalIdImages/b31879d7-8df5-4680-92ef-bd54f481ad1c.i1c3twn245.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\b31879d7-8df5-4680-92ef-bd54f481ad1c.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\b31879d7-8df5-4680-92ef-bd54f481ad1c.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1592,7 +1716,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1616,7 +1740,7 @@
     },
     {
       "Route": "PersonalIdImages/b31879d7-8df5-4680-92ef-bd54f481ad1c.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\b31879d7-8df5-4680-92ef-bd54f481ad1c.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\b31879d7-8df5-4680-92ef-bd54f481ad1c.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1637,7 +1761,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1653,7 +1777,7 @@
     },
     {
       "Route": "PersonalIdImages/bf2ec708-d074-4b57-95c5-aaa271ae2040.i1c3twn245.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\bf2ec708-d074-4b57-95c5-aaa271ae2040.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\bf2ec708-d074-4b57-95c5-aaa271ae2040.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1674,7 +1798,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1698,7 +1822,7 @@
     },
     {
       "Route": "PersonalIdImages/bf2ec708-d074-4b57-95c5-aaa271ae2040.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\bf2ec708-d074-4b57-95c5-aaa271ae2040.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\bf2ec708-d074-4b57-95c5-aaa271ae2040.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1719,7 +1843,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1735,7 +1859,7 @@
     },
     {
       "Route": "PersonalIdImages/c77b920c-8f43-48ad-b6ab-440eaeb30f09.i1c3twn245.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\c77b920c-8f43-48ad-b6ab-440eaeb30f09.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\c77b920c-8f43-48ad-b6ab-440eaeb30f09.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1756,7 +1880,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1780,7 +1904,7 @@
     },
     {
       "Route": "PersonalIdImages/c77b920c-8f43-48ad-b6ab-440eaeb30f09.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\c77b920c-8f43-48ad-b6ab-440eaeb30f09.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\c77b920c-8f43-48ad-b6ab-440eaeb30f09.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1801,7 +1925,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1817,7 +1941,7 @@
     },
     {
       "Route": "PersonalIdImages/e197855a-9765-4e3f-b93f-4d852c66aae4.i1c3twn245.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e197855a-9765-4e3f-b93f-4d852c66aae4.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e197855a-9765-4e3f-b93f-4d852c66aae4.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1838,7 +1962,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1862,7 +1986,7 @@
     },
     {
       "Route": "PersonalIdImages/e197855a-9765-4e3f-b93f-4d852c66aae4.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e197855a-9765-4e3f-b93f-4d852c66aae4.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e197855a-9765-4e3f-b93f-4d852c66aae4.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1883,7 +2007,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1899,7 +2023,7 @@
     },
     {
       "Route": "PersonalIdImages/e8acec9b-0530-42f0-a6c5-082b5ed21fe8.3990r0fhll.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e8acec9b-0530-42f0-a6c5-082b5ed21fe8.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e8acec9b-0530-42f0-a6c5-082b5ed21fe8.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1920,7 +2044,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1944,7 +2068,7 @@
     },
     {
       "Route": "PersonalIdImages/e8acec9b-0530-42f0-a6c5-082b5ed21fe8.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e8acec9b-0530-42f0-a6c5-082b5ed21fe8.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e8acec9b-0530-42f0-a6c5-082b5ed21fe8.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1965,7 +2089,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1981,7 +2105,7 @@
     },
     {
       "Route": "PersonalIdImages/f0acf0af-3cad-4f5f-af02-926e4d489d9d.i1c3twn245.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\f0acf0af-3cad-4f5f-af02-926e4d489d9d.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\f0acf0af-3cad-4f5f-af02-926e4d489d9d.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2002,7 +2126,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2026,7 +2150,7 @@
     },
     {
       "Route": "PersonalIdImages/f0acf0af-3cad-4f5f-af02-926e4d489d9d.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\f0acf0af-3cad-4f5f-af02-926e4d489d9d.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\f0acf0af-3cad-4f5f-af02-926e4d489d9d.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2047,7 +2171,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2063,7 +2187,7 @@
     },
     {
       "Route": "ProfileImages/132a20c0-1f50-4c4d-b423-a019ec09b6bd.i1c3twn245.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\132a20c0-1f50-4c4d-b423-a019ec09b6bd.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\132a20c0-1f50-4c4d-b423-a019ec09b6bd.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2084,7 +2208,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2108,7 +2232,7 @@
     },
     {
       "Route": "ProfileImages/132a20c0-1f50-4c4d-b423-a019ec09b6bd.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\132a20c0-1f50-4c4d-b423-a019ec09b6bd.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\132a20c0-1f50-4c4d-b423-a019ec09b6bd.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2129,7 +2253,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2145,7 +2269,7 @@
     },
     {
       "Route": "ProfileImages/159b7add-c98e-4a8a-818f-e04ca2456226.3990r0fhll.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\159b7add-c98e-4a8a-818f-e04ca2456226.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\159b7add-c98e-4a8a-818f-e04ca2456226.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2166,7 +2290,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2190,7 +2314,7 @@
     },
     {
       "Route": "ProfileImages/159b7add-c98e-4a8a-818f-e04ca2456226.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\159b7add-c98e-4a8a-818f-e04ca2456226.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\159b7add-c98e-4a8a-818f-e04ca2456226.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2211,7 +2335,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2227,7 +2351,7 @@
     },
     {
       "Route": "ProfileImages/2c08c6ca-466f-44dc-a32a-c250b81f752a.3990r0fhll.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\2c08c6ca-466f-44dc-a32a-c250b81f752a.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\2c08c6ca-466f-44dc-a32a-c250b81f752a.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2248,7 +2372,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2272,7 +2396,7 @@
     },
     {
       "Route": "ProfileImages/2c08c6ca-466f-44dc-a32a-c250b81f752a.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\2c08c6ca-466f-44dc-a32a-c250b81f752a.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\2c08c6ca-466f-44dc-a32a-c250b81f752a.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2293,7 +2417,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2309,7 +2433,7 @@
     },
     {
       "Route": "ProfileImages/3b05a1ca-e72a-4c68-a66d-543fc9f51c3d.3990r0fhll.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\3b05a1ca-e72a-4c68-a66d-543fc9f51c3d.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\3b05a1ca-e72a-4c68-a66d-543fc9f51c3d.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2330,7 +2454,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2354,7 +2478,7 @@
     },
     {
       "Route": "ProfileImages/3b05a1ca-e72a-4c68-a66d-543fc9f51c3d.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\3b05a1ca-e72a-4c68-a66d-543fc9f51c3d.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\3b05a1ca-e72a-4c68-a66d-543fc9f51c3d.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2375,7 +2499,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2391,7 +2515,7 @@
     },
     {
       "Route": "ProfileImages/6a1e9cca-d60a-4a3f-924c-12574098cb13.3990r0fhll.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\6a1e9cca-d60a-4a3f-924c-12574098cb13.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\6a1e9cca-d60a-4a3f-924c-12574098cb13.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2412,7 +2536,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2436,7 +2560,7 @@
     },
     {
       "Route": "ProfileImages/6a1e9cca-d60a-4a3f-924c-12574098cb13.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\6a1e9cca-d60a-4a3f-924c-12574098cb13.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\6a1e9cca-d60a-4a3f-924c-12574098cb13.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2457,7 +2581,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2473,7 +2597,7 @@
     },
     {
       "Route": "ProfileImages/78811498-e4bf-4f08-b1a3-3376f49e1be5.3990r0fhll.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\78811498-e4bf-4f08-b1a3-3376f49e1be5.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\78811498-e4bf-4f08-b1a3-3376f49e1be5.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2494,7 +2618,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2518,7 +2642,7 @@
     },
     {
       "Route": "ProfileImages/78811498-e4bf-4f08-b1a3-3376f49e1be5.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\78811498-e4bf-4f08-b1a3-3376f49e1be5.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\78811498-e4bf-4f08-b1a3-3376f49e1be5.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2539,7 +2663,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2555,7 +2679,7 @@
     },
     {
       "Route": "ProfileImages/803d4e85-b151-426c-9bda-dbde99b087b6.3990r0fhll.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\803d4e85-b151-426c-9bda-dbde99b087b6.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\803d4e85-b151-426c-9bda-dbde99b087b6.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2576,7 +2700,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2600,7 +2724,7 @@
     },
     {
       "Route": "ProfileImages/803d4e85-b151-426c-9bda-dbde99b087b6.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\803d4e85-b151-426c-9bda-dbde99b087b6.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\803d4e85-b151-426c-9bda-dbde99b087b6.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2621,7 +2745,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2637,7 +2761,7 @@
     },
     {
       "Route": "ProfileImages/84ac9ac0-9e4a-4c3f-a8e2-aed1f07f038a.3990r0fhll.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\84ac9ac0-9e4a-4c3f-a8e2-aed1f07f038a.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\84ac9ac0-9e4a-4c3f-a8e2-aed1f07f038a.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2658,7 +2782,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2682,7 +2806,7 @@
     },
     {
       "Route": "ProfileImages/84ac9ac0-9e4a-4c3f-a8e2-aed1f07f038a.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\84ac9ac0-9e4a-4c3f-a8e2-aed1f07f038a.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\84ac9ac0-9e4a-4c3f-a8e2-aed1f07f038a.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2703,7 +2827,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2719,7 +2843,7 @@
     },
     {
       "Route": "ProfileImages/e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.i1c3twn245.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2740,7 +2864,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2764,7 +2888,7 @@
     },
     {
       "Route": "ProfileImages/e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.png",
-      "AssetFile": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2785,7 +2909,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:55:50 GMT"
+          "Value": "Fri, 25 Apr 2025 08:38:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2796,6 +2920,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-SvPivfHSbafSel8ojx2X3I418YlF+EyXOGP4y1Vdo1g="
+        }
+      ]
+    },
+    {
+      "Route": "ProfileImages/eddb965c-6a52-4480-88ce-bd9f4d7a7887.3990r0fhll.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\eddb965c-6a52-4480-88ce-bd9f4d7a7887.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8436"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KabuRNC9TBvdzcTJaNSwmcq60BsYJ4HR9LSF1xAfCrc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 25 Apr 2025 11:25:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3990r0fhll"
+        },
+        {
+          "Name": "label",
+          "Value": "ProfileImages/eddb965c-6a52-4480-88ce-bd9f4d7a7887.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KabuRNC9TBvdzcTJaNSwmcq60BsYJ4HR9LSF1xAfCrc="
+        }
+      ]
+    },
+    {
+      "Route": "ProfileImages/eddb965c-6a52-4480-88ce-bd9f4d7a7887.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\eddb965c-6a52-4480-88ce-bd9f4d7a7887.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8436"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KabuRNC9TBvdzcTJaNSwmcq60BsYJ4HR9LSF1xAfCrc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 25 Apr 2025 11:25:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KabuRNC9TBvdzcTJaNSwmcq60BsYJ4HR9LSF1xAfCrc="
         }
       ]
     }

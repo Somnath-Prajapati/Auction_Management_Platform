@@ -8,7 +8,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AuctionManagementSystem.Api.Controllers.Assets
+namespace AuctionManagementSystem.Api.Controller.Assets
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -49,7 +49,7 @@ namespace AuctionManagementSystem.Api.Controllers.Assets
             var list = await _mediator.Send(new GetAllAssetGalleriesQuery());
             return Ok(list);
         }
-            
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
