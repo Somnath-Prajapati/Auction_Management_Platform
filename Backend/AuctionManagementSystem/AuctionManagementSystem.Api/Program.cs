@@ -42,6 +42,9 @@ namespace AuctionManagementSystem.Api
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Manage");
                 });
             }
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseCors("AllowAngularDev"); //  CORS must come before authorization
 
