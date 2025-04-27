@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Requests</h3>
+    <div>
+      <button class="btn btn-outline-secondary me-2">Filters</button>
+      <button class="btn btn-success me-2">Export</button>
+      <button class="btn btn-warning me-2"
+      [routerLink]="['/requests/new']">NewRequest</button>
+
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <input type="text"
+             [(ngModel)]="searchTerm"
+             class="form-control"
+             placeholder="Search…">
+    </div>
+    <div class="col-md-3">
+      <select class="form-select" [(ngModel)]="filterType">
+        <option [value]="0">All Types</option>
+        <option [value]="1">Transfer of Ownership</option>
+        <option [value]="2">Inquiry</option>
+        <option [value]="3">Request for Viewing</option>
+        <option [value]="4">Offer</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select class="form-select" [(ngModel)]="filterStatus">
+        <option [value]="0">All Statuses</option>
+        <option [value]="1">Pending</option>
+        <option [value]="2">Done</option>
+        <option [value]="3">Approved</option>
+        <option [value]="4">Rejected</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered text-center table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>#Req. Number</th><th>#UID</th><th>User</th><th>Asset</th>
+          <th>Type</th><th>DateTime</th><th>Status</th><th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of filteredRequests">
+          <td>#{{ r.requestNumber }}</td>
+          <td>#{{ r.userId }}</td>
+          <td>{{ r.username }}</td>
+          <td>#{{ r.assetId }}</td>
+          <td>{{ getTypeName(r.requestTypeId) }}</td>
+          <td>{{ r.requestDateTime | date:'dd/MM/yyyy hh:mm a' }}</td>
+          <td>{{ getStatusName(r.requestStatusId) }}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary me-1"
+                    [routerLink]="['/request-detail', r.requestId]">
+              <i class="bi bi-eye"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger me-1"
+                    (click)="deleteRequest(r.requestId)">
+              <i class="bi bi-trash"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-success"
+                    [routerLink]="['/request-detail', r.requestId]">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

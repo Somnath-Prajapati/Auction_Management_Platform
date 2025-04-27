@@ -42,7 +42,6 @@ namespace AuctionManagementSystem.Api.Controllers.Request
         }
 
         [HttpPost]
-        //public async Task<IActionResult> AddRequest([FromBody] CreateRequestDto dto)
         public async Task<IActionResult> AddRequest([FromBody] CreateRequestDto dto)
         {
             var command = _mapper.Map<AddRequestCommand>(dto);
