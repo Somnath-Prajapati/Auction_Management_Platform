@@ -22,7 +22,7 @@ namespace AuctionManagementSystem.Application.Features.Requests.Command.AddReque
         {
             var newRequest = new TblRequest
             {
-                RequestNumber = request.RequestNumber,
+                RequestNumber = GenerateRequestNumber(),
                 UserId = request.UserId,
                 Username = request.Username,
                 MobileNumber = request.MobileNumber,
@@ -35,12 +35,23 @@ namespace AuctionManagementSystem.Application.Features.Requests.Command.AddReque
                 CustomerNote = request.CustomerNote,
                 AdminNote = request.AdminNote,
                 CreatedByAdmin = request.CreatedByAdmin,
-                CreatedOn = System.DateTime.Now,
-                UpdatedOn = System.DateTime.Now
+
+                CreatedOn = DateTime.Now,
+                UpdatedOn = DateTime.Now
             };
 
             await _requestRepository.AddRequest(newRequest);
             return newRequest;
         }
+
+        private string GenerateRequestNumber()
+        {
+            var today = DateTime.Now;
+            var datePart = today.ToString("yyyyMMdd"); // Example: 20250427
+            var random = new Random();
+            var randomNumber = random.Next(1, 1000).ToString("D3"); // Random 001-999
+            return $"REQ-{datePart}-{randomNumber}";
+        }
+
     }
 }
