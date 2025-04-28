@@ -1,0 +1,61 @@
+/* Banner styling */
+.banner img {
+  width: 100%; /* Full width of the page */
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  max-height: 250px; /* 👈 Limit the vertical height */
+  object-fit: cover; /* Maintain cropping instead of squishing */
+}
+
+/* Promo image container */
+.promo-container {
+  display: flex;
+  gap: 20px;
+}
+
+/* Make promo images smaller */
+.promo-container img {
+  width: 30%; /* 👈 Make them smaller than before */
+  height: auto;
+  max-height: 180px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.banner {
+  position: relative; /* Needed for absolute text positioning */
+  overflow: hidden;
+}
+
+/* Text overlay container */
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #5d18e7; /* Text color */
+  text-align: center;
+  padding: 1rem;
+  z-index: 1;
+}
+
+/* Banner title */
+/* .banner-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); 
+} */
+
+/* Banner subtitle */
+/* .banner-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  color: brown;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
+} */
+

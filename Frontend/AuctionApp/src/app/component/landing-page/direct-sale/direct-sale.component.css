@@ -1,0 +1,98 @@
+/* ===================== */
+/* Base Styles           */
+/* ===================== */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+
+/* ===================== */
+/* Section Styles        */
+/* ===================== */
+.category-section {
+  padding: 2rem;
+  overflow: auto; /* Scroll if needed */
+}
+
+.section-heading {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+
+/* ===================== */
+/* Cards Layout          */
+/* ===================== */
+.category-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-left: 4rem;
+  gap: 2rem;
+}
+
+
+/* ===================== */
+/* Individual Card       */
+/* ===================== */
+.category-card {
+  position: relative; /* Required for badge positioning */
+  background-color: #f9f9f9;
+  padding: 1rem;
+  width: 180px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+
+/* ===================== */
+/* Icon Styling          */
+/* ===================== */
+.icon-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: #5d18e7;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.category-card:hover .card-icon {
+  transform: scale(1.2);
+  color: #ff6600;
+}
+
+
+/* ===================== */
+/* Notification Badge    */
+/* ===================== */
+/* .notification-badge {
+  position: 30px;
+  top: 8px;
+  right: 8px;
+  background-color: #5d18e7;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 7px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+} */

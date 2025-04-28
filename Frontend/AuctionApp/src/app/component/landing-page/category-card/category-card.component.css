@@ -1,0 +1,77 @@
+.section-heading {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .category-card-section {
+    padding: 2rem;
+  }
+  
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1.2rem;
+    justify-items: center;
+    padding: 0 1rem;
+    padding-left: 3rem;
+  }
+  
+  .category-card {
+    background-color: #f9f9f9;
+    padding: 1rem; /* Compact padding */
+    width: 140px; /* Smaller width to fit 7 in a row */
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    font-size: 0.85rem;
+    position: relative;
+  }
+  
+  .category-card:hover {
+    background-color: #e0f7fa;
+    transform: translateY(-5px);
+  }
+  
+  .card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.6rem;
+    color: #5d18e7;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .category-card:hover .card-icon {
+    color: #ffc107;
+    transform: scale(1.2);
+  }
+  
+  .category-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .category-card p {
+    font-size: 0.75rem; /* Increased description font */
+    font-family: 'Roboto', sans-serif; /* Clean modern font */
+    color: #444;
+    line-height: 1.2;
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+  
+  .notification-box {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #5d18e7;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: bold;
+  }

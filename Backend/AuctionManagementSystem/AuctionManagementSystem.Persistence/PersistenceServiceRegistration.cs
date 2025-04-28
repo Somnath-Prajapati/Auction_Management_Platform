@@ -13,25 +13,27 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProtoBuf.Meta;
+using AuctionManagementSystem.Persistence.Repositories.User;
+using AuctionManagementSystem.Application.Contracts.User;
 
 namespace AuctionManagementSystem.Persistence
 {
+
     public static class PersistenceServiceRegistration
     {
-        public static IServiceCollection AddPersistanceServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // Register your DbContext and other persistence-related services here
             services.AddDbContext<AuctionManagementDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            // Register repositories
-            services.AddScoped<ISystemSettingsRepository, SystemSettingsRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICountryRepository, CountryRepository>();
+             services.AddScoped<ISystemSettingsRepository, SystemSettingsRepository>();
             services.AddScoped<IDirectSaleSettingsRepository, DirectSaleSettingsRepository>();
             services.AddScoped<IFinanceSettingsRepository, FinanceSettingsRepository>();
             services.AddScoped<IFooterLinksSettingsRepository, FooterLinksSettingsRepository>();
             services.AddScoped<IStaticPagesSettingsRepository, StaticPagesSettingsRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
            services.AddScoped<IRequestRepository, RequestRepository>();
-
 
             return services;
         }

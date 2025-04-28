@@ -30,6 +30,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.css"
+              
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -101,6 +102,10 @@
     }
   },
   "cli": {
+<<<<<<< HEAD:Frontend/Request/angular.json
     "analytics": "4fab6cf8-aebc-4279-98e2-096992035e59"
+=======
+    "analytics": "95b10378-4555-4b5c-864f-a8756f5e2f21"
+>>>>>>> a1847a9552287d62e92e6ab23bb2171e4632a0fd:Frontend/AuctionApp/angular.json
   }
 }

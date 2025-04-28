@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Backend",
+    "\\Backend\\AuctionManagementSystem",
+    "\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api",
+    "\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Controllers"
+  ],
+  "SelectedNode": "\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Controllers\\UserController.cs",
+  "PreviewInSolutionExplorer": false
+}
