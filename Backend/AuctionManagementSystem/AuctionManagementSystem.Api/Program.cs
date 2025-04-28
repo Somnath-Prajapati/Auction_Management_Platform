@@ -30,7 +30,7 @@ namespace AuctionManagementSystem.Api
             });
 
 
-            // Ensure the AddPersistanceServices method is implemented and accessible
+             
             builder.Services.AddPersistanceServices(builder.Configuration);
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();

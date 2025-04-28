@@ -50,7 +50,7 @@ namespace AuctionManagementSystem.Api.Controllers.Request
         }
 
         [HttpPut("{id}")]
-        //public async Task<IActionResult> UpdateRequest(int id, [FromBody] UdpRequestCommand command)
+         
         public async Task<IActionResult> UpdateRequest(int id, [FromBody] UpdateRequestDto dto)
         {
             if (id != dto.RequestId)
