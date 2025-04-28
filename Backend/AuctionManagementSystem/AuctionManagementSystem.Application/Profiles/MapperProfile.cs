@@ -8,6 +8,7 @@ using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Application.Features.Requests.Command.AddRequest;
 using AuctionManagementSystem.Application.Features.Requests.Command.UpdRequest;
+using AuctionManagementSystem.Application.Dtos.UserDtos;
 using AuctionManagementSystem.Application.Features.Settings.DirectSaleSettings.Commands.CreateDirectSaleSettings;
 using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Command.CreateFinanceSettings;
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.CreateFooterLinksSettings;
@@ -16,6 +17,7 @@ using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
+using AuctionManagementSystem.Domain.Entities.User;
 using AutoMapper;
 using EventStore.ClientAPI;
 
@@ -26,6 +28,8 @@ namespace AuctionManagementSystem.Application.Profiles
     {
         public MapperProfile()
         {
+            CreateMap<TblUser,UserDto>().ReverseMap();
+            CreateMap<TblUser, GetUserDto>().ReverseMap();
             CreateMap<TblSystemSetting, SystemSettingsDto>().ReverseMap();
             CreateMap<SystemSettings, SystemSettingsDto>().ReverseMap();
             // Mapping from Entity to DTO (FinanceSettingsDto)

@@ -1,7 +1,11 @@
 using AuctionManagementSystem.Application;
 using AuctionManagementSystem.Persistence;
 using Microsoft.AspNetCore.Builder;
+using AuctionManagementSystem.Application;
 using Microsoft.Extensions.DependencyInjection;
+using AuctionManagementSystem.Api.Services;
+using Microsoft.Extensions.FileProviders;
+using AuctionManagementSystem.Application.Contracts.User;
 
 namespace AuctionManagementSystem.Api
 {
@@ -12,7 +16,9 @@ namespace AuctionManagementSystem.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            builder.Services.AddScoped<IFileService, FileService>();
+            builder.Services.AddPersistenceServices(builder.Configuration);
+            builder.Services.AddApplicationServices();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddApplicationServices();
@@ -48,6 +54,7 @@ namespace AuctionManagementSystem.Api
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Manage");
                 });
             }
+            app.UseStaticFiles();
 
             app.UseCors("AllowAll");
             app.UseHttpsRedirection();
