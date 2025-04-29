@@ -1,0 +1,66 @@
+/* Make sure body and html are full height */
+:host {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrollbars */
+  }
+  
+  /* Start page container */
+  .start-page {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Full-screen background image */
+  .bg-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Buttons overlayed on bottom center */
+  .overlay-buttons {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+  }
+  
+  /* Purple button styling */
+  .btn-purple {
+    background-color: #6f42c1;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  /* Purple hover effect */
+  .btn-purple:hover {
+    background-color: #5936a8;
+  }
+  
+  /* Optional: Adjust the default light button styling */
+  .btn-outline-light {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
