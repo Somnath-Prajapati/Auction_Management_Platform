@@ -5847,11 +5847,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj",
+      "projectUniqueName": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj",
       "projectName": "AuctionManagementSystem.Application",
-      "projectPath": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj",
+      "projectPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\obj\\",
+      "outputPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5873,8 +5873,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj"
+            "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj": {
+              "projectPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj"
             }
           }
         }
@@ -5943,5 +5943,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: The download of 'https://api.nuget.org/v3-vulnerabilities/2025.04.17.23.39.46/vulnerability.base.json' timed out because no data was received for 60000ms."
+    }
+  ]
 }

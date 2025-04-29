@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "AwHZ76+f4P4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj",
+  "projectFilePath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
@@ -119,5 +119,12 @@
     "C:\\Users\\User\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: The download of 'https://api.nuget.org/v3-vulnerabilities/2025.04.17.23.39.46/vulnerability.base.json' timed out because no data was received for 60000ms."
+    }
+  ]
 }

@@ -8,6 +8,7 @@ using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Persistence.Context;
@@ -19,10 +20,9 @@ public partial class AuctionManagementDbContext : DbContext
         
     }
     public AuctionManagementDbContext(DbContextOptions<AuctionManagementDbContext> options)
-        : base(options)
+         : base(options)
     {
     }
-
     public virtual DbSet<TblAsset> TblAssets { get; set; }
 
     public virtual DbSet<TblAssetCategory> TblAssetCategories { get; set; }
@@ -112,6 +112,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.ToTable("tblAssets");
 
             entity.Property(e => e.AdminFees).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.AssetNumber).HasMaxLength(100);
             entity.Property(e => e.AuctionFees).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.BuyerCommission).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.Commission).HasColumnType("decimal(5, 2)");
@@ -121,6 +122,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Deposit).HasColumnType("decimal(5, 2)");
             entity.Property(e => e.Featured).HasDefaultValue(false);
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.MakeOffer).HasDefaultValue(false);
             entity.Property(e => e.MapLatitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.MapLongitude).HasColumnType("decimal(9, 6)");
@@ -906,7 +908,8 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.HasOne(d => d.Winner).WithMany(p => p.TblWinnerDocuments)
                 .HasForeignKey(d => d.WinnerId)
-                .HasConstraintName("FK__tblWinner__Winne__2CF2ADDF");
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("FK_tblWinnerDocuments_WinnerId");
         });
 
         OnModelCreatingPartial(modelBuilder);

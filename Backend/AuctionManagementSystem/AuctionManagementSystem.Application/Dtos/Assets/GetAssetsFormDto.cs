@@ -37,12 +37,13 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public decimal? AuctionFees { get; set; }
         public decimal? BuyerCommission { get; set; }
         public int? WinnerId { get; set; }
-        public string? WinnerName { get; set; } // New Field (if you want Winner's username)
+        public string? WinnerName { get; set; } 
         public decimal? AwardedPrice { get; set; } // From Winner
         public string? SalesNotes { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
+        public string AssetNumber { get; set; }
         public List<AssetGalleryDtos> Galleries { get; set; } = new();
         public List<AssetDocumentFormDto> Documents { get; set; } = new(); 
     }

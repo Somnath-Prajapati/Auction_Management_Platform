@@ -2752,11 +2752,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
       "projectName": "AuctionManagementSystem.Domain",
-      "projectPath": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
+      "projectPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\obj\\",
+      "outputPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2820,5 +2820,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: The download of 'https://api.nuget.org/v3-vulnerabilities/2025.04.17.23.39.46/vulnerability.base.json' timed out because no data was received for 60000ms."
+    }
+  ]
 }

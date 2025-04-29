@@ -65,6 +65,10 @@ public partial class TblAsset
 
     public DateTime? UpdatedAt { get; set; }
 
+    public bool IsActive { get; set; }
+
+    public string AssetNumber { get; set; }
+
     public virtual TblWinnerAwardingOption Awarding { get; set; }
 
     public virtual TblAssetCategory Category { get; set; }
