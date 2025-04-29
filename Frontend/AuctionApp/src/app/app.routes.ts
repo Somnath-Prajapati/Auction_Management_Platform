@@ -11,6 +11,7 @@ import { AddAuctionComponent } from './component/add-auction/add-auction.compone
 import { AddAssetComponent } from './component/add-asset/add-asset.component';
 import { HomeComponent } from './component/home/home.component';
 import { UpdateUserComponent } from './component/update-user/update-user.component';
+import { DetailsUserComponent } from './component/details-user/details-user.component';
 
 export const routes: Routes = [
     {path:'', component:LoginComponent},
@@ -22,5 +23,7 @@ export const routes: Routes = [
     {path:'settings', component:SettingsComponent},
     {path:'newUser', component:AddUserComponent},
     {path:'newAuction', component:AddAuctionComponent},
+    {path:'detailsUser', component:DetailsUserComponent},
     {path:'newAsset', component:AddAssetComponent},]},
+
 ];

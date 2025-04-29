@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Middleware\" />
-    <Folder Include="wwwroot\PersonalIdImages\" />
     <Folder Include="wwwroot\ProfileImages\" />
   </ItemGroup>
 
