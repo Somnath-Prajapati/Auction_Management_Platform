@@ -1,70 +1,82 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { Country, Role, Status, User } from '../../model/user';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
-@Component({
-  selector: 'app-manage-user',
-  standalone: true,
-  imports: [CommonModule,FormsModule],
-  templateUrl: './manage-user.component.html',
-  styleUrl: './manage-user.component.css'
-})
-export class ManageUserComponent implements OnInit {
-  user: User = {
-    name: '',
-    mobileNumber: '',
-    email: '',
-    companyName: '',
-    companyNumber: '',
-    statusId: 0,
-    chatEnabled: true,
-    roleId: 0,
-    personalIdNumber: '',
-    gender: 'Male',
-    personalIdExpiryDate: '',
-    countryId: 0,
-    profileImage: null,
-    personalIdImage: null
-  };
-  roles: Role[] = [];
-  statuses: Status[] = [];
-  countries:Country[] =[];
-  selectedPhoneCode: string = '';
+  import { Component, OnInit,ViewChild } from '@angular/core';
+  import { UserService } from '../../services/user.service';
+  import { Role, Status, User, UserView } from '../../model/user';
+  import { CommonModule } from '@angular/common';
+  import { Router } from '@angular/router';
 
-    constructor(private userService: UserService) {}
-  ngOnInit(): void {
-    this.loadDropdowns();
-  }
-    onFileChange(event: Event, field: 'profileImage' | 'personalIdImage'): void {
-      const input = event.target as HTMLInputElement;
-      if (input.files && input.files.length > 0) {
-        this.user[field] = input.files[0];
-      }
+  @Component({
+    selector: 'app-manage-user',
+    standalone: true,
+    imports: [CommonModule],
+    templateUrl: './manage-user.component.html',
+    styleUrls: ['./manage-user.component.css'] 
+  })
+  export class ManageUserComponent  implements OnInit {
+
+    users: UserView[] = [];
+    roles: Role[] = [];
+    statuses: Status[] = [];
+
+    constructor(private userService: UserService,private router:Router) { }
+
+    ngOnInit(): void {
+      this.loadUsers();
+      this.loadRoles();
+      this.loadStatuses();
     }
-    loadDropdowns(): void {
-      this.userService.getRoles().subscribe(data =>{console.log('Roles:', data);this.roles = data} );
+
+    loadUsers(): void {
+      this.userService.getAllUser().subscribe(data => this.users = data);
+    }
+
+    loadRoles(): void {
+      this.userService.getRoles().subscribe(data => this.roles = data);
+    }
+
+    loadStatuses(): void {
       this.userService.getStatuses().subscribe(data => this.statuses = data);
-      this.userService.getCountry().subscribe(data => this.countries = data);
     }
-  
-    onSubmit(): void {
-      const formData = new FormData();
-      for (const key in this.user) {
-        const value = (this.user as any)[key];
-        if (value instanceof File) {
-          formData.append(key, value);
-        } else {
-          formData.append(key, value.toString());
-        }
+
+    getRoleName(roleId: number): string {
+      return this.roles.find(r => r.roleId === roleId)?.roleName || 'Unknown';
+    }
+
+    getStatusName(statusId: number): string {
+      return this.statuses.find(s => s.statusId === statusId)?.statusName || 'Unknown';
+    }
+    openAddUserModal(): void {
+      this.router.navigate(['/home/newUser']);
+    }
+
+    editUser(user: UserView): void {
+      if (user && user.userId) {
+        const encodedUserId = btoa(user.userId.toString()); // base64 encode
+        this.router.navigate(['/home/updateUser'], { queryParams: { id: encodedUserId } });
+      } else {
+        console.error('Invalid userId');
       }
-      formData.forEach((value, key) => {
-        console.log(key + ': ' + (value instanceof File ? value.name : value));
-      });
-      this.userService.addUser(formData).subscribe({
-        next: (response) => console.log('User added successfully!', response),
+    }  
+    viewUser(user: UserView): void {
+      if (user && user.userId) {
+        const encodedUserId = btoa(user.userId.toString()); // base64 encode
+        this.router.navigate(['/home/detailsUser'], { queryParams: { id: encodedUserId } });
+      } else {
+        console.error('Invalid userId');
+      }
+    }    
+
+    deleteUser(userId:number):void {
+      this.userService.deleteUser(userId).subscribe({
+        next: (response) =>{
+        console.log('User added successfully!', response);
+        this.loadUsers();
+        },
+          
         error: (error) => console.error('Error adding user:', error)
       });
-}
-}
+    }
+    
+
+  }
+
