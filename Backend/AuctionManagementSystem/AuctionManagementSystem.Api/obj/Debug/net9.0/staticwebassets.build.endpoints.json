@@ -167,6 +167,88 @@
       ]
     },
     {
+      "Route": "AssetDocuments/9e7fa8f6-1490-440f-b5dd-9531ed331a46.pdf",
+      "AssetFile": "AssetDocuments/9e7fa8f6-1490-440f-b5dd-9531ed331a46.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "245967"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bQM+PW+j/V+PhakOHK5d/ByQmdzIKANb8k8sXAtxeE8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 25 Apr 2025 11:50:33 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-bQM+PW+j/V+PhakOHK5d/ByQmdzIKANb8k8sXAtxeE8="
+        }
+      ]
+    },
+    {
+      "Route": "AssetDocuments/9e7fa8f6-1490-440f-b5dd-9531ed331a46.rat947gk07.pdf",
+      "AssetFile": "AssetDocuments/9e7fa8f6-1490-440f-b5dd-9531ed331a46.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "245967"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bQM+PW+j/V+PhakOHK5d/ByQmdzIKANb8k8sXAtxeE8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 25 Apr 2025 11:50:33 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rat947gk07"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bQM+PW+j/V+PhakOHK5d/ByQmdzIKANb8k8sXAtxeE8="
+        },
+        {
+          "Name": "label",
+          "Value": "AssetDocuments/9e7fa8f6-1490-440f-b5dd-9531ed331a46.pdf"
+        }
+      ]
+    },
+    {
       "Route": "AssetDocuments/a37ee058-9fbe-463c-9113-0f8f6649bd02.3f2ydv0ker.pdf",
       "AssetFile": "AssetDocuments/a37ee058-9fbe-463c-9113-0f8f6649bd02.pdf",
       "Selectors": [],

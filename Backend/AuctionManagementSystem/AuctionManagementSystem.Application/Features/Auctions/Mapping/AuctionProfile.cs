@@ -16,7 +16,10 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Mapping
     {
         public AuctionProfile()
         {
-            CreateMap<TblAuction, AuctionDto>().ReverseMap();
+            CreateMap<TblAuction, AuctionDto>()
+            .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category != null ? src.Category.Name : string.Empty))
+            .ForMember(dest => dest.StatusName, opt => opt.MapFrom(src => src.Status != null ? src.Status.Name : string.Empty))
+            .ReverseMap();
 
             CreateMap<CreateAuctionCommand, TblAuction>()
                 .ForMember(dest => dest.AuctionNumber, opt => opt.MapFrom(src => src.AuctionNumber))

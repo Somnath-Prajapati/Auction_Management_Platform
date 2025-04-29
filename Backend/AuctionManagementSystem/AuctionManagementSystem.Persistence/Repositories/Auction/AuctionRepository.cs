@@ -22,7 +22,10 @@ namespace AuctionManagementSystem.Persistence.Repositories
 
         public async Task<IEnumerable<TblAuction>> GetAllAsync()
         {
-            return await _context.TblAuctions.ToListAsync();
+            return await _context.TblAuctions
+               .Include(a => a.Category)
+               .Include(a => a.Status)
+               .ToListAsync();
         }
 
         public async Task<TblAuction> GetByIdAsync(int id)

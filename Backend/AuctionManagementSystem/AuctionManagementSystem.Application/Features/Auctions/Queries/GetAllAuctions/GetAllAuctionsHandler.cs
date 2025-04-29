@@ -7,6 +7,7 @@ using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Application.Dtos.Auctions;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Application.Features.Auctions.Queries.GetAllAuctions
 {
@@ -24,6 +25,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Queries.GetAllAu
         public async Task<IEnumerable<AuctionDto>> Handle(GetAllAuctionsQuery request, CancellationToken cancellationToken)
         {
             var auctions = await _auctionRepository.GetAllAsync();
+
             return _mapper.Map<IEnumerable<AuctionDto>>(auctions);
         }
 
