@@ -38,6 +38,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         public async Task<IEnumerable<GetAssetsFormDto>> GetAllAsync()
         {
             var assets = await _context.TblAssets
+                .Where(a => a.IsActive)
                 .Include(a => a.Category)
                 .Include(a => a.Status)
                 .Include(a => a.Vat)
@@ -79,6 +80,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     WinnerName = a.Winner != null ? a.Winner.User.Name : null,
                     AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null,
                     SalesNotes = a.SalesNotes,
+                    AssetNumber = a.AssetNumber,
                     CreatedAt = a.CreatedAt,
                     UpdatedAt = a.UpdatedAt,
                     Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
@@ -102,6 +104,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         public async Task<GetAssetsFormDto> GetByIdAsync(int id)
         {
         var asset = await _context.TblAssets
+          .Where(a => a.IsActive)
          .Include(a => a.Category)
          .Include(a => a.Status)
          .Include(a => a.Seller)
@@ -145,6 +148,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
              WinnerName = a.Winner != null ? a.Winner.User.Name : null,
              AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null,
              SalesNotes = a.SalesNotes,
+             AssetNumber = a.AssetNumber,
              CreatedAt = a.CreatedAt,
              UpdatedAt = a.UpdatedAt,
              Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
@@ -191,8 +195,14 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task DeleteAsync(TblAsset asset)
         {
-            _context.TblAssets.Remove(asset);
-                await _context.SaveChangesAsync();
+            //_context.TblAssets.Remove(asset);
+            //    await _context.SaveChangesAsync();
+
+            asset.IsActive = false;
+
+            _context.TblAssets.Update(asset);
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task<bool> AssetsIsExist(int id)
@@ -208,6 +218,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
             }
             var Asset =  await _context.TblAssets
+                 .Where(a => a.IsActive)
                 .Include(a => a.Category)
                 .Include(a => a.Status)
                 .Include(a => a.Seller)
