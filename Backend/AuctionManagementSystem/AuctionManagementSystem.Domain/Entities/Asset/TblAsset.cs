@@ -11,7 +11,7 @@ public partial class TblAsset
 {
     public int AssetId { get; set; }
 
-    public string Title { get; set; } = null!;
+    public string Title { get; set; }
 
     public int? CategoryId { get; set; }
 
@@ -41,11 +41,11 @@ public partial class TblAsset
 
     public decimal? Vatpercent { get; set; }
 
-    public string? CourtCaseNumber { get; set; }
+    public string CourtCaseNumber { get; set; }
 
     public int? RegistrationDeadline { get; set; }
 
-    public string? Description { get; set; }
+    public string Description { get; set; }
 
     public decimal? MapLatitude { get; set; }
 
@@ -59,19 +59,19 @@ public partial class TblAsset
 
     public int? WinnerId { get; set; }
 
-    public string? SalesNotes { get; set; }
+    public string SalesNotes { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
 
-    public virtual TblWinnerAwardingOption? Awarding { get; set; }
+    public virtual TblWinnerAwardingOption Awarding { get; set; }
 
-    public virtual TblAssetCategory? Category { get; set; }
+    public virtual TblAssetCategory Category { get; set; }
 
-    public virtual TblSeller Seller { get; set; } = null!;
+    public virtual TblSeller Seller { get; set; }
 
-    public virtual TblAssetStatus? Status { get; set; }
+    public virtual TblAssetStatus Status { get; set; }
 
     public virtual ICollection<TblAssetDetail> TblAssetDetails { get; set; } = new List<TblAssetDetail>();
 
@@ -83,14 +83,11 @@ public partial class TblAsset
 
     public virtual ICollection<TblAuctionAsset> TblAuctionAssets { get; set; } = new List<TblAuctionAsset>();
 
-    public virtual ICollection<TblTransactionAsset> TblTransactionAssets { get; set; } = new List<TblTransactionAsset>();
-
-
-
-    public virtual TblVatoption? Vat { get; set; }
-
-    //after scaffold added
-
     public virtual ICollection<TblRequest> TblRequests { get; set; } = new List<TblRequest>();
 
+    public virtual ICollection<TblTransactionAsset> TblTransactionAssets { get; set; } = new List<TblTransactionAsset>();
+
+    public virtual TblVatoption Vat { get; set; }
+
+    public virtual TblAssetWinner Winner { get; set; }
 }

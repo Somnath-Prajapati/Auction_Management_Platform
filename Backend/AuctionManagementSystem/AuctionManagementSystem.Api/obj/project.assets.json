@@ -3424,6 +3424,9 @@
       "AuctionManagementSystem.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.3"
+        },
         "compile": {
           "bin/placeholder/AuctionManagementSystem.Domain.dll": {}
         },

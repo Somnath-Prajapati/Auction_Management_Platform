@@ -25,12 +25,13 @@ namespace AuctionManagementSystem.Api.Controllers.Assets
         }
 
         [HttpGet("GetAll")]
-        public async Task<ActionResult<IEnumerable<GetAssetsDto>>> GetAllAssets()
+        public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAllAssets()
         {
             var assets = await _mediator.Send(new GetAssetsQuery());
             return Ok(assets);
         }
 
+        [Route("add")]
         [HttpPost]
         public async Task<ActionResult<GetAssetsDto>> CreateAsset(CreateAssetsDto createAsset)
         {
@@ -38,14 +39,15 @@ namespace AuctionManagementSystem.Api.Controllers.Assets
             return Ok(result);
         }
 
-
+        //[Route("GetById")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<GetAssetsDto>>> GetAsset(int id)
+        public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAsset(int id)
         {
             var assets = await _mediator.Send(new GetAssetByIdQuery(id));
             return Ok(assets);
         }
 
+       
         [HttpPut("{id:int}")]
         public async Task<ActionResult<UpdateAssetDto>> UpdateAsset(int id,[FromBody] UpdateAssetDto assetsDto)
         {
@@ -63,8 +65,7 @@ namespace AuctionManagementSystem.Api.Controllers.Assets
             return Ok(assets);
         }
 
-      
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<UpdateAssetDto>> DeleteAsset(int id)
         {
             await _mediator.Send(new DeleteAssetCommand(id));
