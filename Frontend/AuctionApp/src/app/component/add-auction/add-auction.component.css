@@ -1,0 +1,60 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #f4f3fa;
+  min-height: calc(100vh - 120px); /* Adjust if needed for header/footer */
+  box-sizing: border-box;
+}
+
+.auction-form-container {
+  max-width: 800px;
+  width: 100%;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  margin-top: 10px; /* Less margin above */
+}
+
+.auction-form-title {
+  text-align: center;
+  color: #6a1b9a;
+  margin-bottom: 25px;
+  font-weight: 600;
+  font-size: 26px;
+  font-family: 'Poppins', 'Segoe UI', sans-serif; /* Custom font */
+}
+
+.form-label {
+  font-weight: 500;
+  color: #4a148c;
+}
+
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #7b1fa2;
+  box-shadow: 0 0 0 0.2rem rgba(123, 31, 162, 0.2);
+  outline: none;
+}
+
+.btn-primary {
+  background-color: #7b1fa2;
+  border-color: #7b1fa2;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.btn-primary:hover {
+  background-color: #6a1b9a;
+  border-color: #6a1b9a;
+}

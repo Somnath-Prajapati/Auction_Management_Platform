@@ -1,1 +1,182 @@
-<p>settings works!</p>
+<!-- VIEW MODE (Purple Theme with Cards) -->
+<div *ngIf="viewMode" class="settings-wrapper">
+    <div class="header-row d-flex justify-content-between align-items-center mb-4">
+      <h2 class="text-purple">Application Settings</h2>
+      <button class="btn btn-purple" (click)="editSettings()">Edit</button>
+    </div>
+  
+    <div class="settings-grid">
+  
+      <!-- Auction Settings -->
+      <div class="card shadow-sm p-4">
+        <h4 class="section-title">Auction Settings</h4>
+        <p><strong>Global Incremental Time:</strong> {{ latestSettings.auctionSettings.globalIncrementalTimeInMinutes }}</p>
+      </div>
+  
+      <!-- Finance Settings -->
+      <div class="card shadow-sm p-4">
+        <h4 class="section-title">Finance Settings</h4>
+        <p><strong>VAT:</strong> {{ latestSettings.financeSettings.vatPercent }}</p>
+        <p><strong>Credit Card Fee:</strong> {{ latestSettings.financeSettings.creditCardFee }}</p>
+        <p><strong>Debit Card Fee:</strong> {{ latestSettings.financeSettings.debitCardFee }}</p>
+        <p><strong>Admin Fees:</strong> {{ latestSettings.financeSettings.adminFees }}</p>
+        <p><strong>Auction Fees:</strong> {{ latestSettings.financeSettings.auctionFees }}</p>
+        <p><strong>Buyer Commission:</strong> {{ latestSettings.financeSettings.buyerCommission }}</p>
+      </div>
+  
+      <!-- Direct Sale Settings -->
+      <div class="card shadow-sm p-4">
+        <h4 class="section-title">Direct Sale Settings</h4>
+        <p><strong>Cart Items Limit:</strong> {{latestSettings.directSaleSettings.cartItemsLimit }}</p>
+        <p><strong>Cart Items Timer:</strong> {{ latestSettings.directSaleSettings.cartTimerInMinutes }}</p>
+      </div>
+  
+      <!-- Static Pages -->
+      <div class="card shadow-sm p-4">
+        <h4 class="section-title">Static Pages</h4>
+        <p><strong>Privacy Policy:</strong> {{ latestSettings.staticPages.privacyPolicy }}</p>
+        <p><strong>Terms & Conditions:</strong> {{ latestSettings.staticPages.termsAndConditions }}</p>
+        <p><strong>Cookies Policy:</strong> {{ latestSettings.staticPages.cookiesPolicy }}</p>
+      </div>
+  
+      <!-- Footer Links (Split Left/Right) -->
+      <div class="card shadow-sm p-4 full-width">
+        <h4 class="section-title">Footer Links</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <p><strong>FAQ:</strong> {{ latestSettings.footerLinks.faq }}</p>
+            <p><strong>Blog:</strong> {{ latestSettings.footerLinks.blog }}</p>
+            <p><strong>Status:</strong> {{ latestSettings.footerLinks.status }}</p>
+            <p><strong>Twitter:</strong> {{ latestSettings.footerLinks.twitterLink }}</p>
+            <p><strong>Instagram:</strong> {{ latestSettings.footerLinks.instagramLink }}</p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>Facebook:</strong> {{ latestSettings.footerLinks.facebookLink }}</p>
+            <p><strong>LinkedIn:</strong> {{ latestSettings.footerLinks.linkedInLink }}</p>
+            <p><strong>YouTube:</strong> {{ latestSettings.footerLinks.youTubeLink }}</p>
+            <p><strong>App Store:</strong> {{ latestSettings.footerLinks.appStoreLink }}</p>
+            <p><strong>Google Play:</strong> {{ latestSettings.footerLinks.googlePlayLink }}</p>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
+  <!-- EDIT MODE (Form with Inputs) -->
+<form *ngIf="!viewMode" [formGroup]="settingsForm" (ngSubmit)="onSubmit()" class="settings-form">
+    <div class="header-row d-flex justify-content-between align-items-center mb-4">
+      <h2>Application Settings</h2>
+      <div>
+        <button class="btn btn-purple" type="submit">Save</button>
+        <button class="btn btn-secondary" type="button" (click)="showSettings()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Edit Mode -->
+  <form *ngIf="!viewMode" [formGroup]="settingsForm" (ngSubmit)="onSubmit()" class="settings-form-grid">
+
+    <!-- Card Wrapper -->
+    <div class="card shadow-sm p-4">
+      <fieldset formGroupName="auctionSettings">
+        <legend>Auction Settings</legend>
+        <label>Global Incremental Time</label>
+        <input formControlName="globalIncrementalTime" type="number" class="form-control" />
+      </fieldset>
+    </div>
+
+    <div class="card shadow-sm p-4">
+      <fieldset>
+        <legend>Finance Settings</legend>
+        <div class="form-grid">
+          <div>
+            <label>VAT</label>
+            <input formControlName="vat" type="text" class="form-control" />
+          </div>
+          <div>
+            <label>Credit Card Fee</label>
+            <input formControlName="creditCardFee" type="text" class="form-control" />
+          </div>
+          <div>
+            <label>Debit Card Fee</label>
+            <input formControlName="debitCardFee" type="text" class="form-control" />
+          </div>
+          <div>
+            <label>Admin Fees</label>
+            <input formControlName="adminFees" type="text" class="form-control" />
+          </div>
+          <div>
+            <label>Auction Fees</label>
+            <input formControlName="auctionFees" type="text" class="form-control" />
+          </div>
+          <div>
+            <label>Buyer Commission</label>
+            <input formControlName="buyerCommission" type="text" class="form-control" />
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="card shadow-sm p-4">
+      <fieldset formGroupName="directSaleSettings">
+        <legend>Direct Sale Settings</legend>
+        <label>Cart Items Limit</label>
+        <input formControlName="cartItemsLimit" type="number" class="form-control" />
+        <label>Cart Items Timer</label>
+        <input formControlName="cartItemsTimer" type="number" class="form-control" />
+      </fieldset>
+    </div>
+
+    <div class="card shadow-sm p-4">
+      <fieldset formGroupName="staticPages">
+        <legend>Static Pages</legend>
+        <label>Privacy Policy</label>
+        <input formControlName="privacyPolicy" type="text" class="form-control" />
+        <label>Terms & Conditions</label>
+        <input formControlName="termsAndConditions" type="text" class="form-control" />
+        <label>Cookies Policy</label>
+        <input formControlName="cookiesPolicy" type="text" class="form-control" />
+      </fieldset>
+    </div>
+
+    <!-- Footer Links Split into Two Columns -->
+    <div class="card shadow-sm p-4 full-width">
+      <fieldset formGroupName="footerLinks">
+        <legend>Footer Links</legend>
+        <div class="row">
+          <div class="col-md-6">
+            <label>FAQ</label>
+            <input formControlName="faq" type="text" class="form-control" />
+            <label>Blog</label>
+            <input formControlName="blog" type="text" class="form-control" />
+            <label>Status</label>
+            <input formControlName="status" type="text" class="form-control" />
+            <label>Twitter</label>
+            <input formControlName="twitter" type="text" class="form-control" />
+            <label>Instagram</label>
+            <input formControlName="instagram" type="text" class="form-control" />
+          </div>
+          <div class="col-md-6">
+            <label>Facebook</label>
+            <input formControlName="facebook" type="text" class="form-control" />
+            <label>LinkedIn</label>
+            <input formControlName="linkedin" type="text" class="form-control" />
+            <label>YouTube</label>
+            <input formControlName="youtube" type="text" class="form-control" />
+            <label>App Store</label>
+            <input formControlName="appstore" type="text" class="form-control" />
+            <label>Google Play</label>
+            <input formControlName="googlePlay" type="text" class="form-control" />
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions full-width mt-3">
+      <button type="submit" class="btn btn-purple">Update Settings</button>
+      <button type="button" class="btn btn-outline-purple" (click)="showSettings()">Cancel</button>
+    </div>
+
+</form>
+

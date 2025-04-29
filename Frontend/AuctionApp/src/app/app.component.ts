@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, NavigationEnd, RouterOutlet, RouterModule } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { NgIf } from '@angular/common';
 import { HeaderComponent } from "./component/header/header.component";
 import { FooterComponent } from "./component/footer/footer.component";
 import { SidebarComponent } from "./component/sidebar/sidebar.component";
@@ -12,8 +14,32 @@ import { HttpClient } from '@angular/common/http';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'AuctionApp';
+  currentRoute: string = '';
+
+  constructor(private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.currentRoute = event.urlAfterRedirects;
+    });
+  }
+
+  get isStartPage(): boolean {
+    return this.currentRoute === '/';
+  }
+
+  get isLandingPage(): boolean {
+    return this.currentRoute === '/landing-page';
+  }
+
+  get showSidebar(): boolean {
+    return !this.isStartPage && !this.isLandingPage;
+  }
+
+  get showHeaderAndFooter(): boolean {
+    return !this.isStartPage;
+  }
 }
