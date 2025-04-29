@@ -58,13 +58,26 @@ namespace AuctionManagementSystem.Application.Profiles
 
             CreateMap<UpdateAssetDto, TblAsset>().ReverseMap();
 
-            CreateMap<AssetsGalleryDto , TblAssetGallery>().ReverseMap();
+            CreateMap<AssetsGalleryDto, TblAssetGallery>().ReverseMap();
 
             CreateMap<AssetsGalleryDto, TblAssetGallery>()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
+            CreateMap<AssetGalleryDtos, TblAssetGallery>().ReverseMap();
+
+            CreateMap<AssetGalleryDtos, TblAssetGallery>()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
             CreateMap<AssetDocumentDto, TblAssetDocument>().ReverseMap();
             CreateMap<AssetDocumentUploadDto, TblAssetDocument>().ReverseMap();
+
+            CreateMap<GetAssetsFormDto, TblAsset>().ReverseMap();
+
+            CreateMap<AssetDocumentFormDto, TblAssetDocument>().ReverseMap();
+
+            CreateMap<AssetDetailDto, TblAssetDetail>().ReverseMap();
+
+            CreateMap<AssetDetailDto, TblAssetDetail>().ReverseMap();
         }
     }
 }

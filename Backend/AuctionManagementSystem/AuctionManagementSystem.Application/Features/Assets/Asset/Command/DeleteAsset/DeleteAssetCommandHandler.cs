@@ -22,7 +22,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.Dele
 
         public async Task Handle(DeleteAssetCommand request, CancellationToken cancellationToken)
         {
-            var Asset = await _assetsRepository.GetByIdAsync(request.id);
+            var Asset = await _assetsRepository.GetIdDeleteAsync(request.id);
             await _assetsRepository.DeleteAsync(Asset);
         }
     }
