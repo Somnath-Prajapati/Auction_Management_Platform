@@ -15,7 +15,12 @@ namespace AuctionManagementSystem.Application.Dtos.Auctions
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public int StatusId { get; set; }
-        public int IncrementalTime { get; set; }
+        public string? StatusName { get; set; }
         public int? CategoryId { get; set; }
+        public string? CategoryName { get; set; }
+        public int IncrementalTime { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
+
 }

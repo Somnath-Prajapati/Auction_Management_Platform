@@ -16,6 +16,8 @@ using AuctionManagementSystem.Persistence.Repositories.User;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Infrastructure.UoW;
+using AuctionManagementSystem.Application.Contracts.Request;
+using AuctionManagementSystem.Persistence.Repositories.Requests;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -42,7 +44,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAssetDocumentRepository, AssetDocumentRepository>();
             services.AddScoped< IUserStatusRepository,UserStatusRepository> ();
             services.AddScoped<IRoleRepository, RoleRepository>();
-
+            services.AddScoped<IRequestRepository, RequestRepository>();
             return services;
         }
     }

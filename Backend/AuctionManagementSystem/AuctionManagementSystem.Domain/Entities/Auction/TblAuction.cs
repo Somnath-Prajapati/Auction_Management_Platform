@@ -29,6 +29,9 @@ public partial class TblAuction
 
     public virtual TblAuctionCategory? Category { get; set; }
 
+    public virtual TblAuctionStatus? Status { get; set; }
+
+
     public virtual ICollection<TblAuctionAsset> TblAuctionAssets { get; set; } = new List<TblAuctionAsset>();
 
     public virtual ICollection<TblAuctionView> TblAuctionViews { get; set; } = new List<TblAuctionView>();

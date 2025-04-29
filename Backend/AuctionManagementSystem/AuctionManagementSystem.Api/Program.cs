@@ -23,25 +23,25 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAngularDev", policy =>
-                {
-                    policy.WithOrigins("http://localhost:4200") // Angular dev server
-                          .AllowAnyHeader()
-                          .AllowAnyMethod();
-                });
-            });
+            //builder.Services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowAllOrigin", policy =>
+            //    {
+            //        policy.WithOrigins("http://localhost:4200") // Angular dev server
+            //              .AllowAnyHeader()
+            //              .AllowAnyMethod();
+            //    });
+            //});
 
             var app = builder.Build();
-            if (app.Environment.IsDevelopment())
-            {
+            //if (app.Environment.IsDevelopment())
+            //{
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Manage");
                 });
-            }
+            //}
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseStaticFiles();
