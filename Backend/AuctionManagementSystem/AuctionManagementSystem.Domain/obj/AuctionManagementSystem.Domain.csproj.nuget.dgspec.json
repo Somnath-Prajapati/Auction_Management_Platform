@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj": {}
+    "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj": {
+    "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
         "projectName": "AuctionManagementSystem.Domain",
-        "projectPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

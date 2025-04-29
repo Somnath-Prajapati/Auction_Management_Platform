@@ -1,0 +1,12 @@
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\bin\Release\net9.0\AuctionManagementSystem.Domain.deps.json
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\bin\Release\net9.0\AuctionManagementSystem.Domain.dll
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\bin\Release\net9.0\AuctionManagementSystem.Domain.pdb
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Release\net9.0\AuctionManagementSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Release\net9.0\AuctionManagementSystem.Domain.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Release\net9.0\AuctionManagementSystem.Domain.AssemblyInfo.cs
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Release\net9.0\AuctionManagementSystem.Domain.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Release\net9.0\AuctionManagementSystem.Domain.sourcelink.json
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Release\net9.0\AuctionManagementSystem.Domain.dll
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Release\net9.0\refint\AuctionManagementSystem.Domain.dll
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Release\net9.0\AuctionManagementSystem.Domain.pdb
+C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Release\net9.0\ref\AuctionManagementSystem.Domain.dll

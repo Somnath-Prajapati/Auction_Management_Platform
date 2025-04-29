@@ -53,5 +53,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
             return await _context.TblUsers
                 .FirstOrDefaultAsync(u => u.Email == email || u.MobileNumber == mobileNumber);
         }
+        
     }
 }

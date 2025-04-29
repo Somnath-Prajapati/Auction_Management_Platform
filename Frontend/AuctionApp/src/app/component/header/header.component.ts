@@ -11,5 +11,4 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
 }
