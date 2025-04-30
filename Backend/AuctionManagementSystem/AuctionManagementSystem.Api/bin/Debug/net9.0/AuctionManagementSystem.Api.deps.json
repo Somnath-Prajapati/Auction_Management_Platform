@@ -1871,6 +1871,9 @@
         }
       },
       "AuctionManagementSystem.Domain/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4"
+        },
         "runtime": {
           "AuctionManagementSystem.Domain.dll": {
             "assemblyVersion": "1.0.0",

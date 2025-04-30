@@ -42,6 +42,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAssetsRepository, AssetRepository>();
             services.AddScoped<IAssetGalleryRepository, AssetGalleryRepository>();
             services.AddScoped<IAssetDocumentRepository, AssetDocumentRepository>();
+            services.AddScoped<IAssetDetailRepository, AssetDetailRepository>();
             services.AddScoped< IUserStatusRepository,UserStatusRepository> ();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IRequestRepository, RequestRepository>();

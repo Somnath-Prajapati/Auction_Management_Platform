@@ -67,6 +67,8 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<CreateAssetsDto, TblAsset>().ReverseMap();
 
             CreateMap<UpdateAssetDto, TblAsset>().ReverseMap();
+
+            CreateMap<AssetsGalleryDto, TblAssetGallery>().ReverseMap();
             CreateMap<AuctionBaseCommand, TblAuction>()
             .ForMember(dest => dest.AuctionId, opt => opt.Ignore());
             CreateMap<AssetsGalleryDto , TblAssetGallery>().ReverseMap();
@@ -74,9 +76,21 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<AssetsGalleryDto, TblAssetGallery>()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
+            CreateMap<AssetGalleryDtos, TblAssetGallery>().ReverseMap();
+
+            CreateMap<AssetGalleryDtos, TblAssetGallery>()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
             CreateMap<AssetDocumentDto, TblAssetDocument>().ReverseMap();
             CreateMap<AssetDocumentUploadDto, TblAssetDocument>().ReverseMap();
 
+            CreateMap<GetAssetsFormDto, TblAsset>().ReverseMap();
+
+            CreateMap<AssetDocumentFormDto, TblAssetDocument>().ReverseMap();
+
+            CreateMap<AssetDetailDto, TblAssetDetail>().ReverseMap();
+
+            CreateMap<AssetDetailDto, TblAssetDetail>().ReverseMap();
             //Mapping for Create,Upadte Request Dto
             CreateMap<CreateRequestDto, AddRequestCommand>();
             CreateMap<UpdateRequestDto, UdpRequestCommand>();

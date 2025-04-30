@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AuctionManagementSystem.Domain.Entities.User;
 
+
 namespace AuctionManagementSystem.Domain.Entities.Asset;
 
 public partial class TblAssetWinner
@@ -14,17 +15,19 @@ public partial class TblAssetWinner
 
     public decimal? AwardedPrice { get; set; }
 
-    public string? Reason { get; set; }
+    public string Reason { get; set; }
 
-    public string? Note { get; set; }
+    public string Note { get; set; }
 
     public bool? Approved { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
-    public virtual TblAsset? Asset { get; set; }
+    public virtual TblAsset Asset { get; set; }
+
+    public virtual ICollection<TblAsset> TblAssets { get; set; } = new List<TblAsset>();
 
     public virtual ICollection<TblWinnerDocument> TblWinnerDocuments { get; set; } = new List<TblWinnerDocument>();
 
-    public virtual TblUser? User { get; set; }
+    public virtual TblUser User { get; set; }
 }
