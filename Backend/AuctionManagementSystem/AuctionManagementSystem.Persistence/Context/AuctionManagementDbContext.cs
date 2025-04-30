@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AuctionManagementSystem.Domain;
 using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
@@ -7,6 +8,7 @@ using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Persistence.Context;
@@ -15,22 +17,25 @@ public partial class AuctionManagementDbContext : DbContext
 {
     public AuctionManagementDbContext()
     {
+        
     }
-
     public AuctionManagementDbContext(DbContextOptions<AuctionManagementDbContext> options)
-        : base(options)
+         : base(options)
     {
     }
-
     public virtual DbSet<TblAsset> TblAssets { get; set; }
 
     public virtual DbSet<TblAssetCategory> TblAssetCategories { get; set; }
+
+    public virtual DbSet<TblAssetCategoryStatus> TblAssetCategoryStatuses { get; set; }
 
     public virtual DbSet<TblAssetDetail> TblAssetDetails { get; set; }
 
     public virtual DbSet<TblAssetDocument> TblAssetDocuments { get; set; }
 
     public virtual DbSet<TblAssetGallery> TblAssetGalleries { get; set; }
+
+    public virtual DbSet<TblAssetPaymentMethod> TblAssetPaymentMethods { get; set; }
 
     public virtual DbSet<TblAssetStatus> TblAssetStatuses { get; set; }
 
@@ -96,10 +101,6 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=180.149.240.247;Database=AuctionManagementDB;User Id=AuctionM_dbuser;Password=AuctionManagementDB@2025;TrustServerCertificate=True;");
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
@@ -111,6 +112,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.ToTable("tblAssets");
 
             entity.Property(e => e.AdminFees).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.AssetNumber).HasMaxLength(100);
             entity.Property(e => e.AuctionFees).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.BuyerCommission).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.Commission).HasColumnType("decimal(5, 2)");
@@ -120,13 +122,16 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Deposit).HasColumnType("decimal(5, 2)");
             entity.Property(e => e.Featured).HasDefaultValue(false);
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.MakeOffer).HasDefaultValue(false);
             entity.Property(e => e.MapLatitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.MapLongitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.MinIncrement).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.ReserveAmount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.StartingPrice).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.Title).HasMaxLength(255);
+            entity.Property(e => e.Title)
+                .IsRequired()
+                .HasMaxLength(255);
             entity.Property(e => e.UpdatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
@@ -155,6 +160,10 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasOne(d => d.Vat).WithMany(p => p.TblAssets)
                 .HasForeignKey(d => d.Vatid)
                 .HasConstraintName("FK__tblAssets__VATId__18EBB532");
+
+            entity.HasOne(d => d.Winner).WithMany(p => p.TblAssets)
+                .HasForeignKey(d => d.WinnerId)
+                .HasConstraintName("FK_tblAssets_WinnerId");
         });
 
         modelBuilder.Entity<TblAssetCategory>(entity =>
@@ -165,7 +174,68 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.HasIndex(e => e.CategoryName, "UQ__tblAsset__8517B2E06B149E78").IsUnique();
 
-            entity.Property(e => e.CategoryName).HasMaxLength(100);
+            entity.Property(e => e.AdminFees).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.AuctionFees).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.BuyerCommission).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.CategoryName)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.DepositPercentage).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.Icon)
+                .IsRequired()
+                .HasMaxLength(255)
+                .HasDefaultValue("default.png");
+            entity.Property(e => e.RegistrationDeadline)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.StatusId).HasDefaultValue(1);
+            entity.Property(e => e.Subcategory).HasMaxLength(255);
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Vatid).HasColumnName("VATId");
+            entity.Property(e => e.Vatpercentage)
+                .HasColumnType("decimal(5, 2)")
+                .HasColumnName("VATPercentage");
+
+            entity.HasOne(d => d.Status).WithMany(p => p.TblAssetCategories)
+                .HasForeignKey(d => d.StatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblAssetCategories_tblStatus");
+
+            entity.HasOne(d => d.Vat).WithMany(p => p.TblAssetCategories)
+                .HasForeignKey(d => d.Vatid)
+                .HasConstraintName("FK_tblAssetCategories_VATId");
+
+            entity.HasMany(d => d.PaymentMethods).WithMany(p => p.Categories)
+                .UsingEntity<Dictionary<string, object>>(
+                    "TblAssetCategoryPaymentMethod",
+                    r => r.HasOne<TblAssetPaymentMethod>().WithMany()
+                        .HasForeignKey("PaymentMethodId")
+                        .HasConstraintName("FK__TblAssetC__Payme__3EDC53F0"),
+                    l => l.HasOne<TblAssetCategory>().WithMany()
+                        .HasForeignKey("CategoryId")
+                        .HasConstraintName("FK__TblAssetC__Categ__3DE82FB7"),
+                    j =>
+                    {
+                        j.HasKey("CategoryId", "PaymentMethodId").HasName("PK__TblAsset__34CA261695C9EE45");
+                        j.ToTable("TblAssetCategoryPaymentMethod");
+                    });
+        });
+
+        modelBuilder.Entity<TblAssetCategoryStatus>(entity =>
+        {
+            entity.HasKey(e => e.AssetCategoryStatusId).HasName("PK__TblAsset__5DF10922B7703246");
+
+            entity.ToTable("TblAssetCategoryStatus");
+
+            entity.Property(e => e.AssetCategoryStatusId).ValueGeneratedNever();
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<TblAssetDetail>(entity =>
@@ -208,6 +278,18 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK__tblAssetG__Asset__1EA48E88");
         });
 
+        modelBuilder.Entity<TblAssetPaymentMethod>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__TblAsset__3214EC072B4018C6");
+
+            entity.ToTable("TblAssetPaymentMethod");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+        });
+
         modelBuilder.Entity<TblAssetStatus>(entity =>
         {
             entity.HasKey(e => e.StatusId).HasName("PK__tblAsset__C8EE2063D0439541");
@@ -216,7 +298,9 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.HasIndex(e => e.StatusName, "UQ__tblAsset__05E7698A4E67696A").IsUnique();
 
-            entity.Property(e => e.StatusName).HasMaxLength(50);
+            entity.Property(e => e.StatusName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<TblAssetWinner>(entity =>
@@ -234,6 +318,7 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.HasOne(d => d.Asset).WithMany(p => p.TblAssetWinners)
                 .HasForeignKey(d => d.AssetId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__tblAssetW__Asset__2739D489");
 
             entity.HasOne(d => d.User).WithMany(p => p.TblAssetWinners)
@@ -249,13 +334,17 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.HasIndex(e => e.AuctionNumber, "UQ__tblAucti__C90DD8B8624ABC12").IsUnique();
 
-            entity.Property(e => e.AuctionNumber).HasMaxLength(100);
+            entity.Property(e => e.AuctionNumber)
+                .IsRequired()
+                .HasMaxLength(100);
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.EndDateTime).HasColumnType("datetime");
             entity.Property(e => e.StartDateTime).HasColumnType("datetime");
-            entity.Property(e => e.Title).HasMaxLength(255);
+            entity.Property(e => e.Title)
+                .IsRequired()
+                .HasMaxLength(255);
             entity.Property(e => e.Type)
                 .HasMaxLength(50)
                 .HasDefaultValue("Auction");
@@ -289,7 +378,9 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.ToTable("tblAuctionCategories");
 
-            entity.Property(e => e.Name).HasMaxLength(100);
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(100);
         });
 
         modelBuilder.Entity<TblAuctionStatus>(entity =>
@@ -298,7 +389,9 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.ToTable("tblAuctionStatuses");
 
-            entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<TblAuctionView>(entity =>
@@ -326,6 +419,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasIndex(e => e.CardTypeName, "UQ__tblCardT__7F70364E6610CB47").IsUnique();
 
             entity.Property(e => e.CardTypeName)
+                .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
@@ -336,10 +430,14 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.ToTable("tblCountries");
 
-            entity.Property(e => e.CountryName).HasMaxLength(100);
+            entity.Property(e => e.CountryName)
+                .IsRequired()
+                .HasMaxLength(100);
             entity.Property(e => e.MaxLength).HasDefaultValue(10);
             entity.Property(e => e.MinLength).HasDefaultValue(10);
-            entity.Property(e => e.PhoneCode).HasMaxLength(10);
+            entity.Property(e => e.PhoneCode)
+                .IsRequired()
+                .HasMaxLength(10);
         });
 
         modelBuilder.Entity<TblDirectSaleSetting>(entity =>
@@ -394,6 +492,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasIndex(e => e.PaymentMethodName, "UQ__tblPayme__612080EDB9885BC1").IsUnique();
 
             entity.Property(e => e.PaymentMethodName)
+                .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
@@ -410,19 +509,23 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Email)
+                .IsRequired()
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.MobileNumber)
+                .IsRequired()
                 .HasMaxLength(20)
                 .IsUnicode(false);
             entity.Property(e => e.RequestDateTime).HasColumnType("datetime");
             entity.Property(e => e.RequestNumber)
+                .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.UpdatedOn)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Username)
+                .IsRequired()
                 .HasMaxLength(100)
                 .IsUnicode(false);
 
@@ -458,6 +561,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.ToTable("tblRequestStatuses");
 
             entity.Property(e => e.StatusName)
+                .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
@@ -501,6 +605,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasIndex(e => e.TypeName, "UQ__tblReque__D4E7DFA8911F864D").IsUnique();
 
             entity.Property(e => e.TypeName)
+                .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
@@ -511,7 +616,9 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.ToTable("tblRoles");
 
-            entity.Property(e => e.RoleName).HasMaxLength(50);
+            entity.Property(e => e.RoleName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<TblSeller>(entity =>
@@ -572,6 +679,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.Notes).HasColumnType("text");
             entity.Property(e => e.TransactionDateTime).HasColumnType("datetime");
             entity.Property(e => e.TransactionNumber)
+                .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.UpdatedAt)
@@ -635,6 +743,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.FilePath)
+                .IsRequired()
                 .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.UploadedAt)
@@ -656,6 +765,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasIndex(e => e.StatusName, "UQ__tblTrans__05E7698A4561ED20").IsUnique();
 
             entity.Property(e => e.StatusName)
+                .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
@@ -669,6 +779,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasIndex(e => e.TransactionTypeName, "UQ__tblTrans__2BE3AC2432109A6B").IsUnique();
 
             entity.Property(e => e.TransactionTypeName)
+                .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
@@ -687,15 +798,24 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.Deposit)
                 .HasDefaultValue(0.00m)
                 .HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.Email).HasMaxLength(255);
-            entity.Property(e => e.Gender).HasMaxLength(20);
+            entity.Property(e => e.Email)
+                .IsRequired()
+                .HasMaxLength(255);
+            entity.Property(e => e.Gender)
+                .IsRequired()
+                .HasMaxLength(20);
             entity.Property(e => e.LastOnline).HasColumnType("datetime");
             entity.Property(e => e.MobileNumber)
                 .HasMaxLength(15)
                 .IsUnicode(false);
-            entity.Property(e => e.Name).HasMaxLength(100);
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.PersonalIdExpiryDate).HasColumnType("date");
             entity.Property(e => e.PersonalIdImage).HasMaxLength(255);
-            entity.Property(e => e.PersonalIdNumber).HasMaxLength(100);
+            entity.Property(e => e.PersonalIdNumber)
+                .IsRequired()
+                .HasMaxLength(100);
             entity.Property(e => e.ProfileImage).HasMaxLength(255);
             entity.Property(e => e.RegistrationDate)
                 .HasDefaultValueSql("(getdate())")
@@ -742,7 +862,9 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.ToTable("tblUserStatus");
 
-            entity.Property(e => e.StatusName).HasMaxLength(50);
+            entity.Property(e => e.StatusName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<TblVatoption>(entity =>
@@ -755,6 +877,7 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.Property(e => e.Vatid).HasColumnName("VATId");
             entity.Property(e => e.Vattype)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("VATType");
         });
@@ -767,7 +890,9 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.HasIndex(e => e.AwardingMethod, "UQ__tblWinne__5B5DB46B5BED39DB").IsUnique();
 
-            entity.Property(e => e.AwardingMethod).HasMaxLength(50);
+            entity.Property(e => e.AwardingMethod)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<TblWinnerDocument>(entity =>
@@ -783,7 +908,8 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.HasOne(d => d.Winner).WithMany(p => p.TblWinnerDocuments)
                 .HasForeignKey(d => d.WinnerId)
-                .HasConstraintName("FK__tblWinner__Winne__2CF2ADDF");
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("FK_tblWinnerDocuments_WinnerId");
         });
 
         OnModelCreatingPartial(modelBuilder);

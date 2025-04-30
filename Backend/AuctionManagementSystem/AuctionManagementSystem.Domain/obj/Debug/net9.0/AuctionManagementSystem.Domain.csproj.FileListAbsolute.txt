@@ -1,6 +1,7 @@
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\bin\Debug\net9.0\AuctionManagementSystem.Domain.deps.json
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\bin\Debug\net9.0\AuctionManagementSystem.Domain.dll
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\bin\Debug\net9.0\AuctionManagementSystem.Domain.pdb
+C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.csproj.AssemblyReference.cache
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.AssemblyInfoInputs.cache
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.AssemblyInfo.cs
@@ -10,15 +11,3 @@ C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManage
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\refint\AuctionManagementSystem.Domain.dll
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.pdb
 C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\ref\AuctionManagementSystem.Domain.dll
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\bin\Debug\net9.0\AuctionManagementSystem.Domain.deps.json
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\bin\Debug\net9.0\AuctionManagementSystem.Domain.dll
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\bin\Debug\net9.0\AuctionManagementSystem.Domain.pdb
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.AssemblyInfoInputs.cache
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.AssemblyInfo.cs
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.csproj.CoreCompileInputs.cache
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.sourcelink.json
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.dll
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\refint\AuctionManagementSystem.Domain.dll
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\AuctionManagementSystem.Domain.pdb
-C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Domain\obj\Debug\net9.0\ref\AuctionManagementSystem.Domain.dll
