@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ad3zORxfh7UWMmMs9taMdq8zmbxp7KrMxdWlknr/WwQ=",
+  "Hash": "4uWpQCRx3ktKvM8LqtFxZXQci8XRkHVlGZ2WmWBgpcw=",
   "Source": "AuctionManagementSystem.Api",
   "BasePath": "_content/AuctionManagementSystem.Api",
   "Mode": "Default",
@@ -395,6 +395,27 @@
       "OriginalItemSpec": "wwwroot\\PersonalIdImages\\e197855a-9765-4e3f-b93f-4d852c66aae4.png"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e4ed2c27-ca0a-48fa-a220-0f6f8cb0ca4f.png",
+      "SourceId": "AuctionManagementSystem.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "BasePath": "_content/AuctionManagementSystem.Api",
+      "RelativePath": "PersonalIdImages/e4ed2c27-ca0a-48fa-a220-0f6f8cb0ca4f#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "po53s1p21k",
+      "Integrity": "d3DPhIfcKuijYOD6cPtsSkLfwoMqIfFtXA5mWxhNQbc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PersonalIdImages\\e4ed2c27-ca0a-48fa-a220-0f6f8cb0ca4f.png"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e8acec9b-0530-42f0-a6c5-082b5ed21fe8.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
@@ -605,6 +626,27 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\84ac9ac0-9e4a-4c3f-a8e2-aed1f07f038a.png"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\9b69f2ed-92f5-49ed-ba19-cfa560f1c6ed.png",
+      "SourceId": "AuctionManagementSystem.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\",
+      "BasePath": "_content/AuctionManagementSystem.Api",
+      "RelativePath": "ProfileImages/9b69f2ed-92f5-49ed-ba19-cfa560f1c6ed#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "po53s1p21k",
+      "Integrity": "d3DPhIfcKuijYOD6cPtsSkLfwoMqIfFtXA5mWxhNQbc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ProfileImages\\9b69f2ed-92f5-49ed-ba19-cfa560f1c6ed.png"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.png",
       "SourceId": "AuctionManagementSystem.Api",
       "SourceType": "Discovered",
@@ -671,7 +713,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -716,7 +758,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -753,7 +795,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -798,7 +840,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -835,7 +877,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:50:33 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -872,7 +914,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:50:33 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -917,7 +959,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -962,7 +1004,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -999,7 +1041,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1036,7 +1078,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1081,7 +1123,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1118,7 +1160,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1163,7 +1205,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1200,7 +1242,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1245,7 +1287,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1282,7 +1324,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1327,7 +1369,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1364,7 +1406,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1409,7 +1451,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1454,7 +1496,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:08:30 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1737,7 +1779,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:25:01 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1774,7 +1816,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:25:01 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2121,6 +2163,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-SvPivfHSbafSel8ojx2X3I418YlF+EyXOGP4y1Vdo1g="
+        }
+      ]
+    },
+    {
+      "Route": "PersonalIdImages/e4ed2c27-ca0a-48fa-a220-0f6f8cb0ca4f.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e4ed2c27-ca0a-48fa-a220-0f6f8cb0ca4f.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1442832"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"d3DPhIfcKuijYOD6cPtsSkLfwoMqIfFtXA5mWxhNQbc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 10:24:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-d3DPhIfcKuijYOD6cPtsSkLfwoMqIfFtXA5mWxhNQbc="
+        }
+      ]
+    },
+    {
+      "Route": "PersonalIdImages/e4ed2c27-ca0a-48fa-a220-0f6f8cb0ca4f.po53s1p21k.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\PersonalIdImages\\e4ed2c27-ca0a-48fa-a220-0f6f8cb0ca4f.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1442832"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"d3DPhIfcKuijYOD6cPtsSkLfwoMqIfFtXA5mWxhNQbc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 10:24:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "po53s1p21k"
+        },
+        {
+          "Name": "label",
+          "Value": "PersonalIdImages/e4ed2c27-ca0a-48fa-a220-0f6f8cb0ca4f.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-d3DPhIfcKuijYOD6cPtsSkLfwoMqIfFtXA5mWxhNQbc="
         }
       ]
     },
@@ -2945,6 +3069,88 @@
       ]
     },
     {
+      "Route": "ProfileImages/9b69f2ed-92f5-49ed-ba19-cfa560f1c6ed.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\9b69f2ed-92f5-49ed-ba19-cfa560f1c6ed.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1442832"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"d3DPhIfcKuijYOD6cPtsSkLfwoMqIfFtXA5mWxhNQbc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 10:24:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-d3DPhIfcKuijYOD6cPtsSkLfwoMqIfFtXA5mWxhNQbc="
+        }
+      ]
+    },
+    {
+      "Route": "ProfileImages/9b69f2ed-92f5-49ed-ba19-cfa560f1c6ed.po53s1p21k.png",
+      "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\9b69f2ed-92f5-49ed-ba19-cfa560f1c6ed.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1442832"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"d3DPhIfcKuijYOD6cPtsSkLfwoMqIfFtXA5mWxhNQbc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 10:24:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "po53s1p21k"
+        },
+        {
+          "Name": "label",
+          "Value": "ProfileImages/9b69f2ed-92f5-49ed-ba19-cfa560f1c6ed.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-d3DPhIfcKuijYOD6cPtsSkLfwoMqIfFtXA5mWxhNQbc="
+        }
+      ]
+    },
+    {
       "Route": "ProfileImages/e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.i1c3twn245.png",
       "AssetFile": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\wwwroot\\ProfileImages\\e0255ebd-7644-4d4b-ba26-f7b7a1de6f1d.png",
       "Selectors": [],
@@ -3049,7 +3255,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:25:01 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3094,7 +3300,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 25 Apr 2025 11:25:01 GMT"
+          "Value": "Tue, 29 Apr 2025 07:43:04 GMT"
         },
         {
           "Name": "Cache-Control",
