@@ -23,7 +23,7 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
 
 
 
-        //Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents);
+        Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents);
 
     }
 }
