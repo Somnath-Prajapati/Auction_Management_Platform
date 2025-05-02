@@ -8,58 +8,108 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 {
     public class CreateAssetsDto
     {
-        //public int AssetId { get; set; }
 
-        public string Title { get; set; } = null!;
+            public string Title { get; set; }
+            public int CategoryId { get; set; }
+            public decimal StartingPrice { get; set; }
+            public decimal? ReserveAmount { get; set; }
+            public decimal? Deposit { get; set; }
+            public decimal? Commission { get; set; }
+            public int? SellerId { get; set; }
+            public int? StatusId { get; set; }
+            public int? Vatid { get; set; }
+            public decimal? Vatpercent { get; set; }
+            public int? AwardingId { get; set; }
+            public bool MakeOffer { get; set; }
+            public bool Featured { get; set; }
+            public string? CourtCaseNumber { get; set; }
+            public DateTime? RegistrationDeadline { get; set; }
+            public string? Description { get; set; }
+            public string? MapLatitude { get; set; }
+            public string? MapLongitude { get; set; }
+            public decimal? AdminFees { get; set; }
+            public decimal? AuctionFees { get; set; }
+            public decimal? BuyerCommission { get; set; }
+            public int? WinnerId { get; set; }
+            public decimal? AwardedPrice { get; set; }
+            public string? SalesNotes { get; set; }
+            public string? AssetNumber { get; set; }
+            public int? IncrementalTime { get; set; }
+            public int? MinIncrement { get; set; }
 
-        public int? CategoryId { get; set; }
-
-        public decimal? Deposit { get; set; }
-
-        public int SellerId { get; set; }
-
-        public decimal? Commission { get; set; }
-
-        public decimal StartingPrice { get; set; }
-
-        public decimal? ReserveAmount { get; set; }
-
-        public int? IncrementalTime { get; set; }
-
-        public decimal? MinIncrement { get; set; }
-
-        public bool? MakeOffer { get; set; }
-
-        public bool? Featured { get; set; }
-
-        public int? AwardingId { get; set; }
-
-        public int? StatusId { get; set; }
-
-        public int? Vatid { get; set; }
-
-        public decimal? Vatpercent { get; set; }
-
-        public string? CourtCaseNumber { get; set; }
-
-        public int? RegistrationDeadline { get; set; }
-
-        public string? Description { get; set; }
-
-        public decimal? MapLatitude { get; set; }
-
-        public decimal? MapLongitude { get; set; }
-
-        public decimal? AdminFees { get; set; }
-
-        public decimal? AuctionFees { get; set; }
-
-        public decimal? BuyerCommission { get; set; }
-
-        public int? WinnerId { get; set; }
-
-        public string? SalesNotes { get; set; }
-
-
+            public List<AssetGalleryMetaDto> Galleries { get; set; } = new();
+            public List<AssetDocumentMetaDto> Documents { get; set; } = new();
+            public List<AssetDetailDto> Details { get; set; } = new(); 
+        }
+    public class AssetGalleryMetaDto
+    {
+        public string MediaType { get; set; } 
+        public int SortOrder { get; set; }
+        public string? FilePath { get; set; } 
     }
+    public class AssetDocumentMetaDto
+    {
+        public string DocumentType { get; set; } 
+        public string? FilePath { get; set; } 
+    }
+
+    public class AssetDetailDtos
+    {
+        public string? Label { get; set; }  
+        public string? Value { get; set; }   
+    }
+
+
 }
+
+/* //public int AssetId { get; set; }
+
+ public string Title { get; set; } = null!;
+
+ public int? CategoryId { get; set; }
+
+ public decimal? Deposit { get; set; }
+
+ public int SellerId { get; set; }
+
+ public decimal? Commission { get; set; }
+
+ public decimal StartingPrice { get; set; }
+
+ public decimal? ReserveAmount { get; set; }
+
+ public int? IncrementalTime { get; set; }
+
+ public decimal? MinIncrement { get; set; }
+
+ public bool? MakeOffer { get; set; }
+
+ public bool? Featured { get; set; }
+
+ public int? AwardingId { get; set; }
+
+ public int? StatusId { get; set; }
+
+ public int? Vatid { get; set; }
+
+ public decimal? Vatpercent { get; set; }
+
+ public string? CourtCaseNumber { get; set; }
+
+ public int? RegistrationDeadline { get; set; }
+
+ public string? Description { get; set; }
+
+ public decimal? MapLatitude { get; set; }
+
+ public decimal? MapLongitude { get; set; }
+
+ public decimal? AdminFees { get; set; }
+
+ public decimal? AuctionFees { get; set; }
+
+ public decimal? BuyerCommission { get; set; }
+
+ public int? WinnerId { get; set; }
+
+ public string? SalesNotes { get; set; }*/

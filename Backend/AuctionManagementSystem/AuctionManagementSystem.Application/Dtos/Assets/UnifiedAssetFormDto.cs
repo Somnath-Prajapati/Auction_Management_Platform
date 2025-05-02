@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace AuctionManagementSystem.Application.Dtos.Assets
 {
-    public class GetAssetsFormDto
+    public class UnifiedAssetFormDto
     {
-        public int AssetId { get; set; }
         public string Title { get; set; }
         public int? CategoryId { get; set; }
-        public string? CategoryName { get; set; } // New Field
         public decimal? Deposit { get; set; }
         public int SellerId { get; set; }
         public decimal? Commission { get; set; }
@@ -22,47 +21,43 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public bool? MakeOffer { get; set; }
         public bool? Featured { get; set; }
         public int? AwardingId { get; set; }
-        public string? AwardingMethod { get; set; } // New Field
         public int? StatusId { get; set; }
-        public string? StatusName { get; set; } // New Field
         public int? Vatid { get; set; }
-        public string? VatType { get; set; } // New Field
         public decimal? Vatpercent { get; set; }
-        public string? CourtCaseNumber { get; set; }
+        public string CourtCaseNumber { get; set; }
         public int? RegistrationDeadline { get; set; }
-        public string? Description { get; set; }
+        public string Description { get; set; }
         public decimal? MapLatitude { get; set; }
         public decimal? MapLongitude { get; set; }
         public decimal? AdminFees { get; set; }
         public decimal? AuctionFees { get; set; }
         public decimal? BuyerCommission { get; set; }
-        public int? WinnerId { get; set; }
-        public string? WinnerName { get; set; } 
-        public decimal? AwardedPrice { get; set; } // From Winner
-        public string? SalesNotes { get; set; }
-        public string Details { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-
+        public string SalesNotes { get; set; }
         public string AssetNumber { get; set; }
-        public List<AssetGalleryDtos> Galleries { get; set; } = new();
-        public List<AssetDocumentFormDto> Documents { get; set; } = new(); 
+        public string Details { get; set; }
+
+        // Collections for files and details
+        public List<AssetGalleryItemDto> Galleries { get; set; } = new List<AssetGalleryItemDto>();
+        public List<AssetDocumentItemDto> Documents { get; set; } = new List<AssetDocumentItemDto>();
+        public List<AssetDetailItemDto> AssetDetails { get; set; } = new List<AssetDetailItemDto>();
     }
 
-    public class AssetGalleryDtos
+    public class AssetGalleryItemDto
     {
-        public string? MediaType { get; set; }
-        public string? FilePath { get; set; }
-        public string FileUrl { get; set; } 
+        public IFormFile File { get; set; }
+        public string MediaType { get; set; }
         public int? SortOrder { get; set; }
     }
-        
 
-    public class AssetDocumentFormDto
+    public class AssetDocumentItemDto
     {
-        public int DocumentId { get; set; }
-        public string? DocumentType { get; set; }
-        public string? FilePath { get; set; }
+        public IFormFile File { get; set; }
+        public string DocumentType { get; set; }
     }
 
+    public class AssetDetailItemDto
+    {
+        public string Type { get; set; }
+        public string Value { get; set; }
+    }
 }

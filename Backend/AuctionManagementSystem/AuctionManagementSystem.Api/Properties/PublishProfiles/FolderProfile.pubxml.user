@@ -5,8 +5,8 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Api\bin\Release\net9.0\publish\</_PublishTargetUrl>
-    <History>True|2025-04-28T09:14:58.5425656Z||;True|2025-04-25T18:27:29.3299472+05:30||;</History>
+    <_PublishTargetUrl>C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Api\bin\Release\net9.0\publish\</_PublishTargetUrl>
+    <History>True|2025-04-30T11:55:51.3724705Z||;True|2025-04-28T14:44:58.5425656+05:30||;True|2025-04-25T18:27:29.3299472+05:30||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

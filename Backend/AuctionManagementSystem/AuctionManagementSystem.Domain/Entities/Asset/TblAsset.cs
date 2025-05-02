@@ -69,6 +69,8 @@ public partial class TblAsset
 
     public string AssetNumber { get; set; }
 
+    public string Details { get; set; }
+
     public virtual TblWinnerAwardingOption Awarding { get; set; }
 
     public virtual TblAssetCategory Category { get; set; }
