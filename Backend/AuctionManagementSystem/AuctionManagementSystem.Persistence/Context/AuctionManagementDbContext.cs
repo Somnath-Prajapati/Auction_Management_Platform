@@ -15,14 +15,11 @@ namespace AuctionManagementSystem.Persistence.Context;
 
 public partial class AuctionManagementDbContext : DbContext
 {
-    public AuctionManagementDbContext()
-    {
-        
-    }
     public AuctionManagementDbContext(DbContextOptions<AuctionManagementDbContext> options)
-         : base(options)
+        : base(options)
     {
     }
+
     public virtual DbSet<TblAsset> TblAssets { get; set; }
 
     public virtual DbSet<TblAssetCategory> TblAssetCategories { get; set; }

@@ -27,7 +27,7 @@ namespace AuctionManagementSystem.Api
             //{
             //    options.AddPolicy("AllowAllOrigin", policy =>
             //    {
-            //        policy.WithOrigins("http://localhost:4200") // Angular dev server
+            //        policy.WithOrigins("http://localhost:56061") // Angular dev server
             //              .AllowAnyHeader()
             //              .AllowAnyMethod();
             //    });
