@@ -26,7 +26,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.Upda
         public async Task Handle(UpdateAssetCommand request, CancellationToken cancellationToken)
         {
 
-            var Asset = await _assetsRepository.GetByIdAsync(request.id);
+            var Asset = await _assetsRepository.GetIdDeleteAsync(request.id);
             Console.WriteLine(Asset);
 
             if (Asset == null)
