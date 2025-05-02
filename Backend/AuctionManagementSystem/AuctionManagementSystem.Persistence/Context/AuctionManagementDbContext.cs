@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Persistence.Context;
 
+
 public partial class AuctionManagementDbContext : DbContext
 {
     public AuctionManagementDbContext(DbContextOptions<AuctionManagementDbContext> options)
@@ -435,6 +436,9 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.PhoneCode)
                 .IsRequired()
                 .HasMaxLength(10);
+            entity.Property(e => e.SeriesStart)
+                .HasMaxLength(50)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<TblDirectSaleSetting>(entity =>
