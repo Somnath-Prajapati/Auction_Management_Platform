@@ -169,9 +169,15 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             return asset;
         }
 
-        public async Task<TblAsset> AddAsset(TblAsset asset)
+        public async Task<TblAsset> AddAsset(TblAsset asset,TblAssetGallery gallery)
         {
-            _context.TblAssets.Add(asset);
+            //_context.TblAssets.OrderByDescending(c=>c.AssetId).Select(c => c);
+
+            
+
+            gallery.AssetId = asset.AssetId;
+            asset.TblAssetGalleries.Add(gallery);
+           _context.TblAssets.Add(asset);
             await _context.SaveChangesAsync();
 
             return await _context.TblAssets
@@ -186,6 +192,24 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .FirstOrDefaultAsync(a => a.AssetId == asset.AssetId);  
         }
 
+
+
+        public async Task<int> AddAssetForGallery(TblAsset asset)
+        {
+            //_context.TblAssets.OrderByDescending(c=>c.AssetId).Select(c => c);
+
+            //if (asset.WinnerId != null)
+            //{
+            //    var winnerExists = await _context.tblAssetWinners.AnyAsync(w => w.Id == dto.WinnerId);
+            //    if (!winnerExists)
+            //        throw new ArgumentException("Invalid WinnerId. No matching record found in tblAssetWinners.");
+            //}
+
+            _context.TblAssets.Add(asset);
+            await _context.SaveChangesAsync();
+
+            return asset.AssetId;
+        }
         public async Task UpdateAsync(TblAsset asset)
         {
             var a = _context.TblAssets.Update(asset);
@@ -252,28 +276,9 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                  .FirstOrDefaultAsync(a => a.AssetId == id);
         }
 
-
-
-        public async Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents)
+        public Task<TblAsset> AddAsset(TblAsset asset)
         {
-            await _context.TblAssets.AddAsync(asset);
-            await _context.SaveChangesAsync();
-
-            foreach (var gallery in galleries)
-            {
-                gallery.AssetId = asset.AssetId;
-                await _context.TblAssetGalleries.AddAsync(gallery);
-            }
-
-            foreach (var doc in documents)
-            {
-                doc.AssetId = asset.AssetId;
-                await _context.TblAssetDocuments.AddAsync(doc);
-            }
-
-            await _context.SaveChangesAsync();
-            return asset.AssetId;
+            throw new NotImplementedException();
         }
-
     }
 }

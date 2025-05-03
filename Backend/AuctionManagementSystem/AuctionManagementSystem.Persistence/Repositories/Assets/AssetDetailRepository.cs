@@ -37,5 +37,12 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .Include(d=> d.Asset)             
                 .ToListAsync();
         }
+
+        public async Task<int> AddAsync(TblAssetDetail assetDetail)
+        {
+            _context.TblAssetDetails.Add(assetDetail);
+            await _context.SaveChangesAsync();
+            return assetDetail.DetailId;  
+        }
     }
 }

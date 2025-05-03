@@ -16,6 +16,8 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
 
         Task<TblAsset> GetIdDeleteAsync(int id);
         Task<TblAsset> AddAsset(TblAsset asset);
+
+        Task<int> AddAssetForGallery(TblAsset asset);
         Task DeleteAsync(TblAsset asset);
         Task UpdateAsync(TblAsset asset);
         Task<bool> AssetsIsExist(int id);
@@ -23,7 +25,7 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
 
 
 
-        Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents);
+        //Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents);
 
     }
 }
