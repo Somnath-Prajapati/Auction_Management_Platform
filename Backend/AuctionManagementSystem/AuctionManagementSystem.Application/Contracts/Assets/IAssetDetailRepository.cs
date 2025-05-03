@@ -14,6 +14,9 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task<TblAssetDetail> GetDetailsByIdAsync(int id);
 
         Task<IEnumerable<TblAssetDetail>> GetDetailsAsync();
+
+
+        Task<int> AddAsync(TblAssetDetail assetDetail);  //after the changes i have added while adding whole form at once
     }
 
 }
