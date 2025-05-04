@@ -21,13 +21,15 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
 
         public async Task<bool> DeleteUserAsync(TblUser user)
         {
-            _context.TblUsers.Remove(user);
+            _context.TblUsers.Update(user);
             return await _context.SaveChangesAsync() > 0;
         }
 
         public async Task<IEnumerable<TblUser>> GetAllUsersAsync()
         {
             return await _context.TblUsers
+                .Where(u => !u.IsDeleted ?? false)
+                .OrderByDescending(u => u.UpdatedDate ?? u.CreatedDate)
                 .Include(u => u.Status)
                 .Include(u => u.Country)
                 .ToListAsync();
