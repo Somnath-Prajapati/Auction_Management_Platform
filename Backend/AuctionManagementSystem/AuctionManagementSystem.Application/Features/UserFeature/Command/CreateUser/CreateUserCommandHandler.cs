@@ -22,10 +22,11 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var existingUser = await _userRepository.GetByEmailOrMobileAsync(request.UserDto.Email, request.UserDto.MobileNumber);
-            if (existingUser != null)
+            var existingPersonalIdUser = await _userRepository.GetByPersonalIdNumberAsync(request.UserDto.PersonalIdNumber);
+
+            if (existingUser != null || existingPersonalIdUser != null)
             {
-                // Throw a BadRequestException if user already exists
-                throw new BadRequestException("A user with the same email or mobile number already exists.");
+                throw new BadRequestException("A user with the same email, mobile number, or Goverment ID number already exists.");
             }
 
             var user = _mapper.Map<TblUser>(request.UserDto);

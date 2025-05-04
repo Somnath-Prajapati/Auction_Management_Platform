@@ -24,5 +24,7 @@ namespace AuctionManagementSystem.Application.Dtos.UserDtos
         public int CountryId { get; set; }
         public IFormFile? ProfileImage { get; set; }
         public IFormFile? PersonalIdImage { get; set; }
+        public decimal? TotalLimit { get; set; }
+        public decimal? Deposit { get; set; }
     }
 }
