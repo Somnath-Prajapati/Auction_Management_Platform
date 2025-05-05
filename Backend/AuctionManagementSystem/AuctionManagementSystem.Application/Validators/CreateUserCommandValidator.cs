@@ -28,7 +28,7 @@ namespace AuctionManagementSystem.Application.Validators
 
             RuleFor(x => x.UserDto.MobileNumber)
                 .NotEmpty().WithMessage("Mobile number is required")
-                .MustAsync(ValidateMobileNumber).WithMessage("Invalid mobile number length for selected country");
+                .MustAsync(ValidateMobileNumber).WithMessage("Invalid mobile number for selected country");
 
             RuleFor(x => x.UserDto.PersonalIdNumber)
                 .NotEmpty().WithMessage("This field is required");
@@ -61,7 +61,19 @@ namespace AuctionManagementSystem.Application.Validators
             var country = await _countryRepository.GetCountryById(command.UserDto.CountryId);
             if (country == null) return false;
 
-            return mobile.Length >= country.MinLength && mobile.Length <= country.MaxLength;
+            if (mobile.Length < country.MinLength || mobile.Length > country.MaxLength)
+            {
+                return false;
+            }
+
+            var validStarts = country.SeriesStart?.Split(',') ?? Array.Empty<string>();
+            if (!validStarts.Any(start => mobile.StartsWith(start)))
+            {
+                return false;
+            }
+
+            return true;
         }
+
     }
 }

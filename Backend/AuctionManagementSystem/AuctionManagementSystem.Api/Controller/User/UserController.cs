@@ -54,7 +54,6 @@ namespace AuctionManagementSystem.Api.Controller.User
             var result = await _mediator.Send(new DeleteUserCommand(id));
             return result ? Ok() : NotFound();
         }
-        //status table and Role table
         [HttpGet("roles")]
         public async Task<IActionResult> GetAllRoles()
         {
