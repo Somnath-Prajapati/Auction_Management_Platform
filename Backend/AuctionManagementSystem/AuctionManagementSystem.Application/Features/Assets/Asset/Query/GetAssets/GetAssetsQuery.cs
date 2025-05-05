@@ -9,5 +9,5 @@ using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Assets.Query.GetAssets
 {
-    public class GetAssetsQuery : IRequest<IEnumerable<GetAssetsDto>>; 
+    public class GetAssetsQuery : IRequest<IEnumerable<GetAssetsFormDto>>; 
 }

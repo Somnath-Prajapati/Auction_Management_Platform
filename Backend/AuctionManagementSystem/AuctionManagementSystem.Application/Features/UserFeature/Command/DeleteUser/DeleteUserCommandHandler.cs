@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Application.Exceptions;
 using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.UserFeature.Command.DeleteUser
@@ -20,10 +19,14 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Delet
         public async Task<bool> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserById(request.Id);
-            if (user == null) throw new KeyNotFoundException("User not found");
+            if (user == null)
+                throw new NotFoundException("User not found");
+
+            user.IsDeleted = true;
+            user.DeletedBy = "Admin";
+            user.DeletedDate = DateTime.UtcNow;
 
             return await _userRepository.DeleteUserAsync(user);
         }
     }
-
 }

@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Application.Profiles;
+using AuctionManagementSystem.Api.Middleware;
 
 namespace AuctionManagementSystem.Api
 {
@@ -30,7 +31,7 @@ namespace AuctionManagementSystem.Api
             //{
             //    options.AddPolicy("AllowAllOrigin", policy =>
             //    {
-            //        policy.WithOrigins("http://localhost:4200") // Angular dev server
+            //        policy.WithOrigins("http://localhost:56061") // Angular dev server
             //              .AllowAnyHeader()
             //              .AllowAnyMethod();
             //    });
@@ -46,6 +47,7 @@ namespace AuctionManagementSystem.Api
                 });
             //}
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
