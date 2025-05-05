@@ -145,7 +145,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
              AuctionFees = a.AuctionFees,
              BuyerCommission = a.BuyerCommission,
              WinnerId = a.WinnerId,
-             WinnerName = a.Winner != null ? a.Winner.User.Name : null,
+             WinnerName = a.Winner != null && a.Winner.User != null ? a.Winner.User.Name : null,
              AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null,
              SalesNotes = a.SalesNotes,
              AssetNumber = a.AssetNumber,
@@ -196,14 +196,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<int> AddAssetForGallery(TblAsset asset)
         {
-            //_context.TblAssets.OrderByDescending(c=>c.AssetId).Select(c => c);
-
-            //if (asset.WinnerId != null)
-            //{
-            //    var winnerExists = await _context.tblAssetWinners.AnyAsync(w => w.Id == dto.WinnerId);
-            //    if (!winnerExists)
-            //        throw new ArgumentException("Invalid WinnerId. No matching record found in tblAssetWinners.");
-            //}
 
             _context.TblAssets.Add(asset);
             await _context.SaveChangesAsync();
