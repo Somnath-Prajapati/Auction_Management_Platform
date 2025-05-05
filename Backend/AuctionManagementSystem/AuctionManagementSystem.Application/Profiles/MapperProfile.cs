@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Assets;
@@ -81,6 +82,15 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<CreateRequestDto, AddRequestCommand>();
             CreateMap<UpdateRequestDto, UdpRequestCommand>();
             CreateMap<TblRequest, RequestDto>();
+            //CreateMap<CreateRequestDto, TblRequest>().ReverseMap();
+
+
+
+            CreateMap<CreateRequestDto, AddRequestCommand>().ReverseMap();
+            CreateMap<TblRequest, CreateRequestDto>().ReverseMap();
+
+
+
         }
     }
 }
