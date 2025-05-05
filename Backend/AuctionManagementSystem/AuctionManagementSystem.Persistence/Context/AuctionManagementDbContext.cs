@@ -14,6 +14,7 @@ namespace AuctionManagementSystem.Persistence.Context;
 // AuctionManagementDbContext
 
 
+
 public partial class AuctionManagementDbContext : DbContext
 {
     public AuctionManagementDbContext(DbContextOptions<AuctionManagementDbContext> options)

@@ -1,66 +1,193 @@
-<div class="container-fluid p-4">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="h2 text-dark">User Management</h2>
-    <button 
-      class="btn btn-primary btn-lg shadow-sm"
-      (click)="openAddUserModal()">
-      <i class="fas fa-plus me-2"></i>Add New User
-    </button>
-  </div>
+<form (ngSubmit)="onSubmit()" #userForm="ngForm" class="container mt-4 p-4 bg-light rounded shadow">
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Name<span class="text-danger">*</span></label>
+        <input type="text" class="form-control form-control-lg" [(ngModel)]="user.name" name="name" required #name="ngModel">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+          Name is required.
+        </div>
+      </div>
+    </div>
 
-  <div class="card shadow-sm">
-    <div class="table-responsive">
-      <table class="table table-hover mb-0">
-        <thead class="table-light">
-          <tr>
-            <th class="ps-4 py-3 text-uppercase text-secondary text-xs font-weight-bolder">UID</th>
-            <th class="py-3 text-uppercase text-secondary text-xs font-weight-bolder">Name</th>
-            <th class="py-3 text-uppercase text-secondary text-xs font-weight-bolder">Role</th>
-            <th class="py-3 text-uppercase text-secondary text-xs font-weight-bolder">Mobile</th>
-            <th class="py-3 text-uppercase text-secondary text-xs font-weight-bolder">Email</th>
-            <th class="py-3 text-uppercase text-secondary text-xs font-weight-bolder">Company</th>
-            <th class="py-3 text-uppercase text-secondary text-xs font-weight-bolder">Status</th>
-            <th class="py-3 text-uppercase text-secondary text-xs font-weight-bolder">Gender</th>
-            <th class="pe-4 py-3 text-end text-uppercase text-secondary text-xs font-weight-bolder">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td class="ps-4 align-middle text-sm font-weight-bold text-dark">{{ user.uid }}</td>
-            <td class="align-middle text-sm text-secondary">{{ user.name }}</td>
-            <td class="align-middle text-sm text-secondary">{{ getRoleName(user.roleId) }}</td>
-            <td class="align-middle text-sm text-secondary">{{ user.mobileNumber }}</td>
-            <td class="align-middle text-sm text-secondary">{{ user.email }}</td>
-            <td class="align-middle text-sm text-secondary">{{ user.companyName }}</td>
-            <td class="align-middle text-sm">
-              <span [ngClass]="{
-                'badge bg-success': user.statusId === 1,
-                'badge bg-warning text-dark': user.statusId === 2,
-                'badge bg-danger': user.statusId === 3
-              }" class="badge">
-                {{ getStatusName(user.statusId) }}
-              </span>
-            </td>
-            <td class="align-middle text-sm text-secondary text-capitalize">{{ user.gender }}</td>
-            <td class="pe-4 align-middle text-end">
-              <button 
-                (click)="editUser(user)"
-                class="btn btn-link text-primary btn-sm me-2">
-                <i class="fas fa-edit me-1"></i>Edit
-              </button>
-              <button 
-                (click)="deleteUser(user.email)"
-                class="btn btn-link text-danger btn-sm">
-                <i class="fas fa-trash-alt me-1"></i>Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Email<span class="text-danger">*</span></label>
+        <input type="email" class="form-control form-control-lg" [(ngModel)]="user.email" name="email" required email #email="ngModel">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+          <div *ngIf="email.errors?.['required']">Email is required.</div>
+          <div *ngIf="email.errors?.['email']">Please enter a valid email.</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div *ngIf="users.length === 0" class="text-center py-5 bg-light rounded mt-4">
-    <p class="text-muted">No users found. Click "Add New User" to create one.</p>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Mobile Number<span class="text-danger">*</span></label>
+        <div class="input-group">
+          <select class="form-select form-select-lg" [(ngModel)]="user.countryId" name="countryId" required #countryId="ngModel">
+            <option [ngValue]="null" disabled>Select Phone Code</option>
+            <option *ngFor="let country of countries" [ngValue]="country.countryId">
+              {{ country.phoneCode }} ({{ country.countryName }})
+            </option>
+          </select>
+          <div *ngIf="countryId.invalid && (countryId.dirty || countryId.touched)" class="text-danger">
+            Select a valid Phone Code.
+          </div>
+          
+          <input type="text" class="form-control form-control-lg" [(ngModel)]="user.mobileNumber" name="mobileNumber" required #mobileNumber="ngModel">
+        </div>
+        <div *ngIf="mobileNumber.invalid && (mobileNumber.dirty || mobileNumber.touched)" class="text-danger">
+          Mobile number is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Country</label>
+        <input class="form-control form-control-lg" disabled="true" type="text" name="country" [value]="getCountryName(user.countryId)">
+      </div>
+    </div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Company Name</label>
+        <input type="text" class="form-control form-control-lg" [(ngModel)]="user.companyName" name="companyName">
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Company Number</label>
+        <input type="text" class="form-control form-control-lg" [(ngModel)]="user.companyNumber" name="companyNumber">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Status<span class="text-danger">*</span></label>
+        <select class="form-select form-select-lg" [(ngModel)]="user.statusId" name="statusId" required #statusId="ngModel">
+          <option *ngFor="let status of statuses" [value]="status.statusId">{{ status.statusName }}</option>
+        </select>
+        <div *ngIf="statusId.invalid && (statusId.dirty || statusId.touched)" class="text-danger">
+          Status is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Role<span class="text-danger">*</span></label>
+        <select class="form-select form-select-lg" [(ngModel)]="user.roleId" name="roleId" required #roleId="ngModel">
+          <option *ngFor="let role of roles" [value]="role.roleId">{{ role.roleName }}</option>
+        </select>
+        <div *ngIf="roleId.invalid && (roleId.dirty || roleId.touched)" class="text-danger">
+          Role is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Gender<span class="text-danger">*</span></label>
+        <select class="form-select form-select-lg" [(ngModel)]="user.gender" name="gender" required #gender="ngModel">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <div *ngIf="gender.invalid && (gender.dirty || gender.touched)" class="text-danger">
+          Gender is required.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Personal ID Number<span class="text-danger">*</span></label>
+        <input type="text" class="form-control form-control-lg" [(ngModel)]="user.personalIdNumber" name="personalIdNumber" required #personalIdNumber="ngModel">
+        <div *ngIf="personalIdNumber.invalid && (personalIdNumber.dirty || personalIdNumber.touched)" class="text-danger">
+          Personal ID Number is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold" for="personalIdExpiryDate">Personal ID Expiry Date<span class="text-danger">*</span></label>
+        <input
+          type="date"
+          id="personalIdExpiryDate"
+          name="personalIdExpiryDate"
+          [(ngModel)]="user.personalIdExpiryDate"
+          #personalIdExpiryDate="ngModel"
+          required
+          futureDate
+        
+          [ngClass]="{'is-invalid': personalIdExpiryDate.invalid && (personalIdExpiryDate.dirty || personalIdExpiryDate.touched)}"
+          class="form-control form-control-lg"
+        />
+        <div *ngIf="personalIdExpiryDate.errors?.['dateInvalid']" class="invalid-feedback">
+          Personal ID Expiry Date must be a future date.
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Chat Enabled</label><br>
+        <div class="btn-group" role="group">
+          <input type="radio" class="btn-check" id="chatYes" [(ngModel)]="user.chatEnabled" name="chatEnabled" [value]="true" autocomplete="off">
+          <label class="btn btn-outline-primary" for="chatYes">Yes</label>
+          
+          <input type="radio" class="btn-check" id="chatNo" [(ngModel)]="user.chatEnabled" name="chatEnabled" [value]="false" autocomplete="off">
+          <label class="btn btn-outline-primary" for="chatNo">No</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Profile Image<span class="text-danger">*</span></label>
+        <input type="file" class="form-control form-control-lg" (change)="onFileChange($event, 'profileImage')" required>
+        <div *ngIf="submitted && !user.profileImage" class="text-danger">
+          Profile Image is required.
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Personal ID Image<span class="text-danger">*</span></label>
+        <input type="file" class="form-control form-control-lg" (change)="onFileChange($event, 'personalIdImage')" required>
+        <div *ngIf="submitted && !user.personalIdImage" class="text-danger">
+          Personal ID Image is required.
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label class="form-label fw-bold">Personal ID Image<span class="text-danger">*</span></label>
+        <input type="file" class="form-control form-control-lg" (change)="onFileChange($event, 'personalIdImage')" required >
+      </div>
+    </div> -->
+  </div> 
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+    <button type="submit" class="btn btn-primary btn-lg px-4" >Submit</button>
+  </div>
+</form>

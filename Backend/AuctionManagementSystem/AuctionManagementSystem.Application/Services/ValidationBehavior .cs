@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Application.Exceptions;
 using FluentValidation;
 using MediatR;
 
@@ -36,7 +37,10 @@ namespace AuctionManagementSystem.Application.Services
                     .ToList();
 
                 if (failures.Any())
-                    throw new ValidationException(failures);
+                {
+                    var errorMessages = failures.Select(f => f.ErrorMessage).ToList();
+                    throw new BadRequestException("Validation failed", errorMessages);
+                }
             }
 
             return await next();
