@@ -8,10 +8,10 @@ using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
-
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Persistence.Context;
+// AuctionManagementDbContext
 
 
 public partial class AuctionManagementDbContext : DbContext
@@ -99,6 +99,8 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
 
+    public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
@@ -125,6 +127,8 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.MapLatitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.MapLongitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.MinIncrement).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.RequestForInquiry).HasDefaultValue(true);
+            entity.Property(e => e.RequestForViewing).HasDefaultValue(true);
             entity.Property(e => e.ReserveAmount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.StartingPrice).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.Title)
@@ -796,6 +800,10 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.ChatEnabled).HasDefaultValue(true);
             entity.Property(e => e.CompanyName).HasMaxLength(255);
             entity.Property(e => e.CompanyNumber).HasMaxLength(50);
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
             entity.Property(e => e.Deposit)
                 .HasDefaultValue(0.00m)
                 .HasColumnType("decimal(10, 2)");
@@ -805,6 +813,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.Gender)
                 .IsRequired()
                 .HasMaxLength(20);
+            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.LastOnline).HasColumnType("datetime");
             entity.Property(e => e.MobileNumber)
                 .HasMaxLength(15)
@@ -825,6 +834,8 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasDefaultValue(0.00m)
                 .HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Uid).HasColumnName("UID");
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.Country).WithMany(p => p.TblUsers)
                 .HasForeignKey(d => d.CountryId)
@@ -911,6 +922,18 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasForeignKey(d => d.WinnerId)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("FK_tblWinnerDocuments_WinnerId");
+        });
+
+        modelBuilder.Entity<Tbltempdatum>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
+
+            entity.ToTable("tbltempdata");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Name)
+                .HasMaxLength(1)
+                .HasColumnName("name");
         });
 
         OnModelCreatingPartial(modelBuilder);

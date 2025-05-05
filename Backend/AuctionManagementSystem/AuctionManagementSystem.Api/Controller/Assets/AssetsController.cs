@@ -6,6 +6,7 @@ using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAs
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.SearchAsset;
+using AuctionManagementSystem.Application.Features.Assets.AssetAuction.Command.AddAssetAuction;
 using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Command;
 using AuctionManagementSystem.Application.Features.Assets.AssetDocuments.Command.AddDocument;
 using AuctionManagementSystem.Application.Features.Assets.AssetGallery.Command.AddAssetGallery;
@@ -82,18 +83,6 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         }
 
 
-
-        //[HttpPost]
-        //[Consumes("multipart/form-data")]
-        //public async Task<IActionResult> CreateAssetWithDocGal([FromForm] AssetCreateDto dto)
-        //{
-        //    var command = new CreateAssetWithFilesCommand(dto);
-        //    var assetId = await _mediator.Send(command);
-        //    return Ok(assetId);
-        //}
-
-
-
         [HttpPost("CreateWithGallery")]
         public async Task<ActionResult<AssetWithGalleryResponseDto>> CreateAssetWithGallery
             ([FromForm] CreateAssetsDto dto)
@@ -102,6 +91,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             {
 
                 // 1. Validate and parse details
+                #region
                 List<AssetDetailDto> details;
                 try
                 {
@@ -112,9 +102,9 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                 {
                     return BadRequest("Invalid details format");
                 }
-
-                //var assetResult = await _mediator.Send(new AddUnifiedAssetCommand(dto));
-                var assetResult = 25;
+                #endregion
+                var assetResult = await _mediator.Send(new AddUnifiedAssetCommand(dto));
+                //var assetResult = 25;
 
                 // 3. Add asset details
                 if (details != null && details.Any())
@@ -132,6 +122,13 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                     }
                 }
 
+
+                // 4 asset auction 
+
+                if (dto.AuctionIds != null && dto.AuctionIds.Any())
+                {
+                    await _mediator.Send(new AssignAssetToAuctionCommand(assetResult, dto.AuctionIds));
+                }
 
 
                 // 2. Then add gallery images if any
