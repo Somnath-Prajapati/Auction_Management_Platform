@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Assets;
+using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -19,32 +20,153 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             _context = context;
         }
 
-        public async Task<IEnumerable<TblAsset>> GetAllAsync()
+        //public async Task<IEnumerable<TblAsset>> GetAllAsync()
+        //{
+        //    return await _context.TblAssets
+        //        .Include(a => a.Category)
+        //        .Include(a => a.Status)
+        //        .Include(a => a.Seller)
+        //        .Include(a => a.Awarding)
+        //        .Include(a => a.Vat)
+        //        .Include(a => a.TblAssetGalleries)
+        //        .Include(a => a.TblAssetDocuments)
+        //        .Include(a => a.TblAssetDetails)
+        //        .ToListAsync();
+        //}
+
+
+        public async Task<IEnumerable<GetAssetsFormDto>> GetAllAsync()
         {
-            return await _context.TblAssets
+            var assets = await _context.TblAssets
+                .Where(a => a.IsActive)
                 .Include(a => a.Category)
                 .Include(a => a.Status)
-                .Include(a => a.Seller)
-                .Include(a => a.Awarding)
                 .Include(a => a.Vat)
+                .Include(a => a.Awarding)
+                .Include(a => a.Winner)
                 .Include(a => a.TblAssetGalleries)
                 .Include(a => a.TblAssetDocuments)
-                .Include(a => a.TblAssetDetails)
+                .Select(a => new GetAssetsFormDto
+                {
+                    AssetId = a.AssetId,
+                    Title = a.Title,
+                    CategoryId = a.CategoryId,
+                    CategoryName = a.Category != null ? a.Category.CategoryName : null,
+                    Deposit = a.Deposit,
+                    SellerId = a.SellerId,
+                    Commission = a.Commission,
+                    StartingPrice = a.StartingPrice,
+                    ReserveAmount = a.ReserveAmount,
+                    IncrementalTime = a.IncrementalTime,
+                    MinIncrement = a.MinIncrement,
+                    MakeOffer = a.MakeOffer,
+                    Featured = a.Featured,
+                    AwardingId = a.AwardingId,
+                    AwardingMethod = a.Awarding != null ? a.Awarding.AwardingMethod : null,
+                    StatusId = a.StatusId,
+                    StatusName = a.Status != null ? a.Status.StatusName : null,
+                    Vatid = a.Vatid,
+                    VatType = a.Vat != null ? a.Vat.Vattype : null,
+                    Vatpercent = a.Vatpercent,
+                    CourtCaseNumber = a.CourtCaseNumber,
+                    RegistrationDeadline = a.RegistrationDeadline,
+                    Description = a.Description,
+                    MapLatitude = a.MapLatitude,
+                    MapLongitude = a.MapLongitude,
+                    AdminFees = a.AdminFees,
+                    AuctionFees = a.AuctionFees,
+                    BuyerCommission = a.BuyerCommission,
+                    WinnerId = a.WinnerId,
+                    WinnerName = a.Winner != null ? a.Winner.User.Name : null,
+                    AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null,
+                    SalesNotes = a.SalesNotes,
+                    AssetNumber = a.AssetNumber,
+                    CreatedAt = a.CreatedAt,
+                    UpdatedAt = a.UpdatedAt,
+                    Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
+                    {
+                        MediaType = g.MediaType,
+                        FilePath = g.FilePath,
+                        SortOrder = g.SortOrder
+                    }).ToList(),
+                    Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
+                    {
+                        DocumentId = d.DocumentId,
+                        DocumentType = d.DocumentType,
+                        FilePath = d.FilePath
+                    }).ToList()
+                })
                 .ToListAsync();
+
+            return assets;
         }
 
-        public async Task<TblAsset?> GetByIdAsync(int id)
+        public async Task<GetAssetsFormDto> GetByIdAsync(int id)
         {
-            return await _context.TblAssets
-                .Include(a => a.Category)
-                .Include(a => a.Status)
-                .Include(a => a.Seller)
-                .Include(a => a.Awarding)
-                .Include(a => a.Vat)
-                .Include(a => a.TblAssetGalleries)
-                .Include(a => a.TblAssetDocuments)
-                .Include(a => a.TblAssetDetails)
-                .FirstOrDefaultAsync(a => a.AssetId == id);
+        var asset = await _context.TblAssets
+          .Where(a => a.IsActive)
+         .Include(a => a.Category)
+         .Include(a => a.Status)
+         .Include(a => a.Seller)
+         .Include(a => a.Awarding)
+         .Include(a => a.Vat)
+         .Include(a => a.TblAssetGalleries)
+         .Include(a => a.TblAssetDocuments)
+         .Include(a => a.TblAssetDetails)
+         .Where(a => a.AssetId == id)
+         .Select(a => new GetAssetsFormDto
+         {
+             AssetId = a.AssetId,
+             Title = a.Title,
+             CategoryId = a.CategoryId,
+             CategoryName = a.Category != null ? a.Category.CategoryName : null,
+             Deposit = a.Deposit,
+             SellerId = a.SellerId,
+             Commission = a.Commission,
+             StartingPrice = a.StartingPrice,
+             ReserveAmount = a.ReserveAmount,
+             IncrementalTime = a.IncrementalTime,
+             MinIncrement = a.MinIncrement,
+             MakeOffer = a.MakeOffer,
+             Featured = a.Featured,
+             AwardingId = a.AwardingId,
+             AwardingMethod = a.Awarding != null ? a.Awarding.AwardingMethod : null,
+             StatusId = a.StatusId,
+             StatusName = a.Status != null ? a.Status.StatusName : null,
+             Vatid = a.Vatid,
+             VatType = a.Vat != null ? a.Vat.Vattype : null,
+             Vatpercent = a.Vatpercent,
+             CourtCaseNumber = a.CourtCaseNumber,
+             RegistrationDeadline = a.RegistrationDeadline,
+             Description = a.Description,
+             MapLatitude = a.MapLatitude,
+             MapLongitude = a.MapLongitude,
+             AdminFees = a.AdminFees,
+             AuctionFees = a.AuctionFees,
+             BuyerCommission = a.BuyerCommission,
+             WinnerId = a.WinnerId,
+             WinnerName = a.Winner != null ? a.Winner.User.Name : null,
+             AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null,
+             SalesNotes = a.SalesNotes,
+             AssetNumber = a.AssetNumber,
+             CreatedAt = a.CreatedAt,
+             UpdatedAt = a.UpdatedAt,
+             Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
+             {
+                 MediaType = g.MediaType,
+                 FilePath = g.FilePath,
+                 SortOrder = g.SortOrder
+             }).ToList(),
+             Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
+             {
+                 DocumentId = d.DocumentId,
+                 DocumentType = d.DocumentType,
+                 FilePath = d.FilePath
+             }).ToList()
+         })
+         .FirstOrDefaultAsync();
+
+            return asset;
         }
 
         public async Task<TblAsset> AddAsset(TblAsset asset)
@@ -73,7 +195,13 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task DeleteAsync(TblAsset asset)
         {
-            _context.TblAssets.Remove(asset);
+            //_context.TblAssets.Remove(asset);
+            //    await _context.SaveChangesAsync();
+
+            asset.IsActive = false;
+
+            _context.TblAssets.Update(asset);
+
             await _context.SaveChangesAsync();
         }
 
@@ -90,6 +218,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
             }
             var Asset =  await _context.TblAssets
+                 .Where(a => a.IsActive)
                 .Include(a => a.Category)
                 .Include(a => a.Status)
                 .Include(a => a.Seller)
@@ -109,6 +238,42 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 p.Description.Contains(term, StringComparison.OrdinalIgnoreCase)));
         }
 
-       
+        public async Task<TblAsset> GetIdDeleteAsync(int id)
+        {
+            return await _context.TblAssets
+                 .Include(a => a.Category)
+                 .Include(a => a.Status)
+                 .Include(a => a.Seller)
+                 .Include(a => a.Awarding)
+                 .Include(a => a.Vat)
+                 .Include(a => a.TblAssetGalleries)
+                 .Include(a => a.TblAssetDocuments)
+                 .Include(a => a.TblAssetDetails)
+                 .FirstOrDefaultAsync(a => a.AssetId == id);
+        }
+
+
+
+        public async Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents)
+        {
+            await _context.TblAssets.AddAsync(asset);
+            await _context.SaveChangesAsync();
+
+            foreach (var gallery in galleries)
+            {
+                gallery.AssetId = asset.AssetId;
+                await _context.TblAssetGalleries.AddAsync(gallery);
+            }
+
+            foreach (var doc in documents)
+            {
+                doc.AssetId = asset.AssetId;
+                await _context.TblAssetDocuments.AddAsync(doc);
+            }
+
+            await _context.SaveChangesAsync();
+            return asset.AssetId;
+        }
+
     }
 }

@@ -32,18 +32,6 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddA
             return _mapper.Map<CreateAssetsDto>(createdAsset);
         }
 
-
-
-
-        //public async Task<CreateAssetDto> Handle(AddAssetCommand request, CancellationToken cancellationToken)
-        //{
-        //var assetEntity = _mapper.Map<TblAsset>(request.CreateAssetDto);
-        //assetEntity.CreatedAt = DateTime.UtcNow;
-
-        //    var createdAsset = await _assetsRepository.AddAsset(assetEntity);
-
-        //    return _mapper.Map<GetAssetsDto>(createdAsset);
-        //}
     }
 
 }

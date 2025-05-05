@@ -26,7 +26,9 @@ namespace AuctionManagementSystem.Persistence.Repositories.Requests
 
         public async Task<IEnumerable<TblRequest>> GetAllRequestQuery()
         {
-            return await _context.TblRequests.ToListAsync();
+            return await _context.TblRequests
+                
+                .ToListAsync();
         }
 
         public async Task<TblRequest> GetRequestByIdQuery(int requestId)

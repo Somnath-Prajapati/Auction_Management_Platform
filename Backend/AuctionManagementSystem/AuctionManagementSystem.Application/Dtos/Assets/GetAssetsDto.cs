@@ -13,7 +13,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public string Title { get; set; } = null!;
 
         public int? CategoryId { get; set; }
-
+            
         public decimal? Deposit { get; set; }
 
         public int SellerId { get; set; }

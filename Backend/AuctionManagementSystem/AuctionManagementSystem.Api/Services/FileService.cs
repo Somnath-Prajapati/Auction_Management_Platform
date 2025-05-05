@@ -9,7 +9,6 @@ namespace AuctionManagementSystem.Api.Services
             if (file == null || file.Length == 0)
                 throw new ArgumentException("Invalid file");
 
-            // Get current directory (API root) and combine with folder name
             var rootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", folderName);
 
             if (!Directory.Exists(rootPath))
@@ -23,9 +22,22 @@ namespace AuctionManagementSystem.Api.Services
                 await file.CopyToAsync(stream);
             }
 
-            // Return relative path (e.g., for storing in DB)
             return Path.Combine(folderName, uniqueFileName).Replace("\\", "/");
         }
-    }
 
+        public Task DeleteFileAsync(string relativePath)
+        {
+            if (string.IsNullOrEmpty(relativePath))
+                return Task.CompletedTask;
+
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", relativePath.Replace("/", Path.DirectorySeparatorChar.ToString()));
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            return Task.CompletedTask;
+        }
+    }
 }

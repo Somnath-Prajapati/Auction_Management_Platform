@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using AuctionManagementSystem.Application.Dtos.Assets;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Command;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
@@ -25,12 +26,13 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         }
 
         [HttpGet("GetAll")]
-        public async Task<ActionResult<IEnumerable<GetAssetsDto>>> GetAllAssets()
+        public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAllAssets()
         {
             var assets = await _mediator.Send(new GetAssetsQuery());
             return Ok(assets);
         }
 
+        [Route("add")]
         [HttpPost]
         public async Task<ActionResult<GetAssetsDto>> CreateAsset(CreateAssetsDto createAsset)
         {
@@ -38,14 +40,15 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             return Ok(result);
         }
 
-
+        //[Route("GetById")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<GetAssetsDto>>> GetAsset(int id)
+        public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAsset(int id)
         {
             var assets = await _mediator.Send(new GetAssetByIdQuery(id));
             return Ok(assets);
         }
 
+       
         [HttpPut("{id:int}")]
         public async Task<ActionResult<UpdateAssetDto>> UpdateAsset(int id, [FromBody] UpdateAssetDto assetsDto)
         {
@@ -63,13 +66,30 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             return Ok(assets);
         }
 
-
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<UpdateAssetDto>> DeleteAsset(int id)
         {
             await _mediator.Send(new DeleteAssetCommand(id));
             return Ok();
         }
+
+
+
+        [HttpPost("create-with-files")]
+        [DisableRequestSizeLimit]
+        public async Task<IActionResult> CreateAsset([FromForm] CreateAssetsDto dto, [FromForm] List<IFormFile> galleryFiles, [FromForm] List<IFormFile> documentFiles)
+        {
+            var command = new CreateAssetCommand
+            {
+                Dto = dto,
+                GalleryFiles = galleryFiles,
+                DocumentFiles = documentFiles
+            };
+
+            var assetId = await _mediator.Send(command);
+            return Ok(assetId);
+        }
+
 
     }
 }
