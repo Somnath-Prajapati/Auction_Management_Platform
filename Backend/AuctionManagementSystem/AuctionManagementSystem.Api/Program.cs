@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using AuctionManagementSystem.Application.Contracts;
+using AuctionManagementSystem.Api.Middleware;
 
 namespace AuctionManagementSystem.Api
 {
