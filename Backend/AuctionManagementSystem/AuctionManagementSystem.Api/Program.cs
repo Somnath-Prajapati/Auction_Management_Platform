@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using AuctionManagementSystem.Application.Contracts;
+using AuctionManagementSystem.Application.Profiles;
 
 namespace AuctionManagementSystem.Api
 {
@@ -22,6 +23,8 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();
+            
+
 
             //builder.Services.AddCors(options =>
             //{
