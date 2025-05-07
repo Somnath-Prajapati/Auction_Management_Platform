@@ -48,6 +48,20 @@ public class TransactionRepository : ITransactionRepository
             .FirstOrDefaultAsync(t => t.TransactionId == id);
     }
 
+
+    public async Task<TblTransaction> GetTransactionByIdAsync(int transactionId)
+    {
+        return await _context.TblTransactions
+            .Include(t => t.User)  // Ensure that related user data is included
+            .Include(t => t.PaymentMethod)
+            .Include(t => t.Status)
+            .Include(t => t.TransactionType)
+            .Include(t=>t.CardType)
+            .Where(t => t.TransactionId == transactionId)
+            .FirstOrDefaultAsync();
+    }
+
+
     public async Task<List<TblTransaction>> GetAllAsync()
     {
         return await _context.TblTransactions
@@ -58,8 +72,27 @@ public class TransactionRepository : ITransactionRepository
             .ToListAsync();
     }
 
+    public async Task<List<TblTransaction>> GetAllWithDetailsAsync(CancellationToken cancellationToken)
+    {
+        //return await _context.TblTransactions
+        //    .Include(t => t.PaymentMethod)
+        //    .Include(t => t.Status)
+        //    .Include(t => t.TransactionType)
+        //    .Include(t => t.CardType)
+        //    .ToListAsync(cancellationToken);
 
-   public async Task<TblTransaction> AddAsync(TblTransaction entity)
+        return await _context.TblTransactions
+        .Where(t => !t.IsDeleted)
+        .Include(t => t.User)
+        .Include(t => t.TransactionType)
+        .Include(t => t.PaymentMethod)
+        .Include(t => t.CardType)
+        .Include(t => t.Status)
+        .ToListAsync(cancellationToken);
+    }
+
+
+    public async Task<TblTransaction> AddAsync(TblTransaction entity)
    {
         //entity.TransactionNumber = Guid.NewGuid().ToString(); // Or use a custom format
         entity.TransactionNumber = await GetTransactionNumberFromDbAsync();

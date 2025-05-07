@@ -20,18 +20,40 @@ public class TransactionsController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet(Name ="GetAll Transactions")]
-    public async Task<ActionResult<List<TransactionDto>>> GetAll()
+    //[HttpGet(Name ="GetAll Transactions")]
+    //public async Task<ActionResult<List<TransactionDto>>> GetAll()
+    //{
+    //    var result = await _mediator.Send(new GetAllTransactionsQuery());
+    //    return Ok(result);
+    //}
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
     {
         var result = await _mediator.Send(new GetAllTransactionsQuery());
         return Ok(result);
     }
 
+
     [HttpGet("{id}",Name ="Get Transaction")]
-    public async Task<ActionResult<TransactionDto>> GetById(int id)
+    //public async Task<ActionResult<TransactionDto>> GetById(int id)
+    //{
+    //    var result = await _mediator.Send(new GetTransactionByIdQuery { TransactionId = id });
+    //    return Ok(result);
+    //}
+
+    //[HttpGet("{id}")]
+    public async Task<ActionResult<TransactionDto>> GetTransactionById(int id)
     {
-        var result = await _mediator.Send(new GetTransactionByIdQuery { TransactionId = id });
-        return Ok(result);
+        var query = new GetTransactionByIdQuery(id);
+        var transaction = await _mediator.Send(query);
+
+        if (transaction == null)
+        {
+            return NotFound(new { message = "Transaction not found" });
+        }
+
+        return Ok(transaction);
     }
 
     [HttpPost(Name ="Create Transaction")]
@@ -39,7 +61,7 @@ public class TransactionsController : ControllerBase
     {
         var command = new CreateTransactionCommand { Transaction = dto };
         var result = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetById), new { id = result.TransactionId }, result);
+        return CreatedAtAction(nameof(GetTransactionById), new { id = result.TransactionId }, result);
     }
 
     [HttpPut("{id}", Name ="Update Transaction")]
