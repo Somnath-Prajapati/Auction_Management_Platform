@@ -75,6 +75,11 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
                     u.PersonalIdNumber == personalIdNumber &&
                     u.UserId != excludeUserId);
         }
+        public async Task<TblUser?> GetUserByEmailAsync(string email)
+        {
+            return await _context.TblUsers.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
 
 
     }
