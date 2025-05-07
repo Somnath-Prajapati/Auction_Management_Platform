@@ -29,21 +29,28 @@ export interface Role {
     roleId: number;
     personalIdNumber: string;
     gender: string;
-    personalIdExpiryDate: string;
+    personalIdExpiryDate: string |Date;
     countryId: number;
     profileImage: File | null;
     personalIdImage: File | null;
   }
   
   export interface UserView {
-    userId:number; 
-    uid: number;
-    name: string;
-    email: string;
-    mobileNumber: string;
-    companyName: string;
-    roleId: number;
-    statusId: number;
-    gender: string;
+    userId: number
+    uid: number
+    name: string
+    email: string
+    mobileNumber: string
+    companyName: string
+    companyNumber: string
+    statusId: number
+    chatEnabled: boolean
+    roleId: number
+    personalIdNumber: string
+    gender: string
+    personalIdExpiryDate: string|Date
+    countryId: number
+    profileImageUrl: any
+    personalIdImageUrl: any
   }
   

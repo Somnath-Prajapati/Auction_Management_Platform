@@ -40,6 +40,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public string? WinnerName { get; set; } 
         public decimal? AwardedPrice { get; set; } // From Winner
         public string? SalesNotes { get; set; }
+        public string Details { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
@@ -55,7 +56,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public string FileUrl { get; set; } 
         public int? SortOrder { get; set; }
     }
-
+        
 
     public class AssetDocumentFormDto
     {

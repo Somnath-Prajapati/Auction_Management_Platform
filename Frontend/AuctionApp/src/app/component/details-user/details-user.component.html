@@ -1,0 +1,115 @@
+<div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10" *ngIf="user">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <div class="row">
+              <!-- User Details Column -->
+              <div class="col-md-8">
+                <div class="d-flex align-items-center mb-4">
+                  <h2 class="card-title mb-0 text-primary">{{ user.name }}</h2>
+                  <span class="badge ms-3" 
+                        [ngClass]="{
+                          'bg-success': user.statusId === 1,
+                          'bg-secondary': user.statusId !== 1
+                        }">
+                   {{getStatusName(user.statusId)}}
+                  </span>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="mb-3">
+                      <i class="bi bi-envelope-fill text-muted me-2"></i>
+                      <strong>Email:</strong> {{ user.email }}
+                    </p>
+                    <p class="mb-3">
+                      <i class="bi bi-telephone-fill text-muted me-2"></i>
+                      <strong>Mobile:</strong> {{ user.mobileNumber }}
+                    </p>
+                    <p class="mb-3">
+                      <i class="bi bi-envelope-fill text-muted me-2"></i>
+                      <strong>Company:</strong> {{ user.companyName }}
+                    </p>
+                    <p class="mb-3">
+                        <i class="bi bi-card-checklist text-muted me-2"></i>
+                        <strong>Company Number:</strong> {{ user.companyNumber }}
+                    </p>
+                    <p class="mb-3">
+                        <i class="bi bi-chat text-muted me-2"></i>
+                        <strong>Chat Enabled:</strong> {{ user.chatEnabled ? 'Enabled' : 'Disabled' }}
+
+                      </p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="mb-3">
+                      <i class="bi bi-gender-ambiguous text-muted me-2"></i>
+                      <strong>Gender:</strong> {{ user.gender || 'Not specified' }}
+                    </p>
+                    <p class="mb-3">
+                      <i class="bi bi-person-badge-fill text-muted me-2"></i>
+                      <strong>ID Number:</strong> {{ user.personalIdNumber || 'N/A' }}
+                    </p>
+                    <p class="mb-3">
+                      <i class="bi bi-calendar-check text-muted me-2"></i>
+                      <strong>ID Expiry:</strong> {{ user.personalIdExpiryDate | date: 'dd-MM-yyyy'}}
+                    </p>
+                    <p class="mb-3">
+                        <i class="bi bi-flag-fill text-muted me-2"></i>
+                        <strong>Country: </strong>{{ getCountryName(user.countryId) }}
+                      </p>
+
+                  </div>
+                </div>
+  
+                <div class="mt-4">
+                    <span class="badge me-2" 
+                    [ngClass]="{
+                      'bg-primary': user.roleId === 1,
+                      'bg-danger': user.roleId === 2,
+                      'bg-warning text-dark': user.roleId === 3
+                    }">
+                <i class="bi me-1" 
+                   [ngClass]="{
+                     'bi-person': user.roleId === 1,
+                     'bi-shield-lock': user.roleId === 2,
+                     'bi-truck': user.roleId === 3
+                   }"></i>
+                {{ getRoleName(user.roleId) }}
+              </span>
+                </div>
+              </div>
+  
+              <!-- Images Column -->
+              <div class="col-md-4">
+                <div class="d-flex flex-column align-items-center">
+                  <!-- Profile Image -->
+                  <div class="mb-4 text-center" *ngIf="user.profileImageUrl">
+                    <div class="position-relative">
+                      <img [src]="user.profileImageUrl" 
+                           alt="Profile Image" 
+                           class="img-thumbnail rounded-circle profile-img">
+                      <span class="position-absolute bottom-0 end-0 bg-primary rounded-circle p-2 border border-3 border-white">
+                        <i class="bi bi-person-fill text-white"></i>
+                      </span>
+                    </div>
+                    <p class="mt-2 text-muted small">Profile Picture</p>
+                  </div>
+  
+                  <!-- ID Image -->
+                  <div class="text-center" *ngIf="user.personalIdImageUrl">
+                    <div class="border p-2 rounded">
+                      <img [src]="user.personalIdImageUrl" 
+                           alt="Personal ID Image" 
+                           class="img-fluid id-image">
+                    </div>
+                    <p class="mt-2 text-muted small">ID Document</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

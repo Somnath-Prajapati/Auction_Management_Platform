@@ -131,6 +131,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[AuctionM_dbuser].[tbltempdata]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[AuctionM_dbuser].[tblTransactionAssets]",
          "ObjectType": 0
       },

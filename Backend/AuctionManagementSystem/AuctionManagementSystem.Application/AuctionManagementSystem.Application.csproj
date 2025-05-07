@@ -10,8 +10,6 @@
     <Folder Include="Contracts\Auction\" />
     <Folder Include="Contracts\Categories\" />
     <Folder Include="Contracts\Statuses\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>
