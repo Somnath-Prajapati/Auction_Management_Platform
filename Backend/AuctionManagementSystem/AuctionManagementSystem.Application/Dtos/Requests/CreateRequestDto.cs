@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AuctionManagementSystem.Application.Dtos.RequestsDtos
+namespace AuctionManagementSystem.Application.Dtos.Requests
 {
     public class CreateRequestDto
     {

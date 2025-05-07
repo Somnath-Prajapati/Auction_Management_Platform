@@ -28,6 +28,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
 
             // Mapping from CreateAuctionCommand to TblAuction
             var auction = _mapper.Map<TblAuction>(request);
+            auction.CreatedBy = request.UserId;
 
             // Add the auction to the database
             await _unitOfWork.AuctionRepository.AddAsync(auction);
