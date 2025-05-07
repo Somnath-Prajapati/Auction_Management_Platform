@@ -24,6 +24,8 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
 
         public async Task<int> Handle(CreateAuctionCommand request, CancellationToken cancellationToken)
         {
+
+
             // Mapping from CreateAuctionCommand to TblAuction
             var auction = _mapper.Map<TblAuction>(request);
 
