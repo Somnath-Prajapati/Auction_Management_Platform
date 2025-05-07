@@ -3,6 +3,8 @@ using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Application.Exceptions;  // Add this namespace for custom exceptions
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Http;
+using AuctionManagementSystem.Application.Contracts.Auth;
 
 namespace AuctionManagementSystem.Application.Features.UserFeature.Command.CreateUser
 {
@@ -11,12 +13,14 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
         private readonly IUserRepository _userRepository;
         private readonly IFileService _fileService;
         private readonly IMapper _mapper;
+        private readonly ILoggedInUserService _loggedInUserService;
 
-        public CreateUserCommandHandler(IUserRepository userRepository, IFileService fileService, IMapper mapper)
+        public CreateUserCommandHandler(IUserRepository userRepository, IFileService fileService, IMapper mapper, ILoggedInUserService loggedInUserService)
         {
             _userRepository = userRepository;
             _fileService = fileService;
             _mapper = mapper;
+            _loggedInUserService = loggedInUserService;
         }
 
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
@@ -42,20 +46,18 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
                 user.PersonalIdImage = await _fileService.SaveFileAsync(request.UserDto.PersonalIdImage, "PersonalIdImages");
             }
 
+            user.CreatedBy = request.userid;
             user.RegistrationDate = DateTime.UtcNow;
             user.LastOnline = DateTime.UtcNow;
-            user.CreatedBy = "Admin";
             user.CreatedDate = DateTime.UtcNow;
             user.IsDeleted = false;
 
-            // Wrap the user addition in a try-catch to throw a more specific exception for database issues
             try
             {
                 return await _userRepository.AddUserAsync(user);
             }
             catch (Exception ex)
             {
-                // Log the exception and throw a more specific exception, for example a DatabaseException
                 throw new DatabaseException("An error occurred while adding the user to the database.");
             }
         }

@@ -10,6 +10,7 @@ namespace AuctionManagementSystem.Application.Contracts.User
     public interface IRoleRepository
     {
         Task<IEnumerable<TblRole>> GetAllAsync();
+        Task<TblRole> GetRoleByIdAsync(int roleId);
     }
 
 }

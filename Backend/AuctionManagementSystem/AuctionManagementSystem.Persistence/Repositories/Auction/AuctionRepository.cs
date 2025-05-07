@@ -25,12 +25,15 @@ namespace AuctionManagementSystem.Persistence.Repositories
             return await _context.TblAuctions
                .Include(a => a.Category)
                .Include(a => a.Status)
+                .Where(a => !a.IsDeleted)
                .ToListAsync();
         }
 
         public async Task<TblAuction> GetByIdAsync(int id)
-        {
-            return await _context.TblAuctions.FindAsync(id);
+        {   
+            return await _context.TblAuctions
+                .Where(a => a.AuctionId == id && !a.IsDeleted)
+                .FirstOrDefaultAsync();
         }
 
         public async Task AddAsync(TblAuction auction)
@@ -45,7 +48,9 @@ namespace AuctionManagementSystem.Persistence.Repositories
 
         public void Delete(TblAuction auction)
         {
-            _context.TblAuctions.Remove(auction);
+            auction.IsDeleted = true;
+            _context.TblAuctions.Update(auction);
         }
+
     }
 }
