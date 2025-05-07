@@ -24,6 +24,8 @@ public partial class TblAssetCategory
     public DateTime RegistrationDeadline { get; set; }
 
     public string? Icon { get; set; }
+    public string? DocumentPath { get; set; } // ✅ Added field for uploaded document
+
 
     public decimal? Vatpercentage { get; set; }
 

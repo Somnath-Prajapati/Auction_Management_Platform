@@ -18,6 +18,15 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         {
             _context = context;
         }
+        public async Task<TblAssetCategory?> GetByIdAsync(int id)
+        {
+            return await _context.TblAssetCategories.FirstOrDefaultAsync(c => c.CategoryId == id);
+        }
+
+        public async Task<int> SaveAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
 
         public async Task<List<TblAssetCategory>> GetAllAsync()
         {
@@ -32,5 +41,17 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             await _context.SaveChangesAsync();
             return assetCategory;
         }
+        public void Update(TblAssetCategory category)
+        {
+            _context.TblAssetCategories.Update(category);
+        }
+
+        public async Task<TblAssetCategory?> GetByNameAsync(string categoryName)
+        {
+            return await _context.TblAssetCategories
+                .FirstOrDefaultAsync(c => c.CategoryName.ToLower() == categoryName.ToLower());
+        }
+
+
     }
 }
