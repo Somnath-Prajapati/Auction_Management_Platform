@@ -9,8 +9,17 @@ using MediatR;
 namespace AuctionManagementSystem.Application.Features.Transactions.Queries.GetAllTransactions
 {
     
-    public record GetAllTransactionsQuery : IRequest<List<TransactionDto>>
+    //public record GetAllTransactionsQuery : IRequest<List<TransactionDto>>
+    //{
+    //}
+
+
+    public class GetAllTransactionsQuery : IRequest<List<GetTransactionDto>>
     {
     }
+
+
+
+
 
 }

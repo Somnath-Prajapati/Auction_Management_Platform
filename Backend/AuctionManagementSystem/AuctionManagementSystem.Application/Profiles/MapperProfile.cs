@@ -111,9 +111,16 @@ namespace AuctionManagementSystem.Application.Profiles
             .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.PaymentMethodName))
             .ForMember(dest => dest.CardType, opt => opt.MapFrom(src => src.CardType != null ? src.CardType.CardTypeName : null))
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.StatusName))
-            .ForMember(dest => dest.DocumentUrls, opt => opt.MapFrom(src =>
+            .ForMember(dest => dest.DocumentUrl, opt => opt.MapFrom(src =>
                 src.TblTransactionDocuments.Select(d => d.FilePath ?? "").ToList()
             ));
+
+            CreateMap<TblTransaction, GetTransactionDto>()
+            .ForMember(dest => dest.PaymentMethodName, opt => opt.MapFrom(src => src.PaymentMethod.PaymentMethodName))
+            .ForMember(dest => dest.StatusName, opt => opt.MapFrom(src => src.Status.StatusName))
+            .ForMember(dest => dest.TransactionTypeName, opt => opt.MapFrom(src => src.TransactionType.TransactionTypeName))
+            .ForMember(dest => dest.CardTypeName, opt => opt.MapFrom(src => src.CardType != null ? src.CardType.CardTypeName : null));
+
         }
     }
 }

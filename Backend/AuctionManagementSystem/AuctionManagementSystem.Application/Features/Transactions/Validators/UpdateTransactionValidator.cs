@@ -11,6 +11,6 @@ public class UpdateTransactionDtoValidator : AbstractValidator<UpdateTransaction
         RuleFor(x => x.TransactionId)
             .GreaterThan(0).WithMessage("Transaction ID is required");
 
-        Include(new CreateTransactionDtoValidator());
+        //Include(new CreateTransactionDtoValidator());
     }
 }
