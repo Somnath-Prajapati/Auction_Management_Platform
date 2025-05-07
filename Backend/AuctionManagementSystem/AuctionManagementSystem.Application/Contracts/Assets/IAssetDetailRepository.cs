@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Domain.Entities.Asset;
 
 namespace AuctionManagementSystem.Application.Contracts.Assets
@@ -11,12 +12,14 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
     {
         Task AddAssetDetailsAsync(IEnumerable<TblAssetDetail> assetDetails);
 
-        Task<TblAssetDetail> GetDetailsByIdAsync(int id);
+        Task<GetAssetDetailsDto> GetDetailsByIdAsync(int id);
 
         Task<IEnumerable<TblAssetDetail>> GetDetailsAsync();
 
+        Task UpdateDetailsAsync(int assetId, List<UpdateAssetDetailDto> updatedDetails); /// for updateasset
 
         Task<int> AddAsync(TblAssetDetail assetDetail);  //after the changes i have added while adding whole form at once
+        Task RemoveAssetDetailsAsync(int assetId);
     }
 
 }

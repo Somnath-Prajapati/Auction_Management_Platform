@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AuctionManagementSystem.Domain;
+namespace AuctionManagementSystem.Domain.Entities;
 
 public partial class Tbltempdatum
 {

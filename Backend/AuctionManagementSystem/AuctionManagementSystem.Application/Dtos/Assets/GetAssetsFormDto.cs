@@ -36,6 +36,8 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public decimal? AdminFees { get; set; }
         public decimal? AuctionFees { get; set; }
         public decimal? BuyerCommission { get; set; }
+        public bool? RequestForViewing { get; set; } 
+        public bool? RequestForInquiry { get; set; }
         public int? WinnerId { get; set; }
         public string? WinnerName { get; set; } 
         public decimal? AwardedPrice { get; set; } // From Winner
@@ -46,7 +48,9 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 
         public string AssetNumber { get; set; }
         public List<AssetGalleryDtos> Galleries { get; set; } = new();
-        public List<AssetDocumentFormDto> Documents { get; set; } = new(); 
+        public List<AssetDocumentFormDto> Documents { get; set; } = new();
+
+        public List<AssetDetailDtoo> Attributes { get; set; }
     }
 
     public class AssetGalleryDtos
@@ -60,9 +64,18 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 
     public class AssetDocumentFormDto
     {
-        public int DocumentId { get; set; }
+        //public int DocumentId { get; set; }
         public string? DocumentType { get; set; }
         public string? FilePath { get; set; }
+
+        public string FileUrl { get; set; }
     }
+
+    public class AssetDetailDtoo
+    {
+        public string AttributeName { get; set; }
+        public string AttributeValue { get; set; }
+    }
+
 
 }
