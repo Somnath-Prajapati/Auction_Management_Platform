@@ -251,7 +251,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasIndex(e => e.AuctionNumber, "UQ__tblAucti__C90DD8B8624ABC12").IsUnique();
 
             entity.Property(e => e.AuctionNumber).HasMaxLength(100);
-            entity.Property(e => e.CreatedAt)
+            entity.Property(e => e.CreatedDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.EndDateTime).HasColumnType("datetime");
@@ -260,7 +260,7 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.Type)
                 .HasMaxLength(50)
                 .HasDefaultValue("Auction");
-            entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.Category).WithMany(p => p.TblAuctions)
                 .HasForeignKey(d => d.CategoryId)
