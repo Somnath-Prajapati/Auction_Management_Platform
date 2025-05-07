@@ -8,7 +8,7 @@ namespace AuctionManagementSystem.Application.Dtos.Settings
 {
     public class StaticPagesSettingsDto
     {
-        //public int Id { get; set; }
+        public int Id { get; set; }
         public string? PrivacyPolicy { get; set; }
         public string? TermsAndConditions { get; set; }
         public string? CookiesPolicy { get; set; }

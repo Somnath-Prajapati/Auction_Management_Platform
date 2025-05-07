@@ -6,6 +6,9 @@ namespace AuctionManagementSystem.Application.Contracts.Transactions
     public interface ITransactionRepository
     {
         Task<TblTransaction?> GetByIdAsync(int id);
+        Task<string> GetTransactionNumberFromDbAsync();
+        Task<TblTransaction> GetTransactionWithDetailsAsync(int transactionId);
+
         Task<List<TblTransaction>> GetAllAsync();
         Task<TblTransaction> AddAsync(TblTransaction entity);
         Task UpdateAsync(TblTransaction entity);

@@ -71,7 +71,7 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<TblSeller> TblSellers { get; set; }
 
-    public virtual DbSet<TblStaticPagesSetting> TblStaticPagesSettings { get; set; }
+    public virtual DbSet<TblStaticPagesSettingDto> TblStaticPagesSettings { get; set; }
 
     public virtual DbSet<TblSystemSetting> TblSystemSettings { get; set; }
 
@@ -526,7 +526,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK__tblSeller__UserI__02FC7413");
         });
 
-        modelBuilder.Entity<TblStaticPagesSetting>(entity =>
+        modelBuilder.Entity<TblStaticPagesSettingDto>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__tblStati__3214EC07214212C0");
 
