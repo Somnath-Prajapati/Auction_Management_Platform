@@ -1,4 +1,4 @@
-﻿namespace AuctionManagementSystem.Application.DTOs.Assets.AssetCategory
+﻿namespace AuctionManagementSystem.Application.Dtos.Assets
 {
     public class CreateAssetCategoryDto
     {
