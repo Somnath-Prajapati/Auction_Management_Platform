@@ -23,6 +23,9 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
         {
             return await _context.TblRoles.ToListAsync();
         }
-
+        public async Task<TblRole> GetRoleByIdAsync(int roleId)
+        {
+            return await _context.TblRoles.FirstOrDefaultAsync(r => r.RoleId == roleId);
+        }
     }
 }

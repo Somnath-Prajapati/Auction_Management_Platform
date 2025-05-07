@@ -23,7 +23,7 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Delet
                 throw new NotFoundException("User not found");
 
             user.IsDeleted = true;
-            user.DeletedBy = "Admin";
+            user.DeletedBy = request.userId;
             user.DeletedDate = DateTime.UtcNow;
 
             return await _userRepository.DeleteUserAsync(user);

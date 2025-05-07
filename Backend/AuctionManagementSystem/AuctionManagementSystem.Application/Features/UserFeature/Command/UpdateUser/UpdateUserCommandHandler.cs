@@ -68,7 +68,7 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Updat
             }
 
             user.LastOnline = DateTime.UtcNow;
-            user.UpdatedBy = "Admin";
+            user.UpdatedBy = request.userId;
             user.UpdatedDate = DateTime.UtcNow;
 
             try

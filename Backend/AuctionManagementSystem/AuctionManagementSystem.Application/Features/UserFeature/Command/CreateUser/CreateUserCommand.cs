@@ -9,5 +9,5 @@ using Microsoft.AspNetCore.Http;
 
 namespace AuctionManagementSystem.Application.Features.UserFeature.Command.CreateUser
 {
-    public record CreateUserCommand(UserDto UserDto) : IRequest<int>;
+    public record CreateUserCommand(UserDto UserDto,string userid) : IRequest<int>;
 }
