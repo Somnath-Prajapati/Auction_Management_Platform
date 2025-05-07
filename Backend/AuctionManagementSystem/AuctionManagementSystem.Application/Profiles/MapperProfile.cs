@@ -15,6 +15,7 @@ using AuctionManagementSystem.Application.Features.Requests.Command.AddRequest;
 using AuctionManagementSystem.Application.Features.Requests.Command.UpdRequest;
 using AuctionManagementSystem.Application.Features.Settings.DirectSaleSettings.Commands.CreateDirectSaleSettings;
 using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Command.CreateFinanceSettings;
+using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Command.UpdateFinanceSettings;
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.CreateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.UpdateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
@@ -40,20 +41,22 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<SystemSettings, SystemSettingsDto>().ReverseMap();
             // Mapping from Entity to DTO (FinanceSettingsDto)
             CreateMap<CreateFinanceSettingsCommand, TblFinanceSetting>();
-            CreateMap<TblFinanceSetting, FinanceSettingsDto>();
+            CreateMap<UpdateFinanceSettingsCommand, TblFinanceSetting>();
+            CreateMap<TblFinanceSetting, FinanceSettingsDto>().ReverseMap();
+
             // Mapping from Entity to DTO (dirctSaleSettingsDto)
-            CreateMap<TblDirectSaleSetting, DirectSaleSettingsDto>();
+            CreateMap<TblDirectSaleSetting, DirectSaleSettingsDto>().ReverseMap();
             CreateMap<CreateDirectSaleSettingsCommand, TblDirectSaleSetting>();
             // Mapping from Entity to DTO (FooterLinksSettingDto)
             CreateMap<CreateFooterLinksSettingsCommand, TblFooterLinksSetting>().ReverseMap();
             CreateMap<UpdateFooterLinksSettingsCommand, TblFooterLinksSetting>().ReverseMap();
             CreateMap<TblFooterLinksSetting, FooterLinksSettingsDto>().ReverseMap();
             // Mapping from Entity to DTO (StaticPageSettingsDto)
-            CreateMap<TblStaticPagesSetting, StaticPagesSettingsDto>().ReverseMap();
-            CreateMap<CreateStaticPagesSettingsCommand, TblStaticPagesSetting>().ReverseMap();
-            CreateMap<StaticPagesSettingsDto, TblStaticPagesSetting>().ReverseMap();
+            CreateMap<TblStaticPagesSettingDto, StaticPagesSettingsDto>().ReverseMap();
+            CreateMap<CreateStaticPagesSettingsCommand, TblStaticPagesSettingDto>().ReverseMap();
+            CreateMap<StaticPagesSettingsDto, TblStaticPagesSettingDto>().ReverseMap();
             //Transactions Mappping
-            CreateMap<TblTransaction, TransactionDto>().ReverseMap();
+            //CreateMap<TblTransaction, TransactionDto>().ReverseMap();
             CreateMap<CreateTransactionDto, TblTransaction>();
             // Update
             CreateMap<UpdateTransactionDto, TblTransaction>().ForMember(dest => dest.TransactionId, opt => opt.Ignore()); // ID shouldn't be overwritten
@@ -95,6 +98,17 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<CreateRequestDto, AddRequestCommand>();
             CreateMap<UpdateRequestDto, UdpRequestCommand>();
             CreateMap<TblRequest, RequestDto>();
+
+
+            CreateMap<TblTransaction, TransactionDto>()
+            .ForMember(dest => dest.UserFullName, opt => opt.MapFrom(src => src.User.Name))
+            .ForMember(dest => dest.TransactionType, opt => opt.MapFrom(src => src.TransactionType.TransactionTypeName))
+            .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.PaymentMethodName))
+            .ForMember(dest => dest.CardType, opt => opt.MapFrom(src => src.CardType != null ? src.CardType.CardTypeName : null))
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.StatusName))
+            .ForMember(dest => dest.DocumentUrls, opt => opt.MapFrom(src =>
+                src.TblTransactionDocuments.Select(d => d.FilePath ?? "").ToList()
+            ));
         }
     }
 }

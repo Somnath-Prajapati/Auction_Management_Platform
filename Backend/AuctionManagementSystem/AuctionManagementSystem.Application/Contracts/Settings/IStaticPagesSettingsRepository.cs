@@ -4,10 +4,10 @@ namespace AuctionManagementSystem.Application.Interfaces.Repositories
 {
     public interface IStaticPagesSettingsRepository
     {
-        Task<TblStaticPagesSetting?> GetByIdAsync(int id);
-        Task<IEnumerable<TblStaticPagesSetting>> GetAllAsync();
-        Task<TblStaticPagesSetting> AddAsync(TblStaticPagesSetting entity);
-        Task UpdateAsync(TblStaticPagesSetting entity);
-        Task DeleteAsync(TblStaticPagesSetting entity);
+        Task<TblStaticPagesSettingDto?> GetByIdAsync(int id);
+        Task<IEnumerable<TblStaticPagesSettingDto>> GetAllAsync();
+        Task<TblStaticPagesSettingDto> AddAsync(TblStaticPagesSettingDto entity);
+        Task UpdateAsync(TblStaticPagesSettingDto entity);
+        Task DeleteAsync(TblStaticPagesSettingDto entity);
     }
 }

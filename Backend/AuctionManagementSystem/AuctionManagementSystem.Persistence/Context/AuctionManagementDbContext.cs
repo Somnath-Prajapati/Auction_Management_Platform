@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using AuctionManagementSystem.Domain;
 using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
@@ -19,6 +20,11 @@ public partial class AuctionManagementDbContext : DbContext
     public AuctionManagementDbContext(DbContextOptions<AuctionManagementDbContext> options)
         : base(options)
     {
+    }
+
+    public DbConnection GetDbConnection()
+    {
+        return Database.GetDbConnection();
     }
 
     public virtual DbSet<TblAsset> TblAssets { get; set; }
@@ -73,7 +79,7 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<TblSeller> TblSellers { get; set; }
 
-    public virtual DbSet<TblStaticPagesSetting> TblStaticPagesSettings { get; set; }
+    public virtual DbSet<TblStaticPagesSettingDto> TblStaticPagesSettings { get; set; }
 
     public virtual DbSet<TblSystemSetting> TblSystemSettings { get; set; }
 
@@ -635,7 +641,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK__tblSeller__UserI__02FC7413");
         });
 
-        modelBuilder.Entity<TblStaticPagesSetting>(entity =>
+        modelBuilder.Entity<TblStaticPagesSettingDto>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__tblStati__3214EC07214212C0");
 

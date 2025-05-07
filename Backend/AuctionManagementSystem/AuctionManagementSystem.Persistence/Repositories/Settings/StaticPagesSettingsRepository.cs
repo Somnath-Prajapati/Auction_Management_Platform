@@ -12,26 +12,35 @@ public class StaticPagesSettingsRepository : IStaticPagesSettingsRepository
         _context = context;
     }
 
-    public async Task<TblStaticPagesSetting?> GetByIdAsync(int id)
+    public async Task<TblStaticPagesSettingDto?> GetByIdAsync(int id)
         => await _context.TblStaticPagesSettings.FindAsync(id);
 
-    public async Task<IEnumerable<TblStaticPagesSetting>> GetAllAsync()
+    public async Task<IEnumerable<TblStaticPagesSettingDto>> GetAllAsync()
         => await _context.TblStaticPagesSettings.ToListAsync();
 
-    public async Task<TblStaticPagesSetting> AddAsync(TblStaticPagesSetting entity)
+    public async Task<TblStaticPagesSettingDto> AddAsync(TblStaticPagesSettingDto entity)
     {
         _context.TblStaticPagesSettings.Add(entity);
         await _context.SaveChangesAsync();
         return entity;
     }
 
-    public async Task UpdateAsync(TblStaticPagesSetting entity)
+    public async Task UpdateAsync(TblStaticPagesSettingDto entity)
     {
-        _context.TblStaticPagesSettings.Update(entity);
-        await _context.SaveChangesAsync();
+        // Fix: Removed the undefined 'obj' and directly updated the entity.
+        var existingEntity = await _context.TblStaticPagesSettings.FindAsync(entity.Id);
+        if (existingEntity != null)
+        {
+            existingEntity.PrivacyPolicy = entity.PrivacyPolicy;
+            existingEntity.TermsAndConditions = entity.TermsAndConditions;
+            existingEntity.CookiesPolicy = entity.CookiesPolicy;
+
+            _context.TblStaticPagesSettings.Update(existingEntity);
+            await _context.SaveChangesAsync();
+        }
     }
 
-    public async Task DeleteAsync(TblStaticPagesSetting entity)
+    public async Task DeleteAsync(TblStaticPagesSettingDto entity)
     {
         _context.TblStaticPagesSettings.Remove(entity);
         await _context.SaveChangesAsync();
