@@ -90,7 +90,6 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             try
             {
 
-                // 1. Validate and parse details
                 #region
                 List<AssetDetailDto> details;
                 try
@@ -106,7 +105,6 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                 var assetResult = await _mediator.Send(new AddUnifiedAssetCommand(dto));
                 //var assetResult = 25;
 
-                // 3. Add asset details
                 if (details != null && details.Any())
                 {
                     foreach (var detail in details)
@@ -123,7 +121,6 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                 }
 
 
-                // 4 asset auction 
 
                 if (dto.AuctionIds != null && dto.AuctionIds.Any())
                 {
@@ -131,7 +128,6 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                 }
 
 
-                // 2. Then add gallery images if any
                 var galleryResults = new List<GalleryResultDto>();
                 if (dto.GalleryFiles != null && dto.GalleryFiles.Count > 0)
                 {
@@ -207,6 +203,15 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         {
             public int DocumentId { get; set; }
             public string FileName { get; set; }
+        }
+
+
+        [HttpPut("update-asset-all")]
+        public async Task<IActionResult> UpdateAsset([FromForm] UpdateAssetAllDto dto)
+        {
+            var result = await _mediator.Send(new UpdateAssetAllCommand(dto));
+          
+            return Ok(result);
         }
 
     }

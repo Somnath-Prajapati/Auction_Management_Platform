@@ -11,7 +11,7 @@ using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Assets.AssetDetails.Query.GetDetailsById
 {
-    public class GetAssetDetailByIdQueryHandler : IRequestHandler<GetAssetDetailByIdQuery, AssetDetailDto?>
+    public class GetAssetDetailByIdQueryHandler : IRequestHandler<GetAssetDetailByIdQuery, GetAssetDetailsDto?>
     {
         private readonly IAssetDetailRepository _assetDetailRepository;
         private readonly IMapper _mapper;
@@ -21,17 +21,16 @@ namespace AuctionManagementSystem.Application.Features.Assets.AssetDetails.Query
             _mapper = mapper;
         }
 
-        public async Task<AssetDetailDto?> Handle(GetAssetDetailByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetAssetDetailsDto?> Handle(GetAssetDetailByIdQuery request, CancellationToken cancellationToken)
         {
             var asset = await _assetDetailRepository.GetDetailsByIdAsync(request.Id);
 
-            return _mapper.Map<AssetDetailDto>(asset);
+            return _mapper.Map<GetAssetDetailsDto>(asset);
         }
 
-        //public async Task<TblAssetDetail?> Handle(GetAssetDetailByIdQuery request, CancellationToken cancellationToken)
-        //{
-        //    return await _assetDetailRepository.GetDetailsByIdAsync(request.Id);
-        //}
+
+
+    
     }
 
 }

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using AuctionManagementSystem.Domain;
-using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Persistence.Context;
@@ -100,7 +100,7 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
 
-    public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
+    //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
