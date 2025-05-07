@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\User\Desktop\amp\Backend\AuctionManagementSystem\AuctionManagementSystem.Api\bin\Release\net9.0\publish\</_PublishTargetUrl>
-    <History>True|2025-04-29T10:25:16.8705928Z||;True|2025-04-29T15:30:24.0270271+05:30||;False|2025-04-29T15:29:42.8719354+05:30||;False|2025-04-29T15:27:05.8637409+05:30||;True|2025-04-28T14:44:58.5425656+05:30||;True|2025-04-25T18:27:29.3299472+05:30||;</History>
+    <History>True|2025-05-05T10:35:56.6279247Z||;True|2025-05-05T15:57:02.3449794+05:30||;True|2025-04-29T15:55:16.8705928+05:30||;True|2025-04-29T15:30:24.0270271+05:30||;False|2025-04-29T15:29:42.8719354+05:30||;False|2025-04-29T15:27:05.8637409+05:30||;True|2025-04-28T14:44:58.5425656+05:30||;True|2025-04-25T18:27:29.3299472+05:30||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>
