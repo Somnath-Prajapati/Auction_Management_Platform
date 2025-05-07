@@ -22,7 +22,9 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\AuctionManagementSystem.Application\AuctionManagementSystem.Application.csproj" />
+		<ProjectReference Include="..\AuctionManagementSystem.Domain\AuctionManagementSystem.Domain.csproj" />
 		<ProjectReference Include="..\AuctionManagementSystem.Persistence\AuctionManagementSystem.Persistence.csproj" />
+		<ProjectReference Include="..\AuctionManagementSystem.Identity\AuctionManagementSystem.Identity.csproj" />
 	</ItemGroup>
 
   <ItemGroup>
