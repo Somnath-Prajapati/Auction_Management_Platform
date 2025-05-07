@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using AuctionManagementSystem.Application.Dtos.Assets;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Command;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
@@ -71,6 +72,24 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             await _mediator.Send(new DeleteAssetCommand(id));
             return Ok();
         }
+
+
+
+        [HttpPost("create-with-files")]
+        [DisableRequestSizeLimit]
+        public async Task<IActionResult> CreateAsset([FromForm] CreateAssetsDto dto, [FromForm] List<IFormFile> galleryFiles, [FromForm] List<IFormFile> documentFiles)
+        {
+            var command = new CreateAssetCommand
+            {
+                Dto = dto,
+                GalleryFiles = galleryFiles,
+                DocumentFiles = documentFiles
+            };
+
+            var assetId = await _mediator.Send(command);
+            return Ok(assetId);
+        }
+
 
     }
 }

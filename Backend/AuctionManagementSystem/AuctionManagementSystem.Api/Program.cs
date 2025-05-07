@@ -1,4 +1,5 @@
 using AuctionManagementSystem.Application;
+using AuctionManagementSystem.Identity;
 using AuctionManagementSystem.Persistence;
 using AuctionManagementSystem.Api.Services;
 using AuctionManagementSystem.Application.Contracts.User;
@@ -6,6 +7,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using AuctionManagementSystem.Application.Contracts;
+using AuctionManagementSystem.Api.Middleware;
+using ProtoBuf.Meta;
+using AuctionManagementSystem.Application.Contracts.Auth;
 
 namespace AuctionManagementSystem.Api
 {
@@ -17,7 +21,10 @@ namespace AuctionManagementSystem.Api
 
             builder.Services.AddScoped<IFileService, FileService>();
             builder.Services.AddApplicationServices();
+            builder.Services.AddIdentityServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddOpenApi();
@@ -27,7 +34,7 @@ namespace AuctionManagementSystem.Api
             //{
             //    options.AddPolicy("AllowAllOrigin", policy =>
             //    {
-            //        policy.WithOrigins("http://localhost:4200") // Angular dev server
+            //        policy.WithOrigins("http://localhost:56061") // Angular dev server
             //              .AllowAnyHeader()
             //              .AllowAnyMethod();
             //    });
@@ -43,6 +50,7 @@ namespace AuctionManagementSystem.Api
                 });
             //}
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -50,6 +58,7 @@ namespace AuctionManagementSystem.Api
 
             //app.UseStaticFiles();
             //app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
             app.Run();

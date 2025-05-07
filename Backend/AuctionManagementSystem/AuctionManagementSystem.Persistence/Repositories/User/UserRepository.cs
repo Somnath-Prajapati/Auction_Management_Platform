@@ -21,13 +21,15 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
 
         public async Task<bool> DeleteUserAsync(TblUser user)
         {
-            _context.TblUsers.Remove(user);
+            _context.TblUsers.Update(user);
             return await _context.SaveChangesAsync() > 0;
         }
 
         public async Task<IEnumerable<TblUser>> GetAllUsersAsync()
         {
             return await _context.TblUsers
+                .Where(u => !u.IsDeleted ?? false)
+                .OrderByDescending(u => u.UpdatedDate ?? u.CreatedDate)
                 .Include(u => u.Status)
                 .Include(u => u.Country)
                 .ToListAsync();
@@ -53,6 +55,32 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
             return await _context.TblUsers
                 .FirstOrDefaultAsync(u => u.Email == email || u.MobileNumber == mobileNumber);
         }
-        
+        public async Task<TblUser?> GetByPersonalIdNumberAsync(string personalIdNumber)
+        {
+            return await _context.TblUsers
+                .FirstOrDefaultAsync(u => u.PersonalIdNumber == personalIdNumber);
+        }
+        public async Task<TblUser?> GetByEmailOrMobileForUpdateAsync(string email, string mobileNumber, int excludeUserId)
+        {
+            return await _context.TblUsers
+                .FirstOrDefaultAsync(u =>
+                    (u.Email == email || u.MobileNumber == mobileNumber) &&
+                    u.UserId != excludeUserId);
+        }
+
+        public async Task<TblUser?> GetByPersonalIdNumberForUpdateAsync(string personalIdNumber, int excludeUserId)
+        {
+            return await _context.TblUsers
+                .FirstOrDefaultAsync(u =>
+                    u.PersonalIdNumber == personalIdNumber &&
+                    u.UserId != excludeUserId);
+        }
+        public async Task<TblUser?> GetUserByEmailAsync(string email)
+        {
+            return await _context.TblUsers.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+
+
     }
 }

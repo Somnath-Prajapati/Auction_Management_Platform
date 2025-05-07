@@ -251,5 +251,29 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                  .Include(a => a.TblAssetDetails)
                  .FirstOrDefaultAsync(a => a.AssetId == id);
         }
+
+
+
+        public async Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents)
+        {
+            await _context.TblAssets.AddAsync(asset);
+            await _context.SaveChangesAsync();
+
+            foreach (var gallery in galleries)
+            {
+                gallery.AssetId = asset.AssetId;
+                await _context.TblAssetGalleries.AddAsync(gallery);
+            }
+
+            foreach (var doc in documents)
+            {
+                doc.AssetId = asset.AssetId;
+                await _context.TblAssetDocuments.AddAsync(doc);
+            }
+
+            await _context.SaveChangesAsync();
+            return asset.AssetId;
+        }
+
     }
 }

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Application.Exceptions;
 using AutoMapper;
 using MediatR;
 
@@ -25,24 +24,61 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Updat
         public async Task<int> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserById(request.Id);
-            if (user == null) throw new KeyNotFoundException("User not found");
+            if (user == null)
+                throw new NotFoundException("User not found");
+
+            var existingProfileImage = user.ProfileImage;
+            var existingPersonalIdImage = user.PersonalIdImage;
+
+            var existingUser = await _userRepository.GetByEmailOrMobileForUpdateAsync(request.Dto.Email, request.Dto.MobileNumber, request.Id);
+            var goverementIdExists = await _userRepository.GetByPersonalIdNumberForUpdateAsync(request.Dto.PersonalIdNumber, request.Id);
+
+            if (existingUser != null || goverementIdExists != null)
+            {
+                throw new BadRequestException("A user with the same email, mobile number, or Goverment ID number already exists.");
+            }
+
+
 
             _mapper.Map(request.Dto, user);
 
+          
             if (request.Dto.ProfileImage != null)
             {
+                if (!string.IsNullOrEmpty(existingProfileImage))
+                    await _fileService.DeleteFileAsync(existingProfileImage);
+
                 user.ProfileImage = await _fileService.SaveFileAsync(request.Dto.ProfileImage, "");
+            }
+            else
+            {
+                user.ProfileImage = existingProfileImage;
             }
 
             if (request.Dto.PersonalIdImage != null)
             {
+                if (!string.IsNullOrEmpty(existingPersonalIdImage))
+                    await _fileService.DeleteFileAsync(existingPersonalIdImage);
+
                 user.PersonalIdImage = await _fileService.SaveFileAsync(request.Dto.PersonalIdImage, "");
             }
-            user.RegistrationDate = DateTime.UtcNow;
-            user.LastOnline = DateTime.UtcNow;
+            else
+            {
+                user.PersonalIdImage = existingPersonalIdImage;
+            }
 
-            return await _userRepository.UpdateUserAsync(user);
+            user.LastOnline = DateTime.UtcNow;
+            user.UpdatedBy = request.userId;
+            user.UpdatedDate = DateTime.UtcNow;
+
+            try
+            {
+                return await _userRepository.UpdateUserAsync(user);
+            }
+            catch
+            {
+                throw new DatabaseException("Error updating user in the database.");
+            }
         }
     }
-
 }

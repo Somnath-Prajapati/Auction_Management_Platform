@@ -7,5 +7,5 @@ using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.UserFeature.Command.DeleteUser
 {
-    public record DeleteUserCommand(int Id) : IRequest<bool>;
+    public record DeleteUserCommand(int Id, string userId) : IRequest<bool>;
 }

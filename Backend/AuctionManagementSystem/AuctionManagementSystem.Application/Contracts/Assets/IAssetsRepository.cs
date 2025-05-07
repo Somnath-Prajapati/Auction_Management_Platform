@@ -20,6 +20,10 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task UpdateAsync(TblAsset asset);
         Task<bool> AssetsIsExist(int id);
         Task<IEnumerable<TblAsset>> SearchAsset(string name);
-        
+
+
+
+        Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents);
+
     }
 }

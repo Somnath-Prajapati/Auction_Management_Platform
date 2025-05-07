@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace AuctionManagementSystem.Application.Contracts.User
     public interface IFileService
     {
         Task<string> SaveFileAsync(IFormFile file, string folderName);
+        Task DeleteFileAsync(string filePath);
 
     }
 }
