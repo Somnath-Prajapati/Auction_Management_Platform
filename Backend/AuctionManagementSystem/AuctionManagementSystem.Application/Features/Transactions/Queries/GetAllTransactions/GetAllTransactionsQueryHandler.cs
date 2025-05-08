@@ -21,5 +21,8 @@ public class GetTransactionQueryHandler : IRequestHandler<GetAllTransactionsQuer
     {
         var list = await _repository.GetAllAsync();
         return _mapper.Map<List<TransactionDto>>(list);
+
+
+
     }
 }
