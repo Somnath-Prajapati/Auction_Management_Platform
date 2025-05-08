@@ -6,6 +6,7 @@ using AuctionManagementSystem.Application.Features.Auctions.Queries.GetAuctionBy
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using AuctionManagementSystem.Application.Dtos.Auctions;
+using AuctionManagementSystem.Application.Contracts.Auth;
 
 namespace AuctionManagementSystem.Api.Controller.Auction
 {
@@ -14,10 +15,14 @@ namespace AuctionManagementSystem.Api.Controller.Auction
     public class AuctionController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILoggedInUserService _loggedInUserService;
 
-        public AuctionController(IMediator mediator)
+
+        public AuctionController(IMediator mediator, ILoggedInUserService loggedInUserService)
         {
             _mediator = mediator;
+            _loggedInUserService = loggedInUserService;
+
         }
 
         // GET: api/auction
@@ -42,6 +47,8 @@ namespace AuctionManagementSystem.Api.Controller.Auction
         [HttpPost]
         public async Task<ActionResult<int>> CreateAuction([FromBody] CreateAuctionCommand command)
         {
+            var userId = _loggedInUserService.UserId;
+            command.UserId = userId;
             if (command == null)
             {
                 return BadRequest("Invalid request");
