@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Dtos.RequestsDtos;
+using AuctionManagementSystem.Application.Dtos.Requests;
 using AuctionManagementSystem.Domain.Entities.Request;
 using MediatR;
 
