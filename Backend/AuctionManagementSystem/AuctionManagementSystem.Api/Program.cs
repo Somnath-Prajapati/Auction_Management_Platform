@@ -30,16 +30,7 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();
 
-            //builder.Services.AddCors(options =>
-            //{
-            //    options.AddPolicy("AllowAllOrigin", policy =>
-            //    {
-            //        policy.WithOrigins("http://localhost:56061") // Angular dev server
-            //              .AllowAnyHeader()
-            //              .AllowAnyMethod();
-            //    });
-            //});
-
+           
             var app = builder.Build();
             //if (app.Environment.IsDevelopment())
             //{
@@ -54,10 +45,6 @@ namespace AuctionManagementSystem.Api
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            //app.UseCors("AllowAngularDev"); //  CORS must come before authorization
-
-            //app.UseStaticFiles();
-            //app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();

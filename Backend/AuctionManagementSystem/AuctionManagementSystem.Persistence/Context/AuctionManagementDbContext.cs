@@ -200,32 +200,72 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.HasIndex(e => e.CategoryName, "UQ__tblAsset__8517B2E06B149E78").IsUnique();
 
-            entity.Property(e => e.AdminFees).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.AuctionFees).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.BuyerCommission).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.CategoryName)
                 .IsRequired()
                 .HasMaxLength(100);
-            entity.Property(e => e.CreatedAt)
+
+            entity.Property(e => e.Subcategory)
+                .HasMaxLength(255);
+
+            entity.Property(e => e.DepositPercentage)
+                .HasColumnType("decimal(5, 2)");
+
+            entity.Property(e => e.Details);
+
+            entity.Property(e => e.AdminFees)
+                .HasColumnType("decimal(18, 2)");
+
+            entity.Property(e => e.AuctionFees)
+                .HasColumnType("decimal(18, 2)");
+
+            entity.Property(e => e.BuyerCommission)
+                .HasColumnType("decimal(18, 2)");
+
+            entity.Property(e => e.RegistrationDeadline)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.DepositPercentage).HasColumnType("decimal(5, 2)");
+
             entity.Property(e => e.Icon)
                 .IsRequired()
                 .HasMaxLength(255)
                 .HasDefaultValue("default.png");
-            entity.Property(e => e.RegistrationDeadline)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.StatusId).HasDefaultValue(1);
-            entity.Property(e => e.Subcategory).HasMaxLength(255);
-            entity.Property(e => e.UpdatedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.Vatid).HasColumnName("VATId");
+
+            entity.Property(e => e.DocumentPath) 
+                .HasMaxLength(255)
+                .HasDefaultValue(null);
+
             entity.Property(e => e.Vatpercentage)
                 .HasColumnType("decimal(5, 2)")
                 .HasColumnName("VATPercentage");
+
+            entity.Property(e => e.Vatid)
+                .HasColumnName("VATId");
+
+            entity.Property(e => e.StatusId)
+                .HasDefaultValue(1);
+
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.Property(e => e.UpdatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.Property(e => e.CreatedBy)
+                .HasMaxLength(100);
+
+            entity.Property(e => e.UpdatedBy)
+                .HasMaxLength(100);
+
+            entity.Property(e => e.DeletedBy)
+                .HasMaxLength(100);
+
+            entity.Property(e => e.DeletedDate)
+                .HasColumnType("datetime");
+
+            entity.Property(e => e.IsDeleted)
+                .HasDefaultValue(false);
 
             entity.HasOne(d => d.Status).WithMany(p => p.TblAssetCategories)
                 .HasForeignKey(d => d.StatusId)
@@ -251,6 +291,7 @@ public partial class AuctionManagementDbContext : DbContext
                         j.ToTable("TblAssetCategoryPaymentMethod");
                     });
         });
+
 
         modelBuilder.Entity<TblAssetCategoryStatus>(entity =>
         {
@@ -363,23 +404,42 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.AuctionNumber)
                 .IsRequired()
                 .HasMaxLength(100);
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.EndDateTime).HasColumnType("datetime");
-            entity.Property(e => e.StartDateTime).HasColumnType("datetime");
+
             entity.Property(e => e.Title)
                 .IsRequired()
                 .HasMaxLength(255);
+
             entity.Property(e => e.Type)
                 .HasMaxLength(50)
                 .HasDefaultValue("Auction");
-            entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Category).WithMany(p => p.TblAuctions)
+            entity.Property(e => e.StartDateTime).HasColumnType("datetime");
+
+            entity.Property(e => e.EndDateTime).HasColumnType("datetime");
+
+            entity.Property(e => e.CreatedDate)
+                .HasColumnType("datetime")
+                .HasDefaultValueSql("(getdate())");
+
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+
+            entity.Property(e => e.CreatedBy);
+            entity.Property(e => e.UpdatedBy);
+            entity.Property(e => e.DeletedBy);
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
+            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
+
+            entity.HasOne(d => d.Category)
+                .WithMany(p => p.TblAuctions)
                 .HasForeignKey(d => d.CategoryId)
                 .HasConstraintName("FK__tblAuctio__Categ__70DDC3D8");
+
+            entity.HasOne(d => d.Status)
+                .WithMany(p => p.TblAuctions)
+                .HasForeignKey(d => d.StatusId)
+                .HasConstraintName("FK_tblAuctions_tblAuctionStatus");
         });
+
 
         modelBuilder.Entity<TblAuctionAsset>(entity =>
         {

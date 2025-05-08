@@ -20,12 +20,13 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.DeleteA
         public async Task<bool> Handle(DeleteAuctionCommand request, CancellationToken cancellationToken)
         {
             var auction = await _unitOfWork.AuctionRepository.GetByIdAsync(request.AuctionId);
-            if (auction != null)
+            if (auction != null && !auction.IsDeleted)
             {
                 _unitOfWork.AuctionRepository.Delete(auction);
                 await _unitOfWork.SaveAsync();
             }
-            return auction!= null;
+            return auction != null;
         }
+
     }
 }
