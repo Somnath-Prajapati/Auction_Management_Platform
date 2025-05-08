@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AuctionManagementSystem.Domain.Entities.Request;
-using MediatR;
 
-namespace AuctionManagementSystem.Application.Features.Requests.Command.UpdRequest
+namespace AuctionManagementSystem.Application.Dtos.RequestsDtos
 {
-    public class UdpRequestCommand : IRequest<TblRequest>
+    public class UpdateRequestDto
     {
         public int RequestId { get; set; }
         public string RequestNumber { get; set; }
@@ -18,11 +16,11 @@ namespace AuctionManagementSystem.Application.Features.Requests.Command.UpdReque
         public string Email { get; set; }
         public int RequestTypeId { get; set; }
         public int AssetId { get; set; }
-        public int TransactionId { get; set; }
+        public int? TransactionId { get; set; }
         public DateTime RequestDateTime { get; set; }
         public int RequestStatusId { get; set; }
-        public string CustomerNote { get; set; }
-        public string AdminNote { get; set; }
+        public string? CustomerNote { get; set; }
+        public string? AdminNote { get; set; }
         public bool CreatedByAdmin { get; set; }
     }
 }

@@ -9,6 +9,8 @@ using AuctionManagementSystem.Application.Dtos.Auctions;
 using AuctionManagementSystem.Application.Dtos.Requests;
 using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
+using AuctionManagementSystem.Application.Features.Requests.Command.AddRequest;
+using AuctionManagementSystem.Application.Features.Requests.Command.UpdRequest;
 using AuctionManagementSystem.Application.Dtos.UserDtos;
 using AuctionManagementSystem.Application.Features.Auctions.Commands.CreateAuction;
 using AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateAuction;
@@ -58,6 +60,12 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<CreateTransactionDto, TblTransaction>();
             // Update
             CreateMap<UpdateTransactionDto, TblTransaction>().ForMember(dest => dest.TransactionId, opt => opt.Ignore()); // ID shouldn't be overwritten
+
+            //Mapping for Create,Upadte Request Dto
+            CreateMap<CreateRequestDto, AddRequestCommand>();
+            CreateMap<UpdateRequestDto, UdpRequestCommand>();
+            CreateMap<TblRequest, RequestDto>();
+            
 
 
             CreateMap<GetAssetsDto, TblAsset>().ReverseMap();

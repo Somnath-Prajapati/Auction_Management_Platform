@@ -1,0 +1,20 @@
+.container {
+    padding: 20px;
+  }
+  
+  h3 {
+    font-size: 24px;
+  }
+  
+  form label {
+    font-weight: 500;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  button {
+    width: 150px;
+  }
+  

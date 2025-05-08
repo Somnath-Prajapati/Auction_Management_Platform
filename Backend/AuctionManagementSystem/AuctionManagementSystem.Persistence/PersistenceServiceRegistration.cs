@@ -12,6 +12,7 @@ using AuctionManagementSystem.Persistence.Repositories.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProtoBuf.Meta;
 using AuctionManagementSystem.Persistence.Repositories.User;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Contracts;
