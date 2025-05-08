@@ -52,14 +52,12 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
             user.CreatedDate = DateTime.UtcNow;
             user.IsDeleted = false;
 
-            // Wrap the user addition in a try-catch to throw a more specific exception for database issues
             try
             {
                 return await _userRepository.AddUserAsync(user);
             }
             catch (Exception ex)
             {
-                // Log the exception and throw a more specific exception, for example a DatabaseException
                 throw new DatabaseException("An error occurred while adding the user to the database.");
             }
         }
