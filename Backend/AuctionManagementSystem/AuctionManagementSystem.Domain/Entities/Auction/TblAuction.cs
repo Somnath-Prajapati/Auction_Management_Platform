@@ -21,16 +21,21 @@ public partial class TblAuction
 
     public int IncrementalTime { get; set; }
 
-    public DateTime? CreatedAt { get; set; }
+    public DateTime? CreatedDate { get; set; }
 
-    public DateTime? UpdatedAt { get; set; }
+    public DateTime? UpdatedDate { get; set; }
 
-    public int? CategoryId { get; set; }
+    public string? CreatedBy { get; set; }       
+    public string? UpdatedBy { get; set; }       
+    public string? DeletedBy { get; set; }       
+    public DateTime? DeletedDate { get; set; }  
+    public bool IsDeleted { get; set; }       
+
+    public int CategoryId { get; set; }
 
     public virtual TblAuctionCategory? Category { get; set; }
 
     public virtual TblAuctionStatus? Status { get; set; }
-
 
     public virtual ICollection<TblAuctionAsset> TblAuctionAssets { get; set; } = new List<TblAuctionAsset>();
 

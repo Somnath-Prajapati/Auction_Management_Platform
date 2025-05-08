@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Dtos.Auctions;
-using AuctionManagementSystem.Application.Dtos.RequestsDtos;
+using AuctionManagementSystem.Application.Dtos.Requests;
 using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Application.Dtos.UserDtos;
@@ -62,11 +62,17 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<GetAssetsDto, TblAsset>().ReverseMap();
 
             CreateMap<CreateAuctionCommand, TblAuction>()
-                .IncludeBase<AuctionBaseCommand, TblAuction>();
+            .IncludeBase<AuctionBaseCommand, TblAuction>();  // Include the common properties from AuctionBaseCommand
+
+            CreateMap<TblAssetCategory, AssetCategoryDto>().ReverseMap();
+            CreateMap<CreateAssetCategoryDto, TblAssetCategory>();
+            CreateMap<UpdateAssetCategoryDto, TblAssetCategory>();
 
             CreateMap<CreateAssetsDto, TblAsset>().ReverseMap();
 
-            CreateMap<UpdateAssetDto, TblAsset>().ReverseMap();
+            CreateMap<UpdateAssetDto, TblAsset>()
+                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(dest => dest.IsActive, opt => opt.MapFrom(_ => false)); 
 
             CreateMap<AssetsGalleryDto, TblAssetGallery>().ReverseMap();
             CreateMap<AuctionBaseCommand, TblAuction>()
