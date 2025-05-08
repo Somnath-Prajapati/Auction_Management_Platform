@@ -9,6 +9,7 @@ using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.WebRequestMethods;
 
 namespace AuctionManagementSystem.Persistence.Context;
 
@@ -100,10 +101,35 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
 
     public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
+    public virtual DbSet<tblOTP> tblOTPs { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
+
+        modelBuilder.Entity<tblOTP>(entity =>
+        {
+            entity.ToTable("tblOTPs");
+
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Code)
+                  .IsRequired()
+                  .HasMaxLength(6);
+
+            entity.Property(e => e.Expiration)
+                  .IsRequired();
+
+            entity.Property(e => e.IsUsed)
+                  .HasDefaultValue(false);
+
+            entity.HasOne(e => e.User)
+                  .WithMany(u => u.OTPs)
+                  .HasForeignKey(e => e.UserId)
+                  .OnDelete(DeleteBehavior.Cascade);
+        });
+
 
         modelBuilder.Entity<TblAsset>(entity =>
         {

@@ -21,5 +21,7 @@ namespace AuctionManagementSystem.Application.Contracts.User
         Task<TblUser?> GetByPersonalIdNumberForUpdateAsync(string personalIdNumber, int excludeUserId);
         Task<TblUser?> GetByEmailOrMobileForUpdateAsync(string email, string mobileNumber, int excludeUserId);
 
+        Task<TblUser?> GetUserByEmailAsync(string email);
+
     }
 }
