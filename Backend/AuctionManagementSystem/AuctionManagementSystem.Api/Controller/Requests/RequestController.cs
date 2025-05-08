@@ -1,5 +1,5 @@
 ﻿using AuctionManagementSystem.Application.Contracts.Request;
-using AuctionManagementSystem.Application.Dtos.RequestsDtos;
+using AuctionManagementSystem.Application.Dtos.Requests;
 using AuctionManagementSystem.Application.Features.Requests.Command.AddRequest;
 using AuctionManagementSystem.Application.Features.Requests.Command.DelRequest;
 using AuctionManagementSystem.Application.Features.Requests.Command.UpdRequest;
