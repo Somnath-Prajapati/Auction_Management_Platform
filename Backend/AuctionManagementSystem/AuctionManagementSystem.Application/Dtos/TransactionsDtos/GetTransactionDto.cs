@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Domain.Entities.User;
+using EventStore.ClientAPI.UserManagement;
 
 namespace AuctionManagementSystem.Application.Dtos.TransactionsDtos
 {
@@ -28,6 +30,9 @@ namespace AuctionManagementSystem.Application.Dtos.TransactionsDtos
         public string StatusName { get; set; } = null!;
         public string TransactionTypeName { get; set; } = null!;
         public string? CardTypeName { get; set; }
+
+        public string UserFullName { get; set; }
+        //public virtual TblUser User { get; set; } = null!;
     }
 
 }
