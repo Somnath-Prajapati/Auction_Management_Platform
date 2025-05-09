@@ -116,6 +116,7 @@ namespace AuctionManagementSystem.Application.Profiles
             ));
 
             CreateMap<TblTransaction, GetTransactionDto>()
+             .ForMember(dest => dest.UserFullName, opt => opt.MapFrom(src => src.User.Name))
             .ForMember(dest => dest.PaymentMethodName, opt => opt.MapFrom(src => src.PaymentMethod.PaymentMethodName))
             .ForMember(dest => dest.StatusName, opt => opt.MapFrom(src => src.Status.StatusName))
             .ForMember(dest => dest.TransactionTypeName, opt => opt.MapFrom(src => src.TransactionType.TransactionTypeName))
