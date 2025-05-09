@@ -5,6 +5,7 @@ using AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddAsset
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDirectSaleAssets;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.SearchAsset;
 using AuctionManagementSystem.Application.Features.Assets.Query.GetAssets;
 using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Query.GetAllFinanceSettings;
@@ -30,6 +31,16 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         {
             var assets = await _mediator.Send(new GetAssetsQuery());
             return Ok(assets);
+        }
+
+        [HttpGet("directsaleasset")]
+        public async Task<IActionResult> GetDirectSaleAssets([FromQuery] int categoryId)
+        {
+            if (categoryId <= 0)
+                return BadRequest("Invalid category ID.");
+
+            var result = await _mediator.Send(new GetDirectSaleAssetsByCategoryQuery { CategoryId = categoryId });
+            return Ok(result);
         }
 
         [Route("add")]

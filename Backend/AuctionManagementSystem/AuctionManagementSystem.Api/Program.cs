@@ -37,7 +37,7 @@ namespace AuctionManagementSystem.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Manage");
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Management");
                 });
             //}
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
@@ -47,6 +47,13 @@ namespace AuctionManagementSystem.Api
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.MapGet("/", context =>
+            {
+                context.Response.Redirect("/swagger");
+                return Task.CompletedTask;
+            });
+
+
             app.MapControllers();
             app.Run();
         }
