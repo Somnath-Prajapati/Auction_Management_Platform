@@ -43,6 +43,8 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public string Details { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public bool IsAvailableForDirectSale { get; set; } // for asset direct sale
+
 
         public string AssetNumber { get; set; }
         public List<AssetGalleryDtos> Galleries { get; set; } = new();
