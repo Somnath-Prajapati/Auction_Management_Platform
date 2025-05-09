@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Assets;
@@ -83,6 +84,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     AssetNumber = a.AssetNumber,
                     CreatedAt = a.CreatedAt,
                     UpdatedAt = a.UpdatedAt,
+                    IsAvailableForDirectSale = a.IsAvailableForDirectSale,
                     Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
                     {
                         MediaType = g.MediaType,
@@ -99,6 +101,25 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .ToListAsync();
 
             return assets;
+        }
+
+        public async Task<List<TblAsset>> GetAllAsync(Expression<Func<TblAsset, bool>> predicate)
+        {
+            //return await _context.TblAssets.Where(predicate).ToListAsync();
+            //    return await _context.TblAssets
+            //.IgnoreAutoIncludes() // Prevents auto-including navigation properties
+            //.Where(predicate)
+            //.ToListAsync();
+
+            return await _context.TblAssets
+                .Where(predicate)
+                .Include(a => a.Category)
+                .Include(a => a.Status)
+                .Include(a => a.Vat)
+                .Include(a => a.TblAssetDocuments)
+                .Include(a=>a.TblAssetDetails)
+                .ToListAsync();
+
         }
 
         public async Task<GetAssetsFormDto> GetByIdAsync(int id)
