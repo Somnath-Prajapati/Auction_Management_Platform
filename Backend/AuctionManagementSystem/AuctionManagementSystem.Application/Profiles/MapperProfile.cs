@@ -69,6 +69,7 @@ namespace AuctionManagementSystem.Application.Profiles
 
             CreateMap<TblAssetCategory, AssetCategoryDto>().ReverseMap();
             CreateMap<CreateAssetCategoryDto, TblAssetCategory>();
+            CreateMap<UpdateAssetCategoryDto, TblAssetCategory>();
 
             CreateMap<CreateAssetsDto, TblAsset>().ReverseMap();
 

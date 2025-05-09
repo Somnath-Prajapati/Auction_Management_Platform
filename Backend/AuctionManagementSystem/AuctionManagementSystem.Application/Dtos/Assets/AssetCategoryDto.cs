@@ -18,6 +18,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public decimal BuyerCommission { get; set; }
         public DateTime RegistrationDeadline { get; set; }
         public string Icon { get; set; }
+        public string Document { get; set; }
         public decimal? Vatpercentage { get; set; }
         public int StatusId { get; set; }
         public DateTime? CreatedDate { get; set; }
