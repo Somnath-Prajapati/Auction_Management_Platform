@@ -3,6 +3,7 @@ using AuctionManagementSystem.Application.Features.Assets.AssetCategory.Command.
 using AuctionManagementSystem.Application.Features.Assets.AssetCategory.Command.DeleteAssetCategory;
 using AuctionManagementSystem.Application.Features.Assets.AssetCategory.Command.UpdateAssetCategory;
 using AuctionManagementSystem.Application.Features.Assets.AssetCategory.Query.GetAllAssetCategories;
+using AuctionManagementSystem.Application.Features.Assets.AssetCategory.Query.GetCategoryById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -57,6 +58,24 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                 return NotFound("Category not found or already deleted.");
 
             return NoContent();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<AssetCategoryDto>> GetAssetCategory(int id)
+        {
+            try
+            {
+                var result = await _mediator.Send(new GetAssetCategoryByIdQuery(id));
+                return Ok(result);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred.", details = ex.Message });
+            }
         }
 
 
