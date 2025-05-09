@@ -196,6 +196,10 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasOne(d => d.Winner).WithMany(p => p.TblAssets)
                 .HasForeignKey(d => d.WinnerId)
                 .HasConstraintName("FK_tblAssets_WinnerId");
+
+            entity.Property(a => a.IsAvailableForDirectSale)
+                .HasColumnName("IsAvailableForDirectSale")
+                .HasDefaultValue(false);
         });
 
         modelBuilder.Entity<TblAssetCategory>(entity =>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Transaction;
@@ -69,6 +70,7 @@ public partial class TblAsset
 
     public string AssetNumber { get; set; }
 
+    [Column("Details")]
     public string Details { get; set; }
 
     public virtual TblWinnerAwardingOption Awarding { get; set; }
@@ -96,4 +98,5 @@ public partial class TblAsset
     public virtual TblVatoption Vat { get; set; }
 
     public virtual TblAssetWinner Winner { get; set; }
+    public bool IsAvailableForDirectSale { get; set; }
 }
