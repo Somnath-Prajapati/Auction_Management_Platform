@@ -236,6 +236,10 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasMaxLength(255)
                 .HasDefaultValue("default.png");
 
+            entity.Property(e => e.DocumentPath) 
+                .HasMaxLength(255)
+                .HasDefaultValue(null);
+
             entity.Property(e => e.Vatpercentage)
                 .HasColumnType("decimal(5, 2)")
                 .HasColumnName("VATPercentage");
