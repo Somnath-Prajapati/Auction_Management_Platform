@@ -37,7 +37,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<IEnumerable<GetAssetsFormDto>> GetAllAsync()
         {
-            var assets = await _context.TblAssets
+             var assets = await _context.TblAssets
                 .Where(a => a.IsActive)
                 .OrderByDescending(a => a.UpdatedAt ?? a.CreatedAt)
                 .Include(a => a.Category)
@@ -47,6 +47,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .Include(a => a.Winner)
                 .Include(a => a.TblAssetGalleries)
                 .Include(a => a.TblAssetDocuments)
+                .Include(a => a.TblAuctionAssets)
+                .ThenInclude(aa => aa.Auction)
                 .Select(a => new GetAssetsFormDto
                 {
                     AssetId = a.AssetId,
@@ -86,6 +88,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     AssetNumber = a.AssetNumber,
                     CreatedAt = a.CreatedAt,
                     UpdatedAt = a.UpdatedAt,
+                    AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
+
                     Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
                     {
                         MediaType = g.MediaType,
@@ -104,7 +108,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     {
                         AttributeName = d.AttributeName,
                         AttributeValue = d.AttributeValue
-                    }).ToList()
+                    }).ToList(),
 
                 })
                 .ToListAsync();
@@ -124,6 +128,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
          .Include(a => a.TblAssetGalleries)
          .Include(a => a.TblAssetDocuments)
          .Include(a => a.TblAssetDetails)
+         .Include(a => a.TblAuctionAssets)
+         .ThenInclude(aa => aa.Auction)
          .Where(a => a.AssetId == id)
          .Select(a => new GetAssetsFormDto
          {
@@ -164,6 +170,13 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
              UpdatedAt = a.UpdatedAt,
              RequestForInquiry=a.RequestForInquiry,
              RequestForViewing = a.RequestForViewing,
+
+             AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
+
+             // for auctionids 
+             AuctionIds = a.TblAuctionAssets
+                .Select(aa => aa.AuctionId)
+                .ToList(),
              Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
              {
                  MediaType = g.MediaType,

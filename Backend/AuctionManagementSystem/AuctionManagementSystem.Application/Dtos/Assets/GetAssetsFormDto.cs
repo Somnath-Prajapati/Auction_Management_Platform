@@ -46,6 +46,17 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
+
+        public List<int> AuctionIds { get; set; }
+
+
+        public int? AuctionStatusId { get; set; }
+
+        // auction 
+
+
+
+
         public string AssetNumber { get; set; }
         public List<AssetGalleryDtos> Galleries { get; set; } = new();
         public List<AssetDocumentFormDto> Documents { get; set; } = new();
