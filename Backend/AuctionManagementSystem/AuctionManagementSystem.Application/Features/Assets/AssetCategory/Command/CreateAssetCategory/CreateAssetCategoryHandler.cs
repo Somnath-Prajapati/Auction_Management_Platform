@@ -23,29 +23,30 @@ namespace AuctionManagementSystem.Application.Features.Assets.AssetCategory.Comm
 
         public async Task<int> Handle(CreateAssetCategoryCommand request, CancellationToken cancellationToken)
         {
-            // Check for existing category name (case-insensitive)
-            var existingCategory = await _repository.GetByNameAsync(request.AssetCategory.CategoryName.Trim());
+            var dto = request.AssetCategory;
+
+            var existingCategory = await _repository.GetByNameAsync(dto.CategoryName.Trim());
             if (existingCategory != null)
             {
                 throw new BadRequestException("An asset category with the same name already exists.");
             }
 
-            var entity = _mapper.Map<TblAssetCategory>(request.AssetCategory);
+            var entity = _mapper.Map<TblAssetCategory>(dto);
 
-            // Save icon file if provided
-            if (request.AssetCategory.Icon != null)
+            // Correct file check and assignment
+            if (dto.IconFile != null)
             {
-                entity.Icon = await _fileService.SaveFileAsync(request.AssetCategory.IconFile, "CategoryIcons");
+                entity.Icon = await _fileService.SaveFileAsync(dto.IconFile, "CategoryIcons");
             }
 
-            if (request.AssetCategory.Document != null)
+            if (dto.Document != null)
             {
-                entity.DocumentPath = await _fileService.SaveFileAsync(request.AssetCategory.Document, "CategoryDocuments");
+                entity.DocumentPath = await _fileService.SaveFileAsync(dto.Document, "CategoryDocuments");
             }
-
 
             var created = await _repository.AddAsync(entity);
             return created.CategoryId;
         }
     }
 }
+    

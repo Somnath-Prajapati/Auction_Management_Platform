@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionManagementSystem.App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionManagementSystem.Persistence", "AuctionManagementSystem.Persistence\AuctionManagementSystem.Persistence.csproj", "{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionManagementSystem.Identity", "AuctionManagementSystem.Identity\AuctionManagementSystem.Identity.csproj", "{2F0348AF-81FE-45CC-BA31-B3CFF6440BD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionManagementSystem.Identity", "AuctionManagementSystem.Identity\AuctionManagementSystem.Identity.csproj", "{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F0348AF-81FE-45CC-BA31-B3CFF6440BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F0348AF-81FE-45CC-BA31-B3CFF6440BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F0348AF-81FE-45CC-BA31-B3CFF6440BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F0348AF-81FE-45CC-BA31-B3CFF6440BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +54,5 @@ Global
 		{41492C59-CE5D-42B4-98A9-3E36382978CC} = {5F0FC49F-8FD7-484D-AF64-06D78517BDE2}
 		{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D} = {5F0FC49F-8FD7-484D-AF64-06D78517BDE2}
 		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7} = {9624D928-AEBB-4104-8EA1-D1697E319319}
-		{2F0348AF-81FE-45CC-BA31-B3CFF6440BD8} = {9624D928-AEBB-4104-8EA1-D1697E319319}
 	EndGlobalSection
 EndGlobal
