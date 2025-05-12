@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AuctionManagementSystem.Domain.Entities.Settings;
 
-public partial class TblStaticPagesSetting
+public partial class TblStaticPagesSettingDto
 {
     public int Id { get; set; }
 

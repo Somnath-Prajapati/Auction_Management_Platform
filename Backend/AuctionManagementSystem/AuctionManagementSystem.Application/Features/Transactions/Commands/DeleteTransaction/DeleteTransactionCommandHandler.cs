@@ -16,10 +16,11 @@ public class DeleteTransactionCommandHandler : IRequestHandler<DeleteTransaction
     public async Task<bool> Handle(DeleteTransactionCommand request, CancellationToken cancellationToken)
     {
         var entity = await _repository.GetByIdAsync(request.TransactionId);
-        if (entity == null)
+        if (entity == null || entity.IsDeleted)
             return false;
 
-        await _repository.DeleteAsync(entity);
+        entity.IsDeleted = true; // Mark as soft-deleted
+        await _repository.UpdateAsync(entity); // Save updated entity
         return true;
     }
 }
