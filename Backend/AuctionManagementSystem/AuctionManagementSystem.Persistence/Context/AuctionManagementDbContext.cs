@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using AuctionManagementSystem.Domain;
+using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.Request;
@@ -108,7 +109,7 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
 
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
-    public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
+    //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }
 
@@ -1187,17 +1188,17 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK_tblWinnerDocuments_WinnerId");
         });
 
-        modelBuilder.Entity<Tbltempdatum>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
+        //modelBuilder.Entity<Tbltempdatum>(entity =>
+        //{
+        //    entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
 
-            entity.ToTable("tbltempdata");
+        //    entity.ToTable("tbltempdata");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Name)
-                .HasMaxLength(1)
-                .HasColumnName("name");
-        });
+        //    entity.Property(e => e.Id).HasColumnName("id");
+        //    entity.Property(e => e.Name)
+        //        .HasMaxLength(1)
+        //        .HasColumnName("name");
+        //});
 
         OnModelCreatingPartial(modelBuilder);
     }

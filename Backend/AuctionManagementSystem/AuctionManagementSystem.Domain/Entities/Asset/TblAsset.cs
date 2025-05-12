@@ -70,8 +70,13 @@ public partial class TblAsset
 
     public string AssetNumber { get; set; }
 
-    [Column("Details")]
-    public string Details { get; set; }
+    //[Column("Details")]
+    //public string Details { get; set; }
+
+    public bool? RequestForViewing { get; set; } = true;
+
+    public bool? RequestForInquiry { get; set; } = true;
+
 
     public virtual TblWinnerAwardingOption Awarding { get; set; }
 
