@@ -63,6 +63,8 @@ namespace AuctionManagementSystem.Application.Profiles
 
 
             CreateMap<GetAssetsDto, TblAsset>().ReverseMap();
+            CreateMap<GetAssetsFormDto, DirectSaleAssetDto>();
+
 
             CreateMap<CreateAuctionCommand, TblAuction>()
             .IncludeBase<AuctionBaseCommand, TblAuction>();  // Include the common properties from AuctionBaseCommand
@@ -93,11 +95,7 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<AssetDocumentDto, TblAssetDocument>().ReverseMap();
             CreateMap<AssetDocumentUploadDto, TblAssetDocument>().ReverseMap();
 
-            CreateMap<GetAssetsFormDto, TblAsset>().ReverseMap();
-
             CreateMap<AssetDocumentFormDto, TblAssetDocument>().ReverseMap();
-
-            CreateMap<AssetDetailDto, TblAssetDetail>().ReverseMap();
 
             CreateMap<AssetDetailDto, TblAssetDetail>().ReverseMap();
             //Mapping for Create,Upadte Request Dto
@@ -122,6 +120,14 @@ namespace AuctionManagementSystem.Application.Profiles
             .ForMember(dest => dest.StatusName, opt => opt.MapFrom(src => src.Status.StatusName))
             .ForMember(dest => dest.TransactionTypeName, opt => opt.MapFrom(src => src.TransactionType.TransactionTypeName))
             .ForMember(dest => dest.CardTypeName, opt => opt.MapFrom(src => src.CardType != null ? src.CardType.CardTypeName : null));
+
+            CreateMap<GetAssetsFormDto, DirectSaleAssetDto>()
+           .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.StartingPrice)) // If StartingPrice is null, default to 0
+           .ForMember(dest => dest.ThumbnailUrl, opt => opt.MapFrom(src =>
+               src.Galleries.OrderBy(g => g.SortOrder).Select(g => g.FilePath).FirstOrDefault() ?? null)) // Get the first gallery image as the thumbnail URL
+           .ForMember(dest => dest.IsAvailableForDirectSale, opt => opt.MapFrom(src => src.IsAvailableForDirectSale))
+           .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.CategoryName)) // Map category name
+           .ReverseMap(); 
 
         }
     }

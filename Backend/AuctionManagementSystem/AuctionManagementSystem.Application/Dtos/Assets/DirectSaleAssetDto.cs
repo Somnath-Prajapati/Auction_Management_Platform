@@ -8,10 +8,19 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 {
     public class DirectSaleAssetDto
     {
-        public int Id { get; set; }
+        public int AssetId { get; set; }
         public string Title { get; set; }
+        public int? CategoryId { get; set; }
+        public decimal? Deposit { get; set; }
+        public decimal? MinIncrement { get; set; }
+        public string Description { get; set; }
+        public bool IsActive { get; set; }
+        public string SalesNotes { get; set; }
         public decimal Price { get; set; }
         public string ThumbnailUrl { get; set; }
-        public string ShortDescription { get; set; }
+        public string CategoryName { get; set; }
+
+        public bool IsAvailableForDirectSale { get; set; }
+
     }
 }
