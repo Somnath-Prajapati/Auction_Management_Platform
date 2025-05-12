@@ -42,7 +42,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
 
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<AssetDetailDto>>> GetAssetDetail(int id)
+        public async Task<ActionResult<IEnumerable<GetAssetDetailsDto>>> GetAssetDetail(int id)
         {
             var assets = await _mediator.Send(new GetAssetDetailByIdQuery(id));
             return Ok(assets);

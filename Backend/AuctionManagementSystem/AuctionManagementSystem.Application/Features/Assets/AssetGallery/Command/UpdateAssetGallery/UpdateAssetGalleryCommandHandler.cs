@@ -33,7 +33,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.AssetGallery.Comma
             if (request.Dto.File != null)
             {
                 if (request.Dto.File.Length > 1 * 1024 * 1024)
-                    throw new ArgumentException("File size should not exceed 1 MB");
+                    throw new ArgumentException("File size should not exceed 1 MB");    
 
                 string[] allowedExtensions = [".jpg", ".jpeg", ".png"];
                 var extension = Path.GetExtension(request.Dto.File.FileName).ToLower();
@@ -64,30 +64,4 @@ namespace AuctionManagementSystem.Application.Features.Assets.AssetGallery.Comma
     }
 }
 
-        //private readonly IAssetGalleryRepository _repository;
-        //private readonly IFileService _fileService;
-        //private readonly IMapper _mapper;
-
-        //public UpdateAssetGalleryHandler(IAssetGalleryRepository repository, IFileService fileService, IMapper mapper)
-        //{
-        //    _repository = repository;
-        //    _fileService = fileService;
-        //    _mapper = mapper;
-        //}
-
-        //public async Task<bool> Handle(UpdateAssetGalleryCommand request, CancellationToken cancellationToken)
-        //{
-        //    var existing = await _repository.GetByIdAsync(request.Id);
-        //    if (existing == null) return false;
-
-        //    // Apply non-null properties from DTO to existing entity
-        //    _mapper.Map(request.Dto, existing);
-
-        //    // Handle file separately (DTO doesn't carry FilePath anymore)
-        //    if (request.Dto.File != null)
-        //    {
-        //        existing.FilePath = await _fileService.SaveFileAsync(request.Dto.File, "AssetGallery");
-        //    }
-
-        //    return await _repository.UpdateAsync(request.Id, existing);
-        //}
+      
