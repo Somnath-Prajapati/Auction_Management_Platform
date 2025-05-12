@@ -97,7 +97,7 @@ namespace AuctionManagementSystem.Application.Profiles
 
             CreateMap<AssetDocumentFormDto, TblAssetDocument>().ReverseMap();
 
-            CreateMap<AssetDetailDto, TblAssetDetail>().ReverseMap();
+            CreateMap<GetAssetDetailsDto, TblAssetDetail>().ReverseMap();
             //Mapping for Create,Upadte Request Dto
             CreateMap<CreateRequestDto, AddRequestCommand>();
             CreateMap<UpdateRequestDto, UdpRequestCommand>();

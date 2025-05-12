@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using AuctionManagementSystem.Domain;
-using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
+
 using Microsoft.EntityFrameworkCore;
 using static System.Net.WebRequestMethods;
 
 namespace AuctionManagementSystem.Persistence.Context;
+// AuctionManagementDbContext
 
 
 
@@ -106,6 +107,7 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
 
+    //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }
@@ -248,6 +250,8 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.MapLatitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.MapLongitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.MinIncrement).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.RequestForInquiry).HasDefaultValue(true);
+            entity.Property(e => e.RequestForViewing).HasDefaultValue(true);
             entity.Property(e => e.ReserveAmount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.StartingPrice).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.Title)

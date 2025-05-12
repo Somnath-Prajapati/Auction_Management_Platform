@@ -50,6 +50,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IRequestRepository, RequestRepository>();
             services.AddScoped<IWishlistRepository, WishlistRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<IAuctionAssetRepository, AuctionAssetRepository>();
             return services;
         }
     }
