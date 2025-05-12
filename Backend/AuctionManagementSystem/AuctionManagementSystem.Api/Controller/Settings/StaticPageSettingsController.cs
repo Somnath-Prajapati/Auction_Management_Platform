@@ -1,16 +1,16 @@
-﻿using AuctionManagementSystem.Application.Features.Settings.DirectSaleSettings.Queries.GetDirectSaleSettingsById;
+﻿using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.DeleteStaticPagesSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.UpdateStaticPagesSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Query.GetAllStaticPagesSettings;
+using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Query.GetStaticPagesSettingsById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AuctionManagementSystem.API.Controllers
+namespace AuctionManagementSystem.API.Controllers.Settings
 {
     [Route("api/[controller]")]
     [ApiController]
-    
     public class StaticPagesSettingsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -23,9 +23,8 @@ namespace AuctionManagementSystem.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateStaticPagesSettingsCommand command)
         {
-            var result = await _mediator.Send(new CreateStaticPagesSettingsCommand());
-            //return CreatedAtAction(nameof(GetById), new { id = result. }, result);
-            return Ok(result);
+            var result = await _mediator.Send(command);
+            return Ok(result); // Or use CreatedAtAction if ID is available
         }
 
         [HttpGet]
@@ -38,23 +37,23 @@ namespace AuctionManagementSystem.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var result = await _mediator.Send(new GetDirectSaleSettingByIdQuery(id));
+            var result = await _mediator.Send(new GetStaticPagesSettingsByIdQuery(id));
             if (result == null)
                 return NotFound();
             return Ok(result);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] UpdateStaticPagesSettingsCommand command)
+        [HttpPut("Update")]
+       
+        public async Task<IActionResult> Update( [FromBody] UpdateStaticPagesSettingsCommand command)
         {
-            if (command.Id != id)
-            {
-                return BadRequest("ID mismatch");
-            }
+            //if (command.Id != id)
+            //    return BadRequest("ID mismatch");
 
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
@@ -63,4 +62,13 @@ namespace AuctionManagementSystem.API.Controllers
             return Ok(result);
         }
     }
+    //public class GetStaticPagesSettingsByIdQuery : IRequest<StaticPagesSettingsDto>
+    //{
+    //    public int Id { get; }
+
+    //    public GetStaticPagesSettingsByIdQuery(int id)
+    //    {
+    //        Id = id;
+    //    }
+    //}
 }

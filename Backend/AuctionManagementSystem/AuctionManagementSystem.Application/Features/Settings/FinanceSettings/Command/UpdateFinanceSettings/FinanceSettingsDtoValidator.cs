@@ -1,11 +1,18 @@
-﻿using FluentValidation;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Settings;
+using FluentValidation;
 
 namespace AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Command.UpdateFinanceSettings
 {
-    public class UpdateFinanceSettingsCommandValidator : AbstractValidator<FinanceSettingsDto>
+    
+
+    public class FinanceSettingsDtoValidator : AbstractValidator<FinanceSettingsDto>
     {
-        public UpdateFinanceSettingsCommandValidator()
+        public FinanceSettingsDtoValidator()
         {
             RuleFor(x => x.Id)
                 .GreaterThan(0).WithMessage("ID must be greater than 0.");
@@ -31,4 +38,5 @@ namespace AuctionManagementSystem.Application.Features.Settings.FinanceSettings.
                 .LessThanOrEqualTo(100).WithMessage("Buyer commission percent cannot exceed 100.");
         }
     }
+
 }

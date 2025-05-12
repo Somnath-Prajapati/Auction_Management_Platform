@@ -14,5 +14,8 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task<bool> DeleteAsync(int id);
         Task<TblAssetDocument?> GetByIdAsync(int id);
         Task<IEnumerable<TblAssetDocument>> GetAllAsync();
+
+
+        Task DeleteDocumentsByAssetIdAsync(int assetId); //for deleting the document for adding asset
     }
 }

@@ -32,24 +32,39 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();
 
-         
-
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
             var app = builder.Build();
             //if (app.Environment.IsDevelopment())
             //{
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Manage");
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Management");
                 });
             //}
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors("AllowAll");
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.MapGet("/", context =>
+            {
+                context.Response.Redirect("/swagger");
+                return Task.CompletedTask;
+            });
+
+
             app.MapControllers();
             app.Run();
         }

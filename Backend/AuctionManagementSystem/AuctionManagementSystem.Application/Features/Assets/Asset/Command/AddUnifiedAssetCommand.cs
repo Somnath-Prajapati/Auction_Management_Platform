@@ -9,11 +9,6 @@ using Microsoft.AspNetCore.Http;
 
 namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
 {
-    public class CreateAssetCommand : IRequest<int>
-    {
-        public CreateAssetsDto Dto { get; set; }
-        public List<IFormFile> GalleryFiles { get; set; }
-        public List<IFormFile> DocumentFiles { get; set; }
-    }
+    public record AddUnifiedAssetCommand (CreateAssetsDto dto) : IRequest<int>;
 
 }

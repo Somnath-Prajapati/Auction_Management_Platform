@@ -5,8 +5,9 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Query.GetFinanceSettingsById;
 using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Query.GetAllFinanceSettings;
+using System.ComponentModel.DataAnnotations;
 
-namespace AuctionManagementSystem.API.Controllers
+namespace AuctionManagementSystem.API.Controllers.Settings
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -45,15 +46,30 @@ namespace AuctionManagementSystem.API.Controllers
         }
 
         // PUT: api/FinanceSettings/{id}
-        [HttpPut("Update/{id}")]
-        public async Task<IActionResult> UpdateFinanceSetting(int id, [FromBody] UpdateFinanceSettingsCommand command)
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateFinanceSetting([FromBody] UpdateFinanceSettingsCommand command)
         {
-            if (id != command.FinanceSettings.Id)
-                return BadRequest("ID mismatch");
-
             var result = await _mediator.Send(command);
             return Ok(result);
+            //try
+            //{
+            //    var result = await _mediator.Send(command);
+            //    return Ok(result);
+            //}
+            //catch (ValidationException ex)
+            //{
+            //    return BadRequest(new { errors = ex.Errors });
+            //}
+            //catch (KeyNotFoundException ex)
+            //{
+            //    return NotFound(new { message = ex.Message });
+            //}
+            //catch (Exception ex)
+            //{
+            //    return StatusCode(500, new { message = ex.Message });
+            //}
         }
+
 
         // DELETE: api/FinanceSettings/{id}
         [HttpDelete("Delete/{id}")]

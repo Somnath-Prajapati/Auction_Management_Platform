@@ -5,7 +5,7 @@ namespace AuctionManagementSystem.Application.Features.Settings.FooterLinksSetti
 {
     public class UpdateFooterLinksSettingsCommand : IRequest<FooterLinksSettingsDto>
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public FooterLinksSettingsDto FooterLinksSettings { get; set; } // Use the DTO for the properties
     }
 }
