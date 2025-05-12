@@ -77,7 +77,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 
     public class AssetDocumentFormDto
     {
-        //public int DocumentId { get; set; }
+        public int DocumentId { get; set; }
         public string? DocumentType { get; set; }
         public string? FilePath { get; set; }
 
