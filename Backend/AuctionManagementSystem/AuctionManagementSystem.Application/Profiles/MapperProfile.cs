@@ -118,7 +118,6 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<TblRequest, CreateRequestDto>().ReverseMap();
 
 
-
         }
     }
 }

@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using AuctionManagementSystem.Domain.Entities.User;
+using Microsoft.AspNetCore.Identity;
 
 namespace AuctionManagementSystem.Identity
 {
@@ -18,7 +20,10 @@ namespace AuctionManagementSystem.Identity
             services.AddScoped<IOtpRepository, OtpRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IEmailService, EmailService>();
-            services.AddScoped<IJwtService, JwtService>(); 
+            services.AddScoped<IJwtService, JwtService>();
+
+            //new added
+            services.AddScoped<IPasswordHasher<TblUser>, PasswordHasher<TblUser>>();
 
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
             var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();

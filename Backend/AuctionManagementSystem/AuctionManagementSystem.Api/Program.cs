@@ -11,6 +11,7 @@ using AuctionManagementSystem.Application.Profiles;
 using AuctionManagementSystem.Api.Middleware;
 using ProtoBuf.Meta;
 using AuctionManagementSystem.Application.Contracts.Auth;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Api
 {
@@ -30,10 +31,9 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();
-            
 
+         
 
-           
             var app = builder.Build();
             //if (app.Environment.IsDevelopment())
             //{
