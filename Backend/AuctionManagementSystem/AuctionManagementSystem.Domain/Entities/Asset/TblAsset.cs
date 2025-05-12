@@ -66,7 +66,7 @@ public partial class TblAsset
 
     public DateTime? UpdatedAt { get; set; }
 
-    public bool IsActive { get; set; }
+    public bool IsActive { get; set; } = true;
 
     public string AssetNumber { get; set; }
 
