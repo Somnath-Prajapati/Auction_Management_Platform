@@ -8,6 +8,7 @@ using AuctionManagementSystem.Domain.Entities.Transaction;
 
 namespace AuctionManagementSystem.Domain.Entities.User;
 
+
 public partial class TblUser
 {
     public int UserId { get; set; }
@@ -44,7 +45,7 @@ public partial class TblUser
 
     public string Gender { get; set; }
 
-    public DateOnly PersonalIdExpiryDate { get; set; }
+    public DateTime PersonalIdExpiryDate { get; set; }
 
     public string ProfileImage { get; set; }
 

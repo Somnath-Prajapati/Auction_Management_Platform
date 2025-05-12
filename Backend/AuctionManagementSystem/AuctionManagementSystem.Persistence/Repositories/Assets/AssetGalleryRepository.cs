@@ -60,6 +60,11 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             return await _context.TblAssetGalleries.ToListAsync();
         }
 
-        
+        public async Task<IEnumerable<TblAssetGallery>> GetByAssetIdAsync(int assetId)
+        {
+            return await _context.TblAssetGalleries
+                .Where(g => g.AssetId == assetId)
+                .ToListAsync();
+        }
     }
 }

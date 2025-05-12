@@ -37,8 +37,9 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<IEnumerable<GetAssetsFormDto>> GetAllAsync()
         {
-            var assets = await _context.TblAssets
+             var assets = await _context.TblAssets
                 .Where(a => a.IsActive)
+                .OrderByDescending(a => a.UpdatedAt ?? a.CreatedAt)
                 .Include(a => a.Category)
                 .Include(a => a.Status)
                 .Include(a => a.Vat)
@@ -46,6 +47,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .Include(a => a.Winner)
                 .Include(a => a.TblAssetGalleries)
                 .Include(a => a.TblAssetDocuments)
+                .Include(a => a.TblAuctionAssets)
+                .ThenInclude(aa => aa.Auction)
                 .Select(a => new GetAssetsFormDto
                 {
                     AssetId = a.AssetId,
@@ -76,6 +79,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     AdminFees = a.AdminFees,
                     AuctionFees = a.AuctionFees,
                     BuyerCommission = a.BuyerCommission,
+                    RequestForViewing=a.RequestForViewing,
+                    RequestForInquiry=a.RequestForInquiry,
                     WinnerId = a.WinnerId,
                     WinnerName = a.Winner != null ? a.Winner.User.Name : null,
                     AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null,
@@ -83,6 +88,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     AssetNumber = a.AssetNumber,
                     CreatedAt = a.CreatedAt,
                     UpdatedAt = a.UpdatedAt,
+                    AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
+
                     Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
                     {
                         MediaType = g.MediaType,
@@ -91,14 +98,22 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     }).ToList(),
                     Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
                     {
-                        DocumentId = d.DocumentId,
+                        //DocumentId = d.DocumentId,
+                       
                         DocumentType = d.DocumentType,
                         FilePath = d.FilePath
-                    }).ToList()
+                    }).ToList(),
+
+                    Attributes = a.TblAssetDetails.Select(d => new AssetDetailDtoo
+                    {
+                        AttributeName = d.AttributeName,
+                        AttributeValue = d.AttributeValue
+                    }).ToList(),
+
                 })
                 .ToListAsync();
 
-            return assets;
+                return assets;
         }
 
         public async Task<GetAssetsFormDto> GetByIdAsync(int id)
@@ -113,6 +128,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
          .Include(a => a.TblAssetGalleries)
          .Include(a => a.TblAssetDocuments)
          .Include(a => a.TblAssetDetails)
+         .Include(a => a.TblAuctionAssets)
+         .ThenInclude(aa => aa.Auction)
          .Where(a => a.AssetId == id)
          .Select(a => new GetAssetsFormDto
          {
@@ -145,12 +162,21 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
              AuctionFees = a.AuctionFees,
              BuyerCommission = a.BuyerCommission,
              WinnerId = a.WinnerId,
-             WinnerName = a.Winner != null ? a.Winner.User.Name : null,
+             WinnerName = a.Winner != null && a.Winner.User != null ? a.Winner.User.Name : null,
              AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null,
              SalesNotes = a.SalesNotes,
              AssetNumber = a.AssetNumber,
              CreatedAt = a.CreatedAt,
              UpdatedAt = a.UpdatedAt,
+             RequestForInquiry=a.RequestForInquiry,
+             RequestForViewing = a.RequestForViewing,
+
+             AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
+
+             // for auctionids 
+             AuctionIds = a.TblAuctionAssets
+                .Select(aa => aa.AuctionId)
+                .ToList(),
              Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
              {
                  MediaType = g.MediaType,
@@ -159,9 +185,15 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
              }).ToList(),
              Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
              {
-                 DocumentId = d.DocumentId,
+                 //DocumentId = d.DocumentId,
                  DocumentType = d.DocumentType,
                  FilePath = d.FilePath
+             }).ToList(),
+             // Add the asset details (attributes) here
+             Attributes = a.TblAssetDetails.Select(d => new AssetDetailDtoo
+             {
+                 AttributeName = d.AttributeName,
+                 AttributeValue = d.AttributeValue
              }).ToList()
          })
          .FirstOrDefaultAsync();
@@ -169,9 +201,15 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             return asset;
         }
 
-        public async Task<TblAsset> AddAsset(TblAsset asset)
+        public async Task<TblAsset> AddAsset(TblAsset asset,TblAssetGallery gallery)
         {
-            _context.TblAssets.Add(asset);
+            //_context.TblAssets.OrderByDescending(c=>c.AssetId).Select(c => c);
+
+            
+
+            gallery.AssetId = asset.AssetId;
+            asset.TblAssetGalleries.Add(gallery);
+           _context.TblAssets.Add(asset);
             await _context.SaveChangesAsync();
 
             return await _context.TblAssets
@@ -186,8 +224,19 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .FirstOrDefaultAsync(a => a.AssetId == asset.AssetId);  
         }
 
+
+
+        public async Task<int> AddAssetForGallery(TblAsset asset)
+        {
+
+            _context.TblAssets.Add(asset);
+            await _context.SaveChangesAsync();
+
+            return asset.AssetId;
+        }
         public async Task UpdateAsync(TblAsset asset)
         {
+            asset.UpdatedAt = DateTime.UtcNow;
             var a = _context.TblAssets.Update(asset);
             Console.WriteLine(a);
             await _context.SaveChangesAsync();
@@ -239,41 +288,22 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         }
 
         public async Task<TblAsset> GetIdDeleteAsync(int id)
-        {
+            {
             return await _context.TblAssets
-                 .Include(a => a.Category)
-                 .Include(a => a.Status)
-                 .Include(a => a.Seller)
-                 .Include(a => a.Awarding)
-                 .Include(a => a.Vat)
-                 .Include(a => a.TblAssetGalleries)
-                 .Include(a => a.TblAssetDocuments)
-                 .Include(a => a.TblAssetDetails)
+                 //.Include(a => a.Category)
+                 //.Include(a => a.Status)
+                 //.Include(a => a.Seller)
+                 //.Include(a => a.Awarding)
+                 //.Include(a => a.Vat)
+                 //.Include(a => a.TblAssetGalleries)
+                 //.Include(a => a.TblAssetDocuments)
+                 //.Include(a => a.TblAssetDetails)
                  .FirstOrDefaultAsync(a => a.AssetId == id);
         }
 
-
-
-        public async Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents)
+        public Task<TblAsset> AddAsset(TblAsset asset)
         {
-            await _context.TblAssets.AddAsync(asset);
-            await _context.SaveChangesAsync();
-
-            foreach (var gallery in galleries)
-            {
-                gallery.AssetId = asset.AssetId;
-                await _context.TblAssetGalleries.AddAsync(gallery);
-            }
-
-            foreach (var doc in documents)
-            {
-                doc.AssetId = asset.AssetId;
-                await _context.TblAssetDocuments.AddAsync(doc);
-            }
-
-            await _context.SaveChangesAsync();
-            return asset.AssetId;
+            throw new NotImplementedException();
         }
-
     }
 }

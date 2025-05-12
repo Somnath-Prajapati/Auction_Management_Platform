@@ -65,11 +65,15 @@ public partial class TblAsset
 
     public DateTime? UpdatedAt { get; set; }
 
-    public bool IsActive { get; set; }
+    public bool IsActive { get; set; } = true;
 
     public string AssetNumber { get; set; }
 
-    public string Details { get; set; }
+    //public string Details { get; set; }
+
+    public bool? RequestForViewing { get; set; } = true;
+
+    public bool? RequestForInquiry { get; set; } = true;
 
     public virtual TblWinnerAwardingOption Awarding { get; set; }
 
