@@ -64,6 +64,7 @@ public partial class TblUser
 
     public bool? IsDeleted { get; set; }
 
+
     public virtual TblCountry Country { get; set; }
 
     public virtual TblUserStatus Status { get; set; }
@@ -78,4 +79,6 @@ public partial class TblUser
     public virtual ICollection<tblOTP> OTPs { get; set; } = new List<tblOTP>();
 
     public virtual ICollection<TblUserRole> TblUserRoles { get; set; } = new List<TblUserRole>();
+
+    
 }
