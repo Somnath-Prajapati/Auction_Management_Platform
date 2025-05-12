@@ -108,11 +108,100 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
+    public DbSet<TblCartItem> TblCartItems { get; set; }
 
+    public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
+
+        modelBuilder.Entity<TblWishlistItem>(entity =>
+        {
+            entity.ToTable("tblWishlistItems", "AuctionM_dbuser");
+
+            entity.HasKey(e => e.WishlistItemId);
+
+            entity.Property(e => e.WishlistItemId)
+                .HasColumnName("WishlistItemId")
+                .IsRequired();
+
+            entity.Property(e => e.UserId)
+                .HasColumnName("UserId")
+                .HasColumnType("int")
+                .IsRequired();
+
+            entity.Property(e => e.AssetId)
+                .HasColumnName("AssetId")
+                .HasColumnType("int")
+                .IsRequired();
+
+            entity.Property(e => e.AddedAt)
+                .HasColumnName("AddedAt")
+                .HasColumnType("datetime")
+                .IsRequired();
+
+            entity.Property(e => e.IsActive)
+                .HasColumnName("IsActive")
+                .HasColumnType("bit")
+                .HasDefaultValue(true)
+                .IsRequired();
+
+            entity.Property(e => e.DeletedDate)
+                .HasColumnName("DeletedDate")
+                .HasColumnType("datetime")
+                .IsRequired(false);
+
+            // Optional: Foreign key relationships
+            entity.HasOne(e => e.Asset)
+                .WithMany()
+                .HasForeignKey(e => e.AssetId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasOne(e => e.User)
+                .WithMany()
+                .HasForeignKey(e => e.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+
+        modelBuilder.Entity<TblCartItem>(entity =>
+        {
+            entity.ToTable("tblCartItems", "AuctionM_dbuser");
+
+            entity.HasKey(e => e.CartItemId);
+
+            entity.Property(e => e.CartItemId).HasColumnName("CartItemId");
+            entity.Property(e => e.UserId).HasColumnName("UserId").IsRequired();
+            entity.Property(e => e.AssetId).HasColumnName("AssetId").IsRequired();
+            entity.Property(e => e.Quantity).HasColumnName("Quantity").HasDefaultValue(1).IsRequired();
+            entity.Property(e => e.AddedAt)
+                   .HasColumnName("AddedAt")
+                    .HasColumnType("datetime")
+                    .IsRequired();
+
+            entity.Property(e => e.IsActive)
+                .HasColumnName("IsActive")
+                .HasColumnType("bit")
+                .HasDefaultValue(true)
+                .IsRequired();
+
+            entity.Property(e => e.DeletedDate)
+                .HasColumnName("DeletedDate")
+                .HasColumnType("datetime")
+                .IsRequired(false);
+
+            // Optional: Foreign key relationships (if applicable)
+            entity.HasOne(e => e.Asset)
+                  .WithMany()
+                  .HasForeignKey(e => e.AssetId)
+                  .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasOne(e => e.User)
+                  .WithMany()
+                  .HasForeignKey(e => e.UserId)
+                  .OnDelete(DeleteBehavior.Restrict);
+        });
 
         modelBuilder.Entity<tblOTP>(entity =>
         {

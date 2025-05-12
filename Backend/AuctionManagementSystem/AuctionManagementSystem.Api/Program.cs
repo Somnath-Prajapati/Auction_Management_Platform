@@ -30,7 +30,15 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();
 
-           
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
             var app = builder.Build();
             //if (app.Environment.IsDevelopment())
             //{
@@ -41,6 +49,7 @@ namespace AuctionManagementSystem.Api
                 });
             //}
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors("AllowAll");
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
