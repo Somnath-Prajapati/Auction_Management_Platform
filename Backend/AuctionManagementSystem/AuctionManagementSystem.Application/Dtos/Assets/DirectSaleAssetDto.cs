@@ -14,7 +14,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public decimal? Deposit { get; set; }
         public decimal? MinIncrement { get; set; }
         public string Description { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
         public string SalesNotes { get; set; }
         public decimal Price { get; set; }
         public string ThumbnailUrl { get; set; }

@@ -39,7 +39,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         public async Task<IEnumerable<GetAssetsFormDto>> GetAllAsync()
         {
              var assets = await _context.TblAssets
-                .Where(a => a.IsActive)
+                .Where(a => a.IsDeleted==false)
                 .OrderByDescending(a => a.UpdatedAt ?? a.CreatedAt)
                 .Include(a => a.Category)
                 .Include(a => a.Status)
@@ -120,7 +120,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         public async Task<GetAssetsFormDto> GetByIdAsync(int id)
         {
         var asset = await _context.TblAssets
-          .Where(a => a.IsActive)
+          .Where(a => a.IsDeleted)
          .Include(a => a.Category)
          .Include(a => a.Status)
          .Include(a => a.Seller)
@@ -205,7 +205,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         {
             var assets = await _context.TblAssets
                 .Where(predicate)
-                .Where(a => a.IsActive)
+                .Where(a => a.IsDeleted==false)
                 .Include(a => a.Category)
                 .Include(a => a.Status)
                 .Include(a => a.Vat)
@@ -317,7 +317,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             //_context.TblAssets.Remove(asset);
             //    await _context.SaveChangesAsync();
 
-            asset.IsActive = false;
+            asset.IsDeleted = false;
 
             _context.TblAssets.Update(asset);
 
@@ -337,7 +337,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
             }
             var Asset =  await _context.TblAssets
-                 .Where(a => a.IsActive)
+                 .Where(a => a.IsDeleted==false)
                 .Include(a => a.Category)
                 .Include(a => a.Status)
                 .Include(a => a.Seller)
