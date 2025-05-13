@@ -5,11 +5,11 @@ using AuctionManagementSystem.Domain;
 using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
+using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
-
 using Microsoft.EntityFrameworkCore;
 using static System.Net.WebRequestMethods;
 
@@ -113,6 +113,7 @@ public partial class AuctionManagementDbContext : DbContext
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
+    public virtual DbSet<tblBid> tblBids { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }
 
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
@@ -248,7 +249,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Deposit).HasColumnType("decimal(5, 2)");
             entity.Property(e => e.Featured).HasDefaultValue(false);
-            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.MakeOffer).HasDefaultValue(false);
             entity.Property(e => e.MapLatitude).HasColumnType("decimal(9, 6)");
             entity.Property(e => e.MapLongitude).HasColumnType("decimal(9, 6)");
@@ -613,35 +614,79 @@ public partial class AuctionManagementDbContext : DbContext
         });
 
 
-        modelBuilder.Entity<TblBid>(entity =>
-        {
-            entity.HasKey(e => e.BidId).HasName("PK__tblBids__4A733D920BE15F30");
+        //modelBuilder.Entity<tblBid>(entity =>
+        //{
+        //    entity.HasKey(e => e.BidId).HasName("PK__tblBids__4A733D920BE15F30");
 
+        //    entity.ToTable("tblBids");
+
+        //    entity.Property(e => e.BidAmount).HasColumnType("decimal(10, 2)");
+        //    entity.Property(e => e.BidTime)
+        //        .HasDefaultValueSql("(getdate())")
+        //        .HasColumnType("datetime");
+        //    entity.Property(e => e.CreatedDate)
+        //        .HasDefaultValueSql("(getdate())")
+        //        .HasColumnType("datetime");
+        //    entity.Property(e => e.IsWinningBid).HasDefaultValue(false);
+
+        //    entity.HasOne(d => d.Asset).WithMany(p => p.TblBids)
+        //        .HasForeignKey(d => d.AssetId)
+        //        .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK_Bids_Assets");
+
+        //    entity.HasOne(d => d.Auction).WithMany(p => p.TblBids)
+        //        .HasForeignKey(d => d.AuctionId)
+        //        .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK_Bids_Auctions");
+
+        //    entity.HasOne(d => d.User).WithMany(p => p.TblBids)
+        //        .HasForeignKey(d => d.UserId)
+        //        .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK_Bids_Users");
+        //});
+        modelBuilder.Entity<tblBid>(entity =>
+        {
             entity.ToTable("tblBids");
 
-            entity.Property(e => e.BidAmount).HasColumnType("decimal(10, 2)");
+            entity.HasKey(e => e.BidId);
+
+            entity.Property(e => e.BidId)
+                  .ValueGeneratedOnAdd();
+
+            entity.Property(e => e.BidAmount)
+                  .HasColumnType("decimal(10,2)")
+                  .IsRequired();
+
             entity.Property(e => e.BidTime)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+                  .IsRequired()
+                  .HasDefaultValueSql("GETDATE()");
+
+            entity.Property(e => e.IsWinningBid)
+                  .IsRequired()
+                  .HasDefaultValue(false);
+
             entity.Property(e => e.CreatedDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.IsWinningBid).HasDefaultValue(false);
+                  .IsRequired()
+                  .HasDefaultValueSql("GETDATE()");
 
-            entity.HasOne(d => d.Asset).WithMany(p => p.TblBids)
-                .HasForeignKey(d => d.AssetId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Bids_Assets");
+            // Fix the relationship configuration by explicitly specifying foreign key properties
+            entity.HasOne(d => d.Auction)
+                  .WithMany(p => p.TblBids)  // Assuming TblAuction has a TblBids collection
+                  .HasForeignKey(d => d.AuctionId)
+                  .HasConstraintName("FK_tblBids_tblAuction")
+                  .OnDelete(DeleteBehavior.Restrict);
 
-            entity.HasOne(d => d.Auction).WithMany(p => p.TblBids)
-                .HasForeignKey(d => d.AuctionId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Bids_Auctions");
+            entity.HasOne(d => d.Asset)
+                  .WithMany(p => p.TblBids)  // Assuming TblAsset has a TblBids collection
+                  .HasForeignKey(d => d.AssetId)
+                  .HasConstraintName("FK_tblBids_tblAsset")
+                  .OnDelete(DeleteBehavior.Restrict);
 
-            entity.HasOne(d => d.User).WithMany(p => p.TblBids)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Bids_Users");
+            entity.HasOne(d => d.User)
+                  .WithMany(p => p.TblBids)  // This matches what we see in your TblUser class
+                  .HasForeignKey(d => d.UserId)
+                  .HasConstraintName("FK_tblBids_tblUser")
+                  .OnDelete(DeleteBehavior.Restrict);
         });
 
         modelBuilder.Entity<TblCardType>(entity =>

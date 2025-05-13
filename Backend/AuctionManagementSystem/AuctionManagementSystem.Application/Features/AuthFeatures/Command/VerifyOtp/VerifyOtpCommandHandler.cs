@@ -12,12 +12,12 @@ namespace AuctionManagementSystem.Application.Features.AuthFeatures.Command.Veri
 {
     public class VerifyOtpCommandHandler : IRequestHandler<VerifyOtpCommand, AuthResponseDto>
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWorkAuth _unitOfWork;
         private readonly IJwtService _jwtService;
         //new added
         private readonly IRoleRepository _roleRepository;
 
-        public VerifyOtpCommandHandler(IUnitOfWork unitOfWork, IJwtService jwtService, IRoleRepository roleRepository)
+        public VerifyOtpCommandHandler(IUnitOfWorkAuth unitOfWork, IJwtService jwtService, IRoleRepository roleRepository)
         {
             _unitOfWork = unitOfWork;
             _jwtService = jwtService;
@@ -32,7 +32,9 @@ namespace AuctionManagementSystem.Application.Features.AuthFeatures.Command.Veri
             var otp = await _unitOfWork.OtpRepository.GetValidOtpAsync(user.UserId, request.dto.Code);
             if (otp == null) return null;
 
-            otp.IsUsed = true;
+            //otp.IsUsed = true;
+            _unitOfWork.OtpRepository.Delete(otp);
+            user.LastOnline = DateTime.UtcNow;
             await _unitOfWork.SaveChangesAsync();
 
             // Get user role

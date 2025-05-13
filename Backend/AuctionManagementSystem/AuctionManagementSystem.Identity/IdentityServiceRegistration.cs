@@ -1,5 +1,5 @@
 ﻿using AuctionManagementSystem.Application.Contracts.Auth;
-using IUnitOfWork = AuctionManagementSystem.Application.Contracts.Auth.IUnitOfWork;
+using IUnitOfWorkAuth = AuctionManagementSystem.Application.Contracts.Auth.IUnitOfWorkAuth;
 using AuctionManagementSystem.Identity.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using AuctionManagementSystem.Identity.Services;
@@ -18,7 +18,7 @@ namespace AuctionManagementSystem.Identity
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IOtpRepository, OtpRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWorkAuth, UnitOfWorkAuth>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IJwtService, JwtService>();
 

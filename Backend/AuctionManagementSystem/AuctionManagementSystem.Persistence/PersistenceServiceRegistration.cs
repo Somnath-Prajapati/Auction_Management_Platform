@@ -20,7 +20,10 @@ using AuctionManagementSystem.Infrastructure.UoW;
 using AuctionManagementSystem.Application.Contracts.Request;
 using AuctionManagementSystem.Persistence.Repositories.Requests;
 using ProtoBuf.Meta;
+using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Persistence.Repositories.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Listings;
+using AuctionManagementSystem.Infrastructure.Repositories;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -49,6 +52,8 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped< IUserStatusRepository,UserStatusRepository> ();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IRequestRepository, RequestRepository>();
+            services.AddScoped<IBidRepository, BidRepository>();
+            services.AddScoped<IAuctionAssetRepository, AuctionAssetRepository >();
             services.AddScoped<IWishlistRepository, WishlistRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<IAuctionAssetRepository, AuctionAssetRepository>();

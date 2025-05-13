@@ -47,9 +47,11 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
                 .ToListAsync();
         }
 
-        public async Task<TblUser> GetUserById(int id)
+        public async Task<TblUser?> GetUserById(int id)
         {
-            return await _context.TblUsers.FindAsync(id);
+            return await _context.TblUsers
+                .Where(u => u.UserId == id && !(u.IsDeleted ?? false))
+                .FirstOrDefaultAsync();
         }
 
         public async Task<int> UpdateUserAsync(TblUser tblUser)
@@ -69,30 +71,9 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
 
         public async Task<TblUser?> GetByEmailOrMobileAsync(string email, string mobileNumber)
         {
-            // Validate inputs - both cannot be null or empty
-            if (string.IsNullOrWhiteSpace(email) && string.IsNullOrWhiteSpace(mobileNumber))
-            {
-                throw new ArgumentException("Either email or mobile number must be provided");
-            }
-
-            // Build query safely handling nulls
-            var query = _context.TblUsers.AsQueryable();
-
-            if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(mobileNumber))
-            {
-                // Both email and mobile are provided
-                return await query.FirstOrDefaultAsync(u => u.Email == email || u.MobileNumber == mobileNumber);
-            }
-            else if (!string.IsNullOrWhiteSpace(email))
-            {
-                // Only email is provided
-                return await query.FirstOrDefaultAsync(u => u.Email == email);
-            }
-            else
-            {
-                // Only mobile number is provided
-                return await query.FirstOrDefaultAsync(u => u.MobileNumber == mobileNumber);
-            }
+            return await _context.TblUsers
+                 .Where(u => !(u.IsDeleted ?? false))
+                .FirstOrDefaultAsync(u => u.Email == email || u.MobileNumber == mobileNumber);
         }
 
         public async Task<TblUser?> GetByPersonalIdNumberAsync(string personalIdNumber)
@@ -101,31 +82,17 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
                 return null;
 
             return await _context.TblUsers
+                 .Where(u => !(u.IsDeleted ?? false))
                 .FirstOrDefaultAsync(u => u.PersonalIdNumber == personalIdNumber);
         }
 
         public async Task<TblUser?> GetByEmailOrMobileForUpdateAsync(string email, string mobileNumber, int excludeUserId)
         {
-            // Validate inputs
-            if (string.IsNullOrWhiteSpace(email) && string.IsNullOrWhiteSpace(mobileNumber))
-            {
-                throw new ArgumentException("Either email or mobile number must be provided");
-            }
-
-            var query = _context.TblUsers.Where(u => u.UserId != excludeUserId);
-
-            if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(mobileNumber))
-            {
-                return await query.FirstOrDefaultAsync(u => u.Email == email || u.MobileNumber == mobileNumber);
-            }
-            else if (!string.IsNullOrWhiteSpace(email))
-            {
-                return await query.FirstOrDefaultAsync(u => u.Email == email);
-            }
-            else
-            {
-                return await query.FirstOrDefaultAsync(u => u.MobileNumber == mobileNumber);
-            }
+            return await _context.TblUsers
+                 .Where(u => !(u.IsDeleted ?? false))
+                .FirstOrDefaultAsync(u =>
+                    (u.Email == email || u.MobileNumber == mobileNumber) &&
+                    u.UserId != excludeUserId);
         }
 
         public async Task<TblUser?> GetByPersonalIdNumberForUpdateAsync(string personalIdNumber, int excludeUserId)
@@ -134,6 +101,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
                 return null;
 
             return await _context.TblUsers
+                 .Where(u => !(u.IsDeleted ?? false))
                 .FirstOrDefaultAsync(u =>
                     u.PersonalIdNumber == personalIdNumber &&
                     u.UserId != excludeUserId);
@@ -141,10 +109,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
 
         public async Task<TblUser?> GetUserByEmailAsync(string email)
         {
-            if (string.IsNullOrWhiteSpace(email))
-                return null;
-
-            return await _context.TblUsers.FirstOrDefaultAsync(u => u.Email == email);
+            return await _context.TblUsers.Where(u => !(u.IsDeleted ?? false)).FirstOrDefaultAsync(u => u.Email == email);
         }
     }
 }

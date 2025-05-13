@@ -14,7 +14,7 @@ namespace AuctionManagementSystem.Api.Controller.Auth
     public class AuthController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly ILogger<AuthController> _logger; // Add logger
+        private readonly ILogger<AuthController> _logger; 
 
         public AuthController(IMediator mediator, ILogger<AuthController> logger)
         {
