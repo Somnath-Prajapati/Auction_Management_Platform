@@ -22,8 +22,6 @@ using AuctionManagementSystem.Persistence.Repositories.Requests;
 using ProtoBuf.Meta;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Bids;
-using AuctionManagementSystem.Application.Contracts.Auction;
-using AuctionManagementSystem.Persistence.Repositories.Auction;
 using AuctionManagementSystem.Persistence.Repositories.Listings;
 
 namespace AuctionManagementSystem.Persistence

@@ -1,7 +1,6 @@
 ﻿using System.Linq.Expressions;
 using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Application.Contracts.Assets;
-using AuctionManagementSystem.Application.Contracts.Auction;
 using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Contracts.RealTime;
@@ -51,7 +50,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
                 var auction = await _auctionRepository.GetByIdAsync(request.bid.AuctionId);
                 if (auction == null || auction.EndDateTime < DateTime.UtcNow || auction.IsDeleted)
                 {
-                    throw new NotFoundException("Cannot place a bid. The auction has expired or is inactive.");
+                    throw new NotFoundException ("Cannot place a bid. The auction has expired or is inactive.");
                 }
 
                 var asset = await _assetsRepository.GetByIdAsync(request.bid.AssetId);

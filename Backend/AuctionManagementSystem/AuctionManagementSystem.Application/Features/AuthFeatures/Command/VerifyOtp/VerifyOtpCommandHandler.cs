@@ -17,7 +17,7 @@ namespace AuctionManagementSystem.Application.Features.AuthFeatures.Command.Veri
         //new added
         private readonly IRoleRepository _roleRepository;
 
-        public VerifyOtpCommandHandler(IUnitOfWorkAuth unitOfWork, IJwtService jwtService)
+        public VerifyOtpCommandHandler(IUnitOfWorkAuth unitOfWork, IJwtService jwtService, IRoleRepository roleRepository)
         {
             _unitOfWork = unitOfWork;
             _jwtService = jwtService;
