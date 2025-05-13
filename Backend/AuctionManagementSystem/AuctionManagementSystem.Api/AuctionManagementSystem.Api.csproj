@@ -30,7 +30,6 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controller\Listings\" />
     <Folder Include="wwwroot\ProfileImages\" />
   </ItemGroup>
 
