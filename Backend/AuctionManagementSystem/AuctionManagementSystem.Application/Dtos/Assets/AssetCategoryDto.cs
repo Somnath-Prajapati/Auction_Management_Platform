@@ -29,6 +29,8 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public DateTime? DeletedDate { get; set; }
         public bool IsDeleted { get; set; }
         public int? Vatid { get; set; }
+
+        public List<int>? PaymentMethodIds { get; set; } = new List<int>();
     }
 
 }

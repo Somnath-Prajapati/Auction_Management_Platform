@@ -25,12 +25,14 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<int> SaveAsync()
         {
-            return await _context.SaveChangesAsync();
+                return await _context.SaveChangesAsync();
         }
 
         public async Task<List<TblAssetCategory>> GetAllAsync()
         {
             return await _context.TblAssetCategories
+                                 .Include(c => c.TblAssetCategoryPaymentMethods) 
+                                 .ThenInclude(cp => cp.PaymentMethod)
                                  .Where(c => !c.IsDeleted)
                                  .ToListAsync();
         }
@@ -52,6 +54,28 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .FirstOrDefaultAsync(c => c.CategoryName.ToLower() == categoryName.ToLower());
         }
 
+
+
+         public async Task<TblAssetCategory> AddWithPaymentMethodsAsync(TblAssetCategory category, List<int> paymentMethodIds)
+    {
+        // Save the category first
+        await _context.TblAssetCategories.AddAsync(category);
+        await _context.SaveChangesAsync();
+
+        // Add payment methods (category ID now available)
+        foreach (var methodId in paymentMethodIds)
+        {
+            var relation = new TblAssetCategoryPaymentMethod
+            {
+                CategoryId = category.CategoryId,
+                PaymentMethodId = methodId
+            };
+            _context.TblAssetCategoryPaymentMethods.Add(relation);
+        }
+
+        await _context.SaveChangesAsync();
+        return category;
+    }
 
     }
 }

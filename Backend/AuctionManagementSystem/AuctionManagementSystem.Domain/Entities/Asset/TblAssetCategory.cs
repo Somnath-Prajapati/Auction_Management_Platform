@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AuctionManagementSystem.Domain.model;
 
 namespace AuctionManagementSystem.Domain.Entities.Asset;
 
@@ -44,5 +45,7 @@ public partial class TblAssetCategory
     public virtual TblAssetStatus Status { get; set; }
     public virtual TblVatoption Vat { get; set; }
     public virtual ICollection<TblAsset> TblAssets { get; set; } = new List<TblAsset>();
-    public virtual ICollection<TblAssetPaymentMethod> PaymentMethods { get; set; } = new List<TblAssetPaymentMethod>();
+   
+    // added this to have relationship
+    public virtual ICollection<TblAssetCategoryPaymentMethod> TblAssetCategoryPaymentMethods { get; set; } = new List<TblAssetCategoryPaymentMethod>();
 }
