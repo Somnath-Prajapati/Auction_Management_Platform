@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Auth;
+using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Auth;
 using MediatR;
 
@@ -13,11 +14,14 @@ namespace AuctionManagementSystem.Application.Features.AuthFeatures.Command.Veri
     {
         private readonly IUnitOfWorkAuth _unitOfWork;
         private readonly IJwtService _jwtService;
+        //new added
+        private readonly IRoleRepository _roleRepository;
 
         public VerifyOtpCommandHandler(IUnitOfWorkAuth unitOfWork, IJwtService jwtService)
         {
             _unitOfWork = unitOfWork;
             _jwtService = jwtService;
+            _roleRepository = roleRepository;
         }
 
         public async Task<AuthResponseDto> Handle(VerifyOtpCommand request, CancellationToken cancellationToken)

@@ -12,6 +12,7 @@ using AuctionManagementSystem.Persistence.Repositories.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProtoBuf.Meta;
 using AuctionManagementSystem.Persistence.Repositories.User;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Contracts;
@@ -23,6 +24,7 @@ using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Bids;
 using AuctionManagementSystem.Application.Contracts.Auction;
 using AuctionManagementSystem.Persistence.Repositories.Auction;
+using AuctionManagementSystem.Persistence.Repositories.Listings;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -53,6 +55,9 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IRequestRepository, RequestRepository>();
             services.AddScoped<IBidRepository, BidRepository>();
             services.AddScoped<IAuctionAssetRepository, AuctionAssetRepository >();
+            services.AddScoped<IWishlistRepository, WishlistRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<IAuctionAssetRepository, AuctionAssetRepository>();
             return services;
         }
     }

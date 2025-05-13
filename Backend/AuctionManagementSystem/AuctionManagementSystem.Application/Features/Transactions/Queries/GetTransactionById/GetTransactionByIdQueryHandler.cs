@@ -3,6 +3,7 @@ using MediatR;
 using AuctionManagementSystem.Application.Contracts.Transactions;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Application.Features.Transactions.Queries.GetTransactionById;
+using AuctionManagementSystem.Application.Exceptions;
 
 namespace AuctionManagementSystem.Application.Features.Transaction.Queries.GetTransactionById;
 
@@ -19,10 +20,15 @@ public class GetTransactionByIdQueryHandler : IRequestHandler<GetTransactionById
 
     public async Task<TransactionDto> Handle(GetTransactionByIdQuery request, CancellationToken cancellationToken)
     {
-        var entity = await _repository.GetByIdAsync(request.TransactionId);
-        if (entity == null)
-            throw new KeyNotFoundException("Transaction not found.");
+        var transaction = await _repository
+             .GetTransactionByIdAsync(request.TransactionId);
 
-        return _mapper.Map<TransactionDto>(entity);
+        if (transaction == null)
+        {
+            throw new NotFoundException("Transaction not found.");
+        }
+
+        var transactionDto = _mapper.Map<TransactionDto>(transaction);
+        return transactionDto;
     }
 }

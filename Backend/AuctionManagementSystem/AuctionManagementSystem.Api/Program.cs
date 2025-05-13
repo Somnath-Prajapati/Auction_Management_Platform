@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using AuctionManagementSystem.Application.Contracts;
+using AuctionManagementSystem.Application.Profiles;
 using AuctionManagementSystem.Api.Middleware;
 using ProtoBuf.Meta;
 using AuctionManagementSystem.Application.Contracts.Auth;
@@ -55,7 +56,7 @@ namespace AuctionManagementSystem.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Manage");
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Management");
                 });
             //}
             app.UseMiddleware<ExceptionMiddleware>();
@@ -64,6 +65,13 @@ namespace AuctionManagementSystem.Api
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.MapGet("/", context =>
+            {
+                context.Response.Redirect("/swagger");
+                return Task.CompletedTask;
+            });
+
+
             app.MapControllers();
             app.Run();
         }

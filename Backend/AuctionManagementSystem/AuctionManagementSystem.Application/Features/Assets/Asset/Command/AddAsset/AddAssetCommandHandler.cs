@@ -13,7 +13,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddA
 {
     public class AddAssetCommandHandler : IRequestHandler<AddAssetCommand, CreateAssetsDto>
     {
-        private readonly IAssetsRepository _assetsRepository;
+            private readonly IAssetsRepository _assetsRepository;
         private readonly IMapper _mapper;
 
         public AddAssetCommandHandler(IMapper mapper, IAssetsRepository assetsRepository)
