@@ -5,7 +5,7 @@ using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Contracts.RealTime;
 using AuctionManagementSystem.Application.Exceptions;
-using AuctionManagementSystem.Persistence.Repositories.User;
+using AuctionManagementSystem.Domain.Entities.Bids;
 using AutoMapper;
 using MediatR;
  

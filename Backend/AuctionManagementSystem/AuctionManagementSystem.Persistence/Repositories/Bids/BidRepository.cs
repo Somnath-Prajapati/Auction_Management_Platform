@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Persistence.Context;
 using AuctionManagementSystem.Persistence.Repositories.User;
 using Microsoft.EntityFrameworkCore;

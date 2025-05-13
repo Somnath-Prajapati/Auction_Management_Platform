@@ -29,9 +29,9 @@ using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
-using AuctionManagementSystem.Persistence.Repositories.User;
 using AutoMapper;
 using EventStore.ClientAPI;
+using AuctionManagementSystem.Domain.Entities.Bids;
 
 
 namespace AuctionManagementSystem.Application.Profiles
@@ -88,7 +88,7 @@ namespace AuctionManagementSystem.Application.Profiles
 
             CreateMap<UpdateAssetDto, TblAsset>()
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.IsActive, opt => opt.MapFrom(_ => false)); 
+                .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false)); 
 
             CreateMap<AssetsGalleryDto, TblAssetGallery>().ReverseMap();
             CreateMap<AuctionBaseCommand, TblAuction>()
