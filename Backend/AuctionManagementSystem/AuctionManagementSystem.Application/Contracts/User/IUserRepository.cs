@@ -24,4 +24,5 @@ namespace AuctionManagementSystem.Application.Contracts.User
         Task<TblUser?> GetUserByEmailAsync(string email);
 
     }
+
 }

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using AuctionManagementSystem.Application.Contracts;
+using AuctionManagementSystem.Application.Profiles;
 using AuctionManagementSystem.Api.Middleware;
 using ProtoBuf.Meta;
 using AuctionManagementSystem.Application.Contracts.Auth;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Api
 {
