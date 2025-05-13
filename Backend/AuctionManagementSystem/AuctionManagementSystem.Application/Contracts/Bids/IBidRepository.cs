@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using AuctionManagementSystem.Persistence.Repositories.User;
+using AuctionManagementSystem.Domain.Entities.Bids;
 
 namespace AuctionManagementSystem.Application.Contracts.Bids
 {
