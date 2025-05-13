@@ -40,4 +40,6 @@ public partial class TblAuction
     public virtual ICollection<TblAuctionAsset> TblAuctionAssets { get; set; } = new List<TblAuctionAsset>();
 
     public virtual ICollection<TblAuctionView> TblAuctionViews { get; set; } = new List<TblAuctionView>();
+
+    public virtual ICollection<TblBid> TblBids { get; set; } = new List<TblBid>();
 }

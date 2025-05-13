@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using AuctionManagementSystem.Domain.model;
 
 namespace AuctionManagementSystem.Domain.Entities.Asset;
 
@@ -11,5 +12,5 @@ public partial class TblAssetPaymentMethod
 
     public string Name { get; set; }
 
-    public virtual ICollection<TblAssetCategory> Categories { get; set; } = new List<TblAssetCategory>();
+    public virtual ICollection<TblAssetCategoryPaymentMethod> TblAssetCategoryPaymentMethods { get; set; } = new List<TblAssetCategoryPaymentMethod>();
 }
