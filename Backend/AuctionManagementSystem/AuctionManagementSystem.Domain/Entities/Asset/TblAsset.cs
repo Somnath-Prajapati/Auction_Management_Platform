@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Transaction;
@@ -65,11 +66,17 @@ public partial class TblAsset
 
     public DateTime? UpdatedAt { get; set; }
 
-    public bool IsActive { get; set; }
+    public bool IsActive { get; set; } = true;
 
     public string AssetNumber { get; set; }
 
-    public string Details { get; set; }
+    //[Column("Details")]
+    //public string Details { get; set; }
+
+    public bool? RequestForViewing { get; set; } = true;
+
+    public bool? RequestForInquiry { get; set; } = true;
+
 
     public virtual TblWinnerAwardingOption Awarding { get; set; }
 
@@ -96,4 +103,5 @@ public partial class TblAsset
     public virtual TblVatoption Vat { get; set; }
 
     public virtual TblAssetWinner Winner { get; set; }
+    public bool IsAvailableForDirectSale { get; set; }
 }

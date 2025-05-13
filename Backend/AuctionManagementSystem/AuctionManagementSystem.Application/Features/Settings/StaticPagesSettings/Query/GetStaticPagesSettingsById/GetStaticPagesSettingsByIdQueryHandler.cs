@@ -1,31 +1,30 @@
-﻿using AuctionManagementSystem.Application.Contracts.Settings;
-using AuctionManagementSystem.Application.Dtos.Settings;
-using AuctionManagementSystem.Application.Features.Settings.DirectSaleSettings.Queries.GetDirectSaleSettingsById;
-using AuctionManagementSystem.Domain.Interfaces;
+﻿using AuctionManagementSystem.Application.Dtos.Settings;
+using AuctionManagementSystem.Application.Interfaces.Repositories;
 using AutoMapper;
 using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Query.GetStaticPagesSettingsById
 {
-    public class GetDirectSaleSettingByIdQueryHandler : IRequestHandler<GetDirectSaleSettingByIdQuery, DirectSaleSettingsDto>
+    public class GetStaticPagesSettingsByIdQueryHandler : IRequestHandler<GetStaticPagesSettingsByIdQuery, StaticPagesSettingsDto>
     {
-        private readonly IDirectSaleSettingsRepository _repository;
+        private readonly IStaticPagesSettingsRepository _repository;
         private readonly IMapper _mapper;
 
-        public GetDirectSaleSettingByIdQueryHandler(IDirectSaleSettingsRepository repository, IMapper mapper)
+        public GetStaticPagesSettingsByIdQueryHandler(IStaticPagesSettingsRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
         }
 
-        public async Task<DirectSaleSettingsDto> Handle(GetDirectSaleSettingByIdQuery request, CancellationToken cancellationToken)
+        public async Task<StaticPagesSettingsDto> Handle(GetStaticPagesSettingsByIdQuery request, CancellationToken cancellationToken)
         {
-            var setting = await _repository.GetByIdAsync(request.Id);
+            var entity = await _repository.GetByIdAsync(request.Id);
+            if (entity == null)
+            {
+                throw new Exception("Static Page Setting not found.");
+            }
 
-            if (setting == null)
-                throw new KeyNotFoundException($"Direct Sale Setting with ID {request.Id} not found.");
-
-            return _mapper.Map<DirectSaleSettingsDto>(setting);
+            return _mapper.Map<StaticPagesSettingsDto>(entity);
         }
     }
 }

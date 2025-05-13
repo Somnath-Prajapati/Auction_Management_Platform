@@ -2,6 +2,7 @@
 using AuctionManagementSystem.Application.Repositories;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AutoMapper;
+using FluentValidation;
 using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.CreateFooterLinksSettings
@@ -10,22 +11,26 @@ namespace AuctionManagementSystem.Application.Features.Settings.FooterLinksSetti
     {
         private readonly IFooterLinksSettingsRepository _repository;
         private readonly IMapper _mapper;
+        private readonly IValidator<FooterLinksSettingsDto> _validator;
 
-        public CreateFooterLinksSettingsCommandHandler(IFooterLinksSettingsRepository repository, IMapper mapper)
+        public CreateFooterLinksSettingsCommandHandler(
+            IFooterLinksSettingsRepository repository,
+            IMapper mapper,
+            IValidator<FooterLinksSettingsDto> validator)
         {
             _repository = repository;
             _mapper = mapper;
+            _validator = validator;
         }
 
         public async Task<FooterLinksSettingsDto> Handle(CreateFooterLinksSettingsCommand request, CancellationToken cancellationToken)
         {
-            // Mapping from FooterLinksSettingsDto to TblFooterLinksSetting
+            var validationResult = await _validator.ValidateAsync(request.FooterLinksSettingsDto, cancellationToken);
+            if (!validationResult.IsValid)
+                throw new ValidationException(validationResult.Errors);
+
             var entity = _mapper.Map<TblFooterLinksSetting>(request.FooterLinksSettingsDto);
-
-            // Creating the entity in the repository
             var created = await _repository.CreateAsync(entity);
-
-            // Returning the created entity as a DTO
             return _mapper.Map<FooterLinksSettingsDto>(created);
         }
     }

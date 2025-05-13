@@ -36,28 +36,41 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public string AssetNumber { get; set; }
         public string Details { get; set; }
 
-        // Collections for files and details
-        public List<AssetGalleryItemDto> Galleries { get; set; } = new List<AssetGalleryItemDto>();
-        public List<AssetDocumentItemDto> Documents { get; set; } = new List<AssetDocumentItemDto>();
-        public List<AssetDetailItemDto> AssetDetails { get; set; } = new List<AssetDetailItemDto>();
+        //// Collections for files and details
+        //public List<AssetGalleryItemDto> Galleries { get; set; } = new List<AssetGalleryItemDto>();
+        //public List<AssetDocumentItemDto> Documents { get; set; } = new List<AssetDocumentItemDto>();
+        //public List<AssetDetailItemDto> AssetDetails { get; set; } = new List<AssetDetailItemDto>();
+
+        // For galleries
+        public List<IFormFile> GalleryFiles { get; set; } = new List<IFormFile>();
+        public List<string> GalleryMediaTypes { get; set; } = new List<string>();
+        public List<int?> GallerySortOrders { get; set; } = new List<int?>();
+
+        // For documents
+        public List<IFormFile> DocumentFiles { get; set; } = new List<IFormFile>();
+        public List<string> DocumentTypes { get; set; } = new List<string>();
+
+        //    // For details
+        //    public List<string> DetailTypes { get; set; } = new List<string>();
+        //    public List<string> DetailValues { get; set; } = new List<string>();
     }
 
-    public class AssetGalleryItemDto
-    {
-        public IFormFile File { get; set; }
-        public string MediaType { get; set; }
-        public int? SortOrder { get; set; }
-    }
+    //public class AssetGalleryItemDto
+    //{
+    //    public IFormFile File { get; set; }
+    //    public string MediaType { get; set; }
+    //    public int? SortOrder { get; set; }
+    //}
 
-    public class AssetDocumentItemDto
-    {
-        public IFormFile File { get; set; }
-        public string DocumentType { get; set; }
-    }
+    //public class AssetDocumentItemDto
+    //{
+    //    public IFormFile File { get; set; }
+    //    public string DocumentType { get; set; }
+    //}
 
-    public class AssetDetailItemDto
-    {
-        public string Type { get; set; }
-        public string Value { get; set; }
-    }
+    //public class AssetDetailItemDto
+    //{
+    //    public string Type { get; set; }
+    //    public string Value { get; set; }
+    //}
 }
