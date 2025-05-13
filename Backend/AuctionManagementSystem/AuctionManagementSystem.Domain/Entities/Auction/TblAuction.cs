@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AuctionManagementSystem.Domain.Entities.Bids;
 
 namespace AuctionManagementSystem.Domain.Entities.Auction;
 
@@ -40,4 +41,6 @@ public partial class TblAuction
     public virtual ICollection<TblAuctionAsset> TblAuctionAssets { get; set; } = new List<TblAuctionAsset>();
 
     public virtual ICollection<TblAuctionView> TblAuctionViews { get; set; } = new List<TblAuctionView>();
+
+    public virtual ICollection<tblBid> TblBids { get; set; } = new List<tblBid>();
 }

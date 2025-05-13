@@ -11,5 +11,11 @@ namespace AuctionManagementSystem.Application.Features.Transactions.Queries.GetT
     public class GetTransactionByIdQuery : IRequest<TransactionDto>
     {
         public int TransactionId { get; set; }
+        public GetTransactionByIdQuery(int transactionId)
+        {
+            TransactionId = transactionId;
+        }
     }
+
+
 }

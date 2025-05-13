@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Assets;
@@ -11,7 +12,9 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
     public interface IAssetsRepository
     {
 
-        Task<IEnumerable<GetAssetsFormDto>> GetAllAsync();  
+        Task<IEnumerable<GetAssetsFormDto>> GetAllAsync();
+        Task<List<GetAssetsFormDto>> GetAllAsync(Expression<Func<TblAsset, bool>> predicate);
+
         Task<GetAssetsFormDto> GetByIdAsync(int id);
 
         Task<TblAsset> GetIdDeleteAsync(int id);

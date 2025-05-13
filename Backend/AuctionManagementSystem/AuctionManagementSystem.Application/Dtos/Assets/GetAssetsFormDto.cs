@@ -45,6 +45,19 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public string Details { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public bool IsAvailableForDirectSale { get; set; } // for asset direct sale
+
+
+
+        public List<int> AuctionIds { get; set; }
+
+
+        public int? AuctionStatusId { get; set; }
+
+        // auction 
+
+
+
 
 
         public List<int> AuctionIds { get; set; }

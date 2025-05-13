@@ -13,5 +13,6 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task<IEnumerable<int>> GetAssignedAuctionIdsAsync(int assetId);
         Task AddAsync(TblAuctionAsset auctionAsset);
         Task<List<TblAuction>> GetAllAuctionsAsync();
+        Task<bool> AssetExistsInAuctionAsync(int auctionId, int assetId);
     }
 }

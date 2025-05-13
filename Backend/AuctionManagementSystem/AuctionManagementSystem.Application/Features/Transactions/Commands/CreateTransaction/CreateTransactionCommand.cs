@@ -10,6 +10,6 @@ namespace AuctionManagementSystem.Application.Features.Transactions.Commands.Cre
 {
     public class CreateTransactionCommand : IRequest<TransactionDto>
     {
-        public CreateTransactionDto Transaction { get; set; } = null!;
+        public CreateTransactionDto Transaction { get; set; }
     }
 }
