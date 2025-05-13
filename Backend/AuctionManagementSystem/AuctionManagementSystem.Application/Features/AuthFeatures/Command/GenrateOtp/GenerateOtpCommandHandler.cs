@@ -11,10 +11,10 @@ namespace AuctionManagementSystem.Application.Features.AuthFeatures.Command.Genr
 {
     public class GenerateOtpCommandHandler : IRequestHandler<GenerateOtpCommand, bool>
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWorkAuth _unitOfWork;
         private readonly IEmailService _emailService;
 
-        public GenerateOtpCommandHandler(IUnitOfWork unitOfWork, IEmailService emailService)
+        public GenerateOtpCommandHandler(IUnitOfWorkAuth unitOfWork, IEmailService emailService)
         {
             _unitOfWork = unitOfWork;
             _emailService = emailService;

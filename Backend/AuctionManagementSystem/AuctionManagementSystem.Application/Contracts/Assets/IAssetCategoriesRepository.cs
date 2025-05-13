@@ -14,5 +14,7 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task<TblAssetCategory?> GetByIdAsync(int id);
         void Update(TblAssetCategory tblAssetCategory);
         Task<int> SaveAsync();
+
+        Task<TblAssetCategory> AddWithPaymentMethodsAsync(TblAssetCategory category, List<int> paymentMethodIds);
     }
 }

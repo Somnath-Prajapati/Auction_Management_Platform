@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Dtos.Auctions;
+using AuctionManagementSystem.Application.Dtos.Bids;
 using AuctionManagementSystem.Application.Dtos.Requests;
 using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
+using AuctionManagementSystem.Application.Features.Requests.Command.AddRequest;
+using AuctionManagementSystem.Application.Features.Requests.Command.UpdRequest;
 using AuctionManagementSystem.Application.Dtos.UserDtos;
 using AuctionManagementSystem.Application.Features.Auctions.Commands.CreateAuction;
 using AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateAuction;
@@ -27,6 +31,7 @@ using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
 using AutoMapper;
 using EventStore.ClientAPI;
+using AuctionManagementSystem.Domain.Entities.Bids;
 
 
 namespace AuctionManagementSystem.Application.Profiles
@@ -60,6 +65,12 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<CreateTransactionDto, TblTransaction>();
             // Update
             CreateMap<UpdateTransactionDto, TblTransaction>().ForMember(dest => dest.TransactionId, opt => opt.Ignore()); // ID shouldn't be overwritten
+
+            //Mapping for Create,Upadte Request Dto
+            CreateMap<CreateRequestDto, AddRequestCommand>();
+            CreateMap<UpdateRequestDto, UdpRequestCommand>();
+            CreateMap<TblRequest, RequestDto>();
+            
 
 
             CreateMap<GetAssetsDto, TblAsset>().ReverseMap();
@@ -102,6 +113,7 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<CreateRequestDto, AddRequestCommand>();
             CreateMap<UpdateRequestDto, UdpRequestCommand>();
             CreateMap<TblRequest, RequestDto>();
+            CreateMap<tblBid, BidDto>().ReverseMap();
 
 
             CreateMap<TblTransaction, TransactionDto>()
@@ -128,6 +140,14 @@ namespace AuctionManagementSystem.Application.Profiles
            .ForMember(dest => dest.IsAvailableForDirectSale, opt => opt.MapFrom(src => src.IsAvailableForDirectSale))
            .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.CategoryName)) // Map category name
            .ReverseMap(); 
+
+            //CreateMap<CreateRequestDto, TblRequest>().ReverseMap();
+
+
+
+            CreateMap<CreateRequestDto, AddRequestCommand>().ReverseMap();
+            CreateMap<TblRequest, CreateRequestDto>().ReverseMap();
+
 
         }
     }

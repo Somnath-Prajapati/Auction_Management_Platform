@@ -1,5 +1,5 @@
 ﻿using AuctionManagementSystem.Application.Contracts.Auth;
-using IUnitOfWork = AuctionManagementSystem.Application.Contracts.Auth.IUnitOfWork;
+using IUnitOfWorkAuth = AuctionManagementSystem.Application.Contracts.Auth.IUnitOfWorkAuth;
 using AuctionManagementSystem.Identity.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using AuctionManagementSystem.Identity.Services;
@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using AuctionManagementSystem.Domain.Entities.User;
+using Microsoft.AspNetCore.Identity;
 
 namespace AuctionManagementSystem.Identity
 {
@@ -16,9 +18,12 @@ namespace AuctionManagementSystem.Identity
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IOtpRepository, OtpRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWorkAuth, UnitOfWorkAuth>();
             services.AddScoped<IEmailService, EmailService>();
-            services.AddScoped<IJwtService, JwtService>(); 
+            services.AddScoped<IJwtService, JwtService>();
+
+            //new added
+            services.AddScoped<IPasswordHasher<TblUser>, PasswordHasher<TblUser>>();
 
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
             var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();

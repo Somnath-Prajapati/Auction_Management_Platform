@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using AuctionManagementSystem.Domain.Entities.Auction;
+using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
@@ -66,7 +67,7 @@ public partial class TblAsset
 
     public DateTime? UpdatedAt { get; set; }
 
-    public bool IsDeleted { get; set; }
+    public bool IsDeleted { get; set; } = true;
 
     public string AssetNumber { get; set; }
 
@@ -101,7 +102,9 @@ public partial class TblAsset
     public virtual ICollection<TblTransactionAsset> TblTransactionAssets { get; set; } = new List<TblTransactionAsset>();
 
     public virtual TblVatoption Vat { get; set; }
-
+    public virtual ICollection<tblBid> TblBids { get; set; } = new List<tblBid>();
     public virtual TblAssetWinner Winner { get; set; }
+    public virtual ICollection<TblWishlistItem> TblWishlistItems { get; set; } = new List<TblWishlistItem>();
+    public virtual ICollection<TblCartItem> TblCartItems { get; set; } = new List<TblCartItem>();
     public bool IsAvailableForDirectSale { get; set; }
 }

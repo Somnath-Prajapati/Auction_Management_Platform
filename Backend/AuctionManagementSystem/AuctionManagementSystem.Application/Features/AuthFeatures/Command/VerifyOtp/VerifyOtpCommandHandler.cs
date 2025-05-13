@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Auth;
+using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Auth;
 using MediatR;
 
@@ -11,13 +12,16 @@ namespace AuctionManagementSystem.Application.Features.AuthFeatures.Command.Veri
 {
     public class VerifyOtpCommandHandler : IRequestHandler<VerifyOtpCommand, AuthResponseDto>
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWorkAuth _unitOfWork;
         private readonly IJwtService _jwtService;
+        //new added
+        private readonly IRoleRepository _roleRepository;
 
-        public VerifyOtpCommandHandler(IUnitOfWork unitOfWork, IJwtService jwtService)
+        public VerifyOtpCommandHandler(IUnitOfWorkAuth unitOfWork, IJwtService jwtService, IRoleRepository roleRepository)
         {
             _unitOfWork = unitOfWork;
             _jwtService = jwtService;
+            _roleRepository = roleRepository;
         }
 
         public async Task<AuthResponseDto> Handle(VerifyOtpCommand request, CancellationToken cancellationToken)
@@ -28,7 +32,9 @@ namespace AuctionManagementSystem.Application.Features.AuthFeatures.Command.Veri
             var otp = await _unitOfWork.OtpRepository.GetValidOtpAsync(user.UserId, request.dto.Code);
             if (otp == null) return null;
 
-            otp.IsUsed = true;
+            //otp.IsUsed = true;
+            _unitOfWork.OtpRepository.Delete(otp);
+            user.LastOnline = DateTime.UtcNow;
             await _unitOfWork.SaveChangesAsync();
 
             // Get user role
