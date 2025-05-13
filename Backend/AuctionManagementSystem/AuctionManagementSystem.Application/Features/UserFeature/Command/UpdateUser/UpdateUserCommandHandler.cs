@@ -30,9 +30,19 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Updat
             var existingProfileImage = user.ProfileImage;
             var existingPersonalIdImage = user.PersonalIdImage;
 
+            var existingUser = await _userRepository.GetByEmailOrMobileForUpdateAsync(request.Dto.Email, request.Dto.MobileNumber, request.Id);
+            var goverementIdExists = await _userRepository.GetByPersonalIdNumberForUpdateAsync(request.Dto.PersonalIdNumber, request.Id);
+
+            if (existingUser != null || goverementIdExists != null)
+            {
+                throw new BadRequestException("A user with the same email, mobile number, or Goverment ID number already exists.");
+            }
+
+
+
             _mapper.Map(request.Dto, user);
 
-            // Handle profile image update
+          
             if (request.Dto.ProfileImage != null)
             {
                 if (!string.IsNullOrEmpty(existingProfileImage))
@@ -45,7 +55,6 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Updat
                 user.ProfileImage = existingProfileImage;
             }
 
-            // Handle personal ID image update
             if (request.Dto.PersonalIdImage != null)
             {
                 if (!string.IsNullOrEmpty(existingPersonalIdImage))
@@ -59,7 +68,7 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Updat
             }
 
             user.LastOnline = DateTime.UtcNow;
-            user.UpdatedBy = "Admin";
+            user.UpdatedBy = request.userId;
             user.UpdatedDate = DateTime.UtcNow;
 
             try

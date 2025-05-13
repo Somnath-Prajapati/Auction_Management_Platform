@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Assets;
@@ -11,11 +12,15 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
     public interface IAssetsRepository
     {
 
-        Task<IEnumerable<GetAssetsFormDto>> GetAllAsync();  
+        Task<IEnumerable<GetAssetsFormDto>> GetAllAsync();
+        Task<List<GetAssetsFormDto>> GetAllAsync(Expression<Func<TblAsset, bool>> predicate);
+
         Task<GetAssetsFormDto> GetByIdAsync(int id);
 
         Task<TblAsset> GetIdDeleteAsync(int id);
         Task<TblAsset> AddAsset(TblAsset asset);
+
+        Task<int> AddAssetForGallery(TblAsset asset);
         Task DeleteAsync(TblAsset asset);
         Task UpdateAsync(TblAsset asset);
         Task<bool> AssetsIsExist(int id);
@@ -23,7 +28,7 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
 
 
 
-        Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents);
+        //Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents);
 
     }
 }

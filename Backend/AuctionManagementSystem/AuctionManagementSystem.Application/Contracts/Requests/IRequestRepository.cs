@@ -17,6 +17,11 @@ namespace AuctionManagementSystem.Application.Contracts.Request
 
         Task DelRequest(TblRequest request);
 
+        Task<bool> RequestNumberExists(string requestNumber);
 
+        Task<string> GenerateRequestNumberAsync();
+       
+        Task DeleteRequestByNumberAsync(string requestNumber);
+       
     }
 }

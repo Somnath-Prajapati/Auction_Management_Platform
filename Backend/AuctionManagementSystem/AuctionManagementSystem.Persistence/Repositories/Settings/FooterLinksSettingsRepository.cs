@@ -27,7 +27,7 @@ namespace AuctionManagementSystem.Persistence.Repositories
 
         public async Task<TblFooterLinksSetting> CreateAsync(TblFooterLinksSetting entity)
         {
-            _context.TblFooterLinksSettings.Add(entity);
+            await _context.TblFooterLinksSettings.AddAsync(entity); // Use AddAsync instead of Add
             await _context.SaveChangesAsync();
             return entity;
         }

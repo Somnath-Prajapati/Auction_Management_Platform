@@ -50,6 +50,24 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             return true;
         }
 
+        public async Task DeleteDocumentsByAssetIdAsync(int assetId)
+        {
+            // Fetch all documents related to the given assetId
+            var documents = await _context.TblAssetDocuments
+                .Where(d => d.AssetId == assetId)
+                .ToListAsync();
+
+            // If there are any documents to delete, remove them
+            if (documents.Any())
+            {
+                _context.TblAssetDocuments.RemoveRange(documents);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+
+
+
         public async Task<TblAssetDocument?> GetByIdAsync(int id)
         {
             return await _context.TblAssetDocuments

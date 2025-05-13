@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{B4145396-4692-4706-B31B-A1802601E25D}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionManagementSystem.Application", "AuctionManagementSystem.Application\AuctionManagementSystem.Application.csproj", "{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionManagementSystem.Persistence", "AuctionManagementSystem.Persistence\AuctionManagementSystem.Persistence.csproj", "{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionManagementSystem.Identity", "AuctionManagementSystem.Identity\AuctionManagementSystem.Identity.csproj", "{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

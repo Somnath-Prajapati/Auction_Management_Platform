@@ -1,11 +1,9 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Dtos.Settings;
+﻿using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Repositories;
-using AutoMapper;
-using MediatR;
 using AuctionManagementSystem.Domain.Entities.Settings;
+using AutoMapper;
+using FluentValidation;
+using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.UpdateFooterLinksSettings
 {
@@ -13,26 +11,30 @@ namespace AuctionManagementSystem.Application.Features.Settings.FooterLinksSetti
     {
         private readonly IFooterLinksSettingsRepository _repository;
         private readonly IMapper _mapper;
+        private readonly IValidator<FooterLinksSettingsDto> _validator;
 
-        public UpdateFooterLinksSettingsCommandHandler(IFooterLinksSettingsRepository repository, IMapper mapper)
+        public UpdateFooterLinksSettingsCommandHandler(
+            IFooterLinksSettingsRepository repository,
+            IMapper mapper,
+            IValidator<FooterLinksSettingsDto> validator)
         {
             _repository = repository;
             _mapper = mapper;
+            _validator = validator;
         }
 
         public async Task<FooterLinksSettingsDto> Handle(UpdateFooterLinksSettingsCommand request, CancellationToken cancellationToken)
         {
-            // Fetch the existing entity by Id
-            var existing = await _repository.GetByIdAsync(request.Id);
-            if (existing == null) throw new KeyNotFoundException("Footer links setting not found.");
+            var validationResult = await _validator.ValidateAsync(request.FooterLinksSettings, cancellationToken);
+            if (!validationResult.IsValid)
+                throw new ValidationException(validationResult.Errors);
 
-            // Map the request's DTO to the existing entity to update it
+            var existing = await _repository.GetByIdAsync(request.FooterLinksSettings.Id);
+            if (existing == null)
+                throw new KeyNotFoundException("Footer links setting not found.");
+
             _mapper.Map(request.FooterLinksSettings, existing);
-
-            // Update the entity in the repository
             var updated = await _repository.UpdateAsync(existing);
-
-            // Return the updated entity as a DTO
             return _mapper.Map<FooterLinksSettingsDto>(updated);
         }
     }

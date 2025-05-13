@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AuctionManagementSystem.Domain.Entities.Asset;
 
@@ -13,5 +14,6 @@ public partial class TblAssetDetail
 
     public string? AttributeValue { get; set; }
 
+    [ForeignKey("AssetId")]
     public virtual TblAsset? Asset { get; set; }
 }

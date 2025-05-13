@@ -7,6 +7,11 @@ using AuctionManagementSystem.Application.Validators;
 using Microsoft.Extensions.DependencyInjection;
 using MediatR;
 using AuctionManagementSystem.Application.Services;
+using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
+using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.UpdateStaticPagesSettings;
+using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.DeleteStaticPagesSettings;
+using AuctionManagementSystem.Application.Profiles;
+
 namespace AuctionManagementSystem.Application
 {
     public static class ApplicationServicesRegisteration
@@ -15,13 +20,27 @@ namespace AuctionManagementSystem.Application
         {
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-            services.AddHttpContextAccessor();
-            services.AddTransient<IValidator<FinanceSettingsDto>, UpdateFinanceSettingsCommandValidator>();
+            services.AddAutoMapper(typeof(MapperProfile).Assembly);
+
+
+            // Add FluentValidation
+            services.AddValidatorsFromAssemblyContaining<CreateStaticPagesSettingsCommandValidator>();
+            services.AddValidatorsFromAssemblyContaining<UpdateStaticPagesSettingsCommandValidator>();
+
+            // Add MediatR handlers
+            services.AddTransient<IValidator<FinanceSettingsDto>, FinanceSettingsDtoValidator>();
             services.AddTransient<IValidator<FinanceSettingsDto>, CreateFinanceSettingsCommandValidator>();
+            services.AddTransient<IRequestHandler<UpdateFinanceSettingsCommand, FinanceSettingsDto>, UpdateFinanceSettingsCommandHandler>();
 
+            // Add Static Pages settings validators
+            services.AddTransient<IValidator<StaticPagesSettingsDto>, CreateStaticPagesSettingsCommandValidator>();
+            services.AddTransient<IValidator<UpdateStaticPagesSettingsCommand>, UpdateStaticPagesSettingsCommandValidator>(); // Fix: Corrected the type parameter to match the validator's target type
+            services.AddValidatorsFromAssemblyContaining<FooterLinksSettingsDtoValidator>();
 
+            // Add pipeline behavior for validation
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+            services.AddHttpContextAccessor();
             return services;
         }
     }

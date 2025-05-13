@@ -5,12 +5,19 @@ using AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddAsset
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDirectSaleAssets;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.SearchAsset;
+using AuctionManagementSystem.Application.Features.Assets.AssetAuction.Command.AddAssetAuction;
+using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Command;
+using AuctionManagementSystem.Application.Features.Assets.AssetDocuments.Command.AddDocument;
+using AuctionManagementSystem.Application.Features.Assets.AssetGallery.Command.AddAssetGallery;
 using AuctionManagementSystem.Application.Features.Assets.Query.GetAssets;
 using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Query.GetAllFinanceSettings;
+using AuctionManagementSystem.Domain.Entities.Asset;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace AuctionManagementSystem.Api.Controller.Assets
 {
@@ -32,11 +39,46 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             return Ok(assets);
         }
 
+        [HttpGet("directsaleasset")]
+        public async Task<IActionResult> GetDirectSaleAssets([FromQuery] int categoryId)
+        {
+            if (categoryId <= 0)
+                return BadRequest(new { Message = "Invalid category ID." });
+
+            var result = await _mediator.Send(new GetDirectSaleAssetsByCategoryQuery { CategoryId = categoryId });
+
+            if (result == null || result.Count == 0)
+                return NotFound(new { Message = "No direct sale assets found for this category." });
+
+            return Ok(result);
+        }
+
+        
+        [HttpGet("auctionasset")]
+        public async Task<IActionResult> GetAuctionAssets([FromQuery] int categoryId)
+        {
+            if (categoryId <= 0)
+                return BadRequest(new { Message = "Invalid category ID." });
+
+            var result = await _mediator.Send(new GetAuctionAssetsByCategoryQuery { CategoryId = categoryId });
+
+            if (result == null || result.Count == 0)
+                return NotFound(new { Message = "No auction assets found for this category." });
+
+            return Ok(result);
+        }
+
+
+
+
         [Route("add")]
         [HttpPost]
         public async Task<ActionResult<GetAssetsDto>> CreateAsset(CreateAssetsDto createAsset)
         {
             var result = await _mediator.Send(new AddAssetCommand(createAsset));
+
+          
+
             return Ok(result);
         }
 
@@ -74,22 +116,136 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         }
 
 
-
-        [HttpPost("create-with-files")]
-        [DisableRequestSizeLimit]
-        public async Task<IActionResult> CreateAsset([FromForm] CreateAssetsDto dto, [FromForm] List<IFormFile> galleryFiles, [FromForm] List<IFormFile> documentFiles)
+        [HttpPost("CreateWithGallery")]
+        public async Task<ActionResult<AssetWithGalleryResponseDto>> CreateAssetWithGallery
+            ([FromForm] CreateAssetsDto dto)
         {
-            var command = new CreateAssetCommand
+            try
             {
-                Dto = dto,
-                GalleryFiles = galleryFiles,
-                DocumentFiles = documentFiles
-            };
 
-            var assetId = await _mediator.Send(command);
-            return Ok(assetId);
+                #region
+                List<AssetDetailDto> details;
+                try
+                {
+                    details = JsonConvert.DeserializeObject<List<AssetDetailDto>>(dto.DetailsJson ?? "[]");
+                    if (details == null) details = new List<AssetDetailDto>();
+                }
+                catch
+                {
+                    return BadRequest("Invalid details format");
+                }
+                #endregion
+                var assetResult = await _mediator.Send(new AddUnifiedAssetCommand(dto));
+                //var assetResult = 25;
+
+                if (details != null && details.Any())
+                {
+                    foreach (var detail in details)
+                    {
+                        var assetDetail = new TblAssetDetail
+                        {
+                            AssetId = assetResult,
+                            AttributeName = detail.AttributeName,
+                            AttributeValue = detail.AttributeValue
+                        };
+
+                        await _mediator.Send(new AddAssetDetailCommand(assetDetail));
+                    }
+                }
+
+
+
+                if (dto.AuctionIds != null && dto.AuctionIds.Any())
+                {
+                    await _mediator.Send(new AssignAssetToAuctionCommand(assetResult, dto.AuctionIds));
+                }
+
+
+                var galleryResults = new List<GalleryResultDto>();
+                if (dto.GalleryFiles != null && dto.GalleryFiles.Count > 0)
+                {
+                    foreach (var file in dto.GalleryFiles)
+                    {
+                        var galleryDto = new AssetsGalleryDto
+                        {
+                            AssetId = assetResult,
+                            File = file,
+                            MediaType = "image", 
+                            SortOrder = 0 
+                        };
+
+                        var galleryId = await _mediator.Send(new AddAssetGalleryCommand(galleryDto));
+                        //galleryResults.Add(new GalleryResultDto { GalleryId = galleryId, FileName = file.FileName });
+                    }
+                }
+
+
+                var documentResults = new List<DocumentResultDto>();
+                if (dto.DocumentFiles != null && dto.DocumentFiles.Any())
+                {
+                    foreach (var file in dto.DocumentFiles)
+                    {
+                        var documentDto = new AssetDocumentUploadDto
+                        {
+                            AssetId = assetResult,
+                            File = file,
+                            DocumentType = "pdf" 
+                        };
+
+                        var documentId = await _mediator.Send(new AddAssetDocumentCommand(documentDto));
+                        //documentResults.Add(new DocumentResultDto { DocumentId = documentId, FileName = file.FileName });
+                    }
+                }
+
+
+
+                return Ok(new AssetWithGalleryResponseDto
+                {
+                    AssetId = assetResult,
+                    GalleryResults = galleryResults,
+                    Message = "Asset created successfully with gallery images"
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new
+                {
+                    Message = "Error creating asset with gallery",
+                    Error = ex.Message,
+                    InnerError = ex.InnerException?.Message
+                });
+            }
         }
 
+
+        // Response DTOs
+        public class AssetWithGalleryResponseDto
+        {
+            public int AssetId { get; set; }
+            public List<GalleryResultDto> GalleryResults { get; set; }
+            public string Message { get; set; }
+        }
+
+        public class GalleryResultDto
+        {
+            public int GalleryId { get; set; }
+            public string FileName { get; set; }
+        }
+
+        public class DocumentResultDto
+        {
+            public int DocumentId { get; set; }
+            public string FileName { get; set; }
+        }
+
+
+        [HttpPut("update-asset-all")]
+        public async Task<IActionResult> UpdateAsset([FromForm] UpdateAssetAllDto dto)
+        {
+            var result = await _mediator.Send(new UpdateAssetAllCommand(dto));
+          
+            return Ok(result);
+        }
 
     }
 }
