@@ -80,5 +80,7 @@ public partial class TblUser
 
     public virtual ICollection<TblUserRole> TblUserRoles { get; set; } = new List<TblUserRole>();
 
-    
+    public virtual ICollection<TblBid> TblBids { get; set; } = new List<TblBid>();
+
+
 }
