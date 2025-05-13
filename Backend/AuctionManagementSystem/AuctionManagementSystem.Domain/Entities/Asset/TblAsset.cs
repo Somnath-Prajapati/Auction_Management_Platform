@@ -101,7 +101,9 @@ public partial class TblAsset
     public virtual ICollection<TblTransactionAsset> TblTransactionAssets { get; set; } = new List<TblTransactionAsset>();
 
     public virtual TblVatoption Vat { get; set; }
-
+    public virtual ICollection<TblBid> TblBids { get; set; } = new List<TblBid>();
     public virtual TblAssetWinner Winner { get; set; }
+    public virtual ICollection<TblWishlistItem> TblWishlistItems { get; set; } = new List<TblWishlistItem>();
+    public virtual ICollection<TblCartItem> TblCartItems { get; set; } = new List<TblCartItem>();
     public bool IsAvailableForDirectSale { get; set; }
 }

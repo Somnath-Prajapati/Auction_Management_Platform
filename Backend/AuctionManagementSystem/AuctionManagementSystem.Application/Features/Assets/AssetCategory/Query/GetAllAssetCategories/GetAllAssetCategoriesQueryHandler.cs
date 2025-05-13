@@ -40,6 +40,12 @@ namespace AuctionManagementSystem.Application.Features.Assets.AssetCategory.Quer
                 dto.Icon = category.Icon != null ? $"{baseUrl}/{category.Icon}" : null;
                 dto.Document = category.DocumentPath != null ? $"{baseUrl}/{category.DocumentPath}" : null;
 
+
+                dto.PaymentMethodIds = category.TblAssetCategoryPaymentMethods
+                                        .Select(cp => cp.PaymentMethodId) // Extract the PaymentMethodIds
+                                        .ToList();
+
+
                 return dto;
             }).ToList();
 

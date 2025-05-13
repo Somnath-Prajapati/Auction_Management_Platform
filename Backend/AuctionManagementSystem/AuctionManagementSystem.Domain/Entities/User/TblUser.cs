@@ -45,7 +45,7 @@ public partial class TblUser
 
     public string Gender { get; set; }
 
-    public DateTime PersonalIdExpiryDate { get; set; }
+    public DateOnly PersonalIdExpiryDate { get; set; }
 
     public string ProfileImage { get; set; }
 
@@ -79,4 +79,8 @@ public partial class TblUser
     public virtual ICollection<tblOTP> OTPs { get; set; } = new List<tblOTP>();
 
     public virtual ICollection<TblUserRole> TblUserRoles { get; set; } = new List<TblUserRole>();
+
+    public virtual ICollection<TblWishlistItem> TblWishlistItems { get; set; } = new List<TblWishlistItem>();
+    public virtual ICollection<TblCartItem> TblCartItems { get; set; } = new List<TblCartItem>();
+    public virtual ICollection<TblBid> TblBids { get; set; } = new List<TblBid>();
 }
