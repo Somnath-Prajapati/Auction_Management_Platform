@@ -10,7 +10,16 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
 {
     public interface ICartRepository
     {
-        Task<bool> AddAsync(AddToCartDto dto);
+        Task<bool> RemoveFromCartAsync(int userId, int assetId);
         Task<List<DirectSaleAssetDto>> GetCartByUserIdAsync(int userId);
+
+        Task<bool> AddToCartAsync(int userId, int assetId);
+
+        //Task<bool> AddOrUpdateCartItemAsync(int userId, int assetId, int quantity);
+
+        Task<bool> DecreaseCartItemQuantityAsync(int userId, int assetId);
+
+        Task<bool> ExistsAsync(int userId, int assetId);  // Add this method signature
+
     }
 }

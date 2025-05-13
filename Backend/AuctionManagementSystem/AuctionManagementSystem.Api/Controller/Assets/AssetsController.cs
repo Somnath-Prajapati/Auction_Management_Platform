@@ -43,11 +43,33 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         public async Task<IActionResult> GetDirectSaleAssets([FromQuery] int categoryId)
         {
             if (categoryId <= 0)
-                return BadRequest("Invalid category ID.");
+                return BadRequest(new { Message = "Invalid category ID." });
 
             var result = await _mediator.Send(new GetDirectSaleAssetsByCategoryQuery { CategoryId = categoryId });
+
+            if (result == null || result.Count == 0)
+                return NotFound(new { Message = "No direct sale assets found for this category." });
+
             return Ok(result);
         }
+
+        
+        [HttpGet("auctionasset")]
+        public async Task<IActionResult> GetAuctionAssets([FromQuery] int categoryId)
+        {
+            if (categoryId <= 0)
+                return BadRequest(new { Message = "Invalid category ID." });
+
+            var result = await _mediator.Send(new GetAuctionAssetsByCategoryQuery { CategoryId = categoryId });
+
+            if (result == null || result.Count == 0)
+                return NotFound(new { Message = "No auction assets found for this category." });
+
+            return Ok(result);
+        }
+
+
+
 
         [Route("add")]
         [HttpPost]
