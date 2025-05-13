@@ -11,6 +11,7 @@ namespace AuctionManagementSystem.Application.Contracts.User
     {
         Task<IEnumerable<TblRole>> GetAllAsync();
         Task<TblRole> GetRoleByIdAsync(int roleId);
+        Task<int?> GetRoleIdByName(string roleName);
     }
 
 }

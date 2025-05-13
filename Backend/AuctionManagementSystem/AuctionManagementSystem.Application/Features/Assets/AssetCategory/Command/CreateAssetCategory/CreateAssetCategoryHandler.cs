@@ -44,7 +44,10 @@ namespace AuctionManagementSystem.Application.Features.Assets.AssetCategory.Comm
                 entity.DocumentPath = await _fileService.SaveFileAsync(dto.Document, "CategoryDocuments");
             }
 
-            var created = await _repository.AddAsync(entity);
+
+
+            //var created = await _repository.AddAsync(entity);
+            var created = await _repository.AddWithPaymentMethodsAsync(entity, dto.PaymentMethodIds);
             return created.CategoryId;
         }
     }

@@ -5,6 +5,7 @@ using AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddAsset
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDirectSaleAssets;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.SearchAsset;
 using AuctionManagementSystem.Application.Features.Assets.AssetAuction.Command.AddAssetAuction;
 using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Command;
@@ -37,6 +38,38 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             var assets = await _mediator.Send(new GetAssetsQuery());
             return Ok(assets);
         }
+
+        [HttpGet("directsaleasset")]
+        public async Task<IActionResult> GetDirectSaleAssets([FromQuery] int categoryId)
+        {
+            if (categoryId <= 0)
+                return BadRequest(new { Message = "Invalid category ID." });
+
+            var result = await _mediator.Send(new GetDirectSaleAssetsByCategoryQuery { CategoryId = categoryId });
+
+            if (result == null || result.Count == 0)
+                return NotFound(new { Message = "No direct sale assets found for this category." });
+
+            return Ok(result);
+        }
+
+        
+        [HttpGet("auctionasset")]
+        public async Task<IActionResult> GetAuctionAssets([FromQuery] int categoryId)
+        {
+            if (categoryId <= 0)
+                return BadRequest(new { Message = "Invalid category ID." });
+
+            var result = await _mediator.Send(new GetAuctionAssetsByCategoryQuery { CategoryId = categoryId });
+
+            if (result == null || result.Count == 0)
+                return NotFound(new { Message = "No auction assets found for this category." });
+
+            return Ok(result);
+        }
+
+
+
 
         [Route("add")]
         [HttpPost]
