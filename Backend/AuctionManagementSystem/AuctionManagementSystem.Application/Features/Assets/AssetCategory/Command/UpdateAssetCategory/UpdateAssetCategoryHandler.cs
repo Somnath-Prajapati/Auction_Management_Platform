@@ -31,24 +31,24 @@ namespace AuctionManagementSystem.Application.Features.AssetCategories.Commands.
 
             _mapper.Map(request.UpdatedCategory, existingCategory);
 
-            if (request.UpdatedCategory.Icon != null)
+            // Handle icon image update
+            if (request.UpdatedCategory.IconFile != null)
             {
                 if (!string.IsNullOrEmpty(existingIcon))
                     await _fileService.DeleteFileAsync(existingIcon);
 
-                // Save using IconFile instead of Icon (which is usually just a filename or string)
                 existingCategory.Icon = await _fileService.SaveFileAsync(request.UpdatedCategory.IconFile, "CategoryIcons");
             }
+            else
+            {
+                // If no new file uploaded, retain old icon path
+                existingCategory.Icon = existingIcon;
+            }
 
+            // Handle document update
             if (request.UpdatedCategory.Document != null)
             {
                 existingCategory.DocumentPath = await _fileService.SaveFileAsync(request.UpdatedCategory.Document, "CategoryDocuments");
-            }
-
-
-            else
-            {
-                existingCategory.Icon = existingIcon;
             }
 
             existingCategory.UpdatedDate = DateTime.UtcNow;
@@ -58,5 +58,6 @@ namespace AuctionManagementSystem.Application.Features.AssetCategories.Commands.
 
             return true;
         }
+
     }
 }
