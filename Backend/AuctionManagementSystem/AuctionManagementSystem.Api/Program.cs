@@ -11,6 +11,9 @@ using ProtoBuf.Meta;
 using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Api.Hubs;
 using AuctionManagementSystem.Application.Contracts.RealTime;
+using AuctionManagementSystem.Application;
+using AuctionManagementSystem.Identity;
+using AuctionManagementSystem.Persistence;
 
 namespace AuctionManagementSystem.Api
 {
