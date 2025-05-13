@@ -8,6 +8,6 @@ using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.UserFeature.Command.UpdateUser
 {
-    public record UpdateUserCommand(int Id, UserDto Dto) : IRequest<int>;
+    public record UpdateUserCommand(int Id, UserDto Dto, string userId) : IRequest<int>;
 }
 

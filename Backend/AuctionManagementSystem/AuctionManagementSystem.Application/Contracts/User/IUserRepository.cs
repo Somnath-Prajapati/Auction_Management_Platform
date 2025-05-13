@@ -17,6 +17,12 @@ namespace AuctionManagementSystem.Application.Contracts.User
         Task<bool> DeleteUserAsync(TblUser user);
         Task<int> GenerateNextUidAsync(int startFrom = 1003);
         Task<TblUser?> GetByEmailOrMobileAsync(string email, string mobileNumber);
+        Task<TblUser?> GetByPersonalIdNumberAsync(string personalIdNumber);
+        Task<TblUser?> GetByPersonalIdNumberForUpdateAsync(string personalIdNumber, int excludeUserId);
+        Task<TblUser?> GetByEmailOrMobileForUpdateAsync(string email, string mobileNumber, int excludeUserId);
+
+        Task<TblUser?> GetUserByEmailAsync(string email);
 
     }
+
 }

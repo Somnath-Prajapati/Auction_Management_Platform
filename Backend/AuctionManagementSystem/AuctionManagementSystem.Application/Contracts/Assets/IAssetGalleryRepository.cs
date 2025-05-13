@@ -15,6 +15,8 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task<TblAssetGallery?> GetByIdAsync(int id);
         Task<IEnumerable<TblAssetGallery>> GetAllAsync();
 
+        Task<IEnumerable<TblAssetGallery>> GetByAssetIdAsync(int assetId); // this is for asset
+
     }
    
 }

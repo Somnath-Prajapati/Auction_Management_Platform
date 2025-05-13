@@ -20,9 +20,12 @@ namespace AuctionManagementSystem.Application.Dtos.UserDtos
         public int RoleId { get; set; }
         public string PersonalIdNumber { get; set; } = null!;
         public string Gender { get; set; } = null!;
-        public DateOnly PersonalIdExpiryDate { get; set; }
+        public DateOnly? PersonalIdExpiryDate { get; set; }
         public int CountryId { get; set; }
         public string? ProfileImageUrl { get; set; }
         public string? PersonalIdImageUrl { get; set; }
+
+        public decimal? TotalLimit { get; set; }
+        public decimal? Deposit { get; set; }
     }
 }

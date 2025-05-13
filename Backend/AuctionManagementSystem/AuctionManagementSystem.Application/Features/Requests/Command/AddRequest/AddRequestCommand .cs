@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Application.Dtos.Requests;
 using AuctionManagementSystem.Domain.Entities.Request;
 using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Requests.Command.AddRequest
 {
-    public class AddRequestCommand : IRequest<TblRequest>
+    public class AddRequestCommand : IRequest<CreateRequestDto>
     {
         public string RequestNumber { get; set; }
         public int UserId { get; set; }
