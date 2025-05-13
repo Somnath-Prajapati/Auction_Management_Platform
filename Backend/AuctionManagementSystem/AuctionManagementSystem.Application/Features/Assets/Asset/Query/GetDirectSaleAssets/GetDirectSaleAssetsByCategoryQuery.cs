@@ -13,4 +13,9 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDir
         public int CategoryId { get; set; }
     }
 
+    public class GetAuctionAssetsByCategoryQuery : IRequest<List<DirectSaleAssetDto>>
+    {
+        public int CategoryId { get; set; }
+    }
+
 }

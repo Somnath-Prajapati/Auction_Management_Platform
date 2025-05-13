@@ -45,7 +45,7 @@ public partial class TblUser
 
     public string Gender { get; set; }
 
-    public DateTime PersonalIdExpiryDate { get; set; }
+    public DateOnly PersonalIdExpiryDate { get; set; }
 
     public string ProfileImage { get; set; }
 

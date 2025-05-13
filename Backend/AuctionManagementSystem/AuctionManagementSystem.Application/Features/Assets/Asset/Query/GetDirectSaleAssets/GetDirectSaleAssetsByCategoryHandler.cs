@@ -26,4 +26,25 @@ namespace Application.Features.DirectSale.Handlers
             return _mapper.Map<List<DirectSaleAssetDto>>(assets);
         }
     }
+
+    public class GetAuctionAssetsByCategoryHandler : IRequestHandler<GetAuctionAssetsByCategoryQuery, List<DirectSaleAssetDto>>
+    {
+        private readonly IAssetsRepository _assetRepository;
+        private readonly IMapper _mapper;
+
+        public GetAuctionAssetsByCategoryHandler(IAssetsRepository assetRepository, IMapper mapper)
+        {
+            _assetRepository = assetRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<List<DirectSaleAssetDto>> Handle(GetAuctionAssetsByCategoryQuery request, CancellationToken cancellationToken)
+        {
+            var assets = await _assetRepository.GetAllAsync(a =>
+                a.CategoryId == request.CategoryId && !a.IsAvailableForDirectSale);
+
+            return _mapper.Map<List<DirectSaleAssetDto>>(assets);
+        }
+    }
+
 }
