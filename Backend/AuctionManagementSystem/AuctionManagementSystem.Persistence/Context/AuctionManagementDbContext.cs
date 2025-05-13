@@ -5,17 +5,17 @@ using AuctionManagementSystem.Domain;
 using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
+using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
-
 using Microsoft.EntityFrameworkCore;
 using static System.Net.WebRequestMethods;
 
 namespace AuctionManagementSystem.Persistence.Context;
 // AuctionManagementDbContext
-
+//AuctionManagementDbContext
 
 
 public partial class AuctionManagementDbContext : DbContext
@@ -90,6 +90,8 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<TblTransactionAsset> TblTransactionAssets { get; set; }
 
+    public virtual DbSet<TblAssetCategoryPaymentMethod> TblAssetCategoryPaymentMethods { get; set; }
+
     public virtual DbSet<TblTransactionDocument> TblTransactionDocuments { get; set; }
 
     public virtual DbSet<TblTransactionStatus> TblTransactionStatuses { get; set; }
@@ -111,6 +113,7 @@ public partial class AuctionManagementDbContext : DbContext
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
+    public virtual DbSet<tblBid> tblBids { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }
 
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
@@ -334,7 +337,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasMaxLength(255)
                 .HasDefaultValue("default.png");
 
-            entity.Property(e => e.DocumentPath) 
+            entity.Property(e => e.DocumentPath)
                 .HasMaxLength(255)
                 .HasDefaultValue(null);
 
@@ -371,29 +374,39 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.IsDeleted)
                 .HasDefaultValue(false);
 
-            entity.HasOne(d => d.Status).WithMany(p => p.TblAssetCategories)
+            entity.HasOne(d => d.Status)
+                .WithMany(p => p.TblAssetCategories)
                 .HasForeignKey(d => d.StatusId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_tblAssetCategories_tblStatus");
 
-            entity.HasOne(d => d.Vat).WithMany(p => p.TblAssetCategories)
+            entity.HasOne(d => d.Vat)
+                .WithMany(p => p.TblAssetCategories)
                 .HasForeignKey(d => d.Vatid)
                 .HasConstraintName("FK_tblAssetCategories_VATId");
 
-            entity.HasMany(d => d.PaymentMethods).WithMany(p => p.Categories)
-                .UsingEntity<Dictionary<string, object>>(
-                    "TblAssetCategoryPaymentMethod",
-                    r => r.HasOne<TblAssetPaymentMethod>().WithMany()
-                        .HasForeignKey("PaymentMethodId")
-                        .HasConstraintName("FK__TblAssetC__Payme__3EDC53F0"),
-                    l => l.HasOne<TblAssetCategory>().WithMany()
-                        .HasForeignKey("CategoryId")
-                        .HasConstraintName("FK__TblAssetC__Categ__3DE82FB7"),
-                    j =>
-                    {
-                        j.HasKey("CategoryId", "PaymentMethodId").HasName("PK__TblAsset__34CA261695C9EE45");
-                        j.ToTable("TblAssetCategoryPaymentMethod");
-                    });
+            // ✅ Removed: HasMany-WithMany using Dictionary
+
+            // ✅ Add navigation for explicit join entity configuration
+            entity.HasMany(d => d.TblAssetCategoryPaymentMethods)
+                .WithOne(pm => pm.Category)
+                .HasForeignKey(pm => pm.CategoryId)
+                .HasConstraintName("FK_TblAssetCategoryPaymentMethod_Category");
+        });
+
+        modelBuilder.Entity<TblAssetCategoryPaymentMethod>(entity =>
+        {
+            entity.HasKey(e => e.PaymentOptionId);
+
+            entity.ToTable("TblAssetCategoryPaymentMethod");
+
+            entity.HasOne(d => d.Category).WithMany(p => p.TblAssetCategoryPaymentMethods)
+                .HasForeignKey(d => d.CategoryId)
+                .HasConstraintName("FK__TblAssetC__Categ__3DE82FB7");
+
+            entity.HasOne(d => d.PaymentMethod).WithMany(p => p.TblAssetCategoryPaymentMethods)
+                .HasForeignKey(d => d.PaymentMethodId)
+                .HasConstraintName("FK__TblAssetC__Payme__3EDC53F0");
         });
 
 
@@ -598,6 +611,82 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasForeignKey(d => d.AuctionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__tblAuctio__Aucti__6B24EA82");
+        });
+
+
+        //modelBuilder.Entity<tblBid>(entity =>
+        //{
+        //    entity.HasKey(e => e.BidId).HasName("PK__tblBids__4A733D920BE15F30");
+
+        //    entity.ToTable("tblBids");
+
+        //    entity.Property(e => e.BidAmount).HasColumnType("decimal(10, 2)");
+        //    entity.Property(e => e.BidTime)
+        //        .HasDefaultValueSql("(getdate())")
+        //        .HasColumnType("datetime");
+        //    entity.Property(e => e.CreatedDate)
+        //        .HasDefaultValueSql("(getdate())")
+        //        .HasColumnType("datetime");
+        //    entity.Property(e => e.IsWinningBid).HasDefaultValue(false);
+
+        //    entity.HasOne(d => d.Asset).WithMany(p => p.TblBids)
+        //        .HasForeignKey(d => d.AssetId)
+        //        .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK_Bids_Assets");
+
+        //    entity.HasOne(d => d.Auction).WithMany(p => p.TblBids)
+        //        .HasForeignKey(d => d.AuctionId)
+        //        .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK_Bids_Auctions");
+
+        //    entity.HasOne(d => d.User).WithMany(p => p.TblBids)
+        //        .HasForeignKey(d => d.UserId)
+        //        .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK_Bids_Users");
+        //});
+        modelBuilder.Entity<tblBid>(entity =>
+        {
+            entity.ToTable("tblBids");
+
+            entity.HasKey(e => e.BidId);
+
+            entity.Property(e => e.BidId)
+                  .ValueGeneratedOnAdd();
+
+            entity.Property(e => e.BidAmount)
+                  .HasColumnType("decimal(10,2)")
+                  .IsRequired();
+
+            entity.Property(e => e.BidTime)
+                  .IsRequired()
+                  .HasDefaultValueSql("GETDATE()");
+
+            entity.Property(e => e.IsWinningBid)
+                  .IsRequired()
+                  .HasDefaultValue(false);
+
+            entity.Property(e => e.CreatedDate)
+                  .IsRequired()
+                  .HasDefaultValueSql("GETDATE()");
+
+            // Fix the relationship configuration by explicitly specifying foreign key properties
+            entity.HasOne(d => d.Auction)
+                  .WithMany(p => p.TblBids)  // Assuming TblAuction has a TblBids collection
+                  .HasForeignKey(d => d.AuctionId)
+                  .HasConstraintName("FK_tblBids_tblAuction")
+                  .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasOne(d => d.Asset)
+                  .WithMany(p => p.TblBids)  // Assuming TblAsset has a TblBids collection
+                  .HasForeignKey(d => d.AssetId)
+                  .HasConstraintName("FK_tblBids_tblAsset")
+                  .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasOne(d => d.User)
+                  .WithMany(p => p.TblBids)  // This matches what we see in your TblUser class
+                  .HasForeignKey(d => d.UserId)
+                  .HasConstraintName("FK_tblBids_tblUser")
+                  .OnDelete(DeleteBehavior.Restrict);
         });
 
         modelBuilder.Entity<TblCardType>(entity =>

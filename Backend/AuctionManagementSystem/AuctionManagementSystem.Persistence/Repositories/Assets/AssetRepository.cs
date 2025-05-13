@@ -39,7 +39,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         public async Task<IEnumerable<GetAssetsFormDto>> GetAllAsync()
         {
              var assets = await _context.TblAssets
-                .Where(a => a.IsDeleted==false)
+                .Where(a => a.IsDeleted == false)
                 .OrderByDescending(a => a.UpdatedAt ?? a.CreatedAt)
                 .Include(a => a.Category)
                 .Include(a => a.Status)
@@ -120,7 +120,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         public async Task<GetAssetsFormDto> GetByIdAsync(int id)
         {
         var asset = await _context.TblAssets
-          .Where(a => a.IsDeleted)
+          .Where(a => a.IsDeleted == false)
          .Include(a => a.Category)
          .Include(a => a.Status)
          .Include(a => a.Seller)
