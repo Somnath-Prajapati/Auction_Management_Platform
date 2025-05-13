@@ -26,5 +26,7 @@ namespace AuctionManagementSystem.Application.Dtos.UserDtos
         public IFormFile? PersonalIdImage { get; set; }
         public decimal? TotalLimit { get; set; }
         public decimal? Deposit { get; set; }
+
+       
     }
 }
