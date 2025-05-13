@@ -7,13 +7,16 @@ using AuctionManagementSystem.Application.Contracts.User;
 
 namespace AuctionManagementSystem.Application.Contracts.Auth
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWorkAuth
     {
         IOtpRepository OtpRepository { get; }
 
         IUserRepository UserRepository { get; }
         IRoleRepository RoleRepository { get; }
         Task<int> SaveChangesAsync();
+        Task BeginTransactionAsync();
+        Task CommitAsync();
+        Task RollbackAsync();
     }
 
 }

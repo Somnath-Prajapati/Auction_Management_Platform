@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Dtos.Auctions;
+using AuctionManagementSystem.Application.Dtos.Bids;
 using AuctionManagementSystem.Application.Dtos.Requests;
 using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
@@ -30,6 +31,7 @@ using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
 using AutoMapper;
 using EventStore.ClientAPI;
+using AuctionManagementSystem.Domain.Entities.Bids;
 
 
 namespace AuctionManagementSystem.Application.Profiles
@@ -86,7 +88,7 @@ namespace AuctionManagementSystem.Application.Profiles
 
             CreateMap<UpdateAssetDto, TblAsset>()
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.IsActive, opt => opt.MapFrom(_ => false)); 
+                .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false)); 
 
             CreateMap<AssetsGalleryDto, TblAssetGallery>().ReverseMap();
             CreateMap<AuctionBaseCommand, TblAuction>()
@@ -111,6 +113,7 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<CreateRequestDto, AddRequestCommand>();
             CreateMap<UpdateRequestDto, UdpRequestCommand>();
             CreateMap<TblRequest, RequestDto>();
+            CreateMap<tblBid, BidDto>().ReverseMap();
 
 
             CreateMap<TblTransaction, TransactionDto>()

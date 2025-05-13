@@ -7,6 +7,7 @@ using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.WebRequestMethods;
 
 namespace AuctionManagementSystem.Identity.Repository
 {
@@ -43,6 +44,10 @@ namespace AuctionManagementSystem.Identity.Repository
                                               o.Code == code &&
                                               !o.IsUsed &&
                                               o.Expiration > DateTime.UtcNow);
+            }
+            public async Task Delete(tblOTP otp)
+            {
+                _context.tblOTPs.Remove(otp);
             }
     }
 }
