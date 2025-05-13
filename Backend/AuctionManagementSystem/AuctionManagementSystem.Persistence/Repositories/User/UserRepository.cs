@@ -35,9 +35,11 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
                 .ToListAsync();
         }
 
-        public async Task<TblUser> GetUserById(int id)
+        public async Task<TblUser?> GetUserById(int id)
         {
-            return await _context.TblUsers.FindAsync(id);
+            return await _context.TblUsers
+                .Where(u => u.UserId == id && !(u.IsDeleted ?? false))
+                .FirstOrDefaultAsync();
         }
 
         public async Task<int> UpdateUserAsync(TblUser tblUser)
@@ -53,16 +55,19 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
         public async Task<TblUser?> GetByEmailOrMobileAsync(string email, string mobileNumber)
         {
             return await _context.TblUsers
+                 .Where(u => !(u.IsDeleted ?? false))
                 .FirstOrDefaultAsync(u => u.Email == email || u.MobileNumber == mobileNumber);
         }
         public async Task<TblUser?> GetByPersonalIdNumberAsync(string personalIdNumber)
         {
             return await _context.TblUsers
+                 .Where(u => !(u.IsDeleted ?? false))
                 .FirstOrDefaultAsync(u => u.PersonalIdNumber == personalIdNumber);
         }
         public async Task<TblUser?> GetByEmailOrMobileForUpdateAsync(string email, string mobileNumber, int excludeUserId)
         {
             return await _context.TblUsers
+                 .Where(u => !(u.IsDeleted ?? false))
                 .FirstOrDefaultAsync(u =>
                     (u.Email == email || u.MobileNumber == mobileNumber) &&
                     u.UserId != excludeUserId);
@@ -71,13 +76,14 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
         public async Task<TblUser?> GetByPersonalIdNumberForUpdateAsync(string personalIdNumber, int excludeUserId)
         {
             return await _context.TblUsers
+                 .Where(u => !(u.IsDeleted ?? false))
                 .FirstOrDefaultAsync(u =>
                     u.PersonalIdNumber == personalIdNumber &&
                     u.UserId != excludeUserId);
         }
         public async Task<TblUser?> GetUserByEmailAsync(string email)
         {
-            return await _context.TblUsers.FirstOrDefaultAsync(u => u.Email == email);
+            return await _context.TblUsers.Where(u => !(u.IsDeleted ?? false)).FirstOrDefaultAsync(u => u.Email == email);
         }
 
 

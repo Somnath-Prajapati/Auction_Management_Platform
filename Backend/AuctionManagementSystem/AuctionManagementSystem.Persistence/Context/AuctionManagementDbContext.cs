@@ -8,6 +8,7 @@ using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
+using AuctionManagementSystem.Persistence.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.WebRequestMethods;
 
@@ -102,6 +103,7 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
+    public virtual DbSet<tblBid> tblBids { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -128,6 +130,47 @@ public partial class AuctionManagementDbContext : DbContext
                   .WithMany(u => u.OTPs)
                   .HasForeignKey(e => e.UserId)
                   .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<tblBid>(entity =>
+        {
+            entity.ToTable("tblBids");
+
+            entity.HasKey(e => e.BidId);
+
+            entity.Property(e => e.BidId)
+                  .ValueGeneratedOnAdd();
+
+            entity.Property(e => e.BidAmount)
+                  .HasColumnType("decimal(10,2)")
+                  .IsRequired();
+
+            entity.Property(e => e.BidTime)
+                  .IsRequired()
+                  .HasDefaultValueSql("GETDATE()");
+
+            entity.Property(e => e.IsWinningBid)
+                  .IsRequired()
+                  .HasDefaultValue(false);
+
+            entity.Property(e => e.CreatedDate)
+                  .IsRequired()
+                  .HasDefaultValueSql("GETDATE()");
+
+            entity.HasOne(e => e.Auction)
+                  .WithMany()
+                  .HasForeignKey(e => e.AuctionId)
+                  .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasOne(e => e.Asset)
+                  .WithMany()
+                  .HasForeignKey(e => e.AssetId)
+                  .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasOne(e => e.User)
+                  .WithMany()
+                  .HasForeignKey(e => e.UserId)
+                  .OnDelete(DeleteBehavior.Restrict);
         });
 
 

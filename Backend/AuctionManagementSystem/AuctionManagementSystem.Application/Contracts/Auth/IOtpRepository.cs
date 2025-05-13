@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Domain.Entities.User;
+using static System.Net.WebRequestMethods;
 
 namespace AuctionManagementSystem.Application.Contracts.Auth
 {
@@ -13,6 +14,7 @@ namespace AuctionManagementSystem.Application.Contracts.Auth
         Task AddOtpAsync(tblOTP otp);
         Task SaveChangesAsync();
         Task<tblOTP?> GetValidOtpAsync(int userId, string code);
+        Task Delete(tblOTP otp);
 
     }
 
