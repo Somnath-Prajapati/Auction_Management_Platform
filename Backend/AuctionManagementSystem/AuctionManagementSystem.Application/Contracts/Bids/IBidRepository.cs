@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+using AuctionManagementSystem.Persistence.Repositories.User;
+
+namespace AuctionManagementSystem.Application.Contracts.Bids
+{
+    public interface IBidRepository
+    {
+        Task<int> AddBidAsync(tblBid bid);
+        Task<tblBid?> GetWinningBidAsync(int assetId); 
+        Task<IEnumerable<tblBid>> GetBidsByAssetIdAsync(int assetId);
+        Task<decimal?> GetHighestBidAmountAsync(int assetId);
+        Task UnsetPreviousWinningBidAsync(int assetId);
+
+    }
+
+}
