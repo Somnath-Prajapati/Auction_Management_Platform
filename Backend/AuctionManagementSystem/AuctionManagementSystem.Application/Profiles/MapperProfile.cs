@@ -77,7 +77,7 @@ namespace AuctionManagementSystem.Application.Profiles
 
             CreateMap<UpdateAssetDto, TblAsset>()
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.IsActive, opt => opt.MapFrom(_ => false)); 
+                .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false)); 
 
             CreateMap<AssetsGalleryDto, TblAssetGallery>().ReverseMap();
             CreateMap<AuctionBaseCommand, TblAuction>()

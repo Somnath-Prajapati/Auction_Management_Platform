@@ -77,6 +77,5 @@ public partial class TblUser
 
     public virtual ICollection<TblTransaction> TblTransactions { get; set; } = new List<TblTransaction>();
     public virtual ICollection<tblOTP> OTPs { get; set; } = new List<tblOTP>();
-
     public virtual ICollection<TblUserRole> TblUserRoles { get; set; } = new List<TblUserRole>();
 }

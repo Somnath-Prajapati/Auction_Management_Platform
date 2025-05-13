@@ -43,6 +43,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public decimal? AwardedPrice { get; set; } // From Winner
         public string? SalesNotes { get; set; }
         public string Details { get; set; }
+      
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public bool IsAvailableForDirectSale { get; set; } // for asset direct sale
@@ -56,7 +57,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 
         // auction 
 
-
+        public bool isDeleted { get; set; }    
 
 
         public string AssetNumber { get; set; }
