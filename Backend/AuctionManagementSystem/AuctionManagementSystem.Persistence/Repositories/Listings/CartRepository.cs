@@ -42,28 +42,56 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
         //    return true;
         //}
 
-        public async Task<bool> AddToCartAsync(int userId, int assetId)
+        public async Task<bool> AddToCartAsync(int userId, int assetId, int validMinutes)
         {
-            // Check if the asset is already in the cart for this user
-            var existingCartItem = await _context.TblCartItems
-                .FirstOrDefaultAsync(c => c.UserId == userId && c.AssetId == assetId && c.IsActive);
+            var now = DateTime.UtcNow;
 
-            // If the item already exists in the cart, return false (not adding it again)
-            if (existingCartItem != null)
+            // Remove expired cart items for this user
+            var expiredItems = await _context.TblCartItems
+                .Where(c => c.UserId == userId && c.IsActive && c.AddedAt.AddMinutes(validMinutes) < now)
+                .ToListAsync();
+
+            foreach (var expired in expiredItems)
             {
-                return false;
+                expired.IsActive = false;
+                expired.DeletedDate = now;
+                _context.TblCartItems.Update(expired);
             }
 
-            // If the item doesn't exist, create a new cart item
+            // Save removals before proceeding
+            await _context.SaveChangesAsync();
+
+            // Check if user already has the asset in cart (and it's valid)
+            var existing = await _context.TblCartItems
+                .FirstOrDefaultAsync(c =>
+                    c.UserId == userId &&
+                    c.AssetId == assetId &&
+                    c.IsActive &&
+                    c.AddedAt.AddMinutes(validMinutes) > now);
+
+            if (existing != null)
+                return false;
+
+            // Check if another user is holding this asset
+            bool heldByAnother = await _context.TblCartItems
+                .AnyAsync(c =>
+                    c.UserId != userId &&
+                    c.AssetId == assetId &&
+                    c.IsActive &&
+                    c.AddedAt.AddMinutes(validMinutes) > now);
+
+            if (heldByAnother)
+                return false;
+
+            // Add to cart
             var newCartItem = new TblCartItem
             {
                 UserId = userId,
                 AssetId = assetId,
-                AddedAt = DateTime.UtcNow,
+                AddedAt = now,
                 IsActive = true
             };
 
-            // Add to the cart
             await _context.TblCartItems.AddAsync(newCartItem);
             await _context.SaveChangesAsync();
 
@@ -134,6 +162,104 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
                 .AnyAsync(c => c.UserId == userId && c.AssetId == assetId && c.IsActive);
         }
 
+        public async Task<bool> ExistsAsync(int userId, int assetId, int validMinutes)
+        {
+            var threshold = DateTime.UtcNow.AddMinutes(-validMinutes);
+
+            return await _context.TblCartItems.AnyAsync(ci =>
+                ci.UserId == userId &&
+                ci.AssetId == assetId &&
+                ci.IsActive &&
+                (ci.DeletedDate == null) &&
+                ci.AddedAt >= threshold);
+        }
+
+
+        public async Task<bool> IsAssetHeldByAnotherUserAsync(int userId, int assetId, int validMinutes)
+        {
+            var threshold = DateTime.UtcNow.AddMinutes(-validMinutes);
+
+            return await _context.TblCartItems.AnyAsync(ci =>
+                ci.UserId != userId &&
+                ci.AssetId == assetId &&
+                ci.IsActive &&
+                (ci.DeletedDate == null) &&
+                ci.AddedAt >= threshold);
+        }
+
+
+        public async Task<List<TblCartItem>> GetExpiredCartItemsAsync(int userId, int validMinutes)
+        {
+            var threshold = DateTime.UtcNow.AddMinutes(-validMinutes);
+
+            return await _context.TblCartItems
+                .Where(ci =>
+                    ci.UserId == userId &&
+                    ci.IsActive &&
+                    (ci.DeletedDate == null) &&
+                    ci.AddedAt < threshold)
+                .ToListAsync();
+        }
+
+
+        public async Task<List<TblCartItem>> GetValidCartItemsAsync(int userId, int validMinutes)
+        {
+            var threshold = DateTime.UtcNow.AddMinutes(-validMinutes);
+
+            return await _context.TblCartItems
+                .Include(ci => ci.Asset) // include related asset
+                .Where(ci =>
+                    ci.UserId == userId &&
+                    ci.IsActive &&
+                    ci.DeletedDate == null &&
+                    ci.AddedAt >= threshold)
+                    .ToListAsync();
+                }
+
+        public Task<List<TblCartItem>> GetAllValidCartItemsAsync(int validMinutes)
+        {
+            var threshold = DateTime.UtcNow.AddMinutes(-validMinutes);
+            return _context.TblCartItems
+                .Where(c => c.IsActive && c.AddedAt > threshold)
+                .ToListAsync();
+        }
+
+
+
+        public async Task UpdateAsync(TblCartItem item)
+        {
+            _context.TblCartItems.Update(item);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task CleanUpExpiredCartItemsAsync(int validMinutes)
+        {
+            var threshold = DateTime.UtcNow.AddMinutes(-validMinutes);
+
+            var expiredItems = await _context.TblCartItems
+                .Where(ci =>
+                    ci.IsActive &&
+                    ci.DeletedDate == null &&
+                    ci.AddedAt < threshold)
+                .ToListAsync();
+
+            foreach (var item in expiredItems)
+            {
+                item.IsActive = false;
+                item.DeletedDate = DateTime.UtcNow;
+            }
+
+            if (expiredItems.Any())
+            {
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task UpdateRangeAsync(IEnumerable<TblCartItem> items)
+{
+    _context.TblCartItems.UpdateRange(items);
+    await _context.SaveChangesAsync();
+}
 
     }
 }

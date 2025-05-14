@@ -1,12 +1,207 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\newAuction\\Backend\\AuctionManagementSystem\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\demo\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\profiles\\mapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\profiles\\mapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|c:\\users\\user\\desktop\\demo\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.domain\\entities\\asset\\tblasset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|solutionrelative:auctionmanagementsystem.domain\\entities\\asset\\tblasset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|c:\\users\\user\\desktop\\demo\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.domain\\entities\\asset\\tblcartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|solutionrelative:auctionmanagementsystem.domain\\entities\\asset\\tblcartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|c:\\users\\user\\desktop\\demo\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.domain\\entities\\tblcartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|solutionrelative:auctionmanagementsystem.domain\\entities\\tblcartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\demo\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\listings\\cart\\addtocarthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\listings\\cart\\addtocarthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\desktop\\demo\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\listings\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\listings\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|c:\\users\\user\\desktop\\demo\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.api\\controller\\listings\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|solutionrelative:auctionmanagementsystem.api\\controller\\listings\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\demo\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\contracts\\listings\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\contracts\\listings\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\demo\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\assets\\asset\\query\\getdirectsaleassets\\getdirectsaleassetsbycategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\assets\\asset\\query\\getdirectsaleassets\\getdirectsaleassetsbycategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\desktop\\demo\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\assets\\assetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\assets\\assetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TblAsset.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\Entities\\Asset\\TblAsset.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Domain\\Entities\\Asset\\TblAsset.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\Entities\\Asset\\TblAsset.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Domain\\Entities\\Asset\\TblAsset.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAA5wG0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T05:58:52.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TblCartItem.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\Entities\\Asset\\TblCartItem.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Domain\\Entities\\Asset\\TblCartItem.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\Entities\\Asset\\TblCartItem.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Domain\\Entities\\Asset\\TblCartItem.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAowBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T05:58:32.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TblCartItem.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\Entities\\TblCartItem.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Domain\\Entities\\TblCartItem.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\Entities\\TblCartItem.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Domain\\Entities\\TblCartItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T05:58:15.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MapperProfile.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Profiles\\MapperProfile.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Profiles\\MapperProfile.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Profiles\\MapperProfile.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Profiles\\MapperProfile.cs",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAswJQAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T05:52:40.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddToCartHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAAAKIAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T05:11:03.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Controller\\Listings\\CartController.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Api\\Controller\\Listings\\CartController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Controller\\Listings\\CartController.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Api\\Controller\\Listings\\CartController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA9wBsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T05:10:32.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AssetRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
+              "ViewState": "AgIAAPkAAAAAAAAAAAAswA4BAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T19:03:13.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ICartRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAIA5wBsAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T19:01:18.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CartRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Listings\\CartRepository.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Listings\\CartRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Listings\\CartRepository.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Listings\\CartRepository.cs",
+              "ViewState": "AgIAAMYAAAAAAAAAAAAYwNgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T19:00:18.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GetDirectSaleAssetsByCategoryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Assets\\Asset\\Query\\GetDirectSaleAssets\\GetDirectSaleAssetsByCategoryHandler.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Assets\\Asset\\Query\\GetDirectSaleAssets\\GetDirectSaleAssetsByCategoryHandler.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Assets\\Asset\\Query\\GetDirectSaleAssets\\GetDirectSaleAssetsByCategoryHandler.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Assets\\Asset\\Query\\GetDirectSaleAssets\\GetDirectSaleAssetsByCategoryHandler.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAAC0AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T18:45:51.302Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
