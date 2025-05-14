@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Contracts\Categories\" />
     <Folder Include="Contracts\Statuses\" />
-    <Folder Include="Features\Bids\Query\" />
   </ItemGroup>
 
   <ItemGroup>
