@@ -1,4 +1,5 @@
 ﻿using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
+using AuctionManagementSystem.Application.Features.Bids.Query.GetBidById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,18 +11,23 @@ namespace AuctionManagementSystem.Api.Controller.Bid
       {
           private readonly IMediator _mediator;
 
-          public BidController(IMediator mediator)
-          {
+         public BidController(IMediator mediator)
+         {
                 _mediator = mediator;
-          }
+         }
 
-
-
-          [HttpPost("place")]
-          public async Task<IActionResult> PlaceBid([FromBody] AddBidCommand command, CancellationToken cancellationToken)
-          {
-              var bidId = await _mediator.Send(command, cancellationToken);
+         [HttpPost("place")]
+         public async Task<IActionResult> PlaceBid([FromBody] AddBidCommand command)
+         {
+              var bidId = await _mediator.Send(command);
               return Ok(new { BidId = bidId });
-          }
+         }
+        [HttpGet("Assetstats/{assetId}")]
+        public async Task<IActionResult> GetBidStats(int assetId)
+        {
+            var query = new GetBidStatsByAssetIdQuery(assetId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
       }
 }
