@@ -32,6 +32,7 @@ using AuctionManagementSystem.Domain.Entities.User;
 using AutoMapper;
 using EventStore.ClientAPI;
 using AuctionManagementSystem.Domain.Entities.Bids;
+using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
 
 
 namespace AuctionManagementSystem.Application.Profiles
@@ -113,10 +114,14 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<CreateRequestDto, AddRequestCommand>();
             CreateMap<UpdateRequestDto, UdpRequestCommand>();
             CreateMap<TblRequest, RequestDto>();
-            CreateMap<tblBid, BidDto>().ReverseMap();
+            CreateMap<AddBidCommand, tblBid>()
+            .ForMember(dest => dest.AuctionId, opt => opt.MapFrom(src => src.AuctionId))
+            .ForMember(dest => dest.AssetId, opt => opt.MapFrom(src => src.AssetId))
+            .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+            .ForMember(dest => dest.BidAmount, opt => opt.MapFrom(src => src.BidAmount)).ReverseMap() ;
+        
 
-
-            CreateMap<TblTransaction, TransactionDto>()
+        CreateMap<TblTransaction, TransactionDto>()
             .ForMember(dest => dest.UserFullName, opt => opt.MapFrom(src => src.User.Name))
             .ForMember(dest => dest.TransactionType, opt => opt.MapFrom(src => src.TransactionType.TransactionTypeName))
             .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.PaymentMethodName))

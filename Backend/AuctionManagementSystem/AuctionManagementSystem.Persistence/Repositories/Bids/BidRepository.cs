@@ -59,7 +59,22 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
                 _context.tblBids.Update(currentWinningBid);
             }
         }
+        public async Task<(decimal HighestBid, int BidCount)> GetBidStatsByAssetIdAsync(int assetId)
+        {
+            var bids = _context.tblBids.Where(b => b.AssetId == assetId);
 
+            var winningBid = await bids
+              .Where(b => b.IsWinningBid)
+              .FirstOrDefaultAsync();
+            var highestBid = winningBid?.BidAmount ?? 0;
+            var bidCount = await bids.CountAsync();
+
+            return (highestBid, bidCount);
+        }
+        public async Task<int> CountBidsByAssetIdAsync(int assetId)
+        {
+            return await _context.tblBids.Where(b => b.AssetId == assetId).CountAsync();
+        }
 
     }
 
