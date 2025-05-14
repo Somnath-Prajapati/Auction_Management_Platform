@@ -81,7 +81,7 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
                     Deposit = w.Asset.Deposit,
                     MinIncrement = w.Asset.MinIncrement,
                     Description = w.Asset.Description,
-                    IsActive = w.Asset.IsDeleted,
+                    IsDeleted = w.Asset.IsDeleted,
                     SalesNotes = w.Asset.SalesNotes,
                     Price = w.Asset.StartingPrice,
                     IsAvailableForDirectSale = w.Asset.IsAvailableForDirectSale,
