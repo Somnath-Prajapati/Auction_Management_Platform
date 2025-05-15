@@ -110,6 +110,7 @@ namespace AuctionManagementSystem.Application.Features.Cart
             bool alreadyInCart = await _cartRepository.ExistsAsync(request.UserId, request.AssetId, timeLimit);
             if (alreadyInCart)
                 return false;
+                //throw new Exception("Asset is already in the cart.");
 
             bool heldByAnother = await _cartRepository.IsAssetHeldByAnotherUserAsync(request.UserId, request.AssetId, timeLimit);
             if (heldByAnother)
