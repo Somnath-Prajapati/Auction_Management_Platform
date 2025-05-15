@@ -42,51 +42,56 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
 
 
                 bool isValid = await _auctionAssetRepository.AssetExistsInAuctionAsync(
-               request.bid.AuctionId, request.bid.AssetId);
+               request.AuctionId, request.AssetId);
 
                 if (!isValid)
                     throw new BadRequestException("The asset does not belong to the specified auction.");
 
-                var auction = await _auctionRepository.GetByIdAsync(request.bid.AuctionId);
+                var auction = await _auctionRepository.GetByIdAsync(request.AuctionId);
                 if (auction == null || auction.EndDateTime < DateTime.UtcNow || auction.IsDeleted)
                 {
                     throw new NotFoundException ("Cannot place a bid. The auction has expired or is inactive.");
                 }
 
-                var asset = await _assetsRepository.GetByIdAsync(request.bid.AssetId);
+                var asset = await _assetsRepository.GetByIdAsync(request.AssetId);
                 if (asset == null)
                     throw new NotFoundException("Asset not found.");
 
 
 
-                var highestBid = await _bidRepository.GetHighestBidAmountAsync(request.bid.AssetId);
+                var highestBid = await _bidRepository.GetHighestBidAmountAsync(request.AssetId);
                 if (!highestBid.HasValue)
                 {
-                    if (request.bid.BidAmount < asset.StartingPrice)
+                    if (request.BidAmount < asset.StartingPrice)
                         throw new BadRequestException($"First bid must be at least the starting price: {asset.StartingPrice}");
                 }
                 else
                 {
                     var requiredMinBid = highestBid.Value + asset.MinIncrement;
-                    if (request.bid.BidAmount < requiredMinBid)
+                    if (request.BidAmount < requiredMinBid)
                         throw new BadRequestException($"Bid must be at least {requiredMinBid} (Min Increment: {asset.MinIncrement})");
                 }
 
-                await _bidRepository.UnsetPreviousWinningBidAsync(request.bid.AssetId);
-                 
-                var bid = _mapper.Map<tblBid>(request.bid);
+                await _bidRepository.UnsetPreviousWinningBidAsync(request.AssetId);
+
+
+                var bid = _mapper.Map<tblBid>(request);
                 bid.IsWinningBid = true;
 
                 var bidId = await _bidRepository.AddBidAsync(bid);
                 await _unitOfWork.CommitAsync();
 
+                var updatedBidCount = await _bidRepository.CountBidsByAssetIdAsync(request.AssetId);
                 await _notificationService.NotifyNewBidAsync(
-                   request.bid.AuctionId,
-                   request.bid.AssetId,
+                   request.AuctionId,
+                   request.AssetId,
                    new
                    {
-                       UserId = request.bid.UserId,
-                       BidAmount = request.bid.BidAmount,
+                       bidCount = updatedBidCount,
+                       auctionId = request.AuctionId,
+                       assetId = request.AssetId,
+                       UserId = request.UserId,
+                       BidAmount = request.BidAmount,
                        BidTime = DateTime.UtcNow
                    });
 

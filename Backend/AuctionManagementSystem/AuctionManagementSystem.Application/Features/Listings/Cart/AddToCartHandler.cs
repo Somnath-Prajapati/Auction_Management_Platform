@@ -73,9 +73,6 @@ namespace AuctionManagementSystem.Application.Features.Cart
         }
     }
 
-
-
-
     public class DecreaseCartItemQuantityHandler : IRequestHandler<DecreaseCartItemQuantityCommand, bool>
     {
         private readonly ICartRepository _cartRepository;
