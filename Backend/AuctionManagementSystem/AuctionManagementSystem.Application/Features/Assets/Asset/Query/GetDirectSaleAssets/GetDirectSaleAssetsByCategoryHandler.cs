@@ -42,7 +42,7 @@ namespace Application.Features.DirectSale.Handlers
             //Console.WriteLine(heldAssetIds);
 
             // Get assets that match, then filter held ones in-memory
-            var allAssets = await _assetRepository.GetAllAsync(a =>
+            var allAssets = await _assetRepository.GetDirectAllAsync(a =>
                 a.CategoryId == request.CategoryId &&
                 a.IsAvailableForDirectSale &&
                 !a.IsDeleted);
@@ -68,7 +68,7 @@ namespace Application.Features.DirectSale.Handlers
 
         public async Task<List<DirectSaleAssetDto>> Handle(GetAuctionAssetsByCategoryQuery request, CancellationToken cancellationToken)
         {
-            var assets = await _assetRepository.GetAllAsync(a =>
+            var assets = await _assetRepository.GetAuctionAllAsync(a =>
                 a.CategoryId == request.CategoryId && !a.IsAvailableForDirectSale);
 
             return _mapper.Map<List<DirectSaleAssetDto>>(assets);
