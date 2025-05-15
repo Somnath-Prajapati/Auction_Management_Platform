@@ -29,7 +29,7 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddPersistenceServices(builder.Configuration);
             builder.Services.AddHttpContextAccessor();
             // Ensure the LoggedInUserService class implements the ILoggedInUserService interface correctly.
-            //builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
+            builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddScoped<IBidNotificationService, BidNotificationService>();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -40,7 +40,6 @@ namespace AuctionManagementSystem.Api
             {
                 options.AddPolicy("AllowFrontend", policy =>
                 {
-                    // Add your frontend URL (e.g., localhost:5500 or file:// for testing locally)
                     policy.WithOrigins("http://localhost:5500", "http://localhost:4200", "https://localhost:4200", "file://")
                         .AllowAnyHeader()
                         .AllowAnyMethod()

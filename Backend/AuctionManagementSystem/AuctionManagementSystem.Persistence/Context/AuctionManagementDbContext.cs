@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using AuctionManagementSystem.Domain;
+using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.Bids;
@@ -14,12 +15,6 @@ using Microsoft.EntityFrameworkCore;
 using static System.Net.WebRequestMethods;
 
 namespace AuctionManagementSystem.Persistence.Context;
-// AuctionManagementDbContext
-<<<<<<< HEAD
-
-=======
-//AuctionManagementDbContext
->>>>>>> 856b2f7a75aef35d84c6e34f6bd4a53a17134313
 
 
 public partial class AuctionManagementDbContext : DbContext
@@ -115,11 +110,9 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
 
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
-<<<<<<< HEAD
-    public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
-=======
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
->>>>>>> 856b2f7a75aef35d84c6e34f6bd4a53a17134313
+
+    //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public virtual DbSet<tblBid> tblBids { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }

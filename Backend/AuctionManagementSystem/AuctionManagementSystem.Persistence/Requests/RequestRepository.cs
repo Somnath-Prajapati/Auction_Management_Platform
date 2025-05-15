@@ -4,10 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Request;
-<<<<<<< HEAD
-=======
 using AuctionManagementSystem.Application.Contracts.User;
->>>>>>> 856b2f7a75aef35d84c6e34f6bd4a53a17134313
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -19,19 +16,13 @@ namespace AuctionManagementSystem.Persistence.Repositories.Requests
     public class RequestRepository : IRequestRepository
     {
         private readonly AuctionManagementDbContext _context;
-<<<<<<< HEAD
-
-        public RequestRepository(AuctionManagementDbContext context)
-        {
-            _context = context;
-=======
+     
         private readonly IUserRepository _userRepository;
 
         public RequestRepository(AuctionManagementDbContext context, IUserRepository userRepository)
         {
             _context = context;
             _userRepository = userRepository;
->>>>>>> 856b2f7a75aef35d84c6e34f6bd4a53a17134313
         }
 
         public async Task<IEnumerable<TblRequest>> GetAllRequestQuery()
@@ -46,14 +37,12 @@ namespace AuctionManagementSystem.Persistence.Repositories.Requests
             return await _context.TblRequests.FindAsync(requestId);
         }
 
-<<<<<<< HEAD
-        public async Task AddRequest(TblRequest request)
-        {
-            await _context.TblRequests.AddAsync(request);
-            await _context.SaveChangesAsync();
-        }
+        //public async Task AddRequest(TblRequest request)
+        //{
+        //    await _context.TblRequests.AddAsync(request);
+        //    await _context.SaveChangesAsync();
+        //}
 
-=======
         public async Task<bool> RequestNumberExists(string requestNumber)
         {
             return await _context.TblRequests.AnyAsync(r => r.RequestNumber == requestNumber);
@@ -63,13 +52,13 @@ namespace AuctionManagementSystem.Persistence.Repositories.Requests
 
 
 
-        //public async Task AddRequest(TblRequest request)
-        //{
-        //    var get = await _userRepository.GetUserById(request.UserId);
-        //    request.Username = get.Name;
-        //    await _context.TblRequests.AddAsync(request);
-        //    await _context.SaveChangesAsync();
-        //}
+        public async Task AddRequest(TblRequest request)
+        {
+            var get = await _userRepository.GetUserById(request.UserId);
+            request.Username = get.Name;
+            await _context.TblRequests.AddAsync(request);
+            await _context.SaveChangesAsync();
+        }
 
 
         public async Task<string> GenerateRequestNumberAsync()
@@ -97,13 +86,13 @@ namespace AuctionManagementSystem.Persistence.Repositories.Requests
             return $"REQ-{datePart}-{nextSeq.ToString().PadLeft(padLen, '0')}";
         }
 
-        public async Task AddRequest(TblRequest request)
-        {
-            _context.TblRequests.Add(request);
-            await _context.SaveChangesAsync();
+        //public async Task AddRequest(TblRequest request)
+        //{
+        //    _context.TblRequests.Add(request);
+        //    await _context.SaveChangesAsync();
 
 
-        }
+        //}
 
         public async Task DeleteRequestByNumberAsync(string requestNumber)
         {
@@ -117,7 +106,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Requests
         }
 
 
->>>>>>> 856b2f7a75aef35d84c6e34f6bd4a53a17134313
         public async Task UpdateRequest(TblRequest request)
         {
             _context.TblRequests.Update(request);
@@ -130,8 +118,4 @@ namespace AuctionManagementSystem.Persistence.Repositories.Requests
             await _context.SaveChangesAsync();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 856b2f7a75aef35d84c6e34f6bd4a53a17134313

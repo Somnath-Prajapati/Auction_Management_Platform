@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using AuctionManagementSystem.Application.Contracts.Auth;
 
 
 namespace AuctionManagementSystem.Api.Services
