@@ -104,6 +104,7 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
                     IsDeleted = w.Asset.IsDeleted,
                     SalesNotes = w.Asset.SalesNotes,
                     Price = w.Asset.StartingPrice,
+                    AssetNumber = w.Asset.AssetNumber,
                     IsAvailableForDirectSale = w.Asset.IsAvailableForDirectSale,
                     CategoryName = w.Asset.Category?.CategoryName ?? string.Empty,
                     ThumbnailUrl = string.IsNullOrEmpty(thumbnailPath) ? string.Empty : $"{_baseUrl}{thumbnailPath}"
