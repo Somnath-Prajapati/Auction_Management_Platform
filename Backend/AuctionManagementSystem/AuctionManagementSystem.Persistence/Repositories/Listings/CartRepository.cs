@@ -10,6 +10,7 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
     public class CartRepository : ICartRepository
     {
         private readonly AuctionManagementDbContext _context;
+        private readonly string _baseUrl = "https://localhost:62627/";
 
         public CartRepository(AuctionManagementDbContext context)
         {
@@ -122,22 +123,45 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
 
         public async Task<List<DirectSaleAssetDto>> GetCartByUserIdAsync(int userId)
         {
-            return await _context.TblCartItems
-                .Where(c => c.UserId == userId && c.IsActive)
-                .Include(c => c.Asset)
-                .ThenInclude(a => a.TblAssetGalleries) // Include the AssetGalleries related to Asset
-                .Select(c => new DirectSaleAssetDto
+            var wishlistItems = await _context.TblWishlistItems
+         .Where(w => w.UserId == userId && w.IsActive)
+         .Include(w => w.Asset)
+             .ThenInclude(a => a.TblAssetGalleries)
+         .Include(w => w.Asset.Category)
+         .ToListAsync();
+
+            return wishlistItems.Select(w =>
+            {
+                // Get image with SortOrder = 1, fallback to first if not found
+                var thumbnailPath = w.Asset.TblAssetGalleries?
+                    .Where(g => g.SortOrder == 1)
+                    .Select(g => g.FilePath)
+                    .FirstOrDefault();
+
+                if (string.IsNullOrEmpty(thumbnailPath))
                 {
-                    AssetId = c.Asset.AssetId,
-                    Title = c.Asset.Title,
-                    Price = c.Asset.StartingPrice,
-                    Description = c.Asset.Description,
-                    ThumbnailUrl = c.Asset.TblAssetGalleries
-                                      .Where(g => g.SortOrder == 1)
-                                      .Select(g => g.FilePath)
-                                      .FirstOrDefault() ?? string.Empty, // Handle null reference explicitly
-                })
-                .ToListAsync();
+                    thumbnailPath = w.Asset.TblAssetGalleries?
+                        .Select(g => g.FilePath)
+                        .FirstOrDefault();
+                }
+
+                return new DirectSaleAssetDto
+                {
+                    AssetId = w.Asset.AssetId,
+                    Title = w.Asset.Title,
+                    CategoryId = w.Asset.CategoryId,
+                    Deposit = w.Asset.Deposit,
+                    MinIncrement = w.Asset.MinIncrement,
+                    Description = w.Asset.Description,
+                    IsDeleted = w.Asset.IsDeleted,
+                    SalesNotes = w.Asset.SalesNotes,
+                    Price = w.Asset.StartingPrice,
+                    IsAvailableForDirectSale = w.Asset.IsAvailableForDirectSale,
+                    CategoryName = w.Asset.Category?.CategoryName ?? string.Empty,
+                    ThumbnailUrl = string.IsNullOrEmpty(thumbnailPath) ? string.Empty : $"{_baseUrl}{thumbnailPath}"
+                };
+            }).ToList();
+
         }
 
         public async Task<bool> DecreaseCartItemQuantityAsync(int userId, int assetId)
@@ -263,10 +287,12 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
         }
 
         public async Task UpdateRangeAsync(IEnumerable<TblCartItem> items)
-{
-    _context.TblCartItems.UpdateRange(items);
-    await _context.SaveChangesAsync();
-}
+        {
+            _context.TblCartItems.UpdateRange(items);
+            await _context.SaveChangesAsync();
+        
+        
+        }
 
     }
 }
