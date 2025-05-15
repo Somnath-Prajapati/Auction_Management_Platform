@@ -39,11 +39,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         public async Task<IEnumerable<GetAssetsFormDto>> GetAllAsync()
         {
              var assets = await _context.TblAssets
-<<<<<<< HEAD
-                .Where(a => a.IsActive)
-=======
+                //.Where(a => a.IsActive)
                 .Where(a => a.IsDeleted == false)
->>>>>>> 856b2f7a75aef35d84c6e34f6bd4a53a17134313
                 .OrderByDescending(a => a.UpdatedAt ?? a.CreatedAt)
                 .Include(a => a.Category)
                 .Include(a => a.Status)
@@ -54,8 +51,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .Include(a => a.TblAssetDocuments)
                 .Include(a => a.TblAuctionAssets)
                 .ThenInclude(aa => aa.Auction)
-<<<<<<< HEAD
-=======
                 .Select(a => new GetAssetsFormDto
                 {
                     AssetId = a.AssetId,
@@ -99,14 +94,15 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
                     Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
                     {
+                        GalleryId = g.GalleryId,
                         MediaType = g.MediaType,
                         FilePath = g.FilePath,
                         SortOrder = g.SortOrder
                     }).ToList(),
                     Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
                     {
-                        //DocumentId = d.DocumentId,
-                       
+                        DocumentId = d.DocumentId,
+
                         DocumentType = d.DocumentType,
                         FilePath = d.FilePath
                     }).ToList(),
@@ -186,13 +182,14 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .ToList(),
              Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
              {
+                 GalleryId = g.GalleryId,
                  MediaType = g.MediaType,
                  FilePath = g.FilePath,
                  SortOrder = g.SortOrder
              }).ToList(),
              Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
              {
-                 //DocumentId = d.DocumentId,
+                 DocumentId = d.DocumentId,
                  DocumentType = d.DocumentType,
                  FilePath = d.FilePath
              }).ToList(),
@@ -220,7 +217,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .Include(a => a.TblAssetGalleries)
                 .Include(a => a.TblAssetDocuments)
                 .Include(a => a.TblAssetDetails)
->>>>>>> 856b2f7a75aef35d84c6e34f6bd4a53a17134313
                 .Select(a => new GetAssetsFormDto
                 {
                     AssetId = a.AssetId,
@@ -260,22 +256,19 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     AssetNumber = a.AssetNumber,
                     CreatedAt = a.CreatedAt,
                     UpdatedAt = a.UpdatedAt,
-<<<<<<< HEAD
                     AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
 
-=======
                     IsAvailableForDirectSale = a.IsAvailableForDirectSale,
->>>>>>> 856b2f7a75aef35d84c6e34f6bd4a53a17134313
                     Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
                     {
+                        GalleryId = g.GalleryId,
                         MediaType = g.MediaType,
                         FilePath = g.FilePath,
                         SortOrder = g.SortOrder
                     }).ToList(),
                     Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
                     {
-                        //DocumentId = d.DocumentId,
-                       
+                        DocumentId = d.DocumentId,
                         DocumentType = d.DocumentType,
                         FilePath = d.FilePath
                     }).ToList(),
@@ -292,95 +285,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 return assets;
         }
 
-<<<<<<< HEAD
-        public async Task<GetAssetsFormDto> GetByIdAsync(int id)
-        {
-        var asset = await _context.TblAssets
-          .Where(a => a.IsActive)
-         .Include(a => a.Category)
-         .Include(a => a.Status)
-         .Include(a => a.Seller)
-         .Include(a => a.Awarding)
-         .Include(a => a.Vat)
-         .Include(a => a.TblAssetGalleries)
-         .Include(a => a.TblAssetDocuments)
-         .Include(a => a.TblAssetDetails)
-         .Include(a => a.TblAuctionAssets)
-         .ThenInclude(aa => aa.Auction)
-         .Where(a => a.AssetId == id)
-         .Select(a => new GetAssetsFormDto
-         {
-             AssetId = a.AssetId,
-             Title = a.Title,
-             CategoryId = a.CategoryId,
-             CategoryName = a.Category != null ? a.Category.CategoryName : null,
-             Deposit = a.Deposit,
-             SellerId = a.SellerId,
-             Commission = a.Commission,
-             StartingPrice = a.StartingPrice,
-             ReserveAmount = a.ReserveAmount,
-             IncrementalTime = a.IncrementalTime,
-             MinIncrement = a.MinIncrement,
-             MakeOffer = a.MakeOffer,
-             Featured = a.Featured,
-             AwardingId = a.AwardingId,
-             AwardingMethod = a.Awarding != null ? a.Awarding.AwardingMethod : null,
-             StatusId = a.StatusId,
-             StatusName = a.Status != null ? a.Status.StatusName : null,
-             Vatid = a.Vatid,
-             VatType = a.Vat != null ? a.Vat.Vattype : null,
-             Vatpercent = a.Vatpercent,
-             CourtCaseNumber = a.CourtCaseNumber,
-             RegistrationDeadline = a.RegistrationDeadline,
-             Description = a.Description,
-             MapLatitude = a.MapLatitude,
-             MapLongitude = a.MapLongitude,
-             AdminFees = a.AdminFees,
-             AuctionFees = a.AuctionFees,
-             BuyerCommission = a.BuyerCommission,
-             WinnerId = a.WinnerId,
-             WinnerName = a.Winner != null && a.Winner.User != null ? a.Winner.User.Name : null,
-             AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null,
-             SalesNotes = a.SalesNotes,
-             AssetNumber = a.AssetNumber,
-             CreatedAt = a.CreatedAt,
-             UpdatedAt = a.UpdatedAt,
-             RequestForInquiry=a.RequestForInquiry,
-             RequestForViewing = a.RequestForViewing,
 
-             AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
-
-             // for auctionids 
-             AuctionIds = a.TblAuctionAssets
-                .Select(aa => aa.AuctionId)
-                .ToList(),
-             Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
-             {
-                 MediaType = g.MediaType,
-                 FilePath = g.FilePath,
-                 SortOrder = g.SortOrder
-             }).ToList(),
-             Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
-             {
-                 //DocumentId = d.DocumentId,
-                 DocumentType = d.DocumentType,
-                 FilePath = d.FilePath
-             }).ToList(),
-             // Add the asset details (attributes) here
-             Attributes = a.TblAssetDetails.Select(d => new AssetDetailDtoo
-             {
-                 AttributeName = d.AttributeName,
-                 AttributeValue = d.AttributeValue
-             }).ToList()
-         })
-         .FirstOrDefaultAsync();
-
-            return asset;
-        }
-
-=======
-
->>>>>>> 856b2f7a75aef35d84c6e34f6bd4a53a17134313
         public async Task<TblAsset> AddAsset(TblAsset asset,TblAssetGallery gallery)
         {
             //_context.TblAssets.OrderByDescending(c=>c.AssetId).Select(c => c);

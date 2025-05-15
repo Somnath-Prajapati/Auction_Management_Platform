@@ -61,16 +61,6 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 
 
 
-        public List<int> AuctionIds { get; set; }
-
-
-        public int? AuctionStatusId { get; set; }
-
-        // auction 
-
-
-
-
         public string AssetNumber { get; set; }
         public List<AssetGalleryDtos> Galleries { get; set; } = new();
         public List<AssetDocumentFormDto> Documents { get; set; } = new();
@@ -80,6 +70,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 
     public class AssetGalleryDtos
     {
+        public int GalleryId { get; set; }
         public string? MediaType { get; set; }
         public string? FilePath { get; set; }
         public string FileUrl { get; set; } 
@@ -89,7 +80,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 
     public class AssetDocumentFormDto
     {
-        //public int DocumentId { get; set; }
+        public int DocumentId { get; set; }
         public string? DocumentType { get; set; }
         public string? FilePath { get; set; }
 
