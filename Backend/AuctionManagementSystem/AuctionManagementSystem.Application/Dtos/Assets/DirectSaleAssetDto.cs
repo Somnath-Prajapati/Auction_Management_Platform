@@ -19,7 +19,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public decimal Price { get; set; }
         public string ThumbnailUrl { get; set; }
         public string CategoryName { get; set; }
-
+        public string AssetNumber { get; set; }
         public bool IsAvailableForDirectSale { get; set; }
 
         public int? AuctionId { get; set; }
