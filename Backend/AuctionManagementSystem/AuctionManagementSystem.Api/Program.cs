@@ -53,7 +53,9 @@ namespace AuctionManagementSystem.Api
             var app = builder.Build();
             //if (app.Environment.IsDevelopment())
             //{
+            
             app.UseCors("AllowFrontend");
+
             app.MapHub<BidHub>("/bidhub");
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
@@ -62,11 +64,29 @@ namespace AuctionManagementSystem.Api
                 });
             //}
             app.UseMiddleware<ExceptionMiddleware>();
+            
+            
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseAuthorization();
+
+
+
+
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //    Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "AssetGallery")),
+            //    RequestPath = "/AssetGallery"
+            //});
+
+            
+
 
             app.UseAuthentication();
-            app.UseAuthorization();
+
+            app.UseStaticFiles();
+            
+
             app.MapGet("/", context =>
             {
                 context.Response.Redirect("/swagger");

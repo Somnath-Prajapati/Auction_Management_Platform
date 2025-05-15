@@ -15,12 +15,14 @@ using AuctionManagementSystem.Application.Features.Assets.Query.GetAssets;
 using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Query.GetAllFinanceSettings;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace AuctionManagementSystem.Api.Controller.Assets
 {
+    //[EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
     public class AssetsController : ControllerBase
