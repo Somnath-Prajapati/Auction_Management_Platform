@@ -4,15 +4,15 @@ using AuctionManagementSystem.Domain.Entities.Asset;
 
 namespace AuctionManagementSystem.Domain.Entities.Auction;
 
-public partial class TblAuctionAsset
-{
-    public int AuctionAssetId { get; set; }
+    public partial class TblAuctionAsset
+    {
+        public int AuctionAssetId { get; set; }
 
-    public int AuctionId { get; set; }
+        public int AuctionId { get; set; }
 
-    public int AssetId { get; set; }
+        public int AssetId { get; set; }
 
-    public virtual TblAsset Asset { get; set; } = null!;
+        public virtual TblAsset Asset { get; set; } = null!;
 
-    public virtual TblAuction Auction { get; set; } = null!;
-}
+        public virtual TblAuction Auction { get; set; } = null!;
+    }
