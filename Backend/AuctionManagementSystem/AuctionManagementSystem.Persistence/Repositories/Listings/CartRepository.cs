@@ -3,6 +3,7 @@ using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Persistence.Context;
 using AuctionManagementSystem.Persistence.Repositories.Listings;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 
 namespace AuctionManagementSystem.Infrastructure.Repositories
 {
@@ -72,16 +73,22 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
             if (existing != null)
                 return false;
 
-            // Check if another user is holding this asset
-            bool heldByAnother = await _context.TblCartItems
-                .AnyAsync(c =>
-                    c.UserId != userId &&
-                    c.AssetId == assetId &&
-                    c.IsActive &&
-                    c.AddedAt.AddMinutes(validMinutes) > now);
+            
+
+            bool heldByAnother = await IsAssetHeldByAnotherUserAsync(userId, assetId, validMinutes);
+            //bool heldByAnother = await _context.TblCartItems
+            //    .AnyAsync(c =>
+            //        c.UserId != userId &&
+            //        c.AssetId == assetId &&
+            //        c.IsActive &&
+            //        c.AddedAt.AddMinutes(validMinutes) > now);
 
             if (heldByAnother)
-                return false;
+            {
+                throw new Exception("Asset is Already Held by another user Check after" + validMinutes + "minutes");
+                //return false;
+            }
+
 
             // Add to cart
             var newCartItem = new TblCartItem
@@ -220,7 +227,7 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
         {
             var threshold = DateTime.UtcNow.AddMinutes(-validMinutes);
             return _context.TblCartItems
-                .Where(c => c.IsActive && c.AddedAt > threshold)
+                .Where(c =>  c.AddedAt > threshold)
                 .ToListAsync();
         }
 

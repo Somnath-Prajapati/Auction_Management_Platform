@@ -35,11 +35,11 @@ namespace Application.Features.DirectSale.Handlers
 
             var now = DateTime.UtcNow;
 
-            var heldAssetIds = (await _cartRepository.GetAllValidCartItemsAsync(cartTimerInMinutes))
-                .Select(c => c.AssetId)
-                .ToHashSet();
+            //var heldAssetIds = (await _cartRepository.GetAllValidCartItemsAsync(cartTimerInMinutes))
+            //    .Select(c => c.AssetId)
+            //    .ToHashSet();
 
-            Console.WriteLine(heldAssetIds);
+            //Console.WriteLine(heldAssetIds);
 
             // Get assets that match, then filter held ones in-memory
             var allAssets = await _assetRepository.GetAllAsync(a =>
@@ -47,11 +47,11 @@ namespace Application.Features.DirectSale.Handlers
                 a.IsAvailableForDirectSale &&
                 !a.IsDeleted);
 
-            var filteredAssets = allAssets
-                .Where(a => !heldAssetIds.Contains(a.AssetId))
-                .ToList();
+            //var filteredAssets = allAssets
+            //    .Where(a => !heldAssetIds.Contains(a.AssetId))
+            //    .ToList();
 
-            return _mapper.Map<List<DirectSaleAssetDto>>(filteredAssets);
+            return _mapper.Map<List<DirectSaleAssetDto>>(allAssets);
         }
     }
 
