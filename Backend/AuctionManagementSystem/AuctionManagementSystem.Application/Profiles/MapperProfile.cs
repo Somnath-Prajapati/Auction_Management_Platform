@@ -32,6 +32,7 @@ using AuctionManagementSystem.Domain.Entities.User;
 using AutoMapper;
 using EventStore.ClientAPI;
 using AuctionManagementSystem.Domain.Entities.Bids;
+using AuctionManagementSystem.Domain.Entities;
 
 
 namespace AuctionManagementSystem.Application.Profiles
@@ -139,14 +140,24 @@ namespace AuctionManagementSystem.Application.Profiles
                src.Galleries.OrderBy(g => g.SortOrder).Select(g => g.FilePath).FirstOrDefault() ?? null)) // Get the first gallery image as the thumbnail URL
            .ForMember(dest => dest.IsAvailableForDirectSale, opt => opt.MapFrom(src => src.IsAvailableForDirectSale))
            .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.CategoryName)) // Map category name
-           .ReverseMap(); 
+           .ReverseMap();
 
             //CreateMap<CreateRequestDto, TblRequest>().ReverseMap();
 
+            CreateMap<TblAsset, DirectSaleAssetDto>()
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName))
+                //.ForMember(dest => dest., opt => opt.MapFrom(src => src.Seller.Name))
+                // Add more as needed
+                ;
 
 
             CreateMap<CreateRequestDto, AddRequestCommand>().ReverseMap();
             CreateMap<TblRequest, CreateRequestDto>().ReverseMap();
+            CreateMap<TblCartItem, DirectSaleAssetDto>()
+                .ForMember(dest => dest.AssetId, opt => opt.MapFrom(src => src.Asset.AssetId))
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Asset.Title))
+    // ... map other asset fields from src.Asset
+    ;
 
 
         }
