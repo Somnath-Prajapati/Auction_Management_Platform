@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
   "Documents": [
     {
@@ -23,6 +24,10 @@
       "RelativeMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|solutionrelative:auctionmanagementsystem.domain\\entities\\asset\\tblasset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
+=======
+  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
+  "Documents": [],
+>>>>>>> 473cdc080b1c6e65d7f5207c7061ddd6a0fd433d
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,6 +35,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 0,
           "Children": [
             {
@@ -83,6 +89,23 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T06:51:09.229Z",
               "EditorCaption": ""
+=======
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+>>>>>>> 473cdc080b1c6e65d7f5207c7061ddd6a0fd433d
             },
             {
               "$type": "Document",
