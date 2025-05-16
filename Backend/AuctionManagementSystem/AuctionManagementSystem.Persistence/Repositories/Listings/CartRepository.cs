@@ -123,7 +123,7 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
 
         public async Task<List<DirectSaleAssetDto>> GetCartByUserIdAsync(int userId)
         {
-            var wishlistItems = await _context.TblWishlistItems
+          var wishlistItems = await _context.TblWishlistItems
          .Where(w => w.UserId == userId && w.IsActive)
          .Include(w => w.Asset)
              .ThenInclude(a => a.TblAssetGalleries)
@@ -156,6 +156,7 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
                     IsDeleted = w.Asset.IsDeleted,
                     SalesNotes = w.Asset.SalesNotes,
                     Price = w.Asset.StartingPrice,
+                    AssetNumber = w.Asset.AssetNumber,
                     IsAvailableForDirectSale = w.Asset.IsAvailableForDirectSale,
                     CategoryName = w.Asset.Category?.CategoryName ?? string.Empty,
                     ThumbnailUrl = string.IsNullOrEmpty(thumbnailPath) ? string.Empty : $"{_baseUrl}{thumbnailPath}"
@@ -235,13 +236,18 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
 
         public async Task<List<DirectSaleAssetDto>> GetValidCartItemsAsync(int userId, int validMinutes)
         {
+
             var threshold = DateTime.UtcNow.AddMinutes(-validMinutes);
 
             var cartItems = await _context.TblCartItems
                 .Where(ci =>
+
                     ci.UserId == userId &&
+
                     ci.IsActive &&
+
                     ci.DeletedDate == null &&
+
                     ci.AddedAt >= threshold)
                 .Include(ci => ci.Asset)
                     .ThenInclude(a => a.TblAssetGalleries)

@@ -4,9 +4,9 @@ using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Transaction;
-using AuctionManagementSystem.Persistence.TempEntities;
 
 namespace AuctionManagementSystem.Domain.Entities.User;
+
 
 
 public partial class TblUser
@@ -46,6 +46,7 @@ public partial class TblUser
     public string Gender { get; set; }
 
     public DateOnly? PersonalIdExpiryDate { get; set; }
+   
 
     public string? ProfileImage { get; set; }
 
@@ -81,6 +82,7 @@ public partial class TblUser
     public virtual ICollection<TblOrder> TblOrders { get; set; } = new List<TblOrder>();
 
     public virtual ICollection<TblUserRole?> TblUserRoles { get; set; } = new List<TblUserRole>();
+    
     public virtual ICollection<TblWishlistItem> TblWishlistItems { get; set; } = new List<TblWishlistItem>();
     public virtual ICollection<TblCartItem> TblCartItems { get; set; } = new List<TblCartItem>();
 
