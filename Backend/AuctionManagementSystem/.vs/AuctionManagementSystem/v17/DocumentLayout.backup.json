@@ -1,79 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\assets\\assetcategoriesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\assets\\assetcategoriesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\user\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\user\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\assets\\assetcategory\\command\\createassetcategory\\createassetcategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\assets\\assetcategory\\command\\createassetcategory\\createassetcategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.api\\controller\\assets\\assetcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|solutionrelative:auctionmanagementsystem.api\\controller\\assets\\assetcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\assets\\assetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\assets\\assetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\contracts\\assets\\iassetcategoriesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\contracts\\assets\\iassetcategoriesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\assets\\assetcategory\\command\\updateassetcategory\\updateassetcategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\assets\\assetcategory\\command\\updateassetcategory\\updateassetcategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.domain\\entities\\asset\\tblassetcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|solutionrelative:auctionmanagementsystem.domain\\entities\\asset\\tblassetcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\dtos\\assets\\updateassetcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\dtos\\assets\\updateassetcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\dtos\\assets\\createassetcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\dtos\\assets\\createassetcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.domain\\entities\\asset\\tblassetcategorypaymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|solutionrelative:auctionmanagementsystem.domain\\entities\\asset\\tblassetcategorypaymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\assets\\assetcategory\\command\\createassetcategory\\createassetcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\assets\\assetcategory\\command\\createassetcategory\\createassetcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\assets\\assetcategory\\query\\getallassetcategories\\getallassetcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\assets\\assetcategory\\query\\getallassetcategories\\getallassetcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\assets\\assetcategory\\query\\getallassetcategories\\getallassetcategoriesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\assets\\assetcategory\\query\\getallassetcategories\\getallassetcategoriesquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\context\\auctionmanagementdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\context\\auctionmanagementdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.domain\\entities\\user\\tbluser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|solutionrelative:auctionmanagementsystem.domain\\entities\\user\\tbluser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Desktop\\amp\\Frontend\\package-lock.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\amp\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\dtos\\assets\\assetcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\dtos\\assets\\assetcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -81,6 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 4,
           "Children": [
             {
@@ -305,6 +234,27 @@
               "ViewState": "AgIAABkAAAAAAAAAAAAqwCAAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T11:31:29.046Z"
+=======
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+>>>>>>> f00651fdec5d266a14c0d5ed4ec66cc31488b06f
             }
           ]
         }

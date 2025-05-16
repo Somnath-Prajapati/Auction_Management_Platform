@@ -14,8 +14,6 @@ using Microsoft.EntityFrameworkCore;
 using static System.Net.WebRequestMethods;
 
 namespace AuctionManagementSystem.Persistence.Context;
-// AuctionManagementDbContext
-//AuctionManagementDbContext
 
 
 public partial class AuctionManagementDbContext : DbContext
@@ -117,97 +115,105 @@ public partial class AuctionManagementDbContext : DbContext
     public DbSet<TblCartItem> TblCartItems { get; set; }
 
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
+    public virtual DbSet<TblOrder> TblOrders { get; set; }
+    public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
 
-        modelBuilder.Entity<TblWishlistItem>(entity =>
+
+
+        modelBuilder.Entity<TblOrder>(entity =>
         {
-            entity.ToTable("tblWishlistItems", "AuctionM_dbuser");
+            entity.HasKey(e => e.OrderId).HasName("PK__tblOrder__C3905BCF60E8760D");
 
-            entity.HasKey(e => e.WishlistItemId);
+            entity.ToTable("tblOrders");
 
-            entity.Property(e => e.WishlistItemId)
-                .HasColumnName("WishlistItemId")
-                .IsRequired();
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
+            entity.Property(e => e.OrderStatus).HasMaxLength(50);
+            entity.Property(e => e.TransactionNumber).HasMaxLength(100);
+            entity.Property(e => e.UpdatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
 
-            entity.Property(e => e.UserId)
-                .HasColumnName("UserId")
-                .HasColumnType("int")
-                .IsRequired();
+            entity.HasOne(d => d.Transaction).WithMany(p => p.TblOrders)
+                .HasForeignKey(d => d.TransactionId)
+                .HasConstraintName("FK_TblOrders_Transactions");
 
-            entity.Property(e => e.AssetId)
-                .HasColumnName("AssetId")
-                .HasColumnType("int")
-                .IsRequired();
-
-            entity.Property(e => e.AddedAt)
-                .HasColumnName("AddedAt")
-                .HasColumnType("datetime")
-                .IsRequired();
-
-            entity.Property(e => e.IsActive)
-                .HasColumnName("IsActive")
-                .HasColumnType("bit")
-                .HasDefaultValue(true)
-                .IsRequired();
-
-            entity.Property(e => e.DeletedDate)
-                .HasColumnName("DeletedDate")
-                .HasColumnType("datetime")
-                .IsRequired(false);
-
-            // Optional: Foreign key relationships
-            entity.HasOne(e => e.Asset)
-                .WithMany()
-                .HasForeignKey(e => e.AssetId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            entity.HasOne(e => e.User)
-                .WithMany()
-                .HasForeignKey(e => e.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(d => d.User).WithMany(p => p.TblOrders)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TblOrders_Users");
         });
 
+        modelBuilder.Entity<TblOrderAsset>(entity =>
+        {
+            entity.HasKey(e => e.OrderAssetId).HasName("PK__tblOrder__4D4B2C4696255B49");
 
+            entity.ToTable("tblOrderAssets");
+
+            entity.HasOne(d => d.Asset).WithMany(p => p.TblOrderAssets)
+                .HasForeignKey(d => d.AssetId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TblOrderAssets_Assets");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.TblOrderAssets)
+                .HasForeignKey(d => d.OrderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TblOrderAssets_Orders");
+        });
+
+        // For CartItem mapping
         modelBuilder.Entity<TblCartItem>(entity =>
         {
-            entity.ToTable("tblCartItems", "AuctionM_dbuser");
+            entity.HasKey(e => e.CartItemId).HasName("PK__tblCartI__488B0B0A0437EB75");
 
-            entity.HasKey(e => e.CartItemId);
+            entity.ToTable("tblCartItems");
 
-            entity.Property(e => e.CartItemId).HasColumnName("CartItemId");
-            entity.Property(e => e.UserId).HasColumnName("UserId").IsRequired();
-            entity.Property(e => e.AssetId).HasColumnName("AssetId").IsRequired();
-            entity.Property(e => e.Quantity).HasColumnName("Quantity").HasDefaultValue(1).IsRequired();
-            entity.Property(e => e.AddedAt)
-                   .HasColumnName("AddedAt")
-                    .HasColumnType("datetime")
-                    .IsRequired();
+            entity.Property(e => e.AddedAt).HasColumnType("datetime");
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.Quantity).HasDefaultValue(1);
 
-            entity.Property(e => e.IsActive)
-                .HasColumnName("IsActive")
-                .HasColumnType("bit")
-                .HasDefaultValue(true)
-                .IsRequired();
+            entity.HasOne(d => d.Asset).WithMany(p => p.TblCartItems)
+                .HasForeignKey(d => d.AssetId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblCartIt__Asset__2E3BD7D3");
 
-            entity.Property(e => e.DeletedDate)
-                .HasColumnName("DeletedDate")
-                .HasColumnType("datetime")
-                .IsRequired(false);
-
-            // Optional: Foreign key relationships (if applicable)
-            entity.HasOne(e => e.Asset)
-                  .WithMany()
-                  .HasForeignKey(e => e.AssetId)
-                  .OnDelete(DeleteBehavior.Restrict);
-
-            entity.HasOne(e => e.User)
-                  .WithMany()
-                  .HasForeignKey(e => e.UserId)
-                  .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(d => d.User).WithMany(p => p.TblCartItems)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblCartIt__UserI__2D47B39A");
         });
+
+        // For WishlistItem mapping
+        modelBuilder.Entity<TblWishlistItem>(entity =>
+        {
+            entity.HasKey(e => e.WishlistItemId).HasName("PK__tblWishl__171E21A16D425329");
+
+            entity.ToTable("tblWishlistItems");
+
+            entity.Property(e => e.AddedAt).HasColumnType("datetime");
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+
+            entity.HasOne(d => d.Asset).WithMany(p => p.TblWishlistItems)
+                .HasForeignKey(d => d.AssetId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblWishli__Asset__2882FE7D");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TblWishlistItems)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblWishli__UserI__278EDA44");
+        });
+
 
         modelBuilder.Entity<tblOTP>(entity =>
         {
@@ -641,9 +647,7 @@ public partial class AuctionManagementDbContext : DbContext
 
         //    entity.HasOne(d => d.User).WithMany(p => p.TblBids)
         //        .HasForeignKey(d => d.UserId)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_Bids_Users");
-        //});
+    
         modelBuilder.Entity<tblBid>(entity =>
         {
             entity.ToTable("tblBids");
@@ -778,7 +782,6 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
-
         modelBuilder.Entity<TblRequest>(entity =>
         {
             entity.HasKey(e => e.RequestId).HasName("PK__tblReque__33A8517AFFB28830");
@@ -790,24 +793,22 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.CreatedOn)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
             entity.Property(e => e.Email)
-                .IsRequired()
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.MobileNumber)
-                .IsRequired()
                 .HasMaxLength(20)
                 .IsUnicode(false);
             entity.Property(e => e.RequestDateTime).HasColumnType("datetime");
             entity.Property(e => e.RequestNumber)
-                .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.UpdatedOn)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Username)
-                .IsRequired()
                 .HasMaxLength(100)
                 .IsUnicode(false);
 

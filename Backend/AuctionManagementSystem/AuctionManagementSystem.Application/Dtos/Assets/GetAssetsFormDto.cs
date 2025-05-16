@@ -43,6 +43,8 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public decimal? AwardedPrice { get; set; } // From Winner
         public string? SalesNotes { get; set; }
         public string Details { get; set; }
+        public int? AuctionId { get; set; }
+
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public bool IsAvailableForDirectSale { get; set; } // for asset direct sale
@@ -56,6 +58,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 
         // auction 
 
+        public bool isDeleted { get; set; }    
 
 
 
@@ -68,6 +71,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 
     public class AssetGalleryDtos
     {
+        public int GalleryId { get; set; }
         public string? MediaType { get; set; }
         public string? FilePath { get; set; }
         public string FileUrl { get; set; } 

@@ -31,9 +31,10 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
             var dto = request.dto;
             var assetEntity = _mapper.Map<TblAsset>(dto);
 
-         
             assetEntity.CreatedAt = DateTime.UtcNow;
 
+            assetEntity.IsDeleted = true;  
+            
 
 
             //var ans = 1;
