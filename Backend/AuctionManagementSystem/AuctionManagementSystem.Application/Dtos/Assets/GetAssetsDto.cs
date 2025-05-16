@@ -65,6 +65,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public DateTime? UpdatedAt { get; set; }
 
         public bool IsAvailableForDirectSale { get; set; } // to check direct sale optinality
+        public bool IsDeleted { get; set; }
 
     }
 }
