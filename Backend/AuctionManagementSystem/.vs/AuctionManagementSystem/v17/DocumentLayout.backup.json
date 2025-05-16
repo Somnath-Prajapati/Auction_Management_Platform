@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\assets\\assetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\assets\\assetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\assets\\assetgalleryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\assets\\assetgalleryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\contracts\\listings\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\contracts\\listings\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\listings\\wishlistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\listings\\wishlistrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\assets\\assetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\assets\\assetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\dtos\\assets\\directsaleassetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -61,10 +65,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\assets\\assetdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\assets\\assetdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\assets\\assetgalleryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\assets\\assetgalleryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.domain\\entities\\asset\\tblassetgallery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -118,37 +118,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ICartRepository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAqwBsAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T12:51:50.702Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AddToCartHandler.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAkwJsAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T12:51:15.584Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "CartRepository.cs",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Listings\\CartRepository.cs",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Listings\\CartRepository.cs",
@@ -156,38 +130,84 @@
               "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Listings\\CartRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T12:48:42.128Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WishlistRepository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Listings\\WishlistRepository.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Listings\\WishlistRepository.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Listings\\WishlistRepository.cs*",
-              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Listings\\WishlistRepository.cs*",
-              "ViewState": "AgIAACoAAAAAAAAAAAAowGcAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T12:32:28.456Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-15T12:48:42.128Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "WishlistRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Listings\\WishlistRepository.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Listings\\WishlistRepository.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Listings\\WishlistRepository.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Listings\\WishlistRepository.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAowGcAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T12:32:28.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "DirectSaleAssetDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Dtos\\Assets\\DirectSaleAssetDto.cs",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Dtos\\Assets\\DirectSaleAssetDto.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Dtos\\Assets\\DirectSaleAssetDto.cs*",
-              "RelativeToolTip": "AuctionManagementSystem.Application\\Dtos\\Assets\\DirectSaleAssetDto.cs*",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Dtos\\Assets\\DirectSaleAssetDto.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Dtos\\Assets\\DirectSaleAssetDto.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAA1wBQAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T12:20:46.135Z",
+              "WhenOpened": "2025-05-15T12:20:46.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AssetGalleryRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetGalleryRepository.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetGalleryRepository.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetGalleryRepository.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetGalleryRepository.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowCsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T09:36:55.65Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AssetRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAACgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T05:58:57.977Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
+              "Title": "ICartRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Contracts\\Listings\\ICartRepository.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAqwBsAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T12:51:50.702Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddToCartHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Listings\\Cart\\AddToCartHandler.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAkwJsAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T12:51:15.584Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "AssetDocumentController.cs",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Controller\\Assets\\AssetDocumentController.cs",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Api\\Controller\\Assets\\AssetDocumentController.cs",
@@ -195,12 +215,11 @@
               "RelativeToolTip": "AuctionManagementSystem.Api\\Controller\\Assets\\AssetDocumentController.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAgwCgAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T11:38:48.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-15T11:38:48.812Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "AssetGalleryController.cs",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Controller\\Assets\\AssetGalleryController.cs",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Api\\Controller\\Assets\\AssetGalleryController.cs",
@@ -212,7 +231,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AssetsController.cs",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Controller\\Assets\\AssetsController.cs",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Api\\Controller\\Assets\\AssetsController.cs",
@@ -220,25 +239,11 @@
               "RelativeToolTip": "AuctionManagementSystem.Api\\Controller\\Assets\\AssetsController.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAgwDEAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T05:01:46.485Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T05:01:46.485Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AssetRepository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetRepository.cs",
-              "ViewState": "AgIAAIYBAAAAAAAAAAAewAMBAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T05:58:57.977Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "AssetDocumentRepository.cs",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetDocumentRepository.cs",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetDocumentRepository.cs",
@@ -250,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "GetAssetsFormDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Dtos\\Assets\\GetAssetsFormDto.cs",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Dtos\\Assets\\GetAssetsFormDto.cs",
@@ -258,12 +263,11 @@
               "RelativeToolTip": "AuctionManagementSystem.Application\\Dtos\\Assets\\GetAssetsFormDto.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAAgwEAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T05:57:28.683Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-15T05:57:28.683Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Api\\Properties\\launchSettings.json",
@@ -275,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\appsettings.json",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Api\\appsettings.json",
@@ -287,20 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "AssetGalleryRepository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetGalleryRepository.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetGalleryRepository.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetGalleryRepository.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetGalleryRepository.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAwwCsAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T09:36:55.65Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "UpdateAssetAllCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Assets\\Asset\\Command\\UpdateAssetAllCommandHandler.cs",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Assets\\Asset\\Command\\UpdateAssetAllCommandHandler.cs",
@@ -312,7 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "AssetDetailRepository.cs",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetDetailRepository.cs",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Assets\\AssetDetailRepository.cs",

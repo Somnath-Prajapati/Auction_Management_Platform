@@ -38,7 +38,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<IEnumerable<GetAssetsFormDto>> GetAllAsync()
         {
-             var assets = await _context.TblAssets
+                var assets = await _context.TblAssets
                 //.Where(a => a.IsActive)
                 .Where(a => a.IsDeleted == false)
                 .OrderByDescending(a => a.UpdatedAt ?? a.CreatedAt)
