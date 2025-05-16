@@ -4,16 +4,19 @@ using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Persistence.Context;
 using AuctionManagementSystem.Persistence.Repositories.Listings;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace AuctionManagementSystem.Infrastructure.Repositories
 {
     public class WishlistRepository : IWishlistRepository
     {
         private readonly AuctionManagementDbContext _context;
+        private readonly string _baseUrl = "https://localhost:62627/";
 
         public WishlistRepository(AuctionManagementDbContext context)
         {
             _context = context;
+
         }
 
         //public async Task<bool> AddAsync(AddToWishlistDto dto)
@@ -68,12 +71,29 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
 
         public async Task<List<DirectSaleAssetDto>> GetWishlistAssetsByUserIdAsync(int userId)
         {
-            return await _context.TblWishlistItems
-                .Where(w => w.UserId == userId && w.IsActive)
-                .Include(w => w.Asset)
-                    .ThenInclude(a => a.TblAssetGalleries)
-                .Include(w => w.Asset.Category)
-                .Select(w => new DirectSaleAssetDto
+            var wishlistItems = await _context.TblWishlistItems
+        .Where(w => w.UserId == userId && w.IsActive)
+        .Include(w => w.Asset)
+            .ThenInclude(a => a.TblAssetGalleries)
+        .Include(w => w.Asset.Category)
+        .ToListAsync();
+
+            return wishlistItems.Select(w =>
+            {
+                // Get image with SortOrder = 1, fallback to first if not found
+                var thumbnailPath = w.Asset.TblAssetGalleries?
+                    .Where(g => g.SortOrder == 1)
+                    .Select(g => g.FilePath)
+                    .FirstOrDefault();
+
+                if (string.IsNullOrEmpty(thumbnailPath))
+                {
+                    thumbnailPath = w.Asset.TblAssetGalleries?
+                        .Select(g => g.FilePath)
+                        .FirstOrDefault();
+                }
+
+                return new DirectSaleAssetDto
                 {
                     AssetId = w.Asset.AssetId,
                     Title = w.Asset.Title,
@@ -81,17 +101,15 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
                     Deposit = w.Asset.Deposit,
                     MinIncrement = w.Asset.MinIncrement,
                     Description = w.Asset.Description,
-                    IsActive = w.Asset.IsDeleted,
+                    IsDeleted = w.Asset.IsDeleted,
                     SalesNotes = w.Asset.SalesNotes,
                     Price = w.Asset.StartingPrice,
+                    AssetNumber = w.Asset.AssetNumber,
                     IsAvailableForDirectSale = w.Asset.IsAvailableForDirectSale,
-                    CategoryName = w.Asset.Category.CategoryName,
-                    ThumbnailUrl = w.Asset.TblAssetGalleries
-                        .Where(g => g.SortOrder == 1)
-                        .Select(g => g.FilePath)
-                        .FirstOrDefault() ?? string.Empty
-                })
-                .ToListAsync();
+                    CategoryName = w.Asset.Category?.CategoryName ?? string.Empty,
+                    ThumbnailUrl = string.IsNullOrEmpty(thumbnailPath) ? string.Empty : $"{_baseUrl}{thumbnailPath}"
+                };
+            }).ToList();
         }
 
         public async Task<bool> ExistsAsync(int userId, int assetId)
