@@ -23,7 +23,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public bool IsAvailableForDirectSale { get; set; }
 
         public int? AuctionId { get; set; }
-
+        public string AssetNumber { get; set; }
         //public List<AssetsGalleryDto> Galleries { get; set; } = new List<AssetsGalleryDto>();  // Default to an empty list to prevent null reference issues
         public List<AssetGalleryDtos> Galleries { get; set; } = new();
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using AuctionManagementSystem.Application.Contracts.Request;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Domain.Entities.Request;
@@ -28,20 +24,18 @@ namespace AuctionManagementSystem.Persistence.Repositories.Requests
         public async Task<IEnumerable<TblRequest>> GetAllRequestQuery()
         {
             return await _context.TblRequests
-                
+                .Where(r => !r.IsDeleted)
                 .ToListAsync();
         }
 
+
         public async Task<TblRequest> GetRequestByIdQuery(int requestId)
         {
-            return await _context.TblRequests.FindAsync(requestId);
+            return await _context.TblRequests
+                .Where(r => r.RequestId == requestId && !r.IsDeleted)
+                .FirstOrDefaultAsync();
         }
 
-        //public async Task AddRequest(TblRequest request)
-        //{
-        //    await _context.TblRequests.AddAsync(request);
-        //    await _context.SaveChangesAsync();
-        //}
 
         public async Task<bool> RequestNumberExists(string requestNumber)
         {

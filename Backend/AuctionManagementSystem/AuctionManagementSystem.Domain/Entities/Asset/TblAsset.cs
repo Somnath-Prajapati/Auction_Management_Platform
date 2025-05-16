@@ -6,6 +6,7 @@ using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
+using AuctionManagementSystem.Persistence.TempEntities;
 
 namespace AuctionManagementSystem.Domain.Entities.Asset;
 
@@ -100,6 +101,7 @@ public partial class TblAsset
     public virtual ICollection<TblRequest> TblRequests { get; set; } = new List<TblRequest>();
 
     public virtual ICollection<TblTransactionAsset> TblTransactionAssets { get; set; } = new List<TblTransactionAsset>();
+    public virtual ICollection<TblOrderAsset> TblOrderAssets { get; set; } = new List<TblOrderAsset>();
 
     public virtual TblVatoption Vat { get; set; }
     public virtual ICollection<tblBid> TblBids { get; set; } = new List<tblBid>();
