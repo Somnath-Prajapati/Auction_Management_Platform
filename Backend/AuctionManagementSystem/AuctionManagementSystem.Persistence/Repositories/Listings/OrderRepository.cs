@@ -8,6 +8,7 @@ using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.AspNetCore.Internal;
+using AuctionManagementSystem.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Persistence.Repositories.Listings

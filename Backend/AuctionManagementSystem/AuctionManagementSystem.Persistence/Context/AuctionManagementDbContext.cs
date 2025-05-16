@@ -10,8 +10,6 @@ using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
-
-using AuctionManagementSystem.Persistence.TempEntities;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.WebRequestMethods;
 
@@ -117,6 +115,8 @@ public partial class AuctionManagementDbContext : DbContext
     public DbSet<TblCartItem> TblCartItems { get; set; }
 
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
+    public virtual DbSet<TblOrder> TblOrders { get; set; }
+    public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
