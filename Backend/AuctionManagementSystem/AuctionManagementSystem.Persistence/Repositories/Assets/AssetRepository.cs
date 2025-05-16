@@ -400,6 +400,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<int> AddAssetForGallery(TblAsset asset)
         {
+            asset.IsDeleted = false;
             _context.TblAssets.Add(asset);
             await _context.SaveChangesAsync();
 

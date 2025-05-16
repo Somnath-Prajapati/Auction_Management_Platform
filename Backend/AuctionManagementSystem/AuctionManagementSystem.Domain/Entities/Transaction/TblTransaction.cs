@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using AuctionManagementSystem.Domain.Entities;
+using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.User;
-using AuctionManagementSystem.Persistence.TempEntities;
 
 namespace AuctionManagementSystem.Domain.Entities.Transaction;
 
