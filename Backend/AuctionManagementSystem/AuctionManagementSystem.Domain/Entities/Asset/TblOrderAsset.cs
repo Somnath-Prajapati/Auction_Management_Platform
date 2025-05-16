@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using AuctionManagementSystem.Domain.Entities.Asset;
 
-namespace AuctionManagementSystem.Persistence.TempEntities;
+namespace AuctionManagementSystem.Domain.Entities.Asset;
 
 public partial class TblOrderAsset
 {

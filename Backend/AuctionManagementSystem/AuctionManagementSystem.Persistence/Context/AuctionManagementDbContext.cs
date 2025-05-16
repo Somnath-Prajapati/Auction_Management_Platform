@@ -10,13 +10,10 @@ using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
-using AuctionManagementSystem.Persistence.TempEntities;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.WebRequestMethods;
 
 namespace AuctionManagementSystem.Persistence.Context;
-// AuctionManagementDbContext
-//AuctionManagementDbContext
 
 
 public partial class AuctionManagementDbContext : DbContext
@@ -113,14 +110,13 @@ public partial class AuctionManagementDbContext : DbContext
 
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
-    public virtual DbSet<TblOrder> TblOrders { get; set; }
-    public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
-
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public virtual DbSet<tblBid> tblBids { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }
 
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
+    public virtual DbSet<TblOrder> TblOrders { get; set; }
+    public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

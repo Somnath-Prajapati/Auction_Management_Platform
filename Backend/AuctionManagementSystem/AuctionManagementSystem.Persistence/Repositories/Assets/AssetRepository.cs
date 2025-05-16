@@ -38,7 +38,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<IEnumerable<GetAssetsFormDto>> GetAllAsync()
         {
-             var assets = await _context.TblAssets
+                var assets = await _context.TblAssets
+                //.Where(a => a.IsActive)
                 .Where(a => a.IsDeleted == false)
                 .OrderByDescending(a => a.UpdatedAt ?? a.CreatedAt)
                 .Include(a => a.Category)
@@ -93,14 +94,15 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
                     Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
                     {
+                        GalleryId = g.GalleryId,
                         MediaType = g.MediaType,
                         FilePath = g.FilePath,
                         SortOrder = g.SortOrder
                     }).ToList(),
                     Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
                     {
-                        //DocumentId = d.DocumentId,
-                       
+                        DocumentId = d.DocumentId,
+
                         DocumentType = d.DocumentType,
                         FilePath = d.FilePath
                     }).ToList(),
@@ -180,13 +182,14 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .ToList(),
              Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
              {
+                 GalleryId = g.GalleryId,
                  MediaType = g.MediaType,
                  FilePath = g.FilePath,
                  SortOrder = g.SortOrder
              }).ToList(),
              Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
              {
-                 //DocumentId = d.DocumentId,
+                 DocumentId = d.DocumentId,
                  DocumentType = d.DocumentType,
                  FilePath = d.FilePath
              }).ToList(),
@@ -246,6 +249,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     AdminFees = a.AdminFees,
                     AuctionFees = a.AuctionFees,
                     BuyerCommission = a.BuyerCommission,
+                    RequestForViewing=a.RequestForViewing,
+                    RequestForInquiry=a.RequestForInquiry,
                     WinnerId = a.WinnerId,
                     WinnerName = a.Winner != null ? a.Winner.User.Name : null,
                     AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null,
@@ -253,9 +258,12 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     AssetNumber = a.AssetNumber,
                     CreatedAt = a.CreatedAt,
                     UpdatedAt = a.UpdatedAt,
+                    AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
+
                     IsAvailableForDirectSale = a.IsAvailableForDirectSale,
                     Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
                     {
+                        GalleryId = g.GalleryId,
                         MediaType = g.MediaType,
                         FilePath = g.FilePath,
                         SortOrder = g.SortOrder
@@ -265,11 +273,18 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                         DocumentId = d.DocumentId,
                         DocumentType = d.DocumentType,
                         FilePath = d.FilePath
-                    }).ToList()
+                    }).ToList(),
+
+                    Attributes = a.TblAssetDetails.Select(d => new AssetDetailDtoo
+                    {
+                        AttributeName = d.AttributeName,
+                        AttributeValue = d.AttributeValue
+                    }).ToList(),
+
                 })
                 .ToListAsync();
 
-            return assets;
+                return assets;
         }
 
         public async Task<List<GetAssetsFormDto>> GetAuctionAllAsync(Expression<Func<TblAsset, bool>> predicate)
@@ -385,7 +400,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<int> AddAssetForGallery(TblAsset asset)
         {
-
+            asset.IsDeleted = false;
             _context.TblAssets.Add(asset);
             await _context.SaveChangesAsync();
 
@@ -404,7 +419,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             //_context.TblAssets.Remove(asset);
             //    await _context.SaveChangesAsync();
 
-            asset.IsDeleted = false;
+            asset.IsDeleted = true;
 
             _context.TblAssets.Update(asset);
 
