@@ -1,9 +1,9 @@
 ﻿using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Domain.Entities;
+using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Persistence.Context;
 using AuctionManagementSystem.Persistence.Repositories.Listings;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 
 namespace AuctionManagementSystem.Infrastructure.Repositories
 {
@@ -233,19 +233,48 @@ namespace AuctionManagementSystem.Infrastructure.Repositories
         }
 
 
-        public async Task<List<TblCartItem>> GetValidCartItemsAsync(int userId, int validMinutes)
+        public async Task<List<DirectSaleAssetDto>> GetValidCartItemsAsync(int userId, int validMinutes)
         {
             var threshold = DateTime.UtcNow.AddMinutes(-validMinutes);
 
-            return await _context.TblCartItems
-                .Include(ci => ci.Asset) // include related asset
+            var cartItems = await _context.TblCartItems
                 .Where(ci =>
                     ci.UserId == userId &&
                     ci.IsActive &&
                     ci.DeletedDate == null &&
                     ci.AddedAt >= threshold)
-                    .ToListAsync();
-                }
+                .Include(ci => ci.Asset)
+                    .ThenInclude(a => a.TblAssetGalleries)
+                .Include(ci => ci.Asset.Category)
+                .ToListAsync();
+
+            return cartItems.Select(ci =>
+            {
+                var galleries = ci.Asset.TblAssetGalleries ?? new List<TblAssetGallery>();
+
+                var thumbnailPath = galleries
+                    .Select(g => g.FilePath)
+                    .FirstOrDefault();
+
+                return new DirectSaleAssetDto
+                {
+                    AssetId = ci.Asset.AssetId,
+                    Title = ci.Asset.Title,
+                    CategoryId = ci.Asset.CategoryId,
+                    Deposit = ci.Asset.Deposit,
+                    MinIncrement = ci.Asset.MinIncrement,
+                    Description = ci.Asset.Description,
+                    IsDeleted = ci.Asset.IsDeleted,
+                    SalesNotes = ci.Asset.SalesNotes,
+                    Price = ci.Asset.StartingPrice,
+                    AssetNumber = ci.Asset.AssetNumber,
+                    IsAvailableForDirectSale = ci.Asset.IsAvailableForDirectSale,
+                    CategoryName = ci.Asset.Category?.CategoryName ?? string.Empty,
+                    ThumbnailUrl = string.IsNullOrEmpty(thumbnailPath) ? string.Empty : $"{_baseUrl}{thumbnailPath}"
+                };
+            }).ToList();
+        }
+
 
         public Task<List<TblCartItem>> GetAllValidCartItemsAsync(int validMinutes)
         {

@@ -10,10 +10,6 @@ namespace AuctionManagementSystem.Application.Features.Requests.Command.DelReque
     public class DelRequestCommand : IRequest<bool>
     {
         public int RequestId { get; set; }
-
-        public DelRequestCommand(int requestId)
-        {
-            RequestId = requestId;
-        }
+        public string DeletedBy { get; set; } = string.Empty;
     }
 }
