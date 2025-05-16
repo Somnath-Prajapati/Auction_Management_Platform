@@ -110,10 +110,18 @@ namespace AuctionManagementSystem.Api.Controllers.Request
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRequest(int id)
         {
-            var result = await _mediator.Send(new DelRequestCommand(id));
+            var deletedBy = User.Identity?.Name ?? "System";
+
+            var result = await _mediator.Send(new DelRequestCommand
+            {
+                RequestId = id,
+                DeletedBy = deletedBy
+            });
+
             if (!result)
-                return NotFound("Request not found.");
-            return Ok("Deleted successfully");
+                return NotFound(new { success = false, message = "Request not found." });
+
+            return Ok(new { success = true, message = "Request deleted successfully." });
         }
 
 
