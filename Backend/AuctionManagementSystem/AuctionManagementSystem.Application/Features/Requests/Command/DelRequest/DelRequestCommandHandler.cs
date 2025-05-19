@@ -20,11 +20,16 @@ namespace AuctionManagementSystem.Application.Features.Requests.Command.DelReque
         public async Task<bool> Handle(DelRequestCommand request, CancellationToken cancellationToken)
         {
             var existingRequest = await _requestRepository.GetRequestByIdQuery(request.RequestId);
-            if (existingRequest == null)
+            if (existingRequest == null || existingRequest.IsDeleted)
                 return false;
 
-            await _requestRepository.DelRequest(existingRequest);
+            existingRequest.IsDeleted = true;
+            existingRequest.DeletedBy = request.DeletedBy;
+            existingRequest.DeletedDate = DateTime.UtcNow;
+
+            await _requestRepository.UpdateRequest(existingRequest);
             return true;
         }
     }
+
 }

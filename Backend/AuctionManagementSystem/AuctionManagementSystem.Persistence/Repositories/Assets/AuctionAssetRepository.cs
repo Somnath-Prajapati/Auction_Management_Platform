@@ -39,6 +39,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         {
             return await _context.TblAuctions.ToListAsync();
         }
+
         public async Task<bool> AssetExistsInAuctionAsync(int auctionId, int assetId)
         {
             return await _context.TblAuctionAssets

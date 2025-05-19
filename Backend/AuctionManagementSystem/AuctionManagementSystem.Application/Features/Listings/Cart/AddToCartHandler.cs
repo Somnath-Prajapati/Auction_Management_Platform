@@ -135,12 +135,14 @@ namespace AuctionManagementSystem.Application.Features.Cart
 
         public async Task<List<DirectSaleAssetDto>> Handle(GetCartByUserIdQuery request, CancellationToken cancellationToken)
         {
+            // Get cart timer limit from settings (default to 10 minutes if null)
             var settings = await _settingsRepository.GetByIdAsync(1);
-            var timeLimit = settings.CartTimerInMinutes ?? 10; // default to 10 minutes
+            var timeLimit = settings?.CartTimerInMinutes ?? 10;
             var now = DateTime.UtcNow;
 
+            // Clean up expired cart items
             var expiredItems = await _cartRepository.GetExpiredCartItemsAsync(request.UserId, timeLimit);
-            if (expiredItems.Any())
+            if (expiredItems?.Any() == true)
             {
                 foreach (var item in expiredItems)
                 {
@@ -150,17 +152,16 @@ namespace AuctionManagementSystem.Application.Features.Cart
                 await _cartRepository.UpdateRangeAsync(expiredItems);
             }
 
+            // Get active, non-expired cart items
             var validCartItems = await _cartRepository.GetValidCartItemsAsync(request.UserId, timeLimit);
+            if (validCartItems == null || !validCartItems.Any())
+                return new List<DirectSaleAssetDto>();
 
-            // Map from the underlying asset, not the cart item
-            var assetList = validCartItems
-                .Where(ci => ci.Asset != null)
-                .Select(ci => ci.Asset)
-                .ToList();
+            // Extract assets from cart items and map to DTOs
 
-            return _mapper.Map<List<DirectSaleAssetDto>>(assetList);
-
+            return _mapper.Map<List<DirectSaleAssetDto>>(validCartItems);
         }
+
 
     }
 
