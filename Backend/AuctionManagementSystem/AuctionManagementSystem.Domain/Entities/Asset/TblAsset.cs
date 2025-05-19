@@ -6,7 +6,6 @@ using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
-using AuctionManagementSystem.Persistence.TempEntities;
 
 namespace AuctionManagementSystem.Domain.Entities.Asset;
 
