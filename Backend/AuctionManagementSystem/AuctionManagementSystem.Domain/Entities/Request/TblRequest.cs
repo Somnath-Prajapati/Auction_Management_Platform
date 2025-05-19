@@ -41,6 +41,10 @@ public partial class TblRequest
 
     public DateTime UpdatedOn { get; set; }
 
+    public bool IsDeleted { get; set; }
+
+    public string? DeletedBy { get; set; }
+    public DateTime? DeletedDate { get; set; }
     public virtual TblAsset Asset { get; set; } = null!;
 
     public virtual TblRequestStatus RequestStatus { get; set; } = null!;
