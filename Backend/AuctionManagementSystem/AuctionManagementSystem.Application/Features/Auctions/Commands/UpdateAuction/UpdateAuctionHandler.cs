@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts;
+using AuctionManagementSystem.Application.Contracts.Bids;
 using AutoMapper;
 using MediatR;
 
@@ -13,11 +14,13 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateA
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IAuctionJobScheduler _jobScheduler;
 
-        public UpdateAuctionHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public UpdateAuctionHandler(IUnitOfWork unitOfWork, IMapper mapper, IAuctionJobScheduler jobScheduler)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _jobScheduler = jobScheduler;
         }
 
         public async Task<bool> Handle(UpdateAuctionCommand request, CancellationToken cancellationToken)
@@ -30,6 +33,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateA
             _mapper.Map(request, auction);
             _unitOfWork.AuctionRepository.Update(auction);
             await _unitOfWork.SaveAsync();
+            _jobScheduler.ScheduleAuctionClosing(auction.AuctionId, auction.EndDateTime);
             return true;
         }
     }
