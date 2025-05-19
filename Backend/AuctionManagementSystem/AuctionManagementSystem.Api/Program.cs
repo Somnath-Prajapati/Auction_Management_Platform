@@ -13,6 +13,7 @@ using ProtoBuf.Meta;
 using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Api.Hubs;
 using AuctionManagementSystem.Application.Contracts.RealTime;
+using Hangfire;
 
 namespace AuctionManagementSystem.Api
 {
@@ -29,6 +30,8 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddScoped<IBidNotificationService, BidNotificationService>();
+            builder.Services.AddScoped<IWinnerNotificationService, WinnerNotificationService>();
+
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddOpenApi();
@@ -38,15 +41,20 @@ namespace AuctionManagementSystem.Api
             {
                 options.AddPolicy("AllowFrontend", policy =>
                 {
-                    // Add your frontend URL (e.g., localhost:5500 or file:// for testing locally)
                     policy.WithOrigins("http://localhost:5500", "http://localhost:4200", "https://localhost:4200", "file://")
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .AllowCredentials(); // Ensure cookies are sent (if needed)
+                        .AllowCredentials(); 
                 });
             });
 
             builder.Services.AddSignalR();
+
+            builder.Services.AddHangfire(config =>
+                config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddHangfireServer();
+
 
             var app = builder.Build();
             //if (app.Environment.IsDevelopment())
@@ -62,6 +70,7 @@ namespace AuctionManagementSystem.Api
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseHangfireDashboard();
 
             app.UseAuthentication();
             app.UseAuthorization();

@@ -30,7 +30,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAss
             var baseUrl = $"{_httpContextAccessor.HttpContext!.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}";
 
             if (asset == null)
-                throw new Exception("Asset not found");  // optional: handle null better
+                throw new Exception("Asset not found");
 
             var dto = _mapper.Map<GetAssetsFormDto>(asset);
 

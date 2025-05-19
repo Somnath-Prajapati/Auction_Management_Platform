@@ -248,14 +248,13 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasOne(d => d.Vat).WithMany(p => p.TblAssets)
                 .HasForeignKey(d => d.Vatid)
                 .HasConstraintName("FK__tblAssets__VATId__18EBB532");
-
-            entity.HasOne(d => d.Winner).WithMany(p => p.TblAssets)
-                .HasForeignKey(d => d.WinnerId)
-                .HasConstraintName("FK_tblAssets_WinnerId");
-
             entity.Property(a => a.IsAvailableForDirectSale)
                 .HasColumnName("IsAvailableForDirectSale")
                 .HasDefaultValue(false);
+            entity.HasOne(a => a.Winner)
+                .WithOne(w => w.Asset)
+                .HasForeignKey<TblAsset>(a => a.WinnerId)
+                .HasConstraintName("FK_tblAssets_WinnerId");
         });
 
         modelBuilder.Entity<TblAssetCategory>(entity =>
@@ -459,10 +458,11 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Reason).HasMaxLength(255);
 
-            entity.HasOne(d => d.Asset).WithMany(p => p.TblAssetWinners)
-                .HasForeignKey(d => d.AssetId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__tblAssetW__Asset__2739D489");
+            entity.HasOne(d => d.Asset)
+                 .WithOne(p => p.Winner)
+                 .HasForeignKey<TblAsset>(a => a.WinnerId)
+                 .OnDelete(DeleteBehavior.Cascade)
+                 .HasConstraintName("FK_tblAssetWinners_AssetId");
 
             entity.HasOne(d => d.User).WithMany(p => p.TblAssetWinners)
                 .HasForeignKey(d => d.UserId)

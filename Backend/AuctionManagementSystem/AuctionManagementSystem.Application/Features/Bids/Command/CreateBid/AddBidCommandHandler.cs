@@ -74,7 +74,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
 
                 await _bidRepository.UnsetPreviousWinningBidAsync(request.AssetId);
 
-
+                
                 var bid = _mapper.Map<tblBid>(request);
                 bid.IsWinningBid = true;
 

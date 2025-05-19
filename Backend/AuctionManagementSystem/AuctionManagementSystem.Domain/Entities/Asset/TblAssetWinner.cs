@@ -25,7 +25,6 @@ public partial class TblAssetWinner
 
     public virtual TblAsset Asset { get; set; }
 
-    public virtual ICollection<TblAsset> TblAssets { get; set; } = new List<TblAsset>();
 
     public virtual ICollection<TblWinnerDocument> TblWinnerDocuments { get; set; } = new List<TblWinnerDocument>();
 
