@@ -61,6 +61,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public bool isDeleted { get; set; }    
 
 
+
         public string AssetNumber { get; set; }
         public List<AssetGalleryDtos> Galleries { get; set; } = new();
         public List<AssetDocumentFormDto> Documents { get; set; } = new();
@@ -70,6 +71,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 
     public class AssetGalleryDtos
     {
+        public int GalleryId { get; set; }
         public string? MediaType { get; set; }
         public string? FilePath { get; set; }
         public string FileUrl { get; set; } 

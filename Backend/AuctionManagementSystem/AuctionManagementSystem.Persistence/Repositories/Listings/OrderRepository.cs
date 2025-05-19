@@ -14,6 +14,7 @@ using AuctionManagementSystem.Infrastructure.Repositories;
 using AuctionManagementSystem.Persistence.Context;
 using AutoMapper;
 using Microsoft.AspNetCore.Internal;
+using AuctionManagementSystem.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;

@@ -47,8 +47,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.Query.GetAssets
                 foreach (var doc in dto.Documents)
                 {
                     if (!string.IsNullOrEmpty(doc.FilePath))
-                    {
-                    C: 
+                    { 
                         var relativePath = doc.FilePath.Replace("AssetDocuments/", "");
                         doc.FileUrl = $"{baseUrl}/AssetDocuments/{relativePath}";
                     }
