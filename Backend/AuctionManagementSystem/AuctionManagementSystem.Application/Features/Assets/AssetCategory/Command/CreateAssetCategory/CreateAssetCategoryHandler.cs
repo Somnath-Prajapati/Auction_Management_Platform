@@ -25,6 +25,11 @@ namespace AuctionManagementSystem.Application.Features.Assets.AssetCategory.Comm
         {
             var dto = request.AssetCategory;
 
+            Console.WriteLine("Category Name: " + dto.CategoryName);
+            Console.WriteLine("Payment Methods: " + string.Join(",", dto.PaymentMethodIds));
+            //Console.WriteLine("Payment Option ID: " + dto.PaymentOptionId);
+
+
             var existingCategory = await _repository.GetByNameAsync(dto.CategoryName.Trim());
             if (existingCategory != null)
             {
