@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using AuctionManagementSystem.Application.Dtos.Assets;
+using AuctionManagementSystem.Domain.Entities.Asset;
 
 public class GetAllOrdersQuery : IRequest<List<DirectSaleAssetDto>>
 {
@@ -8,5 +9,11 @@ public class GetAllOrdersQuery : IRequest<List<DirectSaleAssetDto>>
     public GetAllOrdersQuery(int userId)
     {
         UserId = userId;
+    }
+
+    public class CreateOrderWithTransactionCommand : IRequest<List<DirectSaleAssetDto>>
+    {
+        public int UserId { get; set; }
+        public List<int> AssetIds { get; set; } = new();
     }
 }
