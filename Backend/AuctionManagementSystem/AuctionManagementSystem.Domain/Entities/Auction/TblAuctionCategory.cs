@@ -9,5 +9,5 @@ public partial class TblAuctionCategory
 
     public string Name { get; set; } = null!;
 
-    public virtual ICollection<TblAuction> TblAuctions { get; set; } = new List<TblAuction>();
+    //public virtual ICollection<TblAuction> TblAuctions { get; set; } = new List<TblAuction>();
 }

@@ -62,7 +62,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
 
 
 
-        public string AssetNumber { get; set; }
+        public string? AssetNumber { get; set; }
         public List<AssetGalleryDtos> Galleries { get; set; } = new();
         public List<AssetDocumentFormDto> Documents { get; set; } = new();
 
