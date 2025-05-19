@@ -25,7 +25,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
 
         Task<bool> IsAssetHeldByAnotherUserAsync(int userId, int assetId, int validMinutes);
         Task<List<TblCartItem>> GetExpiredCartItemsAsync(int userId, int validMinutes);
-        Task<List<TblCartItem>> GetValidCartItemsAsync(int userId, int validMinutes);
+        Task<List<DirectSaleAssetDto>> GetValidCartItemsAsync(int userId, int validMinutes);
         Task<List<TblCartItem>> GetAllValidCartItemsAsync(int validMinutes);
         Task UpdateAsync(TblCartItem item);
         Task CleanUpExpiredCartItemsAsync(int validMinutes);

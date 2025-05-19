@@ -8,6 +8,7 @@ using AuctionManagementSystem.Domain.Entities.Transaction;
 namespace AuctionManagementSystem.Domain.Entities.User;
 
 
+
 public partial class TblUser
 {
     public int UserId { get; set; }
@@ -45,6 +46,7 @@ public partial class TblUser
     public string Gender { get; set; }
 
     public DateOnly? PersonalIdExpiryDate { get; set; }
+   
 
     public string? ProfileImage { get; set; }
 
@@ -77,7 +79,10 @@ public partial class TblUser
     public virtual ICollection<tblBid> TblBids { get; set; } = new List<tblBid>();
     public virtual ICollection<TblTransaction?> TblTransactions { get; set; } = new List<TblTransaction>();
     public virtual ICollection<tblOTP?> OTPs { get; set; } = new List<tblOTP>();
+    public virtual ICollection<TblOrder> TblOrders { get; set; } = new List<TblOrder>();
+
     public virtual ICollection<TblUserRole?> TblUserRoles { get; set; } = new List<TblUserRole>();
+    
     public virtual ICollection<TblWishlistItem> TblWishlistItems { get; set; } = new List<TblWishlistItem>();
     public virtual ICollection<TblCartItem> TblCartItems { get; set; } = new List<TblCartItem>();
 
