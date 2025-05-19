@@ -56,26 +56,28 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
 
 
-         public async Task<TblAssetCategory> AddWithPaymentMethodsAsync(TblAssetCategory category, List<int> paymentMethodIds)
-    {
-        // Save the category first
-        await _context.TblAssetCategories.AddAsync(category);
-        await _context.SaveChangesAsync();
-
-        // Add payment methods (category ID now available)
-        foreach (var methodId in paymentMethodIds)
+        public async Task<TblAssetCategory> AddWithPaymentMethodsAsync(TblAssetCategory category, List<int> paymentMethodIds)
         {
-            var relation = new TblAssetCategoryPaymentMethod
-            {
-                CategoryId = category.CategoryId,
-                PaymentMethodId = methodId
-            };
-            _context.TblAssetCategoryPaymentMethods.Add(relation);
-        }
+            await _context.TblAssetCategories.AddAsync(category);
+            await _context.SaveChangesAsync();
 
-        await _context.SaveChangesAsync();
-        return category;
-    }
+            Console.WriteLine($"Category created with CategoryId: {category.CategoryId}");
+
+            foreach (var methodId in paymentMethodIds)
+            {
+                var relation = new TblAssetCategoryPaymentMethod
+                {
+                    CategoryId = category.CategoryId,
+                    PaymentMethodId = methodId
+                };
+                // Log each relation being added
+                Console.WriteLine($"Adding PaymentMethod: {methodId} for CategoryId: {category.CategoryId}");
+                _context.TblAssetCategoryPaymentMethods.Add(relation);
+            }
+
+            await _context.SaveChangesAsync();
+            return category;
+        }
 
     }
 }

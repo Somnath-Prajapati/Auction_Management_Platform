@@ -19,5 +19,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public decimal? Vatpercentage { get; set; }
         public int StatusId { get; set; }
         public int? Vatid { get; set; }
+
+        public List<int> PaymentMethodIds { get; set; } = new List<int>();
     }
 }

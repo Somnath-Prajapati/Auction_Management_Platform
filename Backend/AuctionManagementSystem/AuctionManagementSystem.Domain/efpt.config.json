@@ -107,10 +107,6 @@
          "ObjectType": 0
       },
       {
-         "Name": "[AuctionM_dbuser].[tblRequestStatusHistory]",
-         "ObjectType": 0
-      },
-      {
          "Name": "[AuctionM_dbuser].[tblRequestTypes]",
          "ObjectType": 0
       },

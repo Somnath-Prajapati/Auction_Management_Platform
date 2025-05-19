@@ -11,8 +11,6 @@ using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
-using static System.Net.WebRequestMethods;
-
 namespace AuctionManagementSystem.Persistence.Context;
 
 
@@ -295,14 +293,13 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasOne(d => d.Vat).WithMany(p => p.TblAssets)
                 .HasForeignKey(d => d.Vatid)
                 .HasConstraintName("FK__tblAssets__VATId__18EBB532");
-
-            entity.HasOne(d => d.Winner).WithMany(p => p.TblAssets)
-                .HasForeignKey(d => d.WinnerId)
-                .HasConstraintName("FK_tblAssets_WinnerId");
-
             entity.Property(a => a.IsAvailableForDirectSale)
                 .HasColumnName("IsAvailableForDirectSale")
                 .HasDefaultValue(false);
+            entity.HasOne(a => a.Winner)
+                .WithOne(w => w.Asset)
+                .HasForeignKey<TblAsset>(a => a.WinnerId)
+                .HasConstraintName("FK_tblAssets_WinnerId");
         });
 
         modelBuilder.Entity<TblAssetCategory>(entity =>
@@ -506,10 +503,11 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Reason).HasMaxLength(255);
 
-            entity.HasOne(d => d.Asset).WithMany(p => p.TblAssetWinners)
-                .HasForeignKey(d => d.AssetId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__tblAssetW__Asset__2739D489");
+            entity.HasOne(d => d.Asset)
+                 .WithOne(p => p.Winner)
+                 .HasForeignKey<TblAsset>(a => a.WinnerId)
+                 .OnDelete(DeleteBehavior.Cascade)
+                 .HasConstraintName("FK_tblAssetWinners_AssetId");
 
             entity.HasOne(d => d.User).WithMany(p => p.TblAssetWinners)
                 .HasForeignKey(d => d.UserId)
@@ -522,47 +520,32 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.ToTable("tblAuctions");
 
-            entity.HasIndex(e => e.AuctionNumber, "UQ__tblAucti__C90DD8B8624ABC12").IsUnique();
+            entity.HasIndex(e => e.AuctionNumber, "UQ_TblAuctions_AuctionNumber").IsUnique();
 
             entity.Property(e => e.AuctionNumber)
                 .IsRequired()
-                .HasMaxLength(100);
-
+                .HasMaxLength(50);
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
+            entity.Property(e => e.EndDateTime).HasColumnType("datetime");
+            entity.Property(e => e.StartDateTime).HasColumnType("datetime");
             entity.Property(e => e.Title)
                 .IsRequired()
                 .HasMaxLength(255);
-
             entity.Property(e => e.Type)
                 .HasMaxLength(50)
                 .HasDefaultValue("Auction");
-
-            entity.Property(e => e.StartDateTime).HasColumnType("datetime");
-
-            entity.Property(e => e.EndDateTime).HasColumnType("datetime");
-
-            entity.Property(e => e.CreatedDate)
-                .HasColumnType("datetime")
-                .HasDefaultValueSql("(getdate())");
-
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
-            entity.Property(e => e.CreatedBy);
-            entity.Property(e => e.UpdatedBy);
-            entity.Property(e => e.DeletedBy);
-            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
-
-            entity.HasOne(d => d.Category)
-                .WithMany(p => p.TblAuctions)
+            entity.HasOne(d => d.Category).WithMany(p => p.TblAuctions)
                 .HasForeignKey(d => d.CategoryId)
-                .HasConstraintName("FK__tblAuctio__Categ__70DDC3D8");
-
-            entity.HasOne(d => d.Status)
-                .WithMany(p => p.TblAuctions)
-                .HasForeignKey(d => d.StatusId)
-                .HasConstraintName("FK_tblAuctions_tblAuctionStatus");
+                .HasConstraintName("FK_tblAssetCategories_CategoryId");
         });
-
 
         modelBuilder.Entity<TblAuctionAsset>(entity =>
         {
@@ -940,59 +923,6 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasColumnType("datetime");
         });
 
-        //modelBuilder.Entity<TblTransaction>(entity =>
-        //{
-        //    entity.HasKey(e => e.TransactionId).HasName("PK__tblTrans__55433A6B2E2D976E");
-
-        //    entity.ToTable("tblTransactions");
-
-        //    entity.HasIndex(e => e.TransactionNumber, "UQ__tblTrans__E733A2BFC8CBFDE8").IsUnique();
-
-        //    entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
-        //    entity.Property(e => e.CreatedAt)
-        //        .HasDefaultValueSql("(getdate())")
-        //        .HasColumnType("datetime");
-        //    entity.Property(e => e.CreatedByAdminId).HasColumnName("CreatedByAdminID");
-        //    entity.Property(e => e.DocumentPath)
-        //        .HasMaxLength(255)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.MerchantTransactionId)
-        //        .HasMaxLength(100)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.Notes).HasColumnType("text");
-        //    entity.Property(e => e.TransactionDateTime).HasColumnType("datetime");
-        //    entity.Property(e => e.TransactionNumber)
-        //        .IsRequired()
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.UpdatedAt)
-        //        .HasDefaultValueSql("(getdate())")
-        //        .HasColumnType("datetime");
-
-        //    entity.HasOne(d => d.CardType).WithMany(p => p.TblTransactions)
-        //        .HasForeignKey(d => d.CardTypeId)
-        //        .HasConstraintName("FK__tblTransa__CardT__56E8E7AB");
-
-        //    entity.HasOne(d => d.PaymentMethod).WithMany(p => p.TblTransactions)
-        //        .HasForeignKey(d => d.PaymentMethodId)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK__tblTransa__Payme__55F4C372");
-
-        //    entity.HasOne(d => d.Status).WithMany(p => p.TblTransactions)
-        //        .HasForeignKey(d => d.StatusId)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK__tblTransa__Statu__57DD0BE4");
-
-        //    entity.HasOne(d => d.TransactionType).WithMany(p => p.TblTransactions)
-        //        .HasForeignKey(d => d.TransactionTypeId)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK__tblTransa__Trans__55009F39");
-
-        //    entity.HasOne(d => d.User).WithMany(p => p.TblTransactions)
-        //        .HasForeignKey(d => d.UserId)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK__tblTransa__UserI__540C7B00");
-        //});
 
         modelBuilder.Entity<TblTransaction>(entity =>
         {
