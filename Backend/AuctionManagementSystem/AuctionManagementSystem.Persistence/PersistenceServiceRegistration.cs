@@ -25,6 +25,7 @@ using AuctionManagementSystem.Persistence.Repositories.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Listings;
 using AuctionManagementSystem.Infrastructure.Repositories;
 using AuctionManagementSystem.Application.Services;
+using AuctionManagementSystem.Application.Contracts.Listings;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -60,6 +61,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAuctionAssetRepository, AuctionAssetRepository>();
             services.AddScoped<IAuctionWinnerService, AuctionWinnerService>();
             services.AddScoped<IAssetWinnerRepository, AssetWinnerRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             return services;
         }
     }

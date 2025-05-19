@@ -122,57 +122,11 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
                 }
             }
 
-            // Save changes to asset details in TblAssetDetails
-            //await _assetDetailRepository.SaveChangesAsync();
-
-
-
-            //var existingGalleryImages = await _galleryRepo.GetByAssetIdAsync(request.dto.AssetId);
-            //foreach (var oldImage in existingGalleryImages)
-            //{
-            //    if (!string.IsNullOrEmpty(oldImage.FilePath))
-            //    {
-            //        var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", oldImage.FilePath.Replace("/", "\\"));
-            //        if (File.Exists(fullPath))
-            //            File.Delete(fullPath);
-            //    }
-            //    await _galleryRepo.DeleteAsync(oldImage.GalleryId); 
-            //}
-
-            //if (dto.NewGalleryImages != null && dto.NewGalleryImages.Any())
-            //{
-            //    foreach (var file in dto.NewGalleryImages)
-            //    {
-            //        var galleryDto = new AssetsGalleryDto
-            //        {
-            //            AssetId = dto.AssetId,
-            //            File = file,
-            //            MediaType = "image",
-            //            SortOrder = 0
-            //        };
-
-            //        await _mediator.Send(new AddAssetGalleryCommand(galleryDto));
-            //    }
-            //}
+           
 
             if (dto.NewGalleryImages != null)
             {
-                var existingGalleryImages = await _galleryRepo.GetByAssetIdAsync(request.dto.AssetId);
-                
-                foreach (var oldImage in existingGalleryImages)
-                {
-                    if (!string.IsNullOrEmpty(oldImage.FilePath))
-                    {
-                        var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", oldImage.FilePath.Replace("/", "\\"));
-                        if (File.Exists(fullPath))
-                            File.Delete(fullPath);
-                    }
-                    await _galleryRepo.DeleteAsync(oldImage.GalleryId);
-                }
-
-                if (dto.NewGalleryImages.Any())
-                {
-                    foreach (var file in dto.NewGalleryImages)
+                   foreach (var file in dto.NewGalleryImages)
                     {
                         var galleryDto = new AssetsGalleryDto
                         {
@@ -184,15 +138,12 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
 
                         await _mediator.Send(new AddAssetGalleryCommand(galleryDto));
                     }
-                }
             }
 
 
 
             if (dto.NewDocuments != null && dto.NewDocuments.Any())
             {
-                await _documentRepo.DeleteDocumentsByAssetIdAsync(dto.AssetId);
-                
                 foreach (var document in dto.NewDocuments)
                 {
                     var assetDocument = new TblAssetDocument

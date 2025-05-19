@@ -1,6 +1,4 @@
-﻿using AuctionManagementSystem.Application;
-using AuctionManagementSystem.Identity;
-using AuctionManagementSystem.Persistence;
+﻿
 using AuctionManagementSystem.Api.Services;
 using AuctionManagementSystem.Application.Contracts.User;
 using Microsoft.AspNetCore.Builder;
@@ -13,7 +11,6 @@ using ProtoBuf.Meta;
 using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Api.Hubs;
 using AuctionManagementSystem.Application.Contracts.RealTime;
-using Hangfire;
 
 namespace AuctionManagementSystem.Api
 {
@@ -28,6 +25,7 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddIdentityServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
             builder.Services.AddHttpContextAccessor();
+            // Ensure the LoggedInUserService class implements the ILoggedInUserService interface correctly.
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddScoped<IBidNotificationService, BidNotificationService>();
             builder.Services.AddScoped<IWinnerNotificationService, WinnerNotificationService>();
@@ -59,7 +57,9 @@ namespace AuctionManagementSystem.Api
             var app = builder.Build();
             //if (app.Environment.IsDevelopment())
             //{
+            
             app.UseCors("AllowFrontend");
+
             app.MapHub<BidHub>("/bidhub");
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
@@ -68,12 +68,30 @@ namespace AuctionManagementSystem.Api
                 });
             //}
             app.UseMiddleware<ExceptionMiddleware>();
+            
+            
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseHangfireDashboard();
+            app.UseAuthorization();
+
+
+
+
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //    Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "AssetGallery")),
+            //    RequestPath = "/AssetGallery"
+            //});
+
+            
+
 
             app.UseAuthentication();
-            app.UseAuthorization();
+
+            app.UseStaticFiles();
+            app.UseHangfireDashboard();
+            
+
             app.MapGet("/", context =>
             {
                 context.Response.Redirect("/swagger");

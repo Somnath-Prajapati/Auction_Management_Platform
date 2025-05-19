@@ -35,7 +35,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             return result ? Ok() : NotFound();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             var result = await _mediator.Send(new DeleteAssetDocumentCommand(id));
