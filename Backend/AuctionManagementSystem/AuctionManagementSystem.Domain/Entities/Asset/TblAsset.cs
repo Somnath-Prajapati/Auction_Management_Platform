@@ -67,7 +67,7 @@ public partial class TblAsset
 
     public DateTime? UpdatedAt { get; set; }
 
-    public bool IsDeleted { get; set; } = true;
+    public bool IsDeleted { get; set; } 
 
     public string AssetNumber { get; set; }
 
@@ -92,8 +92,6 @@ public partial class TblAsset
     public virtual ICollection<TblAssetDocument> TblAssetDocuments { get; set; } = new List<TblAssetDocument>();
 
     public virtual ICollection<TblAssetGallery> TblAssetGalleries { get; set; } = new List<TblAssetGallery>();
-
-    public virtual ICollection<TblAssetWinner> TblAssetWinners { get; set; } = new List<TblAssetWinner>();
 
     public virtual ICollection<TblAuctionAsset> TblAuctionAssets { get; set; } = new List<TblAuctionAsset>();
 

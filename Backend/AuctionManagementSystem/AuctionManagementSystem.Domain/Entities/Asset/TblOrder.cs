@@ -33,5 +33,5 @@ public partial class TblOrder
 
     public virtual TblUser User { get; set; } = null!;
 
-    
+
 }
