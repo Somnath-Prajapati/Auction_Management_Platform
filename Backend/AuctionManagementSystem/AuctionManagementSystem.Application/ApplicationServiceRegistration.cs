@@ -11,6 +11,7 @@ using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.UpdateStaticPagesSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.DeleteStaticPagesSettings;
 using AuctionManagementSystem.Application.Profiles;
+using AuctionManagementSystem.Application.Contracts.Bids;
 
 namespace AuctionManagementSystem.Application
 {
@@ -36,6 +37,7 @@ namespace AuctionManagementSystem.Application
             services.AddTransient<IValidator<StaticPagesSettingsDto>, CreateStaticPagesSettingsCommandValidator>();
             services.AddTransient<IValidator<UpdateStaticPagesSettingsCommand>, UpdateStaticPagesSettingsCommandValidator>(); // Fix: Corrected the type parameter to match the validator's target type
             services.AddValidatorsFromAssemblyContaining<FooterLinksSettingsDtoValidator>();
+            services.AddScoped<IAuctionJobScheduler, HangfireAuctionJobScheduler>();
 
             // Add pipeline behavior for validation
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
