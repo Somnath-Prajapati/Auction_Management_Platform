@@ -19,7 +19,6 @@ using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Infrastructure.UoW;
 using AuctionManagementSystem.Application.Contracts.Request;
 using AuctionManagementSystem.Persistence.Repositories.Requests;
-using ProtoBuf.Meta;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Listings;

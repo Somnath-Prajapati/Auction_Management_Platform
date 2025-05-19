@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
 
-namespace AuctionManagementSystem.Persistence.TempEntities;
+namespace AuctionManagementSystem.Domain.Entities.Asset;
 
 public partial class TblOrder
 {
