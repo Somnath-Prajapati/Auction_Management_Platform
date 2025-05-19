@@ -14,6 +14,7 @@ using AuctionManagementSystem.Application.Contracts.RealTime;
 using AuctionManagementSystem.Application;
 using AuctionManagementSystem.Identity;
 using AuctionManagementSystem.Persistence;
+using Hangfire;
 
 namespace AuctionManagementSystem.Api
 {
@@ -31,6 +32,8 @@ namespace AuctionManagementSystem.Api
             // Ensure the LoggedInUserService class implements the ILoggedInUserService interface correctly.
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddScoped<IBidNotificationService, BidNotificationService>();
+            builder.Services.AddScoped<IWinnerNotificationService, WinnerNotificationService>();
+
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddOpenApi();
@@ -43,11 +46,17 @@ namespace AuctionManagementSystem.Api
                     policy.WithOrigins("http://localhost:5500", "http://localhost:4200", "https://localhost:4200", "file://")
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .AllowCredentials(); // Ensure cookies are sent (if needed)
+                        .AllowCredentials(); 
                 });
             });
 
             builder.Services.AddSignalR();
+
+            builder.Services.AddHangfire(config =>
+                config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddHangfireServer();
+
 
             var app = builder.Build();
             //if (app.Environment.IsDevelopment())
@@ -59,6 +68,7 @@ namespace AuctionManagementSystem.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
+            //});
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Management");
                 });
             //}
@@ -66,7 +76,6 @@ namespace AuctionManagementSystem.Api
             
             
             app.UseHttpsRedirection();
-            app.UseAuthorization();
 
 
 
@@ -80,10 +89,25 @@ namespace AuctionManagementSystem.Api
 
             
 
+            app.UseStaticFiles();
+            app.UseHangfireDashboard();
 
+
+
+
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //    Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "AssetGallery")),
+            //    RequestPath = "/AssetGallery"
+
+            
             app.UseAuthentication();
 
-            app.UseStaticFiles();
+            app.UseAuthorization();
+
+
+
             
 
             app.MapGet("/", context =>

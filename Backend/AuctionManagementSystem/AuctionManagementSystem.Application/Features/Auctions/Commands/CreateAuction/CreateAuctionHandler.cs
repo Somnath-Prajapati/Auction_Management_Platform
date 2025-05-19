@@ -8,6 +8,7 @@ using AuctionManagementSystem.Domain.Entities;
 using MediatR;
 using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Domain.Entities.Auction;
+using AuctionManagementSystem.Application.Contracts.Bids;
 
 namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateAuction
 {
@@ -15,11 +16,13 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IAuctionJobScheduler _jobScheduler;
 
-        public CreateAuctionHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public CreateAuctionHandler(IUnitOfWork unitOfWork, IMapper mapper, IAuctionJobScheduler jobScheduler)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _jobScheduler = jobScheduler;
         }
 
         public async Task<int> Handle(CreateAuctionCommand request, CancellationToken cancellationToken)
@@ -37,6 +40,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
             await _unitOfWork.SaveAsync();
 
             // Return the AuctionId
+            _jobScheduler.ScheduleAuctionClosing(auction.AuctionId, auction.EndDateTime);
             return auction.AuctionId;
         }
     }
