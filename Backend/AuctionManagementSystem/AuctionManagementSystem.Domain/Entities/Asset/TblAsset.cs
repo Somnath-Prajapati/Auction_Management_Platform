@@ -93,8 +93,6 @@ public partial class TblAsset
 
     public virtual ICollection<TblAssetGallery> TblAssetGalleries { get; set; } = new List<TblAssetGallery>();
 
-    public virtual ICollection<TblAssetWinner> TblAssetWinners { get; set; } = new List<TblAssetWinner>();
-
     public virtual ICollection<TblAuctionAsset> TblAuctionAssets { get; set; } = new List<TblAuctionAsset>();
 
     public virtual ICollection<TblRequest> TblRequests { get; set; } = new List<TblRequest>();
