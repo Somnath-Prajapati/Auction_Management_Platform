@@ -21,20 +21,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             _context = context;
         }
 
-        //public async Task<IEnumerable<TblAsset>> GetAllAsync()
-        //{
-        //    return await _context.TblAssets
-        //        .Include(a => a.Category)
-        //        .Include(a => a.Status)
-        //        .Include(a => a.Seller)
-        //        .Include(a => a.Awarding)
-        //        .Include(a => a.Vat)
-        //        .Include(a => a.TblAssetGalleries)
-        //        .Include(a => a.TblAssetDocuments)
-        //        .Include(a => a.TblAssetDetails)
-        //        .ToListAsync();
-        //}
-
 
         public async Task<IEnumerable<GetAssetsFormDto>> GetAllAsync()
         {
@@ -400,15 +386,27 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<int> AddAssetForGallery(TblAsset asset)
         {
+            asset.AssetNumber = await GenerateNextAssetNumberAsync();
             asset.IsDeleted = false;
             _context.TblAssets.Add(asset);
             await _context.SaveChangesAsync();
 
             return asset.AssetId;
         }
+
+        public async Task<string> GenerateNextAssetNumberAsync(int startFrom = 1063)
+        {
+            var maxAssetNumber = await _context.TblAssets
+                .Where(a => !a.IsDeleted && a.AssetNumber != null && a.AssetNumber != "")
+                .Select(a => (int?)Convert.ToInt32(a.AssetNumber))
+                .MaxAsync() ?? (startFrom - 1);
+
+            return (maxAssetNumber + 1).ToString();
+        }
+
         public async Task UpdateAsync(TblAsset asset)
         {
-            asset.UpdatedAt = DateTime.UtcNow;
+           
             var a = _context.TblAssets.Update(asset);
             Console.WriteLine(a);
             await _context.SaveChangesAsync();
