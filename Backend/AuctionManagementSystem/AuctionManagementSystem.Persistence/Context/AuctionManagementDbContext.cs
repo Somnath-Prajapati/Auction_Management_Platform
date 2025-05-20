@@ -520,47 +520,32 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.ToTable("tblAuctions");
 
-            entity.HasIndex(e => e.AuctionNumber, "UQ__tblAucti__C90DD8B8624ABC12").IsUnique();
+            entity.HasIndex(e => e.AuctionNumber, "UQ_TblAuctions_AuctionNumber").IsUnique();
 
             entity.Property(e => e.AuctionNumber)
                 .IsRequired()
-                .HasMaxLength(100);
-
+                .HasMaxLength(50);
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
+            entity.Property(e => e.EndDateTime).HasColumnType("datetime");
+            entity.Property(e => e.StartDateTime).HasColumnType("datetime");
             entity.Property(e => e.Title)
                 .IsRequired()
                 .HasMaxLength(255);
-
             entity.Property(e => e.Type)
                 .HasMaxLength(50)
                 .HasDefaultValue("Auction");
-
-            entity.Property(e => e.StartDateTime).HasColumnType("datetime");
-
-            entity.Property(e => e.EndDateTime).HasColumnType("datetime");
-
-            entity.Property(e => e.CreatedDate)
-                .HasColumnType("datetime")
-                .HasDefaultValueSql("(getdate())");
-
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
-            entity.Property(e => e.CreatedBy);
-            entity.Property(e => e.UpdatedBy);
-            entity.Property(e => e.DeletedBy);
-            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
-            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
-
-            entity.HasOne(d => d.Category)
-                .WithMany(p => p.TblAuctions)
+            entity.HasOne(d => d.Category).WithMany(p => p.TblAuctions)
                 .HasForeignKey(d => d.CategoryId)
-                .HasConstraintName("FK__tblAuctio__Categ__70DDC3D8");
-
-            entity.HasOne(d => d.Status)
-                .WithMany(p => p.TblAuctions)
-                .HasForeignKey(d => d.StatusId)
-                .HasConstraintName("FK_tblAuctions_tblAuctionStatus");
+                .HasConstraintName("FK_tblAssetCategories_CategoryId");
         });
-
 
         modelBuilder.Entity<TblAuctionAsset>(entity =>
         {
