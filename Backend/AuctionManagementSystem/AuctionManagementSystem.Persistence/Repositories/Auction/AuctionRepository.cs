@@ -23,12 +23,44 @@ namespace AuctionManagementSystem.Persistence.Repositories
 
         public async Task<IEnumerable<TblAuction>> GetAllAsync()
         {
-            return await _context.TblAuctions
-               .Include(a => a.Category)
-               .Include(a => a.Status)
+            // Step 1: Load auctions with related data
+            var auctions = await _context.TblAuctions
+                .Include(a => a.Category)
+                .Include(a => a.Status)
+                .Include(a => a.TblAuctionAssets)
+                    .ThenInclude(aa => aa.Asset)
                 .Where(a => !a.IsDeleted)
-               .ToListAsync();
+                .ToListAsync();
+
+            // Step 2: Get auction IDs
+            var auctionIds = auctions.Select(a => a.AuctionId).ToList();
+
+            // Step 3: Query total bid amounts per auction from TblBid
+            var totalBidsPerAuction = await (
+        from b in _context.tblBids
+        join a in _context.TblAuctions on b.AuctionId equals a.AuctionId
+        where !a.IsDeleted
+        group b by b.AuctionId into g
+        select new
+        {
+            AuctionId = g.Key,
+            Total = g.Sum(b => b.BidAmount)
         }
+    ).ToDictionaryAsync(x => x.AuctionId, x => x.Total);
+
+
+            // Step 4: Assign total bid amount to each auction
+            foreach (var auction in auctions)
+            {
+                auction.TotalPrice = totalBidsPerAuction.TryGetValue(auction.AuctionId, out var total)
+                    ? total
+                    : 0m;
+            }
+
+            return auctions;
+        }
+
+
 
         public async Task<TblAuction> GetByIdAsync(int id)
         {   
