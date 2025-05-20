@@ -24,11 +24,14 @@ namespace AuctionManagementSystem.Persistence.Repositories
         public async Task<IEnumerable<TblAuction>> GetAllAsync()
         {
             return await _context.TblAuctions
-               .Include(a => a.Category)
-               .Include(a => a.Status)
+                .Include(a => a.Category)
+                .Include(a => a.Status)
+                .Include(a => a.TblAuctionAssets)
+                    .ThenInclude(aa => aa.Asset)
                 .Where(a => !a.IsDeleted)
-               .ToListAsync();
+                .ToListAsync();
         }
+
 
         public async Task<TblAuction> GetByIdAsync(int id)
         {   

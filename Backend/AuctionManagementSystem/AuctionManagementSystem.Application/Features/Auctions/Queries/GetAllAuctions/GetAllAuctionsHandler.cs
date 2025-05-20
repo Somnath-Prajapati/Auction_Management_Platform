@@ -25,6 +25,12 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Queries.GetAllAu
         public async Task<IEnumerable<AuctionDto>> Handle(GetAllAuctionsQuery request, CancellationToken cancellationToken)
         {
             var auctions = await _auctionRepository.GetAllAsync();
+            foreach (var auction in auctions)
+            {
+                auction.TotalPrice = auction.TblAuctionAssets
+                    .Where(aa => !aa.Asset.IsDeleted)
+                    .Sum(aa => aa.Asset.StartingPrice); // or .BidAmount
+            }
 
             return _mapper.Map<IEnumerable<AuctionDto>>(auctions);
         }
