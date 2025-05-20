@@ -294,6 +294,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 // Filter assets that belong to a valid auction
                 .Where(a => a.TblAuctionAssets.Any(aa =>
                     !aa.Auction.IsDeleted &&
+
                     aa.Auction.StartDateTime <= currentTime &&
                     aa.Auction.EndDateTime >= currentTime
                 ))
