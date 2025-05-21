@@ -77,6 +77,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     AssetNumber = a.AssetNumber,
                     CreatedAt = a.CreatedAt,
                     UpdatedAt = a.UpdatedAt,
+                    isDeleted = a.IsDeleted,
+                    IsAvailableForDirectSale = a.IsAvailableForDirectSale,
                     AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
 
                     Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
@@ -160,7 +162,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
              UpdatedAt = a.UpdatedAt,
              RequestForInquiry=a.RequestForInquiry,
              RequestForViewing = a.RequestForViewing,
-
+             IsAvailableForDirectSale = a.IsAvailableForDirectSale,
+             isDeleted = a.IsDeleted,
              AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
 
              // for auctionids 
