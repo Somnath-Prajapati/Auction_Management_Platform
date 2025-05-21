@@ -1,6 +1,7 @@
 {
   "Version": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
   "Documents": [],
 =======
@@ -102,10 +103,15 @@
     }
   ],
 >>>>>>> 81cad91f79cf78f6212bc63371ef6a3eea356fd3
+=======
+  "WorkspaceRootPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
+  "Documents": [],
+>>>>>>> Atharvaa
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
+<<<<<<< HEAD
 <<<<<<< HEAD
       "DocumentGroups": []
 =======
@@ -416,6 +422,9 @@
         }
       ]
 >>>>>>> 81cad91f79cf78f6212bc63371ef6a3eea356fd3
+=======
+      "DocumentGroups": []
+>>>>>>> Atharvaa
     }
   ]
 }
