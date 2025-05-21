@@ -40,7 +40,9 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public int? MinIncrement { get; set; }
 
         public bool RequestForViewing { get; set; } = true;  
-        public bool RequestForInquiry { get; set; } = true;  
+        public bool RequestForInquiry { get; set; } = true;
+
+        public bool IsAvailableForDirectSale { get; set; }
 
         public List<IFormFile> GalleryFiles { get; set; } = new List<IFormFile>();
         public List<IFormFile> DocumentFiles { get; set; } = new List<IFormFile>();
