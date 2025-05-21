@@ -44,6 +44,7 @@ namespace AuctionManagementSystem.Application.Profiles
         {
             CreateMap<TblUser,UserDto>().ReverseMap();
             CreateMap<TblUser, GetUserDto>().ReverseMap();
+            CreateMap<TblAssetWinner, AssetWinnerDto>().ReverseMap();
             CreateMap<TblSystemSetting, SystemSettingsDto>().ReverseMap();
             CreateMap<SystemSettings, SystemSettingsDto>().ReverseMap();
             // Mapping from Entity to DTO (FinanceSettingsDto)

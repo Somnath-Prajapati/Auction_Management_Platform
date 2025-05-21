@@ -514,6 +514,9 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.TblAssetWinners)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__tblAssetW__UserI__282DF8C2");
+            entity.Property(e => e.IsSeen)
+                .HasDefaultValue(false)
+                .IsRequired();
         });
 
         modelBuilder.Entity<TblAuction>(entity =>

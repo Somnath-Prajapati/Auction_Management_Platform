@@ -50,6 +50,7 @@ namespace AuctionManagementSystem.Application.Services
                     UserId = winner.UserId,
                     AwardedPrice = winner.BidAmount,
                     Reason = "Top Bidder",
+                    Note = "All checks completed",
                     Approved = true,
                     CreatedAt = DateTime.Now
                 };
