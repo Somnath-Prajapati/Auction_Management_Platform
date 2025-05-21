@@ -29,7 +29,6 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddIdentityServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
             builder.Services.AddHttpContextAccessor();
-            // Ensure the LoggedInUserService class implements the ILoggedInUserService interface correctly.
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddScoped<IBidNotificationService, BidNotificationService>();
             builder.Services.AddScoped<IWinnerNotificationService, WinnerNotificationService>();
