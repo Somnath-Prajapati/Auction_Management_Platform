@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Dtos.Assets;
@@ -21,24 +22,11 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             _context = context;
         }
 
-        //public async Task<IEnumerable<TblAsset>> GetAllAsync()
-        //{
-        //    return await _context.TblAssets
-        //        .Include(a => a.Category)
-        //        .Include(a => a.Status)
-        //        .Include(a => a.Seller)
-        //        .Include(a => a.Awarding)
-        //        .Include(a => a.Vat)
-        //        .Include(a => a.TblAssetGalleries)
-        //        .Include(a => a.TblAssetDocuments)
-        //        .Include(a => a.TblAssetDetails)
-        //        .ToListAsync();
-        //}
-
 
         public async Task<IEnumerable<GetAssetsFormDto>> GetAllAsync()
         {
-                var assets = await _context.TblAssets
+                   var assets = await _context.TblAssets
+                //.Where(a => a.IsActive)
                 //.Where(a => a.IsActive)
                 .Where(a => a.IsDeleted == false)
                 .OrderByDescending(a => a.UpdatedAt ?? a.CreatedAt)
@@ -307,6 +295,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 // Filter assets that belong to a valid auction
                 .Where(a => a.TblAuctionAssets.Any(aa =>
                     !aa.Auction.IsDeleted &&
+
                     aa.Auction.StartDateTime <= currentTime &&
                     aa.Auction.EndDateTime >= currentTime
                 ))
@@ -400,15 +389,42 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<int> AddAssetForGallery(TblAsset asset)
         {
+            
+         
+            asset.AssetNumber = await GenerateNextAssetNumberAsync();
             asset.IsDeleted = false;
             _context.TblAssets.Add(asset);
             await _context.SaveChangesAsync();
 
             return asset.AssetId;
         }
+
+        public async Task<string> GenerateNextAssetNumberAsync(int startFrom = 1063)
+        {
+            var maxAssetNumber = await _context.TblAssets
+                .Where(a => !a.IsDeleted && a.AssetNumber != null && a.AssetNumber != "")
+                .Select(a => (int?)Convert.ToInt32(a.AssetNumber))
+                .MaxAsync() ?? (startFrom - 1);
+
+            return (maxAssetNumber + 1).ToString();
+        }
+
+        public async Task<bool> HasAnyDirectAndActiveAuctionAsync(int auctionId)
+        {
+            return await _context.TblAuctions
+                .AnyAsync(a =>
+                   a.AuctionId == auctionId &&
+                   a.Type == "Direct Sale");
+        }
+
+
+
+
+
+
         public async Task UpdateAsync(TblAsset asset)
         {
-            asset.UpdatedAt = DateTime.UtcNow;
+           
             var a = _context.TblAssets.Update(asset);
             Console.WriteLine(a);
             await _context.SaveChangesAsync();
@@ -477,5 +493,35 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         {
             throw new NotImplementedException();
         }
+
+        public async Task DeactivateExpiredAssetsBasedOnDeadlineAsync()
+        {
+            var now = DateTime.UtcNow.Date;
+
+            
+            var assetsToClose = await _context.TblAssets
+                .Where(a => a.StatusId != 10
+                    && a.CreatedAt != null
+                    && a.RegistrationDeadline != null)
+                .ToListAsync();
+
+            foreach (var asset in assetsToClose)
+            {
+               
+                var elapsedDays = (now - asset.CreatedAt.Value.Date).Days;
+
+                var remainingDays = asset.RegistrationDeadline.Value - elapsedDays;
+
+                if (remainingDays <= 0)
+                {
+                   
+                    asset.StatusId = 10; 
+                }
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
+
     }
 }

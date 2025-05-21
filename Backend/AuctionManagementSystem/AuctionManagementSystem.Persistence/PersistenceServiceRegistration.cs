@@ -19,11 +19,11 @@ using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Infrastructure.UoW;
 using AuctionManagementSystem.Application.Contracts.Request;
 using AuctionManagementSystem.Persistence.Repositories.Requests;
-using ProtoBuf.Meta;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Listings;
 using AuctionManagementSystem.Infrastructure.Repositories;
+using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Contracts.Listings;
 
 namespace AuctionManagementSystem.Persistence
@@ -58,7 +58,11 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IWishlistRepository, WishlistRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<IAuctionAssetRepository, AuctionAssetRepository>();
+            services.AddScoped<IAuctionWinnerService, AuctionWinnerService>();
+            services.AddScoped<IAssetWinnerRepository, AssetWinnerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+
+            services.AddScoped<IAssetExpirationService, AssetExpirationService>();
             return services;
         }
     }
