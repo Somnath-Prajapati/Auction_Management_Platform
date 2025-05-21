@@ -9,11 +9,13 @@
   <ItemGroup>
     <Folder Include="Contracts\Categories\" />
     <Folder Include="Contracts\Statuses\" />
+    <Folder Include="Features\Assets\Asset\Command\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+    <PackageReference Include="Hangfire.Core" Version="1.8.18" />
     <PackageReference Include="MediatR" Version="12.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
     <PackageReference Include="EventStore.Client" Version="22.0.0" />

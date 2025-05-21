@@ -13,7 +13,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Mapping
             // Map TblAuction to AuctionDto
             CreateMap<TblAuction, AuctionDto>()
                 .ForMember(dest => dest.CategoryName, opt =>
-                    opt.MapFrom(src => src.Category != null ? src.Category.Name : string.Empty))
+                    opt.MapFrom(src => src.Category != null ? src.Category.CategoryName : string.Empty))
                 .ForMember(dest => dest.StatusName, opt =>
                     opt.MapFrom(src => src.Status != null ? src.Status.Name : string.Empty))
                 .ReverseMap();
