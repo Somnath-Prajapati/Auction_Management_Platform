@@ -389,6 +389,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<int> AddAssetForGallery(TblAsset asset)
         {
+            
+         
             asset.AssetNumber = await GenerateNextAssetNumberAsync();
             asset.IsDeleted = false;
             _context.TblAssets.Add(asset);
@@ -406,6 +408,19 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
             return (maxAssetNumber + 1).ToString();
         }
+
+        public async Task<bool> HasAnyDirectAndActiveAuctionAsync(int auctionId)
+        {
+            return await _context.TblAuctions
+                .AnyAsync(a =>
+                   a.AuctionId == auctionId &&
+                   a.Type == "Direct Sale");
+        }
+
+
+
+
+
 
         public async Task UpdateAsync(TblAsset asset)
         {
