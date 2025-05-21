@@ -1,6 +1,8 @@
 ﻿    using System;
     using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using AuctionManagementSystem.Domain.Entities.Bids;
+using System.ComponentModel.DataAnnotations.Schema;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Bids;
 
@@ -35,9 +37,12 @@ using AuctionManagementSystem.Domain.Entities.Bids;
         public bool IsDeleted { get; set; }
 
          public int CategoryId { get; set; }
+        [NotMapped]
+        public decimal TotalPrice { get; set; }
+
 
         //[ForeignKey("CategoryId")]
-         public virtual TblAssetCategory Category { get; set; } // added after modification
+     public virtual TblAssetCategory Category { get; set; } // added after modification
 
     public virtual TblAuctionStatus? Status { get; set; }
 

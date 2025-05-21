@@ -30,7 +30,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 0,
+=======
+          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
+>>>>>>> 81cad91f79cf78f6212bc63371ef6a3eea356fd3
           "Children": [
             {
               "$type": "Document",
