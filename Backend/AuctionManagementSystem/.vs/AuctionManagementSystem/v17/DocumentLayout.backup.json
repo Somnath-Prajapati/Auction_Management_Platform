@@ -1,6 +1,7 @@
 {
   "Version": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
   "Documents": [],
 =======
@@ -27,8 +28,6 @@
       "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\dtos\\assets\\directsaleassetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
-<<<<<<< HEAD
-=======
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\amp\\Backend\\AuctionManagementSystem\\",
   "Documents": [
     {
@@ -103,12 +102,16 @@
       "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\dtos\\assets\\assetcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
->>>>>>> Atharvaa
 >>>>>>> 81cad91f79cf78f6212bc63371ef6a3eea356fd3
+=======
+  "WorkspaceRootPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
+  "Documents": [],
+>>>>>>> Atharvaa
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
+<<<<<<< HEAD
 <<<<<<< HEAD
       "DocumentGroups": []
 =======
@@ -419,6 +422,9 @@
         }
       ]
 >>>>>>> 81cad91f79cf78f6212bc63371ef6a3eea356fd3
+=======
+      "DocumentGroups": []
+>>>>>>> Atharvaa
     }
   ]
 }
