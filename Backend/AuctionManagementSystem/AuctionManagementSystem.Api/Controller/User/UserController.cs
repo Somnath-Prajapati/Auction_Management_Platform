@@ -41,6 +41,7 @@ namespace AuctionManagementSystem.Api.Controller.User
             var result = await _mediator.Send(new GetUserByIdQuery(id));
             return Ok(result);
         }
+
         [AllowAnonymous]
         [HttpPost("Add")]
         public async Task<IActionResult> CreateUser([FromForm] UserDto dto)
@@ -50,6 +51,8 @@ namespace AuctionManagementSystem.Api.Controller.User
             var userId = await _mediator.Send(command);
             return Ok(new { UserId = userId });
         }
+
+        [AllowAnonymous]
         [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateUser(int id, [FromForm] UserDto dto)
         {
