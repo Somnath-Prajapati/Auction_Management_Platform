@@ -76,6 +76,19 @@ namespace AuctionManagementSystem.Api
             
             
             app.UseHttpsRedirection();
+
+
+
+
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //    Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "AssetGallery")),
+            //    RequestPath = "/AssetGallery"
+            //});
+
+            
+
             app.UseStaticFiles();
             app.UseHangfireDashboard();
 
@@ -90,6 +103,7 @@ namespace AuctionManagementSystem.Api
 
             
             app.UseAuthentication();
+
             app.UseAuthorization();
 
 
