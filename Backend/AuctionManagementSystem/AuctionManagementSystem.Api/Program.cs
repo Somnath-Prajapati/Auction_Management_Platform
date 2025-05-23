@@ -55,6 +55,7 @@ namespace AuctionManagementSystem.Api
                 config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddHangfireServer();
+            builder.Logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
 
 
             var app = builder.Build();
