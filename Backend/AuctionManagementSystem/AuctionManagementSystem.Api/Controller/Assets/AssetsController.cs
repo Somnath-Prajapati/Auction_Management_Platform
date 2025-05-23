@@ -18,6 +18,7 @@ using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace AuctionManagementSystem.Api.Controller.Assets
@@ -125,7 +126,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         {
             try
             {
-
+                
                 #region
                 List<AssetDetailDto> details;
                 try
@@ -139,7 +140,11 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                 }
                 #endregion
                 var assetResult = await _mediator.Send(new AddUnifiedAssetCommand(dto));
-                //var assetResult = 25;
+                
+                if (dto.AuctionIds != null && dto.AuctionIds.Any())
+                {
+                    await _mediator.Send(new AssignAssetToAuctionCommand(assetResult, dto.AuctionIds));
+                }
 
                 if (details != null && details.Any())
                 {
@@ -158,10 +163,6 @@ namespace AuctionManagementSystem.Api.Controller.Assets
 
 
 
-                if (dto.AuctionIds != null && dto.AuctionIds.Any())
-                {
-                    await _mediator.Send(new AssignAssetToAuctionCommand(assetResult, dto.AuctionIds));
-                }
 
 
                 var galleryResults = new List<GalleryResultDto>();
