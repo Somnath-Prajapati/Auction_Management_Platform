@@ -25,6 +25,8 @@ using AuctionManagementSystem.Persistence.Repositories.Listings;
 using AuctionManagementSystem.Infrastructure.Repositories;
 using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Contracts.Listings;
+using AuctionManagementSystem.Application.Contracts.AuditTrail;
+using AuctionManagementSystem.Persistence.Repositories.AuditTrail;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -44,7 +46,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IStaticPagesSettingsRepository, StaticPagesSettingsRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
             services.AddScoped<IAuctionRepository, AuctionRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAuctionUnitOfWork, AuctionUnitOfWork>();
             services.AddScoped<IAssetCategoriesRepository, AssetCategoriesRepository>();
             services.AddScoped<IAssetsRepository, AssetRepository>();
             services.AddScoped<IAssetGalleryRepository, AssetGalleryRepository>();
@@ -61,6 +63,8 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAuctionWinnerService, AuctionWinnerService>();
             services.AddScoped<IAssetWinnerRepository, AssetWinnerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
+
             return services;
         }
     }

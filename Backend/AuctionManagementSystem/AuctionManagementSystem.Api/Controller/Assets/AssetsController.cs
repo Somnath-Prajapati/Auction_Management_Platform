@@ -100,6 +100,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                 return BadRequest("ID in URL does not match ID in body");
             await _mediator.Send(new UpdateAssetCommand(id, assetsDto));
             return Ok();
+
         }
 
         //[Route("Search Asset")]
