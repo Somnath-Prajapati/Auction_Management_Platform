@@ -62,7 +62,11 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAssetWinnerRepository, AssetWinnerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
 
+            services.AddScoped<IAutoBidRepository, AutoBidRepository>();
+
+
             services.AddScoped<IAssetExpirationService, AssetExpirationService>();
+            
             return services;
         }
     }

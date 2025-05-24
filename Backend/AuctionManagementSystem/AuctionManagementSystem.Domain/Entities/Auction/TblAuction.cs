@@ -51,4 +51,7 @@ using AuctionManagementSystem.Domain.Entities.Bids;
         public virtual ICollection<TblAuctionView> TblAuctionViews { get; set; } = new List<TblAuctionView>();
 
         public virtual ICollection<tblBid> TblBids { get; set; } = new List<tblBid>();
-    }
+
+        // after the autobid added  
+        public virtual ICollection<TblAutoBid> TblAutoBids { get; set; } = new List<TblAutoBid>();
+}

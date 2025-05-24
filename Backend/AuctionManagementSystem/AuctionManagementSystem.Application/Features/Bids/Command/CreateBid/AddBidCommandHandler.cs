@@ -71,17 +71,38 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
                     if (request.BidAmount < requiredMinBid)
                         throw new BadRequestException($"Bid must be at least {requiredMinBid} (Min Increment: {asset.MinIncrement})");
                 }
-
+                
                 await _bidRepository.UnsetPreviousWinningBidAsync(request.AssetId);
 
-                
-                var bid = _mapper.Map<tblBid>(request);
-                bid.IsWinningBid = true;
 
-                var bidId = await _bidRepository.AddBidAsync(bid);
+                var existingBid = await _bidRepository.GetUserBidAsync(request.UserId, request.AuctionId, request.AssetId);
+                int bidId;
+
+                if (existingBid != null)
+                {
+                    existingBid.BidAmount = request.BidAmount;
+                    existingBid.BidTime = DateTime.UtcNow;
+                    existingBid.IsWinningBid = true;
+                    existingBid.IsAutoBid = false;
+
+                    await _bidRepository.UpdateBidAsync(existingBid);
+
+                    bidId = existingBid.BidId;
+                }
+                else
+                {
+                    
+                    var bid = _mapper.Map<tblBid>(request);
+                    bid.IsWinningBid = true;
+                    bid.BidTime = DateTime.UtcNow;
+
+                    bidId = await _bidRepository.AddBidAsync(bid);
+                }
+
                 await _unitOfWork.CommitAsync();
 
                 var updatedBidCount = await _bidRepository.CountBidsByAssetIdAsync(request.AssetId);
+
                 await _notificationService.NotifyNewBidAsync(
                    request.AuctionId,
                    request.AssetId,
@@ -95,12 +116,12 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
                        BidTime = DateTime.UtcNow
                    });
 
-                return bidId;
+                return bidId;   
             }
             catch
             {
                 await _unitOfWork.RollbackAsync();
-                throw;
+                throw;  
             }
         }
 

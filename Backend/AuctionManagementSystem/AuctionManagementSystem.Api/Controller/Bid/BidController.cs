@@ -1,4 +1,6 @@
-﻿using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
+﻿using AuctionManagementSystem.Application.Dtos.Bids;
+using AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.CreateAutoBid;
+using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
 using AuctionManagementSystem.Application.Features.Bids.Query.GetBidById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +24,7 @@ namespace AuctionManagementSystem.Api.Controller.Bid
               var bidId = await _mediator.Send(command);
               return Ok(new { BidId = bidId });
          }
+       
         [HttpGet("Assetstats/{assetId}")]
         public async Task<IActionResult> GetBidStats(int assetId)
         {
@@ -29,5 +32,28 @@ namespace AuctionManagementSystem.Api.Controller.Bid
             var result = await _mediator.Send(query);
             return Ok(result);
         }
-      }
+
+
+
+
+        [HttpPost("auto")]
+        public async Task<IActionResult> PlaceAutoBid([FromBody] AddAutoBidCommand command)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                var bidId = await _mediator.Send(command);
+                return Ok(new { BidId = bidId, Message = "Auto-bid placed successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+        }
+
+
+
+    }
 }
