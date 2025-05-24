@@ -76,6 +76,20 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
             return await _context.tblBids.Where(b => b.AssetId == assetId).CountAsync();
         }
 
+
+        public async Task<tblBid?> GetUserBidAsync(int userId, int auctionId, int assetId)
+        {
+               var result = await _context.tblBids
+                .FirstOrDefaultAsync(b => b.UserId == userId && b.AuctionId == auctionId && b.AssetId == assetId && !b.IsAutoBid);
+            return result;
+        }
+
+    
+        public async Task UpdateBidAsync(tblBid bid)
+        {
+            _context.tblBids.Update(bid);
+            await _context.SaveChangesAsync();
+        }
     }
 
 }

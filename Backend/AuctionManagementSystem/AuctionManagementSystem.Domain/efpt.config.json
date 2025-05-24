@@ -75,6 +75,14 @@
          "ObjectType": 0
       },
       {
+         "Name": "[AuctionM_dbuser].[tblAutoBids]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblBids]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[AuctionM_dbuser].[tblCardTypes]",
          "ObjectType": 0
       },

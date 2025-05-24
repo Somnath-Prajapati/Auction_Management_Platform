@@ -18,6 +18,7 @@ namespace AuctionManagementSystem.Domain.Entities.Bids
         public bool IsWinningBid { get; set; }
         public DateTime CreatedDate { get; set; }
 
+        public bool IsAutoBid { get; set; }
         public TblAuction Auction { get; set; }
         public TblAsset Asset { get; set; }
         public TblUser User { get; set; }
