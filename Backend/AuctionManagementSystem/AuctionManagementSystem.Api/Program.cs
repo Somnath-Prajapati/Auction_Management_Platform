@@ -15,6 +15,8 @@ using AuctionManagementSystem.Application;
 using AuctionManagementSystem.Identity;
 using AuctionManagementSystem.Persistence;
 using Hangfire;
+using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Application.Services;
 
 namespace AuctionManagementSystem.Api
 {
@@ -32,6 +34,7 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddScoped<IBidNotificationService, BidNotificationService>();
             builder.Services.AddScoped<IWinnerNotificationService, WinnerNotificationService>();
+            builder.Services.AddScoped<IAutoBidJobScheduler, HangfireAutoBidJobScheduler>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -60,7 +63,13 @@ namespace AuctionManagementSystem.Api
             var app = builder.Build();
             //if (app.Environment.IsDevelopment())
             //{
-            
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var scheduler = scope.ServiceProvider.GetRequiredService<IAutoBidJobScheduler>();
+                scheduler.ScheduleAutoBidJob();
+            }
+
             app.UseCors("AllowFrontend");
 
             app.MapHub<BidHub>("/bidhub");

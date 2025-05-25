@@ -18,6 +18,15 @@ namespace AuctionManagementSystem.Application.Contracts.Bids
         Task UpdateAutoBidAsync(TblAutoBid autoBid); 
 
         Task<TblAutoBid?> GetByUserAuctionAssetAsync(int userId, int auctionId, int assetId);
+        Task<IEnumerable<TblAutoBid>> GetActiveAutoBidsForAssetAsync(int auctionId, int assetId);
+
+
+        Task<List<(int auctionId, int assetId)>> GetActiveAuctionAssetPairsAsync();
+        Task<tblBid?> GetHighestBidAsync(int assetId);
+        Task ExtendAuctionIfCloseToEndAsync(int auctionId, DateTime currentTime);
+
+
+
 
     }
 

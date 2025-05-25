@@ -51,13 +51,32 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
         public async Task UnsetPreviousWinningBidAsync(int assetId)
         {
             var currentWinningBid = await _context.tblBids
-                .FirstOrDefaultAsync(b => b.AssetId == assetId && b.IsWinningBid);
+                .Where(b => b.AssetId == assetId && b.IsWinningBid)
+                .ToListAsync();
 
-            if (currentWinningBid != null)
+            //if (currentWinningBid != null)
+            //{
+            //    currentWinningBid.IsWinningBid = false;
+            //    _context.tblBids.Update(currentWinningBid);
+            if(currentWinningBid != null)
             {
-                currentWinningBid.IsWinningBid = false;
-                _context.tblBids.Update(currentWinningBid);
+
+            if(currentWinningBid.Count > 1)
+            {
+                foreach (var bid in currentWinningBid)
+                {
+                    bid.IsWinningBid = false;
+                    _context.tblBids.Update(bid);   
+                }
+                }
+                else
+                {
+                    currentWinningBid[0].IsWinningBid = false;
+                    _context.tblBids.Update(currentWinningBid[0]);
+                }
+           
             }
+            await _context.SaveChangesAsync();
         }
         public async Task<(decimal HighestBid, int BidCount)> GetBidStatsByAssetIdAsync(int assetId)
         {

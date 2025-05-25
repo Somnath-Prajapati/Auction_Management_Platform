@@ -134,6 +134,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
 
                 await _bidRepository.UnsetPreviousWinningBidAsync(request.AssetId);
 
+                await _autoBidRepo.ExtendAuctionIfCloseToEndAsync(request.AuctionId, DateTime.UtcNow);
 
                 var existingBid = await _bidRepository.GetUserBidAsync(request.UserId, request.AuctionId, request.AssetId);
                 int bidId;

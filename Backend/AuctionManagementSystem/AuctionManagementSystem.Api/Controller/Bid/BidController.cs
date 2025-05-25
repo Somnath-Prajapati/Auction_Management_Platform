@@ -1,13 +1,14 @@
 ﻿using AuctionManagementSystem.Application.Dtos.Bids;
 using AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.CreateAutoBid;
-using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
-using AuctionManagementSystem.Application.Features.Bids.Query.GetBidById;
+using AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.DeleteAutoBid;
+using AuctionManagementSystem.Application.Features.Bids.CreateBid.Command;
+using AuctionManagementSystem.Application.Features.Bids.CreateBid.Query.GetBidById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionManagementSystem.Api.Controller.Bid
 {
-      [ApiController]
+    [ApiController]
       [Route("api/[controller]")]
       public class BidController : ControllerBase
       {
@@ -53,6 +54,16 @@ namespace AuctionManagementSystem.Api.Controller.Bid
             }
         }
 
+        [HttpDelete("remove")]
+        public async Task<IActionResult> RemoveAutoBid(AutoBidRemoveCommand command)
+        {
+
+            if (command == null)
+                return NotFound("AutoBid not found for given auction, asset, and user.");
+
+            await _mediator.Send(command);
+            return Ok("AutoBid removed successfully.");
+        }
 
 
     }
