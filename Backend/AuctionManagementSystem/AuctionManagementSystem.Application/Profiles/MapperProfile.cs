@@ -32,8 +32,8 @@ using AuctionManagementSystem.Domain.Entities.User;
 using AutoMapper;
 using EventStore.ClientAPI;
 using AuctionManagementSystem.Domain.Entities.Bids;
-using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
 using AuctionManagementSystem.Domain.Entities;
+using AuctionManagementSystem.Application.Features.Bids.CreateBid.Command;
 
 
 namespace AuctionManagementSystem.Application.Profiles

@@ -8,9 +8,9 @@ using AuctionManagementSystem.Application.Exceptions;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AutoMapper;
 using MediatR;
- 
 
-namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
+
+namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
 {
     public class AddBidCommandHandler : IRequestHandler<AddBidCommand, int>
     {
@@ -21,9 +21,9 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
         private readonly IAssetsRepository _assetsRepository;
         private readonly IAuctionRepository _auctionRepository;
         private readonly IBidNotificationService _notificationService;
+        private readonly IAutoBidRepository _autoBidRepo;
 
-
-        public AddBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService)
+        public AddBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService, IAutoBidRepository autoBidRepo)
         {
             _bidRepository = bidRepository;
             _mapper = mapper;
@@ -32,6 +32,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
             _assetsRepository = assetsRepository;
             _auctionRepository = auctionRepository;
             _notificationService = notificationService;
+            _autoBidRepo = autoBidRepo;
         }
 
         public async Task<int> Handle(AddBidCommand request, CancellationToken cancellationToken)
@@ -50,14 +51,18 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
                 var auction = await _auctionRepository.GetByIdAsync(request.AuctionId);
                 if (auction == null || auction.EndDateTime < DateTime.UtcNow || auction.IsDeleted)
                 {
-                    throw new NotFoundException ("Cannot place a bid. The auction has expired or is inactive.");
+                    throw new NotFoundException("Cannot place a bid. The auction has expired or is inactive.");
                 }
 
                 var asset = await _assetsRepository.GetByIdAsync(request.AssetId);
                 if (asset == null)
                     throw new NotFoundException("Asset not found.");
 
-
+                var isAutoBid = await _autoBidRepo.GetByUserAuctionAssetAsync(request.UserId, request.AuctionId, request.AssetId);
+                if (isAutoBid != null && isAutoBid.IsActive)
+                {
+                    throw new NotFoundException("Auto-bid is currently active. Please disable it before placing a manual bid.");
+                }
 
                 var highestBid = await _bidRepository.GetHighestBidAmountAsync(request.AssetId);
                 if (!highestBid.HasValue)
@@ -71,38 +76,18 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
                     if (request.BidAmount < requiredMinBid)
                         throw new BadRequestException($"Bid must be at least {requiredMinBid} (Min Increment: {asset.MinIncrement})");
                 }
-                
+
                 await _bidRepository.UnsetPreviousWinningBidAsync(request.AssetId);
 
+                await _autoBidRepo.ExtendAuctionIfCloseToEndAsync(request.AuctionId, DateTime.UtcNow);
 
-                var existingBid = await _bidRepository.GetUserBidAsync(request.UserId, request.AuctionId, request.AssetId);
-                int bidId;
+                var bid = _mapper.Map<tblBid>(request);
+                bid.IsWinningBid = true;
 
-                if (existingBid != null)
-                {
-                    existingBid.BidAmount = request.BidAmount;
-                    existingBid.BidTime = DateTime.UtcNow;
-                    existingBid.IsWinningBid = true;
-                    existingBid.IsAutoBid = false;
-
-                    await _bidRepository.UpdateBidAsync(existingBid);
-
-                    bidId = existingBid.BidId;
-                }
-                else
-                {
-                    
-                    var bid = _mapper.Map<tblBid>(request);
-                    bid.IsWinningBid = true;
-                    bid.BidTime = DateTime.UtcNow;
-
-                    bidId = await _bidRepository.AddBidAsync(bid);
-                }
-
+                var bidId = await _bidRepository.AddBidAsync(bid);
                 await _unitOfWork.CommitAsync();
 
                 var updatedBidCount = await _bidRepository.CountBidsByAssetIdAsync(request.AssetId);
-
                 await _notificationService.NotifyNewBidAsync(
                    request.AuctionId,
                    request.AssetId,
@@ -111,17 +96,17 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
                        bidCount = updatedBidCount,
                        auctionId = request.AuctionId,
                        assetId = request.AssetId,
-                       UserId = request.UserId,
-                       BidAmount = request.BidAmount,
+                       request.UserId,
+                       request.BidAmount,
                        BidTime = DateTime.UtcNow
                    });
 
-                return bidId;   
+                return bidId;
             }
             catch
             {
                 await _unitOfWork.RollbackAsync();
-                throw;  
+                throw;
             }
         }
 

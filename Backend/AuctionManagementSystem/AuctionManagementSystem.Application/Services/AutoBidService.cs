@@ -36,71 +36,86 @@ namespace AuctionManagementSystem.Application.Services
 
         public async Task RunAutoBidRoundRobin(int auctionId, int assetId)
         {
-
             var asset = await _assetsRepository.GetByIdAsync(assetId);
             if (asset == null) return;
 
-            var highestBid = await _bidRepository.GetHighestBidAmountAsync(assetId);
+            var highestBid = await _autoBidRepository.GetHighestBidAsync(assetId);
 
             var autoBids = await _autoBidRepository.GetActiveAutoBidsForAssetAsync(auctionId, assetId);
-            
+
             if (!autoBids.Any()) return;
 
             var sortedAutoBids = autoBids.OrderBy(ab => ab.UpdatedDate).ToList();
 
             foreach (var autobid in sortedAutoBids)
             {
-                decimal nextBidAmount = (decimal)(highestBid.HasValue
-                    ? highestBid.Value + asset.MinIncrement
-                    : asset.StartingPrice);
+                if (!autobid.IsActive)
+                    continue;
 
-                if (autobid.MaxBidAmount >= nextBidAmount)
+                if(highestBid != null && highestBid.UserId == autobid.UserId)
                 {
-                    await _unitOfWork.BeginTransactionAsync();
-                    try
-                    {
-                        // Step 1: Unset previous winning bid
-                        await _bidRepository.UnsetPreviousWinningBidAsync(assetId);
+                    continue;
+                }
+                await _unitOfWork.BeginTransactionAsync();
+                try
+                {
+                    var currentHighestBid = await _bidRepository.GetHighestBidAmountAsync(assetId);
 
-                        // Step 2: Create new bid
-                        var bid = new tblBid
-                        {
-                            AuctionId = auctionId,
-                            AssetId = assetId,
-                            UserId = autobid.UserId,
-                            BidAmount = nextBidAmount,
-                            BidTime = DateTime.UtcNow,
-                            IsWinningBid = true,
-                            IsAutoBid = true
-                        };
-                        await _bidRepository.AddBidAsync(bid);
-
-                        // Step 3: Update autobid timestamp (for round robin)
-                        autobid.UpdatedDate = DateTime.UtcNow;
-                        await _autoBidRepository.UpdateAutoBidAsync(autobid);
-
-                        // Step 4: Commit transaction
-                        await _unitOfWork.CommitAsync();
-
-                        // Step 5: Notify clients via SignalR
-                        var bidCount = await _bidRepository.CountBidsByAssetIdAsync(assetId);
-                        await _notificationService.NotifyNewBidAsync(auctionId, assetId, new
-                        {
-                            bidCount,
-                            auctionId,
-                            assetId,
-                            autobid.UserId,
-                            BidAmount = nextBidAmount,
-                            BidTime = DateTime.UtcNow
-                        });
-
-                        break; // Exit after one autobid per round
-                    }
-                    catch
+                    if (currentHighestBid != (highestBid?.BidAmount ?? null))
                     {
                         await _unitOfWork.RollbackAsync();
-                        throw;
+                        return; 
                     }
+
+                    // Calculate next bid amount after concurrency check
+                    decimal nextBidAmount = (decimal)(currentHighestBid.HasValue
+                        ? currentHighestBid.Value + asset.MinIncrement
+                        : asset.StartingPrice);
+
+                    if (autobid.MaxBidAmount < nextBidAmount)
+                    {
+                        await _unitOfWork.RollbackAsync();
+                        continue; // Try next autobid in the round robin
+                    }
+
+                    await _bidRepository.UnsetPreviousWinningBidAsync(assetId);
+
+                    await _autoBidRepository.ExtendAuctionIfCloseToEndAsync(auctionId, DateTime.UtcNow);
+
+                    var bid = new tblBid
+                    {
+                        AuctionId = auctionId,
+                        AssetId = assetId,
+                        UserId = autobid.UserId,
+                        BidAmount = nextBidAmount,
+                        BidTime = DateTime.UtcNow,
+                        IsWinningBid = true,
+                        IsAutoBid = true
+                    };
+                    await _bidRepository.AddBidAsync(bid);
+
+                    autobid.UpdatedDate = DateTime.UtcNow;
+                    await _autoBidRepository.UpdateAutoBidAsync(autobid);
+
+                    await _unitOfWork.CommitAsync();
+
+                    var bidCount = await _bidRepository.CountBidsByAssetIdAsync(assetId);
+                    await _notificationService.NotifyNewBidAsync(auctionId, assetId, new
+                    {
+                        bidCount,
+                        auctionId,
+                        assetId,
+                        autobid.UserId,
+                        BidAmount = nextBidAmount,  
+                        BidTime = DateTime.UtcNow
+                    });
+
+                    break; 
+                }
+                catch (Exception ex)
+                {
+                    await _unitOfWork.RollbackAsync();
+                    throw;
                 }
             }
         }

@@ -3,68 +3,92 @@
   "WorkspaceRootPath": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\bids\\command\\createbid\\addbidcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\bids\\command\\createbid\\addbidcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\bids\\createbid\\command\\addbidcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\bids\\createbid\\command\\addbidcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\bids\\bidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\bids\\bidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}|AuctionManagementSystem.Identity\\AuctionManagementSystem.Identity.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.identity\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{047C89EF-A1C0-4B7A-BA30-E10C02EC9DAF}|AuctionManagementSystem.Identity\\AuctionManagementSystem.Identity.csproj|solutionrelative:auctionmanagementsystem.identity\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\bids\\autobid\\command\\createautobid\\addautobidcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\bids\\autobid\\command\\createautobid\\addautobidcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\contracts\\bids\\ibidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\contracts\\bids\\ibidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.api\\services\\loggedinuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|solutionrelative:auctionmanagementsystem.api\\services\\loggedinuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\contracts\\bids\\iautobidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\contracts\\bids\\iautobidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\dtos\\userdtos\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\dtos\\userdtos\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|solutionrelative:auctionmanagementsystem.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.api\\controller\\bid\\bidcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|solutionrelative:auctionmanagementsystem.api\\controller\\bid\\bidcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.domain\\entities\\bids\\tblautobid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|solutionrelative:auctionmanagementsystem.domain\\entities\\bids\\tblautobid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\bids\\autobidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\bids\\autobidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.domain\\entities\\bids\\tblbid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|solutionrelative:auctionmanagementsystem.domain\\entities\\bids\\tblbid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\services\\autobidservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\services\\autobidservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\services\\validationbehavior .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\services\\validationbehavior .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\contracts\\bids\\iautobidservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\contracts\\bids\\iautobidservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.api\\middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EA0CDB5-58D1-40F9-9BB8-A73CE72BC379}|AuctionManagementSystem.Api\\AuctionManagementSystem.Api.csproj|solutionrelative:auctionmanagementsystem.api\\middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\bids\\createbid\\query\\getbidbyid\\getbidstatsbyassetidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\bids\\createbid\\query\\getbidbyid\\getbidstatsbyassetidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\bids\\createbid\\command\\addbidcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\bids\\createbid\\command\\addbidcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\contracts\\bids\\iautobidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\contracts\\bids\\iautobidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\bids\\autobid\\command\\deleteautobid\\autobidremovecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\bids\\autobid\\command\\deleteautobid\\autobidremovecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\bids\\autobid\\command\\createautobid\\addautobidcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\bids\\autobid\\command\\createautobid\\addautobidcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\bids\\autobid\\command\\createautobid\\addautobidcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\bids\\autobid\\command\\createautobid\\addautobidcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\dtos\\bids\\addautobiddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\dtos\\bids\\addautobiddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\services\\hangfireauctionjobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\services\\hangfireauctionjobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\bids\\command\\createbid\\addbidcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\bids\\command\\createbid\\addbidcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\contracts\\bids\\iauctionjobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\contracts\\bids\\iauctionjobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\dtos\\bids\\biddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\dtos\\bids\\biddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\contracts\\bids\\iauctionwinnerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\contracts\\bids\\iauctionwinnerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\persistenceserviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\persistenceserviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\services\\hangfireautobidjobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\services\\hangfireautobidjobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.domain\\auctionmanagementsystem.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{41492C59-CE5D-42B4-98A9-3E36382978CC}|AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj|solutionrelative:auctionmanagementsystem.domain\\auctionmanagementsystem.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\repositories\\bids\\bidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\repositories\\bids\\bidrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\onedrive\\desktop\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\features\\bids\\autobid\\command\\deleteautobid\\autobidremovecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\features\\bids\\autobid\\command\\deleteautobid\\autobidremovecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,218 +98,292 @@
       "DocumentGroups": [
         {
           "DockedWidth": 224,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IBidRepository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Bids\\IBidRepository.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Contracts\\Bids\\IBidRepository.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Bids\\IBidRepository.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Application\\Contracts\\Bids\\IBidRepository.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "JwtSettings.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Models\\JwtSettings.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Models\\JwtSettings.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Models\\JwtSettings.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Models\\JwtSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T10:24:20.17Z",
+              "WhenOpened": "2025-05-24T22:27:05.721Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ExceptionMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Middleware\\ExceptionMiddleware.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Api\\Middleware\\ExceptionMiddleware.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Middleware\\ExceptionMiddleware.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Api\\Middleware\\ExceptionMiddleware.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "LoggedInUserService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Services\\LoggedInUserService.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Api\\Services\\LoggedInUserService.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Services\\LoggedInUserService.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Api\\Services\\LoggedInUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T09:13:47.686Z",
+              "WhenOpened": "2025-05-24T22:26:49.275Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthResponse.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Dtos\\UserDtos\\AuthResponse.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Dtos\\UserDtos\\AuthResponse.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Dtos\\UserDtos\\AuthResponse.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Dtos\\UserDtos\\AuthResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T22:26:21.053Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "BidRepository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Bids\\BidRepository.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Bids\\BidRepository.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Bids\\BidRepository.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Bids\\BidRepository.cs",
-              "ViewState": "AgIAAEUAAAAAAgAAAIAhwFMAAAAMAAAAAAAAAA==",
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Identity\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Identity\\Services\\JwtService.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Identity\\Services\\JwtService.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Identity\\Services\\JwtService.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAwwCYAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T08:48:47.917Z",
+              "WhenOpened": "2025-05-24T22:25:27.736Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\appsettings.json",
+              "RelativeToolTip": "AuctionManagementSystem.Api\\appsettings.json",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA4AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-24T22:25:16.893Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ValidationBehavior .cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Services\\ValidationBehavior .cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Services\\ValidationBehavior .cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Services\\ValidationBehavior .cs",
-              "RelativeToolTip": "AuctionManagementSystem.Application\\Services\\ValidationBehavior .cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAAAC4AAAAIAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "GetBidStatsByAssetIdQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Query\\GetBidById\\GetBidStatsByAssetIdQueryHandler.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Query\\GetBidById\\GetBidStatsByAssetIdQueryHandler.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Query\\GetBidById\\GetBidStatsByAssetIdQueryHandler.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Query\\GetBidById\\GetBidStatsByAssetIdQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T12:16:55.257Z",
+              "WhenOpened": "2025-05-24T22:15:00.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AddBidCommand.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Command\\AddBidCommand.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Command\\AddBidCommand.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Command\\AddBidCommand.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Command\\AddBidCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T22:14:36.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IAutoBidService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Bids\\IAutoBidService.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Contracts\\Bids\\IAutoBidService.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Bids\\IAutoBidService.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Contracts\\Bids\\IAutoBidService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T22:12:08.718Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AddBidCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\Command\\CreateBid\\AddBidCommandHandler.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\Command\\CreateBid\\AddBidCommandHandler.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\Command\\CreateBid\\AddBidCommandHandler.cs*",
-              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\Command\\CreateBid\\AddBidCommandHandler.cs*",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAAAE0AAAB6AAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Command\\AddBidCommandHandler.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Command\\AddBidCommandHandler.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Command\\AddBidCommandHandler.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\CreateBid\\Command\\AddBidCommandHandler.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAEwDAAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T11:01:09.203Z",
+              "WhenOpened": "2025-05-24T21:58:22.482Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AddBidCommand.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\Command\\CreateBid\\AddBidCommand.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\Command\\CreateBid\\AddBidCommand.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\Command\\CreateBid\\AddBidCommand.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\Command\\CreateBid\\AddBidCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 18,
+              "Title": "IAuctionWinnerService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Bids\\IAuctionWinnerService.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Contracts\\Bids\\IAuctionWinnerService.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Bids\\IAuctionWinnerService.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Contracts\\Bids\\IAuctionWinnerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T11:01:08.434Z",
+              "WhenOpened": "2025-05-24T21:54:28.565Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "PersistenceServiceRegistration.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\PersistenceServiceRegistration.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\PersistenceServiceRegistration.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\PersistenceServiceRegistration.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Persistence\\PersistenceServiceRegistration.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAgwD8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 17,
+              "Title": "IAuctionJobScheduler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Bids\\IAuctionJobScheduler.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Contracts\\Bids\\IAuctionJobScheduler.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Bids\\IAuctionJobScheduler.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Contracts\\Bids\\IAuctionJobScheduler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T10:57:18.521Z",
+              "WhenOpened": "2025-05-24T21:54:22.534Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AddAutoBidCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommandHandler.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommandHandler.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommandHandler.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommandHandler.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAiwFsAAAARAAAAAAAAAA==",
+              "DocumentIndex": 16,
+              "Title": "HangfireAuctionJobScheduler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Services\\HangfireAuctionJobScheduler.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Services\\HangfireAuctionJobScheduler.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Services\\HangfireAuctionJobScheduler.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Services\\HangfireAuctionJobScheduler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T10:55:56.808Z",
+              "WhenOpened": "2025-05-24T21:51:43.958Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AddAutoBidCommand.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommand.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommand.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommand.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "DocumentIndex": 19,
+              "Title": "HangfireAutoBidJobScheduler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Services\\HangfireAutoBidJobScheduler.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Services\\HangfireAutoBidJobScheduler.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Services\\HangfireAutoBidJobScheduler.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Services\\HangfireAutoBidJobScheduler.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAIwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T10:55:49.67Z",
+              "WhenOpened": "2025-05-24T21:37:39.511Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "tblBid.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\Entities\\Bids\\tblBid.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Domain\\Entities\\Bids\\tblBid.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\Entities\\Bids\\tblBid.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Domain\\Entities\\Bids\\tblBid.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAwwAoAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 20,
+              "Title": "BidRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Bids\\BidRepository.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Bids\\BidRepository.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Bids\\BidRepository.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Bids\\BidRepository.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowCYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T10:36:39.14Z",
+              "WhenOpened": "2025-05-24T21:02:47.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AutoBidService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Services\\AutoBidService.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Services\\AutoBidService.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Services\\AutoBidService.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Services\\AutoBidService.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAwwFEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T21:05:30.698Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
-              "Title": "AuctionManagementSystem.Domain",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
-              "RelativeToolTip": "AuctionManagementSystem.Domain\\AuctionManagementSystem.Domain.csproj",
+              "Title": "AddAutoBidCommand.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommand.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommand.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommand.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-22T10:36:22.175Z",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T20:57:45.722Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 14,
+              "Title": "AddAutoBidCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommandHandler.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommandHandler.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommandHandler.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommandHandler.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAkwI8AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T20:51:53.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "IAutoBidRepository.cs",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Bids\\IAutoBidRepository.cs",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Contracts\\Bids\\IAutoBidRepository.cs",
               "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Contracts\\Bids\\IAutoBidRepository.cs",
               "RelativeToolTip": "AuctionManagementSystem.Application\\Contracts\\Bids\\IAutoBidRepository.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAIA0wBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T10:22:54.847Z",
+              "WhenOpened": "2025-05-24T20:45:55.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AutoBidRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Bids\\AutoBidRepository.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Repositories\\Bids\\AutoBidRepository.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Repositories\\Bids\\AutoBidRepository.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Bids\\AutoBidRepository.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAYwF8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T20:45:32.965Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "BidDto.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Dtos\\Bids\\BidDto.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Dtos\\Bids\\BidDto.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Dtos\\Bids\\BidDto.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Application\\Dtos\\Bids\\BidDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Title": "AutoBidRemoveCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\DeleteAutoBid\\AutoBidRemoveCommandHandler.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\DeleteAutoBid\\AutoBidRemoveCommandHandler.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\DeleteAutoBid\\AutoBidRemoveCommandHandler.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\DeleteAutoBid\\AutoBidRemoveCommandHandler.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAQwB4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T10:22:07.923Z",
+              "WhenOpened": "2025-05-24T20:44:39.663Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AddAutoBidDto.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Dtos\\Bids\\AddAutoBidDto.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Dtos\\Bids\\AddAutoBidDto.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Dtos\\Bids\\AddAutoBidDto.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Application\\Dtos\\Bids\\AddAutoBidDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
+              "DocumentIndex": 21,
+              "Title": "AutoBidRemoveCommand.cs",
+              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\DeleteAutoBid\\AutoBidRemoveCommand.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\DeleteAutoBid\\AutoBidRemoveCommand.cs",
+              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\DeleteAutoBid\\AutoBidRemoveCommand.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\DeleteAutoBid\\AutoBidRemoveCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T10:16:52.417Z",
+              "WhenOpened": "2025-05-24T20:44:32.972Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "TblAutoBid.cs",
-              "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\Entities\\Bids\\TblAutoBid.cs",
-              "RelativeDocumentMoniker": "AuctionManagementSystem.Domain\\Entities\\Bids\\TblAutoBid.cs",
-              "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Domain\\Entities\\Bids\\TblAutoBid.cs",
-              "RelativeToolTip": "AuctionManagementSystem.Domain\\Entities\\Bids\\TblAutoBid.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAcwBQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T10:12:07.147Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "BidController.cs",
               "DocumentMoniker": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Controller\\Bid\\BidController.cs",
               "RelativeDocumentMoniker": "AuctionManagementSystem.Api\\Controller\\Bid\\BidController.cs",
               "ToolTip": "C:\\Users\\User\\OneDrive\\Desktop\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Api\\Controller\\Bid\\BidController.cs",
               "RelativeToolTip": "AuctionManagementSystem.Api\\Controller\\Bid\\BidController.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAiwC0AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCAAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T10:08:33.638Z",
+              "WhenOpened": "2025-05-24T20:35:07.037Z",
               "EditorCaption": ""
             }
           ]

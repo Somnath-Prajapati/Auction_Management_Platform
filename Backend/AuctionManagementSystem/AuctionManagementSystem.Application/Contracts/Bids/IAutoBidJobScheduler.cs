@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace AuctionManagementSystem.Application.Contracts.Bids
 {
-    public interface IAutoBidService
+    public interface IAutoBidJobScheduler
     {
-        Task RunAutoBidRoundRobin(int auctionId, int assetId);
-
-
-       
+        void ScheduleAutoBidJob();
     }
 }
