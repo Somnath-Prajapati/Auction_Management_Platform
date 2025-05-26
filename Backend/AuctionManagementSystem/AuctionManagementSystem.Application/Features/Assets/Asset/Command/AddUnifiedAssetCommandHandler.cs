@@ -6,6 +6,7 @@ using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 
@@ -33,12 +34,28 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
 
             assetEntity.CreatedAt = DateTime.UtcNow;
 
-            assetEntity.IsDeleted = true;  
-            
+            assetEntity.IsDeleted = true;
 
+            if (dto.AuctionIds != null && dto.AuctionIds.Any())
+            {
+                var selectedAuctionId = dto.AuctionIds.First(); 
+                bool isDirectAndActive = await _assetsRepository.HasAnyDirectAndActiveAuctionAsync(selectedAuctionId);
+                if(isDirectAndActive == true)
+                {
+                assetEntity.IsAvailableForDirectSale = true;
 
-            //var ans = 1;
-            //return ans;
+                }
+                else
+                {
+                    assetEntity.IsAvailableForDirectSale = false;
+                }
+            }
+            else
+            {
+                assetEntity.IsAvailableForDirectSale = false;
+            }
+
+           
             var createdAsset = await _assetsRepository.AddAssetForGallery(assetEntity);
 
             return createdAsset;

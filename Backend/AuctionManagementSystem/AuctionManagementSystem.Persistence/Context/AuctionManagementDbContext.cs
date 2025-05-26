@@ -5,6 +5,7 @@ using AuctionManagementSystem.Domain;
 using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
+using AuctionManagementSystem.Domain.Entities.AuditTrail;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
@@ -107,11 +108,10 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
 
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
-    //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public virtual DbSet<tblBid> tblBids { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }
-
+    public virtual DbSet<TblAuditTrail> TblAuditTrails { get; set; }
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
     public virtual DbSet<TblOrder> TblOrders { get; set; }
     public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
@@ -212,6 +212,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK__tblWishli__UserI__278EDA44");
         });
 
+        
 
         modelBuilder.Entity<tblOTP>(entity =>
         {
@@ -516,6 +517,38 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasDefaultValue(false)
                 .IsRequired();
         });
+        modelBuilder.Entity<TblAuditTrail>(entity =>
+        {
+            entity.HasKey(e => e.AuditId).HasName("PK__tblAudit__A17F239830D9A9C0");
+
+            entity.ToTable("tblAuditTrail");
+
+            entity.Property(e => e.ActivityPerformedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.ChangeType).HasMaxLength(50);
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
+            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
+            entity.Property(e => e.ModelName).HasMaxLength(100);
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.TblAuditTrails)
+                .HasForeignKey(d => d.RoleId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_AuditTrail_RoleId");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TblAuditTrails)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_AuditTrail_UserId");
+        });
+
 
         modelBuilder.Entity<TblAuction>(entity =>
         {
