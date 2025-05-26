@@ -44,27 +44,32 @@ namespace AuctionManagementSystem.Application.Services
 
             foreach (var winner in winners)
             {
-                var assetWinner = new TblAssetWinner
+                var existingWinner = await _context.TblAssetWinners.FirstOrDefaultAsync(w => w.AssetId == winner.AssetId);
+
+                if (existingWinner == null)
                 {
-                    AssetId = winner.AssetId,
-                    UserId = winner.UserId,
-                    AwardedPrice = winner.BidAmount,
-                    Reason = "Top Bidder",
-                    Note = "All checks completed",
-                    Approved = true,
-                    CreatedAt = DateTime.Now
-                };
+                    var assetWinner = new TblAssetWinner
+                    {
+                        AssetId = winner.AssetId,
+                        UserId = winner.UserId,
+                        AwardedPrice = winner.BidAmount,
+                        Reason = "Top Bidder",
+                        Note = "All checks completed",
+                        Approved = true,
+                        CreatedAt = DateTime.Now
+                    };
 
-                await _assetWinnerRepository.AddAsync(assetWinner);
-            await _context.SaveChangesAsync();
-
-
-                var asset = await _context.TblAssets.FirstOrDefaultAsync(a => a.AssetId == winner.AssetId);
-                if (asset != null)
-                {
-                    asset.WinnerId = assetWinner.WinnerId;
-                    _context.TblAssets.Update(asset);
+                    await _assetWinnerRepository.AddAsync(assetWinner);
                     await _context.SaveChangesAsync();
+
+
+                    var asset = await _context.TblAssets.FirstOrDefaultAsync(a => a.AssetId == winner.AssetId);
+                    if (asset != null)
+                    {
+                        asset.WinnerId = assetWinner.WinnerId;
+                        _context.TblAssets.Update(asset);
+                        await _context.SaveChangesAsync();
+                    }
                 }
             }
 
