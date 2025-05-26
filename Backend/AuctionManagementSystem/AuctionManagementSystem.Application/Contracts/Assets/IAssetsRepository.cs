@@ -27,7 +27,8 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task<bool> AssetsIsExist(int id);
         Task<IEnumerable<TblAsset>> SearchAsset(string name);
 
-
+        Task<bool> HasAnyDirectAndActiveAuctionAsync(int auctionIds); // this is for directsale
+        Task DeactivateExpiredAssetsBasedOnDeadlineAsync();        // added for hangfire 
 
         //Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents);
 

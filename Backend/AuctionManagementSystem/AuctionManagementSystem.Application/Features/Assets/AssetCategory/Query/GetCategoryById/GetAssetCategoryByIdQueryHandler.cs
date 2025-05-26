@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +7,22 @@ using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace AuctionManagementSystem.Application.Features.Assets.AssetCategory.Query.GetCategoryById
 {
     public class GetAssetCategoryByIdHandler : IRequestHandler<GetAssetCategoryByIdQuery, AssetCategoryDto>
     {
         private readonly IAssetCategoriesRepository _context;
-
         private readonly IMapper _mapper;
-        public GetAssetCategoryByIdHandler(IAssetCategoriesRepository context, IMapper mapper)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public GetAssetCategoryByIdHandler(IAssetCategoriesRepository context, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
-
 
         public async Task<AssetCategoryDto> Handle(GetAssetCategoryByIdQuery request, CancellationToken cancellationToken)
         {
@@ -33,9 +34,17 @@ namespace AuctionManagementSystem.Application.Features.Assets.AssetCategory.Quer
             }
 
             var dto = _mapper.Map<AssetCategoryDto>(entity);
+
+            var baseUrl = $"{_httpContextAccessor.HttpContext!.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}";
+
+            dto.Icon = entity.Icon != null ? $"{baseUrl}/{entity.Icon}" : null;
+            dto.Document = entity.DocumentPath != null ? $"{baseUrl}/{entity.DocumentPath}" : null;
+
+            dto.PaymentMethodIds = entity.TblAssetCategoryPaymentMethods?
+                                        .Select(pm => pm.PaymentMethodId)
+                                        .ToList();
+
             return dto;
-
-
         }
     }
 }
