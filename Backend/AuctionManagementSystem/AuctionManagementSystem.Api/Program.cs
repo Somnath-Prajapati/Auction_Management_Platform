@@ -15,6 +15,8 @@ using AuctionManagementSystem.Application;
 using AuctionManagementSystem.Identity;
 using AuctionManagementSystem.Persistence;
 using Hangfire;
+using Stripe;
+using FileService = AuctionManagementSystem.Api.Services.FileService;
 
 namespace AuctionManagementSystem.Api
 {
@@ -81,11 +83,9 @@ namespace AuctionManagementSystem.Api
 
 
 
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(
-            //    Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "AssetGallery")),
-            //    RequestPath = "/AssetGallery"
+          
+
+            StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:Secret_key").Get<String>();
 
             
             app.UseAuthentication();
