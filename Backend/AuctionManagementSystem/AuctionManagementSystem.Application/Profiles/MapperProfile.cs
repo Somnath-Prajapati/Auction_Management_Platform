@@ -34,6 +34,8 @@ using EventStore.ClientAPI;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
 using AuctionManagementSystem.Domain.Entities;
+using AuctionManagementSystem.Application.Dtos.AuditTrial;
+using AuctionManagementSystem.Domain.Entities.AuditTrail;
 
 
 namespace AuctionManagementSystem.Application.Profiles
@@ -81,7 +83,7 @@ namespace AuctionManagementSystem.Application.Profiles
 
             CreateMap<CreateAuctionCommand, TblAuction>()
             .IncludeBase<AuctionBaseCommand, TblAuction>();  // Include the common properties from AuctionBaseCommand
-
+            CreateMap<TblAuditTrail, AuditTrailDto>().ReverseMap();
             CreateMap<TblAssetCategory, AssetCategoryDto>().ReverseMap();
             CreateMap<CreateAssetCategoryDto, TblAssetCategory>();
             CreateMap<UpdateAssetCategoryDto, TblAssetCategory>();

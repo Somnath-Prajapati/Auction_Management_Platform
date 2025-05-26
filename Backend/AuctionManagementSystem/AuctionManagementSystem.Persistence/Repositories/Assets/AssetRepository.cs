@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Dtos.Assets;
@@ -391,6 +392,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<int> AddAssetForGallery(TblAsset asset)
         {
+            
+         
             asset.AssetNumber = await GenerateNextAssetNumberAsync();
             asset.IsDeleted = false;
             _context.TblAssets.Add(asset);
@@ -408,6 +411,19 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
             return (maxAssetNumber + 1).ToString();
         }
+
+        public async Task<bool> HasAnyDirectAndActiveAuctionAsync(int auctionId)
+        {
+            return await _context.TblAuctions
+                .AnyAsync(a =>
+                   a.AuctionId == auctionId &&
+                   a.Type == "Direct Sale");
+        }
+
+
+
+
+
 
         public async Task UpdateAsync(TblAsset asset)
         {
@@ -480,5 +496,35 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         {
             throw new NotImplementedException();
         }
+
+        public async Task DeactivateExpiredAssetsBasedOnDeadlineAsync()
+        {
+            var now = DateTime.UtcNow.Date;
+
+            
+            var assetsToClose = await _context.TblAssets
+                .Where(a => a.StatusId != 10
+                    && a.CreatedAt != null
+                    && a.RegistrationDeadline != null)
+                .ToListAsync();
+
+            foreach (var asset in assetsToClose)
+            {
+               
+                var elapsedDays = (now - asset.CreatedAt.Value.Date).Days;
+
+                var remainingDays = asset.RegistrationDeadline.Value - elapsedDays;
+
+                if (remainingDays <= 0)
+                {
+                   
+                    asset.StatusId = 10; 
+                }
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
+
     }
 }

@@ -6,12 +6,12 @@ using AuctionManagementSystem.Persistence.Repositories;
 
 namespace AuctionManagementSystem.Infrastructure.UoW
 {
-    public class UnitOfWork : IUnitOfWork
+    public class AuctionUnitOfWork : IAuctionUnitOfWork
     {
         private readonly AuctionManagementDbContext _context;
         private IAuctionRepository _auctionRepository;
 
-        public UnitOfWork(AuctionManagementDbContext context)
+        public AuctionUnitOfWork(AuctionManagementDbContext context)
         {
             _context = context;
         }

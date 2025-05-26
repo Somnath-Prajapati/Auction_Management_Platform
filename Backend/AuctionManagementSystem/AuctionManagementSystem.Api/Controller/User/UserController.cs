@@ -41,8 +41,10 @@ namespace AuctionManagementSystem.Api.Controller.User
             var result = await _mediator.Send(new GetUserByIdQuery(id));
             return Ok(result);
         }
-        
+
+        [AllowAnonymous]
         [HttpPost("Add")]
+
         public async Task<IActionResult> CreateUser([FromForm] UserDto dto)
         {
             var userid = _loggedInUserService.UserId;

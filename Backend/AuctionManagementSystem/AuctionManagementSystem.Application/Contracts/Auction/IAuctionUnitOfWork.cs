@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AuctionManagementSystem.Application.Contracts
 {
-    public interface IUnitOfWork
+    public interface IAuctionUnitOfWork
     {
         IAuctionRepository AuctionRepository { get; }
         Task<int> SaveAsync();
