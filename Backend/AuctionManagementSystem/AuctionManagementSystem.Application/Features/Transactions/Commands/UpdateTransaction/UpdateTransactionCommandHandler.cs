@@ -50,6 +50,7 @@ namespace AuctionManagementSystem.Application.Features.Transaction.Commands.Upda
 
                 _mapper.Map(request.Transaction, existing);
                 await _repository.UpdateAsync(existing);
+                await _repository.HandleDepositAdjustmentOnStatusChangeAsync(beforeChange, existing);
 
                 _logger.LogInformation("Transaction ID {TransactionId} updated by {Username} (UserId: {UserId})",
                     existing.TransactionId, _currentUser.Username, _currentUser.UserId);
@@ -65,10 +66,10 @@ namespace AuctionManagementSystem.Application.Features.Transaction.Commands.Upda
                     {
                         ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                     }),
-    afterChange: JsonConvert.SerializeObject(existing, new JsonSerializerSettings
-    {
-        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-    })
+                    afterChange: JsonConvert.SerializeObject(existing, new JsonSerializerSettings
+                    {
+                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                    })
                 );
 
                 return _mapper.Map<TransactionDto>(existing);
