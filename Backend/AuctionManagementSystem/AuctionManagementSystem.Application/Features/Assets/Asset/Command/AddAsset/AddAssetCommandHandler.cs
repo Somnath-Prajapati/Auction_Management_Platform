@@ -8,6 +8,7 @@ using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Application.Contracts.Auth;
 using AutoMapper;
 using MediatR;
+using Newtonsoft.Json;
 
 namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddAsset
 {
@@ -34,9 +35,15 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddA
         {
             var assetEntity = _mapper.Map<TblAsset>(request.AssetsDto);
             assetEntity.CreatedAt = DateTime.UtcNow;
-            //assetEntity.Cre = _currentUser.UserId.ToString();
+            // assetEntity.CreatedBy = _currentUser.UserId.ToString(); // Optional field
 
             var createdAsset = await _assetsRepository.AddAsset(assetEntity);
+
+            // Serialize for audit log
+            var afterChangeJson = JsonConvert.SerializeObject(createdAsset, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
 
             // Log audit trail for creation
             await _auditTrailService.LogChangeAsync(
@@ -47,7 +54,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddA
                 changeType: "New",
                 recordId: createdAsset.AssetId,
                 beforeChange: null,
-                afterChange: createdAsset
+                afterChange: afterChangeJson
             );
 
             Console.WriteLine($"Asset Created By: {_currentUser.Username} ({_currentUser.UserId}) with Role: {_currentUser.RoleName}");
