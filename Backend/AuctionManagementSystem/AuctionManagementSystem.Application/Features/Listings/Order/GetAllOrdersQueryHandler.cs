@@ -33,7 +33,7 @@ public class CreateOrderWithTransactionCommandHandler : IRequestHandler<CreateOr
 
     public async Task<List<DirectSaleAssetDto>> Handle(CreateOrderWithTransactionCommand request, CancellationToken cancellationToken)
     {
-        return await _orderRepository.ConfirmPaymentAndCreateOrderAsync(request.UserId, request.AssetIds);
+        return await _orderRepository.ConfirmPaymentAndCreateOrderAsync(request.UserId, request.AssetIds,request.paymenttype);
     }
 }
 

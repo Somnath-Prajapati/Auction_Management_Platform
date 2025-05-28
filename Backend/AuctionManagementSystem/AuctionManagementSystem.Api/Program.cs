@@ -14,11 +14,6 @@ using AuctionManagementSystem.Application;
 using AuctionManagementSystem.Identity;
 using AuctionManagementSystem.Persistence;
 using Hangfire;
-using AuctionManagementSystem.Application.Contracts.Bids;
-using Hangfire.Storage;
-using AuctionManagementSystem.Application.Services;
-using AuctionManagementSystem.Api.Services;
-
 
 namespace AuctionManagementSystem.Api
 {
@@ -73,6 +68,7 @@ namespace AuctionManagementSystem.Api
             });
 
             builder.Services.AddHangfireServer();
+            builder.Logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
 
 
             var app = builder.Build();
@@ -123,6 +119,15 @@ namespace AuctionManagementSystem.Api
 
             app.UseStaticFiles();
             app.UseHangfireDashboard();
+
+
+
+
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //    Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "AssetGallery")),
+            //    RequestPath = "/AssetGallery"
 
             
             app.UseAuthentication();

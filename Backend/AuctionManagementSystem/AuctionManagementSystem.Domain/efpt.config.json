@@ -75,7 +75,11 @@
          "ObjectType": 0
       },
       {
+<<<<<<< HEAD
          "Name": "[AuctionM_dbuser].[tblAutoBids]",
+=======
+         "Name": "[AuctionM_dbuser].[tblAuditTrail]",
+>>>>>>> 7c3d204759bf5162ef57a9ce81f11c910d345bcc
          "ObjectType": 0
       },
       {
@@ -84,6 +88,10 @@
       },
       {
          "Name": "[AuctionM_dbuser].[tblCardTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblCartItems]",
          "ObjectType": 0
       },
       {
@@ -100,6 +108,18 @@
       },
       {
          "Name": "[AuctionM_dbuser].[tblFooterLinksSettings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblOrderAssets]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblOrders]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblOTPs]",
          "ObjectType": 0
       },
       {
@@ -180,6 +200,58 @@
       },
       {
          "Name": "[AuctionM_dbuser].[tblWinnerDocuments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblWishlistItems]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[TransactionNumberTracker]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[HangFire].[AggregatedCounter]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[HangFire].[Counter]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[HangFire].[Hash]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[HangFire].[Job]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[HangFire].[JobParameter]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[HangFire].[JobQueue]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[HangFire].[List]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[HangFire].[Schema]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[HangFire].[Server]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[HangFire].[Set]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[HangFire].[State]",
          "ObjectType": 0
       }
    ],

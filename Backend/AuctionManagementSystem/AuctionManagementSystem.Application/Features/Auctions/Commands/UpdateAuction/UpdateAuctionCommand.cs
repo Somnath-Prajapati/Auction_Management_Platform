@@ -7,6 +7,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateA
     public class UpdateAuctionCommand : AuctionBaseCommand, IRequest<bool>
     {
         public int AuctionId { get; set; }
+       
     }
 
 }

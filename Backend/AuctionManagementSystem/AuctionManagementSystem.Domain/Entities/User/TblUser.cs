@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Domain.Entities.AuditTrail;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Transaction;
@@ -82,11 +83,16 @@ public partial class TblUser
     public virtual ICollection<TblOrder> TblOrders { get; set; } = new List<TblOrder>();
 
     public virtual ICollection<TblUserRole?> TblUserRoles { get; set; } = new List<TblUserRole>();
-    
+    public virtual ICollection<TblAuditTrail> TblAuditTrails { get; set; } = new List<TblAuditTrail>();
+
     public virtual ICollection<TblWishlistItem> TblWishlistItems { get; set; } = new List<TblWishlistItem>();
     public virtual ICollection<TblCartItem> TblCartItems { get; set; } = new List<TblCartItem>();
 
     // after the autobid added 
     public virtual ICollection<TblAutoBid> TblAutoBids { get; set; } = new List<TblAutoBid>();
 
+    public TblUser Clone()
+    {
+        return (TblUser)this.MemberwiseClone();
+    }
 }

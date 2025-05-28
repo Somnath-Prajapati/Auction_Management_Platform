@@ -25,6 +25,11 @@ using AuctionManagementSystem.Persistence.Repositories.Listings;
 using AuctionManagementSystem.Infrastructure.Repositories;
 using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Contracts.Listings;
+using AuctionManagementSystem.Application.Contracts.Chatbot;
+using AuctionManagementSystem.Persistence.Repositories.Chatbot;
+using AuctionManagementSystem.Application.Contracts.AuditTrail;
+using AuctionManagementSystem.Persistence.Repositories.AuditTrail;
+using AuctionManagementSystem.Persistence.Repositories.Transactions;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -37,14 +42,19 @@ namespace AuctionManagementSystem.Persistence
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
-             services.AddScoped<ISystemSettingsRepository, SystemSettingsRepository>();
+            services.AddScoped<ISystemSettingsRepository, SystemSettingsRepository>();
             services.AddScoped<IDirectSaleSettingsRepository, DirectSaleSettingsRepository>();
             services.AddScoped<IFinanceSettingsRepository, FinanceSettingsRepository>();
             services.AddScoped<IFooterLinksSettingsRepository, FooterLinksSettingsRepository>();
             services.AddScoped<IStaticPagesSettingsRepository, StaticPagesSettingsRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<ICardTypeRepository, CardTypeRepository>();
+            services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
+            services.AddScoped<ITransactionTypeRepository, TransactionTypeRepository>();
+            services.AddScoped<ITransactionStatusRepository, TransactionStatusRepository>();
+
             services.AddScoped<IAuctionRepository, AuctionRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAuctionUnitOfWork, AuctionUnitOfWork>();
             services.AddScoped<IAssetCategoriesRepository, AssetCategoriesRepository>();
             services.AddScoped<IAssetsRepository, AssetRepository>();
             services.AddScoped<IAssetGalleryRepository, AssetGalleryRepository>();
@@ -61,12 +71,17 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAuctionWinnerService, AuctionWinnerService>();
             services.AddScoped<IAssetWinnerRepository, AssetWinnerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IChatbotRepository, ChatbotRepository>();
+            services.AddScoped<IOrderEmailService, OrderEmailService>();
+
 
             services.AddScoped<IAutoBidRepository, AutoBidRepository>();
 
 
             services.AddScoped<IAssetExpirationService, AssetExpirationService>();
             
+            services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
+
             return services;
         }
     }

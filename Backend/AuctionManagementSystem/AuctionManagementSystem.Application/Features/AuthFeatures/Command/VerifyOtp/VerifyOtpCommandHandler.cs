@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Contracts.User;
-using AuctionManagementSystem.Application.Dtos.Auth;
+using AuctionManagementSystem.Application.Dtos.Assets.Auth;
 using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.AuthFeatures.Command.VerifyOtp
