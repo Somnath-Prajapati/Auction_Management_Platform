@@ -38,6 +38,8 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddA
             // assetEntity.CreatedBy = _currentUser.UserId.ToString(); // Optional field
 
             var createdAsset = await _assetsRepository.AddAsset(assetEntity);
+            Console.WriteLine($"Created Asset ID: {createdAsset.AssetId}");
+
 
             // Serialize for audit log
             var afterChangeJson = JsonConvert.SerializeObject(createdAsset, new JsonSerializerSettings
