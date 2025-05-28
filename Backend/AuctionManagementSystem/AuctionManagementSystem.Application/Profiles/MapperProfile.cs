@@ -36,6 +36,7 @@ using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
 using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Application.Dtos.AuditTrial;
 using AuctionManagementSystem.Domain.Entities.AuditTrail;
+using AuctionManagementSystem.Domain;
 
 
 namespace AuctionManagementSystem.Application.Profiles
@@ -124,7 +125,7 @@ namespace AuctionManagementSystem.Application.Profiles
             .ForMember(dest => dest.BidAmount, opt => opt.MapFrom(src => src.BidAmount)).ReverseMap() ;
         
 
-        CreateMap<TblTransaction, TransactionDto>()
+             CreateMap<TblTransaction, TransactionDto>()
             .ForMember(dest => dest.UserFullName, opt => opt.MapFrom(src => src.User.Name))
             .ForMember(dest => dest.TransactionType, opt => opt.MapFrom(src => src.TransactionType.TransactionTypeName))
             .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.PaymentMethodName))
@@ -140,6 +141,11 @@ namespace AuctionManagementSystem.Application.Profiles
             .ForMember(dest => dest.StatusName, opt => opt.MapFrom(src => src.Status.StatusName))
             .ForMember(dest => dest.TransactionTypeName, opt => opt.MapFrom(src => src.TransactionType.TransactionTypeName))
             .ForMember(dest => dest.CardTypeName, opt => opt.MapFrom(src => src.CardType != null ? src.CardType.CardTypeName : null));
+
+            CreateMap<TblCardType, CardTypeDto>();
+            CreateMap<TblTransactionType, TransactionTypeDto>();
+            CreateMap<TblPaymentMethod, PaymentMethodDto>();
+            CreateMap<TblTransactionStatus, TransactionStatusDto>();
 
             CreateMap<GetAssetsFormDto, DirectSaleAssetDto>()
            .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.StartingPrice)) // If StartingPrice is null, default to 0

@@ -6,6 +6,7 @@ using AuctionManagementSystem.Application.Features.Transactions.Commands.DeleteT
 using AuctionManagementSystem.Application.Features.Transactions.Commands.UpdateTransaction;
 using AuctionManagementSystem.Application.Features.Transactions.Queries.GetTransactionById;
 using AuctionManagementSystem.Application.Features.Transactions.Queries.GetAllTransactions;
+using AuctionManagementSystem.Application.Features.Transactions;
 
 namespace AuctionManagementSystem.API.Controllers;
 
@@ -83,5 +84,12 @@ public class TransactionsController : ControllerBase
             return NotFound();
 
         return NoContent();
+    }
+
+    [HttpGet("metadata")]
+    public async Task<IActionResult> GetMetadata()
+    {
+        var result = await _mediator.Send(new GetTransactionMetadataQuery());
+        return Ok(result);
     }
 }
