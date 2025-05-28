@@ -1,11 +1,11 @@
 ﻿using AuctionManagementSystem.Application.Features.AuthFeatures.Command.VerifyOtp;
 using AuctionManagementSystem.Application.Features.AuthFeatures.Command;
-using AuctionManagementSystem.Application.Dtos.Auth;
 using AuctionManagementSystem.Application.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Application.Dtos.Assets.Auth;
 
 namespace AuctionManagementSystem.Api.Controller.Auth
 {

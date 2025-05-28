@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Dtos.Assets;
@@ -77,6 +78,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     AssetNumber = a.AssetNumber,
                     CreatedAt = a.CreatedAt,
                     UpdatedAt = a.UpdatedAt,
+                    isDeleted = a.IsDeleted,
+                    IsAvailableForDirectSale = a.IsAvailableForDirectSale,
                     AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
 
                     Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
@@ -160,7 +163,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
              UpdatedAt = a.UpdatedAt,
              RequestForInquiry=a.RequestForInquiry,
              RequestForViewing = a.RequestForViewing,
-
+             IsAvailableForDirectSale = a.IsAvailableForDirectSale,
+             isDeleted = a.IsDeleted,
              AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
 
              // for auctionids 
@@ -384,16 +388,16 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .FirstOrDefaultAsync(a => a.AssetId == asset.AssetId);  
         }
 
-
-
-        public async Task<int> AddAssetForGallery(TblAsset asset)
+        public async Task<TblAsset> AddAssetForGallery(TblAsset asset)
         {
+            
+         
             asset.AssetNumber = await GenerateNextAssetNumberAsync();
             asset.IsDeleted = false;
             _context.TblAssets.Add(asset);
             await _context.SaveChangesAsync();
 
-            return asset.AssetId;
+            return asset;
         }
 
         public async Task<string> GenerateNextAssetNumberAsync(int startFrom = 1063)
@@ -405,6 +409,19 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
             return (maxAssetNumber + 1).ToString();
         }
+
+        public async Task<bool> HasAnyDirectAndActiveAuctionAsync(int auctionId)
+        {
+            return await _context.TblAuctions
+                .AnyAsync(a =>
+                   a.AuctionId == auctionId &&
+                   a.Type == "Direct Sale");
+        }
+
+
+
+
+
 
         public async Task UpdateAsync(TblAsset asset)
         {
@@ -477,5 +494,35 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         {
             throw new NotImplementedException();
         }
+
+        public async Task DeactivateExpiredAssetsBasedOnDeadlineAsync()
+        {
+            var now = DateTime.UtcNow.Date;
+
+            
+            var assetsToClose = await _context.TblAssets
+                .Where(a => a.StatusId != 10
+                    && a.CreatedAt != null
+                    && a.RegistrationDeadline != null)
+                .ToListAsync();
+
+            foreach (var asset in assetsToClose)
+            {
+               
+                var elapsedDays = (now - asset.CreatedAt.Value.Date).Days;
+
+                var remainingDays = asset.RegistrationDeadline.Value - elapsedDays;
+
+                if (remainingDays <= 0)
+                {
+                   
+                    asset.StatusId = 10; 
+                }
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
+
     }
 }

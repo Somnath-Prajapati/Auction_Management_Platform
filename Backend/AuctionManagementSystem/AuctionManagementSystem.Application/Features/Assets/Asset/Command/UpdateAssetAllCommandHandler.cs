@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using AuctionManagementSystem.Application.Contracts.Assets;
+using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Command;
@@ -17,7 +18,7 @@ using Newtonsoft.Json;
 
 namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
 {
-    public class UpdateAssetAllCommandHandler : IRequestHandler<UpdateAssetAllCommand,bool>
+    public class UpdateAssetAllCommandHandler : IRequestHandler<UpdateAssetAllCommand, bool>
     {
         private readonly IAssetsRepository _assetsRepository;
         private readonly IAssetGalleryRepository _galleryRepo;
@@ -26,16 +27,19 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
         private readonly IFileService _fileService;
         private readonly IAssetDetailRepository _assetDetailRepository;
         private readonly IMediator _mediator;
+        private readonly IAuditTrailService _auditTrailService;
+        private readonly ICurrentUserService _currentUser;
+
         public UpdateAssetAllCommandHandler(
-                IAssetsRepository assetsRepository,
-                IAssetGalleryRepository galleryRepo,
-                IAssetDocumentRepository documentRepo,
-                IAuctionAssetRepository auctionAssetRepo,
-                IFileService fileService,
-                IAssetDetailRepository assetDetailRepository
-,
-                IMediator mediator
-            )
+            IAssetsRepository assetsRepository,
+            IAssetGalleryRepository galleryRepo,
+            IAssetDocumentRepository documentRepo,
+            IAuctionAssetRepository auctionAssetRepo,
+            IFileService fileService,
+            IAssetDetailRepository assetDetailRepository,
+            IMediator mediator,
+            IAuditTrailService auditTrailService,
+            ICurrentUserService currentUser)
         {
             _assetsRepository = assetsRepository;
             _galleryRepo = galleryRepo;
@@ -44,6 +48,8 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
             _fileService = fileService;
             _assetDetailRepository = assetDetailRepository;
             _mediator = mediator;
+            _auditTrailService = auditTrailService;
+            _currentUser = currentUser;
         }
 
         public async Task<bool> Handle(UpdateAssetAllCommand request, CancellationToken cancellationToken)
@@ -52,22 +58,24 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
             var asset = await _assetsRepository.GetIdDeleteAsync(dto.AssetId);
             if (asset == null) return false;
 
+            // Capture BEFORE state for audit logging
+            var beforeChange = JsonConvert.SerializeObject(asset, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
 
+            // Deserialize details
             List<UpdateAssetDetailDto> details;
             try
             {
-                details = JsonConvert.DeserializeObject<List<UpdateAssetDetailDto>>(dto.DetailsJson ?? "[]");
-                if (details == null) details = new List<UpdateAssetDetailDto>();
+                details = JsonConvert.DeserializeObject<List<UpdateAssetDetailDto>>(dto.DetailsJson ?? "[]") ?? new List<UpdateAssetDetailDto>();
             }
             catch
             {
                 throw new Exception("Invalid details format.");
-
             }
 
-
-            // Update main asset fields --------------------
-
+            // Update asset fields
             asset.AssetNumber = dto.AssetNumber;
             asset.Title = dto.Title;
             asset.CategoryId = dto.CategoryId;
@@ -93,22 +101,16 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
             asset.AuctionFees = dto.AuctionFees;
             asset.BuyerCommission = dto.BuyerCommission;
             asset.WinnerId = dto.WinnerId;
-            //asset.awa = dto.AwardedPrice;
             asset.SalesNotes = dto.SalesNotes;
             asset.RequestForInquiry = dto.RequestForInquiry;
             asset.RequestForViewing = dto.RequestForViewing;
             asset.UpdatedAt = DateTime.UtcNow;
 
-
-
-
-            //await _assetDetailRepository.UpdateDetailsAsync(dto.AssetId, dto.Attributes);
-
-
-            if (details != null && details.Any())
+            // Update details
+            if (details.Any())
             {
                 await _assetDetailRepository.RemoveAssetDetailsAsync(dto.AssetId);
-                
+
                 foreach (var detail in details)
                 {
                     var assetDetail = new TblAssetDetail
@@ -122,26 +124,24 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
                 }
             }
 
-           
-
+            // Add new gallery images
             if (dto.NewGalleryImages != null)
             {
-                   foreach (var file in dto.NewGalleryImages)
+                foreach (var file in dto.NewGalleryImages)
+                {
+                    var galleryDto = new AssetsGalleryDto
                     {
-                        var galleryDto = new AssetsGalleryDto
-                        {
-                            AssetId = dto.AssetId,
-                            File = file,
-                            MediaType = "image",
-                            SortOrder = 0
-                        };
+                        AssetId = dto.AssetId,
+                        File = file,
+                        MediaType = "image",
+                        SortOrder = 0
+                    };
 
-                        await _mediator.Send(new AddAssetGalleryCommand(galleryDto));
-                    }
+                    await _mediator.Send(new AddAssetGalleryCommand(galleryDto));
+                }
             }
 
-
-
+            // Add new documents
             if (dto.NewDocuments != null && dto.NewDocuments.Any())
             {
                 foreach (var document in dto.NewDocuments)
@@ -149,18 +149,46 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
                     var assetDocument = new TblAssetDocument
                     {
                         AssetId = dto.AssetId,
-                        DocumentType="pdf",
-                        FilePath = await _fileService.SaveFileAsync(document, "AssetDocuments") 
+                        DocumentType = "pdf",
+                        FilePath = await _fileService.SaveFileAsync(document, "AssetDocuments")
                     };
 
                     await _documentRepo.AddAsync(assetDocument);
                 }
             }
 
+            // Save to DB
             await _assetsRepository.UpdateAsync(asset);
 
+            // Capture AFTER state for audit logging
+            var afterChange = JsonConvert.SerializeObject(asset, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
 
-            return true;    
+            // Log audit
+            try
+            {
+                await _auditTrailService.LogChangeAsync(
+                    userId: _currentUser.UserId,
+                    username: _currentUser.Username,
+                    roleName: _currentUser.RoleName,
+                    modelName: "Asset",
+                    changeType: "Update",
+                    recordId: asset.AssetId,
+                    beforeChange: beforeChange,
+                    afterChange: afterChange
+                );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Audit Trail Logging Failed: " + ex.Message);
+            }
+
+            Console.WriteLine($"Asset All Updated By: {_currentUser.Username} ({_currentUser.UserId})");
+
+            return true;
         }
     }
+
 }

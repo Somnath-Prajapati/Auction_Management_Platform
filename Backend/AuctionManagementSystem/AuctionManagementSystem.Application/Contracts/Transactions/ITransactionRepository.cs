@@ -17,5 +17,7 @@ namespace AuctionManagementSystem.Application.Contracts.Transactions
         Task<TblTransaction> AddAsync(TblTransaction entity);
         Task UpdateAsync(TblTransaction entity);
         Task DeleteAsync(TblTransaction entity);
+
+        Task HandleDepositAdjustmentOnStatusChangeAsync(TblTransaction before, TblTransaction after);
     }
 }

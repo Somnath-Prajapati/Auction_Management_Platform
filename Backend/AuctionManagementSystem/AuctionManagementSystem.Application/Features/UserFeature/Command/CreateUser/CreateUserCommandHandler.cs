@@ -1,10 +1,12 @@
 ﻿using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Domain.Entities.User;
-using AuctionManagementSystem.Application.Exceptions;  // Add this namespace for custom exceptions
+using AuctionManagementSystem.Application.Exceptions;
+using AuctionManagementSystem.Application.Contracts.Auth;
+using AuctionManagementSystem.Application.Contracts.AuditTrail; // <-- Add this
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using AuctionManagementSystem.Application.Contracts.Auth;
+using Newtonsoft.Json; // <-- For serializing afterChange if needed
 
 namespace AuctionManagementSystem.Application.Features.UserFeature.Command.CreateUser
 {
@@ -14,13 +16,23 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
         private readonly IFileService _fileService;
         private readonly IMapper _mapper;
         private readonly ILoggedInUserService _loggedInUserService;
+        private readonly IAuditTrailService _auditTrailService; // <-- Add this
+        private readonly ICurrentUserService _currentUser; // <-- Add this
 
-        public CreateUserCommandHandler(IUserRepository userRepository, IFileService fileService, IMapper mapper, ILoggedInUserService loggedInUserService)
+        public CreateUserCommandHandler(
+            IUserRepository userRepository,
+            IFileService fileService,
+            IMapper mapper,
+            ILoggedInUserService loggedInUserService,
+            IAuditTrailService auditTrailService, // <-- Inject
+            ICurrentUserService currentUser) // <-- Inject
         {
             _userRepository = userRepository;
             _fileService = fileService;
             _mapper = mapper;
             _loggedInUserService = loggedInUserService;
+            _auditTrailService = auditTrailService;
+            _currentUser = currentUser;
         }
 
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
@@ -51,13 +63,32 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
             user.LastOnline = DateTime.UtcNow;
             user.CreatedDate = DateTime.UtcNow;
             user.IsDeleted = false;
-
+            var userId = await _userRepository.AddUserAsync(user);
             try
             {
-                return await _userRepository.AddUserAsync(user);
+                Console.WriteLine($"[DEBUG] UserId: {_currentUser.UserId}, Username: {_currentUser.Username}, Role: {_currentUser.RoleName}");
+                var afterChangeJson = JsonConvert.SerializeObject(user, new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                });
+
+                // Audit Trail Logging
+                await _auditTrailService.LogChangeAsync(
+                    userId: _currentUser.UserId,
+                    username: _currentUser.Username,
+                    roleName: _currentUser.RoleName,
+                    modelName: "User",
+                    changeType: "New",
+                    recordId: userId,
+                    beforeChange: null,
+                    afterChange: afterChangeJson
+                );
+
+                return userId;
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Audit Trail Logging Failed: " + ex.Message);
                 throw new DatabaseException("An error occurred while adding the user to the database.");
             }
         }
