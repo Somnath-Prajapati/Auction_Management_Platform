@@ -14,6 +14,9 @@ using AuctionManagementSystem.Application;
 using AuctionManagementSystem.Identity;
 using AuctionManagementSystem.Persistence;
 using Hangfire;
+using AuctionManagementSystem.Api.Services;
+using AuctionManagementSystem.Application.Services;
+using AuctionManagementSystem.Application.Contracts.Bids;
 
 namespace AuctionManagementSystem.Api
 {
