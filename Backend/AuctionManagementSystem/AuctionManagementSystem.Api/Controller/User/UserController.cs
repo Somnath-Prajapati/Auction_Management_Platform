@@ -44,6 +44,7 @@ namespace AuctionManagementSystem.Api.Controller.User
 
         [AllowAnonymous]
         [HttpPost("Add")]
+
         public async Task<IActionResult> CreateUser([FromForm] UserDto dto)
         {
             var userid = _loggedInUserService.UserId;

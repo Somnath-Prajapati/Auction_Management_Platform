@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Dtos.Auth;
+using AuctionManagementSystem.Application.Dtos.Assets.Auth;
 using AuctionManagementSystem.Application.Models;
 using MediatR;
 

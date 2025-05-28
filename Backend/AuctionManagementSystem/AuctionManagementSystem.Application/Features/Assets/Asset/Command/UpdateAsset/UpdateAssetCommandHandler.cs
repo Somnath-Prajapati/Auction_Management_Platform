@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AutoMapper;
 using MediatR;
+using AuctionManagementSystem.Application.Contracts.AuditTrail;
+using AuctionManagementSystem.Application.Contracts.Auth;
+using Newtonsoft.Json;
 
 namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset
 {
@@ -15,58 +16,93 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.Upda
     {
         private readonly IAssetsRepository _assetsRepository;
         private readonly IMapper _mapper;
+        private readonly IAuditTrailService _auditTrailService;
+        private readonly ICurrentUserService _currentUser;
 
-        public UpdateAssetCommandHandler(IAssetsRepository assetsRepository, IMapper mapper)
-
+        public UpdateAssetCommandHandler(
+            IAssetsRepository assetsRepository,
+            IMapper mapper,
+            IAuditTrailService auditTrailService,
+            ICurrentUserService currentUser)
         {
             _assetsRepository = assetsRepository;
             _mapper = mapper;
+            _auditTrailService = auditTrailService;
+            _currentUser = currentUser;
         }
 
         public async Task Handle(UpdateAssetCommand request, CancellationToken cancellationToken)
         {
+            var asset = await _assetsRepository.GetIdDeleteAsync(request.id);
 
-            var Asset = await _assetsRepository.GetIdDeleteAsync(request.id);
-            Console.WriteLine(Asset);
-
-            if (Asset == null)
+            if (asset == null)
             {
-
                 throw new Exception($"Asset with ID {request.id} not found.");
             }
 
-            Asset.Title = request.AssetsDto.Title;
-            Asset.CategoryId = request.AssetsDto.CategoryId;
-            Asset.Deposit = request.AssetsDto.Deposit;
-            Asset.SellerId = request.AssetsDto.SellerId;
-            Asset.Commission = request.AssetsDto.Commission;
-            Asset.StartingPrice = request.AssetsDto.StartingPrice;
-            Asset.ReserveAmount = request.AssetsDto.ReserveAmount;
-            Asset.IncrementalTime = request.AssetsDto.IncrementalTime;
-            Asset.MinIncrement = request.AssetsDto.MinIncrement;
-            Asset.MakeOffer = request.AssetsDto.MakeOffer;
-            Asset.Featured = request.AssetsDto.Featured;
-            Asset.AwardingId = request.AssetsDto.AwardingId;
-            Asset.StatusId = request.AssetsDto.StatusId;
-            Asset.Vatid = request.AssetsDto.Vatid;
-            Asset.Vatpercent = request.AssetsDto.Vatpercent;
-            Asset.CourtCaseNumber = request.AssetsDto.CourtCaseNumber;
-            Asset.RegistrationDeadline = request.AssetsDto.RegistrationDeadline;
-            Asset.MapLatitude = request.AssetsDto.MapLatitude;
-            Asset.MapLongitude = request.AssetsDto.MapLongitude;
-            Asset.AdminFees = request.AssetsDto.AdminFees;
-            Asset.AuctionFees = request.AssetsDto.AuctionFees;
-            Asset.BuyerCommission = request.AssetsDto.BuyerCommission;
-            Asset.WinnerId = request.AssetsDto.WinnerId;
-            Asset.SalesNotes = request.AssetsDto.SalesNotes;
-            Asset.Description = request.AssetsDto.Description;
+            // Capture BEFORE state (clone or serialize before modification)
+            var beforeChange = JsonConvert.SerializeObject(asset, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
 
-            Asset.UpdatedAt = DateTime.UtcNow;
+            // Update fields
+            asset.Title = request.AssetsDto.Title;
+            asset.CategoryId = request.AssetsDto.CategoryId;
+            asset.Deposit = request.AssetsDto.Deposit;
+            asset.SellerId = request.AssetsDto.SellerId;
+            asset.Commission = request.AssetsDto.Commission;
+            asset.StartingPrice = request.AssetsDto.StartingPrice;
+            asset.ReserveAmount = request.AssetsDto.ReserveAmount;
+            asset.IncrementalTime = request.AssetsDto.IncrementalTime;
+            asset.MinIncrement = request.AssetsDto.MinIncrement;
+            asset.MakeOffer = request.AssetsDto.MakeOffer;
+            asset.Featured = request.AssetsDto.Featured;
+            asset.AwardingId = request.AssetsDto.AwardingId;
+            asset.StatusId = request.AssetsDto.StatusId;
+            asset.Vatid = request.AssetsDto.Vatid;
+            asset.Vatpercent = request.AssetsDto.Vatpercent;
+            asset.CourtCaseNumber = request.AssetsDto.CourtCaseNumber;
+            asset.RegistrationDeadline = request.AssetsDto.RegistrationDeadline;
+            asset.MapLatitude = request.AssetsDto.MapLatitude;
+            asset.MapLongitude = request.AssetsDto.MapLongitude;
+            asset.AdminFees = request.AssetsDto.AdminFees;
+            asset.AuctionFees = request.AssetsDto.AuctionFees;
+            asset.BuyerCommission = request.AssetsDto.BuyerCommission;
+            asset.WinnerId = request.AssetsDto.WinnerId;
+            asset.SalesNotes = request.AssetsDto.SalesNotes;
+            asset.Description = request.AssetsDto.Description;
+            asset.UpdatedAt = DateTime.UtcNow;
 
-            Console.WriteLine(Asset);
+            // Capture AFTER state
+            var afterChange = JsonConvert.SerializeObject(asset, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
 
-            await _assetsRepository.UpdateAsync(Asset);
+            // Update in DB
+            await _assetsRepository.UpdateAsync(asset);
+            try
+            {
+                await _auditTrailService.LogChangeAsync(
+                    userId: _currentUser.UserId,
+                    username: _currentUser.Username,
+                    roleName: _currentUser.RoleName,
+                    modelName: "Asset",
+                    changeType: "Update",
+                    recordId: asset.AssetId,
+                    beforeChange: beforeChange,
+                    afterChange: afterChange
+                );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Audit Trail Logging Failed: " + ex.Message);
+            }
 
+
+            Console.WriteLine($"Asset Updated By: {_currentUser.Username} ({_currentUser.UserId})");
         }
+
     }
 }
