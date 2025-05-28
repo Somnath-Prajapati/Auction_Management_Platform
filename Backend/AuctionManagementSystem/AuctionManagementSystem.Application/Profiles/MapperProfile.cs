@@ -109,7 +109,6 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<AssetDocumentUploadDto, TblAssetDocument>().ReverseMap();
 
             CreateMap<AssetDocumentFormDto, TblAssetDocument>().ReverseMap();
-
             CreateMap<GetAssetDetailsDto, TblAssetDetail>().ReverseMap();
             //Mapping for Create,Upadte Request Dto
             CreateMap<CreateRequestDto, AddRequestCommand>();
@@ -155,6 +154,8 @@ namespace AuctionManagementSystem.Application.Profiles
                 // Add more as needed
                 ;
 
+
+            CreateMap<AddAutoBidDto, TblAutoBid>().ReverseMap();
 
             CreateMap<CreateRequestDto, AddRequestCommand>().ReverseMap();
             CreateMap<TblRequest, CreateRequestDto>().ReverseMap();

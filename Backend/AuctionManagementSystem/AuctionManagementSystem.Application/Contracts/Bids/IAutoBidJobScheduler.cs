@@ -8,6 +8,10 @@ namespace AuctionManagementSystem.Application.Contracts.Bids
 {
     public interface IAutoBidJobScheduler
     {
+
         void ScheduleAutoBidJob();
+
+        Task RunAutoBidForAllActiveAssets();
     }
+
 }

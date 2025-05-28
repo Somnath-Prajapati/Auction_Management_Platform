@@ -58,9 +58,13 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
             //{
             //    currentWinningBid.IsWinningBid = false;
             //    _context.tblBids.Update(currentWinningBid);
-            if(currentWinningBid != null)
-            {
 
+            if (currentWinningBid == null || !currentWinningBid.Any())
+                return;
+
+           
+
+            
             if(currentWinningBid.Count > 1)
             {
                 foreach (var bid in currentWinningBid)
@@ -75,7 +79,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
                     _context.tblBids.Update(currentWinningBid[0]);
                 }
            
-            }
+            
             await _context.SaveChangesAsync();
         }
         public async Task<(decimal HighestBid, int BidCount)> GetBidStatsByAssetIdAsync(int assetId)
