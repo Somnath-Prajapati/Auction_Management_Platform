@@ -48,7 +48,7 @@ namespace AuctionManagementSystem.Application.Services
         }
 
         public void demo()
-        {
+        {   
             Console.WriteLine("job schedule : " + DateTime.Now.ToString());
         }
 
@@ -57,11 +57,11 @@ namespace AuctionManagementSystem.Application.Services
             try
             {
                 Console.WriteLine($"[AutoBid] Job running at {DateTime.UtcNow}");
-                //var activeAuctionAssets = await _autoBidRepository.GetActiveAuctionAssetPairsAsync();
-                //foreach (var (auctionId, assetId) in activeAuctionAssets)
-                //{
-                //    await _autoBidService.RunAutoBidRoundRobin(auctionId, assetId);
-                //}
+                var activeAuctionAssets = await _autoBidRepository.GetActiveAuctionAssetPairsAsync();
+                foreach (var (auctionId, assetId) in activeAuctionAssets)
+                {
+                    await _autoBidService.RunAutoBidRoundRobin(auctionId, assetId);
+                }
             }
             catch (Exception e)
             {
