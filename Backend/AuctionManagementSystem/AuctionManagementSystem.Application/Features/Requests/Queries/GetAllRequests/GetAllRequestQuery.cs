@@ -12,4 +12,6 @@ namespace AuctionManagementSystem.Application.Features.Requests.Queries.GetAllRe
     public class GetAllRequestQuery : IRequest<IEnumerable<RequestDto>>
     {
     }
+
+
 }

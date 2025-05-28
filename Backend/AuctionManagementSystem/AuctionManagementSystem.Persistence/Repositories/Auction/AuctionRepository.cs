@@ -37,19 +37,17 @@ namespace AuctionManagementSystem.Persistence.Repositories
 
             // Step 3: Query total bid amounts per auction from TblBid
             var totalBidsPerAuction = await (
-        from b in _context.tblBids
-        join a in _context.TblAuctions on b.AuctionId equals a.AuctionId
-        where !a.IsDeleted
-        group b by b.AuctionId into g
-        select new
-        {
-            AuctionId = g.Key,
-            Total = g.Sum(b => b.BidAmount)
-        }
-    ).ToDictionaryAsync(x => x.AuctionId, x => x.Total);
+                from b in _context.tblBids
+                join a in _context.TblAuctions on b.AuctionId equals a.AuctionId
+                where !a.IsDeleted
+                group b by b.AuctionId into g
+                select new
+                {
+                    AuctionId = g.Key,
+                    Total = g.Sum(b => b.BidAmount)
+                }
+            ).ToDictionaryAsync(x => x.AuctionId, x => x.Total);
 
-
-            // Step 4: Assign total bid amount to each auction
             foreach (var auction in auctions)
             {
                 auction.TotalPrice = totalBidsPerAuction.TryGetValue(auction.AuctionId, out var total)

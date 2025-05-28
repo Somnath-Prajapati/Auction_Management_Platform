@@ -74,16 +74,16 @@ namespace AuctionManagementSystem.Api.Controller.Assets
 
 
 
-        [Route("add")]
-        [HttpPost]
-        public async Task<ActionResult<GetAssetsDto>> CreateAsset(CreateAssetsDto createAsset)
-        {
-            var result = await _mediator.Send(new AddAssetCommand(createAsset));
+        //[Route("add")]
+        //[HttpPost]
+        //public async Task<ActionResult<GetAssetsDto>> CreateAsset(CreateAssetsDto createAsset)
+        //{
+        //    var result = await _mediator.Send(new AddAssetCommand(createAsset));
 
           
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
 
         //[Route("GetById")]
         [HttpGet("{id}")]
@@ -101,6 +101,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                 return BadRequest("ID in URL does not match ID in body");
             await _mediator.Send(new UpdateAssetCommand(id, assetsDto));
             return Ok();
+
         }
 
         //[Route("Search Asset")]

@@ -20,8 +20,12 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         }
         public async Task<TblAssetCategory?> GetByIdAsync(int id)
         {
-            return await _context.TblAssetCategories.FirstOrDefaultAsync(c => c.CategoryId == id);
+            return await _context.TblAssetCategories
+                                 .Include(c => c.TblAssetCategoryPaymentMethods)
+                                 .ThenInclude(cp => cp.PaymentMethod)
+                                 .FirstOrDefaultAsync(c => c.CategoryId == id && !c.IsDeleted);
         }
+
 
         public async Task<int> SaveAsync()
         {
@@ -70,7 +74,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     CategoryId = category.CategoryId,
                     PaymentMethodId = methodId
                 };
-                // Log each relation being added
                 Console.WriteLine($"Adding PaymentMethod: {methodId} for CategoryId: {category.CategoryId}");
                 _context.TblAssetCategoryPaymentMethods.Add(relation);
             }
@@ -78,6 +81,33 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             await _context.SaveChangesAsync();
             return category;
         }
+        public async Task UpdateWithPaymentMethodsAsync(TblAssetCategory category, List<int> newPaymentMethodIds)
+        {
+            var existing = await _context.TblAssetCategories
+                .Include(c => c.TblAssetCategoryPaymentMethods)
+                .FirstOrDefaultAsync(c => c.CategoryId == category.CategoryId);
+
+            if (existing == null)
+                throw new Exception("Category not found");
+
+            _context.Entry(existing).CurrentValues.SetValues(category);
+
+            _context.TblAssetCategoryPaymentMethods
+                .RemoveRange(existing.TblAssetCategoryPaymentMethods);
+
+            foreach (var methodId in newPaymentMethodIds)
+            {
+                existing.TblAssetCategoryPaymentMethods.Add(new TblAssetCategoryPaymentMethod
+                {
+                    CategoryId = existing.CategoryId,
+                    PaymentMethodId = methodId
+                });
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
+
 
     }
 }

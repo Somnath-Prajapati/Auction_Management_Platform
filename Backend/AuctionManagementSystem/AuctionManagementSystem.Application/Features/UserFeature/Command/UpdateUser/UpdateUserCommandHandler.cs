@@ -3,6 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Exceptions;
+using AuctionManagementSystem.Application.Contracts.AuditTrail;
+using AuctionManagementSystem.Application.Contracts.Auth;
 using AutoMapper;
 using MediatR;
 
@@ -13,12 +15,21 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Updat
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly IFileService _fileService;
+        private readonly IAuditTrailService _auditTrailService;
+        private readonly ICurrentUserService _currentUser;
 
-        public UpdateUserCommandHandler(IUserRepository userRepository, IMapper mapper, IFileService fileService)
+        public UpdateUserCommandHandler(
+            IUserRepository userRepository,
+            IMapper mapper,
+            IFileService fileService,
+            IAuditTrailService auditTrailService,
+            ICurrentUserService currentUser)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _fileService = fileService;
+            _auditTrailService = auditTrailService;
+            _currentUser = currentUser;
         }
 
         public async Task<int> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
@@ -27,6 +38,8 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Updat
             if (user == null)
                 throw new NotFoundException("User not found");
 
+            var oldUserSnapshot = user.Clone(); // Shallow copy for audit trail
+                                               
             var existingProfileImage = user.ProfileImage;
             var existingPersonalIdImage = user.PersonalIdImage;
 
@@ -34,15 +47,10 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Updat
             var goverementIdExists = await _userRepository.GetByPersonalIdNumberForUpdateAsync(request.Dto.PersonalIdNumber, request.Id);
 
             if (existingUser != null || goverementIdExists != null)
-            {
-                throw new BadRequestException("A user with the same email, mobile number, or Goverment ID number already exists.");
-            }
-
-
+                throw new BadRequestException("A user with the same email, mobile number, or Government ID number already exists.");
 
             _mapper.Map(request.Dto, user);
 
-          
             if (request.Dto.ProfileImage != null)
             {
                 if (!string.IsNullOrEmpty(existingProfileImage))
@@ -73,7 +81,23 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Updat
 
             try
             {
-                return await _userRepository.UpdateUserAsync(user);
+                var result = await _userRepository.UpdateUserAsync(user);
+
+                // Log audit trail for update
+                await _auditTrailService.LogChangeAsync(
+                    userId: _currentUser.UserId,
+                    username: _currentUser.Username,
+                    roleName: _currentUser.RoleName,
+                    modelName: "User",
+                    changeType: "Update",
+                    recordId: user.UserId,
+                    beforeChange: oldUserSnapshot,
+                    afterChange: user
+                );
+
+                Console.WriteLine($"User Updated By: {_currentUser.Username} ({_currentUser.UserId}) with Role: {_currentUser.RoleName}");
+
+                return result;
             }
             catch
             {
