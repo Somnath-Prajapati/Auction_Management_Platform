@@ -25,6 +25,8 @@ using AuctionManagementSystem.Persistence.Repositories.Listings;
 using AuctionManagementSystem.Infrastructure.Repositories;
 using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Contracts.Listings;
+using AuctionManagementSystem.Application.Contracts.Chatbot;
+using AuctionManagementSystem.Persistence.Repositories.Chatbot;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -61,6 +63,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAuctionWinnerService, AuctionWinnerService>();
             services.AddScoped<IAssetWinnerRepository, AssetWinnerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IChatbotRepository, ChatbotRepository>();
             return services;
         }
     }
