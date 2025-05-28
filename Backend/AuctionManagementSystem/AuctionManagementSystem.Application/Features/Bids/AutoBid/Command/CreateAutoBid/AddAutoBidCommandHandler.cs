@@ -82,12 +82,15 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
                 }
 
                 // 5 get the all user fot get user
-                var existingAutoBid = await _autoBidRepo.GetByUserAuctionAssetAsync(request.UserId, request.AuctionId, request.AssetId);
+                //var existingAutoBid = await _autoBidRepo.GetByUserAuctionAssetAsync(request.UserId, request.AuctionId, request.AssetId);
+
+                var existingAutoBid = await _autoBidRepo.GetUserAutoBidAsync(request.UserId, request.AuctionId, request.AssetId);
 
                 if (existingAutoBid != null)
                 {
                     existingAutoBid.MaxBidAmount = request.MaxBidAmount;
                     existingAutoBid.UpdatedDate = DateTime.UtcNow;
+                    existingAutoBid.IsActive = true;
                     await _autoBidRepo.UpdateAutoBidAsync(existingAutoBid);
                 }
                 else

@@ -12,6 +12,8 @@ namespace AuctionManagementSystem.Application.Dtos.Bids
         public int AuctionId { get; set; }
         public int AssetId { get; set; }
         public decimal MaxBidAmount { get; set; }
+        public bool IsActive { get; set; } 
+
     }
 
 }

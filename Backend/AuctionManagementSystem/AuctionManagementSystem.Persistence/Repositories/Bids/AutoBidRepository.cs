@@ -25,7 +25,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
             return autoBid.AutoBidId;
         }
 
-
+        
 
         public async Task<IEnumerable<TblAutoBid>> GetAutoBiddersForAsset(int auctionId, int assetId)
         {
@@ -98,5 +98,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
             }
         }
 
+       
     }
 }

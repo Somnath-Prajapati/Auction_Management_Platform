@@ -1,6 +1,7 @@
 ﻿using AuctionManagementSystem.Application.Dtos.Bids;
 using AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.CreateAutoBid;
 using AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.DeleteAutoBid;
+using AuctionManagementSystem.Application.Features.Bids.AutoBid.Query.GetById;
 using AuctionManagementSystem.Application.Features.Bids.CreateBid.Command;
 using AuctionManagementSystem.Application.Features.Bids.CreateBid.Query.GetBidById;
 using MediatR;
@@ -63,6 +64,19 @@ namespace AuctionManagementSystem.Api.Controller.Bid
 
             await _mediator.Send(command);
             return Ok("AutoBid removed successfully.");
+        }
+
+
+        [HttpGet("GetAutoData/{userId}/{auctionId}/{assetId}")]
+        public async Task<IActionResult> GetAutoBidById(int userId, int auctionId, int assetId)
+        {
+            // Use parameters directly without a query DTO
+            var result = await _mediator.Send(new GetAutoBidByIdQuery(userId , auctionId , assetId));
+
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
         }
 
 

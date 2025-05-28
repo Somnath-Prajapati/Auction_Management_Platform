@@ -1,5 +1,4 @@
 ﻿
-using AuctionManagementSystem.Api.Services;
 using AuctionManagementSystem.Application.Contracts.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +15,10 @@ using AuctionManagementSystem.Identity;
 using AuctionManagementSystem.Persistence;
 using Hangfire;
 using AuctionManagementSystem.Application.Contracts.Bids;
+using Hangfire.Storage;
 using AuctionManagementSystem.Application.Services;
+using AuctionManagementSystem.Api.Services;
+
 
 namespace AuctionManagementSystem.Api
 {
@@ -34,7 +36,12 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddScoped<IBidNotificationService, BidNotificationService>();
             builder.Services.AddScoped<IWinnerNotificationService, WinnerNotificationService>();
+
+            builder.Services.AddScoped<HangfireAutoBidJobScheduler>();
             builder.Services.AddScoped<IAutoBidJobScheduler, HangfireAutoBidJobScheduler>();
+
+
+
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -54,21 +61,49 @@ namespace AuctionManagementSystem.Api
 
             builder.Services.AddSignalR();
 
+            //builder.Services.AddHangfire(config =>
+            //    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+          
             builder.Services.AddHangfire(config =>
-                config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
+            {
+                config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection"));
+                config.UseRecommendedSerializerSettings();
+
+            });
 
             builder.Services.AddHangfireServer();
 
 
             var app = builder.Build();
-            //if (app.Environment.IsDevelopment())
-            //{
+    
 
-            using (var scope = app.Services.CreateScope())
+            app.Lifetime.ApplicationStarted.Register(() =>
             {
+                using var scope = app.Services.CreateScope();
+                var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
+
+                recurringJobManager.RemoveIfExists("AutoBidJob");
+
                 var scheduler = scope.ServiceProvider.GetRequiredService<IAutoBidJobScheduler>();
                 scheduler.ScheduleAutoBidJob();
-            }
+            });
+
+            //try
+            //{
+            //    using var scope = app.Services.CreateScope();
+            //    var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
+            //    Console.WriteLine("RecurringJobManager resolved successfully.");
+            //    recurringJobManager.RemoveIfExists("AutoBidJob");
+            //    var scheduler = scope.ServiceProvider.GetRequiredService<IAutoBidJobScheduler>();
+            //    Console.WriteLine("AutoBidJobScheduler resolved successfully.");
+
+            //    scheduler.ScheduleAutoBidJob();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error scheduling Hangfire jobs: " + ex);
+            //}
 
             app.UseCors("AllowFrontend");
 
@@ -86,28 +121,8 @@ namespace AuctionManagementSystem.Api
             app.UseHttpsRedirection();
 
 
-
-
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(
-            //    Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "AssetGallery")),
-            //    RequestPath = "/AssetGallery"
-            //});
-
-            
-
             app.UseStaticFiles();
             app.UseHangfireDashboard();
-
-
-
-
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(
-            //    Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "AssetGallery")),
-            //    RequestPath = "/AssetGallery"
 
             
             app.UseAuthentication();
@@ -127,6 +142,6 @@ namespace AuctionManagementSystem.Api
 
             app.MapControllers();
             app.Run();
-        }
+        }   
     }
 }
