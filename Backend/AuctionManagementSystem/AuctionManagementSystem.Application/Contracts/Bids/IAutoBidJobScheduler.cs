@@ -11,7 +11,7 @@ namespace AuctionManagementSystem.Application.Contracts.Bids
 
         void ScheduleAutoBidJob();
 
-        Task RunAutoBidForAllActiveAssets();
+        //Task RunAutoBidForAllActiveAssets();
     }
 
 }

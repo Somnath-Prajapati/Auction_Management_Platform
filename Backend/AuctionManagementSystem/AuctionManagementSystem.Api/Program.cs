@@ -17,6 +17,8 @@ using Hangfire;
 using AuctionManagementSystem.Api.Services;
 using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Application.Services;
+using Hangfire.Server;
 
 namespace AuctionManagementSystem.Api
 {
@@ -34,9 +36,9 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddScoped<IBidNotificationService, BidNotificationService>();
             builder.Services.AddScoped<IWinnerNotificationService, WinnerNotificationService>();
+            //builder.Services.AddScoped<IBackgroundProcess, BackgroundProcessHangfire>();
 
             builder.Services.AddScoped<HangfireAutoBidJobScheduler>();
-            builder.Services.AddScoped<IAutoBidJobScheduler, HangfireAutoBidJobScheduler>();
 
 
 
@@ -65,8 +67,10 @@ namespace AuctionManagementSystem.Api
           
             builder.Services.AddHangfire(config =>
             {
-                config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection"));
-                config.UseRecommendedSerializerSettings();
+                config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection"), new Hangfire.SqlServer.SqlServerStorageOptions
+                {
+                    PrepareSchemaIfNecessary = true
+                });
 
             });
 
@@ -75,34 +79,31 @@ namespace AuctionManagementSystem.Api
 
 
             var app = builder.Build();
-    
+
+
+            //app.Lifetime.ApplicationStarted.Register(() =>
+            //{
+            //    using var scope = app.Services.CreateScope();
+            //    var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
+
+            //    recurringJobManager.RemoveIfExists("AutoBidJob");
+
+            //    var scheduler = scope.ServiceProvider.GetRequiredService<IAutoBidJobScheduler>();
+            //    scheduler.ScheduleAutoBidJob();
+            //});
 
             app.Lifetime.ApplicationStarted.Register(() =>
             {
                 using var scope = app.Services.CreateScope();
                 var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
-
                 recurringJobManager.RemoveIfExists("AutoBidJob");
 
-                var scheduler = scope.ServiceProvider.GetRequiredService<IAutoBidJobScheduler>();
+                var scheduler = scope.ServiceProvider.GetRequiredService<HangfireAutoBidJobScheduler>();
                 scheduler.ScheduleAutoBidJob();
             });
 
-            //try
-            //{
-            //    using var scope = app.Services.CreateScope();
-            //    var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
-            //    Console.WriteLine("RecurringJobManager resolved successfully.");
-            //    recurringJobManager.RemoveIfExists("AutoBidJob");
-            //    var scheduler = scope.ServiceProvider.GetRequiredService<IAutoBidJobScheduler>();
-            //    Console.WriteLine("AutoBidJobScheduler resolved successfully.");
 
-            //    scheduler.ScheduleAutoBidJob();
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("Error scheduling Hangfire jobs: " + ex);
-            //}
+  
 
             app.UseCors("AllowFrontend");
 

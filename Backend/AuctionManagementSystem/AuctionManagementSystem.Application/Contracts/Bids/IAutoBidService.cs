@@ -10,7 +10,6 @@ namespace AuctionManagementSystem.Application.Contracts.Bids
     {
         Task RunAutoBidRoundRobin(int auctionId, int assetId);
 
-
        
     }
 }
