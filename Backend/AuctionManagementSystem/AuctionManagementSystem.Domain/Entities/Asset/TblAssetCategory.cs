@@ -26,7 +26,7 @@ public partial class TblAssetCategory
     public DateTime RegistrationDeadline { get; set; }
 
     public string? Icon { get; set; }
-    public string? DocumentPath { get; set; } // ✅ Added field for uploaded document
+    public string? DocumentPath { get; set; } 
 
 
     public decimal? Vatpercentage { get; set; }
@@ -50,6 +50,5 @@ public partial class TblAssetCategory
 
     public virtual ICollection<TblAuction> TblAuctions { get; set; } = new List<TblAuction>(); // after modification
 
-    // added this to have relationship
     public virtual ICollection<TblAssetCategoryPaymentMethod> TblAssetCategoryPaymentMethods { get; set; } = new List<TblAssetCategoryPaymentMethod>();
 }
