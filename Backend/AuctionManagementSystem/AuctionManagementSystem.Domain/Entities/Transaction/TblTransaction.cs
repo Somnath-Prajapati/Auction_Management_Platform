@@ -73,4 +73,10 @@ public partial class TblTransaction
     public virtual TblTransactionType TransactionType { get; set; } = null!;
 
     public virtual TblUser User { get; set; } = null!;
+
+    public TblTransaction Clone()
+    {
+        return (TblTransaction)this.MemberwiseClone();
+    }
+
 }

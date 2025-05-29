@@ -10,6 +10,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using AuctionManagementSystem.Domain.Entities.User;
 using Microsoft.AspNetCore.Identity;
+using AuctionManagementSystem.Application.Contracts.AuditTrail;
+//using AuctionManagementSystem.Persistence.Services;
 
 namespace AuctionManagementSystem.Identity
 {
@@ -17,17 +19,20 @@ namespace AuctionManagementSystem.Identity
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
+            //services.AddScoped<IAuditJobScheduler, AuditJobScheduler>();
+
             services.AddScoped<IOtpRepository, OtpRepository>();
             services.AddScoped<IUnitOfWorkAuth, UnitOfWorkAuth>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IJwtService, JwtService>();
-
+            services.AddScoped<IAuditTrailService, AuditTrailService>();
             //new added
             services.AddScoped<IPasswordHasher<TblUser>, PasswordHasher<TblUser>>();
-
+            services.AddHttpContextAccessor();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
             var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();
-
+           
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
