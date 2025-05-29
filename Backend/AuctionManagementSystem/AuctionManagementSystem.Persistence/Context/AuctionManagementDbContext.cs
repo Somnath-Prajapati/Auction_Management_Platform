@@ -11,6 +11,7 @@ using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
+using AuctionManagementSystem.Domain.model;
 using Microsoft.EntityFrameworkCore;
 namespace AuctionManagementSystem.Persistence.Context;
 
@@ -106,8 +107,6 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblWinnerAwardingOption> TblWinnerAwardingOptions { get; set; }
 
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
-
-    //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public virtual DbSet<tblBid> tblBids { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }
@@ -115,6 +114,7 @@ public partial class AuctionManagementDbContext : DbContext
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
     public virtual DbSet<TblOrder> TblOrders { get; set; }
     public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
+    public virtual DbSet<TblUserDeposit> TblUserDeposits { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -636,34 +636,6 @@ public partial class AuctionManagementDbContext : DbContext
         });
 
 
-        //modelBuilder.Entity<tblBid>(entity =>
-        //{
-        //    entity.HasKey(e => e.BidId).HasName("PK__tblBids__4A733D920BE15F30");
-
-        //    entity.ToTable("tblBids");
-
-        //    entity.Property(e => e.BidAmount).HasColumnType("decimal(10, 2)");
-        //    entity.Property(e => e.BidTime)
-        //        .HasDefaultValueSql("(getdate())")
-        //        .HasColumnType("datetime");
-        //    entity.Property(e => e.CreatedDate)
-        //        .HasDefaultValueSql("(getdate())")
-        //        .HasColumnType("datetime");
-        //    entity.Property(e => e.IsWinningBid).HasDefaultValue(false);
-
-        //    entity.HasOne(d => d.Asset).WithMany(p => p.TblBids)
-        //        .HasForeignKey(d => d.AssetId)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_Bids_Assets");
-
-        //    entity.HasOne(d => d.Auction).WithMany(p => p.TblBids)
-        //        .HasForeignKey(d => d.AuctionId)
-        //        .OnDelete(DeleteBehavior.ClientSetNull)
-        //        .HasConstraintName("FK_Bids_Auctions");
-
-        //    entity.HasOne(d => d.User).WithMany(p => p.TblBids)
-        //        .HasForeignKey(d => d.UserId)
-    
         modelBuilder.Entity<tblBid>(entity =>
         {
             entity.ToTable("tblBids");
@@ -1031,6 +1003,12 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__tblTransa__UserI__540C7B00");
+
+            entity.HasOne(t => t.UpdatedByUser)
+      .WithMany()
+      .HasForeignKey(t => t.UpdatedBy)
+      .OnDelete(DeleteBehavior.Restrict);
+
         });
 
         modelBuilder.Entity<TblTransactionAsset>(entity =>
@@ -1105,6 +1083,27 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
+
+        modelBuilder.Entity<TblUserDeposit>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__TblUserD__3214EC07D2270BC5");
+
+            entity.ToTable("TblUserDeposit");
+
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
+            entity.Property(e => e.DepositAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.ModifiedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+        });
+
 
         modelBuilder.Entity<TblUser>(entity =>
         {
