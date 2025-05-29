@@ -9,7 +9,7 @@ using Hangfire.Common;
 
 namespace AuctionManagementSystem.Application.Services
 {
-    public class HangfireAutoBidJobScheduler : IAutoBidJobScheduler
+    public class HangfireAutoBidJobScheduler 
     {
         private readonly IAutoBidService _autoBidService;
         private readonly IAutoBidRepository _autoBidRepository;
@@ -23,25 +23,30 @@ namespace AuctionManagementSystem.Application.Services
         }
 
         public void ScheduleAutoBidJob()
-        {
+      {
             _recurringJobManager.RemoveIfExists("AutoBidJob");
 
 
-            //_recurringJobManager.AddOrUpdate(
-            //    "AutoBidJob",
-            //    Job.FromExpression<IAutoBidJobScheduler>(x => x.RunAutoBidForAllActiveAssets()),
-            //    "*/5 * * * * *");
 
             //_recurringJobManager.AddOrUpdate(
             //        "AutoBidJob",
             //        Job.FromExpression<HangfireAutoBidJobScheduler>(x => x.RunAutoBidForAllActiveAssets()),
-            //        "*/5 * * * * *");
+            //        "*/50 * * * * *");
+
+
+              _recurringJobManager.AddOrUpdate<HangfireAutoBidJobScheduler>(
+                     "AutoBidJob",
+                       x => x.RunAutoBidForAllActiveAssets(),
+                       "*/50 * * * * *"
+               );
+
+
             // --------------------------/////////////////////////////////////////////
 
-            _recurringJobManager.AddOrUpdate(
-                         "AutoBidJob",
-                         Job.FromExpression<HangfireAutoBidJobScheduler>(x => x.RunAutoBidForAllActiveAssets()),
-                            "*/3 * * * *");
+            //_recurringJobManager.AddOrUpdate(
+            //             "AutoBidJob",
+            //             Job.FromExpression<HangfireAutoBidJobScheduler>(x => x.RunAutoBidForAllActiveAssets()),
+            //                "*/7 * * * *");
 
 
 
@@ -49,6 +54,8 @@ namespace AuctionManagementSystem.Application.Services
 
         public void demo()
         {   
+            var count = 0;
+            var ans = count++;
             Console.WriteLine("job schedule : " + DateTime.Now.ToString());
         }
 
@@ -67,8 +74,27 @@ namespace AuctionManagementSystem.Application.Services
             {
                 Console.WriteLine("Error : " + e.ToString());
             }
+
         }
 
 
     }
 }
+            //try
+            //{
+            //    Console.WriteLine($"[AutoBid] Job running at {DateTime.UtcNow}");
+
+            //    var activeAuctionAssets = await _autoBidRepository.GetActiveAuctionAssetPairsAsync();
+
+            //    // Run all auction/asset pairs in parallel
+            //    var tasks = activeAuctionAssets.Select(pair =>
+            //        _autoBidService.RunAutoBidRoundRobin(pair.auctionId, pair.assetId)
+            //    );
+
+            //    await Task.WhenAll(tasks);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine("Error : " + e.ToString());
+            //}
+

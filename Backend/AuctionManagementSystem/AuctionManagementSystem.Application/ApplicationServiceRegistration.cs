@@ -42,7 +42,7 @@ namespace AuctionManagementSystem.Application
 
             services.AddScoped<IAutoBidService, AutoBidService>();
 
-            services.AddScoped<IAutoBidJobScheduler, HangfireAutoBidJobScheduler>();
+            services.AddTransient<HangfireAutoBidJobScheduler>();
 
 
             // Add pipeline behavior for validation
