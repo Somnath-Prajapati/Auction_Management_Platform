@@ -28,6 +28,7 @@ using AuctionManagementSystem.Application.Contracts.Listings;
 using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Persistence.Repositories.AuditTrail;
 using AuctionManagementSystem.Persistence.Repositories.Transactions;
+using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -74,6 +75,16 @@ namespace AuctionManagementSystem.Persistence
 
             services.AddScoped<IAssetExpirationService, AssetExpirationService>();
             services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
+            services.AddScoped<IAutoRefundService, AutoRefundService>();
+
+            services.AddHostedService<AutoRefundHostedService>();
+            services.AddHostedService<ExpireCartItemsHostedService>();
+
+
+            services.AddScoped<IUserDepositRepository, UserDepositRepository>();
+            services.AddScoped<ProcessAutoRefundHandler>();
+
+
 
             return services;
         }
