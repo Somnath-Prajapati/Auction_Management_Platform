@@ -33,6 +33,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Transactions
 
         public async Task AddRefundTransactionAsync(int userId, decimal amount) // Updated return type to match interface
         {
+            Console.WriteLine("refund transaction to be created");
             var refundTransaction = new TblTransaction
             {
                 UserId = userId,

@@ -42,7 +42,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
 
 
                 bool isValid = await _auctionAssetRepository.AssetExistsInAuctionAsync(
-               request.AuctionId, request.AssetId);
+                request.AuctionId, request.AssetId);
 
                 if (!isValid)
                     throw new BadRequestException("The asset does not belong to the specified auction.");

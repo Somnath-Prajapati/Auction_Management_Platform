@@ -15,46 +15,49 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 
 
 
 namespace AuctionManagementSystem.Persistence.Repositories.Transactions
 {
-   
+
     public class AutoRefundHostedService : BackgroundService
     {
         private readonly IMediator _mediator;
+        private readonly IServiceProvider _serviceProvider;
         private readonly ILogger<AutoRefundHostedService> _logger;
-        private readonly TimeSpan _interval = TimeSpan.FromHours(24); // run once daily
+        private readonly TimeSpan _interval = TimeSpan.FromSeconds(30); // run once daily
 
-        public AutoRefundHostedService(IMediator mediator, ILogger<AutoRefundHostedService> logger)
+        public AutoRefundHostedService(IMediator mediator, ILogger<AutoRefundHostedService> logger, IServiceProvider serviceProvider)
         {
             _mediator = mediator;
             _logger = logger;
+            _serviceProvider = serviceProvider;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            _logger.LogInformation("AutoRefundHostedService started.");
-
             while (!stoppingToken.IsCancellationRequested)
             {
-                try
+                using (var scope = _serviceProvider.CreateScope())
                 {
-                    int processedCount = await _mediator.Send(new ProcessAutoRefundCommand(), stoppingToken);
-                    _logger.LogInformation($"Auto refund processed {processedCount} refund(s).");
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Error occurred while processing auto refunds.");
+                    var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
+
+                    try
+                    {
+                        await mediator.Send(new ProcessAutoRefundCommand(), stoppingToken);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "Error occurred while processing auto refunds.");
+                    }
                 }
 
-                await Task.Delay(_interval, stoppingToken);
+                // Wait for some time before running again
+                await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
             }
-
-            _logger.LogInformation("AutoRefundHostedService stopping.");
         }
     }
-
 
 }
