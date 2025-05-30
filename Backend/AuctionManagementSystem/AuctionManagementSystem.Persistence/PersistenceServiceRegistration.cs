@@ -29,7 +29,12 @@ using AuctionManagementSystem.Application.Contracts.Chatbot;
 using AuctionManagementSystem.Persistence.Repositories.Chatbot;
 using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Persistence.Repositories.AuditTrail;
+using AuctionManagementSystem.Application.Contracts.Roles;
+using AuctionManagementSystem.Persistence.Repositories.Roles;
+using AuctionManagementSystem.Application.Contracts.Notification;
+using AuctionManagementSystem.Persistence.Repositories.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Transactions;
+using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -39,7 +44,7 @@ namespace AuctionManagementSystem.Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AuctionManagementDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")).LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<ISystemSettingsRepository, SystemSettingsRepository>();
@@ -73,10 +78,26 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IOrderRepository, OrderRepository>();
             //services.AddScoped<IChatbotRepository, ChatbotRepository>();
             services.AddScoped<IOrderEmailService, OrderEmailService>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
+
+
+            services.AddScoped<IAutoBidRepository, AutoBidRepository>();
 
 
             services.AddScoped<IAssetExpirationService, AssetExpirationService>();
+            
             services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
+            services.AddScoped<IRolePermissionsMatrixRepository, RolePermissionsMatrixRepository>();
+            services.AddScoped<IAutoRefundService, AutoRefundService>();
+
+            services.AddHostedService<AutoRefundHostedService>();
+            services.AddHostedService<ExpireCartItemsHostedService>();
+
+
+            services.AddScoped<IUserDepositRepository, UserDepositRepository>();
+            services.AddScoped<ProcessAutoRefundHandler>();
+
+
 
             services.AddScoped<IChatbotRepository, ChatbotRepository>();
             services.AddScoped<ChatBotService>();
