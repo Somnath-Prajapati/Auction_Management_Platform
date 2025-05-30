@@ -75,7 +75,15 @@
          "ObjectType": 0
       },
       {
+<<<<<<< HEAD
          "Name": "[AuctionM_dbuser].[tblAuditTrail]",
+=======
+<<<<<<< HEAD
+         "Name": "[AuctionM_dbuser].[tblAutoBids]",
+=======
+         "Name": "[AuctionM_dbuser].[tblAuditTrail]",
+>>>>>>> 7c3d204759bf5162ef57a9ce81f11c910d345bcc
+>>>>>>> Atharvaa
          "ObjectType": 0
       },
       {

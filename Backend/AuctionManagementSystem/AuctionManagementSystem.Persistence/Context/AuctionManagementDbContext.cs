@@ -7,10 +7,12 @@ using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.AuditTrail;
 using AuctionManagementSystem.Domain.Entities.Bids;
+using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 namespace AuctionManagementSystem.Persistence.Context;
 
@@ -112,11 +114,13 @@ public partial class AuctionManagementDbContext : DbContext
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public virtual DbSet<tblBid> tblBids { get; set; }
+    public virtual DbSet<TblAutoBid> TblAutoBids { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }
     public virtual DbSet<TblAuditTrail> TblAuditTrails { get; set; }
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
     public virtual DbSet<TblOrder> TblOrders { get; set; }
     public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
+    public virtual DbSet<TblNotification> TblNotifications { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -191,6 +195,11 @@ public partial class AuctionManagementDbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__tblCartIt__UserI__2D47B39A");
         });
+        modelBuilder.Entity<TblNotification>()
+            .HasOne(n => n.User)  
+            .WithMany(u => u.TblNotifications)
+            .HasForeignKey(n => n.UserId)
+            .OnDelete(DeleteBehavior.SetNull);
 
         // For WishlistItem mapping
         modelBuilder.Entity<TblWishlistItem>(entity =>
@@ -515,6 +524,9 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.TblAssetWinners)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__tblAssetW__UserI__282DF8C2");
+            entity.Property(e => e.IsSeen)
+                .HasDefaultValue(false)
+                .IsRequired();
         });
         modelBuilder.Entity<TblAuditTrail>(entity =>
         {
@@ -638,6 +650,35 @@ public partial class AuctionManagementDbContext : DbContext
         });
 
 
+        modelBuilder.Entity<TblAutoBid>(entity =>
+        {
+            entity.HasKey(e => e.AutoBidId).HasName("PK__tblAutoB__C5E25909977EF2B6");
+
+            entity.ToTable("tblAutoBids");
+
+            entity.HasIndex(e => new { e.UserId, e.AuctionId, e.AssetId }, "UQ_tblAutoBid_User_Auction_Asset").IsUnique();
+
+            entity.Property(e => e.CreatedDate).HasDefaultValueSql("(sysutcdatetime())");
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.MaxBidAmount).HasColumnType("decimal(18, 2)");
+
+            entity.HasOne(d => d.Asset).WithMany(p => p.TblAutoBids)
+                .HasForeignKey(d => d.AssetId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblAutoBid_Asset");
+
+            entity.HasOne(d => d.Auction).WithMany(p => p.TblAutoBids)
+                .HasForeignKey(d => d.AuctionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblAutoBid_Auction");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TblAutoBids)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblAutoBid_User");
+        });
+
+
         //modelBuilder.Entity<tblBid>(entity =>
         //{
         //    entity.HasKey(e => e.BidId).HasName("PK__tblBids__4A733D920BE15F30");
@@ -665,7 +706,7 @@ public partial class AuctionManagementDbContext : DbContext
 
         //    entity.HasOne(d => d.User).WithMany(p => p.TblBids)
         //        .HasForeignKey(d => d.UserId)
-    
+
         modelBuilder.Entity<tblBid>(entity =>
         {
             entity.ToTable("tblBids");
