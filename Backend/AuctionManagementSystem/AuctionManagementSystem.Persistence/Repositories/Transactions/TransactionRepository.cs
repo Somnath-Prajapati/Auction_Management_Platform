@@ -1,18 +1,22 @@
 ﻿using System.Data;
 using AuctionManagementSystem.Application.Contracts.Transactions;
+using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace AuctionManagementSystem.Infrastructure.Persistence.Repositories;
 
 public class TransactionRepository : ITransactionRepository
 {
     private readonly AuctionManagementDbContext _context;
+    private readonly ILogger<TransactionRepository> _logger;
 
-    public TransactionRepository(AuctionManagementDbContext context)
+    public TransactionRepository(AuctionManagementDbContext context, ILogger<TransactionRepository> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
     public async Task<string> GetTransactionNumberFromDbAsync()
@@ -127,4 +131,66 @@ public class TransactionRepository : ITransactionRepository
         _context.TblTransactions.Remove(entity);
         await _context.SaveChangesAsync();
     }
+
+    public async Task HandleDepositAdjustmentOnStatusChangeAsync(TblTransaction before, TblTransaction after)
+    {
+        bool statusChangedToApproved =
+            before.StatusId == 1 && after.StatusId == 2;
+
+        bool isDepositOrRefund =
+            after.TransactionType?.TransactionTypeName == "Deposit" || after.TransactionType?.TransactionTypeName == "Refund";
+
+        if (!statusChangedToApproved || !isDepositOrRefund)
+            return;
+
+        var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.UserId == after.UserId);
+        if (user == null)
+        {
+            _logger.LogWarning("User not found for Transaction ID {TransactionId}", after.TransactionId);
+            return;
+        }
+
+        if (after.TransactionType?.TransactionTypeName == "Deposit")
+        {
+            user.Deposit += after.Amount;
+        }
+        else if (after.TransactionType?.TransactionTypeName == "Refund")
+        {
+            user.Deposit -= after.Amount;
+        }
+
+        await _context.SaveChangesAsync();
+
+        _logger.LogInformation("User ID {UserId}'s deposit amount updated due to transaction type '{Type}' update.",
+            user.UserId, after.TransactionType?.TransactionTypeName);
+    }
+
+
+    public async Task<List<UserTransactionDto>> GetUserTransactionsAsync(int userId)
+    {
+        var transactions = await _context.TblTransactions
+            .Where(t => t.UserId == userId)
+            .OrderByDescending(t => t.CreatedAt)
+            .Select(t => new UserTransactionDto
+            {
+                RefNo = t.TransactionNumber,
+                Request = t.TransactionTypeId == 1 ? "Deposit"
+                        : t.TransactionTypeId == 2 && t.StatusId == 1 ? "Refund Request"
+                        : t.TransactionTypeId == 2 && t.StatusId == 2 ? "Refund"
+                        : "Unknown",
+
+                DateTime = t.CreatedDate,
+                Amount = t.Amount,
+                Type = t.TransactionType.TransactionTypeName, // e.g., "Deposit", "Refund"
+                Method = t.PaymentMethodId != null ? t.PaymentMethod.PaymentMethodName : "—",
+                Status = t.Status.StatusName, // e.g., "Pending", "Completed"
+                ApprovedDateTime = t.UpdatedAt,
+                ApprovedBy = t.UpdatedByUser != null ? t.UpdatedByUser.Name : null,
+                Notes = t.Notes
+            })
+            .ToListAsync();
+
+        return transactions;
+    }
+
 }

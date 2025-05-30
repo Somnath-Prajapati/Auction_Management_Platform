@@ -25,12 +25,14 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
     {
         public readonly AuctionManagementDbContext _context;
         private readonly ITransactionRepository _transactionRepository;
+        private readonly IOrderEmailService _orderEmailService;
         private readonly ICartRepository _cartRepository;
         private readonly IAssetsRepository _assetsRepository;
         private readonly string _baseUrl = "https://localhost:62627/";
         private readonly IMapper _mapper;
 
-        public OrderRepository(AuctionManagementDbContext context, ITransactionRepository transactionRepository, IMapper mapper, ICartRepository cartRepository,IAssetsRepository assetsRepository)
+
+        public OrderRepository(AuctionManagementDbContext context, ITransactionRepository transactionRepository, IMapper mapper, ICartRepository cartRepository,IAssetsRepository assetsRepository, IOrderEmailService orderEmailService)
         {
             _context
                 = context;
@@ -38,6 +40,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
             _mapper = mapper;
             _cartRepository = cartRepository;
             _assetsRepository = assetsRepository;
+            _orderEmailService = orderEmailService;
         }
 
         public async Task<List<DirectSaleAssetDto>> GetAllOrders(int userId)
@@ -105,14 +108,20 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
             return result > 0 ? order : null;
         }
 
-        public async Task<List<DirectSaleAssetDto>> ConfirmPaymentAndCreateOrderAsync(int userId, List<int> assetIds)
+        public async Task<List<DirectSaleAssetDto>> ConfirmPaymentAndCreateOrderAsync(int userId, List<int> assetIds, string paymentMethod)
         {
+            if (assetIds == null || !assetIds.Any())
+                throw new ArgumentException("No assets provided for the order.");
+
+            // Step 1: Load Assets
             var assets = new List<TblAsset>();
 
-            for (int i = 0; i < assetIds.Count; i++)
+            foreach (var id in assetIds)
             {
                 var asset = await _context.TblAssets
-                    .FirstOrDefaultAsync(a => a.AssetId == assetIds[i]);
+                    .Include(a => a.TblAssetGalleries)
+                    .Include(a => a.Category)
+                    .FirstOrDefaultAsync(a => a.AssetId == id);
 
                 if (asset != null)
                 {
@@ -120,19 +129,30 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
                 }
             }
 
-            if (assets == null || !assets.Any())
-                throw new InvalidOperationException("Please Add some Asset in the Orders");
 
-            decimal totalAmount = assets.Sum(a => a.StartingPrice);
+            if (assets.Count != assetIds.Count)
+                throw new InvalidOperationException("Some assets were not found in the database.");
 
-            // Step 2: Create Transaction
+            // Step 2: Calculate Total
+            var totalAmount = assets.Sum(a => a.StartingPrice);
+
+            // Step 3: Map Payment Method String to ID
+            var paymentMethodId = await _context.TblPaymentMethods
+                .Where(p => p.PaymentMethodName.ToLower() == paymentMethod.ToLower())
+                .Select(p => p.PaymentMethodId)
+                .FirstOrDefaultAsync();
+
+            if (paymentMethodId == 0)
+                throw new InvalidOperationException($"Unknown payment method: {paymentMethod}");
+
+            // Step 4: Create Transaction
             var transaction = new TblTransaction
             {
                 UserId = userId,
                 Amount = totalAmount,
-                TransactionTypeId = 1, 
-                PaymentMethodId = 1,   
-                StatusId = 1,         
+                TransactionTypeId = 1, // Direct Sale
+                PaymentMethodId = paymentMethodId,
+                StatusId = 1, // Completed
                 TransactionDateTime = DateTime.UtcNow,
                 CreatedBy = userId,
                 CreatedDate = DateTime.UtcNow
@@ -140,7 +160,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
 
             var savedTransaction = await _transactionRepository.AddAsync(transaction);
 
-            // Step 3: Create Order
+            // Step 5: Create Order
             var order = new TblOrder
             {
                 UserId = userId,
@@ -150,39 +170,26 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
                 CreatedBy = userId.ToString(),
                 TransactionId = savedTransaction.TransactionId,
                 TransactionNumber = savedTransaction.TransactionNumber,
-                TblOrderAssets = assetIds.Select(id => new TblOrderAsset
-                {
-                    AssetId = id
-                }).ToList()
+                TblOrderAssets = assetIds.Select(id => new TblOrderAsset { AssetId = id }).ToList()
             };
 
             _context.TblOrders.Add(order);
             await _context.SaveChangesAsync();
 
-            // Map the created order to DirectSaleAssetDto
-            var assetDtos = order.TblOrderAssets
-                .Where(oa => oa.Asset != null)
-                .Select(oa =>
-                {
-                    var dto = _mapper.Map<DirectSaleAssetDto>(oa.Asset);
-                    return dto;
-                })
-                .ToList();
-
-            foreach (var id in assetIds)
+            // Step 6: Remove from Cart and Delete Asset
+            foreach (var asset in assets)
             {
-                // remove from this user's cart
-                await _cartRepository.RemoveFromCartAsync(userId, id);
-                var asset = await _assetsRepository.GetIdDeleteAsync(id);
+                await _cartRepository.RemoveFromCartAsync(userId, asset.AssetId);
                 await _assetsRepository.DeleteAsync(asset);
             }
 
+            // Step 7: Map and Return DTOs
+            var assetDtos = assets.Select(a => _mapper.Map<DirectSaleAssetDto>(a)).ToList();
+            // Step 8: Send Confirmation Email
+            //await _orderEmailService.SendOrderConfirmationEmailAsync(userId, savedTransaction, assets);
 
             return assetDtos;
         }
-
-
-
 
     }
 }

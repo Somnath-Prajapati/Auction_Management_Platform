@@ -6,6 +6,8 @@ using AuctionManagementSystem.Application.Features.Transactions.Commands.DeleteT
 using AuctionManagementSystem.Application.Features.Transactions.Commands.UpdateTransaction;
 using AuctionManagementSystem.Application.Features.Transactions.Queries.GetTransactionById;
 using AuctionManagementSystem.Application.Features.Transactions.Queries.GetAllTransactions;
+using AuctionManagementSystem.Application.Features.Transactions;
+using AuctionManagementSystem.Application.Contracts.Transactions;
 
 namespace AuctionManagementSystem.API.Controllers;
 
@@ -14,18 +16,13 @@ namespace AuctionManagementSystem.API.Controllers;
 public class TransactionsController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly ITransactionRepository _transactionRepository; // Add a field for ITransactionRepository
 
-    public TransactionsController(IMediator mediator)
+    public TransactionsController(IMediator mediator, ITransactionRepository transactionRepository) // Inject ITransactionRepository
     {
         _mediator = mediator;
+        _transactionRepository = transactionRepository; // Assign the injected repository
     }
-
-    //[HttpGet(Name ="GetAll Transactions")]
-    //public async Task<ActionResult<List<TransactionDto>>> GetAll()
-    //{
-    //    var result = await _mediator.Send(new GetAllTransactionsQuery());
-    //    return Ok(result);
-    //}
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
@@ -84,4 +81,19 @@ public class TransactionsController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpGet("metadata")]
+    public async Task<IActionResult> GetMetadata()
+    {
+        var result = await _mediator.Send(new GetTransactionMetadataQuery());
+        return Ok(result);
+    }
+
+    [HttpGet("user/{userId}/transactions")]
+    public async Task<IActionResult> GetUserTransactions(int userId)
+    {
+        var result = await _transactionRepository.GetUserTransactionsAsync(userId);
+        return Ok(result);
+    }
+
 }

@@ -25,10 +25,16 @@ using AuctionManagementSystem.Persistence.Repositories.Listings;
 using AuctionManagementSystem.Infrastructure.Repositories;
 using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Contracts.Listings;
+using AuctionManagementSystem.Application.Contracts.Chatbot;
+using AuctionManagementSystem.Persistence.Repositories.Chatbot;
 using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Persistence.Repositories.AuditTrail;
 using AuctionManagementSystem.Application.Contracts.Roles;
 using AuctionManagementSystem.Persistence.Repositories.Roles;
+using AuctionManagementSystem.Application.Contracts.Notification;
+using AuctionManagementSystem.Persistence.Repositories.Notification;
+using AuctionManagementSystem.Persistence.Repositories.Transactions;
+using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -38,15 +44,20 @@ namespace AuctionManagementSystem.Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AuctionManagementDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")).LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
-             services.AddScoped<ISystemSettingsRepository, SystemSettingsRepository>();
+            services.AddScoped<ISystemSettingsRepository, SystemSettingsRepository>();
             services.AddScoped<IDirectSaleSettingsRepository, DirectSaleSettingsRepository>();
             services.AddScoped<IFinanceSettingsRepository, FinanceSettingsRepository>();
             services.AddScoped<IFooterLinksSettingsRepository, FooterLinksSettingsRepository>();
             services.AddScoped<IStaticPagesSettingsRepository, StaticPagesSettingsRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<ICardTypeRepository, CardTypeRepository>();
+            services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
+            services.AddScoped<ITransactionTypeRepository, TransactionTypeRepository>();
+            services.AddScoped<ITransactionStatusRepository, TransactionStatusRepository>();
+
             services.AddScoped<IAuctionRepository, AuctionRepository>();
             services.AddScoped<IAuctionUnitOfWork, AuctionUnitOfWork>();
             services.AddScoped<IAssetCategoriesRepository, AssetCategoriesRepository>();
@@ -65,8 +76,28 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAuctionWinnerService, AuctionWinnerService>();
             services.AddScoped<IAssetWinnerRepository, AssetWinnerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IChatbotRepository, ChatbotRepository>();
+            services.AddScoped<IOrderEmailService, OrderEmailService>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
+
+
+            services.AddScoped<IAutoBidRepository, AutoBidRepository>();
+
+
+            services.AddScoped<IAssetExpirationService, AssetExpirationService>();
+            
             services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
             services.AddScoped<IRolePermissionsMatrixRepository, RolePermissionsMatrixRepository>();
+            services.AddScoped<IAutoRefundService, AutoRefundService>();
+
+            services.AddHostedService<AutoRefundHostedService>();
+            services.AddHostedService<ExpireCartItemsHostedService>();
+
+
+            services.AddScoped<IUserDepositRepository, UserDepositRepository>();
+            services.AddScoped<ProcessAutoRefundHandler>();
+
+
 
             return services;
         }

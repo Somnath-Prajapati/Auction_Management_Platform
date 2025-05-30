@@ -1,4 +1,5 @@
 ﻿
+using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 
 namespace AuctionManagementSystem.Application.Contracts.Transactions
@@ -17,5 +18,12 @@ namespace AuctionManagementSystem.Application.Contracts.Transactions
         Task<TblTransaction> AddAsync(TblTransaction entity);
         Task UpdateAsync(TblTransaction entity);
         Task DeleteAsync(TblTransaction entity);
+
+        Task HandleDepositAdjustmentOnStatusChangeAsync(TblTransaction before, TblTransaction after);
+
+        Task<List<UserTransactionDto>> GetUserTransactionsAsync(int userId);
+
+
+
     }
 }
