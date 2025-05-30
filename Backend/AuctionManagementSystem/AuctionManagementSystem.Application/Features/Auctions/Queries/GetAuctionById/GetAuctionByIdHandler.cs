@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Application.Dtos.Auctions;
-using AuctionManagementSystem.Application.Exceptions;
 using AutoMapper;
 using MediatR;
 
@@ -27,7 +26,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Queries.GetAucti
             var auction = await _auctionRepository.GetByIdAsync(request.AuctionId);
 
             if (auction == null)
-                throw new NotFoundException($"Auction with ID {request.AuctionId} not found."); // or custom NotFoundException
+                throw new Exception($"Auction with ID {request.AuctionId} not found."); // or custom NotFoundException
 
             return _mapper.Map<AuctionDto>(auction);
         }

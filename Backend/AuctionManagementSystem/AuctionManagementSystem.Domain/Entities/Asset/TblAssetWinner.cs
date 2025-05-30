@@ -20,7 +20,6 @@ public partial class TblAssetWinner
     public string Note { get; set; }
 
     public bool? Approved { get; set; }
-    public bool IsSeen {  get; set; }
 
     public DateTime? CreatedAt { get; set; }
 

@@ -12,11 +12,4 @@ namespace AuctionManagementSystem.Application.Features.Transactions.Commands.Cre
     {
         public CreateTransactionDto Transaction { get; set; }
     }
-
-
-
-
-   
-
-
 }

@@ -38,35 +38,19 @@ namespace AuctionManagementSystem.Identity
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-             .AddJwtBearer(options =>
-             {
-                 options.TokenValidationParameters = new TokenValidationParameters
-                 {
-                     ValidateIssuer = true,
-                     ValidateAudience = true,
-                     ValidateLifetime = true,
-                     ValidateIssuerSigningKey = true,
-                     ValidIssuer = jwtSettings.Issuer,
-                     ValidAudience = jwtSettings.Audience,
-                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key))
-                 };
-
-                 // Important for SignalR JWT authentication
-                 options.Events = new JwtBearerEvents
-                 {
-                     OnMessageReceived = context =>
-                     {
-                         var accessToken = context.Request.Query["access_token"];
-                         var path = context.HttpContext.Request.Path;
-                         if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/bidhub"))
-                         {
-                             context.Token = accessToken;
-                         }
-                         return Task.CompletedTask;
-                     }
-                 };
-             });
-
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSettings.Issuer,
+                    ValidAudience = jwtSettings.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key))
+                };
+            });
 
             return services;
         }

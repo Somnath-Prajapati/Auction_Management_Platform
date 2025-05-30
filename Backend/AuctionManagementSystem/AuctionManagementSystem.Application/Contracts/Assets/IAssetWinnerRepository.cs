@@ -10,8 +10,5 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
     public interface IAssetWinnerRepository
     {
         Task AddAsync(TblAssetWinner winner);
-        Task<List<TblAssetWinner>> GetByUserIdAsync(int userId);
-        Task<List<TblAssetWinner>> GetUnseenWinsByUserIdAsync(int userId);
-        Task<int> MarskAsSeenAsync(int userId);
     }
 }

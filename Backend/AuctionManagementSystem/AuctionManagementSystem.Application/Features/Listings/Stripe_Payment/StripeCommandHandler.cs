@@ -19,28 +19,29 @@ namespace AuctionManagementSystem.Application.Features.Listings.Stripe_Payment
         public async Task<string> Handle(CreateStripeCheckoutSessionCommand request, CancellationToken cancellationToken)
         {
             var dto = request.StripeSessionDto;
+
             var options = new SessionCreateOptions
             {
-                PaymentMethodTypes = new List<string> { "card", "klarna", "ideal" },
+                PaymentMethodTypes = new List<string> { "card", "klarna", "ideal"},
                 CustomerEmail = dto.email,
                 Mode = "payment",
                 LineItems = new List<SessionLineItemOptions>
-    {
-        new SessionLineItemOptions
-        {
-            PriceData = new SessionLineItemPriceDataOptions
-            {
-                Currency = "usd",
-                UnitAmount = (long)(dto.TotalAmount * 100),
-                ProductData = new SessionLineItemPriceDataProductDataOptions
                 {
-                    Name = "Auction Assets"
-                }
-            },
-            Quantity = 1
-        }
-    },
-                SuccessUrl = $"http://localhost:4200/payment-success?session_id={{{{CHECKOUT_SESSION_ID}}}}&userId={dto.UserId}",
+                    new SessionLineItemOptions
+                    {
+                        PriceData = new SessionLineItemPriceDataOptions
+                        {
+                            Currency = "usd",
+                            UnitAmount = (long)(dto.TotalAmount * 100),
+                            ProductData = new SessionLineItemPriceDataProductDataOptions
+                            {
+                                Name = "Auction Assets"
+                            }
+                        },
+                        Quantity = 1
+                    }
+                },
+                SuccessUrl = $"http://localhost:4200/orders",
                 CancelUrl = $"http://localhost:4200/bid-add-to-cart",
                 Metadata = new Dictionary<string, string>
                 {
@@ -48,7 +49,6 @@ namespace AuctionManagementSystem.Application.Features.Listings.Stripe_Payment
                     ["assetIds"] = string.Join(",", dto.AssetIds)
                 }
             };
-
 
 
             var service = new Stripe.Checkout.SessionService();
@@ -69,8 +69,6 @@ namespace AuctionManagementSystem.Application.Features.Listings.Stripe_Payment
 
         public async Task<List<DirectSaleAssetDto>> Handle(ConfirmStripePaymentAndCreateOrderCommand request, CancellationToken cancellationToken)
         {
-            Console.WriteLine("ConfirmStripePaymentAndCreateOrderHandler called");
-
             var dto = request.PaymentDto;
 
             var service = new Stripe.Checkout.SessionService();

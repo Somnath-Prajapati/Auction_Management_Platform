@@ -21,7 +21,7 @@ public partial class TblTransaction
 
     public int TransactionTypeId { get; set; }
 
-    public int? PaymentMethodId { get; set; }
+    public int PaymentMethodId { get; set; }
 
     public int? CardTypeId { get; set; }
 
@@ -73,8 +73,6 @@ public partial class TblTransaction
     public virtual TblTransactionType TransactionType { get; set; } = null!;
 
     public virtual TblUser User { get; set; } = null!;
-    public virtual TblUser? UpdatedByUser { get; set; }
-
 
     public TblTransaction Clone()
     {

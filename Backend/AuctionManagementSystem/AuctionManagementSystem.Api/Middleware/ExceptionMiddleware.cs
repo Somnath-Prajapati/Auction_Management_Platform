@@ -15,7 +15,7 @@ namespace AuctionManagementSystem.Api.Middleware
             try
             {
                 await _next(httpContext);
-                }
+            }
             catch (Exception ex)
             {
                 await HandleExceptionAsync(httpContext, ex);

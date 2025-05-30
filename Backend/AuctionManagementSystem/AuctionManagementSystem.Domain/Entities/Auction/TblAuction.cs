@@ -2,8 +2,11 @@
     using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using AuctionManagementSystem.Domain.Entities.Bids;
+using System.ComponentModel.DataAnnotations.Schema;
 using AuctionManagementSystem.Domain.Entities.Asset;
-namespace AuctionManagementSystem.Domain.Entities.Auction;
+using AuctionManagementSystem.Domain.Entities.Bids;
+
+    namespace AuctionManagementSystem.Domain.Entities.Auction;
 
     public partial class TblAuction
     {
@@ -48,7 +51,4 @@ namespace AuctionManagementSystem.Domain.Entities.Auction;
         public virtual ICollection<TblAuctionView> TblAuctionViews { get; set; } = new List<TblAuctionView>();
 
         public virtual ICollection<tblBid> TblBids { get; set; } = new List<tblBid>();
-
-        // after the autobid added  
-        public virtual ICollection<TblAutoBid> TblAutoBids { get; set; } = new List<TblAutoBid>();
-}
+    }

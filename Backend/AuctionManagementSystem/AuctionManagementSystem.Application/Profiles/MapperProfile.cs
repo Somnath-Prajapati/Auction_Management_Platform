@@ -32,14 +32,10 @@ using AuctionManagementSystem.Domain.Entities.User;
 using AutoMapper;
 using EventStore.ClientAPI;
 using AuctionManagementSystem.Domain.Entities.Bids;
+using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
 using AuctionManagementSystem.Domain.Entities;
-using AuctionManagementSystem.Application.Features.Bids.CreateBid.Command;
 using AuctionManagementSystem.Application.Dtos.AuditTrial;
 using AuctionManagementSystem.Domain.Entities.AuditTrail;
-using AuctionManagementSystem.Application.Dtos.Roles;
-using System.Data;
-using AuctionManagementSystem.Domain.Entities.Notification;
-using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Domain;
 
 
@@ -50,9 +46,7 @@ namespace AuctionManagementSystem.Application.Profiles
         public MapperProfile()
         {
             CreateMap<TblUser,UserDto>().ReverseMap();
-            CreateMap<TblNotification, NotificationDto>().ReverseMap();
             CreateMap<TblUser, GetUserDto>().ReverseMap();
-            CreateMap<TblAssetWinner, AssetWinnerDto>().ReverseMap();
             CreateMap<TblSystemSetting, SystemSettingsDto>().ReverseMap();
             CreateMap<SystemSettings, SystemSettingsDto>().ReverseMap();
             // Mapping from Entity to DTO (FinanceSettingsDto)
@@ -96,7 +90,7 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<UpdateAssetCategoryDto, TblAssetCategory>();
 
             CreateMap<CreateAssetsDto, TblAsset>().ReverseMap();
-            
+
             CreateMap<UpdateAssetDto, TblAsset>()
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false)); 
@@ -118,6 +112,7 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<AssetDocumentUploadDto, TblAssetDocument>().ReverseMap();
 
             CreateMap<AssetDocumentFormDto, TblAssetDocument>().ReverseMap();
+
             CreateMap<GetAssetDetailsDto, TblAssetDetail>().ReverseMap();
             //Mapping for Create,Upadte Request Dto
             CreateMap<CreateRequestDto, AddRequestCommand>();
@@ -168,8 +163,6 @@ namespace AuctionManagementSystem.Application.Profiles
                 // Add more as needed
                 ;
 
-
-            CreateMap<AddAutoBidDto, TblAutoBid>().ReverseMap();
 
             CreateMap<CreateRequestDto, AddRequestCommand>().ReverseMap();
             CreateMap<TblRequest, CreateRequestDto>().ReverseMap();
