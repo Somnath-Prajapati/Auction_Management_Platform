@@ -109,6 +109,8 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
 
+    public virtual DbSet<Faq> Faqs { get; set; }
+
     //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public virtual DbSet<tblBid> tblBids { get; set; }
@@ -1250,6 +1252,17 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasForeignKey(d => d.WinnerId)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("FK_tblWinnerDocuments_WinnerId");
+        });
+
+        modelBuilder.Entity<Faq>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Question).IsRequired();
+            entity.Property(e => e.Answer).IsRequired();
+            entity.Property(e => e.Category).HasMaxLength(100);
+            entity.Property(e => e.Tags).HasMaxLength(200);
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
+            entity.Property(e => e.UpdatedAt).HasDefaultValueSql("(getdate())");
         });
 
         //modelBuilder.Entity<Tbltempdatum>(entity =>

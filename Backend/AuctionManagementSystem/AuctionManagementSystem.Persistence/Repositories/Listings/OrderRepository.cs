@@ -114,11 +114,21 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
                 throw new ArgumentException("No assets provided for the order.");
 
             // Step 1: Load Assets
-            var assets = await _context.TblAssets
-                .Where(a => assetIds.Contains(a.AssetId))
-                .Include(a => a.TblAssetGalleries)
-                .Include(a => a.Category)
-                .ToListAsync();
+            var assets = new List<TblAsset>();
+
+            foreach (var id in assetIds)
+            {
+                var asset = await _context.TblAssets
+                    .Include(a => a.TblAssetGalleries)
+                    .Include(a => a.Category)
+                    .FirstOrDefaultAsync(a => a.AssetId == id);
+
+                if (asset != null)
+                {
+                    assets.Add(asset);
+                }
+            }
+
 
             if (assets.Count != assetIds.Count)
                 throw new InvalidOperationException("Some assets were not found in the database.");
@@ -176,7 +186,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
             // Step 7: Map and Return DTOs
             var assetDtos = assets.Select(a => _mapper.Map<DirectSaleAssetDto>(a)).ToList();
             // Step 8: Send Confirmation Email
-            await _orderEmailService.SendOrderConfirmationEmailAsync(userId, savedTransaction, assets);
+            //await _orderEmailService.SendOrderConfirmationEmailAsync(userId, savedTransaction, assets);
 
             return assetDtos;
         }

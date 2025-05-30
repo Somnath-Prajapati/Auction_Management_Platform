@@ -55,6 +55,8 @@ namespace AuctionManagementSystem.Api.Controller.User
             var userId = await _mediator.Send(command);
             return Ok(new { UserId = userId });
         }
+
+        [AllowAnonymous]
         [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateUser(int id, [FromForm] UserDto dto)
         {

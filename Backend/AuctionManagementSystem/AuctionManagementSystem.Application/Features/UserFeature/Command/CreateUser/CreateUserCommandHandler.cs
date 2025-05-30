@@ -63,12 +63,16 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
             user.LastOnline = DateTime.UtcNow;
             user.CreatedDate = DateTime.UtcNow;
             user.IsDeleted = false;
-
+            var userId = await _userRepository.AddUserAsync(user);
             try
             {
-                var userId = await _userRepository.AddUserAsync(user);
+                Console.WriteLine($"[DEBUG] UserId: {_currentUser.UserId}, Username: {_currentUser.Username}, Role: {_currentUser.RoleName}");
+                var afterChangeJson = JsonConvert.SerializeObject(user, new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                });
 
-                // ✅ Audit Trail Logging
+                // Audit Trail Logging
                 await _auditTrailService.LogChangeAsync(
                     userId: _currentUser.UserId,
                     username: _currentUser.Username,
@@ -77,13 +81,14 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
                     changeType: "New",
                     recordId: userId,
                     beforeChange: null,
-                    afterChange: user
+                    afterChange: afterChangeJson
                 );
 
                 return userId;
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Audit Trail Logging Failed: " + ex.Message);
                 throw new DatabaseException("An error occurred while adding the user to the database.");
             }
         }
