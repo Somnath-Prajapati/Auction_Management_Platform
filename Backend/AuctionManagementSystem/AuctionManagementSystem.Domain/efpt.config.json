@@ -15,6 +15,10 @@
    "T4TemplatePath": null,
    "Tables": [
       {
+         "Name": "[AuctionM_dbuser].[ChatbotFaqs]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[AuctionM_dbuser].[tblAssetCategories]",
          "ObjectType": 0
       },
@@ -88,6 +92,14 @@
       },
       {
          "Name": "[AuctionM_dbuser].[tblCartItems]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblChatBotMainQuestionAnswer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblchatbotSubQuestionAnswer]",
          "ObjectType": 0
       },
       {

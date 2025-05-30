@@ -1,27 +1,48 @@
 ﻿using AuctionManagementSystem.Application.Dtos.Chatbot;
-using AuctionManagementSystem.Application.Features.Chatbot.Queries.GetChatbotResponseQuery;
-using MediatR;
+using AuctionManagementSystem.Application.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AuctionManagementSystem.Api.Controller.Chatbot
 {
-
     [ApiController]
     [Route("api/[controller]")]
     public class ChatbotController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly ChatBotService _chatBotService;
 
-        public ChatbotController(IMediator mediator)
+        public ChatbotController(ChatBotService chatBotService)
         {
-            _mediator = mediator;
+            _chatBotService = chatBotService;
         }
 
+        // GET: api/Chatbot/tree
+        [HttpGet("tree")]
+        public async Task<ActionResult<List<ChatbotQATreeDto>>> GetQATree()
+        {
+            var tree = await _chatBotService.GetQATreeAsync();
+            return Ok(tree);
+        }
+
+        // POST: api/Chatbot/message
         [HttpPost("message")]
         public async Task<ActionResult<ChatbotResponseDto>> PostMessage([FromBody] ChatbotMessageRequest request)
         {
-            var query = new GetChatbotResponseQuery(request.Message, request.UserId);
-            var result = await _mediator.Send(query);
+            // If message is null or empty, return a rich welcome message with categories
+            if (string.IsNullOrWhiteSpace(request.Message))
+            {
+                var mainQuestions = await _chatBotService.GetQATreeAsync();
+                var welcome = new ChatbotResponseDto
+                {
+                    ResponseMessage = "Welcome to Mazad Auction Management Platform! Please select a category or type your question. We support: Bidding, Registration, Payments, Identity Verification, Direct Sales, Offers, Deposits, and more. How can we help you today?",
+                    QuickReplies = mainQuestions.Select(q => new QuickReplyDto { Text = q.Question, Payload = q.Id.ToString() }).ToList()
+                };
+                return Ok(welcome);
+            }
+
+            // Otherwise, use the service to get a response from the database
+            var result = await _chatBotService.GetResponseForUserMessageAsync(request.Message);
             return Ok(result);
         }
     }

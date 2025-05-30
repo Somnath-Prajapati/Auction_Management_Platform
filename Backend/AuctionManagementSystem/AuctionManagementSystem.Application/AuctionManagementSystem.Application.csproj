@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+   
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Contracts\Categories\" />
     <Folder Include="Contracts\Statuses\" />
     <Folder Include="Features\Assets\Asset\Command\NewFolder\" />

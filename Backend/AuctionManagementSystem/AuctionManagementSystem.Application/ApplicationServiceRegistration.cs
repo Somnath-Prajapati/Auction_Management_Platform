@@ -39,6 +39,7 @@ namespace AuctionManagementSystem.Application
             services.AddValidatorsFromAssemblyContaining<FooterLinksSettingsDtoValidator>();
             services.AddScoped<IAuctionJobScheduler, HangfireAuctionJobScheduler>();
 
+            services.AddScoped<ChatBotService>();
             // Add pipeline behavior for validation
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 

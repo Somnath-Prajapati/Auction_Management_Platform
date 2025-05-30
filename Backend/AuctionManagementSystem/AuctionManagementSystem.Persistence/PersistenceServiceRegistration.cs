@@ -71,12 +71,15 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAuctionWinnerService, AuctionWinnerService>();
             services.AddScoped<IAssetWinnerRepository, AssetWinnerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<IChatbotRepository, ChatbotRepository>();
+            //services.AddScoped<IChatbotRepository, ChatbotRepository>();
             services.AddScoped<IOrderEmailService, OrderEmailService>();
 
 
             services.AddScoped<IAssetExpirationService, AssetExpirationService>();
             services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
+
+            services.AddScoped<IChatbotRepository, ChatbotRepository>();
+            services.AddScoped<ChatBotService>();
 
             return services;
         }

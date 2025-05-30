@@ -17,6 +17,10 @@ using AuctionManagementSystem.Persistence;
 using Hangfire;
 using Stripe;
 using FileService = AuctionManagementSystem.Api.Services.FileService;
+using AuctionManagementSystem.Application.Contracts.Chatbot;
+using AuctionManagementSystem.Application.Services;
+using AuctionManagementSystem.Persistence.Repositories.Chatbot;
+using AuctionManagementSystem.Persistence.Context;
 
 namespace AuctionManagementSystem.Api
 {
@@ -34,6 +38,10 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddScoped<IBidNotificationService, BidNotificationService>();
             builder.Services.AddScoped<IWinnerNotificationService, WinnerNotificationService>();
+
+            //new added
+            builder.Services.AddScoped<IChatbotRepository, ChatbotRepository>();
+            builder.Services.AddScoped<ChatBotService>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();

@@ -13,6 +13,7 @@ using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
 namespace AuctionManagementSystem.Persistence.Context;
+using AuctionManagementSystem.Persistence;
 
 
 public partial class AuctionManagementDbContext : DbContext
@@ -117,6 +118,9 @@ public partial class AuctionManagementDbContext : DbContext
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
     public virtual DbSet<TblOrder> TblOrders { get; set; }
     public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
+    public virtual DbSet<TblChatBotMainQuestionAnswer> TblChatBotMainQuestionAnswers { get; set; }
+    public virtual DbSet<TblchatbotSubQuestionAnswer> TblchatbotSubQuestionAnswers { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -1252,6 +1256,36 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.Tags).HasMaxLength(200);
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.UpdatedAt).HasDefaultValueSql("(getdate())");
+        });
+        modelBuilder.Entity<TblchatbotSubQuestionAnswer>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__tblchatb__3214EC0730E5251F");
+
+            entity.ToTable("tblchatbotSubQuestionAnswer");
+
+            entity.Property(e => e.Question)
+                .IsRequired()
+                .HasMaxLength(500);
+
+            entity.HasOne(d => d.MainQuestion).WithMany(p => p.TblchatbotSubQuestionAnswers)
+                .HasForeignKey(d => d.MainQuestionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblchatbo__MainQ__1F198FD4");
+
+            entity.HasOne(d => d.ParentSubQuestion).WithMany(p => p.InverseParentSubQuestion)
+                .HasForeignKey(d => d.ParentSubQuestionId)
+                .HasConstraintName("FK__tblchatbo__Paren__200DB40D");
+        });
+
+        modelBuilder.Entity<TblChatBotMainQuestionAnswer>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__tblChatB__3214EC07AEB48FE9");
+
+            entity.ToTable("tblChatBotMainQuestionAnswer");
+
+            entity.Property(e => e.Question)
+                .IsRequired()
+                .HasMaxLength(500);
         });
 
         //modelBuilder.Entity<Tbltempdatum>(entity =>
