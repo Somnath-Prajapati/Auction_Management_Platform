@@ -32,7 +32,7 @@ namespace AuctionManagementSystem.Identity
             services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
             var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();
-
+           
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

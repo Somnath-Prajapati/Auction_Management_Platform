@@ -88,6 +88,10 @@ public partial class TblUser
 
     public virtual ICollection<TblWishlistItem> TblWishlistItems { get; set; } = new List<TblWishlistItem>();
     public virtual ICollection<TblCartItem> TblCartItems { get; set; } = new List<TblCartItem>();
+
+    // after the autobid added 
+    public virtual ICollection<TblAutoBid> TblAutoBids { get; set; } = new List<TblAutoBid>();
+
     public virtual ICollection<TblNotification> TblNotifications { get; set; }
     public TblUser Clone()
     {

@@ -79,7 +79,11 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<INotificationRepository, NotificationRepository>();
 
 
+            services.AddScoped<IAutoBidRepository, AutoBidRepository>();
+
+
             services.AddScoped<IAssetExpirationService, AssetExpirationService>();
+            
             services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
             services.AddScoped<IAutoRefundService, AutoRefundService>();
 
