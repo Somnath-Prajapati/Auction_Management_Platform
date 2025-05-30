@@ -23,6 +23,7 @@ using Stripe;
 using FileService = AuctionManagementSystem.Api.Services.FileService;
 using AuctionManagementSystem.Application.Contracts.Notification;
 using Microsoft.AspNetCore.SignalR;
+using Stripe;
 
 namespace AuctionManagementSystem.Api
 {
@@ -133,11 +134,9 @@ namespace AuctionManagementSystem.Api
 
 
 
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(
-            //    Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "AssetGallery")),
-            //    RequestPath = "/AssetGallery"
+          
+
+            StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:Secret_key").Get<String>();
 
             
             app.UseAuthentication();

@@ -12,6 +12,7 @@ using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
+using AuctionManagementSystem.Domain.model;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 namespace AuctionManagementSystem.Persistence.Context;
@@ -110,8 +111,6 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
 
     public virtual DbSet<Faq> Faqs { get; set; }
-
-    //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public virtual DbSet<tblBid> tblBids { get; set; }
     public virtual DbSet<TblAutoBid> TblAutoBids { get; set; }
@@ -121,6 +120,7 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblOrder> TblOrders { get; set; }
     public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
     public virtual DbSet<TblNotification> TblNotifications { get; set; }
+    public virtual DbSet<TblUserDeposit> TblUserDeposits { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -1074,6 +1074,12 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__tblTransa__UserI__540C7B00");
+
+            entity.HasOne(t => t.UpdatedByUser)
+      .WithMany()
+      .HasForeignKey(t => t.UpdatedBy)
+      .OnDelete(DeleteBehavior.Restrict);
+
         });
 
         modelBuilder.Entity<TblTransactionAsset>(entity =>
@@ -1148,6 +1154,27 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
+
+        modelBuilder.Entity<TblUserDeposit>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__TblUserD__3214EC07D2270BC5");
+
+            entity.ToTable("TblUserDeposit");
+
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
+            entity.Property(e => e.DepositAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.ModifiedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+        });
+
 
         modelBuilder.Entity<TblUser>(entity =>
         {
