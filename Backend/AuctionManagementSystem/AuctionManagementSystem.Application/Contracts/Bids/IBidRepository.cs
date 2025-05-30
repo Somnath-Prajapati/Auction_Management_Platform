@@ -17,6 +17,13 @@ namespace AuctionManagementSystem.Application.Contracts.Bids
         Task UnsetPreviousWinningBidAsync(int assetId);
         Task<(decimal HighestBid, int BidCount)> GetBidStatsByAssetIdAsync(int assetId);
         Task<int> CountBidsByAssetIdAsync(int assetId);
+
+
+
+        Task<tblBid?> GetUserBidAsync(int userId, int auctionId, int assetId);
+        Task UpdateBidAsync(tblBid autoBid);
+
+
         Task<tblBid> GetWinningBidByAssetIdAsync(int assetId);
     }
 

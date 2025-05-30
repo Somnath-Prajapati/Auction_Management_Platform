@@ -8,6 +8,8 @@ using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Application.Contracts.AuditTrail;
+using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Domain.Entities.Notification;
 using AutoMapper;
 using MediatR;
@@ -50,6 +52,8 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddA
             var createdAsset = await _assetsRepository.AddAsset(assetEntity);
             Console.WriteLine($"Created Asset ID: {createdAsset.AssetId}");
 
+
+           
 
             // Serialize for audit log
             var afterChangeJson = JsonConvert.SerializeObject(createdAsset, new JsonSerializerSettings

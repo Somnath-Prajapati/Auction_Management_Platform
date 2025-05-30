@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Bids;
 using MediatR;
 
-namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
+namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Query.GetBidById
 {
-    public record AddBidCommand(int AuctionId,int AssetId,int UserId,decimal BidAmount) : IRequest<int>;
+    public record GetBidStatsByAssetIdQuery(int assetId) : IRequest<BidStatsDto>;
 }

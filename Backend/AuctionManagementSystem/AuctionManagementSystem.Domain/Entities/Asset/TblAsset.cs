@@ -106,4 +106,7 @@ public partial class TblAsset
     public virtual ICollection<TblWishlistItem> TblWishlistItems { get; set; } = new List<TblWishlistItem>();
     public virtual ICollection<TblCartItem> TblCartItems { get; set; } = new List<TblCartItem>();
     public bool IsAvailableForDirectSale { get; set; }
+
+    // after the autobid added 
+    public virtual ICollection<TblAutoBid> TblAutoBids { get; set; } = new List<TblAutoBid>();
 }

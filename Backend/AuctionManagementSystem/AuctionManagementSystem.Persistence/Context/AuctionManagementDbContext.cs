@@ -113,6 +113,7 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<Faq> Faqs { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public virtual DbSet<tblBid> tblBids { get; set; }
+    public virtual DbSet<TblAutoBid> TblAutoBids { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }
     public virtual DbSet<TblAuditTrail> TblAuditTrails { get; set; }
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
@@ -648,6 +649,63 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK__tblAuctio__Aucti__6B24EA82");
         });
 
+
+        modelBuilder.Entity<TblAutoBid>(entity =>
+        {
+            entity.HasKey(e => e.AutoBidId).HasName("PK__tblAutoB__C5E25909977EF2B6");
+
+            entity.ToTable("tblAutoBids");
+
+            entity.HasIndex(e => new { e.UserId, e.AuctionId, e.AssetId }, "UQ_tblAutoBid_User_Auction_Asset").IsUnique();
+
+            entity.Property(e => e.CreatedDate).HasDefaultValueSql("(sysutcdatetime())");
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.MaxBidAmount).HasColumnType("decimal(18, 2)");
+
+            entity.HasOne(d => d.Asset).WithMany(p => p.TblAutoBids)
+                .HasForeignKey(d => d.AssetId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblAutoBid_Asset");
+
+            entity.HasOne(d => d.Auction).WithMany(p => p.TblAutoBids)
+                .HasForeignKey(d => d.AuctionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblAutoBid_Auction");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TblAutoBids)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblAutoBid_User");
+        });
+
+
+        //modelBuilder.Entity<tblBid>(entity =>
+        //{
+        //    entity.HasKey(e => e.BidId).HasName("PK__tblBids__4A733D920BE15F30");
+
+        //    entity.ToTable("tblBids");
+
+        //    entity.Property(e => e.BidAmount).HasColumnType("decimal(10, 2)");
+        //    entity.Property(e => e.BidTime)
+        //        .HasDefaultValueSql("(getdate())")
+        //        .HasColumnType("datetime");
+        //    entity.Property(e => e.CreatedDate)
+        //        .HasDefaultValueSql("(getdate())")
+        //        .HasColumnType("datetime");
+        //    entity.Property(e => e.IsWinningBid).HasDefaultValue(false);
+
+        //    entity.HasOne(d => d.Asset).WithMany(p => p.TblBids)
+        //        .HasForeignKey(d => d.AssetId)
+        //        .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK_Bids_Assets");
+
+        //    entity.HasOne(d => d.Auction).WithMany(p => p.TblBids)
+        //        .HasForeignKey(d => d.AuctionId)
+        //        .OnDelete(DeleteBehavior.ClientSetNull)
+        //        .HasConstraintName("FK_Bids_Auctions");
+
+        //    entity.HasOne(d => d.User).WithMany(p => p.TblBids)
+        //        .HasForeignKey(d => d.UserId)
 
         modelBuilder.Entity<tblBid>(entity =>
         {

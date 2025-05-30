@@ -12,9 +12,9 @@ using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Notification;
 using AutoMapper;
 using MediatR;
- 
 
-namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
+
+namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
 {
     public class AddBidCommandHandler : IRequestHandler<AddBidCommand, int>
     {
@@ -25,11 +25,12 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
         private readonly IAssetsRepository _assetsRepository;
         private readonly IAuctionRepository _auctionRepository;
         private readonly IBidNotificationService _notificationService;
+        private readonly IAutoBidRepository _autoBidRepo;
         private readonly IUserRepository _userRepository;
         private readonly INotificationRepository _notificationRepository;
         private readonly INotificationBroadcaster _notificationBroadcaster;
 
-        public AddBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService, IUserRepository userRepository, INotificationRepository notificationRepository, INotificationBroadcaster notificationBroadcaster)
+        public AddBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService, IUserRepository userRepository, INotificationRepository notificationRepository, INotificationBroadcaster notificationBroadcaster , IAutoBidRepository autoBidRepo)
         {
             _bidRepository = bidRepository;
             _mapper = mapper;
@@ -38,6 +39,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
             _assetsRepository = assetsRepository;
             _auctionRepository = auctionRepository;
             _notificationService = notificationService;
+            _autoBidRepo = autoBidRepo;
             _userRepository = userRepository;
             _notificationRepository = notificationRepository;
             _notificationBroadcaster = notificationBroadcaster;
@@ -62,14 +64,18 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
                 var auction = await _auctionRepository.GetByIdAsync(request.AuctionId);
                 if (auction == null || auction.EndDateTime < DateTime.UtcNow || auction.IsDeleted)
                 {
-                    throw new NotFoundException ("Cannot place a bid. The auction has expired or is inactive.");
+                    throw new NotFoundException("Cannot place a bid. The auction has expired or is inactive.");
                 }
 
                 var asset = await _assetsRepository.GetByIdAsync(request.AssetId);
                 if (asset == null)
                     throw new NotFoundException("Asset not found.");
 
-
+                var isAutoBid = await _autoBidRepo.GetByUserAuctionAssetAsync(request.UserId, request.AuctionId, request.AssetId);
+                if (isAutoBid != null && isAutoBid.IsActive)
+                {
+                    throw new NotFoundException("Auto-bid is currently active. Please disable it before placing a manual bid.");
+                }
 
                 var highestBid = await _bidRepository.GetHighestBidAmountAsync(request.AssetId);
                 if (!highestBid.HasValue)
@@ -119,7 +125,8 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
 
                 await _bidRepository.UnsetPreviousWinningBidAsync(request.AssetId);
 
-                
+                await _autoBidRepo.ExtendAuctionIfCloseToEndAsync(request.AuctionId, DateTime.UtcNow);
+
                 var bid = _mapper.Map<tblBid>(request);
                 bid.IsWinningBid = true;
 
@@ -129,17 +136,17 @@ namespace AuctionManagementSystem.Application.Features.Bids.Command.CreateBid
                 var updatedBidCount = await _bidRepository.CountBidsByAssetIdAsync(request.AssetId);
                 
                 await _notificationService.NotifyNewBidAsync(
-                  request.AuctionId,
-                  request.AssetId,
-                  new
-                  {
-                      bidCount = updatedBidCount,
-                      auctionId = request.AuctionId,
-                      assetId = request.AssetId,
-                      UserId = request.UserId,
-                      BidAmount = request.BidAmount,
-                      BidTime = DateTime.UtcNow
-                  });
+                   request.AuctionId,
+                   request.AssetId,
+                   new
+                   {
+                       bidCount = updatedBidCount,
+                       auctionId = request.AuctionId,
+                       assetId = request.AssetId,
+                       request.UserId,
+                       request.BidAmount,
+                       BidTime = DateTime.UtcNow
+                   });
 
                 return bidId;
             }
