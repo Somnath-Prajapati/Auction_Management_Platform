@@ -27,7 +27,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
         private readonly INotificationBroadcaster _notificationBroadcaster;
 
         public AddUnifiedAssetCommandHandler(IMapper mapper, IAssetsRepository assetsRepository,INotificationRepository notificationRepository,
-             INotificationBroadcaster notificationBroadcaster
+             INotificationBroadcaster notificationBroadcaster,
             IAuditTrailService auditTrailService, ICurrentUserService currentUser)
         {
             _mapper = mapper;
@@ -68,7 +68,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
                 CreatedAt = DateTime.UtcNow,
                 ExpiresAt = DateTime.UtcNow.AddDays(2),
                 IsRead = null,
-                 AssetId = createdAsset,
+                 AssetId = createdAsset.AssetId,
                 AuctionId = null
             };
 
