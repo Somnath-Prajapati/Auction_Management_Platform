@@ -6,12 +6,12 @@ using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Comm
 using AuctionManagementSystem.Application.Validators;
 using Microsoft.Extensions.DependencyInjection;
 using MediatR;
-using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.UpdateStaticPagesSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.DeleteStaticPagesSettings;
 using AuctionManagementSystem.Application.Profiles;
 using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Application.Services;
 
 namespace AuctionManagementSystem.Application
 {
@@ -39,11 +39,18 @@ namespace AuctionManagementSystem.Application
             services.AddValidatorsFromAssemblyContaining<FooterLinksSettingsDtoValidator>();
             services.AddScoped<IAuctionJobScheduler, HangfireAuctionJobScheduler>();
 
+
+            services.AddScoped<IAutoBidService, AutoBidService>();
+
+            services.AddTransient<HangfireAutoBidJobScheduler>();
+
+
             // Add pipeline behavior for validation
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             services.AddHttpContextAccessor();
-            return services;
+            return services;    
         }
     }
 }
+ 

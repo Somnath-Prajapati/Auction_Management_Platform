@@ -7,10 +7,10 @@ using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Dtos.Bids;
 using MediatR;
 
-namespace AuctionManagementSystem.Application.Features.Bids.Query.GetBidById
+namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Query.GetBidById
 {
-    
-     public class GetBidStatsByAssetIdQueryHandler : IRequestHandler<GetBidStatsByAssetIdQuery, BidStatsDto>
+
+    public class GetBidStatsByAssetIdQueryHandler : IRequestHandler<GetBidStatsByAssetIdQuery, BidStatsDto>
     {
         private readonly IBidRepository _bidRepository;
 
