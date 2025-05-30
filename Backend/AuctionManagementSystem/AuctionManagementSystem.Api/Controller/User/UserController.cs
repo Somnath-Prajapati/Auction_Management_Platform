@@ -1,9 +1,12 @@
 ﻿using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Dtos.UserDtos;
+using AuctionManagementSystem.Application.Features.Notifications.Command.MarkAsRead;
 using AuctionManagementSystem.Application.Features.UserFeature.Command.CreateUser;
+using AuctionManagementSystem.Application.Features.UserFeature.Command.DeleteNotificationByUserId;
 using AuctionManagementSystem.Application.Features.UserFeature.Command.DeleteUser;
 using AuctionManagementSystem.Application.Features.UserFeature.Command.UpdateUser;
 using AuctionManagementSystem.Application.Features.UserFeature.Query.GetAllUser;
+using AuctionManagementSystem.Application.Features.UserFeature.Query.GetNotificationByUserId;
 using AuctionManagementSystem.Application.Features.UserFeature.Query.GetRoles;
 using AuctionManagementSystem.Application.Features.UserFeature.Query.GetStatus;
 using AuctionManagementSystem.Application.Features.UserFeature.Query.GetUserById;
@@ -80,6 +83,28 @@ namespace AuctionManagementSystem.Api.Controller.User
             var statuses = await _mediator.Send(new GetAllStatusesQuery());
             return Ok(statuses);
         }
-
+        [AllowAnonymous]
+        [HttpGet("Notification/{UserId}")]
+        public async Task<IActionResult> GetUserNotifications(int UserId)
+        {
+            var Query = new GetNotificationByUserIdQuery(UserId);
+            var result = await _mediator.Send(Query);
+            return Ok(result);
+        }
+        [AllowAnonymous]
+        [HttpDelete("delete-all-notification/{userId}")]
+        public async Task<IActionResult> DeleteAllNotifications(int userId)
+        {
+            await _mediator.Send(new DeleteNotificationByUserIdCommand(userId));
+            return NoContent();
+        }
+        //notification Handler
+        [AllowAnonymous]
+        [HttpPut("mark-as-read/{notificationId}")]
+        public async Task<IActionResult> MarkAsRead(Guid notificationId)
+        {
+            await _mediator.Send(new MarkAsReadCommand(notificationId));
+            return NoContent();
+        }
     }
 }

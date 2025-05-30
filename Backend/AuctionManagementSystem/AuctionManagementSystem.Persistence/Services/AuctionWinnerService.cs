@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Application.Contracts.RealTime;
 using AuctionManagementSystem.Application.Dtos.Bids;
+using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Application.Exceptions;
 using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,11 +22,15 @@ namespace AuctionManagementSystem.Application.Services
         private readonly AuctionManagementDbContext _context;
         private readonly IWinnerNotificationService _notificationService;
         private readonly IAssetWinnerRepository _assetWinnerRepository;
-        public AuctionWinnerService(AuctionManagementDbContext context, IWinnerNotificationService notificationService, IAssetWinnerRepository assetWinnerRepository)
+        private readonly INotificationBroadcaster _notificationBroadcaster;
+        private readonly INotificationRepository _notificationRepository;
+        public AuctionWinnerService(AuctionManagementDbContext context, IWinnerNotificationService notificationService, IAssetWinnerRepository assetWinnerRepository, INotificationBroadcaster notificationBroadcaster, INotificationRepository notificationRepository)
         {
             _context = context;
             _notificationService = notificationService;
             _assetWinnerRepository = assetWinnerRepository;
+            _notificationBroadcaster = notificationBroadcaster;
+            _notificationRepository = notificationRepository;
         }
 
         public async Task<List<AuctionWinnerDto>> WinnerAuctionAsync(int auctionId)
@@ -70,6 +77,31 @@ namespace AuctionManagementSystem.Application.Services
                         _context.TblAssets.Update(asset);
                         await _context.SaveChangesAsync();
                     }
+                    var notification = new TblNotification
+                    {
+                        Id = Guid.NewGuid(),
+                        UserId = winner.UserId,
+                        Title = $"Winner Announced for Asset :: {winner.AssetId}",
+                        Message = $"Asset'{winner.AssetId}' been won by {winner.UserId}.",
+                        CreatedAt = DateTime.UtcNow,
+                        ExpiresAt = DateTime.UtcNow.AddDays(2),
+                        IsRead = false,
+                        AssetId = winner.AssetId,
+                        AuctionId = winner.AuctionId
+                    };
+
+                    await _notificationRepository.CreateAsync(notification);
+                    var notificationDto = new NotificationDto
+                    {
+                        UserId = notification.UserId,
+                        Title = notification.Title,
+                        Message = notification.Message,
+                        ExpiresAt = notification.ExpiresAt,
+                        AuctionId = notification.AuctionId,
+                        AssetId = notification.AssetId,
+                    };
+
+                    await _notificationBroadcaster.BroadcastNotificationAsync(notificationDto);
                 }
             }
 
