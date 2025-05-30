@@ -1,5 +1,4 @@
 ﻿
-using AuctionManagementSystem.Api.Services;
 using AuctionManagementSystem.Application.Contracts.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +14,16 @@ using AuctionManagementSystem.Application;
 using AuctionManagementSystem.Identity;
 using AuctionManagementSystem.Persistence;
 using Hangfire;
+using AuctionManagementSystem.Api.Services;
+using AuctionManagementSystem.Application.Services;
+using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Application.Services;
+using Hangfire.Server;
+using Stripe;
+using FileService = AuctionManagementSystem.Api.Services.FileService;
+using AuctionManagementSystem.Application.Contracts.Notification;
+using Microsoft.AspNetCore.SignalR;
+using Stripe;
 
 namespace AuctionManagementSystem.Api
 {
@@ -32,7 +41,16 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddScoped<IBidNotificationService, BidNotificationService>();
             builder.Services.AddScoped<IWinnerNotificationService, WinnerNotificationService>();
+            //builder.Services.AddScoped<IBackgroundProcess, BackgroundProcessHangfire>();
 
+            builder.Services.AddScoped<HangfireAutoBidJobScheduler>();
+
+
+
+
+            builder.Services.AddScoped<INotificationBroadcaster, NotificationBroadcaster>();
+            builder.Services.AddSingleton<IUserIdProvider, NameIdentifierUserIdProvider>();
+             
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddOpenApi();
@@ -51,20 +69,52 @@ namespace AuctionManagementSystem.Api
 
             builder.Services.AddSignalR();
 
+            //builder.Services.AddHangfire(config =>
+            //    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+          
             builder.Services.AddHangfire(config =>
-                config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
+            {
+                config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection"), new Hangfire.SqlServer.SqlServerStorageOptions
+                {
+                    PrepareSchemaIfNecessary = true
+                });
+
+            });
 
             builder.Services.AddHangfireServer();
             builder.Logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
 
 
             var app = builder.Build();
-            //if (app.Environment.IsDevelopment())
+
+
+            //app.Lifetime.ApplicationStarted.Register(() =>
             //{
-            
+            //    using var scope = app.Services.CreateScope();
+            //    var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
+
+            //    recurringJobManager.RemoveIfExists("AutoBidJob");
+
+            //    var scheduler = scope.ServiceProvider.GetRequiredService<IAutoBidJobScheduler>();
+            //    scheduler.ScheduleAutoBidJob();
+            //});
+
+            app.Lifetime.ApplicationStarted.Register(() =>
+            {
+                using var scope = app.Services.CreateScope();
+                var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
+                recurringJobManager.RemoveIfExists("AutoBidJob");
+
+                var scheduler = scope.ServiceProvider.GetRequiredService<HangfireAutoBidJobScheduler>();
+                scheduler.ScheduleAutoBidJob();
+            });
+
+
+  
+
             app.UseCors("AllowFrontend");
 
-            app.MapHub<BidHub>("/bidhub");
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
@@ -76,21 +126,23 @@ namespace AuctionManagementSystem.Api
             
             
             app.UseHttpsRedirection();
+
+
             app.UseStaticFiles();
             app.UseHangfireDashboard();
 
 
 
 
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(
-            //    Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "AssetGallery")),
-            //    RequestPath = "/AssetGallery"
+          
+
+            StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:Secret_key").Get<String>();
 
             
             app.UseAuthentication();
+
             app.UseAuthorization();
+            app.MapHub<BidHub>("/bidhub");
 
 
 
@@ -105,6 +157,6 @@ namespace AuctionManagementSystem.Api
 
             app.MapControllers();
             app.Run();
-        }
+        }   
     }
 }

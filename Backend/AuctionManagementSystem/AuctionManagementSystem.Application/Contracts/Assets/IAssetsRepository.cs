@@ -21,13 +21,14 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task<TblAsset> GetIdDeleteAsync(int id);
         Task<TblAsset> AddAsset(TblAsset asset);
 
-        Task<int> AddAssetForGallery(TblAsset asset);
+        Task<TblAsset> AddAssetForGallery(TblAsset asset);
         Task DeleteAsync(TblAsset asset);
         Task UpdateAsync(TblAsset asset);
         Task<bool> AssetsIsExist(int id);
         Task<IEnumerable<TblAsset>> SearchAsset(string name);
 
-
+        Task<bool> HasAnyDirectAndActiveAuctionAsync(int auctionIds); // this is for directsale
+        Task DeactivateExpiredAssetsBasedOnDeadlineAsync();        // added for hangfire 
 
         //Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents);
 
