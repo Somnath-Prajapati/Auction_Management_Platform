@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.AuditTrail;
 using AuctionManagementSystem.Domain.Entities.Bids;
+using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 
@@ -91,6 +92,7 @@ public partial class TblUser
     // after the autobid added 
     public virtual ICollection<TblAutoBid> TblAutoBids { get; set; } = new List<TblAutoBid>();
 
+    public virtual ICollection<TblNotification> TblNotifications { get; set; }
     public TblUser Clone()
     {
         return (TblUser)this.MemberwiseClone();

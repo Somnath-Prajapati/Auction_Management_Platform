@@ -16,16 +16,16 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
         private readonly IFileService _fileService;
         private readonly IMapper _mapper;
         private readonly ILoggedInUserService _loggedInUserService;
-        private readonly IAuditTrailService _auditTrailService; // <-- Add this
-        private readonly ICurrentUserService _currentUser; // <-- Add this
+        private readonly IAuditTrailService _auditTrailService; 
+        private readonly ICurrentUserService _currentUser; 
 
         public CreateUserCommandHandler(
             IUserRepository userRepository,
             IFileService fileService,
             IMapper mapper,
             ILoggedInUserService loggedInUserService,
-            IAuditTrailService auditTrailService, // <-- Inject
-            ICurrentUserService currentUser) // <-- Inject
+            IAuditTrailService auditTrailService, 
+            ICurrentUserService currentUser)
         {
             _userRepository = userRepository;
             _fileService = fileService;
