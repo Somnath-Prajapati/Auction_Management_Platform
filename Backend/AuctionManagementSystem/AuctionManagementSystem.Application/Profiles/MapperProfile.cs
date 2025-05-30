@@ -36,6 +36,8 @@ using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
 using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Application.Dtos.AuditTrial;
 using AuctionManagementSystem.Domain.Entities.AuditTrail;
+using AuctionManagementSystem.Domain.Entities.Notification;
+using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Domain;
 
 
@@ -46,7 +48,9 @@ namespace AuctionManagementSystem.Application.Profiles
         public MapperProfile()
         {
             CreateMap<TblUser,UserDto>().ReverseMap();
+            CreateMap<TblNotification, NotificationDto>().ReverseMap();
             CreateMap<TblUser, GetUserDto>().ReverseMap();
+            CreateMap<TblAssetWinner, AssetWinnerDto>().ReverseMap();
             CreateMap<TblSystemSetting, SystemSettingsDto>().ReverseMap();
             CreateMap<SystemSettings, SystemSettingsDto>().ReverseMap();
             // Mapping from Entity to DTO (FinanceSettingsDto)

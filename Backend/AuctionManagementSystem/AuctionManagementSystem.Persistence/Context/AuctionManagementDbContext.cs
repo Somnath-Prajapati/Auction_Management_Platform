@@ -7,11 +7,13 @@ using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.AuditTrail;
 using AuctionManagementSystem.Domain.Entities.Bids;
+using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Domain.model;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 namespace AuctionManagementSystem.Persistence.Context;
 
@@ -107,6 +109,8 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblWinnerAwardingOption> TblWinnerAwardingOptions { get; set; }
 
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
+
+    public virtual DbSet<Faq> Faqs { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public virtual DbSet<tblBid> tblBids { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }
@@ -114,6 +118,7 @@ public partial class AuctionManagementDbContext : DbContext
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
     public virtual DbSet<TblOrder> TblOrders { get; set; }
     public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
+    public virtual DbSet<TblNotification> TblNotifications { get; set; }
     public virtual DbSet<TblUserDeposit> TblUserDeposits { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -189,6 +194,11 @@ public partial class AuctionManagementDbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__tblCartIt__UserI__2D47B39A");
         });
+        modelBuilder.Entity<TblNotification>()
+            .HasOne(n => n.User)  
+            .WithMany(u => u.TblNotifications)
+            .HasForeignKey(n => n.UserId)
+            .OnDelete(DeleteBehavior.SetNull);
 
         // For WishlistItem mapping
         modelBuilder.Entity<TblWishlistItem>(entity =>
@@ -513,6 +523,9 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.TblAssetWinners)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__tblAssetW__UserI__282DF8C2");
+            entity.Property(e => e.IsSeen)
+                .HasDefaultValue(false)
+                .IsRequired();
         });
         modelBuilder.Entity<TblAuditTrail>(entity =>
         {
@@ -1238,6 +1251,17 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasForeignKey(d => d.WinnerId)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("FK_tblWinnerDocuments_WinnerId");
+        });
+
+        modelBuilder.Entity<Faq>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Question).IsRequired();
+            entity.Property(e => e.Answer).IsRequired();
+            entity.Property(e => e.Category).HasMaxLength(100);
+            entity.Property(e => e.Tags).HasMaxLength(200);
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
+            entity.Property(e => e.UpdatedAt).HasDefaultValueSql("(getdate())");
         });
 
         //modelBuilder.Entity<Tbltempdatum>(entity =>
