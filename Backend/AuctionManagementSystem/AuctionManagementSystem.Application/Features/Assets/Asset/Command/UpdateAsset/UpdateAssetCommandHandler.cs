@@ -40,6 +40,11 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.Upda
                 throw new Exception($"Asset with ID {request.id} not found.");
             }
 
+            // Capture BEFORE state (clone or serialize before modification)
+            var beforeChange = JsonConvert.SerializeObject(asset, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
 
             // Update fields
             asset.Title = request.AssetsDto.Title;
@@ -69,28 +74,35 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.Upda
             asset.Description = request.AssetsDto.Description;
             asset.UpdatedAt = DateTime.UtcNow;
 
+            // Capture AFTER state
+            var afterChange = JsonConvert.SerializeObject(asset, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+
             // Update in DB
             await _assetsRepository.UpdateAsync(asset);
-
-            // Log to audit trail
-            await _auditTrailService.LogChangeAsync(
-                userId: _currentUser.UserId,
-                username: _currentUser.Username,
-                roleName: _currentUser.RoleName,
-                modelName: "Asset",
-                changeType: "Update",
-                recordId: asset.AssetId,
-                beforeChange: JsonConvert.SerializeObject(asset, new JsonSerializerSettings
-                {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                }),
-    afterChange: JsonConvert.SerializeObject(asset, new JsonSerializerSettings
-    {
-        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-    })
+            try
+            {
+                await _auditTrailService.LogChangeAsync(
+                    userId: _currentUser.UserId,
+                    username: _currentUser.Username,
+                    roleName: _currentUser.RoleName,
+                    modelName: "Asset",
+                    changeType: "Update",
+                    recordId: asset.AssetId,
+                    beforeChange: beforeChange,
+                    afterChange: afterChange
                 );
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Audit Trail Logging Failed: " + ex.Message);
+            }
+
 
             Console.WriteLine($"Asset Updated By: {_currentUser.Username} ({_currentUser.UserId})");
         }
+
     }
 }

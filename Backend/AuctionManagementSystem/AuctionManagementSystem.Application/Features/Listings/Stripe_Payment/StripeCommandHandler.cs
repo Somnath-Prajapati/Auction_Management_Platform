@@ -22,6 +22,7 @@ namespace AuctionManagementSystem.Application.Features.Listings.Stripe_Payment
 
             var options = new SessionCreateOptions
             {
+                PaymentMethodTypes = new List<string> { "card", "klarna", "ideal"},
                 CustomerEmail = dto.email,
                 Mode = "payment",
                 LineItems = new List<SessionLineItemOptions>

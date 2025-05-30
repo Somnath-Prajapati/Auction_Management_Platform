@@ -388,9 +388,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 .FirstOrDefaultAsync(a => a.AssetId == asset.AssetId);  
         }
 
-
-
-        public async Task<int> AddAssetForGallery(TblAsset asset)
+        public async Task<TblAsset> AddAssetForGallery(TblAsset asset)
         {
             
          
@@ -399,7 +397,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             _context.TblAssets.Add(asset);
             await _context.SaveChangesAsync();
 
-            return asset.AssetId;
+            return asset;
         }
 
         public async Task<string> GenerateNextAssetNumberAsync(int startFrom = 1063)
