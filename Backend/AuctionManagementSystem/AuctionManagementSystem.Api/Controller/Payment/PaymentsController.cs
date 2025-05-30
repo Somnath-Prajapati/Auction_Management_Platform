@@ -28,13 +28,11 @@ namespace AuctionManagementSystem.Api.Controller.Payment
             return Ok(new { sessionId });
         }
 
-        [HttpGet("confirm")]
-        public async Task<IActionResult> ConfirmStripeOrder([FromQuery] string session_id, [FromQuery] int userId)
+        [HttpPost("confirm-payment")]
+        public async Task<IActionResult> ConfirmPayment([FromBody] ConfirmStripePaymentDto dto)
         {
-            var dto = new ConfirmStripePaymentDto { SessionId = session_id, UserId = userId };
-            var command = new ConfirmStripePaymentAndCreateOrderCommand { PaymentDto = dto };
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            var assets = await _mediator.Send(new ConfirmStripePaymentAndCreateOrderCommand { PaymentDto = dto });
+            return Ok(assets);
         }
 
         [HttpGet("check-payment-status")]

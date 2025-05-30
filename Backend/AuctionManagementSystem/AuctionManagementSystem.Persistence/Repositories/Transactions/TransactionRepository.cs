@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using AuctionManagementSystem.Application.Contracts.Transactions;
+using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -163,4 +164,33 @@ public class TransactionRepository : ITransactionRepository
         _logger.LogInformation("User ID {UserId}'s deposit amount updated due to transaction type '{Type}' update.",
             user.UserId, after.TransactionType?.TransactionTypeName);
     }
+
+
+    public async Task<List<UserTransactionDto>> GetUserTransactionsAsync(int userId)
+    {
+        var transactions = await _context.TblTransactions
+            .Where(t => t.UserId == userId)
+            .OrderByDescending(t => t.CreatedAt)
+            .Select(t => new UserTransactionDto
+            {
+                RefNo = t.TransactionNumber,
+                Request = t.TransactionTypeId == 1 ? "Deposit"
+                        : t.TransactionTypeId == 2 && t.StatusId == 1 ? "Refund Request"
+                        : t.TransactionTypeId == 2 && t.StatusId == 2 ? "Refund"
+                        : "Unknown",
+
+                DateTime = t.CreatedDate,
+                Amount = t.Amount,
+                Type = t.TransactionType.TransactionTypeName, // e.g., "Deposit", "Refund"
+                Method = t.PaymentMethodId != null ? t.PaymentMethod.PaymentMethodName : "—",
+                Status = t.Status.StatusName, // e.g., "Pending", "Completed"
+                ApprovedDateTime = t.UpdatedAt,
+                ApprovedBy = t.UpdatedByUser != null ? t.UpdatedByUser.Name : null,
+                Notes = t.Notes
+            })
+            .ToListAsync();
+
+        return transactions;
+    }
+
 }
