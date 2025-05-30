@@ -1,5 +1,6 @@
 ﻿using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
 using AuctionManagementSystem.Application.Features.Bids.Query.GetBidById;
+using AuctionManagementSystem.Application.Features.Bids.Query.GetBidByUserId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +27,13 @@ namespace AuctionManagementSystem.Api.Controller.Bid
         public async Task<IActionResult> GetBidStats(int assetId)
         {
             var query = new GetBidStatsByAssetIdQuery(assetId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpGet("UserBids/{userId}")]
+        public async Task<IActionResult> GetBidsByUserId(int userId)
+        {
+            var query = new GetBidByUserIdQuery(userId);
             var result = await _mediator.Send(query);
             return Ok(result);
         }

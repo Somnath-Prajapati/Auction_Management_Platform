@@ -27,6 +27,8 @@ using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Contracts.Listings;
 using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Persistence.Repositories.AuditTrail;
+using AuctionManagementSystem.Application.Contracts.Roles;
+using AuctionManagementSystem.Persistence.Repositories.Roles;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -64,6 +66,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAssetWinnerRepository, AssetWinnerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
+            services.AddScoped<IRolePermissionsMatrixRepository, RolePermissionsMatrixRepository>();
 
             return services;
         }
