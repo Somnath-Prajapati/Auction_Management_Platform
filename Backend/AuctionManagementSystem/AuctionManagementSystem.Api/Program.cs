@@ -19,6 +19,10 @@ using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Services;
 using Hangfire.Server;
+using Stripe;
+using FileService = AuctionManagementSystem.Api.Services.FileService;
+using AuctionManagementSystem.Application.Contracts.Notification;
+using Microsoft.AspNetCore.SignalR;
 
 namespace AuctionManagementSystem.Api
 {
@@ -43,6 +47,9 @@ namespace AuctionManagementSystem.Api
 
 
 
+            builder.Services.AddScoped<INotificationBroadcaster, NotificationBroadcaster>();
+            builder.Services.AddSingleton<IUserIdProvider, NameIdentifierUserIdProvider>();
+             
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddOpenApi();
@@ -107,7 +114,6 @@ namespace AuctionManagementSystem.Api
 
             app.UseCors("AllowFrontend");
 
-            app.MapHub<BidHub>("/bidhub");
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
@@ -137,6 +143,7 @@ namespace AuctionManagementSystem.Api
             app.UseAuthentication();
 
             app.UseAuthorization();
+            app.MapHub<BidHub>("/bidhub");
 
 
 

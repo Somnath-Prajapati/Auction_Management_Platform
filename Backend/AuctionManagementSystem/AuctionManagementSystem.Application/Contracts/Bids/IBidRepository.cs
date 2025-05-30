@@ -24,6 +24,7 @@ namespace AuctionManagementSystem.Application.Contracts.Bids
         Task UpdateBidAsync(tblBid autoBid);
 
 
+        Task<tblBid> GetWinningBidByAssetIdAsync(int assetId);
     }
 
 }
