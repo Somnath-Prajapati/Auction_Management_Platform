@@ -2,11 +2,8 @@
     using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using AuctionManagementSystem.Domain.Entities.Bids;
-using System.ComponentModel.DataAnnotations.Schema;
 using AuctionManagementSystem.Domain.Entities.Asset;
-using AuctionManagementSystem.Domain.Entities.Bids;
-
-    namespace AuctionManagementSystem.Domain.Entities.Auction;
+namespace AuctionManagementSystem.Domain.Entities.Auction;
 
     public partial class TblAuction
     {

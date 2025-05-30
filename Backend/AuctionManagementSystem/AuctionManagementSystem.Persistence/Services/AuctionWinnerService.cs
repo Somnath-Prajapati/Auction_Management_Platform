@@ -13,6 +13,7 @@ using AuctionManagementSystem.Application.Exceptions;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Persistence.Context;
+using AuctionManagementSystem.Persistence.Repositories.Listings;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Application.Services
@@ -24,13 +25,15 @@ namespace AuctionManagementSystem.Application.Services
         private readonly IAssetWinnerRepository _assetWinnerRepository;
         private readonly INotificationBroadcaster _notificationBroadcaster;
         private readonly INotificationRepository _notificationRepository;
-        public AuctionWinnerService(AuctionManagementDbContext context, IWinnerNotificationService notificationService, IAssetWinnerRepository assetWinnerRepository, INotificationBroadcaster notificationBroadcaster, INotificationRepository notificationRepository)
+        private readonly ICartRepository _CartRepository;
+        public AuctionWinnerService(AuctionManagementDbContext context, IWinnerNotificationService notificationService, IAssetWinnerRepository assetWinnerRepository, INotificationBroadcaster notificationBroadcaster, INotificationRepository notificationRepository, ICartRepository cartRepository)
         {
             _context = context;
             _notificationService = notificationService;
             _assetWinnerRepository = assetWinnerRepository;
             _notificationBroadcaster = notificationBroadcaster;
             _notificationRepository = notificationRepository;
+            _CartRepository = cartRepository;
         }
 
         public async Task<List<AuctionWinnerDto>> WinnerAuctionAsync(int auctionId)
@@ -77,6 +80,7 @@ namespace AuctionManagementSystem.Application.Services
                         _context.TblAssets.Update(asset);
                         await _context.SaveChangesAsync();
                     }
+
                     var notification = new TblNotification
                     {
                         Id = Guid.NewGuid(),
@@ -104,6 +108,7 @@ namespace AuctionManagementSystem.Application.Services
                     await _notificationBroadcaster.BroadcastNotificationAsync(notificationDto);
                 }
             }
+
 
             await _context.SaveChangesAsync();
 
