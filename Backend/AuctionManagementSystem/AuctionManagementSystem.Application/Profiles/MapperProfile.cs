@@ -36,6 +36,8 @@ using AuctionManagementSystem.Application.Features.Bids.Command.CreateBid;
 using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Application.Dtos.AuditTrial;
 using AuctionManagementSystem.Domain.Entities.AuditTrail;
+using AuctionManagementSystem.Application.Dtos.Roles;
+using System.Data;
 
 
 namespace AuctionManagementSystem.Application.Profiles
@@ -89,7 +91,7 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<UpdateAssetCategoryDto, TblAssetCategory>();
 
             CreateMap<CreateAssetsDto, TblAsset>().ReverseMap();
-
+            
             CreateMap<UpdateAssetDto, TblAsset>()
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false)); 

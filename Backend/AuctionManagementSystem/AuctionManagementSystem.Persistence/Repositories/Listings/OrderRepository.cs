@@ -130,9 +130,9 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
             {
                 UserId = userId,
                 Amount = totalAmount,
-                TransactionTypeId = 1, // Default DirectSale type
-                PaymentMethodId = 1,   // Default (e.g., Online)
-                StatusId = 1,          // Default status (e.g., Completed)
+                TransactionTypeId = 1, 
+                PaymentMethodId = 1,   
+                StatusId = 1,         
                 TransactionDateTime = DateTime.UtcNow,
                 CreatedBy = userId,
                 CreatedDate = DateTime.UtcNow
