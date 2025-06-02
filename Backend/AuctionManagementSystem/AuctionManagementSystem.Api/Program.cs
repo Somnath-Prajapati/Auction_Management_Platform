@@ -24,6 +24,10 @@ using FileService = AuctionManagementSystem.Api.Services.FileService;
 using AuctionManagementSystem.Application.Contracts.Notification;
 using Microsoft.AspNetCore.SignalR;
 using Stripe;
+using Serilog;
+using Hangfire.Common;
+using Hangfire.States;
+using Hangfire.Storage;
 
 namespace AuctionManagementSystem.Api
 {
@@ -31,7 +35,16 @@ namespace AuctionManagementSystem.Api
     {
         public static void Main(string[] args)
         {
+
+            Log.Logger = new LoggerConfiguration()
+               .MinimumLevel.Debug()
+               .WriteTo.File("Logs/hangfire-errors.txt", rollingInterval: RollingInterval.Day)
+               .CreateLogger();
+
+
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Host.UseSerilog();
 
             builder.Services.AddScoped<IFileService, FileService>();
             builder.Services.AddApplicationServices();
@@ -83,22 +96,13 @@ namespace AuctionManagementSystem.Api
             });
 
             builder.Services.AddHangfireServer();
+
+            GlobalJobFilters.Filters.Add(new LogHangfireJobExceptionFilter());
+            
             builder.Logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
 
 
             var app = builder.Build();
-
-
-            //app.Lifetime.ApplicationStarted.Register(() =>
-            //{
-            //    using var scope = app.Services.CreateScope();
-            //    var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
-
-            //    recurringJobManager.RemoveIfExists("AutoBidJob");
-
-            //    var scheduler = scope.ServiceProvider.GetRequiredService<IAutoBidJobScheduler>();
-            //    scheduler.ScheduleAutoBidJob();
-            //});
 
             app.Lifetime.ApplicationStarted.Register(() =>
             {
@@ -159,4 +163,21 @@ namespace AuctionManagementSystem.Api
             app.Run();
         }   
     }
+
+
+    public class LogHangfireJobExceptionFilter : JobFilterAttribute, IApplyStateFilter
+    {
+        public void OnStateApplied(ApplyStateContext context, IWriteOnlyTransaction transaction)
+        {
+            if (context.NewState is FailedState failedState)
+            {
+                Log.Error(failedState.Exception,
+                    $"Hangfire Job {context.BackgroundJob.Id} failed: {failedState.Exception.Message}");
+            }
+        }
+
+        public void OnStateUnapplied(ApplyStateContext context, IWriteOnlyTransaction transaction) { }
+    }
 }
+
+
