@@ -36,10 +36,11 @@ namespace AuctionManagementSystem.Domain.Entities.Auction;
          public int CategoryId { get; set; }
         [NotMapped]
         public decimal TotalPrice { get; set; }
+        public string? HangfireJobId { get; set; }
 
 
-        //[ForeignKey("CategoryId")]
-     public virtual TblAssetCategory Category { get; set; } // added after modification
+    //[ForeignKey("CategoryId")]
+    public virtual TblAssetCategory Category { get; set; } // added after modification
 
     public virtual TblAuctionStatus? Status { get; set; }
 

@@ -21,9 +21,9 @@ namespace AuctionManagementSystem.Api.Services
             await _hubContext.Clients.User(notification.UserId.ToString()).SendAsync("ReceiveNotification", notification);
     
         }
-        //public async Task NotifyByRole(NotificationDto notification)
-        //{
-        //    await _hubContext.Clients.User()
-        //}
+        public async Task NotifyByRole(NotificationDto notification, string roleName)
+        {
+            await _hubContext.Clients.Group(roleName).SendAsync("ReceiveNotification", notification);
+        }
     }
 }
