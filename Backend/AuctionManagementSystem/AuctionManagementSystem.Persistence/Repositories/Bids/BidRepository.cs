@@ -42,6 +42,13 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
                 .OrderByDescending(b => b.BidTime)
                 .ToListAsync();
         }
+        public async Task<IEnumerable<tblBid>> GetBidsByUserIdAsync(int UserId)
+        {
+            return await _context.tblBids
+                .Where(b => b.UserId == UserId)
+                .OrderByDescending(b => b.BidTime)
+                .ToListAsync();
+        }
         public async Task<decimal?> GetHighestBidAmountAsync(int assetId)
         {
             return await _context.tblBids

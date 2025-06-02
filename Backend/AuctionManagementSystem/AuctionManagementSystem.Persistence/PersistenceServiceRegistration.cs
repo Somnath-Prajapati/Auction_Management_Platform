@@ -29,6 +29,8 @@ using AuctionManagementSystem.Application.Contracts.Chatbot;
 using AuctionManagementSystem.Persistence.Repositories.Chatbot;
 using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Persistence.Repositories.AuditTrail;
+using AuctionManagementSystem.Application.Contracts.Roles;
+using AuctionManagementSystem.Persistence.Repositories.Roles;
 using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Transactions;
@@ -85,6 +87,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAssetExpirationService, AssetExpirationService>();
             
             services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
+            services.AddScoped<IRolePermissionsMatrixRepository, RolePermissionsMatrixRepository>();
             services.AddScoped<IAutoRefundService, AutoRefundService>();
 
             services.AddHostedService<AutoRefundHostedService>();

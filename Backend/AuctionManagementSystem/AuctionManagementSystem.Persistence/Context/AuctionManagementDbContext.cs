@@ -9,6 +9,7 @@ using AuctionManagementSystem.Domain.Entities.AuditTrail;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Domain.Entities.Request;
+using AuctionManagementSystem.Domain.Entities.Roles;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
@@ -119,6 +120,8 @@ public partial class AuctionManagementDbContext : DbContext
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
     public virtual DbSet<TblOrder> TblOrders { get; set; }
     public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
+    public virtual DbSet<TblRolePermissionsMatrix> TblRolePermissionsMatrices { get; set; }
+
     public virtual DbSet<TblNotification> TblNotifications { get; set; }
     public virtual DbSet<TblUserDeposit> TblUserDeposits { get; set; }
 
@@ -126,7 +129,43 @@ public partial class AuctionManagementDbContext : DbContext
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
 
+        modelBuilder.Entity<TblRole>(entity =>
+        {
+            entity.HasKey(e => e.RoleId).HasName("PK__tblRoles__8AFACE1A5E190086");
 
+            entity.ToTable("tblRoles");
+
+            entity.Property(e => e.RoleName)
+                .IsRequired()
+                .HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<TblRolePermissionsMatrix>(entity =>
+        {
+            entity.HasKey(e => e.RoleId).HasName("PK__tblRoleP__8AFACE1A931EC603");
+
+            entity.ToTable("tblRolePermissionsMatrix");
+
+            entity.Property(e => e.RoleId).ValueGeneratedNever();
+            entity.Property(e => e.AccessAdminPanel).HasColumnName("Access Admin Panel");
+            entity.Property(e => e.ChangeCommission).HasColumnName("Change Commission");
+            entity.Property(e => e.ExportReports).HasColumnName("Export Reports");
+            entity.Property(e => e.ManageAssets).HasColumnName("Manage Assets");
+            entity.Property(e => e.ManageAuctions).HasColumnName("Manage Auctions");
+            entity.Property(e => e.ManageCategories).HasColumnName("Manage Categories");
+            entity.Property(e => e.ManageRequests).HasColumnName("Manage Requests");
+            entity.Property(e => e.ManageRoles).HasColumnName("Manage Roles");
+            entity.Property(e => e.ManageTransactions).HasColumnName("Manage Transactions");
+            entity.Property(e => e.ManageUsers).HasColumnName("Manage Users");
+            entity.Property(e => e.SuperAdmin).HasColumnName("Super Admin");
+            entity.Property(e => e.ViewAuditTrail).HasColumnName("View Audit Trail");
+            entity.Property(e => e.ViewReports).HasColumnName("View Reports");
+
+            entity.HasOne(d => d.Role).WithOne(p => p.TblRolePermissionsMatrix)
+                .HasForeignKey<TblRolePermissionsMatrix>(d => d.RoleId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblRolePermissionsMatrix_tblRoles");
+        });
 
         modelBuilder.Entity<TblOrder>(entity =>
         {

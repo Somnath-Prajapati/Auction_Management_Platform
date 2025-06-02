@@ -1,4 +1,6 @@
-﻿using AuctionManagementSystem.Application.Dtos.Bids;
+
+using AuctionManagementSystem.Application.Features.Bids.Query.GetBidByUserId;
+using AuctionManagementSystem.Application.Dtos.Bids;
 using AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.CreateAutoBid;
 using AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.DeleteAutoBid;
 using AuctionManagementSystem.Application.Features.Bids.AutoBid.Query.GetById;
@@ -80,5 +82,12 @@ namespace AuctionManagementSystem.Api.Controller.Bid
         }
 
 
+        [HttpGet("UserBids/{userId}")]
+        public async Task<IActionResult> GetBidsByUserId(int userId)
+        {
+            var query = new GetBidByUserIdQuery(userId);
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
     }
 }
