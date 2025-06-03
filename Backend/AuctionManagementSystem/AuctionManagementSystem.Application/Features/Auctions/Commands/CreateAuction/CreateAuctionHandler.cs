@@ -49,6 +49,12 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
             var auction = _mapper.Map<TblAuction>(request);
             auction.CreatedBy = _currentUser.UserId.ToString();
 
+            if (auction.Type == "Auction")
+            {
+                var newJobId = _jobScheduler.ScheduleAuctionClosing(auction.AuctionId, auction.EndDateTime);
+                auction.HangfireJobId = newJobId;
+            }
+
 
             await _unitOfWork.AuctionRepository.AddAsync(auction);
             await _unitOfWork.SaveAsync();

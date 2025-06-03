@@ -35,7 +35,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         public async Task<List<TblAssetCategory>> GetAllAsync()
         {
             return await _context.TblAssetCategories
-                                 .Include(c => c.TblAssetCategoryPaymentMethods) 
+                                 .Include(c => c.TblAssetCategoryPaymentMethods)
                                  .ThenInclude(cp => cp.PaymentMethod)
                                  .Where(c => !c.IsDeleted)
                                  .ToListAsync();
