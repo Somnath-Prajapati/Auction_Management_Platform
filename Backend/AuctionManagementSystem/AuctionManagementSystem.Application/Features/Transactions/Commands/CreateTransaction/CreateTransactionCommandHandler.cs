@@ -9,7 +9,6 @@ using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Application.Contracts.AuditTrail;
-using AuctionManagementSystem.Application.Contracts.Auth;
 using Newtonsoft.Json;
 
 public class CreateTransactionCommandHandler : IRequestHandler<CreateTransactionCommand, TransactionDto>
