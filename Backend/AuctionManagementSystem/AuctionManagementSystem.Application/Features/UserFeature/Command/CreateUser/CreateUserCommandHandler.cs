@@ -1,8 +1,11 @@
-﻿using AuctionManagementSystem.Application.Contracts.User;
-using AuctionManagementSystem.Domain.Entities.User;
-using AuctionManagementSystem.Application.Exceptions;
+﻿using AuctionManagementSystem.Application.Contracts.AuditTrail; // <-- Add this
 using AuctionManagementSystem.Application.Contracts.Auth;
-using AuctionManagementSystem.Application.Contracts.AuditTrail; // <-- Add this
+using AuctionManagementSystem.Application.Contracts.Notification;
+using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Application.Dtos.Notification;
+using AuctionManagementSystem.Application.Exceptions;
+using AuctionManagementSystem.Domain.Entities.Notification;
+using AuctionManagementSystem.Domain.Entities.User;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +23,8 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
         private readonly ILoggedInUserService _loggedInUserService;
         private readonly IAuditTrailService _auditTrailService; // <-- Add this
         private readonly ICurrentUserService _currentUser; // <-- Add this
+        private readonly INotificationRepository _notificationRepository;
+        private readonly INotificationBroadcaster _notificationBroadcaster;
         private readonly IUserDepositRepository _userDepositRepository; // <-- Add this
 
         public CreateUserCommandHandler(
@@ -27,6 +32,8 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
             IFileService fileService,
             IMapper mapper,
             ILoggedInUserService loggedInUserService,
+            INotificationRepository notificationRepository,
+            INotificationBroadcaster notificationBroadcaster,
             IAuditTrailService auditTrailService,
             ICurrentUserService currentUser,
             IUserDepositRepository userDepositRepository) // <-- Inject this
@@ -37,6 +44,8 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
             _loggedInUserService = loggedInUserService;
             _auditTrailService = auditTrailService;
             _currentUser = currentUser;
+            _notificationRepository = notificationRepository;
+            _notificationBroadcaster = notificationBroadcaster;
             _userDepositRepository = userDepositRepository; // <-- Initialize this
         }
 
@@ -71,6 +80,33 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
             user.AvailableLimit = user.TotalLimit ?? 0m;
 
             var userId = await _userRepository.AddUserAsync(user);
+           
+            var userNotification = new TblNotification
+            {
+                Id = Guid.NewGuid(),
+                UserId = null,
+                Title = "New User Added",
+                Message = $"New User Added {user.Name}",
+                CreatedAt = DateTime.UtcNow,
+                ExpiresAt = DateTime.UtcNow.AddDays(2),
+                IsRead = false
+            };
+
+            
+            await _notificationRepository.CreateAsync(userNotification);
+
+           
+            var notificationDto = new NotificationDto
+            {
+                UserId = userId,
+                Title = userNotification.Title,
+                Message = userNotification.Message,
+                CreatedAt = userNotification.CreatedAt,
+                ExpiresAt = userNotification.ExpiresAt
+            };
+
+            await _notificationBroadcaster.NotifyByRole(notificationDto, "Admin");
+
 
             var userDeposit = new TblUserDeposit
             {

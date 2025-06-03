@@ -93,6 +93,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
                     if (request.BidAmount < requiredMinBid)
                         throw new BadRequestException($"Bid must be at least {requiredMinBid} (Min Increment: {asset.MinIncrement})");
                 }
+                
                 var previousWinningBid = await _bidRepository.GetWinningBidByAssetIdAsync(request.AssetId);
 
                 if (previousWinningBid != null && previousWinningBid.UserId != request.UserId)

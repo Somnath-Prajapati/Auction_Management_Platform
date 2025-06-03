@@ -21,6 +21,8 @@ namespace AuctionManagementSystem.Domain.Entities.Notification
         public bool? IsRead { get; set; } = false;
         public DateTime CreatedAt { get; set; } 
         public DateTime? ExpiresAt { get; set; }
+        public DateTime? DeletedAt { get; set; }
+        public bool IsDeleted { get; set; }
 
         [ForeignKey(nameof(UserId))]
         public virtual TblUser? User { get; set; }

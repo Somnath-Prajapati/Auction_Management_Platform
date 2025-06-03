@@ -74,6 +74,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Transactions
 
 
                     var asset = await _context.TblAssets.FirstOrDefaultAsync(a => a.AssetId == winner.AssetId);
+                    var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.UserId == winner.UserId);
                     if (asset != null)
                     {
                         asset.WinnerId = assetWinner.WinnerId;
@@ -84,17 +85,29 @@ namespace AuctionManagementSystem.Persistence.Repositories.Transactions
                     var notification = new TblNotification
                     {
                         Id = Guid.NewGuid(),
-                        UserId = winner.UserId,
-                        Title = $"Winner Announced for Asset :: {winner.AssetId}",
-                        Message = $"Asset'{winner.AssetId}' been won by {winner.UserId}.",
+                        UserId = null,
+                        Title = $"Winner Announced for Asset :: {asset.Title}",
+                        Message = $"Asset'{winner.AssetId}' been won by {user.Name}.",
                         CreatedAt = DateTime.UtcNow,
                         ExpiresAt = DateTime.UtcNow.AddDays(2),
                         IsRead = false,
                         AssetId = winner.AssetId,
                         AuctionId = winner.AuctionId
                     };
-
                     await _notificationRepository.CreateAsync(notification);
+                    var UserNotification = new TblNotification
+                    {
+                        Id = Guid.NewGuid(),
+                        UserId = winner.UserId,
+                        Title = $"Winner Announced for Asset :: {asset.Title}",
+                        Message = $"Asset'{winner.AssetId}' been won by you.",
+                        CreatedAt = DateTime.UtcNow,
+                        ExpiresAt = DateTime.UtcNow.AddDays(2),
+                        IsRead = false,
+                        AssetId = winner.AssetId,
+                        AuctionId = winner.AuctionId
+                    };
+                    await _notificationRepository.CreateAsync(UserNotification);
                     var notificationDto = new NotificationDto
                     {
                         UserId = notification.UserId,
@@ -106,6 +119,17 @@ namespace AuctionManagementSystem.Persistence.Repositories.Transactions
                     };
 
                     await _notificationBroadcaster.BroadcastNotificationAsync(notificationDto);
+                    var UserNotificationDto = new NotificationDto
+                    {
+                        UserId = UserNotification.UserId,
+                        Title = UserNotification.Title,
+                        Message = UserNotification.Message,
+                        ExpiresAt = UserNotification.ExpiresAt,
+                        AuctionId = UserNotification.AuctionId,
+                        AssetId = UserNotification.AssetId,
+                    };
+
+                    await _notificationBroadcaster.NotifyByUserId(UserNotificationDto);
                 }
             }
 

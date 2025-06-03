@@ -29,15 +29,21 @@ namespace AuctionManagementSystem.Persistence.Repositories.Notification
         public async Task DeleteNotififcationByUserId(int userId)
         {
             var notifications = await _context.TblNotifications
-                .Where(n => n.UserId == userId)
+                .Where(n => n.UserId == userId && !n.IsDeleted)
                 .ToListAsync();
 
             if (notifications.Any())
             {
-                _context.TblNotifications.RemoveRange(notifications);
+                foreach (var notification in notifications)
+                {
+                    notification.IsDeleted = true;
+                    notification.DeletedAt = DateTime.UtcNow;
+                }
+
                 await _context.SaveChangesAsync();
             }
         }
+
 
 
         public async Task MarkAsReadAsync(Guid notificationId)

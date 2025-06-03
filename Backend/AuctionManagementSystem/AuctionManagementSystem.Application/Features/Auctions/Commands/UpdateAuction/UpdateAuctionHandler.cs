@@ -1,5 +1,6 @@
-﻿using AuctionManagementSystem.Application.Contracts.AuditTrail;
-using AuctionManagementSystem.Application.Contracts;
+﻿using AuctionManagementSystem.Application.Contracts;
+using AuctionManagementSystem.Application.Contracts.AuditTrail;
+using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateAuction;
 using AuctionManagementSystem.Domain.Entities.Auction;
 using AutoMapper;
@@ -12,17 +13,20 @@ public class UpdateAuctionHandler : IRequestHandler<UpdateAuctionCommand, bool>
     private readonly IMapper _mapper;
     private readonly IAuditTrailService _auditTrailService;
     private readonly ICurrentUserService _currentUser;
+    private readonly IAuctionJobScheduler _jobScheduler;
 
     public UpdateAuctionHandler(
         ICurrentUserService currentUser,
         IAuctionUnitOfWork unitOfWork,
         IMapper mapper,
+         IAuctionJobScheduler jobScheduler,
         IAuditTrailService auditTrailService)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _auditTrailService = auditTrailService;
         _currentUser = currentUser;
+        _jobScheduler = jobScheduler;
     }
 
     public async Task<bool> Handle(UpdateAuctionCommand request, CancellationToken cancellationToken)
@@ -36,6 +40,19 @@ public class UpdateAuctionHandler : IRequestHandler<UpdateAuctionCommand, bool>
         _mapper.Map(request, auction);
         _unitOfWork.AuctionRepository.Update(auction);
         await _unitOfWork.SaveAsync();
+
+        if (auction.Type == "Auction" &&  oldAuction.EndDateTime != auction.EndDateTime && auction.EndDateTime != null)
+        {
+            if (!string.IsNullOrEmpty(auction.HangfireJobId))
+            {
+                _jobScheduler.CancelScheduledAuctionClosing(auction.HangfireJobId);
+            }
+            var newJobId = _jobScheduler.ScheduleAuctionClosing(auction.AuctionId, new DateTimeOffset(auction.EndDateTime));
+            auction.HangfireJobId = newJobId;
+            _unitOfWork.AuctionRepository.Update(auction);
+            await _unitOfWork.SaveAsync();
+        }
+
 
         // Direct audit logging
         await _auditTrailService.LogChangeAsync(
