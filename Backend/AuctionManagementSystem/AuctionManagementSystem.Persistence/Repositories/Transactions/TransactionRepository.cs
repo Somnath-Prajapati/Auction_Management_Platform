@@ -2,6 +2,7 @@
 using AuctionManagementSystem.Application.Contracts.Transactions;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Domain.Entities.Transaction;
+using AuctionManagementSystem.Domain.Models;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -134,11 +135,9 @@ public class TransactionRepository : ITransactionRepository
 
     public async Task HandleDepositAdjustmentOnStatusChangeAsync(TblTransaction before, TblTransaction after)
     {
-        bool statusChangedToApproved =
-            before.StatusId == 1 && after.StatusId == 2;
-
-        bool isDepositOrRefund =
-            after.TransactionType?.TransactionTypeName == "Deposit" || after.TransactionType?.TransactionTypeName == "Refund";
+        bool statusChangedToApproved = before.StatusId == 1 && after.StatusId == 2;
+        bool isDepositOrRefund = after.TransactionType?.TransactionTypeName == "Deposit"
+                                  || after.TransactionType?.TransactionTypeName == "Refund";
 
         if (!statusChangedToApproved || !isDepositOrRefund)
             return;
@@ -150,24 +149,56 @@ public class TransactionRepository : ITransactionRepository
             return;
         }
 
-        if (after.TransactionType?.TransactionTypeName == "Deposit")
-        {
-            user.Deposit += after.Amount;
-        }
-        else if (after.TransactionType?.TransactionTypeName == "Refund")
-        {
-            user.Deposit -= after.Amount;
-        }
+        decimal oldDeposit = user.Deposit ?? 0m;
+        decimal oldTotalLimit = user.TotalLimit ?? 0m;
+        decimal oldAvailableLimit = user.AvailableLimit;
 
+        // Adjust deposit
+        decimal newDeposit = after.TransactionType.TransactionTypeName == "Deposit"
+            ? oldDeposit + after.Amount
+            : oldDeposit - after.Amount;
+
+        if (newDeposit < 0) newDeposit = 0;
+
+        // Recalculate limits
+        decimal newTotalLimit = newDeposit * 10;
+        decimal usedLimit = oldTotalLimit - oldAvailableLimit;
+        if (usedLimit < 0) usedLimit = 0;
+
+        decimal newAvailableLimit = newTotalLimit - usedLimit;
+        if (newAvailableLimit < 0) newAvailableLimit = 0;
+
+        // Apply updates
+        user.Deposit = newDeposit;
+        user.TotalLimit = newTotalLimit;
+        user.AvailableLimit = newAvailableLimit;
+
+        // Create audit log
+        var auditLog = new TblUserLimitAuditLog
+        {
+            UserId = user.UserId,
+            ActionType = after.TransactionType.TransactionTypeName,
+            OldDeposit = oldDeposit,
+            NewDeposit = newDeposit,
+            OldTotalLimit = oldTotalLimit,
+            NewTotalLimit = newTotalLimit,
+            OldAvailableLimit = oldAvailableLimit,
+            NewAvailableLimit = newAvailableLimit,
+            Notes = $"Transaction ID {after.TransactionId} processed.",
+            ChangedBy = after.UpdatedBy
+        };
+
+        _context.TblUserLimitAuditLogs.Add(auditLog);
         await _context.SaveChangesAsync();
 
-        _logger.LogInformation("User ID {UserId}'s deposit amount updated due to transaction type '{Type}' update.",
-            user.UserId, after.TransactionType?.TransactionTypeName);
+        _logger.LogInformation("User ID {UserId}'s deposit and limits updated due to transaction ID {TransactionId}.",
+            user.UserId, after.TransactionId);
     }
-
 
     public async Task<List<UserTransactionDto>> GetUserTransactionsAsync(int userId)
     {
+        int CompletedStatusId = 2;
+
         var transactions = await _context.TblTransactions
             .Where(t => t.UserId == userId)
             .OrderByDescending(t => t.CreatedAt)
@@ -184,7 +215,7 @@ public class TransactionRepository : ITransactionRepository
                 Type = t.TransactionType.TransactionTypeName, // e.g., "Deposit", "Refund"
                 Method = t.PaymentMethodId != null ? t.PaymentMethod.PaymentMethodName : "—",
                 Status = t.Status.StatusName, // e.g., "Pending", "Completed"
-                ApprovedDateTime = t.UpdatedAt,
+                ApprovedDateTime = t.StatusId == CompletedStatusId ? t.UpdatedAt : null,
                 ApprovedBy = t.UpdatedByUser != null ? t.UpdatedByUser.Name : null,
                 Notes = t.Notes
             })

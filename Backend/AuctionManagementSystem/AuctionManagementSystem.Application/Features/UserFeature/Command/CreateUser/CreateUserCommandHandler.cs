@@ -6,7 +6,9 @@ using AuctionManagementSystem.Application.Contracts.AuditTrail; // <-- Add this
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json; // <-- For serializing afterChange if needed
+using Newtonsoft.Json;
+using AuctionManagementSystem.Domain.model;
+using AuctionManagementSystem.Application.Contracts.Transactions; // <-- For serializing afterChange if needed
 
 namespace AuctionManagementSystem.Application.Features.UserFeature.Command.CreateUser
 {
@@ -18,14 +20,16 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
         private readonly ILoggedInUserService _loggedInUserService;
         private readonly IAuditTrailService _auditTrailService; // <-- Add this
         private readonly ICurrentUserService _currentUser; // <-- Add this
+        private readonly IUserDepositRepository _userDepositRepository; // <-- Add this
 
         public CreateUserCommandHandler(
             IUserRepository userRepository,
             IFileService fileService,
             IMapper mapper,
             ILoggedInUserService loggedInUserService,
-            IAuditTrailService auditTrailService, // <-- Inject
-            ICurrentUserService currentUser) // <-- Inject
+            IAuditTrailService auditTrailService,
+            ICurrentUserService currentUser,
+            IUserDepositRepository userDepositRepository) // <-- Inject this
         {
             _userRepository = userRepository;
             _fileService = fileService;
@@ -33,6 +37,7 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
             _loggedInUserService = loggedInUserService;
             _auditTrailService = auditTrailService;
             _currentUser = currentUser;
+            _userDepositRepository = userDepositRepository; // <-- Initialize this
         }
 
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
@@ -63,7 +68,24 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
             user.LastOnline = DateTime.UtcNow;
             user.CreatedDate = DateTime.UtcNow;
             user.IsDeleted = false;
+            user.AvailableLimit = user.TotalLimit ?? 0m;
+
             var userId = await _userRepository.AddUserAsync(user);
+
+            var userDeposit = new TblUserDeposit
+            {
+                UserId = userId,
+                DepositAmount = user.Deposit ?? 0m, // Explicitly handle nullable decimal
+                ModifiedAt = user.CreatedDate ?? DateTime.UtcNow,
+                CreatedBy = request.userid,
+                CreatedDate = user.CreatedDate ?? DateTime.UtcNow,
+                UpdatedBy = request.userid,
+                UpdatedDate = user.UpdatedDate ?? DateTime.UtcNow,
+                IsDeleted = false
+            };
+
+            await _userDepositRepository.AddAsync(userDeposit);
+
             try
             {
                 Console.WriteLine($"[DEBUG] UserId: {_currentUser.UserId}, Username: {_currentUser.Username}, Role: {_currentUser.RoleName}");
