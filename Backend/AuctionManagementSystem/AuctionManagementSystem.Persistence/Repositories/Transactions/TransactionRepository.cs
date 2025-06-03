@@ -98,13 +98,61 @@ public class TransactionRepository : ITransactionRepository
 
 
     public async Task<TblTransaction> AddAsync(TblTransaction entity)
-   {
-        //entity.TransactionNumber = Guid.NewGuid().ToString(); // Or use a custom format
+    {
+        // Generate Transaction Number
         entity.TransactionNumber = await GetTransactionNumberFromDbAsync();
+
+        // Add transaction to DB
         await _context.TblTransactions.AddAsync(entity);
         await _context.SaveChangesAsync();
+
+        // === Handle Approved Deposit Logic ===
+        if (entity.TransactionTypeId==2 && entity.StatusId == 2)
+        {
+            var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.UserId == entity.UserId);
+            if (user != null)
+            {
+                decimal oldDeposit = user.Deposit ?? 0m;
+                decimal oldTotalLimit = user.TotalLimit ?? 0m;
+                decimal oldAvailableLimit = user.AvailableLimit;
+
+                decimal newDeposit = oldDeposit + entity.Amount;
+                decimal newTotalLimit = newDeposit * 10;
+                decimal usedLimit = oldTotalLimit - oldAvailableLimit;
+                if (usedLimit < 0) usedLimit = 0;
+
+                decimal newAvailableLimit = newTotalLimit - usedLimit;
+                if (newAvailableLimit < 0) newAvailableLimit = 0;
+
+                // Apply updates to user
+                user.Deposit = newDeposit;
+                user.TotalLimit = newTotalLimit;
+                user.AvailableLimit = newAvailableLimit;
+
+                // Audit Log
+                var auditLog = new TblUserLimitAuditLog
+                {
+                    UserId = user.UserId,
+                    ActionType = "Deposit",
+                    OldDeposit = oldDeposit,
+                    NewDeposit = newDeposit,
+                    OldTotalLimit = oldTotalLimit,
+                    NewTotalLimit = newTotalLimit,
+                    OldAvailableLimit = oldAvailableLimit,
+                    NewAvailableLimit = newAvailableLimit,
+                    Notes = $"Deposit transaction ID {entity.TransactionId} applied.",
+                    ChangedBy = entity.UpdatedBy,
+                    ChangedDate = DateTime.UtcNow
+                };
+
+                _context.TblUserLimitAuditLogs.Add(auditLog);
+
+                await _context.SaveChangesAsync(); // Save user + audit changes
+            }
+        }
+
         return entity;
-   }
+    }
 
 
     public async Task<TblTransaction> GetTransactionWithDetailsAsync(int transactionId)
