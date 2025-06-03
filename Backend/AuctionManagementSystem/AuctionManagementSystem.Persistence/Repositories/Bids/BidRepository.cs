@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Persistence.Context;
 using AuctionManagementSystem.Persistence.Repositories.User;
@@ -127,6 +128,16 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
                 .OrderByDescending(b => b.BidAmount)
                 .FirstOrDefaultAsync();
         }
+
+        public async Task<IEnumerable<TblAssetWinner>> GetWonBidsByUserIdAsync(int userId)
+        {
+            return await _context.TblAssetWinners
+                .Where(w => w.UserId == userId)
+                .OrderByDescending(w => w.CreatedAt)
+                .ToListAsync();
+        }
+
+
 
     }
 
