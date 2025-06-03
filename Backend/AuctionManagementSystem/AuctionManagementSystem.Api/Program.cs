@@ -17,7 +17,6 @@ using Hangfire;
 using AuctionManagementSystem.Api.Services;
 using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Contracts.Bids;
-using AuctionManagementSystem.Application.Services;
 using Hangfire.Server;
 using Stripe;
 using FileService = AuctionManagementSystem.Api.Services.FileService;
