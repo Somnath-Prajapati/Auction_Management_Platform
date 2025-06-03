@@ -12,6 +12,7 @@ using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.DeleteStaticPagesSettings;
 using AuctionManagementSystem.Application.Profiles;
 using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Application.Services;
 
 namespace AuctionManagementSystem.Application
 {
@@ -40,11 +41,18 @@ namespace AuctionManagementSystem.Application
             services.AddScoped<IAuctionJobScheduler, HangfireAuctionJobScheduler>();
 
             services.AddScoped<ChatBotService>();
+
+            services.AddScoped<IAutoBidService, AutoBidService>();
+
+            services.AddTransient<HangfireAutoBidJobScheduler>();
+
+
             // Add pipeline behavior for validation
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             services.AddHttpContextAccessor();
-            return services;
+            return services;    
         }
     }
 }
+ 

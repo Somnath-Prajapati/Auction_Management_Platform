@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.AuditTrail;
 using AuctionManagementSystem.Domain.Entities.Bids;
+using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 
@@ -49,6 +50,7 @@ public partial class TblUser
     public DateOnly? PersonalIdExpiryDate { get; set; }
    
 
+
     public string? ProfileImage { get; set; }
 
     public int? CountryId { get; set; }
@@ -66,6 +68,7 @@ public partial class TblUser
     public DateTime? DeletedDate { get; set; }
 
     public bool? IsDeleted { get; set; }
+    public decimal AvailableLimit { get; set; }
 
     public virtual TblCountry? Country { get; set; }
 
@@ -87,6 +90,11 @@ public partial class TblUser
 
     public virtual ICollection<TblWishlistItem> TblWishlistItems { get; set; } = new List<TblWishlistItem>();
     public virtual ICollection<TblCartItem> TblCartItems { get; set; } = new List<TblCartItem>();
+
+    // after the autobid added 
+    public virtual ICollection<TblAutoBid> TblAutoBids { get; set; } = new List<TblAutoBid>();
+
+    public virtual ICollection<TblNotification> TblNotifications { get; set; }
     public TblUser Clone()
     {
         return (TblUser)this.MemberwiseClone();

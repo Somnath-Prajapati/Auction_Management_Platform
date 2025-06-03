@@ -24,6 +24,7 @@ namespace AuctionManagementSystem.Application.Features.Chatbot.Queries.GetChatbo
         public async Task<ChatbotResponseDto> Handle(GetChatbotResponseQuery request, CancellationToken cancellationToken)
         {
             return await _chatBotService.GetResponseForUserMessageAsync(request.Message);
+            return await _chatbotRepository.GetChatbotResponseAsync(request.Message, request.UserId);
         }
     }
 }

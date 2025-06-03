@@ -10,11 +10,18 @@ namespace AuctionManagementSystem.Application.Services
 {
     public class HangfireAuctionJobScheduler : IAuctionJobScheduler
     {
-        public void ScheduleAuctionClosing(int AuctionId, DateTimeOffset runAt)
+        public string ScheduleAuctionClosing(int auctionId, DateTimeOffset runAt)
         {
-            BackgroundJob.Schedule<IAuctionWinnerService>(
-            service => service.WinnerAuctionAsync(AuctionId),
-            runAt);
+            var jobId = BackgroundJob.Schedule<IAuctionWinnerService>(
+                service => service.WinnerAuctionAsync(auctionId),
+                runAt);
+            return jobId;
+        }
+
+        public void CancelScheduledAuctionClosing(string hangfireJobId)
+        {
+            BackgroundJob.Delete(hangfireJobId);
         }
     }
+
 }

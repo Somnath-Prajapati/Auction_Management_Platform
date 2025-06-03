@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Domain.Entities;
+using AuctionManagementSystem.Application.Dtos.Notification;
+using AuctionManagementSystem.Domain.Entities;
+using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Domain.Entities.User;
 
 namespace AuctionManagementSystem.Application.Contracts.User
@@ -22,6 +25,7 @@ namespace AuctionManagementSystem.Application.Contracts.User
         Task<TblUser?> GetByEmailOrMobileForUpdateAsync(string email, string mobileNumber, int excludeUserId);
 
         Task<TblUser?> GetUserByEmailAsync(string email);
+        Task<IEnumerable<TblNotification>> GetNotificationByUserId(int UserId);
 
     }
 

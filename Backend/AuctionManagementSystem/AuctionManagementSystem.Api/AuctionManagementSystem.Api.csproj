@@ -8,8 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Hangfire.AspNetCore" Version="1.8.18" />
+<<<<<<< HEAD
     <PackageReference Include="Hangfire.SqlServer" Version="1.8.18" />
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.4" />
+=======
+    <PackageReference Include="Hangfire.MAMQSqlExtension" Version="1.0.6" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.8.18" />
+>>>>>>> 9042d37d8ffc88b6f403c9c52cfcf60419d04ed4
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
@@ -21,6 +26,12 @@
 		<PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+<<<<<<< HEAD
+=======
+    <PackageReference Include="Serilog" Version="4.3.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+>>>>>>> 9042d37d8ffc88b6f403c9c52cfcf60419d04ed4
     <PackageReference Include="Stripe.net" Version="48.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
   </ItemGroup>
@@ -36,4 +47,6 @@
     <Folder Include="wwwroot\ProfileImages\" />
   </ItemGroup>
 
+	
+	
 </Project>

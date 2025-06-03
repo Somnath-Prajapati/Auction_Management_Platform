@@ -6,7 +6,11 @@
    "IncludeConnectionString": false,
    "ModelNamespace": null,
    "OutputContextPath": null,
+<<<<<<< HEAD
    "OutputPath": "model",
+=======
+   "OutputPath": "Models",
+>>>>>>> 9042d37d8ffc88b6f403c9c52cfcf60419d04ed4
    "PreserveCasingWithRegex": true,
    "ProjectRootNamespace": "AuctionManagementSystem.Domain",
    "Schemas": null,
@@ -15,6 +19,7 @@
    "T4TemplatePath": null,
    "Tables": [
       {
+<<<<<<< HEAD
          "Name": "[AuctionM_dbuser].[ChatbotFaqs]",
          "ObjectType": 0
       },
@@ -260,6 +265,9 @@
       },
       {
          "Name": "[HangFire].[State]",
+=======
+         "Name": "[AuctionM_dbuser].[tblUserLimitAuditLog]",
+>>>>>>> 9042d37d8ffc88b6f403c9c52cfcf60419d04ed4
          "ObjectType": 0
       }
    ],

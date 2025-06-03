@@ -1,11 +1,15 @@
 ﻿
 using System.Formats.Asn1;
 using AuctionManagementSystem.Application.Contracts.Assets;
+using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Application.Dtos.Notification;
+using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Domain.Entities.Notification;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -20,14 +24,19 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
         private readonly IAuditTrailService _auditTrailService;
         private readonly IAssetsRepository _assetsRepository;
         private readonly IMapper _mapper;
+        private readonly INotificationRepository _notificationRepository;
+        private readonly INotificationBroadcaster _notificationBroadcaster;
 
-        public AddUnifiedAssetCommandHandler(IMapper mapper, IAssetsRepository assetsRepository,
+        public AddUnifiedAssetCommandHandler(IMapper mapper, IAssetsRepository assetsRepository,INotificationRepository notificationRepository,
+             INotificationBroadcaster notificationBroadcaster,
             IAuditTrailService auditTrailService, ICurrentUserService currentUser)
         {
             _mapper = mapper;
             _assetsRepository = assetsRepository;
             _auditTrailService = auditTrailService;
             _currentUser = currentUser;
+            _notificationBroadcaster = notificationBroadcaster;
+            _notificationRepository = notificationRepository;
         }
 
 
@@ -51,6 +60,31 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
             }
 
             var createdAsset = await _assetsRepository.AddAssetForGallery(assetEntity);
+            var notification = new TblNotification
+            {
+                Id = Guid.NewGuid(),
+                UserId = null,
+                Title = $"New Asset Created with id :: {createdAsset}",
+                Message = $"Asset '{dto.Title}' has been added.",
+                CreatedAt = DateTime.UtcNow,
+                ExpiresAt = DateTime.UtcNow.AddDays(2),
+                IsRead = null,
+                 AssetId = createdAsset.AssetId,
+                AuctionId = null
+            };
+
+            await _notificationRepository.CreateAsync(notification);
+            var notificationDto = new NotificationDto
+            {
+                UserId = notification.UserId,
+                Title = notification.Title,
+                Message = notification.Message,
+                ExpiresAt = notification.ExpiresAt,
+                 AuctionId = notification.AuctionId,
+                AssetId = notification.AssetId,
+            };
+
+            await _notificationBroadcaster.BroadcastNotificationAsync(notificationDto);
 
             // AUDIT TRAIL LOGGING
             try

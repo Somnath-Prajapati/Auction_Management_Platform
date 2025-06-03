@@ -1,4 +1,6 @@
 ﻿using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Application.Dtos.Notification;
+using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -111,5 +113,22 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
         {
             return await _context.TblUsers.Where(u => !(u.IsDeleted ?? false)).FirstOrDefaultAsync(u => u.Email == email);
         }
+
+        public async Task<IEnumerable<TblNotification>> GetNotificationByUserId(int userId)
+        {
+            var now = DateTime.UtcNow;
+
+            return await _context.TblNotifications
+                .Where(n =>
+                    !n.IsDeleted &&
+                    (n.UserId == userId || n.UserId == null) &&                           
+                    (n.ExpiresAt == null || n.ExpiresAt > now)
+                           
+                )
+                .ToListAsync();
+        }
+
+
+
     }
 }

@@ -7,13 +7,17 @@ using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.AuditTrail;
 using AuctionManagementSystem.Domain.Entities.Bids;
+using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Domain.Entities.Request;
+using AuctionManagementSystem.Domain.Entities.Roles;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
+using AuctionManagementSystem.Domain.model;
+using AuctionManagementSystem.Domain.Models;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 namespace AuctionManagementSystem.Persistence.Context;
-using AuctionManagementSystem.Persistence;
 
 
 public partial class AuctionManagementDbContext : DbContext
@@ -109,10 +113,9 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblWinnerDocument> TblWinnerDocuments { get; set; }
 
     public virtual DbSet<Faq> Faqs { get; set; }
-
-    //public virtual DbSet<Tbltempdatum> Tbltempdata { get; set; }
     public virtual DbSet<tblOTP> tblOTPs { get; set; }
     public virtual DbSet<tblBid> tblBids { get; set; }
+    public virtual DbSet<TblAutoBid> TblAutoBids { get; set; }
     public DbSet<TblCartItem> TblCartItems { get; set; }
     public virtual DbSet<TblAuditTrail> TblAuditTrails { get; set; }
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
@@ -122,11 +125,53 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblchatbotSubQuestionAnswer> TblchatbotSubQuestionAnswers { get; set; }
 
 
+    public virtual DbSet<TblRolePermissionsMatrix> TblRolePermissionsMatrices { get; set; }
+
+    public virtual DbSet<TblNotification> TblNotifications { get; set; }
+    public virtual DbSet<TblUserDeposit> TblUserDeposits { get; set; }
+    public virtual DbSet<TblUserLimitAuditLog> TblUserLimitAuditLogs { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
 
 
+        modelBuilder.Entity<TblRole>(entity =>
+        {
+            entity.HasKey(e => e.RoleId).HasName("PK__tblRoles__8AFACE1A5E190086");
+
+            entity.ToTable("tblRoles");
+
+            entity.Property(e => e.RoleName)
+                .IsRequired()
+                .HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<TblRolePermissionsMatrix>(entity =>
+        {
+            entity.HasKey(e => e.RoleId).HasName("PK__tblRoleP__8AFACE1A931EC603");
+
+            entity.ToTable("tblRolePermissionsMatrix");
+
+            entity.Property(e => e.RoleId).ValueGeneratedNever();
+            entity.Property(e => e.AccessAdminPanel).HasColumnName("Access Admin Panel");
+            entity.Property(e => e.ChangeCommission).HasColumnName("Change Commission");
+            entity.Property(e => e.ExportReports).HasColumnName("Export Reports");
+            entity.Property(e => e.ManageAssets).HasColumnName("Manage Assets");
+            entity.Property(e => e.ManageAuctions).HasColumnName("Manage Auctions");
+            entity.Property(e => e.ManageCategories).HasColumnName("Manage Categories");
+            entity.Property(e => e.ManageRequests).HasColumnName("Manage Requests");
+            entity.Property(e => e.ManageRoles).HasColumnName("Manage Roles");
+            entity.Property(e => e.ManageTransactions).HasColumnName("Manage Transactions");
+            entity.Property(e => e.ManageUsers).HasColumnName("Manage Users");
+            entity.Property(e => e.SuperAdmin).HasColumnName("Super Admin");
+            entity.Property(e => e.ViewAuditTrail).HasColumnName("View Audit Trail");
+            entity.Property(e => e.ViewReports).HasColumnName("View Reports");
+
+            entity.HasOne(d => d.Role).WithOne(p => p.TblRolePermissionsMatrix)
+                .HasForeignKey<TblRolePermissionsMatrix>(d => d.RoleId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblRolePermissionsMatrix_tblRoles");
+        });
 
         modelBuilder.Entity<TblOrder>(entity =>
         {
@@ -195,6 +240,11 @@ public partial class AuctionManagementDbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__tblCartIt__UserI__2D47B39A");
         });
+        modelBuilder.Entity<TblNotification>()
+            .HasOne(n => n.User)  
+            .WithMany(u => u.TblNotifications)
+            .HasForeignKey(n => n.UserId)
+            .OnDelete(DeleteBehavior.SetNull);
 
         // For WishlistItem mapping
         modelBuilder.Entity<TblWishlistItem>(entity =>
@@ -519,6 +569,9 @@ public partial class AuctionManagementDbContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.TblAssetWinners)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__tblAssetW__UserI__282DF8C2");
+            entity.Property(e => e.IsSeen)
+                .HasDefaultValue(false)
+                .IsRequired();
         });
         modelBuilder.Entity<TblAuditTrail>(entity =>
         {
@@ -642,6 +695,35 @@ public partial class AuctionManagementDbContext : DbContext
         });
 
 
+        modelBuilder.Entity<TblAutoBid>(entity =>
+        {
+            entity.HasKey(e => e.AutoBidId).HasName("PK__tblAutoB__C5E25909977EF2B6");
+
+            entity.ToTable("tblAutoBids");
+
+            entity.HasIndex(e => new { e.UserId, e.AuctionId, e.AssetId }, "UQ_tblAutoBid_User_Auction_Asset").IsUnique();
+
+            entity.Property(e => e.CreatedDate).HasDefaultValueSql("(sysutcdatetime())");
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.MaxBidAmount).HasColumnType("decimal(18, 2)");
+
+            entity.HasOne(d => d.Asset).WithMany(p => p.TblAutoBids)
+                .HasForeignKey(d => d.AssetId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblAutoBid_Asset");
+
+            entity.HasOne(d => d.Auction).WithMany(p => p.TblAutoBids)
+                .HasForeignKey(d => d.AuctionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblAutoBid_Auction");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TblAutoBids)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_tblAutoBid_User");
+        });
+
+
         //modelBuilder.Entity<tblBid>(entity =>
         //{
         //    entity.HasKey(e => e.BidId).HasName("PK__tblBids__4A733D920BE15F30");
@@ -670,6 +752,7 @@ public partial class AuctionManagementDbContext : DbContext
         //    entity.HasOne(d => d.User).WithMany(p => p.TblBids)
         //        .HasForeignKey(d => d.UserId)
     
+
         modelBuilder.Entity<tblBid>(entity =>
         {
             entity.ToTable("tblBids");
@@ -1037,6 +1120,12 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__tblTransa__UserI__540C7B00");
+
+            entity.HasOne(t => t.UpdatedByUser)
+      .WithMany()
+      .HasForeignKey(t => t.UpdatedBy)
+      .OnDelete(DeleteBehavior.Restrict);
+
         });
 
         modelBuilder.Entity<TblTransactionAsset>(entity =>
@@ -1112,6 +1201,27 @@ public partial class AuctionManagementDbContext : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<TblUserDeposit>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__TblUserD__3214EC07D2270BC5");
+
+            entity.ToTable("TblUserDeposit");
+
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeletedDate).HasColumnType("datetime");
+            entity.Property(e => e.DepositAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.ModifiedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.UpdatedBy).HasMaxLength(100);
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+        });
+
+
         modelBuilder.Entity<TblUser>(entity =>
         {
             entity.HasKey(e => e.UserId).HasName("PK__tblUsers__1788CC4CA0D5030C");
@@ -1120,6 +1230,7 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.HasIndex(e => e.Uid, "UQ__tblUsers__C5B19603F27D43C6").IsUnique();
 
+            entity.Property(e => e.AvailableLimit).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.ChatEnabled).HasDefaultValue(true);
             entity.Property(e => e.CompanyName).HasMaxLength(255);
             entity.Property(e => e.CompanyNumber).HasMaxLength(50);
@@ -1159,16 +1270,8 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.Uid).HasColumnName("UID");
             entity.Property(e => e.UpdatedBy).HasMaxLength(100);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
-
-            entity.HasOne(d => d.Country).WithMany(p => p.TblUsers)
-                .HasForeignKey(d => d.CountryId)
-                .HasConstraintName("FK_tblUsers_CountryId");
-
-            entity.HasOne(d => d.Status).WithMany(p => p.TblUsers)
-                .HasForeignKey(d => d.StatusId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__tblUsers__Status__300424B4");
         });
+
 
         modelBuilder.Entity<TblUserRole>(entity =>
         {
@@ -1286,6 +1389,27 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.Question)
                 .IsRequired()
                 .HasMaxLength(500);
+
+        modelBuilder.Entity<TblUserLimitAuditLog>(entity =>
+        {
+            entity.HasKey(e => e.AuditLogId).HasName("PK__tblUserL__EB5F6CBDDF0E18DD");
+
+            entity.ToTable("tblUserLimitAuditLog");
+
+            entity.Property(e => e.ActionType)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.ChangedBy).HasMaxLength(100);
+            entity.Property(e => e.ChangedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.NewAvailableLimit).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.NewDeposit).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.NewTotalLimit).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.Notes).HasMaxLength(500);
+            entity.Property(e => e.OldAvailableLimit).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.OldDeposit).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.OldTotalLimit).HasColumnType("decimal(18, 2)");
         });
 
         //modelBuilder.Entity<Tbltempdatum>(entity =>
