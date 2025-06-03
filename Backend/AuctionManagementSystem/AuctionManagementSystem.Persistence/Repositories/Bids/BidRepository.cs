@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Domain.Entities.Bids;
+using AuctionManagementSystem.Domain.Models;
 using AuctionManagementSystem.Persistence.Context;
 using AuctionManagementSystem.Persistence.Repositories.User;
 using Microsoft.EntityFrameworkCore;
@@ -22,10 +23,36 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
 
         public async Task<int> AddBidAsync(tblBid bid)
         {
+            var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.UserId == bid.UserId);
+            if (user == null || user.AvailableLimit < bid.BidAmount)
+                throw new InvalidOperationException("Insufficient limit.");
+        
+            var auditLog = new TblUserLimitAuditLog
+            {
+                UserId = user.UserId,
+                ActionType = "Bid",
+                OldDeposit = user.Deposit,
+                NewDeposit = user.Deposit,
+                OldTotalLimit = user.TotalLimit,
+                NewTotalLimit = user.TotalLimit,
+                OldAvailableLimit = user.AvailableLimit,
+                NewAvailableLimit = user.AvailableLimit-bid.BidAmount,
+                Notes = $"available limit changed because of Bid",
+                ChangedBy = user.UserId
+            };
+            // Deduct the bid amount
+            user.AvailableLimit -= bid.BidAmount;
+
+            _context.TblUserLimitAuditLogs.Add(auditLog);
+            await _context.SaveChangesAsync();
+
+
             _context.tblBids.Add(bid);
+
             await _context.SaveChangesAsync();
             return bid.BidId;
         }
+
 
         public async Task<tblBid?> GetWinningBidAsync(int assetId)
         {
@@ -55,6 +82,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
                 .Where(b => b.AssetId == assetId)
                 .MaxAsync(b => (decimal?)b.BidAmount);
         }
+
+
         public async Task UnsetPreviousWinningBidAsync(int assetId)
         {
             var currentWinningBid = await _context.tblBids
@@ -117,6 +146,12 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
     
         public async Task UpdateBidAsync(tblBid bid)
         {
+            var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.UserId == bid.UserId);
+            if (user == null || user.AvailableLimit < bid.BidAmount)
+                throw new InvalidOperationException("Insufficient limit.");
+            // Deduct the bid amount
+            user.AvailableLimit -= bid.BidAmount;
+            // Update the bid
             _context.tblBids.Update(bid);
             await _context.SaveChangesAsync();
         }

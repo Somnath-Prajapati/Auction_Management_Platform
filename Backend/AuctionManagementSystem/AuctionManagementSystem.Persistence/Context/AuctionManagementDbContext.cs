@@ -14,6 +14,7 @@ using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Domain.model;
+using AuctionManagementSystem.Domain.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 namespace AuctionManagementSystem.Persistence.Context;
@@ -124,7 +125,7 @@ public partial class AuctionManagementDbContext : DbContext
 
     public virtual DbSet<TblNotification> TblNotifications { get; set; }
     public virtual DbSet<TblUserDeposit> TblUserDeposits { get; set; }
-
+    public virtual DbSet<TblUserLimitAuditLog> TblUserLimitAuditLogs { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
@@ -1224,6 +1225,7 @@ public partial class AuctionManagementDbContext : DbContext
 
             entity.HasIndex(e => e.Uid, "UQ__tblUsers__C5B19603F27D43C6").IsUnique();
 
+            entity.Property(e => e.AvailableLimit).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.ChatEnabled).HasDefaultValue(true);
             entity.Property(e => e.CompanyName).HasMaxLength(255);
             entity.Property(e => e.CompanyNumber).HasMaxLength(50);
@@ -1263,16 +1265,8 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.Uid).HasColumnName("UID");
             entity.Property(e => e.UpdatedBy).HasMaxLength(100);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
-
-            entity.HasOne(d => d.Country).WithMany(p => p.TblUsers)
-                .HasForeignKey(d => d.CountryId)
-                .HasConstraintName("FK_tblUsers_CountryId");
-
-            entity.HasOne(d => d.Status).WithMany(p => p.TblUsers)
-                .HasForeignKey(d => d.StatusId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__tblUsers__Status__300424B4");
         });
+
 
         modelBuilder.Entity<TblUserRole>(entity =>
         {
@@ -1360,6 +1354,28 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.Tags).HasMaxLength(200);
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.UpdatedAt).HasDefaultValueSql("(getdate())");
+        });
+
+        modelBuilder.Entity<TblUserLimitAuditLog>(entity =>
+        {
+            entity.HasKey(e => e.AuditLogId).HasName("PK__tblUserL__EB5F6CBDDF0E18DD");
+
+            entity.ToTable("tblUserLimitAuditLog");
+
+            entity.Property(e => e.ActionType)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.ChangedBy).HasMaxLength(100);
+            entity.Property(e => e.ChangedDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.NewAvailableLimit).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.NewDeposit).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.NewTotalLimit).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.Notes).HasMaxLength(500);
+            entity.Property(e => e.OldAvailableLimit).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.OldDeposit).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.OldTotalLimit).HasColumnType("decimal(18, 2)");
         });
 
         //modelBuilder.Entity<Tbltempdatum>(entity =>

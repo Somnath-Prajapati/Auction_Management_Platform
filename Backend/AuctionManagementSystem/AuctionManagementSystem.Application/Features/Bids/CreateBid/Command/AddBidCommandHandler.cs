@@ -5,11 +5,13 @@ using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Application.Contracts.RealTime;
+using AuctionManagementSystem.Application.Contracts.Transactions;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Application.Exceptions;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Notification;
+using AuctionManagementSystem.Domain.Models;
 using AutoMapper;
 using MediatR;
 
@@ -29,8 +31,9 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
         private readonly IUserRepository _userRepository;
         private readonly INotificationRepository _notificationRepository;
         private readonly INotificationBroadcaster _notificationBroadcaster;
+        private readonly IUserDepositRepository _userDepositRepository;
 
-        public AddBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService, IUserRepository userRepository, INotificationRepository notificationRepository, INotificationBroadcaster notificationBroadcaster , IAutoBidRepository autoBidRepo)
+        public AddBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService, IUserRepository userRepository, INotificationRepository notificationRepository, INotificationBroadcaster notificationBroadcaster , IAutoBidRepository autoBidRepo, IUserDepositRepository userDepositRepository)
         {
             _bidRepository = bidRepository;
             _mapper = mapper;
@@ -43,6 +46,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
             _userRepository = userRepository;
             _notificationRepository = notificationRepository;
             _notificationBroadcaster = notificationBroadcaster;
+            _userDepositRepository = userDepositRepository;
         }
 
         public async Task<int> Handle(AddBidCommand request, CancellationToken cancellationToken)
@@ -89,6 +93,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
                     if (request.BidAmount < requiredMinBid)
                         throw new BadRequestException($"Bid must be at least {requiredMinBid} (Min Increment: {asset.MinIncrement})");
                 }
+                
                 var previousWinningBid = await _bidRepository.GetWinningBidByAssetIdAsync(request.AssetId);
 
                 if (previousWinningBid != null && previousWinningBid.UserId != request.UserId)
@@ -108,6 +113,26 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
                     };
 
                     await _notificationRepository.CreateAsync(notification);
+                    var uid = previousWinningBid.UserId;
+                    var user1 = await _userRepository.GetUserById(uid);
+                    var auditLog = new TblUserLimitAuditLog
+                    {
+                        UserId = user1.UserId,
+                        ActionType = "Outbid Return",
+                        OldDeposit = user1.Deposit, // Assuming this is available
+                        NewDeposit = user1.Deposit, // No change here
+                        OldTotalLimit = user1.TotalLimit, // No change here
+                        NewTotalLimit = user1.TotalLimit,
+                        OldAvailableLimit = user1.AvailableLimit,
+                        NewAvailableLimit = user1.AvailableLimit+previousWinningBid.BidAmount,
+                        Notes = $"Outbid for the {user1.UserId} on the asset ID {asset.AssetId}",
+                        ChangedBy = user.UserId, // or system/admin ID if different
+                        ChangedDate = DateTime.UtcNow
+                    };
+
+                    await _userDepositRepository.AddAsync(auditLog);
+                    user1.AvailableLimit = user1.AvailableLimit + previousWinningBid.BidAmount;
+
 
                     var notificationDto = new NotificationDto
                     {
@@ -158,5 +183,6 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
         }
 
     }
+
 
 }

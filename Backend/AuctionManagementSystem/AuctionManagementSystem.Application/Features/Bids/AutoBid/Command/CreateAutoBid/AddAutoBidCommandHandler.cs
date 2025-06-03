@@ -13,6 +13,9 @@ using MediatR;
 using AuctionManagementSystem.Application.Exceptions;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using Microsoft.Identity.Client;
+using AuctionManagementSystem.Application.Contracts.Notification;
+using AuctionManagementSystem.Application.Dtos.Notification;
+using AuctionManagementSystem.Domain.Entities.Notification;
 
 namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.CreateAutoBid
 {
@@ -26,8 +29,11 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
         private readonly IAuctionRepository _auctionRepository;
         private readonly IBidNotificationService _notificationService;
         private readonly IAutoBidRepository _autoBidRepo;
+        private readonly INotificationRepository _notificationRepository;
+        private readonly INotificationBroadcaster _notificationBroadcaster;
 
-        public AddAutoBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService, IAutoBidRepository autoBidRepo)
+
+        public AddAutoBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService, IAutoBidRepository autoBidRepo, INotificationRepository notificationRepository, INotificationBroadcaster notificationBroadcaster)
         {
             _bidRepository = bidRepository;
             _mapper = mapper;
@@ -37,6 +43,8 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
             _auctionRepository = auctionRepository;
             _notificationService = notificationService;
             _autoBidRepo = autoBidRepo;
+            _notificationRepository = notificationRepository;
+            _notificationBroadcaster = notificationBroadcaster;
         }
 
         public async Task<int> Handle(AddAutoBidCommand request, CancellationToken cancellationToken)
@@ -125,16 +133,53 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
                             
                         throw new BadRequestException($"You have reached your max auto-bid limit: {request.MaxBidAmount}");
                     }
+                    
                     else
                     {
                         immediateBidAmount = nextBid;
                     }
+                }// for giving notification to the user 
+                var previousWinningBid = await _bidRepository.GetWinningBidByAssetIdAsync(request.AssetId);
+
+                if (previousWinningBid != null && previousWinningBid.UserId != request.UserId)
+                {
+                    // Send outbid notification
+                    var notification = new TblNotification
+                    {
+                        Id = Guid.NewGuid(),
+                        UserId = previousWinningBid.UserId,
+                        Title = "You've been outbid",
+                        Message = $"Your bid on asset '{asset.Title}' has been outbid by another user.",
+                        CreatedAt = DateTime.UtcNow,
+                        ExpiresAt = DateTime.UtcNow.AddDays(2),
+                        AssetId = request.AssetId,
+                        AuctionId = request.AuctionId,
+                        IsRead = false
+                    };
+
+                    await _notificationRepository.CreateAsync(notification);
+
+                    var notificationDto = new NotificationDto
+                    {
+                        UserId = notification.UserId,
+                        Title = notification.Title,
+                        Message = notification.Message,
+                        ExpiresAt = notification.ExpiresAt,
+                        AssetId = notification.AssetId,
+                        AuctionId = notification.AuctionId,
+                        IsRead = notification.IsRead
+                    };
+
+                    await _notificationBroadcaster.NotifyByUserId(notificationDto);
                 }
+
+
 
                 if (immediateBidAmount < asset.StartingPrice)
                     immediateBidAmount = asset.StartingPrice;
-                
 
+
+                
                 await _bidRepository.UnsetPreviousWinningBidAsync(request.AssetId);
 
                 await _autoBidRepo.ExtendAuctionIfCloseToEndAsync(request.AuctionId, DateTime.UtcNow);

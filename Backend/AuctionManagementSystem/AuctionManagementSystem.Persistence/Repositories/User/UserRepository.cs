@@ -120,6 +120,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
 
             return await _context.TblNotifications
                 .Where(n =>
+                    !n.IsDeleted &&
                     (n.UserId == userId || n.UserId == null) &&                           
                     (n.ExpiresAt == null || n.ExpiresAt > now)
                            

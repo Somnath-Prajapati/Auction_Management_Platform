@@ -23,7 +23,6 @@ using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Listings;
 using AuctionManagementSystem.Infrastructure.Repositories;
-using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Contracts.Listings;
 using AuctionManagementSystem.Application.Contracts.Chatbot;
 using AuctionManagementSystem.Persistence.Repositories.Chatbot;
@@ -34,6 +33,7 @@ using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Transactions;
 using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
+using AuctionManagementSystem.Persistence.Services;
 
 namespace AuctionManagementSystem.Persistence
 {

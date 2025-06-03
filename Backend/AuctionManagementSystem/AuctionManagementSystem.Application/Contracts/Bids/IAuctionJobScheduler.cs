@@ -8,6 +8,8 @@ namespace AuctionManagementSystem.Application.Contracts.Bids
 {
     public interface IAuctionJobScheduler
     {
-        void ScheduleAuctionClosing(int AuctionId, DateTimeOffset runAt);
+        string ScheduleAuctionClosing(int auctionId, DateTimeOffset runAt);
+        void CancelScheduledAuctionClosing(string hangfireJobId);
     }
+
 }

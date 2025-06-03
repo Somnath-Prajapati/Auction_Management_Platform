@@ -11,6 +11,7 @@ namespace AuctionManagementSystem.Application.Contracts.Notification
     {
         Task BroadcastNotificationAsync(NotificationDto notificationDto);
         Task NotifyByUserId(NotificationDto notification);
+        Task NotifyByRole(NotificationDto notification, string roleName);
     }
 
 }
