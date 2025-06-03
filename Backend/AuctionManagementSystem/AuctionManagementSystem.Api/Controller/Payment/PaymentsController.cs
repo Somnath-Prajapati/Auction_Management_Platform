@@ -35,7 +35,9 @@ namespace AuctionManagementSystem.Api.Controller.Payment
             var command = new ConfirmStripePaymentAndCreateOrderCommand { PaymentDto = dto };
             var result = await _mediator.Send(command);
             return Ok(result);
-        [HttpPost("confirm-payment")]
+        }
+
+            [HttpPost("confirm-payment")]
         public async Task<IActionResult> ConfirmPayment([FromBody] ConfirmStripePaymentDto dto)
         {
             var assets = await _mediator.Send(new ConfirmStripePaymentAndCreateOrderCommand { PaymentDto = dto });

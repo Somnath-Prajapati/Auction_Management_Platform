@@ -37,6 +37,7 @@ using AuctionManagementSystem.Persistence.Repositories.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Transactions;
 using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
 using AuctionManagementSystem.Persistence.Services;
+using AuctionWinnerService = AuctionManagementSystem.Application.Services.AuctionWinnerService;
 
 namespace AuctionManagementSystem.Persistence
 {

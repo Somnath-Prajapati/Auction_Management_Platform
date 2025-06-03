@@ -5,12 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-<<<<<<< HEAD
-   
-  </ItemGroup>
-
+	
   <ItemGroup>
     <Folder Include="Contracts\Categories\" />
     <Folder Include="Contracts\Statuses\" />
@@ -29,10 +24,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
     <PackageReference Include="EventStore.Client" Version="22.0.0" />
     <PackageReference Include="FluentValidation" Version="11.11.0" />
-<<<<<<< HEAD
-    <PackageReference Include="MediatR" Version="12.5.0" />
-=======
->>>>>>> 9042d37d8ffc88b6f403c9c52cfcf60419d04ed4
+ 
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
@@ -43,4 +35,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AuctionManagementSystem.Domain\AuctionManagementSystem.Domain.csproj" />
   </ItemGroup>
-
+	
+	
+</Project>

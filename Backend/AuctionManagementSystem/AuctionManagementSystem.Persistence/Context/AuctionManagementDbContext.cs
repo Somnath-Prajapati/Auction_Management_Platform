@@ -241,7 +241,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK__tblCartIt__UserI__2D47B39A");
         });
         modelBuilder.Entity<TblNotification>()
-            .HasOne(n => n.User)  
+            .HasOne(n => n.User)
             .WithMany(u => u.TblNotifications)
             .HasForeignKey(n => n.UserId)
             .OnDelete(DeleteBehavior.SetNull);
@@ -268,7 +268,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK__tblWishli__UserI__278EDA44");
         });
 
-        
+
 
         modelBuilder.Entity<tblOTP>(entity =>
         {
@@ -751,7 +751,7 @@ public partial class AuctionManagementDbContext : DbContext
 
         //    entity.HasOne(d => d.User).WithMany(p => p.TblBids)
         //        .HasForeignKey(d => d.UserId)
-    
+
 
         modelBuilder.Entity<tblBid>(entity =>
         {
@@ -1390,42 +1390,45 @@ public partial class AuctionManagementDbContext : DbContext
                 .IsRequired()
                 .HasMaxLength(500);
 
-        modelBuilder.Entity<TblUserLimitAuditLog>(entity =>
-        {
-            entity.HasKey(e => e.AuditLogId).HasName("PK__tblUserL__EB5F6CBDDF0E18DD");
-
-            entity.ToTable("tblUserLimitAuditLog");
-
-            entity.Property(e => e.ActionType)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.ChangedBy).HasMaxLength(100);
-            entity.Property(e => e.ChangedDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.NewAvailableLimit).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.NewDeposit).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.NewTotalLimit).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.Notes).HasMaxLength(500);
-            entity.Property(e => e.OldAvailableLimit).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.OldDeposit).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.OldTotalLimit).HasColumnType("decimal(18, 2)");
         });
 
-        //modelBuilder.Entity<Tbltempdatum>(entity =>
-        //{
-        //    entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
+            modelBuilder.Entity<TblUserLimitAuditLog>(entity =>
+            {
+                entity.HasKey(e => e.AuditLogId).HasName("PK__tblUserL__EB5F6CBDDF0E18DD");
 
-        //    entity.ToTable("tbltempdata");
+                entity.ToTable("tblUserLimitAuditLog");
 
-        //    entity.Property(e => e.Id).HasColumnName("id");
-        //    entity.Property(e => e.Name)
-        //        .HasMaxLength(1)
-        //        .HasColumnName("name");
-        //});
+                entity.Property(e => e.ActionType)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.ChangedBy).HasMaxLength(100);
+                entity.Property(e => e.ChangedDate)
+                    .HasDefaultValueSql("(getdate())")
+                    .HasColumnType("datetime");
+                entity.Property(e => e.NewAvailableLimit).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.NewDeposit).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.NewTotalLimit).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.Notes).HasMaxLength(500);
+                entity.Property(e => e.OldAvailableLimit).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.OldDeposit).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.OldTotalLimit).HasColumnType("decimal(18, 2)");
+            });
 
-        OnModelCreatingPartial(modelBuilder);
+            //modelBuilder.Entity<Tbltempdatum>(entity =>
+            //{
+            //    entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
+
+            //    entity.ToTable("tbltempdata");
+
+            //    entity.Property(e => e.Id).HasColumnName("id");
+            //    entity.Property(e => e.Name)
+            //        .HasMaxLength(1)
+            //        .HasColumnName("name");
+            //});
+            OnModelCreatingPartial(modelBuilder);
+
     }
+
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
