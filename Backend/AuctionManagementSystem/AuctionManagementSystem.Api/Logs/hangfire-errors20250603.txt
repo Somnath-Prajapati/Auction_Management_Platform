@@ -29325,3 +29325,1399 @@ WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[Mo
 2025-06-03 10:51:52.755 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
 2025-06-03 10:51:52.755 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
 2025-06-03 10:52:12.999 +05:30 [DBG] Server desktop-03v0c0b:31000:eefbc615 heartbeat successfully sent
+2025-06-03 10:52:43.117 +05:30 [DBG] Server desktop-03v0c0b:31000:eefbc615 heartbeat successfully sent
+2025-06-03 10:52:52.772 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-03 10:52:52.773 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-03 10:52:52.773 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-03 10:52:52.773 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-03 10:52:52.773 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-03 10:52:52.773 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-03 10:53:13.157 +05:30 [DBG] Server desktop-03v0c0b:31000:eefbc615 heartbeat successfully sent
+2025-06-03 10:53:43.178 +05:30 [DBG] Server desktop-03v0c0b:31000:eefbc615 heartbeat successfully sent
+2025-06-03 10:53:52.793 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-03 10:53:52.793 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-03 10:53:52.793 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-03 10:53:52.793 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-03 10:53:52.794 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-03 10:53:52.794 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-03 10:53:53.277 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-03 10:53:53.278 +05:30 [DBG] Creating DbConnection.
+2025-06-03 10:53:53.278 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-03 10:53:53.278 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:53:53.278 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:53:53.278 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-03 10:53:53.278 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-03 10:53:53.278 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-03 10:53:53.278 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-03 10:53:53.289 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-03 10:53:53.293 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:53:53.293 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 0ms reading results.
+2025-06-03 10:53:53.293 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:53:53.293 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (0ms).
+2025-06-03 10:53:53.294 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-03 10:53:53.294 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:53:53.294 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-03 10:54:12.453 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-03 10:54:13.262 +05:30 [DBG] Server desktop-03v0c0b:31000:eefbc615 heartbeat successfully sent
+2025-06-03 10:55:27.685 +05:30 [INF] Start installing Hangfire SQL objects...
+2025-06-03 10:55:28.834 +05:30 [INF] Hangfire SQL objects installed.
+2025-06-03 10:55:28.989 +05:30 [DBG] Registered SignalR Protocol: json, implemented by Microsoft.AspNetCore.SignalR.Protocol.JsonHubProtocol.
+2025-06-03 10:55:29.097 +05:30 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2025-06-03 10:55:29.486 +05:30 [DBG] Hosting starting
+2025-06-03 10:55:29.508 +05:30 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-03 10:55:29.545 +05:30 [DBG] Reading data from file 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys\key-f35f16eb-46c1-414e-9575-a58483069b90.xml'.
+2025-06-03 10:55:29.633 +05:30 [DBG] Found key {f35f16eb-46c1-414e-9575-a58483069b90}.
+2025-06-03 10:55:29.661 +05:30 [DBG] Considering key {f35f16eb-46c1-414e-9575-a58483069b90} with expiration date 2025-06-16 07:00:05Z as default key.
+2025-06-03 10:55:29.687 +05:30 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2025-06-03 10:55:29.690 +05:30 [DBG] Decrypting secret element using Windows DPAPI.
+2025-06-03 10:55:29.698 +05:30 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2025-06-03 10:55:29.700 +05:30 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2025-06-03 10:55:29.702 +05:30 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2025-06-03 10:55:29.705 +05:30 [DBG] Using key {f35f16eb-46c1-414e-9575-a58483069b90} as the default key.
+2025-06-03 10:55:29.706 +05:30 [DBG] Key ring with default key {f35f16eb-46c1-414e-9575-a58483069b90} was loaded during application startup.
+2025-06-03 10:55:30.264 +05:30 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2025-06-03 10:55:31.510 +05:30 [DBG] No relationship from 'TblRequestStatus' to 'TblRequestStatusHistory' has been configured by convention because there are multiple properties on one entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'} that could be matched with the properties on the other entity type - {'NewRequestStatus', 'PreviousRequestStatus'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-03 10:55:31.533 +05:30 [DBG] No relationship from 'TblRequestStatusHistory' to 'TblRequestStatus' has been configured by convention because there are multiple properties on one entity type - {'NewRequestStatus', 'PreviousRequestStatus'} that could be matched with the properties on the other entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-03 10:55:31.549 +05:30 [DBG] No relationship from 'TblTransaction' to 'TblUser' has been configured by convention because there are multiple properties on one entity type - {'UpdatedByUser', 'User'} that could be matched with the properties on the other entity type - {'TblTransactions'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-03 10:55:31.563 +05:30 [DBG] No relationship from 'TblUser' to 'TblTransaction' has been configured by convention because there are multiple properties on one entity type - {'TblTransactions'} that could be matched with the properties on the other entity type - {'UpdatedByUser', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-03 10:55:33.228 +05:30 [DBG] No relationship from 'TblRequestStatusHistory' to 'TblRequestStatus' has been configured by convention because there are multiple properties on one entity type - {'NewRequestStatus', 'PreviousRequestStatus'} that could be matched with the properties on the other entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-03 10:55:33.230 +05:30 [DBG] No relationship from 'TblRequestStatus' to 'TblRequestStatusHistory' has been configured by convention because there are multiple properties on one entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'} that could be matched with the properties on the other entity type - {'NewRequestStatus', 'PreviousRequestStatus'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-03 10:55:33.383 +05:30 [DBG] No relationship from 'TblTransaction' to 'TblUser' has been configured by convention because there are multiple properties on one entity type - {'UpdatedByUser', 'User'} that could be matched with the properties on the other entity type - {'TblTransactions'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-03 10:55:33.385 +05:30 [DBG] No relationship from 'TblUser' to 'TblTransaction' has been configured by convention because there are multiple properties on one entity type - {'TblTransactions'} that could be matched with the properties on the other entity type - {'UpdatedByUser', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-03 10:55:33.541 +05:30 [DBG] The index {'UserId'} was not created on entity type 'TblAutoBid' as the properties are already covered by the index {'UserId', 'AuctionId', 'AssetId'}.
+2025-06-03 10:55:34.644 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-03 10:55:34.757 +05:30 [DBG] Compiling query expression: 
+'DbSet<TblUserDeposit>()
+    .Where(d => !(d.IsDeleted) && d.DepositAmount > 0 && d.ModifiedAt <= __cutoffDate_0)'
+2025-06-03 10:55:35.785 +05:30 [DBG] Generated query execution expression: 
+'queryContext => SingleQueryingEnumerable.Create<TblUserDeposit>(
+    relationalQueryContext: (RelationalQueryContext)queryContext, 
+    relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: TblUserDeposit.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: TblUserDeposit.CreatedBy (string) MaxLength(100), 1], [Property: TblUserDeposit.CreatedDate (DateTime) Required ValueGenerated.OnAdd, 2], [Property: TblUserDeposit.DeletedBy (string) MaxLength(100), 3], [Property: TblUserDeposit.DeletedDate (DateTime?), 4], [Property: TblUserDeposit.DepositAmount (decimal) Required, 5], [Property: TblUserDeposit.IsDeleted (bool) Required, 6], [Property: TblUserDeposit.ModifiedAt (DateTime?) ValueGenerated.OnAdd, 7], [Property: TblUserDeposit.UpdatedBy (string) MaxLength(100), 8], [Property: TblUserDeposit.UpdatedDate (DateTime?), 9], [Property: TblUserDeposit.UserId (int) Required, 10] }
+        SELECT t.Id, t.CreatedBy, t.CreatedDate, t.DeletedBy, t.DeletedDate, t.DepositAmount, t.IsDeleted, t.ModifiedAt, t.UpdatedBy, t.UpdatedDate, t.UserId
+        FROM AuctionM_dbuser.TblUserDeposit AS t
+        WHERE (Not(t.IsDeleted) && (t.DepositAmount > 0.0)) && (t.ModifiedAt <= @__cutoffDate_0)) | Resolver: c => new RelationalCommandCache(
+        c.Dependencies.MemoryCache, 
+        c.RelationalDependencies.QuerySqlGeneratorFactory, 
+        c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: TblUserDeposit.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: TblUserDeposit.CreatedBy (string) MaxLength(100), 1], [Property: TblUserDeposit.CreatedDate (DateTime) Required ValueGenerated.OnAdd, 2], [Property: TblUserDeposit.DeletedBy (string) MaxLength(100), 3], [Property: TblUserDeposit.DeletedDate (DateTime?), 4], [Property: TblUserDeposit.DepositAmount (decimal) Required, 5], [Property: TblUserDeposit.IsDeleted (bool) Required, 6], [Property: TblUserDeposit.ModifiedAt (DateTime?) ValueGenerated.OnAdd, 7], [Property: TblUserDeposit.UpdatedBy (string) MaxLength(100), 8], [Property: TblUserDeposit.UpdatedDate (DateTime?), 9], [Property: TblUserDeposit.UserId (int) Required, 10] }
+        SELECT t.Id, t.CreatedBy, t.CreatedDate, t.DeletedBy, t.DeletedDate, t.DepositAmount, t.IsDeleted, t.ModifiedAt, t.UpdatedBy, t.UpdatedDate, t.UserId
+        FROM AuctionM_dbuser.TblUserDeposit AS t
+        WHERE (Not(t.IsDeleted) && (t.DepositAmount > 0.0)) && (t.ModifiedAt <= @__cutoffDate_0), 
+        False, 
+        new HashSet<string>(
+            new string[]{ }, 
+            StringComparer.Ordinal
+        )
+    )].GetRelationalCommandTemplate(parameters), 
+    readerColumns: null, 
+    shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+    {
+        TblUserDeposit entity;
+        entity = 
+        {
+            MaterializationContext materializationContext1;
+            IEntityType entityType1;
+            TblUserDeposit instance1;
+            InternalEntityEntry entry1;
+            bool hasNullKey1;
+            materializationContext1 = new MaterializationContext(
+                [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                queryContext.Context
+            );
+            instance1 = default(TblUserDeposit);
+            entry1 = queryContext.TryGetEntry(
+                key: [LIFTABLE Constant: Key: TblUserDeposit.Id PK | Resolver: c => c.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit").FindPrimaryKey()], 
+                keyValues: new object[]{ (object)dataReader.GetInt32(0) }, 
+                throwOnNullKey: True, 
+                hasNullKey: hasNullKey1);
+            !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+            {
+                entityType1 = entry1.EntityType;
+                return instance1 = (TblUserDeposit)entry1.Entity;
+            } : 
+            {
+                ISnapshot shadowSnapshot1;
+                shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                entityType1 = [LIFTABLE Constant: EntityType: TblUserDeposit | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit")];
+                instance1 = switch (entityType1)
+                {
+                    case [LIFTABLE Constant: EntityType: TblUserDeposit | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit")]: 
+                        {
+                            return 
+                            {
+                                TblUserDeposit instance;
+                                instance = new TblUserDeposit();
+                                instance.<Id>k__BackingField = dataReader.GetInt32(0);
+                                instance.<CreatedBy>k__BackingField = dataReader.IsDBNull(1) ? default(string) : dataReader.GetString(1);
+                                instance.<CreatedDate>k__BackingField = dataReader.GetDateTime(2);
+                                instance.<DeletedBy>k__BackingField = dataReader.IsDBNull(3) ? default(string) : dataReader.GetString(3);
+                                instance.<DeletedDate>k__BackingField = dataReader.IsDBNull(4) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(4);
+                                instance.<DepositAmount>k__BackingField = dataReader.GetDecimal(5);
+                                instance.<IsDeleted>k__BackingField = dataReader.GetBoolean(6);
+                                instance.<ModifiedAt>k__BackingField = dataReader.IsDBNull(7) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(7);
+                                instance.<UpdatedBy>k__BackingField = dataReader.IsDBNull(8) ? default(string) : dataReader.GetString(8);
+                                instance.<UpdatedDate>k__BackingField = dataReader.IsDBNull(9) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(9);
+                                instance.<UserId>k__BackingField = dataReader.GetInt32(10);
+                                (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                    context: materializationContext1.Context, 
+                                    entity: instance, 
+                                    queryTrackingBehavior: TrackAll, 
+                                    structuralType: [LIFTABLE Constant: EntityType: TblUserDeposit | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit")]) : default(void);
+                                return instance;
+                            }}
+                    default: 
+                        default(TblUserDeposit)
+                }
+                ;
+                entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                    entityType: entityType1, 
+                    entity: instance1, 
+                    snapshot: shadowSnapshot1);
+                return instance1;
+            } : default(void);
+            return instance1;
+        };
+        return entity;
+    }, 
+    contextType: AuctionManagementSystem.Persistence.Context.AuctionManagementDbContext, 
+    standAloneStateManager: False, 
+    detailedErrorsEnabled: False, 
+    threadSafetyChecksEnabled: True)'
+2025-06-03 10:55:35.895 +05:30 [DBG] Creating DbConnection.
+2025-06-03 10:55:35.902 +05:30 [DBG] Created DbConnection. (3ms).
+2025-06-03 10:55:35.908 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:55:35.913 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:55:35.917 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-03 10:55:35.924 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2025-06-03 10:55:35.931 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (14ms).
+2025-06-03 10:55:35.946 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-03 10:55:36.026 +05:30 [INF] Cart Expiry Hosted Service started.
+2025-06-03 10:55:36.033 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-03 10:55:36.034 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-03 10:55:36.038 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-03 10:55:36.041 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-03 10:55:36.178 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-03 10:55:36.178 +05:30 [INF] Executed DbCommand (92ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-03 10:55:36.180 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-03 10:55:36.250 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:55:36.258 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 28ms reading results.
+2025-06-03 10:55:36.263 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:55:36.265 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (1ms).
+2025-06-03 10:55:36.266 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-03 10:55:36.268 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:55:36.269 +05:30 [DBG] Disposed connection to database '' on server '' (1ms).
+2025-06-03 10:55:36.369 +05:30 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2025-06-03 10:55:36.371 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2025-06-03 10:55:36.722 +05:30 [DBG] Connection id "0HND2BS930BE8" received FIN.
+2025-06-03 10:55:36.730 +05:30 [DBG] Connection id "0HND2BS930BE8" accepted.
+2025-06-03 10:55:36.733 +05:30 [DBG] Connection id "0HND2BS930BE8" started.
+2025-06-03 10:55:36.773 +05:30 [INF] Now listening on: https://localhost:62627
+2025-06-03 10:55:36.773 +05:30 [INF] Now listening on: http://localhost:62628
+2025-06-03 10:55:36.773 +05:30 [DBG] Loaded hosting startup assembly AuctionManagementSystem.Api
+2025-06-03 10:55:36.773 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2025-06-03 10:55:36.773 +05:30 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2025-06-03 10:55:36.773 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2025-06-03 10:55:36.796 +05:30 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2025-06-03 10:55:36.797 +05:30 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2025-06-03 10:55:36.939 +05:30 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-06-03 10:55:36.963 +05:30 [DBG] Connection id "0HND2BS930BE9" accepted.
+2025-06-03 10:55:37.026 +05:30 [DBG] Connection id "0HND2BS930BE9" started.
+2025-06-03 10:55:37.065 +05:30 [DBG] Connection id "0HND2BS930BE8" stopped.
+2025-06-03 10:55:37.076 +05:30 [DBG] Connection id "0HND2BS930BE8" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-06-03 10:55:37.760 +05:30 [DBG] Connection 0HND2BS930BE9 established using the following protocol: "Tls12"
+2025-06-03 10:55:38.034 +05:30 [DBG] Connection id "0HND2BS930BEA" accepted.
+2025-06-03 10:55:38.036 +05:30 [DBG] Connection id "0HND2BS930BEA" started.
+2025-06-03 10:55:38.088 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: 180.149.240.247@AuctionManagementDB'
+2025-06-03 10:55:38.089 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2025-06-03 10:55:38.089 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2025-06-03 10:55:38.149 +05:30 [DBG] Connection 0HND2BS930BEA established using the following protocol: "Tls12"
+2025-06-03 10:55:38.529 +05:30 [DBG] Execution loop BackgroundServerProcess:da1fa432 has started in 167.9288 ms
+2025-06-03 10:55:38.561 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-03 10:55:38.561 +05:30 [INF] Hosting environment: Development
+2025-06-03 10:55:38.561 +05:30 [INF] Content root path: C:\Users\User\OneDrive\Desktop\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Api
+2025-06-03 10:55:38.601 +05:30 [INF] Request starting HTTP/2 GET https://localhost:62627/_vs/browserLink - null null
+2025-06-03 10:55:38.600 +05:30 [INF] Request starting HTTP/2 GET https://localhost:62627/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-03 10:55:38.780 +05:30 [INF] Request finished HTTP/2 GET https://localhost:62627/_framework/aspnetcore-browser-refresh.js - 200 13806 application/javascript; charset=utf-8 219.4164ms
+2025-06-03 10:55:39.039 +05:30 [INF] Request finished HTTP/2 GET https://localhost:62627/_vs/browserLink - 200 null text/javascript; charset=UTF-8 478.7638ms
+2025-06-03 10:55:39.613 +05:30 [INF] Request starting HTTP/2 GET https://localhost:62627/swagger/v1/swagger.json - null null
+2025-06-03 10:55:39.679 +05:30 [INF] Server desktop-03v0c0b:20432:abeb9a50 successfully announced in 1116.9248 ms
+2025-06-03 10:55:39.714 +05:30 [DBG] Execution loop ServerHeartbeatProcess:f24c7d25 has started in 32.6697 ms
+2025-06-03 10:55:39.736 +05:30 [INF] Server desktop-03v0c0b:20432:abeb9a50 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2025-06-03 10:55:39.912 +05:30 [DBG] Execution loop ServerWatchdog:7ebafdad has started in 175.4611 ms
+2025-06-03 10:55:39.952 +05:30 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2025-06-03 10:55:39.953 +05:30 [DBG] Request did not match any endpoints
+2025-06-03 10:55:40.060 +05:30 [DBG] Execution loop ServerJobCancellationWatcher:442e82c7 has started in 148.3912 ms
+2025-06-03 10:55:40.125 +05:30 [DBG] Hosting started
+2025-06-03 10:55:40.142 +05:30 [DBG] Execution loop ExpirationManager:a6242e3d has started in 85.9399 ms
+2025-06-03 10:55:40.147 +05:30 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2025-06-03 10:55:40.170 +05:30 [DBG] Execution loop CountersAggregator:17d4edb5 has started in 18.4371 ms
+2025-06-03 10:55:40.171 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-03 10:55:40.198 +05:30 [DBG] Execution loop SqlServerHeartbeatProcess:e762db7f has started in 27.8977 ms
+2025-06-03 10:55:40.198 +05:30 [DBG] Removing outdated records from the 'Job' table...
+2025-06-03 10:55:40.205 +05:30 [DBG] Execution loop Worker:51f885d5 has started in 33.6613 ms
+2025-06-03 10:55:40.249 +05:30 [DBG] Execution loop Worker:da752d20 has started in 78.0673 ms
+2025-06-03 10:55:40.256 +05:30 [DBG] Execution loop Worker:a95929bd has started in 84.8258 ms
+2025-06-03 10:55:40.291 +05:30 [DBG] Execution loop Worker:b0242301 has started in 120.0044 ms
+2025-06-03 10:55:40.324 +05:30 [DBG] Removing outdated records from the 'List' table...
+2025-06-03 10:55:40.325 +05:30 [DBG] Execution loop Worker:5a383cae has started in 153.8695 ms
+2025-06-03 10:55:40.325 +05:30 [DBG] Execution loop Worker:a755534f has started in 153.9694 ms
+2025-06-03 10:55:40.333 +05:30 [DBG] Execution loop Worker:8dbf6a15 has started in 161.6047 ms
+2025-06-03 10:55:40.339 +05:30 [DBG] Execution loop Worker:9ca4a8bf has started in 167.941 ms
+2025-06-03 10:55:40.374 +05:30 [DBG] Execution loop Worker:4575f25d has started in 201.5532 ms
+2025-06-03 10:55:40.375 +05:30 [DBG] Removing outdated records from the 'Set' table...
+2025-06-03 10:55:40.383 +05:30 [DBG] Execution loop Worker:0ba5ef65 has started in 212.3353 ms
+2025-06-03 10:55:40.397 +05:30 [DBG] Execution loop Worker:6908ff7a has started in 225.5419 ms
+2025-06-03 10:55:40.400 +05:30 [DBG] Execution loop Worker:b036496a has started in 229.4203 ms
+2025-06-03 10:55:40.409 +05:30 [DBG] Removing outdated records from the 'Hash' table...
+2025-06-03 10:55:40.424 +05:30 [DBG] Execution loop Worker:52acca76 has started in 252.7776 ms
+2025-06-03 10:55:40.432 +05:30 [DBG] Execution loop Worker:f04c6f0c has started in 261.224 ms
+2025-06-03 10:55:40.483 +05:30 [DBG] Execution loop Worker:b0dfde73 has started in 312.2134 ms
+2025-06-03 10:55:40.529 +05:30 [DBG] Execution loop Worker:bbe06eb2 has started in 357.6668 ms
+2025-06-03 10:55:40.627 +05:30 [DBG] Execution loop Worker:0d57d4c9 has started in 456.0419 ms
+2025-06-03 10:55:40.695 +05:30 [DBG] Execution loop Worker:6de2a8be has started in 523.9075 ms
+2025-06-03 10:55:40.703 +05:30 [DBG] Execution loop Worker:1428cbed has started in 532.3204 ms
+2025-06-03 10:55:40.742 +05:30 [DBG] Execution loop Worker:af77d89d has started in 571.0022 ms
+2025-06-03 10:55:40.750 +05:30 [DBG] Execution loop DelayedJobScheduler:d2023422 has started in 46.1472 ms
+2025-06-03 10:55:40.751 +05:30 [INF] Server desktop-03v0c0b:20432:abeb9a50 all the dispatchers started
+2025-06-03 10:55:40.764 +05:30 [DBG] Execution loop RecurringJobScheduler:bc5bea87 has started in 20.9117 ms
+2025-06-03 10:55:41.419 +05:30 [INF] Request finished HTTP/2 GET https://localhost:62627/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1805.9514ms
+2025-06-03 10:55:56.631 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-03 10:55:57.570 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-03 10:55:57.587 +05:30 [DBG] Creating DbConnection.
+2025-06-03 10:55:57.588 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-03 10:55:57.797 +05:30 [DBG] Compiling query expression: 
+'DbSet<TblAsset>()
+    .Where(a => a.IsDeleted == False)
+    .Include(a => a.Category)
+    .Include(a => a.Status)
+    .Include(a => a.Seller)
+    .Include(a => a.Awarding)
+    .Include(a => a.Vat)
+    .Include(a => a.TblAssetGalleries)
+    .Include(a => a.TblAssetDocuments)
+    .Include(a => a.TblAssetDetails)
+    .Include(a => a.TblAuctionAssets)
+    .ThenInclude(aa => aa.Auction)
+    .Where(a => a.AssetId == __id_0)
+    .Select(a => new GetAssetsFormDto{ 
+        AssetId = a.AssetId, 
+        Title = a.Title, 
+        CategoryId = a.CategoryId, 
+        CategoryName = a.Category != null ? a.Category.CategoryName : null, 
+        Deposit = a.Deposit, 
+        SellerId = a.SellerId, 
+        Commission = a.Commission, 
+        StartingPrice = a.StartingPrice, 
+        ReserveAmount = a.ReserveAmount, 
+        IncrementalTime = a.IncrementalTime, 
+        MinIncrement = a.MinIncrement, 
+        MakeOffer = a.MakeOffer, 
+        Featured = a.Featured, 
+        AwardingId = a.AwardingId, 
+        AwardingMethod = a.Awarding != null ? a.Awarding.AwardingMethod : null, 
+        StatusId = a.StatusId, 
+        StatusName = a.Status != null ? a.Status.StatusName : null, 
+        Vatid = a.Vatid, 
+        VatType = a.Vat != null ? a.Vat.Vattype : null, 
+        Vatpercent = a.Vatpercent, 
+        CourtCaseNumber = a.CourtCaseNumber, 
+        RegistrationDeadline = a.RegistrationDeadline, 
+        Description = a.Description, 
+        MapLatitude = a.MapLatitude, 
+        MapLongitude = a.MapLongitude, 
+        AdminFees = a.AdminFees, 
+        AuctionFees = a.AuctionFees, 
+        BuyerCommission = a.BuyerCommission, 
+        WinnerId = a.WinnerId, 
+        WinnerName = a.Winner != null && a.Winner.User != null ? a.Winner.User.Name : null, 
+        AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null, 
+        SalesNotes = a.SalesNotes, 
+        AssetNumber = a.AssetNumber, 
+        CreatedAt = a.CreatedAt, 
+        UpdatedAt = a.UpdatedAt, 
+        RequestForInquiry = a.RequestForInquiry, 
+        RequestForViewing = a.RequestForViewing, 
+        IsAvailableForDirectSale = a.IsAvailableForDirectSale, 
+        isDeleted = a.IsDeleted, 
+        AuctionStatusId = (int?)a.TblAuctionAssets
+            .Select(aa => aa.Auction.StatusId)
+            .FirstOrDefault(), 
+        AuctionIds = a.TblAuctionAssets
+            .Select(aa => aa.AuctionId)
+            .ToList(), 
+        Galleries = a.TblAssetGalleries
+            .Select(g => new AssetGalleryDtos{ 
+                GalleryId = g.GalleryId, 
+                MediaType = g.MediaType, 
+                FilePath = g.FilePath, 
+                SortOrder = g.SortOrder 
+            }
+            )
+            .ToList(), 
+        Documents = a.TblAssetDocuments
+            .Select(d => new AssetDocumentFormDto{ 
+                DocumentId = d.DocumentId, 
+                DocumentType = d.DocumentType, 
+                FilePath = d.FilePath 
+            }
+            )
+            .ToList(), 
+        Attributes = a.TblAssetDetails
+            .Select(d => new AssetDetailDtoo{ 
+                AttributeName = d.AttributeName, 
+                AttributeValue = d.AttributeValue 
+            }
+            )
+            .ToList() 
+    }
+    )
+    .FirstOrDefault()'
+2025-06-03 10:55:58.440 +05:30 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-06-03 10:55:58.949 +05:30 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<GetAssetsFormDto>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<GetAssetsFormDto>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Client Projections:
+                0 -> 0
+                1 -> 1
+                2 -> 2
+                3 -> 3
+                4 -> 4
+                5 -> 5
+                6 -> 6
+                7 -> 7
+                8 -> 8
+                9 -> 9
+                10 -> 10
+                11 -> 11
+                12 -> 12
+                13 -> 13
+                14 -> 14
+                15 -> 15
+                16 -> 16
+                17 -> 17
+                18 -> 18
+                19 -> 19
+                20 -> 20
+                21 -> 21
+                22 -> 22
+                23 -> 23
+                24 -> 24
+                25 -> 25
+                26 -> 26
+                27 -> 27
+                28 -> 28
+                29 -> 29
+                30 -> 30
+                31 -> 31
+                32 -> 32
+                33 -> 33
+                34 -> 34
+                35 -> 35
+                36 -> 36
+                37 -> 37
+                38 -> 38
+                39 -> 39
+                40 -> 40
+                41 -> 41
+                42 -> 42
+                43 -> 43
+                44 -> 44
+                45 -> 45
+                46 -> 46
+                47 -> 47
+                48 -> 48
+                49 -> 49
+                50 -> 50
+                51 -> 51
+                52 -> 52
+                53 -> 53
+                54 -> 54
+                55 -> 55
+                56 -> 56
+                57 -> 57
+            SELECT s.AssetId, s.Title, s.CategoryId, s.CategoryName, s.Deposit, s.SellerId, s.Commission, s.StartingPrice, s.ReserveAmount, s.IncrementalTime, s.MinIncrement, s.MakeOffer, s.Featured, s.AwardingId, s.AwardingMethod, s.StatusId, s.StatusName, s.VATId, s.VATType, s.VATPercent, s.CourtCaseNumber, s.RegistrationDeadline, s.Description, s.MapLatitude, s.MapLongitude, s.AdminFees, s.AuctionFees, s.BuyerCommission, s.WinnerId, s.c, s.AwardedPrice, s.SalesNotes, s.AssetNumber, s.CreatedAt, s.UpdatedAt, s.RequestForInquiry, s.RequestForViewing, s.IsAvailableForDirectSale, s.IsDeleted, s.c0, s.CategoryId0, s.AwardingId0, s.StatusId0, s.VATId0, s.WinnerId0, s.UserId, t8.AuctionId, t8.AuctionAssetId, t9.GalleryId, t9.MediaType, t9.FilePath, t9.SortOrder, t10.DocumentId, t10.DocumentType, t10.FilePath, t11.AttributeName, t11.AttributeValue, t11.DetailId
+            FROM 
+            (
+                SELECT TOP(1) t.AssetId, t.Title, t.CategoryId, t0.CategoryName, t.Deposit, t.SellerId, t.Commission, t.StartingPrice, t.ReserveAmount, t.IncrementalTime, t.MinIncrement, t.MakeOffer, t.Featured, t.AwardingId, t1.AwardingMethod, t.StatusId, t2.StatusName, t.VATId, t3.VATType, t.VATPercent, t.CourtCaseNumber, t.RegistrationDeadline, t.Description, t.MapLatitude, t.MapLongitude, t.AdminFees, t.AuctionFees, t.BuyerCommission, t.WinnerId, CASE
+                    WHEN (t4.WinnerId != NULL) && (t5.UserId != NULL) THEN t5.Name
+                END AS c, t4.AwardedPrice, t.SalesNotes, t.AssetNumber, t.CreatedAt, t.UpdatedAt, t.RequestForInquiry, t.RequestForViewing, t.IsAvailableForDirectSale, t.IsDeleted, COALESCE((
+                    SELECT TOP(1) t7.StatusId
+                    FROM AuctionM_dbuser.tblAuctionAssets AS t6
+                    INNER JOIN AuctionM_dbuser.tblAuctions AS t7 ON t6.AuctionId == t7.AuctionId
+                    WHERE (t.AssetId != NULL) && (t.AssetId == t6.AssetId)), 0) AS c0, t0.CategoryId AS CategoryId0, t1.AwardingId AS AwardingId0, t2.StatusId AS StatusId0, t3.VATId AS VATId0, t4.WinnerId AS WinnerId0, t5.UserId
+                FROM AuctionM_dbuser.tblAssets AS t
+                LEFT JOIN AuctionM_dbuser.tblAssetCategories AS t0 ON t.CategoryId == t0.CategoryId
+                LEFT JOIN AuctionM_dbuser.tblWinnerAwardingOptions AS t1 ON t.AwardingId == t1.AwardingId
+                LEFT JOIN AuctionM_dbuser.tblAssetStatus AS t2 ON t.StatusId == t2.StatusId
+                LEFT JOIN AuctionM_dbuser.tblVATOptions AS t3 ON t.VATId == t3.VATId
+                LEFT JOIN AuctionM_dbuser.tblAssetWinners AS t4 ON t.WinnerId == t4.WinnerId
+                LEFT JOIN AuctionM_dbuser.tblUsers AS t5 ON t4.UserId == t5.UserId
+                WHERE (t.IsDeleted == CAST(0 AS bit)) && (t.AssetId == @__id_0)
+            ) AS s
+            LEFT JOIN AuctionM_dbuser.tblAuctionAssets AS t8 ON s.AssetId == t8.AssetId
+            LEFT JOIN AuctionM_dbuser.tblAssetGallery AS t9 ON s.AssetId == t9.AssetId
+            LEFT JOIN AuctionM_dbuser.tblAssetDocuments AS t10 ON s.AssetId == t10.AssetId
+            LEFT JOIN AuctionM_dbuser.tblAssetDetails AS t11 ON s.AssetId == t11.AssetId
+            ORDER BY s.AssetId ASC, s.CategoryId0 ASC, s.AwardingId0 ASC, s.StatusId0 ASC, s.VATId0 ASC, s.WinnerId0 ASC, s.UserId ASC, t8.AuctionAssetId ASC, t9.GalleryId ASC, t10.DocumentId ASC) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Client Projections:
+                0 -> 0
+                1 -> 1
+                2 -> 2
+                3 -> 3
+                4 -> 4
+                5 -> 5
+                6 -> 6
+                7 -> 7
+                8 -> 8
+                9 -> 9
+                10 -> 10
+                11 -> 11
+                12 -> 12
+                13 -> 13
+                14 -> 14
+                15 -> 15
+                16 -> 16
+                17 -> 17
+                18 -> 18
+                19 -> 19
+                20 -> 20
+                21 -> 21
+                22 -> 22
+                23 -> 23
+                24 -> 24
+                25 -> 25
+                26 -> 26
+                27 -> 27
+                28 -> 28
+                29 -> 29
+                30 -> 30
+                31 -> 31
+                32 -> 32
+                33 -> 33
+                34 -> 34
+                35 -> 35
+                36 -> 36
+                37 -> 37
+                38 -> 38
+                39 -> 39
+                40 -> 40
+                41 -> 41
+                42 -> 42
+                43 -> 43
+                44 -> 44
+                45 -> 45
+                46 -> 46
+                47 -> 47
+                48 -> 48
+                49 -> 49
+                50 -> 50
+                51 -> 51
+                52 -> 52
+                53 -> 53
+                54 -> 54
+                55 -> 55
+                56 -> 56
+                57 -> 57
+            SELECT s.AssetId, s.Title, s.CategoryId, s.CategoryName, s.Deposit, s.SellerId, s.Commission, s.StartingPrice, s.ReserveAmount, s.IncrementalTime, s.MinIncrement, s.MakeOffer, s.Featured, s.AwardingId, s.AwardingMethod, s.StatusId, s.StatusName, s.VATId, s.VATType, s.VATPercent, s.CourtCaseNumber, s.RegistrationDeadline, s.Description, s.MapLatitude, s.MapLongitude, s.AdminFees, s.AuctionFees, s.BuyerCommission, s.WinnerId, s.c, s.AwardedPrice, s.SalesNotes, s.AssetNumber, s.CreatedAt, s.UpdatedAt, s.RequestForInquiry, s.RequestForViewing, s.IsAvailableForDirectSale, s.IsDeleted, s.c0, s.CategoryId0, s.AwardingId0, s.StatusId0, s.VATId0, s.WinnerId0, s.UserId, t8.AuctionId, t8.AuctionAssetId, t9.GalleryId, t9.MediaType, t9.FilePath, t9.SortOrder, t10.DocumentId, t10.DocumentType, t10.FilePath, t11.AttributeName, t11.AttributeValue, t11.DetailId
+            FROM 
+            (
+                SELECT TOP(1) t.AssetId, t.Title, t.CategoryId, t0.CategoryName, t.Deposit, t.SellerId, t.Commission, t.StartingPrice, t.ReserveAmount, t.IncrementalTime, t.MinIncrement, t.MakeOffer, t.Featured, t.AwardingId, t1.AwardingMethod, t.StatusId, t2.StatusName, t.VATId, t3.VATType, t.VATPercent, t.CourtCaseNumber, t.RegistrationDeadline, t.Description, t.MapLatitude, t.MapLongitude, t.AdminFees, t.AuctionFees, t.BuyerCommission, t.WinnerId, CASE
+                    WHEN (t4.WinnerId != NULL) && (t5.UserId != NULL) THEN t5.Name
+                END AS c, t4.AwardedPrice, t.SalesNotes, t.AssetNumber, t.CreatedAt, t.UpdatedAt, t.RequestForInquiry, t.RequestForViewing, t.IsAvailableForDirectSale, t.IsDeleted, COALESCE((
+                    SELECT TOP(1) t7.StatusId
+                    FROM AuctionM_dbuser.tblAuctionAssets AS t6
+                    INNER JOIN AuctionM_dbuser.tblAuctions AS t7 ON t6.AuctionId == t7.AuctionId
+                    WHERE (t.AssetId != NULL) && (t.AssetId == t6.AssetId)), 0) AS c0, t0.CategoryId AS CategoryId0, t1.AwardingId AS AwardingId0, t2.StatusId AS StatusId0, t3.VATId AS VATId0, t4.WinnerId AS WinnerId0, t5.UserId
+                FROM AuctionM_dbuser.tblAssets AS t
+                LEFT JOIN AuctionM_dbuser.tblAssetCategories AS t0 ON t.CategoryId == t0.CategoryId
+                LEFT JOIN AuctionM_dbuser.tblWinnerAwardingOptions AS t1 ON t.AwardingId == t1.AwardingId
+                LEFT JOIN AuctionM_dbuser.tblAssetStatus AS t2 ON t.StatusId == t2.StatusId
+                LEFT JOIN AuctionM_dbuser.tblVATOptions AS t3 ON t.VATId == t3.VATId
+                LEFT JOIN AuctionM_dbuser.tblAssetWinners AS t4 ON t.WinnerId == t4.WinnerId
+                LEFT JOIN AuctionM_dbuser.tblUsers AS t5 ON t4.UserId == t5.UserId
+                WHERE (t.IsDeleted == CAST(0 AS bit)) && (t.AssetId == @__id_0)
+            ) AS s
+            LEFT JOIN AuctionM_dbuser.tblAuctionAssets AS t8 ON s.AssetId == t8.AssetId
+            LEFT JOIN AuctionM_dbuser.tblAssetGallery AS t9 ON s.AssetId == t9.AssetId
+            LEFT JOIN AuctionM_dbuser.tblAssetDocuments AS t10 ON s.AssetId == t10.AssetId
+            LEFT JOIN AuctionM_dbuser.tblAssetDetails AS t11 ON s.AssetId == t11.AssetId
+            ORDER BY s.AssetId ASC, s.CategoryId0 ASC, s.AwardingId0 ASC, s.StatusId0 ASC, s.VATId0 ASC, s.WinnerId0 ASC, s.UserId ASC, t8.AuctionAssetId ASC, t9.GalleryId ASC, t10.DocumentId ASC, 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            resultContext.Values == null ? 
+            {
+                int? value1;
+                string value2;
+                int? value3;
+                string value4;
+                decimal? value5;
+                int? value6;
+                decimal? value7;
+                decimal? value8;
+                decimal? value9;
+                int? value10;
+                decimal? value11;
+                bool? value12;
+                bool? value13;
+                int? value14;
+                string value15;
+                int? value16;
+                string value17;
+                int? value18;
+                string value19;
+                decimal? value20;
+                string value21;
+                int? value22;
+                string value23;
+                decimal? value24;
+                decimal? value25;
+                decimal? value26;
+                decimal? value27;
+                decimal? value28;
+                int? value29;
+                string value30;
+                decimal? value31;
+                string value32;
+                string value33;
+                DateTime? value34;
+                DateTime? value35;
+                bool? value36;
+                bool? value37;
+                bool? value38;
+                bool? value39;
+                int? value40;
+                List<int> namelessParameter{0};
+                List<AssetGalleryDtos> namelessParameter{1};
+                List<AssetDocumentFormDto> namelessParameter{2};
+                List<AssetDetailDtoo> namelessParameter{3};
+                value1 = (int?)dataReader.GetInt32(0);
+                value2 = dataReader.GetString(1);
+                value3 = dataReader.IsDBNull(2) ? default(int?) : (int?)dataReader.GetInt32(2);
+                value4 = dataReader.IsDBNull(3) ? default(string) : dataReader.GetString(3);
+                value5 = dataReader.IsDBNull(4) ? default(decimal?) : (decimal?)dataReader.GetDecimal(4);
+                value6 = (int?)dataReader.GetInt32(5);
+                value7 = dataReader.IsDBNull(6) ? default(decimal?) : (decimal?)dataReader.GetDecimal(6);
+                value8 = (decimal?)dataReader.GetDecimal(7);
+                value9 = dataReader.IsDBNull(8) ? default(decimal?) : (decimal?)dataReader.GetDecimal(8);
+                value10 = dataReader.IsDBNull(9) ? default(int?) : (int?)dataReader.GetInt32(9);
+                value11 = dataReader.IsDBNull(10) ? default(decimal?) : (decimal?)dataReader.GetDecimal(10);
+                value12 = dataReader.IsDBNull(11) ? default(bool?) : (bool?)dataReader.GetBoolean(11);
+                value13 = dataReader.IsDBNull(12) ? default(bool?) : (bool?)dataReader.GetBoolean(12);
+                value14 = dataReader.IsDBNull(13) ? default(int?) : (int?)dataReader.GetInt32(13);
+                value15 = dataReader.IsDBNull(14) ? default(string) : dataReader.GetString(14);
+                value16 = dataReader.IsDBNull(15) ? default(int?) : (int?)dataReader.GetInt32(15);
+                value17 = dataReader.IsDBNull(16) ? default(string) : dataReader.GetString(16);
+                value18 = dataReader.IsDBNull(17) ? default(int?) : (int?)dataReader.GetInt32(17);
+                value19 = dataReader.IsDBNull(18) ? default(string) : dataReader.GetString(18);
+                value20 = dataReader.IsDBNull(19) ? default(decimal?) : (decimal?)dataReader.GetDecimal(19);
+                value21 = dataReader.GetString(20);
+                value22 = dataReader.IsDBNull(21) ? default(int?) : (int?)dataReader.GetInt32(21);
+                value23 = dataReader.GetString(22);
+                value24 = dataReader.IsDBNull(23) ? default(decimal?) : (decimal?)dataReader.GetDecimal(23);
+                value25 = dataReader.IsDBNull(24) ? default(decimal?) : (decimal?)dataReader.GetDecimal(24);
+                value26 = dataReader.IsDBNull(25) ? default(decimal?) : (decimal?)dataReader.GetDecimal(25);
+                value27 = dataReader.IsDBNull(26) ? default(decimal?) : (decimal?)dataReader.GetDecimal(26);
+                value28 = dataReader.IsDBNull(27) ? default(decimal?) : (decimal?)dataReader.GetDecimal(27);
+                value29 = dataReader.IsDBNull(28) ? default(int?) : (int?)dataReader.GetInt32(28);
+                value30 = dataReader.IsDBNull(29) ? default(string) : dataReader.GetString(29);
+                value31 = dataReader.IsDBNull(30) ? default(decimal?) : (decimal?)dataReader.GetDecimal(30);
+                value32 = dataReader.GetString(31);
+                value33 = dataReader.GetString(32);
+                value34 = dataReader.IsDBNull(33) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(33);
+                value35 = dataReader.IsDBNull(34) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(34);
+                value36 = dataReader.IsDBNull(35) ? default(bool?) : (bool?)dataReader.GetBoolean(35);
+                value37 = dataReader.IsDBNull(36) ? default(bool?) : (bool?)dataReader.GetBoolean(36);
+                value38 = (bool?)dataReader.GetBoolean(37);
+                value39 = (bool?)dataReader.GetBoolean(38);
+                value40 = dataReader.IsDBNull(39) ? default(int?) : (int?)dataReader.GetInt32(39);
+                namelessParameter{0} = ShaperProcessingExpressionVisitor.InitializeCollection<int, List<int>>(
+                    collectionId: 0, 
+                    queryContext: queryContext, 
+                    dbDataReader: dataReader, 
+                    resultCoordinator: resultCoordinator, 
+                    parentIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                    { 
+                        (object)(int?)dataReader.GetInt32(0), 
+                        (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                        (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                        (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                        (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                        (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                        (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45) 
+                    }], 
+                    outerIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                    { 
+                        (object)(int?)dataReader.GetInt32(0), 
+                        (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                        (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                        (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                        (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                        (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                        (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45) 
+                    }], 
+                    clrCollectionAccessor: default(IClrCollectionAccessor));
+                namelessParameter{1} = ShaperProcessingExpressionVisitor.InitializeCollection<AssetGalleryDtos, List<AssetGalleryDtos>>(
+                    collectionId: 1, 
+                    queryContext: queryContext, 
+                    dbDataReader: dataReader, 
+                    resultCoordinator: resultCoordinator, 
+                    parentIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                    { 
+                        (object)(int?)dataReader.GetInt32(0), 
+                        (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                        (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                        (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                        (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                        (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                        (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45) 
+                    }], 
+                    outerIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                    { 
+                        (object)(int?)dataReader.GetInt32(0), 
+                        (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                        (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                        (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                        (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                        (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                        (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45), 
+                        (object)dataReader.IsDBNull(47) ? default(int?) : (int?)dataReader.GetInt32(47) 
+                    }], 
+                    clrCollectionAccessor: default(IClrCollectionAccessor));
+                namelessParameter{2} = ShaperProcessingExpressionVisitor.InitializeCollection<AssetDocumentFormDto, List<AssetDocumentFormDto>>(
+                    collectionId: 2, 
+                    queryContext: queryContext, 
+                    dbDataReader: dataReader, 
+                    resultCoordinator: resultCoordinator, 
+                    parentIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                    { 
+                        (object)(int?)dataReader.GetInt32(0), 
+                        (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                        (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                        (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                        (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                        (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                        (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45) 
+                    }], 
+                    outerIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                    { 
+                        (object)(int?)dataReader.GetInt32(0), 
+                        (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                        (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                        (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                        (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                        (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                        (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45), 
+                        (object)dataReader.IsDBNull(47) ? default(int?) : (int?)dataReader.GetInt32(47), 
+                        (object)dataReader.IsDBNull(48) ? default(int?) : (int?)dataReader.GetInt32(48) 
+                    }], 
+                    clrCollectionAccessor: default(IClrCollectionAccessor));
+                namelessParameter{3} = ShaperProcessingExpressionVisitor.InitializeCollection<AssetDetailDtoo, List<AssetDetailDtoo>>(
+                    collectionId: 3, 
+                    queryContext: queryContext, 
+                    dbDataReader: dataReader, 
+                    resultCoordinator: resultCoordinator, 
+                    parentIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                    { 
+                        (object)(int?)dataReader.GetInt32(0), 
+                        (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                        (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                        (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                        (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                        (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                        (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45) 
+                    }], 
+                    outerIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                    { 
+                        (object)(int?)dataReader.GetInt32(0), 
+                        (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                        (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                        (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                        (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                        (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                        (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45), 
+                        (object)dataReader.IsDBNull(47) ? default(int?) : (int?)dataReader.GetInt32(47), 
+                        (object)dataReader.IsDBNull(48) ? default(int?) : (int?)dataReader.GetInt32(48), 
+                        (object)dataReader.IsDBNull(52) ? default(int?) : (int?)dataReader.GetInt32(52) 
+                    }], 
+                    clrCollectionAccessor: default(IClrCollectionAccessor));
+                return resultContext.Values = new object[]
+                { 
+                    (object)value1, 
+                    value2, 
+                    (object)value3, 
+                    value4, 
+                    (object)value5, 
+                    (object)value6, 
+                    (object)value7, 
+                    (object)value8, 
+                    (object)value9, 
+                    (object)value10, 
+                    (object)value11, 
+                    (object)value12, 
+                    (object)value13, 
+                    (object)value14, 
+                    value15, 
+                    (object)value16, 
+                    value17, 
+                    (object)value18, 
+                    value19, 
+                    (object)value20, 
+                    value21, 
+                    (object)value22, 
+                    value23, 
+                    (object)value24, 
+                    (object)value25, 
+                    (object)value26, 
+                    (object)value27, 
+                    (object)value28, 
+                    (object)value29, 
+                    value30, 
+                    (object)value31, 
+                    value32, 
+                    value33, 
+                    (object)value34, 
+                    (object)value35, 
+                    (object)value36, 
+                    (object)value37, 
+                    (object)value38, 
+                    (object)value39, 
+                    (object)value40, 
+                    namelessParameter{0}, 
+                    namelessParameter{1}, 
+                    namelessParameter{2}, 
+                    namelessParameter{3} 
+                };
+            } : default(void);
+            ShaperProcessingExpressionVisitor.PopulateCollection<List<int>, int, int>(
+                collectionId: 0, 
+                queryContext: queryContext, 
+                dbDataReader: dataReader, 
+                resultCoordinator: resultCoordinator, 
+                parentIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                { 
+                    (object)(int?)dataReader.GetInt32(0), 
+                    (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                    (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                    (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                    (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                    (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                    (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45) 
+                }], 
+                outerIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                { 
+                    (object)(int?)dataReader.GetInt32(0), 
+                    (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                    (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                    (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                    (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                    (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                    (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45) 
+                }], 
+                selfIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]{ (object)dataReader.IsDBNull(47) ? default(int?) : (int?)dataReader.GetInt32(47) }], 
+                parentIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]
+                { 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right 
+                }], 
+                outerIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]
+                { 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right 
+                }], 
+                selfIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]{ (left, right) => left == null ? right == null : right != null && (int)left == (int)right }], 
+                innerShaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+                {
+                    int? value1;
+                    value1 = dataReader.IsDBNull(46) ? default(int?) : (int?)dataReader.GetInt32(46);
+                    return (int)value1;
+                });
+            ShaperProcessingExpressionVisitor.PopulateCollection<List<AssetGalleryDtos>, AssetGalleryDtos, AssetGalleryDtos>(
+                collectionId: 1, 
+                queryContext: queryContext, 
+                dbDataReader: dataReader, 
+                resultCoordinator: resultCoordinator, 
+                parentIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                { 
+                    (object)(int?)dataReader.GetInt32(0), 
+                    (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                    (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                    (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                    (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                    (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                    (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45) 
+                }], 
+                outerIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                { 
+                    (object)(int?)dataReader.GetInt32(0), 
+                    (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                    (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                    (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                    (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                    (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                    (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45), 
+                    (object)dataReader.IsDBNull(47) ? default(int?) : (int?)dataReader.GetInt32(47) 
+                }], 
+                selfIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]{ (object)dataReader.IsDBNull(48) ? default(int?) : (int?)dataReader.GetInt32(48) }], 
+                parentIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]
+                { 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right 
+                }], 
+                outerIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]
+                { 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right 
+                }], 
+                selfIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]{ (left, right) => left == null ? right == null : right != null && (int)left == (int)right }], 
+                innerShaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+                {
+                    int? value1;
+                    string value2;
+                    string value3;
+                    int? value4;
+                    value1 = dataReader.IsDBNull(48) ? default(int?) : (int?)dataReader.GetInt32(48);
+                    value2 = dataReader.IsDBNull(49) ? default(string) : dataReader.GetString(49);
+                    value3 = dataReader.IsDBNull(50) ? default(string) : dataReader.GetString(50);
+                    value4 = dataReader.IsDBNull(51) ? default(int?) : (int?)dataReader.GetInt32(51);
+                    return new AssetGalleryDtos{ 
+                        GalleryId = (int)value1, 
+                        MediaType = value2, 
+                        FilePath = value3, 
+                        SortOrder = value4 
+                    }
+                    ;
+                });
+            ShaperProcessingExpressionVisitor.PopulateCollection<List<AssetDocumentFormDto>, AssetDocumentFormDto, AssetDocumentFormDto>(
+                collectionId: 2, 
+                queryContext: queryContext, 
+                dbDataReader: dataReader, 
+                resultCoordinator: resultCoordinator, 
+                parentIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                { 
+                    (object)(int?)dataReader.GetInt32(0), 
+                    (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                    (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                    (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                    (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                    (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                    (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45) 
+                }], 
+                outerIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                { 
+                    (object)(int?)dataReader.GetInt32(0), 
+                    (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                    (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                    (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                    (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                    (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                    (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45), 
+                    (object)dataReader.IsDBNull(47) ? default(int?) : (int?)dataReader.GetInt32(47), 
+                    (object)dataReader.IsDBNull(48) ? default(int?) : (int?)dataReader.GetInt32(48) 
+                }], 
+                selfIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]{ (object)dataReader.IsDBNull(52) ? default(int?) : (int?)dataReader.GetInt32(52) }], 
+                parentIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]
+                { 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right 
+                }], 
+                outerIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]
+                { 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right 
+                }], 
+                selfIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]{ (left, right) => left == null ? right == null : right != null && (int)left == (int)right }], 
+                innerShaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+                {
+                    int? value1;
+                    string value2;
+                    string value3;
+                    value1 = dataReader.IsDBNull(52) ? default(int?) : (int?)dataReader.GetInt32(52);
+                    value2 = dataReader.IsDBNull(53) ? default(string) : dataReader.GetString(53);
+                    value3 = dataReader.IsDBNull(54) ? default(string) : dataReader.GetString(54);
+                    return new AssetDocumentFormDto{ 
+                        DocumentId = (int)value1, 
+                        DocumentType = value2, 
+                        FilePath = value3 
+                    }
+                    ;
+                });
+            ShaperProcessingExpressionVisitor.PopulateCollection<List<AssetDetailDtoo>, AssetDetailDtoo, AssetDetailDtoo>(
+                collectionId: 3, 
+                queryContext: queryContext, 
+                dbDataReader: dataReader, 
+                resultCoordinator: resultCoordinator, 
+                parentIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                { 
+                    (object)(int?)dataReader.GetInt32(0), 
+                    (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                    (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                    (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                    (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                    (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                    (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45) 
+                }], 
+                outerIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]
+                { 
+                    (object)(int?)dataReader.GetInt32(0), 
+                    (object)dataReader.IsDBNull(40) ? default(int?) : (int?)dataReader.GetInt32(40), 
+                    (object)dataReader.IsDBNull(41) ? default(int?) : (int?)dataReader.GetInt32(41), 
+                    (object)dataReader.IsDBNull(42) ? default(int?) : (int?)dataReader.GetInt32(42), 
+                    (object)dataReader.IsDBNull(43) ? default(int?) : (int?)dataReader.GetInt32(43), 
+                    (object)dataReader.IsDBNull(44) ? default(int?) : (int?)dataReader.GetInt32(44), 
+                    (object)dataReader.IsDBNull(45) ? default(int?) : (int?)dataReader.GetInt32(45), 
+                    (object)dataReader.IsDBNull(47) ? default(int?) : (int?)dataReader.GetInt32(47), 
+                    (object)dataReader.IsDBNull(48) ? default(int?) : (int?)dataReader.GetInt32(48), 
+                    (object)dataReader.IsDBNull(52) ? default(int?) : (int?)dataReader.GetInt32(52) 
+                }], 
+                selfIdentifier: [LIFTABLE Constant: Func<QueryContext, DbDataReader, object[]> | Resolver: _ => (queryContext, dataReader) => new object[]{ (object)dataReader.IsDBNull(57) ? default(int?) : (int?)dataReader.GetInt32(57) }], 
+                parentIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]
+                { 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right 
+                }], 
+                outerIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool>, Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]
+                { 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right, 
+                    (left, right) => left == null ? right == null : right != null && (int)left == (int)right 
+                }], 
+                selfIdentifierValueComparers: [LIFTABLE Constant: Func<object, object, bool>[] { Func<object, object, bool> } | Resolver: _ => new Func<object, object, bool>[]{ (left, right) => left == null ? right == null : right != null && (int)left == (int)right }], 
+                innerShaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+                {
+                    string value1;
+                    string value2;
+                    value1 = dataReader.IsDBNull(55) ? default(string) : dataReader.GetString(55);
+                    value2 = dataReader.IsDBNull(56) ? default(string) : dataReader.GetString(56);
+                    return new AssetDetailDtoo{ 
+                        AttributeName = value1, 
+                        AttributeValue = value2 
+                    }
+                    ;
+                });
+            return IsTrue(resultCoordinator.ResultReady)
+             ? new GetAssetsFormDto{ 
+                AssetId = (int)(int?)(resultContext.Values[0]), 
+                Title = (string)(resultContext.Values[1]), 
+                CategoryId = (int?)(resultContext.Values[2]), 
+                CategoryName = (string)(resultContext.Values[3]), 
+                Deposit = (decimal?)(resultContext.Values[4]), 
+                SellerId = (int)(int?)(resultContext.Values[5]), 
+                Commission = (decimal?)(resultContext.Values[6]), 
+                StartingPrice = (decimal)(decimal?)(resultContext.Values[7]), 
+                ReserveAmount = (decimal?)(resultContext.Values[8]), 
+                IncrementalTime = (int?)(resultContext.Values[9]), 
+                MinIncrement = (decimal?)(resultContext.Values[10]), 
+                MakeOffer = (bool?)(resultContext.Values[11]), 
+                Featured = (bool?)(resultContext.Values[12]), 
+                AwardingId = (int?)(resultContext.Values[13]), 
+                AwardingMethod = (string)(resultContext.Values[14]), 
+                StatusId = (int?)(resultContext.Values[15]), 
+                StatusName = (string)(resultContext.Values[16]), 
+                Vatid = (int?)(resultContext.Values[17]), 
+                VatType = (string)(resultContext.Values[18]), 
+                Vatpercent = (decimal?)(resultContext.Values[19]), 
+                CourtCaseNumber = (string)(resultContext.Values[20]), 
+                RegistrationDeadline = (int?)(resultContext.Values[21]), 
+                Description = (string)(resultContext.Values[22]), 
+                MapLatitude = (decimal?)(resultContext.Values[23]), 
+                MapLongitude = (decimal?)(resultContext.Values[24]), 
+                AdminFees = (decimal?)(resultContext.Values[25]), 
+                AuctionFees = (decimal?)(resultContext.Values[26]), 
+                BuyerCommission = (decimal?)(resultContext.Values[27]), 
+                WinnerId = (int?)(resultContext.Values[28]), 
+                WinnerName = (string)(resultContext.Values[29]), 
+                AwardedPrice = (decimal?)(resultContext.Values[30]), 
+                SalesNotes = (string)(resultContext.Values[31]), 
+                AssetNumber = (string)(resultContext.Values[32]), 
+                CreatedAt = (DateTime?)(resultContext.Values[33]), 
+                UpdatedAt = (DateTime?)(resultContext.Values[34]), 
+                RequestForInquiry = (bool?)(resultContext.Values[35]), 
+                RequestForViewing = (bool?)(resultContext.Values[36]), 
+                IsAvailableForDirectSale = (bool)(bool?)(resultContext.Values[37]), 
+                isDeleted = (bool)(bool?)(resultContext.Values[38]), 
+                AuctionStatusId = (int?)(resultContext.Values[39]), 
+                AuctionIds = (List<int>)(resultContext.Values[40]), 
+                Galleries = (List<AssetGalleryDtos>)(resultContext.Values[41]), 
+                Documents = (List<AssetDocumentFormDto>)(resultContext.Values[42]), 
+                Attributes = (List<AssetDetailDtoo>)(resultContext.Values[43]) 
+            }
+             : default(GetAssetsFormDto);
+        }, 
+        contextType: AuctionManagementSystem.Persistence.Context.AuctionManagementDbContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2025-06-03 10:55:59.047 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-03 10:55:59.047 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-03 10:55:59.047 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-03 10:55:59.048 +05:30 [DBG] Executing DbCommand [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[AssetId], [s].[Title], [s].[CategoryId], [s].[CategoryName], [s].[Deposit], [s].[SellerId], [s].[Commission], [s].[StartingPrice], [s].[ReserveAmount], [s].[IncrementalTime], [s].[MinIncrement], [s].[MakeOffer], [s].[Featured], [s].[AwardingId], [s].[AwardingMethod], [s].[StatusId], [s].[StatusName], [s].[VATId], [s].[VATType], [s].[VATPercent], [s].[CourtCaseNumber], [s].[RegistrationDeadline], [s].[Description], [s].[MapLatitude], [s].[MapLongitude], [s].[AdminFees], [s].[AuctionFees], [s].[BuyerCommission], [s].[WinnerId], [s].[c], [s].[AwardedPrice], [s].[SalesNotes], [s].[AssetNumber], [s].[CreatedAt], [s].[UpdatedAt], [s].[RequestForInquiry], [s].[RequestForViewing], [s].[IsAvailableForDirectSale], [s].[IsDeleted], [s].[c0], [s].[CategoryId0], [s].[AwardingId0], [s].[StatusId0], [s].[VATId0], [s].[WinnerId0], [s].[UserId], [t8].[AuctionId], [t8].[AuctionAssetId], [t9].[GalleryId], [t9].[MediaType], [t9].[FilePath], [t9].[SortOrder], [t10].[DocumentId], [t10].[DocumentType], [t10].[FilePath], [t11].[AttributeName], [t11].[AttributeValue], [t11].[DetailId]
+FROM (
+    SELECT TOP(1) [t].[AssetId], [t].[Title], [t].[CategoryId], [t0].[CategoryName], [t].[Deposit], [t].[SellerId], [t].[Commission], [t].[StartingPrice], [t].[ReserveAmount], [t].[IncrementalTime], [t].[MinIncrement], [t].[MakeOffer], [t].[Featured], [t].[AwardingId], [t1].[AwardingMethod], [t].[StatusId], [t2].[StatusName], [t].[VATId], [t3].[VATType], [t].[VATPercent], [t].[CourtCaseNumber], [t].[RegistrationDeadline], [t].[Description], [t].[MapLatitude], [t].[MapLongitude], [t].[AdminFees], [t].[AuctionFees], [t].[BuyerCommission], [t].[WinnerId], CASE
+        WHEN [t4].[WinnerId] IS NOT NULL AND [t5].[UserId] IS NOT NULL THEN [t5].[Name]
+    END AS [c], [t4].[AwardedPrice], [t].[SalesNotes], [t].[AssetNumber], [t].[CreatedAt], [t].[UpdatedAt], [t].[RequestForInquiry], [t].[RequestForViewing], [t].[IsAvailableForDirectSale], [t].[IsDeleted], COALESCE((
+        SELECT TOP(1) [t7].[StatusId]
+        FROM [AuctionM_dbuser].[tblAuctionAssets] AS [t6]
+        INNER JOIN [AuctionM_dbuser].[tblAuctions] AS [t7] ON [t6].[AuctionId] = [t7].[AuctionId]
+        WHERE [t].[AssetId] = [t6].[AssetId]), 0) AS [c0], [t0].[CategoryId] AS [CategoryId0], [t1].[AwardingId] AS [AwardingId0], [t2].[StatusId] AS [StatusId0], [t3].[VATId] AS [VATId0], [t4].[WinnerId] AS [WinnerId0], [t5].[UserId]
+    FROM [AuctionM_dbuser].[tblAssets] AS [t]
+    LEFT JOIN [AuctionM_dbuser].[tblAssetCategories] AS [t0] ON [t].[CategoryId] = [t0].[CategoryId]
+    LEFT JOIN [AuctionM_dbuser].[tblWinnerAwardingOptions] AS [t1] ON [t].[AwardingId] = [t1].[AwardingId]
+    LEFT JOIN [AuctionM_dbuser].[tblAssetStatus] AS [t2] ON [t].[StatusId] = [t2].[StatusId]
+    LEFT JOIN [AuctionM_dbuser].[tblVATOptions] AS [t3] ON [t].[VATId] = [t3].[VATId]
+    LEFT JOIN [AuctionM_dbuser].[tblAssetWinners] AS [t4] ON [t].[WinnerId] = [t4].[WinnerId]
+    LEFT JOIN [AuctionM_dbuser].[tblUsers] AS [t5] ON [t4].[UserId] = [t5].[UserId]
+    WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[AssetId] = @__id_0
+) AS [s]
+LEFT JOIN [AuctionM_dbuser].[tblAuctionAssets] AS [t8] ON [s].[AssetId] = [t8].[AssetId]
+LEFT JOIN [AuctionM_dbuser].[tblAssetGallery] AS [t9] ON [s].[AssetId] = [t9].[AssetId]
+LEFT JOIN [AuctionM_dbuser].[tblAssetDocuments] AS [t10] ON [s].[AssetId] = [t10].[AssetId]
+LEFT JOIN [AuctionM_dbuser].[tblAssetDetails] AS [t11] ON [s].[AssetId] = [t11].[AssetId]
+ORDER BY [s].[AssetId], [s].[CategoryId0], [s].[AwardingId0], [s].[StatusId0], [s].[VATId0], [s].[WinnerId0], [s].[UserId], [t8].[AuctionAssetId], [t9].[GalleryId], [t10].[DocumentId]
+2025-06-03 10:55:59.098 +05:30 [INF] Executed DbCommand (51ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[AssetId], [s].[Title], [s].[CategoryId], [s].[CategoryName], [s].[Deposit], [s].[SellerId], [s].[Commission], [s].[StartingPrice], [s].[ReserveAmount], [s].[IncrementalTime], [s].[MinIncrement], [s].[MakeOffer], [s].[Featured], [s].[AwardingId], [s].[AwardingMethod], [s].[StatusId], [s].[StatusName], [s].[VATId], [s].[VATType], [s].[VATPercent], [s].[CourtCaseNumber], [s].[RegistrationDeadline], [s].[Description], [s].[MapLatitude], [s].[MapLongitude], [s].[AdminFees], [s].[AuctionFees], [s].[BuyerCommission], [s].[WinnerId], [s].[c], [s].[AwardedPrice], [s].[SalesNotes], [s].[AssetNumber], [s].[CreatedAt], [s].[UpdatedAt], [s].[RequestForInquiry], [s].[RequestForViewing], [s].[IsAvailableForDirectSale], [s].[IsDeleted], [s].[c0], [s].[CategoryId0], [s].[AwardingId0], [s].[StatusId0], [s].[VATId0], [s].[WinnerId0], [s].[UserId], [t8].[AuctionId], [t8].[AuctionAssetId], [t9].[GalleryId], [t9].[MediaType], [t9].[FilePath], [t9].[SortOrder], [t10].[DocumentId], [t10].[DocumentType], [t10].[FilePath], [t11].[AttributeName], [t11].[AttributeValue], [t11].[DetailId]
+FROM (
+    SELECT TOP(1) [t].[AssetId], [t].[Title], [t].[CategoryId], [t0].[CategoryName], [t].[Deposit], [t].[SellerId], [t].[Commission], [t].[StartingPrice], [t].[ReserveAmount], [t].[IncrementalTime], [t].[MinIncrement], [t].[MakeOffer], [t].[Featured], [t].[AwardingId], [t1].[AwardingMethod], [t].[StatusId], [t2].[StatusName], [t].[VATId], [t3].[VATType], [t].[VATPercent], [t].[CourtCaseNumber], [t].[RegistrationDeadline], [t].[Description], [t].[MapLatitude], [t].[MapLongitude], [t].[AdminFees], [t].[AuctionFees], [t].[BuyerCommission], [t].[WinnerId], CASE
+        WHEN [t4].[WinnerId] IS NOT NULL AND [t5].[UserId] IS NOT NULL THEN [t5].[Name]
+    END AS [c], [t4].[AwardedPrice], [t].[SalesNotes], [t].[AssetNumber], [t].[CreatedAt], [t].[UpdatedAt], [t].[RequestForInquiry], [t].[RequestForViewing], [t].[IsAvailableForDirectSale], [t].[IsDeleted], COALESCE((
+        SELECT TOP(1) [t7].[StatusId]
+        FROM [AuctionM_dbuser].[tblAuctionAssets] AS [t6]
+        INNER JOIN [AuctionM_dbuser].[tblAuctions] AS [t7] ON [t6].[AuctionId] = [t7].[AuctionId]
+        WHERE [t].[AssetId] = [t6].[AssetId]), 0) AS [c0], [t0].[CategoryId] AS [CategoryId0], [t1].[AwardingId] AS [AwardingId0], [t2].[StatusId] AS [StatusId0], [t3].[VATId] AS [VATId0], [t4].[WinnerId] AS [WinnerId0], [t5].[UserId]
+    FROM [AuctionM_dbuser].[tblAssets] AS [t]
+    LEFT JOIN [AuctionM_dbuser].[tblAssetCategories] AS [t0] ON [t].[CategoryId] = [t0].[CategoryId]
+    LEFT JOIN [AuctionM_dbuser].[tblWinnerAwardingOptions] AS [t1] ON [t].[AwardingId] = [t1].[AwardingId]
+    LEFT JOIN [AuctionM_dbuser].[tblAssetStatus] AS [t2] ON [t].[StatusId] = [t2].[StatusId]
+    LEFT JOIN [AuctionM_dbuser].[tblVATOptions] AS [t3] ON [t].[VATId] = [t3].[VATId]
+    LEFT JOIN [AuctionM_dbuser].[tblAssetWinners] AS [t4] ON [t].[WinnerId] = [t4].[WinnerId]
+    LEFT JOIN [AuctionM_dbuser].[tblUsers] AS [t5] ON [t4].[UserId] = [t5].[UserId]
+    WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[AssetId] = @__id_0
+) AS [s]
+LEFT JOIN [AuctionM_dbuser].[tblAuctionAssets] AS [t8] ON [s].[AssetId] = [t8].[AssetId]
+LEFT JOIN [AuctionM_dbuser].[tblAssetGallery] AS [t9] ON [s].[AssetId] = [t9].[AssetId]
+LEFT JOIN [AuctionM_dbuser].[tblAssetDocuments] AS [t10] ON [s].[AssetId] = [t10].[AssetId]
+LEFT JOIN [AuctionM_dbuser].[tblAssetDetails] AS [t11] ON [s].[AssetId] = [t11].[AssetId]
+ORDER BY [s].[AssetId], [s].[CategoryId0], [s].[AwardingId0], [s].[StatusId0], [s].[VATId0], [s].[WinnerId0], [s].[UserId], [t8].[AuctionAssetId], [t9].[GalleryId], [t10].[DocumentId]
+2025-06-03 10:55:59.284 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:55:59.286 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 32ms reading results.
+2025-06-03 10:55:59.292 +05:30 [DBG] Compiling query expression: 
+'DbSet<tblBid>()
+    .Where(b => b.AssetId == __assetId_0)
+    .OrderByDescending(b => b.BidAmount)
+    .FirstOrDefault()'
+2025-06-03 10:55:59.315 +05:30 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<tblBid>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<tblBid>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: tblBid.BidId (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: tblBid.AssetId (int) Required FK Index, 1], [Property: tblBid.AuctionId (int) Required FK Index, 2], [Property: tblBid.BidAmount (decimal) Required, 3], [Property: tblBid.BidTime (DateTime) Required ValueGenerated.OnAdd, 4], [Property: tblBid.CreatedDate (DateTime) Required ValueGenerated.OnAdd, 5], [Property: tblBid.IsAutoBid (bool) Required, 6], [Property: tblBid.IsWinningBid (bool) Required ValueGenerated.OnAdd, 7], [Property: tblBid.UserId (int) Required FK Index, 8] }
+            SELECT TOP(1) t.BidId, t.AssetId, t.AuctionId, t.BidAmount, t.BidTime, t.CreatedDate, t.IsAutoBid, t.IsWinningBid, t.UserId
+            FROM AuctionM_dbuser.tblBids AS t
+            WHERE t.AssetId == @__assetId_0
+            ORDER BY t.BidAmount DESC) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: tblBid.BidId (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: tblBid.AssetId (int) Required FK Index, 1], [Property: tblBid.AuctionId (int) Required FK Index, 2], [Property: tblBid.BidAmount (decimal) Required, 3], [Property: tblBid.BidTime (DateTime) Required ValueGenerated.OnAdd, 4], [Property: tblBid.CreatedDate (DateTime) Required ValueGenerated.OnAdd, 5], [Property: tblBid.IsAutoBid (bool) Required, 6], [Property: tblBid.IsWinningBid (bool) Required ValueGenerated.OnAdd, 7], [Property: tblBid.UserId (int) Required FK Index, 8] }
+            SELECT TOP(1) t.BidId, t.AssetId, t.AuctionId, t.BidAmount, t.BidTime, t.CreatedDate, t.IsAutoBid, t.IsWinningBid, t.UserId
+            FROM AuctionM_dbuser.tblBids AS t
+            WHERE t.AssetId == @__assetId_0
+            ORDER BY t.BidAmount DESC, 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            tblBid entity;
+            entity = 
+            {
+                MaterializationContext materializationContext1;
+                IEntityType entityType1;
+                tblBid instance1;
+                InternalEntityEntry entry1;
+                bool hasNullKey1;
+                materializationContext1 = new MaterializationContext(
+                    [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                    queryContext.Context
+                );
+                instance1 = default(tblBid);
+                entry1 = queryContext.TryGetEntry(
+                    key: [LIFTABLE Constant: Key: tblBid.BidId PK | Resolver: c => c.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.Entities.Bids.tblBid").FindPrimaryKey()], 
+                    keyValues: new object[]{ (object)dataReader.GetInt32(0) }, 
+                    throwOnNullKey: True, 
+                    hasNullKey: hasNullKey1);
+                !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+                {
+                    entityType1 = entry1.EntityType;
+                    return instance1 = (tblBid)entry1.Entity;
+                } : 
+                {
+                    ISnapshot shadowSnapshot1;
+                    shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                    entityType1 = [LIFTABLE Constant: EntityType: tblBid | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.Entities.Bids.tblBid")];
+                    instance1 = switch (entityType1)
+                    {
+                        case [LIFTABLE Constant: EntityType: tblBid | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.Entities.Bids.tblBid")]: 
+                            {
+                                return 
+                                {
+                                    tblBid instance;
+                                    instance = new tblBid();
+                                    instance.<BidId>k__BackingField = dataReader.GetInt32(0);
+                                    instance.<AssetId>k__BackingField = dataReader.GetInt32(1);
+                                    instance.<AuctionId>k__BackingField = dataReader.GetInt32(2);
+                                    instance.<BidAmount>k__BackingField = dataReader.GetDecimal(3);
+                                    instance.<BidTime>k__BackingField = dataReader.GetDateTime(4);
+                                    instance.<CreatedDate>k__BackingField = dataReader.GetDateTime(5);
+                                    instance.<IsAutoBid>k__BackingField = dataReader.GetBoolean(6);
+                                    instance.<IsWinningBid>k__BackingField = dataReader.GetBoolean(7);
+                                    instance.<UserId>k__BackingField = dataReader.GetInt32(8);
+                                    (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                        context: materializationContext1.Context, 
+                                        entity: instance, 
+                                        queryTrackingBehavior: TrackAll, 
+                                        structuralType: [LIFTABLE Constant: EntityType: tblBid | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.Entities.Bids.tblBid")]) : default(void);
+                                    return instance;
+                                }}
+                        default: 
+                            default(tblBid)
+                    }
+                    ;
+                    entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                        entityType: entityType1, 
+                        entity: instance1, 
+                        snapshot: shadowSnapshot1);
+                    return instance1;
+                } : default(void);
+                return instance1;
+            };
+            return entity;
+        }, 
+        contextType: AuctionManagementSystem.Persistence.Context.AuctionManagementDbContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2025-06-03 10:55:59.320 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-03 10:55:59.320 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-03 10:55:59.320 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-03 10:55:59.320 +05:30 [DBG] Executing DbCommand [Parameters=[@__assetId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[BidId], [t].[AssetId], [t].[AuctionId], [t].[BidAmount], [t].[BidTime], [t].[CreatedDate], [t].[IsAutoBid], [t].[IsWinningBid], [t].[UserId]
+FROM [AuctionM_dbuser].[tblBids] AS [t]
+WHERE [t].[AssetId] = @__assetId_0
+ORDER BY [t].[BidAmount] DESC
+2025-06-03 10:55:59.345 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@__assetId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[BidId], [t].[AssetId], [t].[AuctionId], [t].[BidAmount], [t].[BidTime], [t].[CreatedDate], [t].[IsAutoBid], [t].[IsWinningBid], [t].[UserId]
+FROM [AuctionM_dbuser].[tblBids] AS [t]
+WHERE [t].[AssetId] = @__assetId_0
+ORDER BY [t].[BidAmount] DESC
+2025-06-03 10:55:59.555 +05:30 [DBG] Context 'AuctionManagementDbContext' started tracking 'tblBid' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2025-06-03 10:55:59.972 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:55:59.972 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 576ms reading results.
+2025-06-03 10:55:59.988 +05:30 [DBG] Compiling query expression: 
+'DbSet<TblAutoBid>()
+    .Where(ab => ab.AuctionId == __auctionId_0 && ab.AssetId == __assetId_1 && ab.MaxBidAmount > 0 && ab.IsActive)
+    .OrderBy(ab => ab.CreatedDate)'
+2025-06-03 10:56:00.024 +05:30 [DBG] Generated query execution expression: 
+'queryContext => SingleQueryingEnumerable.Create<TblAutoBid>(
+    relationalQueryContext: (RelationalQueryContext)queryContext, 
+    relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: TblAutoBid.AutoBidId (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: TblAutoBid.AssetId (int) Required FK Index, 1], [Property: TblAutoBid.AuctionId (int) Required FK Index, 2], [Property: TblAutoBid.CreatedDate (DateTime) Required ValueGenerated.OnAdd, 3], [Property: TblAutoBid.IsActive (bool) Required Sentinel:True ValueGenerated.OnAdd, 4], [Property: TblAutoBid.MaxBidAmount (decimal) Required, 5], [Property: TblAutoBid.UpdatedDate (DateTime?), 6], [Property: TblAutoBid.UserId (int) Required FK Index, 7] }
+        SELECT t.AutoBidId, t.AssetId, t.AuctionId, t.CreatedDate, t.IsActive, t.MaxBidAmount, t.UpdatedDate, t.UserId
+        FROM AuctionM_dbuser.tblAutoBids AS t
+        WHERE (((t.AuctionId == @__auctionId_0) && (t.AssetId == @__assetId_1)) && (t.MaxBidAmount > 0.0)) && t.IsActive
+        ORDER BY t.CreatedDate ASC) | Resolver: c => new RelationalCommandCache(
+        c.Dependencies.MemoryCache, 
+        c.RelationalDependencies.QuerySqlGeneratorFactory, 
+        c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: TblAutoBid.AutoBidId (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: TblAutoBid.AssetId (int) Required FK Index, 1], [Property: TblAutoBid.AuctionId (int) Required FK Index, 2], [Property: TblAutoBid.CreatedDate (DateTime) Required ValueGenerated.OnAdd, 3], [Property: TblAutoBid.IsActive (bool) Required Sentinel:True ValueGenerated.OnAdd, 4], [Property: TblAutoBid.MaxBidAmount (decimal) Required, 5], [Property: TblAutoBid.UpdatedDate (DateTime?), 6], [Property: TblAutoBid.UserId (int) Required FK Index, 7] }
+        SELECT t.AutoBidId, t.AssetId, t.AuctionId, t.CreatedDate, t.IsActive, t.MaxBidAmount, t.UpdatedDate, t.UserId
+        FROM AuctionM_dbuser.tblAutoBids AS t
+        WHERE (((t.AuctionId == @__auctionId_0) && (t.AssetId == @__assetId_1)) && (t.MaxBidAmount > 0.0)) && t.IsActive
+        ORDER BY t.CreatedDate ASC, 
+        False, 
+        new HashSet<string>(
+            new string[]{ }, 
+            StringComparer.Ordinal
+        )
+    )].GetRelationalCommandTemplate(parameters), 
+    readerColumns: null, 
+    shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+    {
+        TblAutoBid entity;
+        entity = 
+        {
+            MaterializationContext materializationContext1;
+            IEntityType entityType1;
+            TblAutoBid instance1;
+            InternalEntityEntry entry1;
+            bool hasNullKey1;
+            materializationContext1 = new MaterializationContext(
+                [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                queryContext.Context
+            );
+            instance1 = default(TblAutoBid);
+            entry1 = queryContext.TryGetEntry(
+                key: [LIFTABLE Constant: Key: TblAutoBid.AutoBidId PK | Resolver: c => c.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.Entities.Bids.TblAutoBid").FindPrimaryKey()], 
+                keyValues: new object[]{ (object)dataReader.GetInt32(0) }, 
+                throwOnNullKey: True, 
+                hasNullKey: hasNullKey1);
+            !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+            {
+                entityType1 = entry1.EntityType;
+                return instance1 = (TblAutoBid)entry1.Entity;
+            } : 
+            {
+                ISnapshot shadowSnapshot1;
+                shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                entityType1 = [LIFTABLE Constant: EntityType: TblAutoBid | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.Entities.Bids.TblAutoBid")];
+                instance1 = switch (entityType1)
+                {
+                    case [LIFTABLE Constant: EntityType: TblAutoBid | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.Entities.Bids.TblAutoBid")]: 
+                        {
+                            return 
+                            {
+                                TblAutoBid instance;
+                                instance = new TblAutoBid();
+                                instance.<AutoBidId>k__BackingField = dataReader.GetInt32(0);
+                                instance.<AssetId>k__BackingField = dataReader.GetInt32(1);
+                                instance.<AuctionId>k__BackingField = dataReader.GetInt32(2);
+                                instance.<CreatedDate>k__BackingField = dataReader.GetDateTime(3);
+                                instance.<IsActive>k__BackingField = dataReader.GetBoolean(4);
+                                instance.<MaxBidAmount>k__BackingField = dataReader.GetDecimal(5);
+                                instance.<UpdatedDate>k__BackingField = dataReader.IsDBNull(6) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(6);
+                                instance.<UserId>k__BackingField = dataReader.GetInt32(7);
+                                (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                    context: materializationContext1.Context, 
+                                    entity: instance, 
+                                    queryTrackingBehavior: TrackAll, 
+                                    structuralType: [LIFTABLE Constant: EntityType: TblAutoBid | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.Entities.Bids.TblAutoBid")]) : default(void);
+                                return instance;
+                            }}
+                    default: 
+                        default(TblAutoBid)
+                }
+                ;
+                entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                    entityType: entityType1, 
+                    entity: instance1, 
+                    snapshot: shadowSnapshot1);
+                return instance1;
+            } : default(void);
+            return instance1;
+        };
+        return entity;
+    }, 
+    contextType: AuctionManagementSystem.Persistence.Context.AuctionManagementDbContext, 
+    standAloneStateManager: False, 
+    detailedErrorsEnabled: False, 
+    threadSafetyChecksEnabled: True)'
+2025-06-03 10:56:00.039 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-03 10:56:00.039 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-03 10:56:00.039 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-03 10:56:00.039 +05:30 [DBG] Executing DbCommand [Parameters=[@__auctionId_0='?' (DbType = Int32), @__assetId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[AutoBidId], [t].[AssetId], [t].[AuctionId], [t].[CreatedDate], [t].[IsActive], [t].[MaxBidAmount], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[tblAutoBids] AS [t]
+WHERE [t].[AuctionId] = @__auctionId_0 AND [t].[AssetId] = @__assetId_1 AND [t].[MaxBidAmount] > 0.0 AND [t].[IsActive] = CAST(1 AS bit)
+ORDER BY [t].[CreatedDate]
+2025-06-03 10:56:00.067 +05:30 [INF] Executed DbCommand (28ms) [Parameters=[@__auctionId_0='?' (DbType = Int32), @__assetId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[AutoBidId], [t].[AssetId], [t].[AuctionId], [t].[CreatedDate], [t].[IsActive], [t].[MaxBidAmount], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[tblAutoBids] AS [t]
+WHERE [t].[AuctionId] = @__auctionId_0 AND [t].[AssetId] = @__assetId_1 AND [t].[MaxBidAmount] > 0.0 AND [t].[IsActive] = CAST(1 AS bit)
+ORDER BY [t].[CreatedDate]
+2025-06-03 10:56:00.151 +05:30 [DBG] Context 'AuctionManagementDbContext' started tracking 'TblAutoBid' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2025-06-03 10:56:00.195 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:56:00.195 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 54ms reading results.
+2025-06-03 10:56:00.199 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-03 10:56:00.212 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-03 10:56:00.220 +05:30 [DBG] Disposed connection to database '' on server '' (9ms).
