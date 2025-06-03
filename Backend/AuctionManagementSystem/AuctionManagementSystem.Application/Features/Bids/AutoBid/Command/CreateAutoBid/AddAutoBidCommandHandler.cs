@@ -133,6 +133,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
                             
                         throw new BadRequestException($"You have reached your max auto-bid limit: {request.MaxBidAmount}");
                     }
+                    
                     else
                     {
                         immediateBidAmount = nextBid;

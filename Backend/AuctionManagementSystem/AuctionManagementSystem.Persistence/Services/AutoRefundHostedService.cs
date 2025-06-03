@@ -19,7 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 
 
-namespace AuctionManagementSystem.Persistence.Repositories.Transactions
+namespace AuctionManagementSystem.Persistence.Services
 {
 
     public class AutoRefundHostedService : BackgroundService
