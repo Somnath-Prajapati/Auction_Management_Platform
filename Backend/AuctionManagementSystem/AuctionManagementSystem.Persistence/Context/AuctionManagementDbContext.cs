@@ -142,11 +142,11 @@ public partial class AuctionManagementDbContext : DbContext
 
         modelBuilder.Entity<TblRolePermissionsMatrix>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__tblRoleP__8AFACE1A931EC603");
+            entity.HasKey(e => e.TblRolePermissionsMatrixId).HasName("PK__tblRoleP__9104AC164663DFAA");
 
             entity.ToTable("tblRolePermissionsMatrix");
 
-            entity.Property(e => e.RoleId).ValueGeneratedNever();
+            entity.Property(e => e.TblRolePermissionsMatrixId).HasColumnName("tblRolePermissionsMatrixId");
             entity.Property(e => e.AccessAdminPanel).HasColumnName("Access Admin Panel");
             entity.Property(e => e.ChangeCommission).HasColumnName("Change Commission");
             entity.Property(e => e.ExportReports).HasColumnName("Export Reports");
@@ -161,11 +161,12 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.ViewAuditTrail).HasColumnName("View Audit Trail");
             entity.Property(e => e.ViewReports).HasColumnName("View Reports");
 
-            entity.HasOne(d => d.Role).WithOne(p => p.TblRolePermissionsMatrix)
-                .HasForeignKey<TblRolePermissionsMatrix>(d => d.RoleId)
+            entity.HasOne(d => d.Role).WithMany(p => p.TblRolePermissionsMatrices)
+                .HasForeignKey(d => d.RoleId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_tblRolePermissionsMatrix_tblRoles");
         });
+
 
         modelBuilder.Entity<TblOrder>(entity =>
         {

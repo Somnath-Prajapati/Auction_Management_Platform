@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Application.Dtos.Roles;
 using AuctionManagementSystem.Domain.Entities.User;
 
 namespace AuctionManagementSystem.Application.Contracts.User
@@ -13,7 +14,7 @@ namespace AuctionManagementSystem.Application.Contracts.User
         Task<IEnumerable<TblRole>> GetAllAsync();
         Task<TblRole> GetRoleByIdAsync(int roleId);
         Task<int?> GetRoleIdByName(string roleName);
-        Task<List<TblRole>> GetAllRoles();
+        Task<List<RoleWithPermissionsDto>> GetAllRoles();
     }
 
 }

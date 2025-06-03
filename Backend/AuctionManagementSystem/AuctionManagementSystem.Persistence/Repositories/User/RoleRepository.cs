@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Roles;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Persistence.Context;
-using AuctionManagementSystem.Persistence.Repositories.Roles;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Persistence.Repositories.User
@@ -21,66 +18,64 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
             _context = context;
         }
 
-
-        //new added
         public async Task<int?> GetRoleIdByName(string roleName)
         {
             var role = await _context.TblRoles
                 .FirstOrDefaultAsync(r => r.RoleName == roleName);
 
-            return role?.RoleId; // Return RoleId if found, else null
+            return role?.RoleId;
         }
-
 
         public async Task<IEnumerable<TblRole>> GetAllAsync()
         {
             return await _context.TblRoles.ToListAsync();
         }
+
         public async Task<TblRole> GetRoleByIdAsync(int roleId)
         {
             return await _context.TblRoles.FirstOrDefaultAsync(r => r.RoleId == roleId);
         }
-        public async Task<List<TblRole>> GetAllRoles()
+
+        public async Task<List<RoleWithPermissionsDto>> GetAllRoles()
         {
-            var roles = await _context.TblRoles.ToListAsync(); // safe — EF only reads mapped columns
+            var roles = await _context.TblRoles
+                .Include(r => r.TblRolePermissionsMatrices) // Include the permissions list
+                .ToListAsync();
+            foreach (var role in roles)
+            {
+                var p = role.TblRolePermissionsMatrices.FirstOrDefault();
 
-            var permissionsMatrix = await _context.TblRolePermissionsMatrices.ToListAsync();
+                Console.WriteLine($"Role: {role.RoleName} - SuperAdmin: {p?.SuperAdmin}");
+            }
 
-            // Now do in-memory mapping
             var result = roles.Select(role =>
             {
-                var matchedPermissions = permissionsMatrix.FirstOrDefault(p => p.RoleId == role.RoleId);
-                var permissionsList = new List<string>();
-
-                if (matchedPermissions != null)
-                {
-                    var props = matchedPermissions.GetType().GetProperties();
-                    foreach (var prop in props)
-                    {
-                        if (prop.Name != "RoleId" && prop.PropertyType == typeof(int))
-                        {
-                            var value = (int)prop.GetValue(matchedPermissions)!;
-                            if (value == 1)
-                            {
-                                permissionsList.Add(prop.Name);
-                            }
-                        }
-                    }
-                }
+                var p = role.TblRolePermissionsMatrices.FirstOrDefault(); // assume 1 matrix per role
 
                 return new RoleWithPermissionsDto
                 {
                     RoleId = role.RoleId,
                     RoleName = role.RoleName,
                     IsSeller = role.IsSeller,
-                    //Permissions = permissionsList
+
+                    SuperAdmin = p?.SuperAdmin == true,
+                    AccessAdminPanel = p?.AccessAdminPanel == true,
+                    ManageAuctions = p?.ManageAuctions == true,
+                    ManageAssets = p?.ManageAssets == true,
+                    ManageTransactions = p?.ManageTransactions == true,
+                    ManageCategories = p?.ManageCategories == true,
+                    ManageRoles = p?.ManageRoles == true,
+                    ManageUsers = p?.ManageUsers == true,
+                    ViewReports = p?.ViewReports == true,
+                    ExportReports = p?.ExportReports == true,
+                    ManageRequests = p?.ManageRequests == true,
+                    ViewAuditTrail = p?.ViewAuditTrail == true,
+                    ChangeCommission = p?.ChangeCommission == true
                 };
             }).ToList();
 
-
-
-
-            return roles;
+            return result;
         }
+
     }
 }
