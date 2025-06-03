@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Bids;
 
 namespace AuctionManagementSystem.Application.Contracts.Bids
@@ -27,6 +28,10 @@ namespace AuctionManagementSystem.Application.Contracts.Bids
 
 
         Task<tblBid> GetWinningBidByAssetIdAsync(int assetId);
+
+        Task<IEnumerable<TblAssetWinner>> GetWonBidsByUserIdAsync(int userId);
+
+
     }
 
 }

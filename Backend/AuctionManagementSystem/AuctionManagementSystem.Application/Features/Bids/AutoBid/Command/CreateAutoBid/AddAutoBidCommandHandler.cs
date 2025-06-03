@@ -130,7 +130,35 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
 
                     if( nextBid > request.MaxBidAmount)
                     {
-                            
+
+                        var notification = new TblNotification
+                        {
+                            Id = Guid.NewGuid(),
+                            UserId = request.UserId,
+                            Title = "You've set limit been outbid",
+                            Message = $"Your bid on asset '{asset.Title}' Limit has been Reached.",
+                            CreatedAt = DateTime.UtcNow,
+                            ExpiresAt = DateTime.UtcNow.AddDays(2),
+                            AssetId = request.AssetId,
+                            AuctionId = request.AuctionId,
+                            IsRead = false
+                        };
+
+                        await _notificationRepository.CreateAsync(notification);
+
+                        var notificationDto = new NotificationDto
+                        {
+                            UserId = notification.UserId,
+                            Title = notification.Title,
+                            Message = notification.Message,
+                            ExpiresAt = notification.ExpiresAt,
+                            AssetId = notification.AssetId,
+                            AuctionId = notification.AuctionId,
+                            IsRead = notification.IsRead
+                        };
+
+                        await _notificationBroadcaster.NotifyByUserId(notificationDto);
+
                         throw new BadRequestException($"You have reached your max auto-bid limit: {request.MaxBidAmount}");
                     }
                     
@@ -138,9 +166,10 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
                     {
                         immediateBidAmount = nextBid;
                     }
-                }// for giving notification to the user 
-                var previousWinningBid = await _bidRepository.GetWinningBidByAssetIdAsync(request.AssetId);
+                }
+                // for giving notification to the user 
 
+                var previousWinningBid = await _bidRepository.GetWinningBidByAssetIdAsync(request.AssetId);
                 if (previousWinningBid != null && previousWinningBid.UserId != request.UserId)
                 {
                     // Send outbid notification
@@ -200,6 +229,8 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
                 else
                 {
                     var bid = new tblBid
+
+
                     {
                         AuctionId = request.AuctionId,
                         AssetId = request.AssetId,
