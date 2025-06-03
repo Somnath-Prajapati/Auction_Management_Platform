@@ -119,32 +119,18 @@ namespace AuctionManagementSystem.Application.Services
             // Greetings
             var greetings = new[] { "hi", "hello", "hey" };
             var lowerMessage = message.ToLower();
-            //if (greetings.Any(g => lowerMessage.Contains(g)))
-            //{
-            //    var mainQuestions = await _repository.GetAllMainQuestionsAsync();
-            //    return new ChatbotResponseDto
-            //    {
-            //        ResponseMessage = "Hello! How can I help you today?",
-            //        QuickReplies = mainQuestions.Select(q => new QuickReplyDto { Text = q.Question, Payload = q.Id.ToString() }).ToList(),
-            //        IsEndOfChat = false
-            //    };
-            //}
 
             if (greetings.Any(g => lowerMessage.Contains(g)))
             {
                 var mainQuestions = await _repository.GetAllMainQuestionsAsync();
-
-                // Select only a limited number of questions (e.g., 3 to 5)
                 var limitedQuestions = mainQuestions.Take(5).ToList();
-
                 return new ChatbotResponseDto
                 {
-                    ResponseMessage = "Hello! How can I help you today?",
+                    ResponseMessage = "Hello! Welcome to Mazad Auction Platform. How can I help you today?",
                     QuickReplies = limitedQuestions.Select(q => new QuickReplyDto { Text = q.Question, Payload = q.Id.ToString() }).ToList(),
                     IsEndOfChat = false
                 };
             }
-
 
             // Split message into keywords
             var keywords = lowerMessage.Split(' ', System.StringSplitOptions.RemoveEmptyEntries);
@@ -161,57 +147,29 @@ namespace AuctionManagementSystem.Application.Services
                 .Where(q => keywords.Any(k => q.Question.ToLower().Contains(k)))
                 .ToList();
 
-            // If there are any matches, show as options
+            // If there are any matches, show as options (limit to 5)
             if (matchingMain.Any() || matchingSub.Any())
             {
                 var quickReplies = new List<QuickReplyDto>();
                 quickReplies.AddRange(matchingMain.Select(q => new QuickReplyDto { Text = q.Question, Payload = q.Id.ToString() }));
                 quickReplies.AddRange(matchingSub.Select(q => new QuickReplyDto { Text = q.Question, Payload = q.Id.ToString() }));
+                var limitedQuickReplies = quickReplies.Take(5).ToList();
                 return new ChatbotResponseDto
                 {
                     ResponseMessage = $"Let me help! Here are some related topics you can choose from:",
-                    QuickReplies = quickReplies,
+                    QuickReplies = limitedQuickReplies,
                     IsEndOfChat = false
                 };
             }
 
-            // Name detection logic
-            bool looksLikeName = false;
-            string name = null;
-            if (lowerMessage.StartsWith("my name is "))
-            {
-                name = message.Substring(11).Trim();
-                looksLikeName = true;
-            }
-            else if (lowerMessage.StartsWith("i am "))
-            {
-                name = message.Substring(5).Trim();
-                looksLikeName = true;
-            }
-            else if (keywords.Length == 1 && !greetings.Contains(lowerMessage) && !IsQuestionWord(lowerMessage))
-            {
-                name = message;
-                looksLikeName = true;
-            }
-
-            if (looksLikeName)
+            // If not recognized, show a friendly fallback and only 4-5 main questions as options
             {
                 var mainQuestions = await _repository.GetAllMainQuestionsAsync();
+                var limitedQuestions = mainQuestions.Take(5).ToList();
                 return new ChatbotResponseDto
                 {
-                    ResponseMessage = $"Hello, I can help you with our auction platform. Please select an option.",
-                    QuickReplies = mainQuestions.Select(q => new QuickReplyDto { Text = q.Question, Payload = q.Id.ToString() }).ToList(),
-                    IsEndOfChat = false
-                };
-            }
-
-            // If not recognized, show greeting and all main questions as options
-            {
-                var mainQuestions = await _repository.GetAllMainQuestionsAsync();
-                return new ChatbotResponseDto
-                {
-                    ResponseMessage = "Hello, I can help you with our auction platform. Please select an option.",
-                    QuickReplies = mainQuestions.Select(q => new QuickReplyDto { Text = q.Question, Payload = q.Id.ToString() }).ToList(),
+                    ResponseMessage = "Sorry, I couldn't find an answer for that. Here are some topics you can choose from:",
+                    QuickReplies = limitedQuestions.Select(q => new QuickReplyDto { Text = q.Question, Payload = q.Id.ToString() }).ToList(),
                     IsEndOfChat = false
                 };
             }

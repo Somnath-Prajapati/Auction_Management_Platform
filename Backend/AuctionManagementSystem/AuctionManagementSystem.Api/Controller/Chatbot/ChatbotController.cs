@@ -3,6 +3,7 @@ using AuctionManagementSystem.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace AuctionManagementSystem.Api.Controller.Chatbot
 {
@@ -33,10 +34,11 @@ namespace AuctionManagementSystem.Api.Controller.Chatbot
             if (string.IsNullOrWhiteSpace(request.Message))
             {
                 var mainQuestions = await _chatBotService.GetQATreeAsync();
+                var limitedQuestions = mainQuestions.Take(5).ToList();
                 var welcome = new ChatbotResponseDto
                 {
-                    ResponseMessage = "Welcome to Mazad Auction Management Platform! Please select a category or type your question. We support: Bidding, Registration, Payments, Identity Verification, Direct Sales, Offers, Deposits, and more. How can we help you today?",
-                    QuickReplies = mainQuestions.Select(q => new QuickReplyDto { Text = q.Question, Payload = q.Id.ToString() }).ToList()
+                    ResponseMessage = "Hello! Welcome to Mazad Auction Platform. How can I help you today?",
+                    QuickReplies = limitedQuestions.Select(q => new QuickReplyDto { Text = q.Question, Payload = q.Id.ToString() }).ToList()
                 };
                 return Ok(welcome);
             }
