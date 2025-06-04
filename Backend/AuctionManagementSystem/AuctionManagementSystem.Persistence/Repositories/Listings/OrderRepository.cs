@@ -44,21 +44,35 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
         }
 
         public async Task<List<DirectSaleAssetDto>> GetAllOrders(int userId)
+
         {
+
             var orderItems = await _context.TblOrders
+
                 .Where(o => o.UserId == userId)
+
                 .Include(o => o.TblOrderAssets)
+
                     .ThenInclude(oa => oa.Asset)
+
                         .ThenInclude(a => a.TblAssetGalleries)
+
                 .Include(o => o.TblOrderAssets)
+
                     .ThenInclude(oa => oa.Asset)
+
                         .ThenInclude(a => a.Category)
+
                 .ToListAsync();
 
             // Preload all AssetWinners for this user in one go (to avoid per-asset DB hits)
+
             var userWinners = await _context.TblAssetWinners
+
                 .Where(w => w.UserId == userId)
+
                 .ToListAsync();
+
 
             var assetDtos = orderItems
                 .SelectMany(order => order.TblOrderAssets)
@@ -71,6 +85,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
                     var thumbnailPath = galleries
                         .OrderBy(g => g.SortOrder) // Optional if you have SortOrder
                         .Select(g => g.FilePath)
+
                         .FirstOrDefault();
 
                     // Determine price
@@ -79,6 +94,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
                         : userWinners.FirstOrDefault(w => w.AssetId == asset.AssetId)?.AwardedPrice ?? 0;
 
                     return new DirectSaleAssetDto
+
                     {
                         AssetId = asset.AssetId,
                         Title = asset.Title,
@@ -92,12 +108,18 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
                         IsAvailableForDirectSale = asset.IsAvailableForDirectSale,
                         CategoryName = asset.Category?.CategoryName ?? string.Empty,
                         ThumbnailUrl = string.IsNullOrEmpty(thumbnailPath) ? string.Empty : $"{_baseUrl}{thumbnailPath}"
+
                     };
+
                 })
+
                 .ToList();
 
             return assetDtos;
+
         }
+
+
 
         public async Task<TblOrder> AddOrder(int userId, List<int> assetIds)
         {
