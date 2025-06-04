@@ -73,8 +73,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
 
                 .ToListAsync();
 
-            // Preload all AssetWinners for this user in one go (to avoid per-asset DB hits)
-         
 
             var assetDtos = orderItems
                 .SelectMany(order => order.TblOrderAssets)
