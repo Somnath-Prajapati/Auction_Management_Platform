@@ -74,7 +74,11 @@ namespace AuctionManagementSystem.Application.Features.Listings.Stripe_Payment
             var dto = request.PaymentDto;
 
             var service = new Stripe.Checkout.SessionService();
-            var session = await service.GetAsync(dto.SessionId);
+            var session = await service.GetAsync(dto.SessionId, new Stripe.Checkout.SessionGetOptions
+            {
+                Expand = new List<string> { "line_items" }
+            });
+
 
             if (session.PaymentStatus != "paid")
                 throw new Exception("Stripe payment not completed.");
@@ -83,6 +87,8 @@ namespace AuctionManagementSystem.Application.Features.Listings.Stripe_Payment
                 .Split(',')
                 .Select(int.Parse)
                 .ToList();
+
+            var amountPaid = session.LineItems.Data[0].AmountTotal; // in cents
 
             // Fetch PaymentIntent to get the actual payment method
             var paymentIntentService = new Stripe.PaymentIntentService();
@@ -94,7 +100,8 @@ namespace AuctionManagementSystem.Application.Features.Listings.Stripe_Payment
             var paymentMethodType = stripePaymentMethod.Type; // e.g., "card", "apple_pay", "google_pay"
 
             // Pass it to repository
-            return await _orderRepository.ConfirmPaymentAndCreateOrderAsync(dto.UserId, assetIds, paymentMethodType);
+            return await _orderRepository.ConfirmPaymentAndCreateOrderAsync(dto.UserId,assetIds,paymentMethodType,amountPaid);
+
         }
 
     }

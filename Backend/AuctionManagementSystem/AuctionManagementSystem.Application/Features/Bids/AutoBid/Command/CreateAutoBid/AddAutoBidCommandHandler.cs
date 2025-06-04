@@ -16,6 +16,9 @@ using Microsoft.Identity.Client;
 using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Domain.Entities.Notification;
+using AuctionManagementSystem.Application.Contracts.Transactions;
+using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Domain.Models;
 
 namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.CreateAutoBid
 {
@@ -31,10 +34,11 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
         private readonly IAutoBidRepository _autoBidRepo;
         private readonly INotificationRepository _notificationRepository;
         private readonly INotificationBroadcaster _notificationBroadcaster;
+        private readonly IUserDepositRepository _userDepositRepository;
+        private readonly IUserRepository _userRepository;
 
 
-        public AddAutoBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService, IAutoBidRepository autoBidRepo, INotificationRepository notificationRepository, INotificationBroadcaster notificationBroadcaster)
-        {
+        public AddAutoBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService, IAutoBidRepository autoBidRepo, INotificationRepository notificationRepository, INotificationBroadcaster notificationBroadcaster, IUserDepositRepository userDepositRepository,IUserRepository userRepository)        {
             _bidRepository = bidRepository;
             _mapper = mapper;
             _auctionAssetRepository = auctionAssetRepository;
@@ -45,6 +49,8 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
             _autoBidRepo = autoBidRepo;
             _notificationRepository = notificationRepository;
             _notificationBroadcaster = notificationBroadcaster;
+            _userDepositRepository = userDepositRepository;
+            _userRepository = userRepository;
         }
 
         public async Task<int> Handle(AddAutoBidCommand request, CancellationToken cancellationToken)
@@ -117,8 +123,32 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
                     await _autoBidRepo.AddAutoBidAsync(newAutoBid);
                 }
 
+                var user = await _userRepository.GetUserById(request.UserId);
 
+                var oldAvailable = user.AvailableLimit;
+                var newAvailable = oldAvailable - request.MaxBidAmount;
 
+                // Update user limit
+                user.AvailableLimit = newAvailable;
+
+                // Log audit
+                var autoBidLog = new TblUserLimitAuditLog
+                {
+                    UserId = user.UserId,
+                    ActionType = existingAutoBid != null ? "AutoBid Updated" : "AutoBid Created",
+                    OldDeposit = user.Deposit,
+                    NewDeposit = user.Deposit,
+                    OldTotalLimit = user.TotalLimit,
+                    NewTotalLimit = user.TotalLimit,
+                    OldAvailableLimit = oldAvailable,
+                    NewAvailableLimit = newAvailable,
+                    Notes = $"{(existingAutoBid != null ? "Updated" : "Created")} auto-bid for Asset ID {request.AssetId} in Auction ID {request.AuctionId}. Max bid locked: {request.MaxBidAmount}.",
+                    ChangedBy = request.UserId,
+                    ChangedDate = DateTime.UtcNow
+                };
+
+                await _userDepositRepository.AddAsync(autoBidLog);
+                // 7. Determine immediate bid amount
                 decimal immediateBidAmount;
                 if (!highestBidAmount.HasValue)
                 {
@@ -200,9 +230,34 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
                     };
 
                     await _notificationBroadcaster.NotifyByUserId(notificationDto);
+
+
+                    var prevUser = await _userRepository.GetUserById(previousWinningBid.UserId);
+
+                    // Calculate new available limit
+                    var oldAvailableLimit = prevUser.AvailableLimit;
+                    prevUser.AvailableLimit += previousWinningBid.BidAmount;
+
+                    // Audit log entry
+                    var log = new TblUserLimitAuditLog
+                    {
+                        UserId = prevUser.UserId,
+                        ActionType = "AutoBid Outbid - Limit Released",
+                        OldDeposit = prevUser.Deposit,
+                        NewDeposit = prevUser.Deposit,
+                        OldTotalLimit = prevUser.TotalLimit,
+                        NewTotalLimit = prevUser.TotalLimit,
+                        OldAvailableLimit = oldAvailableLimit,
+                        NewAvailableLimit = prevUser.AvailableLimit,
+                        Notes = $"User was outbid on Asset ID {request.AssetId} in Auction ID {request.AuctionId}. Released {previousWinningBid.BidAmount} back to Available Limit.",
+                        ChangedBy = request.UserId, // or system user ID if applicable
+                        ChangedDate = DateTime.UtcNow
+                    };
+
+                    await _userDepositRepository.AddAsync(log);
                 }
 
-
+                
 
                 if (immediateBidAmount < asset.StartingPrice)
                     immediateBidAmount = asset.StartingPrice;
