@@ -26,12 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -40,11 +36,15 @@
               "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommandHandler.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommandHandler.cs",
               "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\Bids\\AutoBid\\Command\\CreateAutoBid\\AddAutoBidCommandHandler.cs",
-              "ViewState": "AgIAAMYAAAAAAAAAAAAAAN4AAABiAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJYAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-03T11:37:14.131Z",
               "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             },
             {
               "$type": "Document",
