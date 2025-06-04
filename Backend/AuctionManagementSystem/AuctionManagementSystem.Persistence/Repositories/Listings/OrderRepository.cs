@@ -44,49 +44,104 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
         }
 
         public async Task<List<DirectSaleAssetDto>> GetAllOrders(int userId)
+
         {
+
             var orderItems = await _context.TblOrders
+
                 .Where(o => o.UserId == userId)
+
                 .Include(o => o.TblOrderAssets)
+
                     .ThenInclude(oa => oa.Asset)
+
                         .ThenInclude(a => a.TblAssetGalleries)
+
                 .Include(o => o.TblOrderAssets)
+
                     .ThenInclude(oa => oa.Asset)
+
                         .ThenInclude(a => a.Category)
+
+                .ToListAsync();
+
+            // Preload all AssetWinners for this user in one go (to avoid per-asset DB hits)
+
+            var userWinners = await _context.TblAssetWinners
+
+                .Where(w => w.UserId == userId)
+
                 .ToListAsync();
 
             var assetDtos = orderItems
-                .SelectMany(order => order.TblOrderAssets)
-                .Where(oa => oa.Asset != null)
-                .Select(oa =>
-                {
-                    var galleries = oa.Asset.TblAssetGalleries ?? new List<TblAssetGallery>();
 
-                    // Prefer SortOrder = 1 thumbnail, else fallback to first
+                .SelectMany(order => order.TblOrderAssets)
+
+                .Where(oa => oa.Asset != null)
+
+                .Select(oa =>
+
+                {
+
+                    var asset = oa.Asset;
+
+                    var galleries = asset.TblAssetGalleries ?? new List<TblAssetGallery>();
+
                     var thumbnailPath = galleries
+
+                        .OrderBy(g => g.SortOrder) // Optional if you have SortOrder
+
                         .Select(g => g.FilePath)
+
                         .FirstOrDefault();
 
+                    // Determine price
+
+                    decimal price = asset.IsAvailableForDirectSale
+
+                        ? asset.StartingPrice
+
+                        : userWinners.FirstOrDefault(w => w.AssetId == asset.AssetId)?.AwardedPrice ?? 0;
+
                     return new DirectSaleAssetDto
+
                     {
-                        AssetId = oa.Asset.AssetId,
-                        Title = oa.Asset.Title,
-                        CategoryId = oa.Asset.CategoryId,
-                        Deposit = oa.Asset.Deposit,
-                        MinIncrement = oa.Asset.MinIncrement,
-                        Description = oa.Asset.Description,
-                        IsDeleted = oa.Asset.IsDeleted,
-                        SalesNotes = oa.Asset.SalesNotes,
-                        Price = oa.Asset.StartingPrice,
-                        IsAvailableForDirectSale = oa.Asset.IsAvailableForDirectSale,
-                        CategoryName = oa.Asset.Category?.CategoryName ?? string.Empty,
+
+                        AssetId = asset.AssetId,
+
+                        Title = asset.Title,
+
+                        CategoryId = asset.CategoryId,
+
+                        Deposit = asset.Deposit,
+
+                        MinIncrement = asset.MinIncrement,
+
+                        Description = asset.Description,
+
+                        IsDeleted = asset.IsDeleted,
+
+                        SalesNotes = asset.SalesNotes,
+
+                        Price = price,
+
+                        IsAvailableForDirectSale = asset.IsAvailableForDirectSale,
+
+                        CategoryName = asset.Category?.CategoryName ?? string.Empty,
+
                         ThumbnailUrl = string.IsNullOrEmpty(thumbnailPath) ? string.Empty : $"{_baseUrl}{thumbnailPath}"
+
                     };
+
                 })
+
                 .ToList();
 
             return assetDtos;
+
         }
+
+
 
         public async Task<TblOrder> AddOrder(int userId, List<int> assetIds)
         {
@@ -108,7 +163,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
             return result > 0 ? order : null;
         }
 
-        public async Task<List<DirectSaleAssetDto>> ConfirmPaymentAndCreateOrderAsync(int userId, List<int> assetIds, string paymentMethod)
+        public async Task<List<DirectSaleAssetDto>> ConfirmPaymentAndCreateOrderAsync(int userId, List<int> assetIds, string paymentMethod ,  long paidAmount)
         {
             if (assetIds == null || !assetIds.Any())
                 throw new ArgumentException("No assets provided for the order.");
@@ -134,7 +189,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Listings
                 throw new InvalidOperationException("Some assets were not found in the database.");
 
             // Step 2: Calculate Total
-            var totalAmount = assets.Sum(a => a.StartingPrice);
+            var totalAmount = paidAmount;
 
             // Step 3: Map Payment Method String to ID
             var paymentMethodId = await _context.TblPaymentMethods
