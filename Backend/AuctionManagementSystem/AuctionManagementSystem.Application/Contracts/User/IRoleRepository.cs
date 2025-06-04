@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Roles;
+using AuctionManagementSystem.Domain.Entities.Roles;
 using AuctionManagementSystem.Domain.Entities.User;
 
 namespace AuctionManagementSystem.Application.Contracts.User
@@ -15,6 +16,10 @@ namespace AuctionManagementSystem.Application.Contracts.User
         Task<TblRole> GetRoleByIdAsync(int roleId);
         Task<int?> GetRoleIdByName(string roleName);
         Task<List<RoleWithPermissionsDto>> GetAllRoles();
+        Task<TblRole?> GetRoleByIdWithPermissionsAsync(int roleId);
+        Task AddRoleAsync(TblRole role);
+        Task AddRolePermissionsAsync(TblRolePermissionsMatrix permissions);
+        Task SaveChangesAsync();
     }
 
 }

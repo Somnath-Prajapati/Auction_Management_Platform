@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Roles;
+using AuctionManagementSystem.Domain.Entities.Roles;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +40,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
         public async Task<List<RoleWithPermissionsDto>> GetAllRoles()
         {
             var roles = await _context.TblRoles
+                .Where(r => !r.IsDeleted)
                 .Include(r => r.TblRolePermissionsMatrices) // Include the permissions list
                 .ToListAsync();
             foreach (var role in roles)
@@ -76,6 +78,29 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
 
             return result;
         }
+        public async Task<TblRole?> GetRoleByIdWithPermissionsAsync(int roleId)
+        {
+            return await _context.TblRoles
+                .Where(r => !r.IsDeleted)
+                .Include(r => r.TblRolePermissionsMatrices)
+                .FirstOrDefaultAsync(r => r.RoleId == roleId);
+        }
+        public async Task AddRoleAsync(TblRole role)
+        {
+            _context.TblRoles.Add(role);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddRolePermissionsAsync(TblRolePermissionsMatrix permissions)
+        {
+            _context.TblRolePermissionsMatrices.Add(permissions);
+            await _context.SaveChangesAsync();
+        }
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
 
     }
 }

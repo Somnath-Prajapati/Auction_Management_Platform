@@ -139,6 +139,9 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.RoleName)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            entity.Property(e => e.IsDeleted)
+            .HasDefaultValue(false);
         });
 
         modelBuilder.Entity<TblRolePermissionsMatrix>(entity =>
