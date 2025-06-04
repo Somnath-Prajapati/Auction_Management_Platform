@@ -1,4 +1,4 @@
-
+﻿
 using AuctionManagementSystem.Application.Dtos.Bids;
 using AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.CreateAutoBid;
 using AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.DeleteAutoBid;
@@ -9,6 +9,7 @@ using AuctionManagementSystem.Application.Features.Bids.Query.GetBidByUserId;
 using AuctionManagementSystem.Application.Features.Bids.Query.GetBidStatsBulk;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using AuctionManagementSystem.Application.Features.Bids.AutoBid.Query.GetWinnerById;
 
 namespace AuctionManagementSystem.Api.Controller.Bid
 {
@@ -98,6 +99,20 @@ namespace AuctionManagementSystem.Api.Controller.Bid
             var result = await _mediator.Send(new GetBidStatsBulkQuery(ids));
             return Ok(result);
         }
+
+
+        [HttpGet("WonBids/{userId}")]
+        public async Task<IActionResult> GetWonBidsByUserId(int userId)
+        {
+            var result = await _mediator.Send(new GetWonBidsByUserIdQuery(userId));
+
+            if (result == null || !result.Any())
+                return NotFound(new { Message = $"No won bids found for user {userId}." });
+
+            return Ok(result);
+        }
+
+
 
     }
 }

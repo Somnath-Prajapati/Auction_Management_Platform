@@ -10,7 +10,6 @@ using AuctionManagementSystem.Domain.Entities.Transaction;
 namespace AuctionManagementSystem.Domain.Entities.User;
 
 
-
 public partial class TblUser
 {
     public int UserId { get; set; }
@@ -48,7 +47,7 @@ public partial class TblUser
     public string Gender { get; set; }
 
     public DateOnly? PersonalIdExpiryDate { get; set; }
-   
+
 
     public string? ProfileImage { get; set; }
 
@@ -67,6 +66,7 @@ public partial class TblUser
     public DateTime? DeletedDate { get; set; }
 
     public bool? IsDeleted { get; set; }
+    public decimal AvailableLimit { get; set; }
 
     public virtual TblCountry? Country { get; set; }
 

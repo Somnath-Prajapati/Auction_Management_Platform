@@ -5,6 +5,7 @@ using AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddAsset
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetsForView;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDirectSaleAssets;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.SearchAsset;
 using AuctionManagementSystem.Application.Features.Assets.AssetAuction.Command.AddAssetAuction;
@@ -42,6 +43,15 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             return Ok(assets);
         }
 
+        //[HttpGet("GetForView/{id}")]
+        //public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAllAssetsForViewById(int id)
+        //{
+        //    var assets = await _mediator.Send(new GetAssetsByIdForViewQuery(id));
+        //    return Ok(assets);
+        //}
+
+      
+
         [HttpGet("directsaleasset")]
         public async Task<IActionResult> GetDirectSaleAssets([FromQuery] int categoryId)
         {
@@ -74,17 +84,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
 
 
 
-        //[Route("add")]
-        //[HttpPost]
-        //public async Task<ActionResult<GetAssetsDto>> CreateAsset(CreateAssetsDto createAsset)
-        //{
-        //    var result = await _mediator.Send(new AddAssetCommand(createAsset));
-
-          
-
-        //    return Ok(result);
-        //}
-
+     
         //[Route("GetById")]
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAsset(int id)

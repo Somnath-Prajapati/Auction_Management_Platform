@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Transactions;
+using AuctionManagementSystem.Application.Dtos.UserDtos;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.model;
+using AuctionManagementSystem.Domain.Models;
 using AuctionManagementSystem.Infrastructure.Persistence.Repositories;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -60,6 +62,34 @@ namespace AuctionManagementSystem.Persistence.Repositories.Transactions
                 _context.TblUserDeposits.Update(deposit);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public async Task AddAsync(TblUserDeposit userDeposit)
+        {
+            if (userDeposit == null)
+                throw new ArgumentNullException(nameof(userDeposit));
+
+            await _context.TblUserDeposits.AddAsync(userDeposit);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<UserDepositLimitDto?> GetUserDepositLimitsAsync(int userId)
+        {
+            return await _context.TblUsers
+                .Where(u => u.UserId == userId && u.IsDeleted == false) // Explicitly compare nullable bool to false
+                .Select(u => new UserDepositLimitDto
+                {
+                    TotalLimit = u.TotalLimit ?? 0, // Explicitly handle nullable decimal
+                    CurrentDeposit = u.Deposit ?? 0, // Explicitly handle nullable decimal
+                    AvailableLimit = u.AvailableLimit // Assuming AvailableLimit is not nullable
+                })
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task AddAsync(TblUserLimitAuditLog log)
+        {
+            await _context.Set<TblUserLimitAuditLog>().AddAsync(log);
+            await _context.SaveChangesAsync(); // or handle SaveChanges through UnitOfWork if needed
         }
     }
 

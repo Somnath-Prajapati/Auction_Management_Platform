@@ -1,5 +1,6 @@
 ﻿using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Dtos.UserDtos;
+using AuctionManagementSystem.Application.Features.DepositlimitCalculation;
 using AuctionManagementSystem.Application.Features.Notifications.Command.MarkAsRead;
 using AuctionManagementSystem.Application.Features.UserFeature.Command.CreateUser;
 using AuctionManagementSystem.Application.Features.UserFeature.Command.DeleteNotificationByUserId;
@@ -108,5 +109,13 @@ namespace AuctionManagementSystem.Api.Controller.User
             await _mediator.Send(new MarkAsReadCommand(notificationId));
             return NoContent();
         }
+
+        [HttpGet("{userId}/deposit-limits")]
+        public async Task<ActionResult<UserDepositLimitDto>> GetDepositLimits(int userId)
+        {
+            var result = await _mediator.Send(new GetUserDepositLimitsQuery(userId));
+            return Ok(result);
+        }
+
     }
 }

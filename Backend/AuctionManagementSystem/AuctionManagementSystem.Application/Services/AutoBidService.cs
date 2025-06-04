@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Application.Contracts.RealTime;
+using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Domain.Entities.Bids;
+using AuctionManagementSystem.Domain.Entities.Notification;
 
 namespace AuctionManagementSystem.Application.Services
 {
@@ -18,6 +21,8 @@ namespace AuctionManagementSystem.Application.Services
         private readonly IAutoBidRepository _autoBidRepository;
         private readonly IUnitOfWorkAuth _unitOfWork;
         private readonly IBidNotificationService _notificationService;
+        private readonly INotificationRepository _notificationRepository;
+        private readonly INotificationBroadcaster _notificationBroadcaster;
 
 
         public AutoBidService(
@@ -25,17 +30,21 @@ namespace AuctionManagementSystem.Application.Services
             IBidRepository bidRepository,
             IAutoBidRepository autoBidRepository,
             IUnitOfWorkAuth unitOfWork,
-            IBidNotificationService notificationService)
+            IBidNotificationService notificationService,
+            INotificationRepository notificationRepository,
+            INotificationBroadcaster notificationBroadcaster)
         {
             _assetsRepository = assetsRepository;
             _bidRepository = bidRepository;
             _autoBidRepository = autoBidRepository;
             _unitOfWork = unitOfWork;
             _notificationService = notificationService;
+            _notificationRepository = notificationRepository;
+            _notificationBroadcaster = notificationBroadcaster;
         }
 
         public async Task RunAutoBidRoundRobin(int auctionId, int assetId)
-        {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         {
             var asset = await _assetsRepository.GetByIdAsync(assetId);
             if (asset == null) return;
 
@@ -78,6 +87,43 @@ namespace AuctionManagementSystem.Application.Services
                         continue; // Try next autobid in the round robin
                     }
 
+
+                    // for giving notification to the user 
+                    var previousWinningBid = await _bidRepository.GetWinningBidByAssetIdAsync(assetId);
+
+                    if (previousWinningBid != null && previousWinningBid.UserId != autobid.UserId)
+                    {
+                        // Send outbid notification
+                        var notification = new TblNotification
+                        {
+                            Id = Guid.NewGuid(),
+                            UserId = previousWinningBid.UserId,
+                            Title = "You've been outbid",
+                            Message = $"Your bid on asset '{asset.Title}' has been outbid by another user.",
+                            CreatedAt = DateTime.UtcNow,
+                            ExpiresAt = DateTime.UtcNow.AddDays(2),
+                            AssetId = assetId,
+                            AuctionId = auctionId,
+                            IsRead = false
+                        };
+
+                        await _notificationRepository.CreateAsync(notification);
+
+                        var notificationDto = new NotificationDto
+                        {
+                            UserId = notification.UserId,
+                            Title = notification.Title,
+                            Message = notification.Message,
+                            ExpiresAt = notification.ExpiresAt,
+                            AssetId = notification.AssetId,
+                            AuctionId = notification.AuctionId,
+                            IsRead = notification.IsRead
+                        };
+
+                        await _notificationBroadcaster.NotifyByUserId(notificationDto);
+                    }
+
+
                     await _bidRepository.UnsetPreviousWinningBidAsync(assetId);
 
                     await _autoBidRepository.ExtendAuctionIfCloseToEndAsync(auctionId, DateTime.UtcNow);
@@ -92,6 +138,8 @@ namespace AuctionManagementSystem.Application.Services
                         IsWinningBid = true,
                         IsAutoBid = true
                     };
+
+
                     await _bidRepository.AddBidAsync(bid);
 
                     autobid.UpdatedDate = DateTime.UtcNow;

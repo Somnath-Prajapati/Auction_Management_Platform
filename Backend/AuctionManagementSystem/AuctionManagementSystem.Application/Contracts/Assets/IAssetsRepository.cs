@@ -18,6 +18,8 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
 
         Task<GetAssetsFormDto> GetByIdAsync(int id);
 
+        Task<GetAssetsFormDto> GetByIdViewAsync(int id);
+
         Task<TblAsset> GetIdDeleteAsync(int id);
         Task<TblAsset> AddAsset(TblAsset asset);
 
