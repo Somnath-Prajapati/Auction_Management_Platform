@@ -12,8 +12,8 @@ namespace AuctionManagementSystem.Application.Contracts.Listings
     public interface IOrderRepository
     {
         Task<List<DirectSaleAssetDto>> GetAllOrders(int userId);
-        //Task<List<DirectSaleAssetDto>> ConfirmPaymentAndCreateOrderAsync(int userId, List<int> assetIds,string payment);
-        Task<List<DirectSaleAssetDto>> ConfirmPaymentAndCreateOrderAsync(int userId, List<int> assetIds, string payment, long amountpaid);
+        Task<List<DirectSaleAssetDto>> ConfirmPaymentAndCreateOrderAsync(int userId, List<int> assetIds,string payment,long amountpaid);
+
 
     }
 }

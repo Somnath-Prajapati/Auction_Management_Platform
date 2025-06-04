@@ -1377,17 +1377,6 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.OldTotalLimit).HasColumnType("decimal(18, 2)");
         });
 
-        //modelBuilder.Entity<Tbltempdatum>(entity =>
-        //{
-        //    entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
-
-        //    entity.ToTable("tbltempdata");
-
-        //    entity.Property(e => e.Id).HasColumnName("id");
-        //    entity.Property(e => e.Name)
-        //        .HasMaxLength(1)
-        //        .HasColumnName("name");
-        //});
 
         OnModelCreatingPartial(modelBuilder);
     }

@@ -79,7 +79,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
                 Id = Guid.NewGuid(),
                 UserId = null,
                 Title = $"New Auction Created with id :: {auction.AuctionId}",
-                Message = $"Asset '{auction.Title}' has been added.",
+                Message = $"Auction '{auction.Title}' has been added.",
                 CreatedAt = DateTime.UtcNow,
                 ExpiresAt = DateTime.UtcNow.AddDays(2),
                 IsRead = null,

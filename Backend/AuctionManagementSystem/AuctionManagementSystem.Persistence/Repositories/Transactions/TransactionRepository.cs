@@ -272,4 +272,11 @@ public class TransactionRepository : ITransactionRepository
         return transactions;
     }
 
+    public async Task AddTransactionDocumentsAsync(IEnumerable<TblTransactionDocument> documents)
+    {
+        await _context.TblTransactionDocuments.AddRangeAsync(documents);
+        await _context.SaveChangesAsync();
+    }
+
+
 }

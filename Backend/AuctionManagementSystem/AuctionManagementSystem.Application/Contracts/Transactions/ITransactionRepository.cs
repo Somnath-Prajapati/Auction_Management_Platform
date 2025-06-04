@@ -8,6 +8,8 @@ namespace AuctionManagementSystem.Application.Contracts.Transactions
     {
         Task<TblTransaction?> GetByIdAsync(int id);
         Task<string> GetTransactionNumberFromDbAsync();
+        Task AddTransactionDocumentsAsync(IEnumerable<TblTransactionDocument> documents);
+
         Task<TblTransaction> GetTransactionWithDetailsAsync(int transactionId);
 
         Task<TblTransaction> GetTransactionByIdAsync(int transactionId);
