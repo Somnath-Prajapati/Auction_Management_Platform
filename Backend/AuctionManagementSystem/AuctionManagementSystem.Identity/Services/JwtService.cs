@@ -21,7 +21,6 @@ namespace AuctionManagementSystem.Identity.Services
 
         public string GenerateToken(TblUser user, string roleName)
         {
-            // Ensure the roleName is valid; default to "User" if null or empty
             roleName = string.IsNullOrWhiteSpace(roleName) ? "User" : roleName;
 
             var claims = new[]

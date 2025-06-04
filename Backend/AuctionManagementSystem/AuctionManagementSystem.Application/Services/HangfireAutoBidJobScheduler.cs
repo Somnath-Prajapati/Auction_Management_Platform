@@ -41,15 +41,6 @@ namespace AuctionManagementSystem.Application.Services
                );
 
 
-            // --------------------------/////////////////////////////////////////////
-
-            //_recurringJobManager.AddOrUpdate(
-            //             "AutoBidJob",
-            //             Job.FromExpression<HangfireAutoBidJobScheduler>(x => x.RunAutoBidForAllActiveAssets()),
-            //                "*/7 * * * *");
-
-
-
         }
 
         public void demo()
@@ -76,25 +67,6 @@ namespace AuctionManagementSystem.Application.Services
             }
 
         }
-
-
     }
 }
-            //try
-            //{
-            //    Console.WriteLine($"[AutoBid] Job running at {DateTime.UtcNow}");
-
-            //    var activeAuctionAssets = await _autoBidRepository.GetActiveAuctionAssetPairsAsync();
-
-            //    // Run all auction/asset pairs in parallel
-            //    var tasks = activeAuctionAssets.Select(pair =>
-            //        _autoBidService.RunAutoBidRoundRobin(pair.auctionId, pair.assetId)
-            //    );
-
-            //    await Task.WhenAll(tasks);
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine("Error : " + e.ToString());
-            //}
-
+            

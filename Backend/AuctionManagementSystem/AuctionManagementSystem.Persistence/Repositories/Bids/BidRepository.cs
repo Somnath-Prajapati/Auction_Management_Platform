@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Application.Dtos.Bids;
+using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Models;
 using AuctionManagementSystem.Persistence.Context;
@@ -162,6 +164,49 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
                 .OrderByDescending(b => b.BidAmount)
                 .FirstOrDefaultAsync();
         }
+        public async Task<List<BidStatsBluckDto>> GetBidStatsByAssetIdsAsync(List<int> assetIds)
+        {
+            var allBids = await _context.tblBids.ToListAsync();
+
+            var groupedData = new List<tblBid>();
+
+            for (int i = 0; i < assetIds.Count; i++)
+            {
+                int currentId = assetIds[i];
+                groupedData.AddRange(allBids.Where(b => b.AssetId == currentId));
+            }
+
+
+            var bidStats = groupedData
+                .GroupBy(b => b.AssetId)
+                .Select(g =>
+                {
+                    var winningBid = g.Where(b => b.IsWinningBid)
+                                      .OrderByDescending(b => b.BidAmount)
+                                      .FirstOrDefault(); 
+
+                    return new BidStatsBluckDto
+                    {
+                        AssetId = g.Key,
+                        BidCount = g.Count(),
+                        HighestBid = winningBid != null ? winningBid.BidAmount : 0
+                    };
+                })
+                .ToList();
+
+            return bidStats;
+        }
+
+
+        public async Task<IEnumerable<TblAssetWinner>> GetWonBidsByUserIdAsync(int userId)
+        {
+            return await _context.TblAssetWinners
+                .Where(w => w.UserId == userId)
+                .OrderByDescending(w => w.CreatedAt)
+                .ToListAsync();
+        }
+
+
 
     }
 
