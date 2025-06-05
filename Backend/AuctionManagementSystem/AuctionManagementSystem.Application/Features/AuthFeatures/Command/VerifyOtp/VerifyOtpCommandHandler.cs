@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Assets.Auth;
+using AuctionManagementSystem.Application.Dtos.Roles;
 using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.AuthFeatures.Command.VerifyOtp
@@ -38,17 +39,43 @@ namespace AuctionManagementSystem.Application.Features.AuthFeatures.Command.Veri
             await _unitOfWork.SaveChangesAsync();
 
             // Get user role
-            var role = await _unitOfWork.RoleRepository.GetRoleByIdAsync(user.RoleId);
+            var role = await _unitOfWork.RoleRepository.GetRoleByIdWithPermissionsAsync(user.RoleId);
             var roleName = role?.RoleName ?? "User";
 
             var token = _jwtService.GenerateToken(user, roleName);
 
+
+            var permissions = role.TblRolePermissionsMatrices.FirstOrDefault();
+
+            var roleDto = new RoleWithPermissionsDto
+            {
+                RoleId = role.RoleId,
+                RoleName = role.RoleName,
+                IsSeller = role.IsSeller,
+
+                SuperAdmin = permissions?.SuperAdmin ?? false,
+                AccessAdminPanel = permissions?.AccessAdminPanel ?? false,
+                ManageAuctions = permissions?.ManageAuctions ?? false,
+                ManageAssets = permissions?.ManageAssets ?? false,
+                ManageTransactions = permissions?.ManageTransactions ?? false,
+                ManageCategories = permissions?.ManageCategories ?? false,
+                ManageRoles = permissions?.ManageRoles ?? false,
+                ManageUsers = permissions?.ManageUsers ?? false,
+                ViewReports = permissions?.ViewReports ?? false,
+                ExportReports = permissions?.ExportReports ?? false,
+                ManageRequests = permissions?.ManageRequests ?? false,
+                ViewAuditTrail = permissions?.ViewAuditTrail ?? false,
+                ChangeCommission = permissions?.ChangeCommission ?? false
+            };
+
+
             return new AuthResponseDto
             {
                 Token = token,
-                Role = roleName,
+                //Role = roleName,
                 Email = user.Email,
-                Name = user.Name
+                Name = user.Name,
+                Role = roleDto
             };
         }
     }

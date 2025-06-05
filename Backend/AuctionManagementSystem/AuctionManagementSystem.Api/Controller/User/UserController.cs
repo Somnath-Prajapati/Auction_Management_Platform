@@ -110,6 +110,7 @@ namespace AuctionManagementSystem.Api.Controller.User
             return NoContent();
         }
 
+        [AllowAnonymous]
         [HttpGet("{userId}/deposit-limits")]
         public async Task<ActionResult<UserDepositLimitDto>> GetDepositLimits(int userId)
         {

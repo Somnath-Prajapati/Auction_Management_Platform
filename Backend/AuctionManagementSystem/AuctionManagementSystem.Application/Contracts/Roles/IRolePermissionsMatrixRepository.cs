@@ -10,7 +10,7 @@ namespace AuctionManagementSystem.Application.Contracts.Roles
 {
     public interface IRolePermissionsMatrixRepository
     {
-        Task<List<RolePermissionsMatrixDto>> GetAllPermissionsMatrixAsync();
+        Task<List<RoleWithPermissionsDto>> GetAllPermissionsMatrixAsync();
     }
 
 }
