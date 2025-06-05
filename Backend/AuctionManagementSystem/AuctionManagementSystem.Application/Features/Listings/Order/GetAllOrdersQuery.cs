@@ -16,5 +16,7 @@ public class GetAllOrdersQuery : IRequest<List<DirectSaleAssetDto>>
         public int UserId { get; set; }
         public List<int> AssetIds { get; set; } = new();
         public string paymenttype { get; set; } = string.Empty;
+
+        public long amountPaid { get; set; }
     }
 }

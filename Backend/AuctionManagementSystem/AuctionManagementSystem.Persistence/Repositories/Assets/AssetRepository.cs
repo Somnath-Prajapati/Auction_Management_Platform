@@ -196,8 +196,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             return asset;
         }
 
-
-
      
         public async Task<GetAssetsFormDto> GetByIdViewAsync(int id)
         {

@@ -1,12 +1,13 @@
-﻿using AuctionManagementSystem.Application.Features.Auctions.Queries.GetAllAuctions;
+﻿using AuctionManagementSystem.Application.Contracts.Auth;
+using AuctionManagementSystem.Application.Dtos.Auctions;
 using AuctionManagementSystem.Application.Features.Auctions.Commands.CreateAuction;
-using AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateAuction;
 using AuctionManagementSystem.Application.Features.Auctions.Commands.DeleteAuction;
+using AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateAuction;
+using AuctionManagementSystem.Application.Features.Auctions.Queries.GetAllAuctions;
 using AuctionManagementSystem.Application.Features.Auctions.Queries.GetAuctionById;
+using AuctionManagementSystem.Application.Features.Auctions.Queries.GetAuctionsByIds;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using AuctionManagementSystem.Application.Dtos.Auctions;
-using AuctionManagementSystem.Application.Contracts.Auth;
 
 namespace AuctionManagementSystem.Api.Controller.Auction
 {
@@ -78,6 +79,13 @@ namespace AuctionManagementSystem.Api.Controller.Auction
             var command = new DeleteAuctionCommand { AuctionId = id };
             var result = await _mediator.Send(command);
             return result ? Ok() : NotFound();
+        }
+        [HttpGet("get-by-ids")]
+        public async Task<IActionResult> GetAuctionsByIds([FromQuery] string auctionIds)
+        {
+            var ids = auctionIds.Split(',').Select(int.Parse).ToList();
+            var result = await _mediator.Send(new GetAuctionsByIdsQuery(ids));
+            return Ok(result);
         }
 
     }

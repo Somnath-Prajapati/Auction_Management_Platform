@@ -178,6 +178,7 @@ namespace AuctionManagementSystem.Application.Profiles
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Asset.Title))
     // ... map other asset fields from src.Asset
     ;
+            CreateMap<WonBidDto, TblAssetWinner>().ReverseMap();
 
 
         }

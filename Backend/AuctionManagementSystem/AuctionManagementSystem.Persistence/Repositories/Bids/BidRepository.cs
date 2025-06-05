@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Application.Dtos.Bids;
+using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Models;
 using AuctionManagementSystem.Persistence.Context;
@@ -70,13 +72,17 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
                 .OrderByDescending(b => b.BidTime)
                 .ToListAsync();
         }
-        public async Task<IEnumerable<tblBid>> GetBidsByUserIdAsync(int UserId)
+        public async Task<IEnumerable<tblBid>> GetBidsByUserIdAsync(int userId)
         {
-            return await _context.tblBids
-                .Where(b => b.UserId == UserId)
-                .OrderByDescending(b => b.BidTime)
-                .ToListAsync();
+            return await (
+                from b in _context.tblBids
+                join a in _context.TblAssets on b.AssetId equals a.AssetId
+                where b.UserId == userId && !a.IsDeleted
+                orderby b.BidTime descending
+                select b
+            ).ToListAsync();
         }
+
         public async Task<decimal?> GetHighestBidAmountAsync(int assetId)
         {
             return await _context.tblBids
@@ -163,6 +169,53 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
                 .OrderByDescending(b => b.BidAmount)
                 .FirstOrDefaultAsync();
         }
+        public async Task<List<BidStatsBluckDto>> GetBidStatsByAssetIdsAsync(List<int> assetIds)
+        {
+            var allBids = await _context.tblBids.ToListAsync();
+
+            var groupedData = new List<tblBid>();
+
+            for (int i = 0; i < assetIds.Count; i++)
+            {
+                int currentId = assetIds[i];
+                groupedData.AddRange(allBids.Where(b => b.AssetId == currentId));
+            }
+
+
+            var bidStats = groupedData
+                .GroupBy(b => b.AssetId)
+                .Select(g =>
+                {
+                    var winningBid = g.Where(b => b.IsWinningBid)
+                                      .OrderByDescending(b => b.BidAmount)
+                                      .FirstOrDefault(); 
+
+                    return new BidStatsBluckDto
+                    {
+                        AssetId = g.Key,
+                        BidCount = g.Count(),
+                        HighestBid = winningBid != null ? winningBid.BidAmount : 0
+                    };
+                })
+                .ToList();
+
+            return bidStats;
+        }
+
+
+        public async Task<IEnumerable<TblAssetWinner>> GetWonBidsByUserIdAsync(int userId)
+        {
+            return await (
+                from w in _context.TblAssetWinners
+                join a in _context.TblAssets on w.AssetId equals a.AssetId
+                where w.UserId == userId && !a.IsDeleted
+                orderby w.CreatedAt descending
+                select w
+            ).ToListAsync();
+        }
+
+
+
 
     }
 
