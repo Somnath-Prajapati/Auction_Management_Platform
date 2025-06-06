@@ -15,11 +15,235 @@
    "T4TemplatePath": null,
    "Tables": [
       {
+         "Name": "[AuctionM_dbuser].[ChatbotFaqs]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[ChatMessages]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[ChatSessions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAssetCategories]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[TblAssetCategoryPaymentMethod]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[TblAssetCategoryStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAssetDetails]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAssetDocuments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAssetGallery]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[TblAssetPaymentMethod]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAssets]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAssetStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAssetWinners]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAuctionAssets]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAuctionCategories]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAuctions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAuctionStatuses]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAuctionViews]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAuditTrail]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblAutoBids]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblBids]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblCardTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblCartItems]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblChatBotMainQuestionAnswer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblchatbotSubQuestionAnswer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblCountries]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblDirectSaleSettings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblFinanceSettings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblFooterLinksSettings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblNotifications]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblOrderAssets]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblOrders]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblOTPs]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblPaymentMethods]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblRequests]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblRequestStatuses]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblRequestTypes]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[AuctionM_dbuser].[tblRolePermissionsMatrix]",
          "ObjectType": 0
       },
       {
          "Name": "[AuctionM_dbuser].[tblRoles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblSellers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblStaticPagesSettings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblSystemSettings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tbltempdata]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblTransactionAssets]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblTransactionDocuments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblTransactions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblTransactionStatuses]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblTransactionTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[TblUserDeposit]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblUserLimitAuditLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblUserRoles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblUsers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblUserStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblVATOptions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblWinnerAwardingOptions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblWinnerDocuments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[tblWishlistItems]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[AuctionM_dbuser].[TransactionNumberTracker]",
          "ObjectType": 0
       }
    ],
