@@ -25,6 +25,16 @@ namespace AuctionManagementSystem.Api.Controller
             return Ok(result);
         }
 
+
+        [HttpGet("monthly-directsale-revenue")]
+        public async Task<IActionResult> GetDirectSaleMonthlyRevenue()
+        {
+            var result = await _mediator.Send(new GetDirectSaleRevenueQuery());
+            return Ok(result);
+        }
+
+
+
         [HttpGet("high-bidding-customers")]
         public async Task<IActionResult> GetHighBiddingCustomers([FromQuery] int? userId)
         {

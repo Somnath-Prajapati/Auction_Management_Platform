@@ -8,6 +8,5 @@ using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Transactions
 {
-    public class GetAuctionRevenueQuery : IRequest<List<MonthlyRevenueDto>> { }
-
+    public class GetDirectSaleRevenueQuery : IRequest<List<MonthlyRevenueDto>> { }
 }

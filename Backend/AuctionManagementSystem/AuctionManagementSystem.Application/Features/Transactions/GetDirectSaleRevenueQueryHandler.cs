@@ -10,19 +10,18 @@ using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Transactions
 {
-    public class GetAuctionRevenueQueryHandler : IRequestHandler<GetAuctionRevenueQuery, List<MonthlyRevenueDto>>
+    class GetDirectSaleRevenueQueryHandler: IRequestHandler<GetDirectSaleRevenueQuery, List<MonthlyRevenueDto>>
     {
         private readonly IReports _reports;
 
-        public GetAuctionRevenueQueryHandler(IReports reports)
-        {
+    public GetDirectSaleRevenueQueryHandler(IReports reports)
+    {
             _reports = reports;
-        }
-
-        public async Task<List<MonthlyRevenueDto>> Handle(GetAuctionRevenueQuery request, CancellationToken cancellationToken)
-        {
-            return await _reports.GetAuctionMonthlyRevenueAsync();
-        }
     }
 
+    public async Task<List<MonthlyRevenueDto>> Handle(GetDirectSaleRevenueQuery request, CancellationToken cancellationToken)
+    {
+        return await _reports.GetDirectSaleMonthlyRevenueAsync();
+    }
+}
 }

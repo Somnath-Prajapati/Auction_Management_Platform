@@ -16,7 +16,7 @@ using AuctionManagementSystem.Persistence.Context;
 using AuctionManagementSystem.Persistence.Repositories.Listings;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuctionManagementSystem.Persistence.Repositories.Transactions
+namespace AuctionManagementSystem.Persistence.Services
 {
     public class AuctionWinnerService : IAuctionWinnerService
     {
