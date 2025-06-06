@@ -15,7 +15,8 @@ namespace AuctionManagementSystem.Application.Services
         private readonly IAutoBidRepository _autoBidRepository;
         private readonly IRecurringJobManager _recurringJobManager;
 
-        public HangfireAutoBidJobScheduler(IAutoBidService autoBidService, IAutoBidRepository autoBidRepository, IRecurringJobManager recurringJobManager)
+        public HangfireAutoBidJobScheduler(IAutoBidService autoBidService, 
+            IAutoBidRepository autoBidRepository, IRecurringJobManager recurringJobManager)
         {
             _autoBidService = autoBidService;
             _autoBidRepository = autoBidRepository;
@@ -34,7 +35,7 @@ namespace AuctionManagementSystem.Application.Services
             //        "*/50 * * * * *");
 
 
-              _recurringJobManager.AddOrUpdate<HangfireAutoBidJobScheduler>(
+            _recurringJobManager.AddOrUpdate<HangfireAutoBidJobScheduler>(
                      "AutoBidJob",
                        x => x.RunAutoBidForAllActiveAssets(),
                        "*/50 * * * * *"
