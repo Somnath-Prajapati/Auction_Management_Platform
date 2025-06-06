@@ -35,6 +35,8 @@ using AuctionManagementSystem.Persistence.Repositories.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Transactions;
 using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
 using AuctionManagementSystem.Persistence.Services;
+using AuctionManagementSystem.Application.Contracts.Reports;
+using AuctionManagementSystem.Persistence.Repositories.Reports;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -79,6 +81,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IChatbotRepository, ChatbotRepository>();
             services.AddScoped<IOrderEmailService, OrderEmailService>();
             services.AddScoped<INotificationRepository, NotificationRepository>();
+            services.AddScoped<IReports,Reports>();
 
 
             services.AddScoped<IAutoBidRepository, AutoBidRepository>();
