@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Dtos.Bids;
+using AuctionManagementSystem.Application.Exceptions;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Models;
@@ -25,35 +26,58 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
 
         public async Task<int> AddBidAsync(tblBid bid)
         {
-            var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.UserId == bid.UserId);
-            if (user == null || user.AvailableLimit < bid.BidAmount)
-                throw new InvalidOperationException("Insufficient limit.");
-        
-            var auditLog = new TblUserLimitAuditLog
+            try
             {
-                UserId = user.UserId,
-                ActionType = "Bid",
-                OldDeposit = user.Deposit,
-                NewDeposit = user.Deposit,
-                OldTotalLimit = user.TotalLimit,
-                NewTotalLimit = user.TotalLimit,
-                OldAvailableLimit = user.AvailableLimit,
-                NewAvailableLimit = user.AvailableLimit-bid.BidAmount,
-                Notes = $"available limit changed because of Bid",
-                ChangedBy = user.UserId
-            };
-            // Deduct the bid amount
-            user.AvailableLimit -= bid.BidAmount;
+                // Retrieve the user placing the bid
+                var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.UserId == bid.UserId);
 
-            _context.TblUserLimitAuditLogs.Add(auditLog);
-            await _context.SaveChangesAsync();
+                try
+                {
+                    // Check if user exists and has enough available limit
+                    if (user == null || user.AvailableLimit < bid.BidAmount)
+                        throw new LimitExceededException("Insufficient limit.");
+                }
+                catch (LimitExceededException lex)
+                {
+                    // Log or handle the limit-specific error here if needed
+                    // Example: _logger.LogWarning(lex, "Limit exceeded for user {UserId}", bid.UserId);
+                    throw;
+                }
+                // Prepare audit log for available limit change
+                var auditLog = new TblUserLimitAuditLog
+                {
+                    UserId = user.UserId,
+                    ActionType = "Bid",
+                    OldDeposit = user.Deposit,
+                    NewDeposit = user.Deposit,
+                    OldTotalLimit = user.TotalLimit,
+                    NewTotalLimit = user.TotalLimit,
+                    OldAvailableLimit = user.AvailableLimit,
+                    NewAvailableLimit = user.AvailableLimit - bid.BidAmount,
+                    Notes = "Available limit changed because of bid",
+                    ChangedBy = user.UserId,
+                    //ChangedAt = DateTime.UtcNow // Optional: track when the change happened
+                };
 
+                // Deduct the bid amount from the user's available limit
+                user.AvailableLimit -= bid.BidAmount;
 
-            _context.tblBids.Add(bid);
+                // Save audit log
+                _context.TblUserLimitAuditLogs.Add(auditLog);
+                await _context.SaveChangesAsync();
 
-            await _context.SaveChangesAsync();
-            return bid.BidId;
+                // Add the bid to the bids table
+                _context.tblBids.Add(bid);
+                await _context.SaveChangesAsync();
+
+                return bid.BidId;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An unexpected error occurred while placing the bid.", ex);
+            }
         }
+
 
 
         public async Task<tblBid?> GetWinningBidAsync(int assetId)
