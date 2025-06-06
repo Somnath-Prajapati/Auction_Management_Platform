@@ -1,9 +1,7 @@
-﻿using AuctionManagementSystem.Application.Features.Bids.AutoBid.Query.GetHighBiddingCustomersQuery;
-using AuctionManagementSystem.Application.Features.Transactions;
+﻿using AuctionManagementSystem.Application.Features.Reports;
+using AuctionManagementSystem.Application.Features.Reports.GetHighBiddingCustomersQuery;
 using MediatR;
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace AuctionManagementSystem.Api.Controller
 {
@@ -42,5 +40,48 @@ namespace AuctionManagementSystem.Api.Controller
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+
+
+        [HttpGet("get-directsale-assets")]
+        public async Task<IActionResult> GetDirectSaleAssets()
+        {
+            var query = new GetDirectSaleAssetsQuery();
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+
+        [HttpGet("account-statement")]
+        public async Task<IActionResult> GetStatementAccount([FromQuery] int? userId, [FromQuery] int? statusId)
+        {
+            var query = new GetStatementAccountQuery
+            {
+                UserId = userId,
+                StatusId = statusId
+            };
+
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+
+        [HttpGet("get-refund-request")]
+        public async Task<IActionResult> GetRefundRequest()
+        {
+            var query = new GetRefundRequestQuery();
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        
+
+        [HttpGet("get-latest-deposit")]
+        public async Task<IActionResult> GetLatestDepositRequest()
+        {
+            var query = new GetLatestDepositQuery();
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
     }
 }
+
+

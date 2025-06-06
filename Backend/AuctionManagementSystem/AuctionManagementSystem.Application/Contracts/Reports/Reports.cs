@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Dtos.Listings;
+using AuctionManagementSystem.Application.Dtos.Reports;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 
 namespace AuctionManagementSystem.Application.Contracts.Reports
@@ -13,5 +13,16 @@ namespace AuctionManagementSystem.Application.Contracts.Reports
         Task<List<HighBiddingCustomerDto>> GetHighBiddingLimitCustomersAsync(int? userId);
         Task<List<MonthlyRevenueDto>> GetAuctionMonthlyRevenueAsync();
         Task<List<MonthlyRevenueDto>> GetDirectSaleMonthlyRevenueAsync();
+
+        Task<List<DirectSaleAssetWithMediaDto>> GetDirectSaleAssetsWithMediaAsync();
+
+        Task<StatementAccountResultDto> GetStatementOfAccountAsync(int? userId, int? statusId);
+
+        Task<RefundTransactionResultDto> GetAllRefundRequestsAsync();
+
+        Task<DepositTransactionResultDto> GetLatestDepositsAsync();
+
+
+
     }
 }
