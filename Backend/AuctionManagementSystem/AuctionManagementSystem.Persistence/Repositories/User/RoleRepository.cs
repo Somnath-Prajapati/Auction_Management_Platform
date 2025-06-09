@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Contracts.User;
+﻿using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Roles;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Persistence.Context;
-using AuctionManagementSystem.Persistence.Repositories.Roles;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Persistence.Repositories.User

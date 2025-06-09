@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using AuctionManagementSystem.Application.Dtos.Auctions;
 using MediatR;
-using System.Text;
-using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Dtos.Auctions;
 
 namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateAuction
 {

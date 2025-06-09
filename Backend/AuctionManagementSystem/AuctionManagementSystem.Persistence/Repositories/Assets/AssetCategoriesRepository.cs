@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Assets;
+using AuctionManagementSystem.Application.Dtos.Translations;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -105,6 +106,16 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             }
 
             await _context.SaveChangesAsync();
+        }
+        public async Task<List<AuctionCategoryTranslationDto>> GetTranslationsByLangCodeAsync(string langCode)
+        {
+            return await _context.TblAuctionCategoriesTranslations
+                .Where(t => t.Language.Code == langCode)
+                .Select(t => new AuctionCategoryTranslationDto
+                {
+                    CategoryId = t.CategoryId,
+                    TranslatedName = t.TranslatedName
+                }).ToListAsync();
         }
 
 

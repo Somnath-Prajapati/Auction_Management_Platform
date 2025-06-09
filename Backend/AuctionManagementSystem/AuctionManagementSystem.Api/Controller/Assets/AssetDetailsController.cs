@@ -4,7 +4,6 @@ using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Command;
 using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Query;
 using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Query.GetDetailsById;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionManagementSystem.Api.Controller.Assets

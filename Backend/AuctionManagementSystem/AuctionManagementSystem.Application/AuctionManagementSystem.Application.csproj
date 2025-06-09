@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Contracts\Categories\" />
     <Folder Include="Contracts\Statuses\" />
+    <Folder Include="Features\NewFolder\" />
     <Folder Include="Features\Roles\Command\CreateRoles\" />
     <Folder Include="Features\Roles\Command\DeleteRoles\" />
     <Folder Include="Features\Roles\Command\UpdateRoles\" />

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Contracts;
+﻿using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Application.Contracts.AuditTrail;
-using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Application.Dtos.Notification;
@@ -11,7 +7,6 @@ using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.Notification;
 using AutoMapper;
 using MediatR;
-using Newtonsoft.Json;
 
 namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateAuction
 {
@@ -83,7 +78,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
                 CreatedAt = DateTime.UtcNow,
                 ExpiresAt = DateTime.UtcNow.AddDays(2),
                 IsRead = null,
-                 AssetId = null,
+                AssetId = null,
                 AuctionId = auction.AuctionId
             };
 
