@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Reports;
 using AuctionManagementSystem.Application.Dtos.Reports;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
+using AuctionManagementSystem.Application.Features.Reports;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 
@@ -342,6 +343,66 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
 
             return result;
         }
+
+        public async Task<AuctionReportResultDto> GetAuctionReportAsync(string reportType)
+        {
+            var result = new AuctionReportResultDto
+            {
+                Auctions = new List<AuctionReportDto>()
+            };
+
+            using var connection = new SqlConnection(_connectionString);
+            using var command = new SqlCommand("[AuctionM_dbuser].[GetAuctionReport]", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            command.Parameters.AddWithValue("@ReportType", reportType);
+            await connection.OpenAsync();
+
+            using var reader = await command.ExecuteReaderAsync();
+
+            // First result: total count
+            if (await reader.ReadAsync())
+            {
+                result.TotalCount = reader.GetInt32(0);
+            }
+
+            // Move to second result set: auction list
+            if (await reader.NextResultAsync())
+            {
+                while (await reader.ReadAsync())
+                {
+                    var dto = new AuctionReportDto
+                    {
+                        AuctionId = reader.GetInt32(0),
+                        AuctionNumber = reader.GetString(1),
+                        Title = reader.GetString(2),
+                        Type = reader.IsDBNull(3) ? null : reader.GetString(3),              // string?
+                        StartDateTime = reader.GetDateTime(4),
+                        EndDateTime = reader.GetDateTime(5),
+                        StatusId = reader.GetInt32(6),
+                        IncrementalTime = reader.GetInt32(7),
+                        CreatedDate = reader.IsDBNull(8) ? default(DateTime) : reader.GetDateTime(8),
+                        UpdatedDate = reader.IsDBNull(9) ? (DateTime?)null : reader.GetDateTime(9),
+                        CategoryId = reader.GetInt32(10),
+                        CreatedBy = reader.IsDBNull(11) ? null : reader.GetString(11),
+                        UpdatedBy = reader.IsDBNull(12) ? null : reader.GetString(12),
+                        DeletedBy = reader.IsDBNull(13) ? null : reader.GetString(13),
+                        
+                        DeletedDate = reader.IsDBNull(14) ? null : reader.GetDateTime(14),   // DateTime?
+                        IsDeleted = reader.GetBoolean(15),
+                        HangfireJobId = reader.IsDBNull(16) ? null : reader.GetString(16)    // string?
+                    };
+
+
+                    result.Auctions.Add(dto); // ✅ You forgot this line
+                }
+            }
+
+            return result;
+        }
+
 
 
     }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Reports;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
+using AuctionManagementSystem.Application.Features.Reports;
 
 namespace AuctionManagementSystem.Application.Contracts.Reports
 {
@@ -21,6 +22,8 @@ namespace AuctionManagementSystem.Application.Contracts.Reports
         Task<RefundTransactionResultDto> GetAllRefundRequestsAsync();
 
         Task<DepositTransactionResultDto> GetLatestDepositsAsync();
+
+        Task<AuctionReportResultDto> GetAuctionReportAsync(string reportType);
 
 
 

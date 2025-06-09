@@ -81,6 +81,17 @@ namespace AuctionManagementSystem.Api.Controller
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+
+
+        [HttpGet("report-auction")]
+        public async Task<IActionResult> GetAuctionReport([FromQuery] string reportType)
+        {
+            if (string.IsNullOrEmpty(reportType))
+                return BadRequest("Report type is required. Use: Total, Past, Current, Upcoming.");
+
+            var result = await _mediator.Send(new GetAuctionReportQuery(reportType));
+            return Ok(result);
+        }
     }
 }
 
