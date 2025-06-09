@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Reports;
 using AuctionManagementSystem.Application.Dtos.Reports;
@@ -62,9 +63,9 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
             return result;
         }
 
-        public async Task<List<MonthlyRevenueDto>> GetAuctionMonthlyRevenueAsync()
+        public async Task<List<AuctionMonthlyRevenueDto>> GetAuctionRevenueAsync(string viewByMode)
         {
-            var revenueList = new List<MonthlyRevenueDto>();
+            var revenueList = new List<AuctionMonthlyRevenueDto>();
 
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -73,17 +74,25 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
                 using (var command = new SqlCommand("GetAuctionAssetsMonthlyRevenue", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ViewByMode", viewByMode);
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
-                            var dto = new MonthlyRevenueDto
+                            var dto = new AuctionMonthlyRevenueDto();
+
+                            if (viewByMode == "Monthly")
                             {
-                                Year = reader.GetInt32(0),
-                                Month = reader.GetInt32(1),
-                                TotalAmount = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2)
-                            };
+                                dto.Year = reader.GetInt32(0);
+                                dto.Month = reader.GetInt32(1);
+                                dto.TotalAmount = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2);
+                            }
+                            else
+                            {
+                                dto.Year = reader.GetInt32(0);
+                                dto.TotalAmount = reader.IsDBNull(1) ? 0 : reader.GetDecimal(1);
+                            }
 
                             revenueList.Add(dto);
                         }
@@ -94,9 +103,10 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
             return revenueList;
         }
 
-        public async Task<List<MonthlyRevenueDto>> GetDirectSaleMonthlyRevenueAsync()
+
+        public async Task<List<DirectSaleMonthlyRevenueDto>> GetDirectSaleRevenueAsync(string viewByMode)
         {
-            var revenueList = new List<MonthlyRevenueDto>();
+            var revenueList = new List<DirectSaleMonthlyRevenueDto>();
 
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -105,26 +115,37 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
                 using (var command = new SqlCommand("GetDirectSaleAssetsMonthlyRevenue", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ViewByMode", viewByMode);
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
-                            var dto = new MonthlyRevenueDto
+                            var dto = new DirectSaleMonthlyRevenueDto();
+
+                            if (viewByMode == "Monthly")
                             {
-                                Year = reader.GetInt32(0),
-                                Month = reader.GetInt32(1),
-                                TotalAmount = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2)
-                            };
+                                dto.Year = reader.GetInt32(0);
+                                dto.Month = reader.GetInt32(1);
+                                dto.TotalAmount = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2);
+                            }
+                            else
+                            {
+                                dto.Year = reader.GetInt32(0);
+                                dto.TotalAmount = reader.IsDBNull(1) ? 0 : reader.GetDecimal(1);
+                            }
 
                             revenueList.Add(dto);
                         }
+
+
                     }
                 }
-            }
 
-            return revenueList;
+                return revenueList;
+            }
         }
+
 
         public async Task<List<DirectSaleAssetWithMediaDto>> GetDirectSaleAssetsWithMediaAsync()
         {
