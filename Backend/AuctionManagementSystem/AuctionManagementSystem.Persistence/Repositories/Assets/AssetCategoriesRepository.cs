@@ -118,6 +118,18 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 }).ToListAsync();
         }
 
+        public async Task<List<AssetCategoryTranslationDto>> GetAssetCategoryTranslationsByLangCodeAsync(string langCode)
+        {
+            return await _context.TblAssetCategoryTranslations
+                .Where(t => t.Language.Code == langCode)
+                .Select(t => new AssetCategoryTranslationDto
+                {
+                    CategoryId = t.CategoryId,
+                    TranslatedCategoryName = t.TranslatedCategoryName,
+                    TranslatedSubcategory = t.TranslatedSubcategory,
+                    TranslatedDetails = t.TranslatedDetails
+                }).ToListAsync();
+        }
 
 
     }

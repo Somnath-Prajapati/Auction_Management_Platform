@@ -18,5 +18,6 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task<TblAssetCategory> AddWithPaymentMethodsAsync(TblAssetCategory category, List<int> paymentMethodIds);
         Task UpdateWithPaymentMethodsAsync(TblAssetCategory existingCategory, List<int> paymentMethodIds);
         Task<List<AuctionCategoryTranslationDto>> GetTranslationsByLangCodeAsync(string langCode);
+        Task<List<AssetCategoryTranslationDto>> GetAssetCategoryTranslationsByLangCodeAsync(string langCode);
     }
 }

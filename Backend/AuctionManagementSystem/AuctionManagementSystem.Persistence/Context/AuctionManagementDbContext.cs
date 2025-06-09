@@ -129,7 +129,7 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblNotification> TblNotifications { get; set; }
     public virtual DbSet<TblUserDeposit> TblUserDeposits { get; set; }
     public virtual DbSet<tblLanguages> TblLanguages { get; set; }
-
+    public virtual DbSet<tblAssetCategoryTranslations> TblAssetCategoryTranslations { get; set; }
     public virtual DbSet<TblUserLimitAuditLog> TblUserLimitAuditLogs { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -197,6 +197,22 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasForeignKey<TblRolePermissionsMatrix>(d => d.RoleId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_tblRolePermissionsMatrix_tblRoles");
+        });
+        modelBuilder.Entity<tblAssetCategoryTranslations>(entity =>
+        {
+            entity.ToTable("tblAssetCategoryTranslations");
+
+            entity.HasKey(e => e.Id);
+
+            entity.HasOne(e => e.Category)
+                .WithMany()
+                .HasForeignKey(e => e.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(e => e.Language)
+                .WithMany()
+                .HasForeignKey(e => e.LanguageId)
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<TblOrder>(entity =>

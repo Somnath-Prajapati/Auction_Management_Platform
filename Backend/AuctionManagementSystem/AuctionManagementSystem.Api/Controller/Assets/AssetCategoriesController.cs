@@ -93,7 +93,16 @@ namespace AuctionManagementSystem.Api.Controller.Assets
 
             return Ok(translations);
         }
+        [HttpGet("langCat/{langCode}")]
+        public async Task<ActionResult<List<AuctionCategoryTranslationDto>>> GetCategoriesByLanguage(string langCode)
+        {
+            var translations = await _repo.GetAssetCategoryTranslationsByLangCodeAsync(langCode);
 
+            if (translations == null || !translations.Any())
+                return NotFound($"No translations found for language code '{langCode}'.");
+
+            return Ok(translations);
+        }
     }
 
 }
