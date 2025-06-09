@@ -20,7 +20,7 @@ namespace AuctionManagementSystem.Application.Features.Roles.Command.UpdateRoles
             _roleRepository = roleRepository;
             _mapper = mapper;
         }
-
+            
         public async Task<bool> Handle(UpdateRoleWithPermissionsCommand request, CancellationToken cancellationToken)
         {
             var roleDto = request.RoleDto;

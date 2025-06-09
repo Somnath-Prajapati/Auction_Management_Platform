@@ -30591,3 +30591,42 @@ System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport 
 2025-06-09 12:06:29.022 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
 2025-06-09 12:06:43.752 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
 2025-06-09 12:06:51.625 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 12:07:08.371 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 12:07:09.340 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 12:07:09.361 +05:30 [DBG] Creating DbConnection.
+2025-06-09 12:07:09.362 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 12:07:11.563 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 12:07:11.563 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 12:07:11.563 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 12:07:19.191 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:07:29.137 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 12:07:29.137 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:07:29.137 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:07:29.137 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 12:07:29.137 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 12:07:29.137 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 12:07:48.900 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 12:07:49.842 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:08:19.866 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:08:29.163 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 12:08:29.163 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:08:29.163 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:08:29.163 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 12:08:29.163 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 12:08:29.163 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 12:08:50.006 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:09:20.023 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:09:30.487 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 12:09:30.487 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:09:30.487 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:09:30.487 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 12:09:30.487 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 12:09:30.487 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 12:09:50.941 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:10:21.026 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:10:30.497 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 12:10:30.497 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:10:30.497 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:10:30.497 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 12:10:30.497 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 12:10:30.498 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
