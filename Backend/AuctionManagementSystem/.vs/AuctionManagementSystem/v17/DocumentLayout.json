@@ -1,7 +1,20 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\demo\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\New folder (2)\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\desktop\\new folder (2)\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\persistenceserviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\persistenceserviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|c:\\users\\user\\desktop\\new folder (2)\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.persistence\\context\\auctionmanagementdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{386ABEF6-ABC4-4306-9F7E-957DCD01DCD7}|AuctionManagementSystem.Persistence\\AuctionManagementSystem.Persistence.csproj|solutionrelative:auctionmanagementsystem.persistence\\context\\auctionmanagementdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|c:\\users\\user\\desktop\\new folder (2)\\auction_management_platform\\backend\\auctionmanagementsystem\\auctionmanagementsystem.application\\services\\hangfireauctionjobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{799854F6-F6F1-4CA8-B3F9-8E8CEC258D1D}|AuctionManagementSystem.Application\\AuctionManagementSystem.Application.csproj|solutionrelative:auctionmanagementsystem.application\\services\\hangfireauctionjobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,25 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PersistenceServiceRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\New folder (2)\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\PersistenceServiceRegistration.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\PersistenceServiceRegistration.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\New folder (2)\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\PersistenceServiceRegistration.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Persistence\\PersistenceServiceRegistration.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowEsAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T07:33:48.24Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HangfireAuctionJobScheduler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\New folder (2)\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Services\\HangfireAuctionJobScheduler.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Application\\Services\\HangfireAuctionJobScheduler.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\New folder (2)\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Application\\Services\\HangfireAuctionJobScheduler.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Application\\Services\\HangfireAuctionJobScheduler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T07:18:03.464Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuctionManagementDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\New folder (2)\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Context\\AuctionManagementDbContext.cs",
+              "RelativeDocumentMoniker": "AuctionManagementSystem.Persistence\\Context\\AuctionManagementDbContext.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\New folder (2)\\Auction_Management_Platform\\Backend\\AuctionManagementSystem\\AuctionManagementSystem.Persistence\\Context\\AuctionManagementDbContext.cs",
+              "RelativeToolTip": "AuctionManagementSystem.Persistence\\Context\\AuctionManagementDbContext.cs",
+              "ViewState": "AgIAAIcFAAAAAAAAAADgv5QFAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T07:16:38.728Z"
             }
           ]
         }
