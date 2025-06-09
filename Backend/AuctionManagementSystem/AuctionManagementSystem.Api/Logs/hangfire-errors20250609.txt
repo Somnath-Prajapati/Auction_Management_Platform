@@ -29457,3 +29457,1099 @@ System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport 
 2025-06-09 11:08:08.275 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
 2025-06-09 11:08:08.275 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
 2025-06-09 11:08:11.007 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:08:41.043 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:09:08.274 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:09:08.274 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:09:08.274 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:09:08.274 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:09:08.274 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:09:08.274 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:09:11.085 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:09:37.772 +05:30 [DBG] Config reload token fired. Checking for changes...
+2025-06-09 11:09:37.779 +05:30 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2025-06-09 11:09:37.779 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2025-06-09 11:09:38.069 +05:30 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2025-06-09 11:09:38.070 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2025-06-09 11:09:38.070 +05:30 [DBG] Config reload token fired. Checking for changes...
+2025-06-09 11:09:41.148 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:10:08.247 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:10:08.252 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:10:08.252 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:10:08.252 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:10:08.252 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:10:08.252 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-09 11:10:08.252 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:10:08.252 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:10:08.253 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:10:08.265 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:10:08.266 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:10:08.266 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 0ms reading results.
+2025-06-09 11:10:08.266 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:10:08.266 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (0ms).
+2025-06-09 11:10:08.266 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:10:08.266 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:10:08.267 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:10:08.281 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:10:08.281 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:10:08.281 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:10:08.281 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:10:08.282 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:10:08.282 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:10:11.161 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:10:11.233 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:10:41.288 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:10:50.636 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:10:50.641 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:10:50.641 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:10:50.666 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:10:50.668 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:10:50.669 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:11:05.676 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:11:05.677 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:11:05.677 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:11:05.698 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:11:05.698 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:11:05.698 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:11:08.285 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:11:08.285 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:11:08.286 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:11:08.286 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:11:08.286 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:11:08.286 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:11:11.331 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:11:41.423 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:12:08.286 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:12:08.286 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:12:08.286 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:12:08.286 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:12:08.287 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:12:08.287 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:12:11.437 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:12:41.470 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:13:08.289 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:13:08.289 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:13:08.289 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:13:08.289 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:13:08.289 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:13:08.289 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:13:11.573 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:13:41.588 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:14:08.303 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:14:08.303 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:14:08.303 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:14:08.303 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:14:08.303 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:14:08.304 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:14:11.693 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:14:41.751 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:15:08.277 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:15:08.277 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:15:08.277 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:15:08.277 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:15:08.277 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:15:08.277 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-09 11:15:08.277 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:15:08.277 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:15:08.278 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:15:08.293 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:15:08.294 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:15:08.294 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 0ms reading results.
+2025-06-09 11:15:08.294 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:15:08.294 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (0ms).
+2025-06-09 11:15:08.295 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:15:08.295 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:15:08.295 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:15:08.309 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:15:08.309 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:15:08.309 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:15:08.309 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:15:08.309 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:15:08.309 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:15:11.489 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:15:11.766 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:15:41.810 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:16:08.317 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:16:08.317 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:16:08.317 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:16:08.317 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:16:08.317 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:16:08.317 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:16:11.846 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:16:41.877 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:16:59.575 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:16:59.681 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:16:59.700 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:16:59.700 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:16:59.722 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:16:59.723 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:16:59.723 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:17:08.325 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:17:08.326 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:17:08.326 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:17:08.326 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:17:08.326 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:17:08.326 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:17:11.915 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:17:41.945 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:17:54.720 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:17:54.720 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:17:54.720 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:17:54.740 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:17:54.740 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:17:54.740 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:18:00.276 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:18:00.360 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:18:00.360 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:18:00.360 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:18:00.380 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:18:00.380 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:18:00.380 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:18:08.332 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:18:08.332 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:18:08.332 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:18:08.332 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:18:08.332 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:18:08.332 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:18:11.970 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:18:41.992 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:19:00.657 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:19:00.736 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:19:00.736 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:19:00.736 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:19:00.752 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:19:00.752 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:19:00.752 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:19:08.343 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:19:08.343 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:19:08.343 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:19:08.343 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:19:08.344 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:19:08.344 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:19:12.027 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:19:42.106 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:20:01.173 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:20:01.279 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:20:01.279 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:20:01.279 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:20:01.298 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:20:01.298 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:20:01.298 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:20:08.304 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:20:08.305 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:20:08.305 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:20:08.305 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:20:08.306 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:20:08.306 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-09 11:20:08.306 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:20:08.306 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:20:08.306 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:20:08.325 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:20:08.328 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:20:08.328 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 0ms reading results.
+2025-06-09 11:20:08.328 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:20:08.328 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (0ms).
+2025-06-09 11:20:08.328 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:20:08.328 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:20:08.328 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:20:08.350 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:20:08.350 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:20:08.350 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:20:08.350 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:20:08.351 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:20:08.351 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:20:11.710 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:20:12.147 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:20:42.239 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:21:01.735 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:21:01.857 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:21:01.858 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:21:01.858 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:21:01.878 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:21:01.879 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:21:01.879 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:21:08.366 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:21:08.366 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:21:08.366 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:21:08.366 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:21:08.366 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:21:08.366 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:21:12.269 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:21:42.286 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:22:02.257 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:22:02.340 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:22:02.340 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:22:02.340 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:22:02.360 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:22:02.360 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:22:02.360 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:22:08.374 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:22:08.374 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:22:08.374 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:22:08.374 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:22:08.374 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:22:08.374 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:22:12.383 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:22:42.437 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:23:02.954 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:23:03.242 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:23:03.242 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:23:03.242 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:23:03.276 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:23:03.277 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:23:03.277 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:23:08.386 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:23:08.386 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:23:08.387 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:23:08.387 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:23:08.387 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:23:08.387 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:23:12.456 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:23:42.476 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:24:03.416 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:24:03.515 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:24:03.515 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:24:03.515 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:24:03.533 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:24:03.533 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:24:03.533 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:24:08.389 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:24:08.389 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:24:08.389 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:24:08.389 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:24:08.389 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:24:08.389 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:24:12.513 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:24:42.627 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:25:04.291 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:25:04.402 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:25:04.403 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:25:04.403 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:25:04.422 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:25:04.423 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:25:04.423 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:25:08.334 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:25:08.334 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:25:08.334 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:25:08.334 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:25:08.334 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:25:08.334 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-09 11:25:08.334 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:25:08.334 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:25:08.334 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:25:08.347 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:25:08.349 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:25:08.349 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 0ms reading results.
+2025-06-09 11:25:08.349 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:25:08.349 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (0ms).
+2025-06-09 11:25:08.349 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:25:08.349 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:25:08.349 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:25:08.391 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:25:08.391 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:25:08.391 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:25:08.391 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:25:08.391 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:25:08.391 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:25:12.031 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:25:12.677 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:25:42.709 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:26:04.732 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:26:08.405 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:26:08.405 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:26:08.405 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:26:08.405 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:26:08.405 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:26:08.405 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:26:12.750 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:26:42.753 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:26:50.229 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:26:50.353 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:26:50.353 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:26:50.353 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:26:50.373 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:26:50.374 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:26:50.374 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:27:05.539 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:27:05.623 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:27:05.623 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:27:05.623 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:27:05.639 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:27:05.639 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:27:05.639 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:27:08.415 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:27:08.415 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:27:08.415 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:27:08.415 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:27:08.416 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:27:08.416 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:27:12.789 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:27:42.920 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:27:51.654 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:27:51.796 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:27:51.797 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:27:51.797 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:27:51.821 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:27:51.821 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:27:51.821 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:28:07.663 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:28:07.951 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:28:07.951 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:28:07.951 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:28:07.990 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:28:07.990 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:28:07.990 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:28:08.429 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:28:08.429 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:28:08.430 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:28:08.430 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:28:08.430 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:28:08.430 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:28:12.985 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:28:42.996 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:28:53.269 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:28:53.501 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:28:53.501 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:28:53.501 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:28:53.533 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:28:53.533 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:28:53.533 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:29:08.444 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:29:08.444 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:29:08.444 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:29:08.444 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:29:08.444 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:29:08.444 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:29:13.164 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:29:43.183 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:29:53.825 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:30:08.358 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:30:08.358 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:30:08.358 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:30:08.358 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:30:08.359 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:30:08.359 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-09 11:30:08.359 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:30:08.359 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:30:08.359 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:30:08.369 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:30:08.371 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:30:08.371 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 0ms reading results.
+2025-06-09 11:30:08.371 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:30:08.371 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (0ms).
+2025-06-09 11:30:08.371 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:30:08.371 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:30:08.371 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:30:08.458 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:30:08.458 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:30:08.458 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:30:08.458 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:30:08.458 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:30:08.458 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:30:12.321 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:30:13.198 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:30:43.336 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:30:54.322 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:31:08.544 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:31:08.544 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:31:08.544 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:31:08.544 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:31:08.544 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:31:08.544 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:31:13.375 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:31:43.401 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:31:54.931 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:31:55.146 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:31:55.147 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:31:55.147 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:31:55.169 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:31:55.169 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:31:55.169 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:32:08.553 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:32:08.553 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:32:08.553 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:32:08.553 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:32:08.553 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:32:08.553 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:32:13.429 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:32:43.476 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:32:55.361 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:32:55.434 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:32:55.434 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:32:55.434 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:32:55.455 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:32:55.455 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:32:55.455 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:33:08.619 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:33:08.619 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:33:08.619 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:33:08.619 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:33:08.619 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:33:08.619 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:33:13.641 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:33:43.977 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:33:56.202 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:33:56.295 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:33:56.295 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:33:56.295 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:33:56.310 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:33:56.310 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:33:56.310 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:34:02.342 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:34:02.342 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:34:02.342 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:34:02.362 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:34:02.362 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:34:02.362 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:34:08.632 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:34:08.632 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:34:08.632 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:34:08.632 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:34:08.632 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:34:08.632 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:34:14.020 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:34:44.050 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:34:56.727 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:34:56.840 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:34:56.840 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:34:56.840 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:34:56.888 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:34:56.889 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:34:56.889 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:35:08.387 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:35:08.387 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:35:08.387 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:35:08.387 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:35:08.387 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:35:08.387 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-09 11:35:08.387 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:35:08.387 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:35:08.388 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:35:08.412 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:35:08.421 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:35:08.421 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 0ms reading results.
+2025-06-09 11:35:08.421 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:35:08.421 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (0ms).
+2025-06-09 11:35:08.421 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:35:08.421 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:35:08.421 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:35:08.634 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:35:08.635 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:35:08.635 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:35:08.635 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:35:08.635 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:35:08.635 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:35:09.753 +05:30 [DBG] Connection id "0HND72TIMH4O3" received FIN.
+2025-06-09 11:35:09.753 +05:30 [DBG] Connection id "0HND72TIMH4O3" is closed. The last processed stream ID was 13.
+2025-06-09 11:35:09.753 +05:30 [DBG] Connection id "0HND72TIMH4O3" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-06-09 11:35:09.754 +05:30 [DBG] The connection queue processing loop for 0HND72TIMH4O3 completed.
+2025-06-09 11:35:09.754 +05:30 [DBG] Connection id "0HND72TIMH4O3" stopped.
+2025-06-09 11:35:12.937 +05:30 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2025-06-09 11:35:12.982 +05:30 [DBG] Removing outdated records from the 'Job' table...
+2025-06-09 11:35:13.001 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:35:13.016 +05:30 [DBG] Removing outdated records from the 'List' table...
+2025-06-09 11:35:13.048 +05:30 [DBG] Removing outdated records from the 'Set' table...
+2025-06-09 11:35:13.079 +05:30 [DBG] Removing outdated records from the 'Hash' table...
+2025-06-09 11:35:14.087 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:35:44.108 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:35:57.176 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:35:57.254 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:35:57.254 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:35:57.254 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:35:57.274 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:35:57.274 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:35:57.274 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:36:08.645 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:36:08.645 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:36:08.645 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:36:08.645 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:36:08.645 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:36:08.645 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:36:14.136 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:36:44.153 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:36:57.619 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:36:57.684 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:36:57.684 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:36:57.684 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:36:57.733 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:36:57.733 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:36:57.733 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:37:08.649 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:37:08.649 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:37:08.649 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:37:08.649 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:37:08.649 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:37:08.649 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:37:14.199 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:37:44.227 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:37:58.097 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:37:58.179 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:37:58.179 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:37:58.179 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:37:58.200 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:37:58.201 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:37:58.201 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:38:08.659 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:38:08.660 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:38:08.660 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:38:08.660 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:38:08.660 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:38:08.660 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:38:14.266 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:38:44.311 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:38:58.481 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:38:58.552 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:38:58.552 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:38:58.552 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:38:58.569 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:38:58.569 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:38:58.569 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:39:08.668 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:39:08.668 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:39:08.668 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:39:08.668 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:39:08.668 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:39:08.668 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:39:14.336 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:39:44.358 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:40:08.427 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:40:08.429 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:40:08.429 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:40:08.429 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:40:08.429 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:40:08.429 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-09 11:40:08.429 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:40:08.429 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:40:08.429 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:40:08.456 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:40:08.459 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:40:08.460 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 0ms reading results.
+2025-06-09 11:40:08.460 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:40:08.460 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (0ms).
+2025-06-09 11:40:08.460 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:40:08.460 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:40:08.460 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:40:08.677 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:40:08.677 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:40:08.677 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:40:08.678 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:40:08.678 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:40:08.678 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:40:13.080 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:40:14.386 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:40:44.728 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:41:08.688 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:41:08.688 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:41:08.688 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:41:08.688 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:41:08.688 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:41:08.688 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:41:14.744 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:41:44.765 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:42:08.689 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:42:08.689 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:42:08.689 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:42:08.689 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:42:08.689 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:42:08.689 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:42:14.925 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:42:45.015 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:43:01.408 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:43:02.987 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:43:02.987 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:43:02.987 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:43:03.418 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:43:03.418 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:43:03.418 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:43:08.698 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:43:08.698 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:43:08.698 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:43:08.698 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:43:08.699 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:43:08.699 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:43:17.358 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:43:47.475 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:44:08.717 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:44:08.717 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:44:08.717 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:44:08.717 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:44:08.717 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:44:08.717 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:44:18.451 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:44:48.661 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:44:53.614 +05:30 [DBG] 1 recurring job(s) processed by scheduler.
+2025-06-09 11:45:08.476 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:45:08.480 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:45:08.480 +05:30 [DBG] Created DbConnection. (1ms).
+2025-06-09 11:45:08.480 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:45:08.481 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:45:08.481 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-09 11:45:08.481 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:45:08.481 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:45:08.481 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:45:08.622 +05:30 [INF] Executed DbCommand (140ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:45:08.626 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:45:08.626 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 0ms reading results.
+2025-06-09 11:45:08.626 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:45:08.627 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (0ms).
+2025-06-09 11:45:08.627 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:45:08.627 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:45:08.627 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:45:08.726 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:45:08.726 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:45:08.726 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:45:08.726 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:45:08.726 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:45:08.726 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:45:16.650 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:45:18.884 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:45:48.931 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:46:08.728 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:46:08.729 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:46:08.729 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:46:08.729 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:46:08.729 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:46:08.729 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:46:18.955 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:46:48.982 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:47:22.937 +05:30 [INF] Start installing Hangfire SQL objects...
+2025-06-09 11:47:23.561 +05:30 [INF] Hangfire SQL objects installed.
+2025-06-09 11:47:23.692 +05:30 [DBG] Registered SignalR Protocol: json, implemented by Microsoft.AspNetCore.SignalR.Protocol.JsonHubProtocol.
+2025-06-09 11:47:23.763 +05:30 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2025-06-09 11:47:23.919 +05:30 [DBG] Hosting starting
+2025-06-09 11:47:23.930 +05:30 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-09 11:47:23.961 +05:30 [DBG] Reading data from file 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys\key-10f9324c-4ea8-49ad-bebe-0d76187f775b.xml'.
+2025-06-09 11:47:23.968 +05:30 [DBG] Reading data from file 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys\key-7b554b8b-0535-4ef5-9c02-95701cda3f6d.xml'.
+2025-06-09 11:47:23.976 +05:30 [DBG] Found key {10f9324c-4ea8-49ad-bebe-0d76187f775b}.
+2025-06-09 11:47:23.989 +05:30 [DBG] Found key {7b554b8b-0535-4ef5-9c02-95701cda3f6d}.
+2025-06-09 11:47:24.007 +05:30 [DBG] Considering key {10f9324c-4ea8-49ad-bebe-0d76187f775b} with expiration date 2025-08-06 07:01:53Z as default key.
+2025-06-09 11:47:24.025 +05:30 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2025-06-09 11:47:24.029 +05:30 [DBG] Decrypting secret element using Windows DPAPI.
+2025-06-09 11:47:24.031 +05:30 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2025-06-09 11:47:24.033 +05:30 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2025-06-09 11:47:24.035 +05:30 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2025-06-09 11:47:24.038 +05:30 [DBG] Using key {10f9324c-4ea8-49ad-bebe-0d76187f775b} as the default key.
+2025-06-09 11:47:24.040 +05:30 [DBG] Key ring with default key {10f9324c-4ea8-49ad-bebe-0d76187f775b} was loaded during application startup.
+2025-06-09 11:47:24.246 +05:30 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2025-06-09 11:47:24.777 +05:30 [DBG] No relationship from 'TblRequestStatus' to 'TblRequestStatusHistory' has been configured by convention because there are multiple properties on one entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'} that could be matched with the properties on the other entity type - {'NewRequestStatus', 'PreviousRequestStatus'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:47:24.790 +05:30 [DBG] No relationship from 'TblRequestStatusHistory' to 'TblRequestStatus' has been configured by convention because there are multiple properties on one entity type - {'NewRequestStatus', 'PreviousRequestStatus'} that could be matched with the properties on the other entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:47:24.800 +05:30 [DBG] No relationship from 'TblTransaction' to 'TblUser' has been configured by convention because there are multiple properties on one entity type - {'UpdatedByUser', 'User'} that could be matched with the properties on the other entity type - {'TblTransactions'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:47:24.807 +05:30 [DBG] No relationship from 'TblUser' to 'TblTransaction' has been configured by convention because there are multiple properties on one entity type - {'TblTransactions'} that could be matched with the properties on the other entity type - {'UpdatedByUser', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:47:25.378 +05:30 [DBG] No relationship from 'TblRequestStatusHistory' to 'TblRequestStatus' has been configured by convention because there are multiple properties on one entity type - {'NewRequestStatus', 'PreviousRequestStatus'} that could be matched with the properties on the other entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:47:25.379 +05:30 [DBG] No relationship from 'TblRequestStatus' to 'TblRequestStatusHistory' has been configured by convention because there are multiple properties on one entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'} that could be matched with the properties on the other entity type - {'NewRequestStatus', 'PreviousRequestStatus'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:47:25.398 +05:30 [DBG] No relationship from 'TblTransaction' to 'TblUser' has been configured by convention because there are multiple properties on one entity type - {'UpdatedByUser', 'User'} that could be matched with the properties on the other entity type - {'TblTransactions'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:47:25.399 +05:30 [DBG] No relationship from 'TblUser' to 'TblTransaction' has been configured by convention because there are multiple properties on one entity type - {'TblTransactions'} that could be matched with the properties on the other entity type - {'UpdatedByUser', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:47:25.468 +05:30 [DBG] The index {'UserId'} was not created on entity type 'TblAutoBid' as the properties are already covered by the index {'UserId', 'AuctionId', 'AssetId'}.
+2025-06-09 11:47:26.047 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:47:26.101 +05:30 [DBG] Compiling query expression: 
+'DbSet<TblUserDeposit>()
+    .Where(d => !(d.IsDeleted) && d.DepositAmount > 0 && d.ModifiedAt <= __cutoffDate_0)'
+2025-06-09 11:47:26.462 +05:30 [DBG] Generated query execution expression: 
+'queryContext => SingleQueryingEnumerable.Create<TblUserDeposit>(
+    relationalQueryContext: (RelationalQueryContext)queryContext, 
+    relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: TblUserDeposit.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: TblUserDeposit.CreatedBy (string) MaxLength(100), 1], [Property: TblUserDeposit.CreatedDate (DateTime) Required ValueGenerated.OnAdd, 2], [Property: TblUserDeposit.DeletedBy (string) MaxLength(100), 3], [Property: TblUserDeposit.DeletedDate (DateTime?), 4], [Property: TblUserDeposit.DepositAmount (decimal) Required, 5], [Property: TblUserDeposit.IsDeleted (bool) Required, 6], [Property: TblUserDeposit.ModifiedAt (DateTime?) ValueGenerated.OnAdd, 7], [Property: TblUserDeposit.UpdatedBy (string) MaxLength(100), 8], [Property: TblUserDeposit.UpdatedDate (DateTime?), 9], [Property: TblUserDeposit.UserId (int) Required, 10] }
+        SELECT t.Id, t.CreatedBy, t.CreatedDate, t.DeletedBy, t.DeletedDate, t.DepositAmount, t.IsDeleted, t.ModifiedAt, t.UpdatedBy, t.UpdatedDate, t.UserId
+        FROM AuctionM_dbuser.TblUserDeposit AS t
+        WHERE (Not(t.IsDeleted) && (t.DepositAmount > 0.0)) && (t.ModifiedAt <= @__cutoffDate_0)) | Resolver: c => new RelationalCommandCache(
+        c.Dependencies.MemoryCache, 
+        c.RelationalDependencies.QuerySqlGeneratorFactory, 
+        c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: TblUserDeposit.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: TblUserDeposit.CreatedBy (string) MaxLength(100), 1], [Property: TblUserDeposit.CreatedDate (DateTime) Required ValueGenerated.OnAdd, 2], [Property: TblUserDeposit.DeletedBy (string) MaxLength(100), 3], [Property: TblUserDeposit.DeletedDate (DateTime?), 4], [Property: TblUserDeposit.DepositAmount (decimal) Required, 5], [Property: TblUserDeposit.IsDeleted (bool) Required, 6], [Property: TblUserDeposit.ModifiedAt (DateTime?) ValueGenerated.OnAdd, 7], [Property: TblUserDeposit.UpdatedBy (string) MaxLength(100), 8], [Property: TblUserDeposit.UpdatedDate (DateTime?), 9], [Property: TblUserDeposit.UserId (int) Required, 10] }
+        SELECT t.Id, t.CreatedBy, t.CreatedDate, t.DeletedBy, t.DeletedDate, t.DepositAmount, t.IsDeleted, t.ModifiedAt, t.UpdatedBy, t.UpdatedDate, t.UserId
+        FROM AuctionM_dbuser.TblUserDeposit AS t
+        WHERE (Not(t.IsDeleted) && (t.DepositAmount > 0.0)) && (t.ModifiedAt <= @__cutoffDate_0), 
+        False, 
+        new HashSet<string>(
+            new string[]{ }, 
+            StringComparer.Ordinal
+        )
+    )].GetRelationalCommandTemplate(parameters), 
+    readerColumns: null, 
+    shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+    {
+        TblUserDeposit entity;
+        entity = 
+        {
+            MaterializationContext materializationContext1;
+            IEntityType entityType1;
+            TblUserDeposit instance1;
+            InternalEntityEntry entry1;
+            bool hasNullKey1;
+            materializationContext1 = new MaterializationContext(
+                [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                queryContext.Context
+            );
+            instance1 = default(TblUserDeposit);
+            entry1 = queryContext.TryGetEntry(
+                key: [LIFTABLE Constant: Key: TblUserDeposit.Id PK | Resolver: c => c.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit").FindPrimaryKey()], 
+                keyValues: new object[]{ (object)dataReader.GetInt32(0) }, 
+                throwOnNullKey: True, 
+                hasNullKey: hasNullKey1);
+            !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+            {
+                entityType1 = entry1.EntityType;
+                return instance1 = (TblUserDeposit)entry1.Entity;
+            } : 
+            {
+                ISnapshot shadowSnapshot1;
+                shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                entityType1 = [LIFTABLE Constant: EntityType: TblUserDeposit | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit")];
+                instance1 = switch (entityType1)
+                {
+                    case [LIFTABLE Constant: EntityType: TblUserDeposit | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit")]: 
+                        {
+                            return 
+                            {
+                                TblUserDeposit instance;
+                                instance = new TblUserDeposit();
+                                instance.<Id>k__BackingField = dataReader.GetInt32(0);
+                                instance.<CreatedBy>k__BackingField = dataReader.IsDBNull(1) ? default(string) : dataReader.GetString(1);
+                                instance.<CreatedDate>k__BackingField = dataReader.GetDateTime(2);
+                                instance.<DeletedBy>k__BackingField = dataReader.IsDBNull(3) ? default(string) : dataReader.GetString(3);
+                                instance.<DeletedDate>k__BackingField = dataReader.IsDBNull(4) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(4);
+                                instance.<DepositAmount>k__BackingField = dataReader.GetDecimal(5);
+                                instance.<IsDeleted>k__BackingField = dataReader.GetBoolean(6);
+                                instance.<ModifiedAt>k__BackingField = dataReader.IsDBNull(7) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(7);
+                                instance.<UpdatedBy>k__BackingField = dataReader.IsDBNull(8) ? default(string) : dataReader.GetString(8);
+                                instance.<UpdatedDate>k__BackingField = dataReader.IsDBNull(9) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(9);
+                                instance.<UserId>k__BackingField = dataReader.GetInt32(10);
+                                (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                    context: materializationContext1.Context, 
+                                    entity: instance, 
+                                    queryTrackingBehavior: TrackAll, 
+                                    structuralType: [LIFTABLE Constant: EntityType: TblUserDeposit | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit")]) : default(void);
+                                return instance;
+                            }}
+                    default: 
+                        default(TblUserDeposit)
+                }
+                ;
+                entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                    entityType: entityType1, 
+                    entity: instance1, 
+                    snapshot: shadowSnapshot1);
+                return instance1;
+            } : default(void);
+            return instance1;
+        };
+        return entity;
+    }, 
+    contextType: AuctionManagementSystem.Persistence.Context.AuctionManagementDbContext, 
+    standAloneStateManager: False, 
+    detailedErrorsEnabled: False, 
+    threadSafetyChecksEnabled: True)'
+2025-06-09 11:47:26.512 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:47:26.516 +05:30 [DBG] Created DbConnection. (2ms).
+2025-06-09 11:47:26.519 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:47:26.523 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:47:26.525 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-09 11:47:26.530 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (1ms).
+2025-06-09 11:47:26.534 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (8ms).
+2025-06-09 11:47:26.542 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:47:26.596 +05:30 [INF] Cart Expiry Hosted Service started.
+2025-06-09 11:47:26.604 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:47:26.605 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:47:26.608 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:47:26.611 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:47:26.617 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:47:26.620 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:47:26.622 +05:30 [INF] Executed DbCommand (67ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:47:26.628 +05:30 [DBG] Middleware loaded
+2025-06-09 11:47:26.630 +05:30 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16539 B).
+2025-06-09 11:47:26.631 +05:30 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2025-06-09 11:47:26.666 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:47:26.672 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 33ms reading results.
+2025-06-09 11:47:26.675 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:47:26.676 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (0ms).
+2025-06-09 11:47:26.677 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:47:26.679 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:47:26.680 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:47:26.723 +05:30 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2025-06-09 11:47:26.724 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2025-06-09 11:47:26.735 +05:30 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2025-06-09 11:47:26.848 +05:30 [INF] Now listening on: https://localhost:62627
+2025-06-09 11:47:26.848 +05:30 [INF] Now listening on: http://localhost:62628
+2025-06-09 11:47:26.848 +05:30 [DBG] Loaded hosting startup assembly AuctionManagementSystem.Api
+2025-06-09 11:47:26.848 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2025-06-09 11:47:26.848 +05:30 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2025-06-09 11:47:26.848 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2025-06-09 11:47:26.854 +05:30 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2025-06-09 11:47:26.854 +05:30 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2025-06-09 11:47:26.952 +05:30 [DBG] Connection id "0HND73L7842G0" received FIN.
+2025-06-09 11:47:26.982 +05:30 [DBG] Connection id "0HND73L7842G0" accepted.
+2025-06-09 11:47:26.983 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: 180.149.240.247@AuctionManagementDB'
+2025-06-09 11:47:26.984 +05:30 [DBG] Connection id "0HND73L7842G0" started.
+2025-06-09 11:47:26.986 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2025-06-09 11:47:27.015 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2025-06-09 11:47:27.086 +05:30 [DBG] Execution loop BackgroundServerProcess:be76068f has started in 59.4026 ms
+2025-06-09 11:47:27.086 +05:30 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-06-09 11:47:27.120 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-09 11:47:27.121 +05:30 [INF] Hosting environment: Development
+2025-06-09 11:47:27.122 +05:30 [INF] Content root path: C:\Users\User\Desktop\New folder (2)\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Api
+2025-06-09 11:47:27.126 +05:30 [DBG] Connection id "0HND73L7842G0" stopped.
+2025-06-09 11:47:27.138 +05:30 [DBG] Connection id "0HND73L7842G0" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-06-09 11:47:28.292 +05:30 [DBG] Connection id "0HND73L7842G1" accepted.
+2025-06-09 11:47:28.293 +05:30 [DBG] Connection id "0HND73L7842G1" started.
+2025-06-09 11:47:28.389 +05:30 [DBG] Connection 0HND73L7842G1 established using the following protocol: "Tls12"
+2025-06-09 11:47:28.443 +05:30 [INF] Server desktop-0idud2j:20232:08825763 successfully announced in 1320.7662 ms
+2025-06-09 11:47:28.472 +05:30 [DBG] Execution loop ServerHeartbeatProcess:298601fc has started in 26.6058 ms
+2025-06-09 11:47:28.474 +05:30 [INF] Server desktop-0idud2j:20232:08825763 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2025-06-09 11:47:28.507 +05:30 [DBG] Execution loop ServerWatchdog:bc262bd3 has started in 32.6904 ms
+2025-06-09 11:47:28.511 +05:30 [DBG] Execution loop ServerJobCancellationWatcher:f8f2968e has started in 32.9315 ms
+2025-06-09 11:47:28.517 +05:30 [DBG] Execution loop ExpirationManager:75dd54ae has started in 5.6569 ms
+2025-06-09 11:47:28.526 +05:30 [DBG] Execution loop CountersAggregator:b519c44c has started in 8.4203 ms
+2025-06-09 11:47:28.530 +05:30 [INF] 1 servers were removed due to timeout
+2025-06-09 11:47:28.530 +05:30 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2025-06-09 11:47:28.530 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:47:28.530 +05:30 [DBG] Execution loop SqlServerHeartbeatProcess:bd4f7fcb has started in 4.7737 ms
+2025-06-09 11:47:28.536 +05:30 [DBG] Execution loop Worker:0838fdca has started in 6.1391 ms
+2025-06-09 11:47:28.545 +05:30 [DBG] Execution loop Worker:620c8a0d has started in 15.0558 ms
+2025-06-09 11:47:28.550 +05:30 [DBG] Execution loop Worker:9e9c52ab has started in 20.1578 ms
+2025-06-09 11:47:28.559 +05:30 [DBG] Execution loop Worker:af8efbba has started in 28.3719 ms
+2025-06-09 11:47:28.609 +05:30 [DBG] Execution loop Worker:0ac34741 has started in 78.9198 ms
+2025-06-09 11:47:28.622 +05:30 [DBG] Execution loop Worker:0bc792c1 has started in 91.4521 ms
+2025-06-09 11:47:28.626 +05:30 [DBG] Removing outdated records from the 'Job' table...
+2025-06-09 11:47:28.664 +05:30 [DBG] Execution loop Worker:bea35b65 has started in 134.1382 ms
+2025-06-09 11:47:28.677 +05:30 [DBG] Removing outdated records from the 'List' table...
+2025-06-09 11:47:28.677 +05:30 [DBG] Execution loop Worker:c5d4fb44 has started in 146.8079 ms
+2025-06-09 11:47:28.681 +05:30 [DBG] Execution loop Worker:cd3ef19f has started in 151.1725 ms
+2025-06-09 11:47:28.692 +05:30 [DBG] Execution loop Worker:93b68929 has started in 162.2634 ms
+2025-06-09 11:47:28.699 +05:30 [DBG] Execution loop Worker:2015917d has started in 168.3591 ms
+2025-06-09 11:47:28.704 +05:30 [DBG] Execution loop Worker:f42fba6c has started in 174.2651 ms
+2025-06-09 11:47:28.709 +05:30 [DBG] Execution loop Worker:2437d5df has started in 178.5428 ms
+2025-06-09 11:47:28.714 +05:30 [DBG] Execution loop Worker:066175bf has started in 183.7223 ms
+2025-06-09 11:47:28.720 +05:30 [DBG] Execution loop Worker:bd372a2b has started in 189.9794 ms
+2025-06-09 11:47:28.726 +05:30 [DBG] Execution loop Worker:ce4fba1b has started in 195.644 ms
+2025-06-09 11:47:28.732 +05:30 [DBG] Execution loop Worker:2ae76c09 has started in 201.4253 ms
+2025-06-09 11:47:28.741 +05:30 [DBG] Execution loop Worker:31028f50 has started in 210.3753 ms
+2025-06-09 11:47:28.773 +05:30 [DBG] Execution loop Worker:15f5a741 has started in 242.8962 ms
+2025-06-09 11:47:28.777 +05:30 [DBG] Execution loop Worker:608c58d3 has started in 246.803 ms
+2025-06-09 11:47:28.781 +05:30 [DBG] Execution loop DelayedJobScheduler:86277dbf has started in 7.4884 ms
+2025-06-09 11:47:28.781 +05:30 [INF] Server desktop-0idud2j:20232:08825763 all the dispatchers started
+2025-06-09 11:47:28.785 +05:30 [DBG] Execution loop RecurringJobScheduler:05ab1ae6 has started in 8.0647 ms
+2025-06-09 11:47:28.798 +05:30 [DBG] Removing outdated records from the 'Set' table...
+2025-06-09 11:47:28.836 +05:30 [INF] Request starting HTTP/2 GET https://localhost:62627/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 11:47:28.836 +05:30 [INF] Request starting HTTP/2 GET https://localhost:62627/_vs/browserLink - null null
+2025-06-09 11:47:28.864 +05:30 [DBG] Removing outdated records from the 'Hash' table...
+2025-06-09 11:47:28.871 +05:30 [DBG] Script injected: /_framework/aspnetcore-browser-refresh.js
+2025-06-09 11:47:28.878 +05:30 [INF] Request finished HTTP/2 GET https://localhost:62627/_framework/aspnetcore-browser-refresh.js - 200 16539 application/javascript; charset=utf-8 51.4381ms
+2025-06-09 11:47:28.949 +05:30 [DBG] Hosting started
+2025-06-09 11:47:28.964 +05:30 [INF] Request finished HTTP/2 GET https://localhost:62627/_vs/browserLink - 200 null text/javascript; charset=UTF-8 139.0246ms
+2025-06-09 11:47:28.965 +05:30 [DBG] Connection id "0HND73L7842G1" received FIN.
+2025-06-09 11:47:28.968 +05:30 [DBG] The connection queue processing loop for 0HND73L7842G1 completed.
+2025-06-09 11:47:28.968 +05:30 [DBG] Connection id "0HND73L7842G1" is closed. The last processed stream ID was 3.
+2025-06-09 11:47:28.969 +05:30 [DBG] Connection id "0HND73L7842G1" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-06-09 11:47:28.970 +05:30 [DBG] Connection id "0HND73L7842G1" stopped.
+2025-06-09 11:47:29.017 +05:30 [DBG] Connection id "0HND73L7842G2" accepted.
+2025-06-09 11:47:29.017 +05:30 [DBG] Connection id "0HND73L7842G2" started.
+2025-06-09 11:47:29.022 +05:30 [DBG] Connection 0HND73L7842G2 established using the following protocol: "Tls12"
+2025-06-09 11:47:29.025 +05:30 [INF] Request starting HTTP/2 GET https://localhost:62627/swagger/v1/swagger.json - null null
+2025-06-09 11:47:29.083 +05:30 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2025-06-09 11:47:29.083 +05:30 [DBG] Request did not match any endpoints
+2025-06-09 11:47:29.438 +05:30 [INF] Request finished HTTP/2 GET https://localhost:62627/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 413.5773ms
+2025-06-09 11:47:32.540 +05:30 [DBG] Connection id "0HND73L7842G2" received FIN.
+2025-06-09 11:47:32.541 +05:30 [DBG] Connection id "0HND73L7842G2" is closed. The last processed stream ID was 1.
+2025-06-09 11:47:32.541 +05:30 [DBG] Connection id "0HND73L7842G2" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-06-09 11:47:32.542 +05:30 [DBG] The connection queue processing loop for 0HND73L7842G2 completed.
+2025-06-09 11:47:32.542 +05:30 [DBG] Connection id "0HND73L7842G2" stopped.
+2025-06-09 11:47:58.592 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:48:26.740 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:48:26.740 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:48:26.741 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:48:26.741 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:48:26.741 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:48:26.741 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:48:28.619 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:48:59.190 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:49:26.770 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:49:26.770 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:49:26.770 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:49:26.770 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:49:26.771 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:49:26.771 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:49:29.217 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:49:59.254 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:50:26.783 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:50:26.783 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:50:26.783 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:50:26.783 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:50:26.784 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:50:26.784 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:50:29.289 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:50:59.342 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:51:26.798 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:51:26.799 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:51:26.799 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:51:26.799 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:51:26.799 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:51:26.799 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:51:29.372 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:51:59.808 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:52:26.841 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:52:26.841 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:52:26.841 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:52:26.841 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:52:26.841 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:52:26.841 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:52:31.030 +05:30 [INF] 1 servers were removed due to timeout
+2025-06-09 11:52:31.072 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:52:31.186 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:53:01.198 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:53:23.571 +05:30 [DBG] Config reload token fired. Checking for changes...
+2025-06-09 11:53:23.576 +05:30 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2025-06-09 11:53:23.576 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2025-06-09 11:53:26.902 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:53:26.903 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:53:26.903 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:53:26.903 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:53:26.903 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:53:26.903 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:53:32.428 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:54:03.127 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:54:27.034 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:54:27.034 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:54:27.034 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:54:27.034 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:54:27.034 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:54:27.034 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:54:33.236 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:55:03.274 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:55:27.042 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:55:27.042 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:55:27.042 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:55:27.042 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:55:27.042 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:55:27.042 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:55:34.267 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:56:05.802 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:56:27.052 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:56:27.052 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:56:27.053 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:56:27.053 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:56:27.053 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:56:27.053 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:56:35.837 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:57:05.868 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:57:28.030 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:57:28.030 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:57:28.030 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:57:28.030 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:57:28.030 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:57:28.328 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:57:36.395 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:57:36.728 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:58:06.890 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:58:28.554 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:58:28.554 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:58:28.554 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:58:28.554 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:58:28.554 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:58:28.554 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:58:38.730 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:59:08.808 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 11:59:28.565 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:59:28.565 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:59:28.565 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:59:28.565 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:59:28.565 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:59:28.565 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:59:38.841 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:00:08.864 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:00:28.588 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 12:00:28.588 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:00:28.588 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:00:28.588 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 12:00:28.588 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 12:00:28.589 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 12:00:38.885 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:01:08.912 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:01:28.595 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 12:01:28.595 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:01:28.595 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:01:28.595 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 12:01:28.595 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 12:01:28.595 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 12:01:38.931 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:02:08.966 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:02:28.613 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 12:02:28.613 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:02:28.613 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:02:28.613 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 12:02:28.613 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 12:02:28.613 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 12:02:38.347 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 12:02:38.988 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:03:09.021 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:03:28.627 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 12:03:28.627 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:03:28.627 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 12:03:28.627 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 12:03:28.627 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 12:03:28.627 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 12:03:39.056 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
+2025-06-09 12:04:09.062 +05:30 [DBG] Server desktop-0idud2j:20232:08825763 heartbeat successfully sent
