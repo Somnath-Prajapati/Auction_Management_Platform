@@ -62,8 +62,9 @@ public class UpdateAuctionHandler : IRequestHandler<UpdateAuctionCommand, bool>
             modelName: "Auction",
             changeType: "Update",
             recordId: auction.AuctionId,
-            beforeChange: JsonConvert.SerializeObject(oldAuction),
-            afterChange: JsonConvert.SerializeObject(auction)
+            beforeChange: JsonConvert.SerializeObject(oldAuction, Formatting.Indented),
+            afterChange: JsonConvert.SerializeObject(auction, Formatting.Indented)
+
         );
 
         Console.WriteLine("CurrentUser: TASK DONE SUCCESSFULLY");

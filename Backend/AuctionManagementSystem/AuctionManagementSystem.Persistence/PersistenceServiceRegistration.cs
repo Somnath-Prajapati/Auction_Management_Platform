@@ -31,13 +31,13 @@ using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Persistence.Repositories.AuditTrail;
 using AuctionManagementSystem.Persistence.Repositories.Transactions;
 using AuctionManagementSystem.Application.Contracts.Roles;
-using AuctionManagementSystem.Persistence.Repositories.Roles;
 using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Transactions;
 using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
 using AuctionManagementSystem.Persistence.Services;
-using AuctionWinnerService = AuctionManagementSystem.Application.Services.AuctionWinnerService;
+using AuctionManagementSystem.Application.Contracts.Reports;
+using AuctionManagementSystem.Persistence.Repositories.Reports;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -82,6 +82,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IChatbotRepository, ChatbotRepository>();
             services.AddScoped<IOrderEmailService, OrderEmailService>();
             services.AddScoped<INotificationRepository, NotificationRepository>();
+            services.AddScoped<IReports,Reports>();
 
 
             services.AddScoped<IAutoBidRepository, AutoBidRepository>();
@@ -90,7 +91,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAssetExpirationService, AssetExpirationService>();
             
             services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
-            services.AddScoped<IRolePermissionsMatrixRepository, RolePermissionsMatrixRepository>();
+            //services.AddScoped<IRolePermissionsMatrixRepository, RolePermissionsMatrixRepository>();
             services.AddScoped<IAutoRefundService, AutoRefundService>();
 
             services.AddHostedService<AutoRefundHostedService>();
