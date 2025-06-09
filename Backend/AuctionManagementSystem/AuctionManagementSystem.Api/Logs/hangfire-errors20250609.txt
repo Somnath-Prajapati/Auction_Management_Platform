@@ -29055,3 +29055,405 @@ WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[Mo
 2025-06-09 11:03:37.765 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
 2025-06-09 11:03:37.765 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
 2025-06-09 11:03:43.192 +05:30 [DBG] Server desktop-0idud2j:21196:b5983344 heartbeat successfully sent
+2025-06-09 11:04:13.201 +05:30 [DBG] Server desktop-0idud2j:21196:b5983344 heartbeat successfully sent
+2025-06-09 11:04:37.109 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:04:37.109 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:04:37.109 +05:30 [DBG] Created DbConnection. (0ms).
+2025-06-09 11:04:37.109 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:04:37.110 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:04:37.110 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-09 11:04:37.110 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:04:37.110 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2025-06-09 11:04:37.110 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:04:37.121 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:04:37.127 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:04:37.127 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 0ms reading results.
+2025-06-09 11:04:37.127 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:04:37.127 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (0ms).
+2025-06-09 11:04:37.127 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:04:37.127 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:04:37.127 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:04:37.764 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:04:37.764 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:04:37.765 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:04:37.765 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:04:37.765 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:04:37.765 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:04:41.848 +05:30 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2025-06-09 11:04:41.872 +05:30 [DBG] Removing outdated records from the 'Job' table...
+2025-06-09 11:04:41.897 +05:30 [DBG] Removing outdated records from the 'List' table...
+2025-06-09 11:04:41.921 +05:30 [DBG] Removing outdated records from the 'Set' table...
+2025-06-09 11:04:41.948 +05:30 [DBG] Removing outdated records from the 'Hash' table...
+2025-06-09 11:04:42.395 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:04:43.228 +05:30 [DBG] Server desktop-0idud2j:21196:b5983344 heartbeat successfully sent
+2025-06-09 11:05:05.013 +05:30 [INF] Start installing Hangfire SQL objects...
+2025-06-09 11:05:05.676 +05:30 [INF] Hangfire SQL objects installed.
+2025-06-09 11:05:05.760 +05:30 [DBG] Registered SignalR Protocol: json, implemented by Microsoft.AspNetCore.SignalR.Protocol.JsonHubProtocol.
+2025-06-09 11:05:05.816 +05:30 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2025-06-09 11:05:05.934 +05:30 [DBG] Hosting starting
+2025-06-09 11:05:05.945 +05:30 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-09 11:05:05.960 +05:30 [DBG] Reading data from file 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys\key-10f9324c-4ea8-49ad-bebe-0d76187f775b.xml'.
+2025-06-09 11:05:05.963 +05:30 [DBG] Reading data from file 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys\key-7b554b8b-0535-4ef5-9c02-95701cda3f6d.xml'.
+2025-06-09 11:05:05.967 +05:30 [DBG] Found key {10f9324c-4ea8-49ad-bebe-0d76187f775b}.
+2025-06-09 11:05:05.972 +05:30 [DBG] Found key {7b554b8b-0535-4ef5-9c02-95701cda3f6d}.
+2025-06-09 11:05:05.978 +05:30 [DBG] Considering key {10f9324c-4ea8-49ad-bebe-0d76187f775b} with expiration date 2025-08-06 07:01:53Z as default key.
+2025-06-09 11:05:05.982 +05:30 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2025-06-09 11:05:05.984 +05:30 [DBG] Decrypting secret element using Windows DPAPI.
+2025-06-09 11:05:05.985 +05:30 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2025-06-09 11:05:05.987 +05:30 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2025-06-09 11:05:05.987 +05:30 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2025-06-09 11:05:05.989 +05:30 [DBG] Using key {10f9324c-4ea8-49ad-bebe-0d76187f775b} as the default key.
+2025-06-09 11:05:05.989 +05:30 [DBG] Key ring with default key {10f9324c-4ea8-49ad-bebe-0d76187f775b} was loaded during application startup.
+2025-06-09 11:05:06.125 +05:30 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2025-06-09 11:05:06.569 +05:30 [DBG] No relationship from 'TblRequestStatus' to 'TblRequestStatusHistory' has been configured by convention because there are multiple properties on one entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'} that could be matched with the properties on the other entity type - {'NewRequestStatus', 'PreviousRequestStatus'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:05:06.576 +05:30 [DBG] No relationship from 'TblRequestStatusHistory' to 'TblRequestStatus' has been configured by convention because there are multiple properties on one entity type - {'NewRequestStatus', 'PreviousRequestStatus'} that could be matched with the properties on the other entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:05:06.604 +05:30 [DBG] No relationship from 'TblTransaction' to 'TblUser' has been configured by convention because there are multiple properties on one entity type - {'UpdatedByUser', 'User'} that could be matched with the properties on the other entity type - {'TblTransactions'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:05:06.623 +05:30 [DBG] No relationship from 'TblUser' to 'TblTransaction' has been configured by convention because there are multiple properties on one entity type - {'TblTransactions'} that could be matched with the properties on the other entity type - {'UpdatedByUser', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:05:07.171 +05:30 [DBG] No relationship from 'TblRequestStatusHistory' to 'TblRequestStatus' has been configured by convention because there are multiple properties on one entity type - {'NewRequestStatus', 'PreviousRequestStatus'} that could be matched with the properties on the other entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:05:07.172 +05:30 [DBG] No relationship from 'TblRequestStatus' to 'TblRequestStatusHistory' has been configured by convention because there are multiple properties on one entity type - {'TblRequestStatusHistoryNewRequestStatuses', 'TblRequestStatusHistoryPreviousRequestStatuses'} that could be matched with the properties on the other entity type - {'NewRequestStatus', 'PreviousRequestStatus'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:05:07.202 +05:30 [DBG] No relationship from 'TblTransaction' to 'TblUser' has been configured by convention because there are multiple properties on one entity type - {'UpdatedByUser', 'User'} that could be matched with the properties on the other entity type - {'TblTransactions'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:05:07.204 +05:30 [DBG] No relationship from 'TblUser' to 'TblTransaction' has been configured by convention because there are multiple properties on one entity type - {'TblTransactions'} that could be matched with the properties on the other entity type - {'UpdatedByUser', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2025-06-09 11:05:07.269 +05:30 [DBG] The index {'UserId'} was not created on entity type 'TblAutoBid' as the properties are already covered by the index {'UserId', 'AuctionId', 'AssetId'}.
+2025-06-09 11:05:07.642 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:05:07.693 +05:30 [DBG] Compiling query expression: 
+'DbSet<TblUserDeposit>()
+    .Where(d => !(d.IsDeleted) && d.DepositAmount > 0 && d.ModifiedAt <= __cutoffDate_0)'
+2025-06-09 11:05:08.036 +05:30 [DBG] Generated query execution expression: 
+'queryContext => SingleQueryingEnumerable.Create<TblUserDeposit>(
+    relationalQueryContext: (RelationalQueryContext)queryContext, 
+    relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: TblUserDeposit.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: TblUserDeposit.CreatedBy (string) MaxLength(100), 1], [Property: TblUserDeposit.CreatedDate (DateTime) Required ValueGenerated.OnAdd, 2], [Property: TblUserDeposit.DeletedBy (string) MaxLength(100), 3], [Property: TblUserDeposit.DeletedDate (DateTime?), 4], [Property: TblUserDeposit.DepositAmount (decimal) Required, 5], [Property: TblUserDeposit.IsDeleted (bool) Required, 6], [Property: TblUserDeposit.ModifiedAt (DateTime?) ValueGenerated.OnAdd, 7], [Property: TblUserDeposit.UpdatedBy (string) MaxLength(100), 8], [Property: TblUserDeposit.UpdatedDate (DateTime?), 9], [Property: TblUserDeposit.UserId (int) Required, 10] }
+        SELECT t.Id, t.CreatedBy, t.CreatedDate, t.DeletedBy, t.DeletedDate, t.DepositAmount, t.IsDeleted, t.ModifiedAt, t.UpdatedBy, t.UpdatedDate, t.UserId
+        FROM AuctionM_dbuser.TblUserDeposit AS t
+        WHERE (Not(t.IsDeleted) && (t.DepositAmount > 0.0)) && (t.ModifiedAt <= @__cutoffDate_0)) | Resolver: c => new RelationalCommandCache(
+        c.Dependencies.MemoryCache, 
+        c.RelationalDependencies.QuerySqlGeneratorFactory, 
+        c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: TblUserDeposit.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: TblUserDeposit.CreatedBy (string) MaxLength(100), 1], [Property: TblUserDeposit.CreatedDate (DateTime) Required ValueGenerated.OnAdd, 2], [Property: TblUserDeposit.DeletedBy (string) MaxLength(100), 3], [Property: TblUserDeposit.DeletedDate (DateTime?), 4], [Property: TblUserDeposit.DepositAmount (decimal) Required, 5], [Property: TblUserDeposit.IsDeleted (bool) Required, 6], [Property: TblUserDeposit.ModifiedAt (DateTime?) ValueGenerated.OnAdd, 7], [Property: TblUserDeposit.UpdatedBy (string) MaxLength(100), 8], [Property: TblUserDeposit.UpdatedDate (DateTime?), 9], [Property: TblUserDeposit.UserId (int) Required, 10] }
+        SELECT t.Id, t.CreatedBy, t.CreatedDate, t.DeletedBy, t.DeletedDate, t.DepositAmount, t.IsDeleted, t.ModifiedAt, t.UpdatedBy, t.UpdatedDate, t.UserId
+        FROM AuctionM_dbuser.TblUserDeposit AS t
+        WHERE (Not(t.IsDeleted) && (t.DepositAmount > 0.0)) && (t.ModifiedAt <= @__cutoffDate_0), 
+        False, 
+        new HashSet<string>(
+            new string[]{ }, 
+            StringComparer.Ordinal
+        )
+    )].GetRelationalCommandTemplate(parameters), 
+    readerColumns: null, 
+    shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+    {
+        TblUserDeposit entity;
+        entity = 
+        {
+            MaterializationContext materializationContext1;
+            IEntityType entityType1;
+            TblUserDeposit instance1;
+            InternalEntityEntry entry1;
+            bool hasNullKey1;
+            materializationContext1 = new MaterializationContext(
+                [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                queryContext.Context
+            );
+            instance1 = default(TblUserDeposit);
+            entry1 = queryContext.TryGetEntry(
+                key: [LIFTABLE Constant: Key: TblUserDeposit.Id PK | Resolver: c => c.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit").FindPrimaryKey()], 
+                keyValues: new object[]{ (object)dataReader.GetInt32(0) }, 
+                throwOnNullKey: True, 
+                hasNullKey: hasNullKey1);
+            !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+            {
+                entityType1 = entry1.EntityType;
+                return instance1 = (TblUserDeposit)entry1.Entity;
+            } : 
+            {
+                ISnapshot shadowSnapshot1;
+                shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                entityType1 = [LIFTABLE Constant: EntityType: TblUserDeposit | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit")];
+                instance1 = switch (entityType1)
+                {
+                    case [LIFTABLE Constant: EntityType: TblUserDeposit | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit")]: 
+                        {
+                            return 
+                            {
+                                TblUserDeposit instance;
+                                instance = new TblUserDeposit();
+                                instance.<Id>k__BackingField = dataReader.GetInt32(0);
+                                instance.<CreatedBy>k__BackingField = dataReader.IsDBNull(1) ? default(string) : dataReader.GetString(1);
+                                instance.<CreatedDate>k__BackingField = dataReader.GetDateTime(2);
+                                instance.<DeletedBy>k__BackingField = dataReader.IsDBNull(3) ? default(string) : dataReader.GetString(3);
+                                instance.<DeletedDate>k__BackingField = dataReader.IsDBNull(4) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(4);
+                                instance.<DepositAmount>k__BackingField = dataReader.GetDecimal(5);
+                                instance.<IsDeleted>k__BackingField = dataReader.GetBoolean(6);
+                                instance.<ModifiedAt>k__BackingField = dataReader.IsDBNull(7) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(7);
+                                instance.<UpdatedBy>k__BackingField = dataReader.IsDBNull(8) ? default(string) : dataReader.GetString(8);
+                                instance.<UpdatedDate>k__BackingField = dataReader.IsDBNull(9) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(9);
+                                instance.<UserId>k__BackingField = dataReader.GetInt32(10);
+                                (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                    context: materializationContext1.Context, 
+                                    entity: instance, 
+                                    queryTrackingBehavior: TrackAll, 
+                                    structuralType: [LIFTABLE Constant: EntityType: TblUserDeposit | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("AuctionManagementSystem.Domain.model.TblUserDeposit")]) : default(void);
+                                return instance;
+                            }}
+                    default: 
+                        default(TblUserDeposit)
+                }
+                ;
+                entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                    entityType: entityType1, 
+                    entity: instance1, 
+                    snapshot: shadowSnapshot1);
+                return instance1;
+            } : default(void);
+            return instance1;
+        };
+        return entity;
+    }, 
+    contextType: AuctionManagementSystem.Persistence.Context.AuctionManagementDbContext, 
+    standAloneStateManager: False, 
+    detailedErrorsEnabled: False, 
+    threadSafetyChecksEnabled: True)'
+2025-06-09 11:05:08.076 +05:30 [DBG] Creating DbConnection.
+2025-06-09 11:05:08.080 +05:30 [DBG] Created DbConnection. (1ms).
+2025-06-09 11:05:08.083 +05:30 [DBG] Opening connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:05:08.085 +05:30 [DBG] Opened connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:05:08.088 +05:30 [DBG] Creating DbCommand for 'ExecuteReader'.
+2025-06-09 11:05:08.091 +05:30 [DBG] Created DbCommand for 'ExecuteReader' (1ms).
+2025-06-09 11:05:08.095 +05:30 [DBG] Initialized DbCommand for 'ExecuteReader' (7ms).
+2025-06-09 11:05:08.104 +05:30 [DBG] Executing DbCommand [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:05:08.142 +05:30 [INF] Cart Expiry Hosted Service started.
+2025-06-09 11:05:08.147 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:05:08.148 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:05:08.151 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:05:08.154 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:05:08.160 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:05:08.161 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:05:08.168 +05:30 [INF] Executed DbCommand (53ms) [Parameters=[@__cutoffDate_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedBy], [t].[CreatedDate], [t].[DeletedBy], [t].[DeletedDate], [t].[DepositAmount], [t].[IsDeleted], [t].[ModifiedAt], [t].[UpdatedBy], [t].[UpdatedDate], [t].[UserId]
+FROM [AuctionM_dbuser].[TblUserDeposit] AS [t]
+WHERE [t].[IsDeleted] = CAST(0 AS bit) AND [t].[DepositAmount] > 0.0 AND [t].[ModifiedAt] <= @__cutoffDate_0
+2025-06-09 11:05:08.172 +05:30 [DBG] Middleware loaded
+2025-06-09 11:05:08.176 +05:30 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16539 B).
+2025-06-09 11:05:08.177 +05:30 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2025-06-09 11:05:08.229 +05:30 [DBG] Closing data reader to 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:05:08.234 +05:30 [DBG] A data reader for 'AuctionManagementDB' on server '180.149.240.247' is being disposed after spending 36ms reading results.
+2025-06-09 11:05:08.238 +05:30 [DBG] Closing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:05:08.239 +05:30 [DBG] Closed connection to database 'AuctionManagementDB' on server '180.149.240.247' (1ms).
+2025-06-09 11:05:08.240 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:05:08.241 +05:30 [DBG] Disposing connection to database 'AuctionManagementDB' on server '180.149.240.247'.
+2025-06-09 11:05:08.242 +05:30 [DBG] Disposed connection to database '' on server '' (0ms).
+2025-06-09 11:05:08.280 +05:30 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2025-06-09 11:05:08.281 +05:30 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2025-06-09 11:05:08.292 +05:30 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2025-06-09 11:05:08.392 +05:30 [DBG] Connection id "0HND72TIMH4O0" received FIN.
+2025-06-09 11:05:08.401 +05:30 [DBG] Connection id "0HND72TIMH4O0" accepted.
+2025-06-09 11:05:08.402 +05:30 [DBG] Connection id "0HND72TIMH4O0" started.
+2025-06-09 11:05:08.408 +05:30 [INF] Now listening on: https://localhost:62627
+2025-06-09 11:05:08.408 +05:30 [INF] Now listening on: http://localhost:62628
+2025-06-09 11:05:08.408 +05:30 [DBG] Loaded hosting startup assembly AuctionManagementSystem.Api
+2025-06-09 11:05:08.408 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2025-06-09 11:05:08.408 +05:30 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2025-06-09 11:05:08.408 +05:30 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2025-06-09 11:05:08.416 +05:30 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2025-06-09 11:05:08.417 +05:30 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2025-06-09 11:05:08.427 +05:30 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-06-09 11:05:08.472 +05:30 [DBG] Connection id "0HND72TIMH4O0" stopped.
+2025-06-09 11:05:08.478 +05:30 [DBG] Connection id "0HND72TIMH4O0" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-06-09 11:05:08.652 +05:30 [INF] Starting Hangfire Server using job storage: 'SQL Server: 180.149.240.247@AuctionManagementDB'
+2025-06-09 11:05:08.652 +05:30 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2025-06-09 11:05:08.652 +05:30 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2025-06-09 11:05:08.690 +05:30 [DBG] Execution loop BackgroundServerProcess:25bcc84f has started in 10.5608 ms
+2025-06-09 11:05:08.692 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-09 11:05:08.692 +05:30 [INF] Hosting environment: Development
+2025-06-09 11:05:08.692 +05:30 [INF] Content root path: C:\Users\User\Desktop\New folder (2)\Auction_Management_Platform\Backend\AuctionManagementSystem\AuctionManagementSystem.Api
+2025-06-09 11:05:10.164 +05:30 [DBG] Connection id "0HND72TIMH4O1" accepted.
+2025-06-09 11:05:10.165 +05:30 [DBG] Connection id "0HND72TIMH4O1" started.
+2025-06-09 11:05:10.368 +05:30 [DBG] Connection 0HND72TIMH4O1 established using the following protocol: "Tls12"
+2025-06-09 11:05:10.439 +05:30 [INF] Server desktop-0idud2j:3452:2fb1d6c6 successfully announced in 1743.8523 ms
+2025-06-09 11:05:10.473 +05:30 [DBG] Execution loop ServerHeartbeatProcess:37075294 has started in 31.8853 ms
+2025-06-09 11:05:10.481 +05:30 [INF] Server desktop-0idud2j:3452:2fb1d6c6 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, SqlServerHeartbeatProcess, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2025-06-09 11:05:10.482 +05:30 [DBG] Connection id "0HND72TIMH4O1" received FIN.
+2025-06-09 11:05:10.487 +05:30 [DBG] Connection id "0HND72TIMH4O1" is closed. The last processed stream ID was 0.
+2025-06-09 11:05:10.487 +05:30 [DBG] Connection id "0HND72TIMH4O1" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-06-09 11:05:10.492 +05:30 [DBG] The connection queue processing loop for 0HND72TIMH4O1 completed.
+2025-06-09 11:05:10.493 +05:30 [DBG] Connection id "0HND72TIMH4O1" stopped.
+2025-06-09 11:05:10.534 +05:30 [DBG] Execution loop ServerWatchdog:731aa058 has started in 53.3164 ms
+2025-06-09 11:05:10.585 +05:30 [DBG] Execution loop ServerJobCancellationWatcher:62c816b9 has started in 47.6525 ms
+2025-06-09 11:05:10.609 +05:30 [DBG] Execution loop SqlServerHeartbeatProcess:121590f0 has started in 24.058 ms
+2025-06-09 11:05:10.640 +05:30 [DBG] Execution loop ExpirationManager:7771d40d has started in 32.0378 ms
+2025-06-09 11:05:10.642 +05:30 [DBG] Removing outdated records from the 'AggregatedCounter' table...
+2025-06-09 11:05:10.666 +05:30 [DBG] Execution loop CountersAggregator:8f346922 has started in 25.9649 ms
+2025-06-09 11:05:10.667 +05:30 [DBG] Aggregating records in 'Counter' table...
+2025-06-09 11:05:10.689 +05:30 [DBG] Removing outdated records from the 'Job' table...
+2025-06-09 11:05:10.702 +05:30 [DBG] Hosting started
+2025-06-09 11:05:10.723 +05:30 [DBG] Execution loop Worker:f190faf9 has started in 47.8852 ms
+2025-06-09 11:05:10.734 +05:30 [DBG] Removing outdated records from the 'List' table...
+2025-06-09 11:05:10.752 +05:30 [DBG] Execution loop Worker:73a98024 has started in 76.8831 ms
+2025-06-09 11:05:10.760 +05:30 [DBG] Execution loop Worker:b66857c8 has started in 85.0631 ms
+2025-06-09 11:05:10.766 +05:30 [DBG] Execution loop Worker:c11e37ca has started in 91.4572 ms
+2025-06-09 11:05:10.773 +05:30 [DBG] Execution loop Worker:011666d2 has started in 98.5774 ms
+2025-06-09 11:05:10.778 +05:30 [DBG] Removing outdated records from the 'Set' table...
+2025-06-09 11:05:10.792 +05:30 [DBG] Execution loop Worker:bcaba795 has started in 117.3459 ms
+2025-06-09 11:05:10.805 +05:30 [DBG] Execution loop Worker:21a47212 has started in 130.0863 ms
+2025-06-09 11:05:10.813 +05:30 [DBG] Execution loop Worker:69c21c17 has started in 138.1107 ms
+2025-06-09 11:05:10.823 +05:30 [DBG] Execution loop Worker:f2368be5 has started in 148.3147 ms
+2025-06-09 11:05:10.828 +05:30 [DBG] Execution loop Worker:e88707da has started in 153.8241 ms
+2025-06-09 11:05:10.869 +05:30 [DBG] Removing outdated records from the 'Hash' table...
+2025-06-09 11:05:10.869 +05:30 [DBG] Execution loop Worker:f6c2d1aa has started in 194.7553 ms
+2025-06-09 11:05:10.874 +05:30 [DBG] Execution loop Worker:aef8e419 has started in 199.6478 ms
+2025-06-09 11:05:10.898 +05:30 [DBG] Execution loop Worker:37593f95 has started in 223.3735 ms
+2025-06-09 11:05:10.904 +05:30 [DBG] Execution loop Worker:14e17acb has started in 229.2422 ms
+2025-06-09 11:05:10.908 +05:30 [DBG] Execution loop Worker:907c5bb3 has started in 233.7051 ms
+2025-06-09 11:05:10.914 +05:30 [DBG] Execution loop Worker:1b2f57d9 has started in 239.359 ms
+2025-06-09 11:05:10.921 +05:30 [DBG] Execution loop Worker:78b685e3 has started in 246.4931 ms
+2025-06-09 11:05:10.927 +05:30 [DBG] Execution loop Worker:f3d32db1 has started in 252.0643 ms
+2025-06-09 11:05:10.932 +05:30 [DBG] Execution loop Worker:ed6ccf6a has started in 257.3524 ms
+2025-06-09 11:05:10.937 +05:30 [DBG] Execution loop Worker:070b3360 has started in 262.2819 ms
+2025-06-09 11:05:10.971 +05:30 [DBG] Execution loop DelayedJobScheduler:5eba46c0 has started in 38.5889 ms
+2025-06-09 11:05:10.977 +05:30 [INF] Server desktop-0idud2j:3452:2fb1d6c6 all the dispatchers started
+2025-06-09 11:05:10.977 +05:30 [DBG] Execution loop RecurringJobScheduler:5e3cc887 has started in 38.9684 ms
+2025-06-09 11:05:11.112 +05:30 [DBG] Connection id "0HND72TIMH4O2" accepted.
+2025-06-09 11:05:11.113 +05:30 [DBG] Connection id "0HND72TIMH4O2" started.
+2025-06-09 11:05:11.117 +05:30 [DBG] Connection 0HND72TIMH4O2 established using the following protocol: "Tls12"
+2025-06-09 11:05:11.201 +05:30 [INF] Request starting HTTP/2 GET https://localhost:62627/_vs/browserLink - null null
+2025-06-09 11:05:11.201 +05:30 [INF] Request starting HTTP/2 GET https://localhost:62627/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 11:05:11.252 +05:30 [DBG] Script injected: /_framework/aspnetcore-browser-refresh.js
+2025-06-09 11:05:11.261 +05:30 [INF] Request finished HTTP/2 GET https://localhost:62627/_framework/aspnetcore-browser-refresh.js - 200 16539 application/javascript; charset=utf-8 64.2788ms
+2025-06-09 11:05:11.313 +05:30 [INF] Request finished HTTP/2 GET https://localhost:62627/_vs/browserLink - 200 null text/javascript; charset=UTF-8 122.575ms
+2025-06-09 11:05:11.494 +05:30 [INF] Request starting HTTP/2 GET https://localhost:62627/swagger/v1/swagger.json - null null
+2025-06-09 11:05:11.542 +05:30 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2025-06-09 11:05:11.543 +05:30 [DBG] Request did not match any endpoints
+2025-06-09 11:05:11.812 +05:30 [INF] Request finished HTTP/2 GET https://localhost:62627/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 317.8585ms
+2025-06-09 11:05:14.194 +05:30 [DBG] Connection id "0HND72TIMH4O2" received FIN.
+2025-06-09 11:05:14.196 +05:30 [DBG] Connection id "0HND72TIMH4O2" is closed. The last processed stream ID was 5.
+2025-06-09 11:05:14.196 +05:30 [DBG] Connection id "0HND72TIMH4O2" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-06-09 11:05:14.197 +05:30 [DBG] The connection queue processing loop for 0HND72TIMH4O2 completed.
+2025-06-09 11:05:14.198 +05:30 [DBG] Connection id "0HND72TIMH4O2" stopped.
+2025-06-09 11:05:40.683 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:06:08.259 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:06:08.259 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:06:08.260 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:06:08.261 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:06:08.261 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:06:08.261 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:06:10.728 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:06:40.786 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:07:08.259 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:07:08.259 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:07:08.259 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:07:08.259 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:07:08.260 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:07:08.260 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:07:10.832 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:07:13.481 +05:30 [DBG] Connection id "0HND72TIMH4O3" accepted.
+2025-06-09 11:07:13.482 +05:30 [DBG] Connection id "0HND72TIMH4O3" started.
+2025-06-09 11:07:13.491 +05:30 [DBG] Connection 0HND72TIMH4O3 established using the following protocol: "Tls12"
+2025-06-09 11:07:13.501 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:62627/api/Faq - null null
+2025-06-09 11:07:13.501 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:62627/api/User/Notification/68 - null null
+2025-06-09 11:07:13.576 +05:30 [DBG] 1 candidate(s) found for the request path '/api/Faq'
+2025-06-09 11:07:13.577 +05:30 [DBG] 1 candidate(s) found for the request path '/api/User/Notification/68'
+2025-06-09 11:07:13.577 +05:30 [DBG] Request matched endpoint '405 HTTP Method Not Supported'
+2025-06-09 11:07:13.578 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:62627/bidhub/negotiate?negotiateVersion=1 - null null
+2025-06-09 11:07:13.578 +05:30 [DBG] Request matched endpoint '405 HTTP Method Not Supported'
+2025-06-09 11:07:13.579 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:62627/api/User - null null
+2025-06-09 11:07:13.579 +05:30 [DBG] 1 candidate(s) found for the request path '/bidhub/negotiate'
+2025-06-09 11:07:13.579 +05:30 [DBG] Request matched endpoint '/bidhub/negotiate'
+2025-06-09 11:07:13.582 +05:30 [DBG] The request has an origin header: 'http://localhost:4200'.
+2025-06-09 11:07:13.582 +05:30 [DBG] The request has an origin header: 'http://localhost:4200'.
+2025-06-09 11:07:13.583 +05:30 [INF] CORS policy execution successful.
+2025-06-09 11:07:13.584 +05:30 [INF] CORS policy execution successful.
+2025-06-09 11:07:13.583 +05:30 [DBG] The request has an origin header: 'http://localhost:4200'.
+2025-06-09 11:07:13.584 +05:30 [INF] CORS policy execution successful.
+2025-06-09 11:07:13.585 +05:30 [DBG] The request is a preflight request.
+2025-06-09 11:07:13.585 +05:30 [DBG] The request is a preflight request.
+2025-06-09 11:07:13.585 +05:30 [DBG] The request is a preflight request.
+2025-06-09 11:07:13.586 +05:30 [DBG] 1 candidate(s) found for the request path '/api/User'
+2025-06-09 11:07:13.586 +05:30 [DBG] Request matched endpoint '405 HTTP Method Not Supported'
+2025-06-09 11:07:13.586 +05:30 [DBG] The request has an origin header: 'http://localhost:4200'.
+2025-06-09 11:07:13.586 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:62627/api/Assets/GetAll - null null
+2025-06-09 11:07:13.587 +05:30 [INF] CORS policy execution successful.
+2025-06-09 11:07:13.587 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:62627/api/Faq - 204 null null 86.1234ms
+2025-06-09 11:07:13.587 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:62627/bidhub/negotiate?negotiateVersion=1 - 204 null null 9.0195ms
+2025-06-09 11:07:13.587 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:62627/api/User/Notification/68 - 204 null null 86.134ms
+2025-06-09 11:07:13.587 +05:30 [DBG] The request is a preflight request.
+2025-06-09 11:07:13.587 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:62627/api/User - 204 null null 8.5548ms
+2025-06-09 11:07:13.587 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:62627/api/Auction - null null
+2025-06-09 11:07:13.587 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:62627/api/Request - null null
+2025-06-09 11:07:13.587 +05:30 [DBG] 1 candidate(s) found for the request path '/api/Auction'
+2025-06-09 11:07:13.587 +05:30 [DBG] 1 candidate(s) found for the request path '/api/Assets/GetAll'
+2025-06-09 11:07:13.587 +05:30 [DBG] 1 candidate(s) found for the request path '/api/Request'
+2025-06-09 11:07:13.587 +05:30 [DBG] Request matched endpoint '405 HTTP Method Not Supported'
+2025-06-09 11:07:13.587 +05:30 [DBG] Request matched endpoint '405 HTTP Method Not Supported'
+2025-06-09 11:07:13.587 +05:30 [DBG] Request matched endpoint '405 HTTP Method Not Supported'
+2025-06-09 11:07:13.588 +05:30 [DBG] The request has an origin header: 'http://localhost:4200'.
+2025-06-09 11:07:13.588 +05:30 [INF] CORS policy execution successful.
+2025-06-09 11:07:13.589 +05:30 [DBG] The request has an origin header: 'http://localhost:4200'.
+2025-06-09 11:07:13.589 +05:30 [INF] CORS policy execution successful.
+2025-06-09 11:07:13.589 +05:30 [DBG] The request is a preflight request.
+2025-06-09 11:07:13.589 +05:30 [DBG] The request has an origin header: 'http://localhost:4200'.
+2025-06-09 11:07:13.589 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:62627/api/Auction - 204 null null 1.7472ms
+2025-06-09 11:07:13.589 +05:30 [INF] CORS policy execution successful.
+2025-06-09 11:07:13.589 +05:30 [DBG] The request is a preflight request.
+2025-06-09 11:07:13.589 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:62627/api/Assets/GetAll - 204 null null 3.4306ms
+2025-06-09 11:07:13.589 +05:30 [DBG] The request is a preflight request.
+2025-06-09 11:07:13.589 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:62627/api/Request - 204 null null 2.3464ms
+2025-06-09 11:07:13.592 +05:30 [DBG] Connection id "0HND72TIMH4O4" accepted.
+2025-06-09 11:07:13.592 +05:30 [DBG] Connection id "0HND72TIMH4O4" started.
+2025-06-09 11:07:13.607 +05:30 [DBG] Connection 0HND72TIMH4O4 established using the following protocol: "Tls12"
+2025-06-09 11:07:13.609 +05:30 [INF] Request starting HTTP/2 POST https://localhost:62627/bidhub/negotiate?negotiateVersion=1 - null 0
+2025-06-09 11:07:13.610 +05:30 [DBG] 1 candidate(s) found for the request path '/bidhub/negotiate'
+2025-06-09 11:07:13.610 +05:30 [DBG] Request matched endpoint '/bidhub/negotiate'
+2025-06-09 11:07:13.610 +05:30 [DBG] The request has an origin header: 'http://localhost:4200'.
+2025-06-09 11:07:13.610 +05:30 [INF] CORS policy execution successful.
+2025-06-09 11:07:13.617 +05:30 [DBG] Static files was skipped as the request already matched an endpoint.
+2025-06-09 11:07:13.622 +05:30 [DBG] Static files was skipped as the request already matched an endpoint.
+2025-06-09 11:07:13.958 +05:30 [DBG] Successfully validated the token.
+2025-06-09 11:07:13.959 +05:30 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2025-06-09 11:07:13.962 +05:30 [INF] Executing endpoint '/bidhub/negotiate'
+2025-06-09 11:07:13.964 +05:30 [DBG] New connection zzOJBNo2A2LrGU8ZM_1lLA created.
+2025-06-09 11:07:13.972 +05:30 [DBG] Sending negotiation response.
+2025-06-09 11:07:13.974 +05:30 [INF] Executed endpoint '/bidhub/negotiate'
+2025-06-09 11:07:13.974 +05:30 [INF] Request finished HTTP/2 POST https://localhost:62627/bidhub/negotiate?negotiateVersion=1 - 200 316 application/json 364.9817ms
+2025-06-09 11:07:13.980 +05:30 [INF] Request starting HTTP/2 CONNECT https://localhost:62627/bidhub?id=FGuJ1zludVVl9lgAESGrjQ&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoidmFpc2huYXZpcGF0aWw2MDExMUBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidmFpc2huYXZpIHBhdGlsIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJyb2xlX25hbWUiOiJBZG1pbiIsInJvbGVfaWQiOiIyIiwiZXhwIjoxNzQ5NDUxNzE5LCJpc3MiOiJBdWN0aW9uTWFuYWdlbWVudC5BUEkiLCJhdWQiOiJBdWN0aW9uQXBwVXNlciJ9.EzP4o5Dc1hkyr7dW3BdWVhIolpsAR83P8FPYRbEEKTs - null null
+2025-06-09 11:07:13.980 +05:30 [DBG] 1 candidate(s) found for the request path '/bidhub'
+2025-06-09 11:07:13.980 +05:30 [DBG] Request matched endpoint '/bidhub'
+2025-06-09 11:07:13.980 +05:30 [DBG] The request has an origin header: 'http://localhost:4200'.
+2025-06-09 11:07:13.980 +05:30 [INF] CORS policy execution successful.
+2025-06-09 11:07:13.981 +05:30 [DBG] Static files was skipped as the request already matched an endpoint.
+2025-06-09 11:07:13.981 +05:30 [DBG] Static files was skipped as the request already matched an endpoint.
+2025-06-09 11:07:13.982 +05:30 [DBG] Successfully validated the token.
+2025-06-09 11:07:13.982 +05:30 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2025-06-09 11:07:13.982 +05:30 [INF] Executing endpoint '/bidhub'
+2025-06-09 11:07:13.992 +05:30 [DBG] Establishing new connection.
+2025-06-09 11:07:13.998 +05:30 [DBG] OnConnectedAsync started.
+2025-06-09 11:07:14.005 +05:30 [DBG] Socket opened using Sub-Protocol: 'null'.
+2025-06-09 11:07:14.015 +05:30 [DBG] Found protocol implementation for requested protocol: json.
+2025-06-09 11:07:14.021 +05:30 [DBG] Completed connection handshake. Using HubProtocol 'json'.
+2025-06-09 11:07:40.980 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent
+2025-06-09 11:08:08.274 +05:30 [DBG] Entity Framework Core 9.0.4 initialized 'AuctionManagementDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.4' with options: EngineType=SqlServer 
+2025-06-09 11:08:08.275 +05:30 [DBG] SaveChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:08:08.275 +05:30 [DBG] DetectChanges starting for 'AuctionManagementDbContext'.
+2025-06-09 11:08:08.275 +05:30 [DBG] DetectChanges completed for 'AuctionManagementDbContext'.
+2025-06-09 11:08:08.275 +05:30 [DBG] SaveChanges completed for 'AuctionManagementDbContext' with 0 entities written to the database.
+2025-06-09 11:08:08.275 +05:30 [DBG] 'AuctionManagementDbContext' disposed.
+2025-06-09 11:08:11.007 +05:30 [DBG] Server desktop-0idud2j:3452:2fb1d6c6 heartbeat successfully sent

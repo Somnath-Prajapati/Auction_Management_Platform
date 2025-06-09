@@ -82,8 +82,7 @@
               "RelativeToolTip": "AuctionManagementSystem.Application\\Features\\UserFeature\\Command\\CreateUser\\CreateUserCommandHandler.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAQwDwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T11:54:30.198Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-08T11:54:30.198Z"
             },
             {
               "$type": "Document",
@@ -95,8 +94,7 @@
               "RelativeToolTip": "AuctionManagementSystem.Persistence\\Repositories\\Bids\\BidRepository.cs",
               "ViewState": "AgIAAJoAAAAAAAAAAAAWwKwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T13:15:14.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T13:15:14.728Z"
             },
             {
               "$type": "Document",
@@ -229,8 +227,7 @@
               "RelativeToolTip": "AuctionManagementSystem.Application\\Services\\ValidationBehavior .cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T07:17:35.137Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T07:17:35.137Z"
             },
             {
               "$type": "Document",
