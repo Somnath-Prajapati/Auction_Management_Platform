@@ -25,7 +25,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Bids
 
         public async Task<int> AddBidAsync(tblBid bid)
         {
-            _context.tblBids.Add(bid);
             var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.UserId == bid.UserId);
             if (user == null || user.AvailableLimit < bid.BidAmount)
                 throw new InvalidOperationException("Insufficient limit.");
