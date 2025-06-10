@@ -69,8 +69,34 @@ namespace AuctionManagementSystem.Persistence.Repositories
 
         public async Task AddAsync(TblAuction auction)
         {
+            auction.AuctionNumber = await GenerateNextAuctionNumberAsync();
             await _context.TblAuctions.AddAsync(auction);
+            await _context.SaveChangesAsync();
         }
+
+        public async Task<string> GenerateNextAuctionNumberAsync(string prefix = "AUC", int startFrom = 68)
+        {
+            var lastNumber = await _context.TblAuctions
+                .Where(a => !a.IsDeleted && a.AuctionNumber.StartsWith(prefix))
+                .Select(a => a.AuctionNumber)
+                .ToListAsync();
+
+            int maxNumeric = lastNumber
+                .Select(n => {
+                    var numPart = n.Substring(prefix.Length);
+                    return int.TryParse(numPart, out var result) ? result : 0;
+                })
+                .DefaultIfEmpty(startFrom - 1)
+                .Max();
+
+            var newAuctionNumber = $"{prefix}{(maxNumeric + 1).ToString("D5")}";
+
+            Console.WriteLine($"Generated Auction Number: {newAuctionNumber}"); // ✅ Log here
+
+            return newAuctionNumber;
+        }
+
+
 
         public void Update(TblAuction auction)
         {
