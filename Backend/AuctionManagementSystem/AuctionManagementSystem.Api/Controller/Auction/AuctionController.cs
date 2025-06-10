@@ -45,17 +45,21 @@ namespace AuctionManagementSystem.Api.Controller.Auction
 
         // POST: api/auction
         [HttpPost]
-        public async Task<ActionResult<int>> CreateAuction([FromBody] CreateAuctionCommand command)
+        public async Task<ActionResult<AuctionDto>> CreateAuction([FromBody] CreateAuctionCommand command)
         {
             var userId = _loggedInUserService.UserId;
             command.UserId = userId;
+
             if (command == null)
             {
                 return BadRequest("Invalid request");
             }
-            var newAuctionId = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetAuctionById), new { id = newAuctionId }, command);
+
+            var createdAuction = await _mediator.Send(command);
+
+            return CreatedAtAction(nameof(GetAuctionById), new { id = createdAuction.AuctionId }, createdAuction);
         }
+
 
         // PUT: api/auction/{id}
         [HttpPut("{id}")]
