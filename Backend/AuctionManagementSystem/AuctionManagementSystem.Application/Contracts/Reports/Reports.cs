@@ -12,8 +12,10 @@ namespace AuctionManagementSystem.Application.Contracts.Reports
     public interface IReports
     {
         Task<List<HighBiddingCustomerDto>> GetHighBiddingLimitCustomersAsync(int? userId);
-        Task<List<MonthlyRevenueDto>> GetAuctionMonthlyRevenueAsync();
-        Task<List<MonthlyRevenueDto>> GetDirectSaleMonthlyRevenueAsync();
+        Task<List<AuctionMonthlyRevenueDto>> GetAuctionRevenueAsync(string viewByMode);
+
+        Task<List<DirectSaleMonthlyRevenueDto>> GetDirectSaleRevenueAsync(string viewByMode);
+
 
         Task<List<DirectSaleAssetWithMediaDto>> GetDirectSaleAssetsWithMediaAsync();
 

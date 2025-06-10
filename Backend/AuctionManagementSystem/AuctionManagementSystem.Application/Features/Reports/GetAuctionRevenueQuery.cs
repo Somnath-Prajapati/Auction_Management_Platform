@@ -8,6 +8,10 @@ using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Reports
 {
-    public class GetAuctionRevenueQuery : IRequest<List<MonthlyRevenueDto>> { }
+    public class GetAuctionRevenueQuery : IRequest<List<AuctionMonthlyRevenueDto>>
+    {
+        public string ViewByMode { get; set; } = "Monthly"; // default to Monthly
+    }
+
 
 }

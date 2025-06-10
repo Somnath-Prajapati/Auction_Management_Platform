@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Net;
 using System.Net.Mail;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Auth;
 using Microsoft.Extensions.Configuration;
 
@@ -26,7 +21,7 @@ namespace AuctionManagementSystem.Identity.Services
             var smtpUser = _configuration["SmtpSettings:Username"];
             var smtpPass = _configuration["SmtpSettings:Password"];
             var fromEmail = _configuration["SmtpSettings:From"];
-            
+
 
             using var client = new SmtpClient(smtpHost, smtpPort)
             {

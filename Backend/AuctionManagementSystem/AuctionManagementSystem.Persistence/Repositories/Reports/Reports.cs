@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Reports;
 using AuctionManagementSystem.Application.Dtos.Reports;
@@ -62,9 +63,9 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
             return result;
         }
 
-        public async Task<List<MonthlyRevenueDto>> GetAuctionMonthlyRevenueAsync()
+        public async Task<List<AuctionMonthlyRevenueDto>> GetAuctionRevenueAsync(string viewByMode)
         {
-            var revenueList = new List<MonthlyRevenueDto>();
+            var revenueList = new List<AuctionMonthlyRevenueDto>();
 
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -73,17 +74,25 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
                 using (var command = new SqlCommand("GetAuctionAssetsMonthlyRevenue", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ViewByMode", viewByMode);
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
-                            var dto = new MonthlyRevenueDto
+                            var dto = new AuctionMonthlyRevenueDto();
+
+                            if (viewByMode == "Monthly")
                             {
-                                Year = reader.GetInt32(0),
-                                Month = reader.GetInt32(1),
-                                TotalAmount = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2)
-                            };
+                                dto.Year = reader.GetInt32(0);
+                                dto.Month = reader.GetInt32(1);
+                                dto.TotalAmount = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2);
+                            }
+                            else
+                            {
+                                dto.Year = reader.GetInt32(0);
+                                dto.TotalAmount = reader.IsDBNull(1) ? 0 : reader.GetDecimal(1);
+                            }
 
                             revenueList.Add(dto);
                         }
@@ -94,9 +103,10 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
             return revenueList;
         }
 
-        public async Task<List<MonthlyRevenueDto>> GetDirectSaleMonthlyRevenueAsync()
+
+        public async Task<List<DirectSaleMonthlyRevenueDto>> GetDirectSaleRevenueAsync(string viewByMode)
         {
-            var revenueList = new List<MonthlyRevenueDto>();
+            var revenueList = new List<DirectSaleMonthlyRevenueDto>();
 
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -105,26 +115,37 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
                 using (var command = new SqlCommand("GetDirectSaleAssetsMonthlyRevenue", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ViewByMode", viewByMode);
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
-                            var dto = new MonthlyRevenueDto
+                            var dto = new DirectSaleMonthlyRevenueDto();
+
+                            if (viewByMode == "Monthly")
                             {
-                                Year = reader.GetInt32(0),
-                                Month = reader.GetInt32(1),
-                                TotalAmount = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2)
-                            };
+                                dto.Year = reader.GetInt32(0);
+                                dto.Month = reader.GetInt32(1);
+                                dto.TotalAmount = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2);
+                            }
+                            else
+                            {
+                                dto.Year = reader.GetInt32(0);
+                                dto.TotalAmount = reader.IsDBNull(1) ? 0 : reader.GetDecimal(1);
+                            }
 
                             revenueList.Add(dto);
                         }
+
+
                     }
                 }
-            }
 
-            return revenueList;
+                return revenueList;
+            }
         }
+
 
         public async Task<List<DirectSaleAssetWithMediaDto>> GetDirectSaleAssetsWithMediaAsync()
         {
@@ -147,6 +168,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
                                 AssetId = reader.GetInt32(reader.GetOrdinal("AssetId")),
                                 Title = reader["Title"] as string,
                                 CategoryId = reader["CategoryId"] as int?,
+                                CategoryName = reader["CategoryName"] as string, // Added to include category name
                                 Deposit = reader["Deposit"] as decimal?,
                                 SellerId = reader["SellerId"] as int?,
                                 Commission = reader["Commission"] as decimal?,
@@ -157,6 +179,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
                                 Featured = reader["Featured"] as bool?,
                                 AwardingId = reader["AwardingId"] as int?,
                                 StatusId = reader["StatusId"] as int?,
+                                StatusName = reader["StatusName"] as string, // Added to include status name
                                 VATId = reader["VATId"] as int?,
                                 VATPercent = reader["VATPercent"] as decimal?,
                                 CourtCaseNumber = reader["CourtCaseNumber"] as string,
@@ -252,29 +275,35 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
             {
                 var dto = new RefundTransactionDto
                 {
-                    TransactionId = reader.GetInt32(0),
-                    TransactionNumber = reader.GetString(1),
-                    Amount = reader.GetDecimal(2),
-                    UserId = reader.GetInt32(3),
-                    TransactionTypeId = reader.GetInt32(4),
-                    PaymentMethodId = reader.IsDBNull(5) ? null : reader.GetInt32(5),
-                    CardTypeId = reader.IsDBNull(6) ? null : reader.GetInt32(6),
-                    MerchantTransactionId = reader.IsDBNull(7) ? null : reader.GetString(7),
-                    TransactionDateTime = reader.GetDateTime(8),
-                    StatusId = reader.GetInt32(9),
-                    Notes = reader.IsDBNull(10) ? null : reader.GetString(10),
-                    DocumentPath = reader.IsDBNull(11) ? null : reader.GetString(11),
-                    CreatedByAdminID = reader.IsDBNull(12) ? null : reader.GetInt64(12),
-                    CreatedAt = reader.GetDateTime(13),
-                    UpdatedAt = reader.IsDBNull(14) ? null : reader.GetDateTime(14),
-                    CreatedBy = reader.IsDBNull(15) ? null : reader.GetInt32(15),
-                    CreatedDate = reader.IsDBNull(16) ? null : reader.GetDateTime(16),
-                    UpdatedBy = reader.IsDBNull(17) ? null : reader.GetInt32(17),
-                    UpdatedDate = reader.IsDBNull(18) ? null : reader.GetDateTime(18),
-                    DeletedBy = reader.IsDBNull(19) ? null : reader.GetInt32(19),
-                    DeletedDate = reader.IsDBNull(20) ? null : reader.GetDateTime(20),
-                    IsDeleted = reader.GetBoolean(21)
+                    TransactionId = reader.GetInt32(0),                         // 0
+                    TransactionNumber = reader.GetString(1),                    // 1
+                    Amount = reader.GetDecimal(2),                              // 2
+                    UserId = reader.GetInt32(3),                                // 3
+                    UserName = reader.GetString(4),                             // 4
+                    TransactionTypeId = reader.GetInt32(5),                     // 5
+                    TransactionTypeName = reader.GetString(6),                  // 6
+                    PaymentMethodId = reader.IsDBNull(7) ? null : reader.GetInt32(7),        // 7
+                    PaymentMethodName = reader.IsDBNull(8) ? null : reader.GetString(8),     // 8
+                    CardTypeId = reader.IsDBNull(9) ? null : reader.GetInt32(9),             // 9
+                    CardTypeName = reader.IsDBNull(10) ? null : reader.GetString(10),        // 10
+                    MerchantTransactionId = reader.IsDBNull(11) ? null : reader.GetString(11), // 11
+                    TransactionDateTime = reader.GetDateTime(12),               // 12
+                    StatusId = reader.GetInt32(13),                             // 13
+                    StatusName = reader.GetString(14),                          // 14
+                    Notes = reader.IsDBNull(15) ? null : reader.GetString(15),  // 15
+                    DocumentPath = reader.IsDBNull(16) ? null : reader.GetString(16), // 16
+                    CreatedByAdminID = reader.IsDBNull(17) ? null : reader.GetInt64(17), // 17
+                    CreatedAt = reader.GetDateTime(18),                         // 18
+                    UpdatedAt = reader.IsDBNull(19) ? null : reader.GetDateTime(19), // 19
+                    CreatedBy = reader.IsDBNull(20) ? null : reader.GetInt32(20),     // 20
+                    CreatedDate = reader.IsDBNull(21) ? null : reader.GetDateTime(21), // 21
+                    UpdatedBy = reader.IsDBNull(22) ? null : reader.GetInt32(22),     // 22
+                    UpdatedDate = reader.IsDBNull(23) ? null : reader.GetDateTime(23), // 23
+                    DeletedBy = reader.IsDBNull(24) ? null : reader.GetInt32(24),     // 24
+                    DeletedDate = reader.IsDBNull(25) ? null : reader.GetDateTime(25), // 25
+                    IsDeleted = reader.GetBoolean(26)                             // 26
                 };
+
 
 
                 result.Transactions.Add(dto);
@@ -308,28 +337,33 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
             {
                 var dto = new DepositTransactionDto
                 {
-                    TransactionId = reader.GetInt32(0),
-                    TransactionNumber = reader.GetString(1),
-                    Amount = reader.GetDecimal(2),
-                    UserId = reader.GetInt32(3),
-                    TransactionTypeId = reader.GetInt32(4),
-                    PaymentMethodId = reader.IsDBNull(5) ? null : reader.GetInt32(5),
-                    CardTypeId = reader.IsDBNull(6) ? null : reader.GetInt32(6),
-                    MerchantTransactionId = reader.IsDBNull(7) ? null : reader.GetString(7),
-                    TransactionDateTime = reader.GetDateTime(8),
-                    StatusId = reader.GetInt32(9),
-                    Notes = reader.IsDBNull(10) ? null : reader.GetString(10),
-                    DocumentPath = reader.IsDBNull(11) ? null : reader.GetString(11),
-                    CreatedByAdminID = reader.IsDBNull(12) ? null : reader.GetInt64(12),
-                    CreatedAt = reader.GetDateTime(13),
-                    UpdatedAt = reader.IsDBNull(14) ? null : reader.GetDateTime(14),
-                    CreatedBy = reader.IsDBNull(15) ? null : reader.GetInt32(15),
-                    CreatedDate = reader.IsDBNull(16) ? null : reader.GetDateTime(16),
-                    UpdatedBy = reader.IsDBNull(17) ? null : reader.GetInt32(17),
-                    UpdatedDate = reader.IsDBNull(18) ? null : reader.GetDateTime(18),
-                    DeletedBy = reader.IsDBNull(19) ? null : reader.GetInt32(19),
-                    DeletedDate = reader.IsDBNull(20) ? null : reader.GetDateTime(20),
-                    IsDeleted = reader.GetBoolean(21)
+                    TransactionId = reader.GetInt32(0),                         // 0
+                    TransactionNumber = reader.GetString(1),                    // 1
+                    Amount = reader.GetDecimal(2),                              // 2
+                    UserId = reader.GetInt32(3),                                // 3
+                    UserName = reader.GetString(4),                             // 4
+                    TransactionTypeId = reader.GetInt32(5),                     // 5
+                    TransactionTypeName = reader.GetString(6),                  // 6
+                    PaymentMethodId = reader.IsDBNull(7) ? null : reader.GetInt32(7),        // 7
+                    PaymentMethodName = reader.IsDBNull(8) ? null : reader.GetString(8),     // 8
+                    CardTypeId = reader.IsDBNull(9) ? null : reader.GetInt32(9),             // 9
+                    CardTypeName = reader.IsDBNull(10) ? null : reader.GetString(10),        // 10
+                    MerchantTransactionId = reader.IsDBNull(11) ? null : reader.GetString(11), // 11
+                    TransactionDateTime = reader.GetDateTime(12),               // 12
+                    StatusId = reader.GetInt32(13),                             // 13
+                    StatusName = reader.GetString(14),                          // 14
+                    Notes = reader.IsDBNull(15) ? null : reader.GetString(15),  // 15
+                    DocumentPath = reader.IsDBNull(16) ? null : reader.GetString(16), // 16
+                    CreatedByAdminID = reader.IsDBNull(17) ? null : reader.GetInt64(17), // 17
+                    CreatedAt = reader.GetDateTime(18),                         // 18
+                    UpdatedAt = reader.IsDBNull(19) ? null : reader.GetDateTime(19), // 19
+                    CreatedBy = reader.IsDBNull(20) ? null : reader.GetInt32(20),     // 20
+                    CreatedDate = reader.IsDBNull(21) ? null : reader.GetDateTime(21), // 21
+                    UpdatedBy = reader.IsDBNull(22) ? null : reader.GetInt32(22),     // 22
+                    UpdatedDate = reader.IsDBNull(23) ? null : reader.GetDateTime(23), // 23
+                    DeletedBy = reader.IsDBNull(24) ? null : reader.GetInt32(24),     // 24
+                    DeletedDate = reader.IsDBNull(25) ? null : reader.GetDateTime(25), // 25
+                    IsDeleted = reader.GetBoolean(26)
                 };
 
                 result.Transactions.Add(dto);
@@ -392,7 +426,9 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
                         
                         DeletedDate = reader.IsDBNull(14) ? null : reader.GetDateTime(14),   // DateTime?
                         IsDeleted = reader.GetBoolean(15),
-                        HangfireJobId = reader.IsDBNull(16) ? null : reader.GetString(16)    // string?
+                        HangfireJobId = reader.IsDBNull(16) ? null : reader.GetString(16),    // string?
+                        StatusName = reader.IsDBNull(17) ? null : reader.GetString(17),
+                        CategoryName = reader.IsDBNull(18) ? null : reader.GetString(18)
                     };
 
 

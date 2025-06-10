@@ -1,12 +1,24 @@
+using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Application.Contracts.Assets;
-using AuctionManagementSystem.Persistence.Repositories;
+using AuctionManagementSystem.Application.Contracts.AuditTrail;
+using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Application.Contracts.Chatbot;
+using AuctionManagementSystem.Application.Contracts.Listings;
+using AuctionManagementSystem.Application.Contracts.Notification;
+using AuctionManagementSystem.Application.Contracts.Request;
+using AuctionManagementSystem.Application.Contracts.Roles;
 using AuctionManagementSystem.Application.Contracts.Settings;
 using AuctionManagementSystem.Application.Contracts.Transactions;
+using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
 using AuctionManagementSystem.Application.Interfaces.Repositories;
 using AuctionManagementSystem.Application.Repositories;
 using AuctionManagementSystem.Domain.Interfaces;
 using AuctionManagementSystem.Infrastructure.Persistence.Repositories;
+using AuctionManagementSystem.Infrastructure.Repositories;
+using AuctionManagementSystem.Infrastructure.UoW;
 using AuctionManagementSystem.Persistence.Context;
+using AuctionManagementSystem.Persistence.Repositories;
 using AuctionManagementSystem.Persistence.Repositories.Assets;
 using AuctionManagementSystem.Persistence.Repositories.Settings;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +33,7 @@ using AuctionManagementSystem.Application.Contracts.Request;
 using AuctionManagementSystem.Persistence.Repositories.Requests;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Bids;
+using AuctionManagementSystem.Persistence.Repositories.Chatbot;
 using AuctionManagementSystem.Persistence.Repositories.Listings;
 using AuctionManagementSystem.Infrastructure.Repositories;
 using AuctionManagementSystem.Application.Contracts.Listings;
@@ -31,8 +44,10 @@ using AuctionManagementSystem.Persistence.Repositories.AuditTrail;
 using AuctionManagementSystem.Application.Contracts.Roles;
 using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Notification;
+using AuctionManagementSystem.Persistence.Repositories.Requests;
+using AuctionManagementSystem.Persistence.Repositories.Settings;
 using AuctionManagementSystem.Persistence.Repositories.Transactions;
-using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
+using AuctionManagementSystem.Persistence.Repositories.User;
 using AuctionManagementSystem.Persistence.Services;
 using AuctionManagementSystem.Application.Contracts.Reports;
 using AuctionManagementSystem.Persistence.Repositories.Reports;
@@ -66,11 +81,11 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAssetGalleryRepository, AssetGalleryRepository>();
             services.AddScoped<IAssetDocumentRepository, AssetDocumentRepository>();
             services.AddScoped<IAssetDetailRepository, AssetDetailRepository>();
-            services.AddScoped< IUserStatusRepository,UserStatusRepository> ();
+            services.AddScoped<IUserStatusRepository, UserStatusRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IRequestRepository, RequestRepository>();
             services.AddScoped<IBidRepository, BidRepository>();
-            services.AddScoped<IAuctionAssetRepository, AuctionAssetRepository >();
+            services.AddScoped<IAuctionAssetRepository, AuctionAssetRepository>();
             services.AddScoped<IWishlistRepository, WishlistRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<IAuctionAssetRepository, AuctionAssetRepository>();
@@ -87,7 +102,7 @@ namespace AuctionManagementSystem.Persistence
 
 
             services.AddScoped<IAssetExpirationService, AssetExpirationService>();
-            
+
             services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
             //services.AddScoped<IRolePermissionsMatrixRepository, RolePermissionsMatrixRepository>();
             services.AddScoped<IAutoRefundService, AutoRefundService>();
