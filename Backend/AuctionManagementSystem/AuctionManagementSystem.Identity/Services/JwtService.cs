@@ -1,5 +1,4 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AuctionManagementSystem.Application.Contracts.Auth;
@@ -29,7 +28,7 @@ namespace AuctionManagementSystem.Identity.Services
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.Role, roleName),
-                new Claim("role_name", roleName),               
+                new Claim("role_name", roleName),
                 new Claim("role_id", user.RoleId.ToString())
             };
 
