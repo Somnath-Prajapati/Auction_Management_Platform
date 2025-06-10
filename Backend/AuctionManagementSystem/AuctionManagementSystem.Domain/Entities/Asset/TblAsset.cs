@@ -5,6 +5,7 @@ using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.Bids;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Transaction;
+using AuctionManagementSystem.Domain.Entities.Translations;
 using AuctionManagementSystem.Domain.Entities.User;
 
 namespace AuctionManagementSystem.Domain.Entities.Asset;
@@ -106,6 +107,7 @@ public partial class TblAsset
     public virtual ICollection<TblWishlistItem> TblWishlistItems { get; set; } = new List<TblWishlistItem>();
     public virtual ICollection<TblCartItem> TblCartItems { get; set; } = new List<TblCartItem>();
     public bool IsAvailableForDirectSale { get; set; }
+    public virtual ICollection<tblAssetTranslation> TblAssetTranslations { get; set; } = new List<tblAssetTranslation>();
 
     // after the autobid added 
     public virtual ICollection<TblAutoBid> TblAutoBids { get; set; } = new List<TblAutoBid>();

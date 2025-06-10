@@ -80,11 +80,12 @@ namespace AuctionManagementSystem.Api.Controller.Assets
 
         //[Route("GetById")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAsset(int id)
+        public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAsset(int id, [FromQuery] string lang)
         {
-            var assets = await _mediator.Send(new GetAssetByIdQuery(id));
+            var assets = await _mediator.Send(new GetAssetByIdQuery(id,lang));
             return Ok(assets);
         }
+
 
 
         [HttpPut("{id:int}")]
