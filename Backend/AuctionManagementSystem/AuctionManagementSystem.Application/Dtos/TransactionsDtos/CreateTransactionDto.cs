@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace AuctionManagementSystem.Application.Dtos.TransactionsDtos
 {
@@ -17,7 +18,7 @@ namespace AuctionManagementSystem.Application.Dtos.TransactionsDtos
         public DateTime TransactionDateTime { get; set; }
         public int StatusId { get; set; }
         public string? Notes { get; set; }
-        //public List<IFormFile>? Documents { get; set; }
+        public List<IFormFile>? Documents { get; set; }
         public string? DocumentPath { get; set; }
     }
 

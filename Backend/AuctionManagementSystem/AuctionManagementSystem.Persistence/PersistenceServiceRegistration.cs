@@ -20,10 +20,29 @@ using AuctionManagementSystem.Infrastructure.UoW;
 using AuctionManagementSystem.Persistence.Context;
 using AuctionManagementSystem.Persistence.Repositories;
 using AuctionManagementSystem.Persistence.Repositories.Assets;
-using AuctionManagementSystem.Persistence.Repositories.AuditTrail;
+using AuctionManagementSystem.Persistence.Repositories.Settings;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using ProtoBuf.Meta;
+using AuctionManagementSystem.Persistence.Repositories.User;
+using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Application.Contracts;
+using AuctionManagementSystem.Infrastructure.UoW;
+using AuctionManagementSystem.Application.Contracts.Request;
+using AuctionManagementSystem.Persistence.Repositories.Requests;
+using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Bids;
 using AuctionManagementSystem.Persistence.Repositories.Chatbot;
 using AuctionManagementSystem.Persistence.Repositories.Listings;
+using AuctionManagementSystem.Infrastructure.Repositories;
+using AuctionManagementSystem.Application.Contracts.Listings;
+using AuctionManagementSystem.Application.Contracts.Chatbot;
+using AuctionManagementSystem.Persistence.Repositories.Chatbot;
+using AuctionManagementSystem.Application.Contracts.AuditTrail;
+using AuctionManagementSystem.Persistence.Repositories.AuditTrail;
+using AuctionManagementSystem.Application.Contracts.Roles;
+using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Requests;
 using AuctionManagementSystem.Persistence.Repositories.Roles;
@@ -31,9 +50,8 @@ using AuctionManagementSystem.Persistence.Repositories.Settings;
 using AuctionManagementSystem.Persistence.Repositories.Transactions;
 using AuctionManagementSystem.Persistence.Repositories.User;
 using AuctionManagementSystem.Persistence.Services;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using AuctionManagementSystem.Application.Contracts.Reports;
+using AuctionManagementSystem.Persistence.Repositories.Reports;
 
 namespace AuctionManagementSystem.Persistence
 {
@@ -78,6 +96,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IChatbotRepository, ChatbotRepository>();
             services.AddScoped<IOrderEmailService, OrderEmailService>();
             services.AddScoped<INotificationRepository, NotificationRepository>();
+            services.AddScoped<IReports,Reports>();
 
 
             services.AddScoped<IAutoBidRepository, AutoBidRepository>();
@@ -86,7 +105,7 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IAssetExpirationService, AssetExpirationService>();
 
             services.AddScoped<IAuditTrailRepository, AuditTrailRepository>();
-            services.AddScoped<IRolePermissionsMatrixRepository, RolePermissionsMatrixRepository>();
+            //services.AddScoped<IRolePermissionsMatrixRepository, RolePermissionsMatrixRepository>();
             services.AddScoped<IAutoRefundService, AutoRefundService>();
 
             services.AddHostedService<AutoRefundHostedService>();

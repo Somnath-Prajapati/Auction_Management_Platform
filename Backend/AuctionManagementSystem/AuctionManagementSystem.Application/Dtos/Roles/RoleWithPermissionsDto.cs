@@ -8,25 +8,25 @@ namespace AuctionManagementSystem.Application.Dtos.Roles
 {
     public class RoleWithPermissionsDto
     {
-        public int RoleId { get; set; }
-        public string RoleName { get; set; }
-        public bool IsSeller { get; set; }
+        public int RoleId { get; set; } 
+        public string RoleName { get; set; } 
+        public bool IsSeller { get; set; } 
 
 
         // Permissions flattened for frontend
-        public bool SuperAdmin { get; set; }
-        public bool AccessAdminPanel { get; set; }
-        public bool ManageAuctions { get; set; }
-        public bool ManageAssets { get; set; }
-        public bool ManageTransactions { get; set; }
-        public bool ManageCategories { get; set; }
-        public bool ManageRoles { get; set; }
-        public bool ManageUsers { get; set; }
-        public bool ViewReports { get; set; }
-        public bool ExportReports { get; set; }
-        public bool ManageRequests { get; set; }
-        public bool ViewAuditTrail { get; set; }
-        public bool ChangeCommission { get; set; }
+        public bool SuperAdmin { get; set; } = false;
+        public bool AccessAdminPanel { get; set; } = false;
+        public bool ManageAuctions { get; set; } = false;
+        public bool ManageAssets { get; set; } = false;
+        public bool ManageTransactions { get; set; } = false;
+        public bool ManageCategories { get; set; } = false;
+        public bool ManageRoles { get; set; } = false;
+        public bool ManageUsers { get; set; } = false;
+        public bool ViewReports { get; set; } = false;
+        public bool ExportReports { get; set; } = false; 
+        public bool ManageRequests { get; set; } = false;
+        public bool ViewAuditTrail { get; set; } = false;
+        public bool ChangeCommission { get; set; } = false;
     }
 }
 

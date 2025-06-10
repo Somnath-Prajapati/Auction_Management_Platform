@@ -14,7 +14,7 @@ namespace AuctionManagementSystem.Persistence.Services
         private readonly IMediator _mediator;
         private readonly IServiceProvider _serviceProvider;
         private readonly ILogger<AutoRefundHostedService> _logger;
-        private readonly TimeSpan _interval = TimeSpan.FromSeconds(30); // run once daily
+        private readonly TimeSpan _interval = TimeSpan.FromHours(24); // run once daily
 
         public AutoRefundHostedService(IMediator mediator, ILogger<AutoRefundHostedService> logger, IServiceProvider serviceProvider)
         {
@@ -42,7 +42,9 @@ namespace AuctionManagementSystem.Persistence.Services
                 }
 
                 // Wait for some time before running again
-                await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
+                //await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
+                await Task.Delay(_interval, stoppingToken);
+
             }
         }
     }

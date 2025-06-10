@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Application.Dtos.Roles;
 
 namespace AuctionManagementSystem.Application.Dtos.Assets.Auth
 {
@@ -10,7 +11,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets.Auth
     {
         public string Token { get; set; }
 
-        public string Role { get; set; }
+        public RoleWithPermissionsDto Role { get; set; }
 
         public string Email { get; set; }
         public string Name { get; set; }
