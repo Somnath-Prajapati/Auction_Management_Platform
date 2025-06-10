@@ -1,9 +1,12 @@
-﻿using AuctionManagementSystem.Application.Dtos.Assets;
+﻿using AuctionManagementSystem.Application.Contracts.Assets;
+using AuctionManagementSystem.Application.Dtos.Assets;
+using AuctionManagementSystem.Application.Dtos.Translations;
 using AuctionManagementSystem.Application.Features.Assets.AssetCategory.Command.CreateAssetCategory;
 using AuctionManagementSystem.Application.Features.Assets.AssetCategory.Command.DeleteAssetCategory;
 using AuctionManagementSystem.Application.Features.Assets.AssetCategory.Command.UpdateAssetCategory;
 using AuctionManagementSystem.Application.Features.Assets.AssetCategory.Query.GetAllAssetCategories;
 using AuctionManagementSystem.Application.Features.Assets.AssetCategory.Query.GetCategoryById;
+using AuctionManagementSystem.Persistence.Repositories.Assets;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,10 +17,12 @@ namespace AuctionManagementSystem.Api.Controller.Assets
     public class AssetCategoriesController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IAssetCategoriesRepository _repo;
 
-        public AssetCategoriesController(IMediator mediator)
+        public AssetCategoriesController(IMediator mediator, IAssetCategoriesRepository repo)
         {
             _mediator = mediator;
+            _repo = repo;
         }
 
         [HttpGet]
@@ -78,7 +83,26 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             }
         }
 
+        [HttpGet("lang/{langCode}")]
+        public async Task<ActionResult<List<AuctionCategoryTranslationDto>>> GetByLanguage(string langCode)
+        {
+            var translations = await _repo.GetTranslationsByLangCodeAsync(langCode);
 
+            if (translations == null || !translations.Any())
+                return NotFound($"No translations found for language code '{langCode}'.");
+
+            return Ok(translations);
+        }
+        [HttpGet("langCat/{langCode}")]
+        public async Task<ActionResult<List<AuctionCategoryTranslationDto>>> GetCategoriesByLanguage(string langCode)
+        {
+            var translations = await _repo.GetAssetCategoryTranslationsByLangCodeAsync(langCode);
+
+            if (translations == null || !translations.Any())
+                return NotFound($"No translations found for language code '{langCode}'.");
+
+            return Ok(translations);
+        }
     }
 
 }

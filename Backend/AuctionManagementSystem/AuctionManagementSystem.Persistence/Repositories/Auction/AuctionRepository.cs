@@ -108,6 +108,22 @@ namespace AuctionManagementSystem.Persistence.Repositories
             auction.IsDeleted = true;
             _context.TblAuctions.Update(auction);
         }
+        public async Task<List<TblAuction>> GetAuctionsByIdsAsync(List<int> auctionIds)
+        {
+            var result = new List<TblAuction>();
+
+            foreach (var id in auctionIds)
+            {
+                var auction = await _context.TblAuctions.FirstOrDefaultAsync(a => a.AuctionId == id);
+                if (auction != null)
+                {
+                    result.Add(auction);
+                }
+            }
+
+            return result;
+        }
+
 
     }
 }
