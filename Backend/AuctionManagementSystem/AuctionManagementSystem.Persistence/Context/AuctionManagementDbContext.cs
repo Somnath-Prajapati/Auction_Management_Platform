@@ -125,7 +125,7 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblOrder> TblOrders { get; set; }
     public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
     public virtual DbSet<TblRolePermissionsMatrix> TblRolePermissionsMatrices { get; set; }
-
+    public virtual DbSet<tblAssetTranslation> TblAssetTranslations { get; set; }
     public virtual DbSet<TblNotification> TblNotifications { get; set; }
     public virtual DbSet<TblUserDeposit> TblUserDeposits { get; set; }
     public virtual DbSet<tblLanguages> TblLanguages { get; set; }
