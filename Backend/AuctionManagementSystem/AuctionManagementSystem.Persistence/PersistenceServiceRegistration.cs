@@ -45,7 +45,6 @@ using AuctionManagementSystem.Application.Contracts.Roles;
 using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Notification;
 using AuctionManagementSystem.Persistence.Repositories.Requests;
-using AuctionManagementSystem.Persistence.Repositories.Roles;
 using AuctionManagementSystem.Persistence.Repositories.Settings;
 using AuctionManagementSystem.Persistence.Repositories.Transactions;
 using AuctionManagementSystem.Persistence.Repositories.User;
