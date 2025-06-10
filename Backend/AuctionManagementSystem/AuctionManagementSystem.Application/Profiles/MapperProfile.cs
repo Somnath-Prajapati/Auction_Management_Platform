@@ -41,6 +41,7 @@ using System.Data;
 using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Domain;
+using AuctionManagementSystem.Domain.Entities.Roles;
 
 
 namespace AuctionManagementSystem.Application.Profiles
@@ -179,8 +180,49 @@ namespace AuctionManagementSystem.Application.Profiles
     // ... map other asset fields from src.Asset
     ;
             CreateMap<WonBidDto, TblAssetWinner>().ReverseMap();
+            CreateMap<TblRole, RoleWithPermissionsDto>()
+               .ForMember(dest => dest.RoleId, opt => opt.MapFrom(src => src.RoleId))
+               .ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => src.RoleName))
+               .ForMember(dest => dest.IsSeller, opt => opt.MapFrom(src => src.IsSeller))
+               .ForMember(dest => dest.SuperAdmin, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().SuperAdmin ?? false : false))
+               .ForMember(dest => dest.AccessAdminPanel, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().AccessAdminPanel ?? false : false))
+               .ForMember(dest => dest.ManageAuctions, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().ManageAuctions ?? false : false))
+               .ForMember(dest => dest.ManageAssets, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().ManageAssets ?? false : false))
+               .ForMember(dest => dest.ManageTransactions, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().ManageTransactions ?? false : false))
+               .ForMember(dest => dest.ManageCategories, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().ManageCategories ?? false : false))
+               .ForMember(dest => dest.ManageRoles, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().ManageRoles ?? false : false))
+               .ForMember(dest => dest.ManageUsers, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().ManageUsers ?? false : false))
+               .ForMember(dest => dest.ViewReports, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().ViewReports ?? false : false))
+               .ForMember(dest => dest.ExportReports, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().ExportReports ?? false : false))
+               .ForMember(dest => dest.ManageRequests, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().ManageRequests ?? false : false))
+               .ForMember(dest => dest.ViewAuditTrail, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().ViewAuditTrail ?? false : false))
+               .ForMember(dest => dest.ChangeCommission, opt => opt.MapFrom(src => src.TblRolePermissionsMatrices.FirstOrDefault() != null ? src.TblRolePermissionsMatrices.FirstOrDefault().ChangeCommission ?? false : false));
 
+            // DTO -> Entity for creating/updating Role
+            CreateMap<RoleWithPermissionsDto, TblRole>()
+                .ForMember(dest => dest.RoleId, opt => opt.Ignore()) // RoleId assigned by DB
+                .ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => src.RoleName))
+                .ForMember(dest => dest.IsSeller, opt => opt.MapFrom(src => src.IsSeller));
 
+            // DTO -> Entity for creating/updating PermissionsMatrix
+            CreateMap<RoleWithPermissionsDto, TblRolePermissionsMatrix>()
+                .ForMember(dest => dest.RoleId, opt => opt.Ignore()) // Set explicitly in code
+                .ForMember(dest => dest.SuperAdmin, opt => opt.MapFrom(src => src.SuperAdmin))
+                .ForMember(dest => dest.AccessAdminPanel, opt => opt.MapFrom(src => src.AccessAdminPanel))
+                .ForMember(dest => dest.ManageAuctions, opt => opt.MapFrom(src => src.ManageAuctions))
+                .ForMember(dest => dest.ManageAssets, opt => opt.MapFrom(src => src.ManageAssets))
+                .ForMember(dest => dest.ManageTransactions, opt => opt.MapFrom(src => src.ManageTransactions))
+                .ForMember(dest => dest.ManageCategories, opt => opt.MapFrom(src => src.ManageCategories))
+                .ForMember(dest => dest.ManageRoles, opt => opt.MapFrom(src => src.ManageRoles))
+                .ForMember(dest => dest.ManageUsers, opt => opt.MapFrom(src => src.ManageUsers))
+                .ForMember(dest => dest.ViewReports, opt => opt.MapFrom(src => src.ViewReports))
+                .ForMember(dest => dest.ExportReports, opt => opt.MapFrom(src => src.ExportReports))
+                .ForMember(dest => dest.ManageRequests, opt => opt.MapFrom(src => src.ManageRequests))
+                .ForMember(dest => dest.ViewAuditTrail, opt => opt.MapFrom(src => src.ViewAuditTrail))
+                .ForMember(dest => dest.ChangeCommission, opt => opt.MapFrom(src => src.ChangeCommission));
         }
     }
+
 }
+    
+

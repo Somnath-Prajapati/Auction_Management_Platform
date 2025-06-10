@@ -144,6 +144,9 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.RoleName)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            entity.Property(e => e.IsDeleted)
+            .HasDefaultValue(false);
         });
         modelBuilder.Entity<tblLanguages>(entity =>
         {
@@ -174,11 +177,11 @@ public partial class AuctionManagementDbContext : DbContext
 
         modelBuilder.Entity<TblRolePermissionsMatrix>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__tblRoleP__8AFACE1A931EC603");
+            entity.HasKey(e => e.TblRolePermissionsMatrixId).HasName("PK__tblRoleP__9104AC164663DFAA");
 
             entity.ToTable("tblRolePermissionsMatrix");
 
-            entity.Property(e => e.RoleId).ValueGeneratedNever();
+            entity.Property(e => e.TblRolePermissionsMatrixId).HasColumnName("tblRolePermissionsMatrixId");
             entity.Property(e => e.AccessAdminPanel).HasColumnName("Access Admin Panel");
             entity.Property(e => e.ChangeCommission).HasColumnName("Change Commission");
             entity.Property(e => e.ExportReports).HasColumnName("Export Reports");
@@ -193,8 +196,8 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.ViewAuditTrail).HasColumnName("View Audit Trail");
             entity.Property(e => e.ViewReports).HasColumnName("View Reports");
 
-            entity.HasOne(d => d.Role).WithOne(p => p.TblRolePermissionsMatrix)
-                .HasForeignKey<TblRolePermissionsMatrix>(d => d.RoleId)
+            entity.HasOne(d => d.Role).WithMany(p => p.TblRolePermissionsMatrices)
+                .HasForeignKey(d => d.RoleId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_tblRolePermissionsMatrix_tblRoles");
         });
@@ -214,6 +217,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasForeignKey(e => e.LanguageId)
                 .OnDelete(DeleteBehavior.Cascade);
         });
+
 
         modelBuilder.Entity<TblOrder>(entity =>
         {
@@ -1424,17 +1428,6 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.OldTotalLimit).HasColumnType("decimal(18, 2)");
         });
 
-        //modelBuilder.Entity<Tbltempdatum>(entity =>
-        //{
-        //    entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
-
-        //    entity.ToTable("tbltempdata");
-
-        //    entity.Property(e => e.Id).HasColumnName("id");
-        //    entity.Property(e => e.Name)
-        //        .HasMaxLength(1)
-        //        .HasColumnName("name");
-        //});
 
         OnModelCreatingPartial(modelBuilder);
     }

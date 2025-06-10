@@ -12,8 +12,9 @@ public partial class TblRole
     public string RoleName { get; set; } = null!;
     public bool IsSeller { get; set; }
     //public List<string> Permissions { get; set; } = new();
+    public bool IsDeleted { get; set; } = false;
+    public virtual ICollection<TblRolePermissionsMatrix> TblRolePermissionsMatrices { get; set; } = new List<TblRolePermissionsMatrix>();
 
-    public virtual TblRolePermissionsMatrix TblRolePermissionsMatrix { get; set; }
     public virtual ICollection<TblAuditTrail> TblAuditTrails { get; set; } = new List<TblAuditTrail>();
 
 
