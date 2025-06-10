@@ -36,6 +36,9 @@ namespace AuctionManagementSystem.Api.Middleware
                 case DatabaseException dbException:
                     statusCode = HttpStatusCode.InternalServerError; 
                     break;
+                case LimitExceededException:
+                    statusCode = HttpStatusCode.InternalServerError; // or use BadRequest if more appropriate
+                    break;
                 default:
                     statusCode = HttpStatusCode.InternalServerError;
                     break;

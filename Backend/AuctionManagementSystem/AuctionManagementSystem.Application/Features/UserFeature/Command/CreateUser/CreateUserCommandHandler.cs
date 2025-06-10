@@ -1,17 +1,16 @@
 ﻿using AuctionManagementSystem.Application.Contracts.AuditTrail; // <-- Add this
 using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Contracts.Notification;
+using AuctionManagementSystem.Application.Contracts.Transactions; // <-- For serializing afterChange if needed
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Application.Exceptions;
 using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Domain.Entities.User;
+using AuctionManagementSystem.Domain.model;
 using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using AuctionManagementSystem.Domain.model;
-using AuctionManagementSystem.Application.Contracts.Transactions; // <-- For serializing afterChange if needed
 
 namespace AuctionManagementSystem.Application.Features.UserFeature.Command.CreateUser
 {
@@ -80,7 +79,7 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
             user.AvailableLimit = user.TotalLimit ?? 0m;
 
             var userId = await _userRepository.AddUserAsync(user);
-           
+
             var userNotification = new TblNotification
             {
                 Id = Guid.NewGuid(),
@@ -92,10 +91,10 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
                 IsRead = false
             };
 
-            
+
             await _notificationRepository.CreateAsync(userNotification);
 
-           
+
             var notificationDto = new NotificationDto
             {
                 UserId = userId,

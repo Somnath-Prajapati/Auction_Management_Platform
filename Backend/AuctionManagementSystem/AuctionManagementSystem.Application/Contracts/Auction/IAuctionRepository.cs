@@ -16,5 +16,7 @@ namespace AuctionManagementSystem.Application.Contracts
         Task AddAsync(TblAuction auction);
         void Update(TblAuction auction);
         void Delete(TblAuction auction);
+        Task<List<TblAuction>> GetAuctionsByIdsAsync(List<int> auctionIds);
+
     }
 }

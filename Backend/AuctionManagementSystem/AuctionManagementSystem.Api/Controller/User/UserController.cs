@@ -111,12 +111,13 @@ namespace AuctionManagementSystem.Api.Controller.User
         }
 
         [AllowAnonymous]
-        [HttpGet("{userId}/deposit-limits")]
+        [HttpGet("deposit-limits")]
         public async Task<ActionResult<UserDepositLimitDto>> GetDepositLimits(int userId)
         {
             var result = await _mediator.Send(new GetUserDepositLimitsQuery(userId));
             return Ok(result);
         }
+
 
     }
 }
