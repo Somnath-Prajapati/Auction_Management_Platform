@@ -8,27 +8,43 @@ namespace AuctionManagementSystem.Application.Dtos.Reports
 {
     public class DepositTransactionDto
     {
-        public int TransactionId { get; set; }           // int
+        public int TransactionId { get; set; }
         public string TransactionNumber { get; set; }
         public decimal Amount { get; set; }
-        public int UserId { get; set; }                   // int
+        public int UserId { get; set; }
+        public string UserName { get; set; }                  // New: From tblUsers
+
         public int TransactionTypeId { get; set; }
+        public string TransactionTypeName { get; set; }       // New: From tblTransactionTypes
+
         public int? PaymentMethodId { get; set; }
+        public string? PaymentMethodName { get; set; }        // New: From tblPaymentMethods
+
         public int? CardTypeId { get; set; }
+        public string? CardTypeName { get; set; }             // New: From tblCardTypes
+
         public string? MerchantTransactionId { get; set; }
         public DateTime TransactionDateTime { get; set; }
+
         public int StatusId { get; set; }
+        public string StatusName { get; set; }                // New: From tblStatus
+
         public string? Notes { get; set; }
         public string? DocumentPath { get; set; }
-        public long? CreatedByAdminID { get; set; }       // bigint → long?
+
+        public long? CreatedByAdminID { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
-        public int? CreatedBy { get; set; }                // int?
+
+        public int? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
-        public int? UpdatedBy { get; set; }                // int?
+
+        public int? UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
-        public int? DeletedBy { get; set; }                // int?
+
+        public int? DeletedBy { get; set; }
         public DateTime? DeletedDate { get; set; }
+
         public bool IsDeleted { get; set; }
     }
 
