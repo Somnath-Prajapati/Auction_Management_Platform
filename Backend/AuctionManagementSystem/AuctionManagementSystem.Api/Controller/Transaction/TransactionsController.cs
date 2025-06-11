@@ -16,6 +16,19 @@ namespace AuctionManagementSystem.API.Controllers;
 public class TransactionsController : ControllerBase
 {
     private readonly IMediator _mediator;
+
+    public TransactionsController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
+    //[HttpGet(Name ="GetAll Transactions")]
+    //public async Task<ActionResult<List<TransactionDto>>> GetAll()
+    //{
+    //    var result = await _mediator.Send(new GetAllTransactionsQuery());
+    //    return Ok(result);
+    //}
+
     private readonly ITransactionRepository _transactionRepository; // Add a field for ITransactionRepository
 
     public TransactionsController(IMediator mediator, ITransactionRepository transactionRepository) // Inject ITransactionRepository

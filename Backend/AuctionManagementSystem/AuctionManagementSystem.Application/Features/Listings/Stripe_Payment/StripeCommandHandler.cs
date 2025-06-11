@@ -50,7 +50,6 @@ namespace AuctionManagementSystem.Application.Features.Listings.Stripe_Payment
             };
 
 
-
             var service = new Stripe.Checkout.SessionService();
             var session = await service.CreateAsync(options);
 

@@ -11,6 +11,9 @@ using AuctionManagementSystem.Domain.model;
 using AutoMapper;
 using MediatR;
 using Newtonsoft.Json;
+using AuctionManagementSystem.Domain.model;
+using AuctionManagementSystem.Application.Contracts.Transactions;
+using Microsoft.AspNetCore.Authorization; // <-- For serializing afterChange if needed
 
 namespace AuctionManagementSystem.Application.Features.UserFeature.Command.CreateUser
 {
@@ -48,6 +51,8 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
             _userDepositRepository = userDepositRepository; // <-- Initialize this
         }
 
+
+      
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var existingUser = await _userRepository.GetByEmailOrMobileAsync(request.UserDto.Email, request.UserDto.MobileNumber);
