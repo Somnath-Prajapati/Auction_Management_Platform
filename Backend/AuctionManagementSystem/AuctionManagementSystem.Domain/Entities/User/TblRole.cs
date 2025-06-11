@@ -10,6 +10,7 @@ public partial class TblRole
     public int RoleId { get; set; }
 
     public string RoleName { get; set; } = null!;
+
     public bool IsSeller { get; set; }
     //public List<string> Permissions { get; set; } = new();
     public bool IsDeleted { get; set; } = false;

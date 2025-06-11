@@ -20,7 +20,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Mapping
 
             // CreateAuctionCommand to TblAuction
             CreateMap<CreateAuctionCommand, TblAuction>()
-                .ForMember(dest => dest.AuctionNumber, opt => opt.MapFrom(src => src.AuctionNumber))
+                .ForMember(dest => dest.AuctionNumber, opt => opt.Ignore())
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
                 .ForMember(dest => dest.StartDateTime, opt => opt.MapFrom(src => src.StartDateTime))

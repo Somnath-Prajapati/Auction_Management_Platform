@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Persistence.Context;
+using MediatR;
+using AuctionManagementSystem.Application.Features.FAQs.Queries.GetFAQsQuery;
+using AuctionManagementSystem.Application.Features.FAQs.Queries.GetAllFAQsQuery;
 
 namespace AuctionManagementSystem.Api.Controller
 {
@@ -14,29 +17,34 @@ namespace AuctionManagementSystem.Api.Controller
     public class FaqController : ControllerBase
     {
         private readonly AuctionManagementDbContext _context;
-        public FaqController(AuctionManagementDbContext context)
+        readonly IMediator _mediatR;
+        public FaqController(AuctionManagementDbContext context, IMediator mediator)
         {
             _context = context;
+            _mediatR = mediator;
         }
 
         // GET: api/faq
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<FaqDto>>> GetFaqs()
-        {
-            var faqs = await _context.Faqs
-                .Select(f => new FaqDto
-                {
-                    Id = f.Id,
-                    Question = f.Question,
-                    Answer = f.Answer,
-                    Category = f.Category,
-                    Tags = f.Tags,
-                    CreatedAt = f.CreatedAt,
-                    UpdatedAt = f.UpdatedAt
-                })
-                .ToListAsync();
-            return Ok(faqs);
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<FaqDto>>> GetFaqs()
+        //{
+        //    var faqs = await _context.Faqs
+        //        .Select(f => new FaqDto
+        //        {
+        //            Id = f.Id,
+        //            Question = f.Question,
+        //            Answer = f.Answer,
+        //            Category = f.Category,
+        //            Tags = f.Tags,
+        //            CreatedAt = f.CreatedAt,
+        //            UpdatedAt = f.UpdatedAt
+        //        })
+        //        .ToListAsync();
+        //    return Ok(faqs);
+        //}
+
+     
+
 
         // GET: api/faq/5
         [HttpGet("{id}")]
@@ -106,5 +114,25 @@ namespace AuctionManagementSystem.Api.Controller
             await _context.SaveChangesAsync();
             return NoContent();
         }
+
+
+       
+
+
+        [HttpGet("GetCategory")]
+
+        public async Task<IActionResult> GetAllcategory()
+        {
+            var result = await _mediatR.Send(new GetFAQsQuery());
+            return Ok(result);
+        }
+        [HttpGet("GetAllFaq")]
+        public async Task<ActionResult<IEnumerable<FaqDto>>> GetFaqs()
+        {
+            var result = await _mediatR.Send(new GetAllFAQsQuery());
+            return Ok(result);
+        }
+
+        
     }
 } 
