@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Domain.Entities.User;
 
 namespace AuctionManagementSystem.Application.Contracts.Assets
 {
@@ -34,5 +35,6 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
 
         //Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents);
 
+        Task <IEnumerable<TblSeller>> getAllSeller();
     }
 }
