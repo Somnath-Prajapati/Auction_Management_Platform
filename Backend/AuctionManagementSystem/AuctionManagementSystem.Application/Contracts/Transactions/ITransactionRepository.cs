@@ -25,7 +25,8 @@ namespace AuctionManagementSystem.Application.Contracts.Transactions
 
         Task<List<UserTransactionDto>> GetUserTransactionsAsync(int userId);
 
-        Task<List<AuctionMonthlyRevenueDto>> GetAuctionMonthlyRevenueAsync();
+      
+      
 
 
 

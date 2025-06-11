@@ -27,6 +27,11 @@ using Serilog;
 using Hangfire.Common;
 using Hangfire.States;
 using Hangfire.Storage;
+using Hangfire.SqlServer;
+using AuctionManagementSystem.Application.Contracts.Chatbot;
+using AuctionManagementSystem.Persistence.Repositories.Chatbot;
+using AuctionManagementSystem.Persistence.Repositories.FAQs;
+using AuctionManagementSystem.Application.Contracts.FAQ;
 
 namespace AuctionManagementSystem.Api
 {
@@ -55,6 +60,14 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddScoped<IWinnerNotificationService, WinnerNotificationService>();
             //builder.Services.AddScoped<IBackgroundProcess, BackgroundProcessHangfire>();
 
+
+            //new added
+            builder.Services.AddScoped<IChatbotRepository, ChatbotRepository>();
+            builder.Services.AddScoped<ChatBotService>();
+
+            builder.Services.AddScoped<IGetAllFAQ, FAQsRepository>();
+
+
             builder.Services.AddScoped<HangfireAutoBidJobScheduler>();
 
 
@@ -62,7 +75,7 @@ namespace AuctionManagementSystem.Api
 
             builder.Services.AddScoped<INotificationBroadcaster, NotificationBroadcaster>();
             builder.Services.AddSingleton<IUserIdProvider, NameIdentifierUserIdProvider>();
-             
+
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddOpenApi();
@@ -75,7 +88,7 @@ namespace AuctionManagementSystem.Api
                     policy.WithOrigins("http://localhost:5500", "http://localhost:4200", "https://localhost:4200", "file://")
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .AllowCredentials(); 
+                        .AllowCredentials();
                 });
             });
 
@@ -84,7 +97,7 @@ namespace AuctionManagementSystem.Api
             //builder.Services.AddHangfire(config =>
             //    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-          
+
             builder.Services.AddHangfire(config =>
             {
                 config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection"), new Hangfire.SqlServer.SqlServerStorageOptions
@@ -97,7 +110,7 @@ namespace AuctionManagementSystem.Api
             builder.Services.AddHangfireServer();
 
             GlobalJobFilters.Filters.Add(new LogHangfireJobExceptionFilter());
-            
+
             builder.Logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
 
 
@@ -114,20 +127,20 @@ namespace AuctionManagementSystem.Api
             });
 
 
-  
+
 
             app.UseCors("AllowFrontend");
 
-                app.UseSwagger();
-                app.UseSwaggerUI(options =>
-                {
-            //});
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Management");
-                });
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                //});
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Auction Management");
+            });
             //}
             app.UseMiddleware<ExceptionMiddleware>();
-            
-            
+
+
             app.UseHttpsRedirection();
 
 
@@ -137,11 +150,11 @@ namespace AuctionManagementSystem.Api
 
 
 
-          
+
 
             StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:Secret_key").Get<String>();
 
-            
+
             app.UseAuthentication();
 
             app.UseAuthorization();
@@ -149,7 +162,7 @@ namespace AuctionManagementSystem.Api
 
 
 
-            
+
 
             app.MapGet("/", context =>
             {
@@ -160,7 +173,7 @@ namespace AuctionManagementSystem.Api
 
             app.MapControllers();
             app.Run();
-        }   
+        }
     }
 
 
@@ -178,5 +191,4 @@ namespace AuctionManagementSystem.Api
         public void OnStateUnapplied(ApplyStateContext context, IWriteOnlyTransaction transaction) { }
     }
 }
-
 

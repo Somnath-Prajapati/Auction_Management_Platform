@@ -1,11 +1,8 @@
-﻿using System.Runtime.CompilerServices;
-using AuctionManagementSystem.Application.Dtos.Assets;
+﻿using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command;
-using AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById;
-using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetsForView;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDirectSaleAssets;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetSellers;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.SearchAsset;
@@ -14,13 +11,9 @@ using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Command;
 using AuctionManagementSystem.Application.Features.Assets.AssetDocuments.Command.AddDocument;
 using AuctionManagementSystem.Application.Features.Assets.AssetGallery.Command.AddAssetGallery;
 using AuctionManagementSystem.Application.Features.Assets.Query.GetAssets;
-using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Query.GetAllFinanceSettings;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using MediatR;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace AuctionManagementSystem.Api.Controller.Assets
@@ -73,7 +66,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             return Ok(result);
         }
 
-        
+
         [HttpGet("auctionasset")]
         public async Task<IActionResult> GetAuctionAssets([FromQuery] int categoryId)
         {
@@ -91,16 +84,28 @@ namespace AuctionManagementSystem.Api.Controller.Assets
 
 
 
-     
+        //[Route("add")]
+        //[HttpPost]
+        //public async Task<ActionResult<GetAssetsDto>> CreateAsset(CreateAssetsDto createAsset)
+        //{
+        //    var result = await _mediator.Send(new AddAssetCommand(createAsset));
+
+          
+
+        //    return Ok(result);
+        //}
+
+
         //[Route("GetById")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAsset(int id)
+        public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAsset(int id, [FromQuery] string lang)
         {
-            var assets = await _mediator.Send(new GetAssetByIdQuery(id));
+            var assets = await _mediator.Send(new GetAssetByIdQuery(id,lang));
             return Ok(assets);
         }
 
-       
+
+
         [HttpPut("{id:int}")]
         public async Task<ActionResult<UpdateAssetDto>> UpdateAsset(int id, [FromBody] UpdateAssetDto assetsDto)
         {
@@ -133,7 +138,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         {
             try
             {
-                
+
                 #region
                 List<AssetDetailDto> details;
                 try
@@ -147,7 +152,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                 }
                 #endregion
                 var assetResult = await _mediator.Send(new AddUnifiedAssetCommand(dto));
-                
+
                 if (dto.AuctionIds != null && dto.AuctionIds.Any())
                 {
                     await _mediator.Send(new AssignAssetToAuctionCommand(assetResult, dto.AuctionIds));
@@ -181,8 +186,8 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                         {
                             AssetId = assetResult,
                             File = file,
-                            MediaType = "image", 
-                            SortOrder = 0 
+                            MediaType = "image",
+                            SortOrder = 0
                         };
 
                         var galleryId = await _mediator.Send(new AddAssetGalleryCommand(galleryDto));
@@ -200,7 +205,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
                         {
                             AssetId = assetResult,
                             File = file,
-                            DocumentType = "pdf" 
+                            DocumentType = "pdf"
                         };
 
                         var documentId = await _mediator.Send(new AddAssetDocumentCommand(documentDto));
@@ -254,7 +259,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         public async Task<IActionResult> UpdateAsset([FromForm] UpdateAssetAllDto dto)
         {
             var result = await _mediator.Send(new UpdateAssetAllCommand(dto));
-          
+
             return Ok(result);
         }
 
