@@ -10,6 +10,8 @@
     <Folder Include="Contracts\Categories\" />
     <Folder Include="Contracts\Statuses\" />
     <Folder Include="Features\Assets\Asset\Command\NewFolder\" />
+    <Folder Include="Features\FAQs\command\Deletecommand\" />
+    <Folder Include="Features\FAQs\command\Updatecommand\" />
   </ItemGroup>
 
   <ItemGroup>

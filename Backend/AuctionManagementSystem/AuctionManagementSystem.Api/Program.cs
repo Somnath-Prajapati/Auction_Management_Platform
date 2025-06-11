@@ -30,6 +30,8 @@ using Hangfire.Storage;
 using Hangfire.SqlServer;
 using AuctionManagementSystem.Application.Contracts.Chatbot;
 using AuctionManagementSystem.Persistence.Repositories.Chatbot;
+using AuctionManagementSystem.Persistence.Repositories.FAQs;
+using AuctionManagementSystem.Application.Contracts.FAQ;
 
 namespace AuctionManagementSystem.Api
 {
@@ -62,6 +64,9 @@ namespace AuctionManagementSystem.Api
             //new added
             builder.Services.AddScoped<IChatbotRepository, ChatbotRepository>();
             builder.Services.AddScoped<ChatBotService>();
+
+            builder.Services.AddScoped<IGetAllFAQ, FAQsRepository>();
+
 
             builder.Services.AddScoped<HangfireAutoBidJobScheduler>();
 

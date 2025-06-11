@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using AuctionManagementSystem.Application.Dtos;
+using AuctionManagementSystem.Application.Features.FAQs.Queries.GetFAQsQuery;
 using AuctionManagementSystem.Domain;
 using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
@@ -123,7 +125,9 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
     public virtual DbSet<TblChatBotMainQuestionAnswer> TblChatBotMainQuestionAnswers { get; set; }
     public virtual DbSet<TblchatbotSubQuestionAnswer> TblchatbotSubQuestionAnswers { get; set; }
+    public DbSet<GetFaqDto> getFaqDtos { get; set; }
 
+    public DbSet<FaqDto> faqDtos { get; set; }
 
     public virtual DbSet<TblRolePermissionsMatrix> TblRolePermissionsMatrices { get; set; }
 
@@ -272,8 +276,9 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK__tblWishli__UserI__278EDA44");
         });
 
+        modelBuilder.Entity<GetFaqDto>().HasNoKey();
 
-
+        modelBuilder.Entity<FaqDto>().HasNoKey();
         modelBuilder.Entity<tblOTP>(entity =>
         {
             entity.ToTable("tblOTPs");
