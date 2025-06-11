@@ -6,6 +6,7 @@ using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Comm
 using AuctionManagementSystem.Application.Validators;
 using Microsoft.Extensions.DependencyInjection;
 using MediatR;
+using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.UpdateStaticPagesSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.DeleteStaticPagesSettings;
@@ -39,6 +40,7 @@ namespace AuctionManagementSystem.Application
             services.AddValidatorsFromAssemblyContaining<FooterLinksSettingsDtoValidator>();
             services.AddScoped<IAuctionJobScheduler, HangfireAuctionJobScheduler>();
 
+            services.AddScoped<ChatBotService>();
 
             services.AddScoped<IAutoBidService, AutoBidService>();
 

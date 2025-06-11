@@ -29,7 +29,8 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
 
         public async Task<IEnumerable<TblRole>> GetAllAsync()
         {
-            return await _context.TblRoles.ToListAsync();
+            return await _context.TblRoles.Where(r => !r.IsDeleted)
+                                        .ToListAsync();
         }
 
         public async Task<TblRole> GetRoleByIdAsync(int roleId)

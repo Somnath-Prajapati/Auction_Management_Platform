@@ -6,6 +6,7 @@ using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Assets;
+using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Notification;

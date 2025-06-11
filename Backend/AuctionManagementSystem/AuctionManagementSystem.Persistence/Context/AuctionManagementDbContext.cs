@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using AuctionManagementSystem.Application.Dtos;
+using AuctionManagementSystem.Application.Features.FAQs.Queries.GetFAQsQuery;
 using AuctionManagementSystem.Domain;
 using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
@@ -124,6 +126,12 @@ public partial class AuctionManagementDbContext : DbContext
     public DbSet<TblWishlistItem> TblWishlistItems { get; set; }
     public virtual DbSet<TblOrder> TblOrders { get; set; }
     public virtual DbSet<TblOrderAsset> TblOrderAssets { get; set; }
+    public virtual DbSet<TblChatBotMainQuestionAnswer> TblChatBotMainQuestionAnswers { get; set; }
+    public virtual DbSet<TblchatbotSubQuestionAnswer> TblchatbotSubQuestionAnswers { get; set; }
+    public DbSet<GetFaqDto> getFaqDtos { get; set; }
+
+    public DbSet<FaqDto> faqDtos { get; set; }
+
     public virtual DbSet<TblRolePermissionsMatrix> TblRolePermissionsMatrices { get; set; }
     public virtual DbSet<tblAssetTranslation> TblAssetTranslations { get; set; }
     public virtual DbSet<TblNotification> TblNotifications { get; set; }
@@ -134,6 +142,7 @@ public partial class AuctionManagementDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
+
 
         modelBuilder.Entity<TblRole>(entity =>
         {
@@ -287,7 +296,7 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK__tblCartIt__UserI__2D47B39A");
         });
         modelBuilder.Entity<TblNotification>()
-            .HasOne(n => n.User)  
+            .HasOne(n => n.User)
             .WithMany(u => u.TblNotifications)
             .HasForeignKey(n => n.UserId)
             .OnDelete(DeleteBehavior.SetNull);
@@ -314,8 +323,9 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasConstraintName("FK__tblWishli__UserI__278EDA44");
         });
 
-        
+        modelBuilder.Entity<GetFaqDto>().HasNoKey();
 
+        modelBuilder.Entity<FaqDto>().HasNoKey();
         modelBuilder.Entity<tblOTP>(entity =>
         {
             entity.ToTable("tblOTPs");
@@ -797,6 +807,7 @@ public partial class AuctionManagementDbContext : DbContext
 
         //    entity.HasOne(d => d.User).WithMany(p => p.TblBids)
         //        .HasForeignKey(d => d.UserId)
+
 
         modelBuilder.Entity<tblBid>(entity =>
         {
@@ -1405,32 +1416,75 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.UpdatedAt).HasDefaultValueSql("(getdate())");
         });
-
-        modelBuilder.Entity<TblUserLimitAuditLog>(entity =>
+        modelBuilder.Entity<TblchatbotSubQuestionAnswer>(entity =>
         {
-            entity.HasKey(e => e.AuditLogId).HasName("PK__tblUserL__EB5F6CBDDF0E18DD");
+            entity.HasKey(e => e.Id).HasName("PK__tblchatb__3214EC0730E5251F");
 
-            entity.ToTable("tblUserLimitAuditLog");
+            entity.ToTable("tblchatbotSubQuestionAnswer");
 
-            entity.Property(e => e.ActionType)
+            entity.Property(e => e.Question)
                 .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.ChangedBy).HasMaxLength(100);
-            entity.Property(e => e.ChangedDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.NewAvailableLimit).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.NewDeposit).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.NewTotalLimit).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.Notes).HasMaxLength(500);
-            entity.Property(e => e.OldAvailableLimit).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.OldDeposit).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.OldTotalLimit).HasColumnType("decimal(18, 2)");
+                .HasMaxLength(500);
+
+            entity.HasOne(d => d.MainQuestion).WithMany(p => p.TblchatbotSubQuestionAnswers)
+                .HasForeignKey(d => d.MainQuestionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__tblchatbo__MainQ__1F198FD4");
+
+            entity.HasOne(d => d.ParentSubQuestion).WithMany(p => p.InverseParentSubQuestion)
+                .HasForeignKey(d => d.ParentSubQuestionId)
+                .HasConstraintName("FK__tblchatbo__Paren__200DB40D");
         });
 
+        modelBuilder.Entity<TblChatBotMainQuestionAnswer>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__tblChatB__3214EC07AEB48FE9");
 
-        OnModelCreatingPartial(modelBuilder);
+            entity.ToTable("tblChatBotMainQuestionAnswer");
+
+            entity.Property(e => e.Question)
+                .IsRequired()
+                .HasMaxLength(500);
+
+        });
+
+            modelBuilder.Entity<TblUserLimitAuditLog>(entity =>
+            {
+                entity.HasKey(e => e.AuditLogId).HasName("PK__tblUserL__EB5F6CBDDF0E18DD");
+
+                entity.ToTable("tblUserLimitAuditLog");
+
+                entity.Property(e => e.ActionType)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.ChangedBy).HasMaxLength(100);
+                entity.Property(e => e.ChangedDate)
+                    .HasDefaultValueSql("(getdate())")
+                    .HasColumnType("datetime");
+                entity.Property(e => e.NewAvailableLimit).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.NewDeposit).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.NewTotalLimit).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.Notes).HasMaxLength(500);
+                entity.Property(e => e.OldAvailableLimit).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.OldDeposit).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.OldTotalLimit).HasColumnType("decimal(18, 2)");
+            });
+
+            //modelBuilder.Entity<Tbltempdatum>(entity =>
+            //{
+            //    entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
+
+            //    entity.ToTable("tbltempdata");
+
+            //    entity.Property(e => e.Id).HasColumnName("id");
+            //    entity.Property(e => e.Name)
+            //        .HasMaxLength(1)
+            //        .HasColumnName("name");
+            //});
+            OnModelCreatingPartial(modelBuilder);
+
     }
+
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

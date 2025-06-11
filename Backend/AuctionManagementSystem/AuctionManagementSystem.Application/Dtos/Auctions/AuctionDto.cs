@@ -6,7 +6,7 @@ namespace AuctionManagementSystem.Application.Dtos.Auctions
     {
         public int AuctionId { get; set; }
         public decimal TotalPrice { get; set; }
-        public string AuctionNumber { get; set; } = null!;
+        public string AuctionNumber { get; set; } = default!;
 
         public string Title { get; set; } = null!;
 

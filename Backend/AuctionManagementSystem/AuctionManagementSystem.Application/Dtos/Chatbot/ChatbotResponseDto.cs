@@ -11,6 +11,7 @@ namespace AuctionManagementSystem.Application.Dtos.Chatbot
         public string ResponseMessage { get; set; }
         public List<QuickReplyDto> QuickReplies { get; set; }
         public List<HelpArticleDto> SuggestedArticles { get; set; }
+        public bool IsEndOfChat { get; set; }
     }
 
     public class QuickReplyDto

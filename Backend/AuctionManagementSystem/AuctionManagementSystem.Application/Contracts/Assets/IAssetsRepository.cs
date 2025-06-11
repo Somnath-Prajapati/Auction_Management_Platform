@@ -13,8 +13,8 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
     {
 
         Task<IEnumerable<GetAssetsFormDto>> GetAllAsync();
-        Task<List<GetAssetsFormDto>> GetDirectAllAsync(Expression<Func<TblAsset, bool>> predicate);
-        Task<List<GetAssetsFormDto>> GetAuctionAllAsync(Expression<Func<TblAsset, bool>> predicate);
+        Task<List<GetAssetsFormDto>> GetDirectAllAsync(Expression<Func<TblAsset, bool>> predicate,string lang);
+        Task<List<GetAssetsFormDto>> GetAuctionAllAsync(Expression<Func<TblAsset, bool>> predicate, string languageCode);
 
         Task<GetAssetsFormDto> GetByIdAsync(int id);
 

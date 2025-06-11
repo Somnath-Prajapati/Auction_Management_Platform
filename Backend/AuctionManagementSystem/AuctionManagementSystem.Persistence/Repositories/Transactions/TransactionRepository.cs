@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using AuctionManagementSystem.Application.Contracts.Transactions;
+using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Models;
