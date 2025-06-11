@@ -16,20 +16,34 @@ namespace AuctionManagementSystem.Api.Controller
             _mediator = mediator;
         }
 
-        [HttpGet("monthly-auction-revenue")]
-        public async Task<IActionResult> GetAuctionMonthlyRevenue()
+        //[HttpGet("monthly-auction-revenue")]
+        //public async Task<IActionResult> GetAuctionMonthlyRevenue()
+        //{
+        //    var result = await _mediator.Send(new GetAuctionRevenueQuery());
+        //    return Ok(result);
+        //}
+        [HttpGet("auction-revenue")]
+        public async Task<IActionResult> GetAuctionRevenue([FromQuery] string viewByMode = "Monthly")
         {
-            var result = await _mediator.Send(new GetAuctionRevenueQuery());
+            var result = await _mediator.Send(new GetAuctionRevenueQuery { ViewByMode = viewByMode });
             return Ok(result);
         }
 
 
-        [HttpGet("monthly-directsale-revenue")]
-        public async Task<IActionResult> GetDirectSaleMonthlyRevenue()
+        //[HttpGet("monthly-directsale-revenue")]
+        //public async Task<IActionResult> GetDirectSaleMonthlyRevenue()
+        //{
+        //    var result = await _mediator.Send(new GetDirectSaleRevenueQuery());
+        //    return Ok(result);
+        //}
+
+        [HttpGet("directsale-revenue")]
+        public async Task<IActionResult> GetDirectSaleRevenue([FromQuery] string viewByMode = "Monthly")
         {
-            var result = await _mediator.Send(new GetDirectSaleRevenueQuery());
+            var result = await _mediator.Send(new GetDirectSaleRevenueQuery(viewByMode));
             return Ok(result);
         }
+
 
 
 
@@ -79,6 +93,17 @@ namespace AuctionManagementSystem.Api.Controller
         {
             var query = new GetLatestDepositQuery();
             var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+
+        [HttpGet("report-auction")]
+        public async Task<IActionResult> GetAuctionReport([FromQuery] string reportType)
+        {
+            if (string.IsNullOrEmpty(reportType))
+                return BadRequest("Report type is required. Use: Total, Past, Current, Upcoming.");
+
+            var result = await _mediator.Send(new GetAuctionReportQuery(reportType));
             return Ok(result);
         }
     }

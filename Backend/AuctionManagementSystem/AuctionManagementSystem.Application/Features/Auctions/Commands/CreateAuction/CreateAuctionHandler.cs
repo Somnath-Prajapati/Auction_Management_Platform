@@ -1,21 +1,17 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Contracts;
+﻿using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Application.Contracts.AuditTrail;
-using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Contracts.Notification;
+using AuctionManagementSystem.Application.Dtos.Auctions;
 using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Domain.Entities.Auction;
 using AuctionManagementSystem.Domain.Entities.Notification;
 using AutoMapper;
 using MediatR;
-using Newtonsoft.Json;
 
 namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateAuction
 {
-    public class CreateAuctionHandler : IRequestHandler<CreateAuctionCommand, int>
+    public class CreateAuctionHandler : IRequestHandler<CreateAuctionCommand, AuctionDto>
     {
         private readonly IAuctionUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -44,7 +40,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
             _notificationBroadcaster = notificationBroadcaster;
         }
 
-        public async Task<int> Handle(CreateAuctionCommand request, CancellationToken cancellationToken)
+        public async Task<AuctionDto> Handle(CreateAuctionCommand request, CancellationToken cancellationToken)
         {
             var auction = _mapper.Map<TblAuction>(request);
             auction.CreatedBy = _currentUser.UserId.ToString();
@@ -55,12 +51,10 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
                 auction.HangfireJobId = newJobId;
             }
 
-
-            await _unitOfWork.AuctionRepository.AddAsync(auction);
+            await _unitOfWork.AuctionRepository.AddAsync(auction); // AuctionNumber is generated here
             await _unitOfWork.SaveAsync();
 
-
-            // Log the creation in the audit trail
+            // Audit Trail
             await _auditTrailService.LogChangeAsync(
                 userId: _currentUser.UserId,
                 username: _currentUser.Username,
@@ -72,22 +66,22 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
                 afterChange: auction
             );
 
-            Console.WriteLine($"Auction Created By: {_currentUser.Username} ({_currentUser.UserId}) with Role: {_currentUser.RoleName}");
-
+            // Notification
             var notification = new TblNotification
             {
                 Id = Guid.NewGuid(),
                 UserId = null,
-                Title = $"New Auction Created with id :: {auction.AuctionId}",
+                Title = $"New Auction Created with ID: {auction.AuctionNumber}",
                 Message = $"Auction '{auction.Title}' has been added.",
                 CreatedAt = DateTime.UtcNow,
                 ExpiresAt = DateTime.UtcNow.AddDays(2),
                 IsRead = null,
-                 AssetId = null,
+                AssetId = null,
                 AuctionId = auction.AuctionId
             };
 
             await _notificationRepository.CreateAsync(notification);
+
             var notificationDto = new NotificationDto
             {
                 UserId = notification.UserId,
@@ -99,8 +93,8 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
             };
 
             await _notificationBroadcaster.BroadcastNotificationAsync(notificationDto);
-
-            return auction.AuctionId;
+            return _mapper.Map<AuctionDto>(auction);
         }
+
     }
 }

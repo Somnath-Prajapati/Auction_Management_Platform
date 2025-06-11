@@ -27,7 +27,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAss
 
         public async Task<GetAssetsFormDto> Handle(GetAssetByIdQuery request, CancellationToken cancellationToken)
         {
-            var asset = await _assetsRepository.GetByIdViewAsync(request.id);
+            var asset = await _assetsRepository.GetByIdViewAsync(request.id,request.lang);
             var baseUrl = $"{_httpContextAccessor.HttpContext!.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}";
 
             if (asset == null)

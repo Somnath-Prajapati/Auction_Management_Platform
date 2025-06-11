@@ -9,6 +9,11 @@
   <ItemGroup>
     <Folder Include="Contracts\Categories\" />
     <Folder Include="Contracts\Statuses\" />
+    <Folder Include="Features\NewFolder\" />
+    <Folder Include="Features\Roles\Command\CreateRoles\" />
+    <Folder Include="Features\Roles\Command\DeleteRoles\" />
+    <Folder Include="Features\Roles\Command\UpdateRoles\" />
+    <Folder Include="Features\Roles\Query\GetRoleById\" />
     <Folder Include="Features\Assets\Asset\Command\NewFolder\" />
     <Folder Include="Features\FAQs\command\Deletecommand\" />
     <Folder Include="Features\FAQs\command\Updatecommand\" />

@@ -10,7 +10,7 @@ using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Reports
 {
-    public class GetAuctionRevenueQueryHandler : IRequestHandler<GetAuctionRevenueQuery, List<MonthlyRevenueDto>>
+    public class GetAuctionRevenueQueryHandler : IRequestHandler<GetAuctionRevenueQuery, List<AuctionMonthlyRevenueDto>>
     {
         private readonly IReports _reports;
 
@@ -19,10 +19,11 @@ namespace AuctionManagementSystem.Application.Features.Reports
             _reports = reports;
         }
 
-        public async Task<List<MonthlyRevenueDto>> Handle(GetAuctionRevenueQuery request, CancellationToken cancellationToken)
+        public async Task<List<AuctionMonthlyRevenueDto>> Handle(GetAuctionRevenueQuery request, CancellationToken cancellationToken)
         {
-            return await _reports.GetAuctionMonthlyRevenueAsync();
+            return await _reports.GetAuctionRevenueAsync(request.ViewByMode);
         }
     }
+
 
 }

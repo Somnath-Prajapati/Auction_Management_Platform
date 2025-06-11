@@ -14,6 +14,7 @@ using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.Roles;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
+using AuctionManagementSystem.Domain.Entities.Translations;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Domain.model;
 using AuctionManagementSystem.Domain.Models;
@@ -109,6 +110,8 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<TblUserStatus> TblUserStatuses { get; set; }
 
     public virtual DbSet<TblVatoption> TblVatoptions { get; set; }
+    public virtual DbSet<tblAuctionCategoriesTranslations> TblAuctionCategoriesTranslations { get; set; }
+   
 
     public virtual DbSet<TblWinnerAwardingOption> TblWinnerAwardingOptions { get; set; }
 
@@ -130,9 +133,11 @@ public partial class AuctionManagementDbContext : DbContext
     public DbSet<FaqDto> faqDtos { get; set; }
 
     public virtual DbSet<TblRolePermissionsMatrix> TblRolePermissionsMatrices { get; set; }
-
+    public virtual DbSet<tblAssetTranslation> TblAssetTranslations { get; set; }
     public virtual DbSet<TblNotification> TblNotifications { get; set; }
     public virtual DbSet<TblUserDeposit> TblUserDeposits { get; set; }
+    public virtual DbSet<tblLanguages> TblLanguages { get; set; }
+    public virtual DbSet<tblAssetCategoryTranslations> TblAssetCategoryTranslations { get; set; }
     public virtual DbSet<TblUserLimitAuditLog> TblUserLimitAuditLogs { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -152,6 +157,32 @@ public partial class AuctionManagementDbContext : DbContext
             entity.Property(e => e.IsDeleted)
             .HasDefaultValue(false);
         });
+        modelBuilder.Entity<tblLanguages>(entity =>
+        {
+            entity.ToTable("tblLanguages", "AuctionM_dbuser");
+
+            entity.HasKey(e => e.LanguageId)
+                  .HasName("PK__Language__3214EC0700FA9F2A");
+
+            entity.HasIndex(e => e.Code)
+                  .IsUnique()
+                  .HasDatabaseName("UQ__Language__A25C5AA7F398EA3B");
+
+            entity.Property(e => e.LanguageId)
+                  .IsRequired();
+
+            entity.Property(e => e.Code)
+                  .IsRequired()
+                  .HasMaxLength(10);
+
+            entity.Property(e => e.Name)
+                  .IsRequired()
+                  .HasMaxLength(100);
+
+            entity.Property(e => e.IsActive)
+                  .IsRequired();
+        });
+
 
         modelBuilder.Entity<TblRolePermissionsMatrix>(entity =>
         {
@@ -178,6 +209,22 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasForeignKey(d => d.RoleId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_tblRolePermissionsMatrix_tblRoles");
+        });
+        modelBuilder.Entity<tblAssetCategoryTranslations>(entity =>
+        {
+            entity.ToTable("tblAssetCategoryTranslations");
+
+            entity.HasKey(e => e.Id);
+
+            entity.HasOne(e => e.Category)
+                .WithMany()
+                .HasForeignKey(e => e.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(e => e.Language)
+                .WithMany()
+                .HasForeignKey(e => e.LanguageId)
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
 

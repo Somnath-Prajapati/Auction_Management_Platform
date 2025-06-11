@@ -8,5 +8,5 @@ using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById
 {
-    public record GetAssetByIdQuery(int id) : IRequest<GetAssetsFormDto>;
+    public record GetAssetByIdQuery(int id,string lang) : IRequest<GetAssetsFormDto>;
 }
