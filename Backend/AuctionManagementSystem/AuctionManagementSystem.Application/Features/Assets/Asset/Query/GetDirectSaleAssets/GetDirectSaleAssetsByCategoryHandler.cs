@@ -45,7 +45,7 @@ namespace Application.Features.DirectSale.Handlers
             var allAssets = await _assetRepository.GetDirectAllAsync(a =>
                 a.CategoryId == request.CategoryId &&
                 a.IsAvailableForDirectSale &&
-                !a.IsDeleted);
+                !a.IsDeleted,request.lang);
 
             //var filteredAssets = allAssets
             //    .Where(a => !heldAssetIds.Contains(a.AssetId))
@@ -69,7 +69,7 @@ namespace Application.Features.DirectSale.Handlers
         public async Task<List<DirectSaleAssetDto>> Handle(GetAuctionAssetsByCategoryQuery request, CancellationToken cancellationToken)
         {
             var assets = await _assetRepository.GetAuctionAllAsync(a =>
-                a.CategoryId == request.CategoryId && !a.IsAvailableForDirectSale);
+                a.CategoryId == request.CategoryId && !a.IsAvailableForDirectSale,request.lang);
 
             return _mapper.Map<List<DirectSaleAssetDto>>(assets);
         }

@@ -8,14 +8,15 @@ using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDirectSaleAssets
 {
-    public class GetDirectSaleAssetsByCategoryQuery : IRequest<List<DirectSaleAssetDto>>
+     public class GetDirectSaleAssetsByCategoryQuery : IRequest<List<DirectSaleAssetDto>>
     {
         public int CategoryId { get; set; }
+        public string lang { get; set; }
     }
-
+ 
     public class GetAuctionAssetsByCategoryQuery : IRequest<List<DirectSaleAssetDto>>
     {
         public int CategoryId { get; set; }
+        public string lang { get; set; }
     }
-
 }
