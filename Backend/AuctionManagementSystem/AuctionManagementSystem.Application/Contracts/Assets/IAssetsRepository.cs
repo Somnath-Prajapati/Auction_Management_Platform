@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Domain.Entities.Translations;
 
 namespace AuctionManagementSystem.Application.Contracts.Assets
 {
@@ -33,6 +34,8 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task DeactivateExpiredAssetsBasedOnDeadlineAsync();        // added for hangfire 
 
         //Task<int> AddAssetWithMediaAsync(TblAsset asset, List<TblAssetGallery> galleries, List<TblAssetDocument> documents);
+        Task AddAssetTranslationAsync(tblAssetTranslation translation);
+
 
     }
 }

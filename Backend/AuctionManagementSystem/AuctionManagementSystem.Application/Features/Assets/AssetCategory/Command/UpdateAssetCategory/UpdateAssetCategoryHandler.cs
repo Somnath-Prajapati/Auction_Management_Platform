@@ -1,11 +1,12 @@
 ﻿using AuctionManagementSystem.Application.Contracts.Assets;
-using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Contracts.AuditTrail;
+using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Application.Dtos.AuditTrial;
 using AuctionManagementSystem.Application.Features.Assets.AssetCategory.Command.UpdateAssetCategory;
+using AuctionManagementSystem.Domain.Entities.Translations;
 using AutoMapper;
 using MediatR;
 using Newtonsoft.Json;
-using AuctionManagementSystem.Application.Dtos.AuditTrial;
 
 namespace AuctionManagementSystem.Application.Features.AssetCategories.Commands.UpdateAssetCategory
 {
@@ -74,6 +75,38 @@ namespace AuctionManagementSystem.Application.Features.AssetCategories.Commands.
             existingCategory.UpdatedDate = DateTime.UtcNow;
 
             await _repository.UpdateWithPaymentMethodsAsync(existingCategory, request.UpdatedCategory.PaymentMethodIds);
+
+            if (request.UpdatedCategory.LanguageId.HasValue && request.UpdatedCategory.LanguageId.Value != 0)
+            {
+                var langId = request.UpdatedCategory.LanguageId.Value;
+
+                var existingTranslation = await _repository.GetTranslationByLanguageIdAsync(existingCategory.CategoryId, langId);
+
+                if (existingTranslation != null)
+                {
+                    // Update existing translation
+                    existingTranslation.TranslatedCategoryName = request.UpdatedCategory.TranslatedCategoryName;
+                    existingTranslation.TranslatedSubcategory = request.UpdatedCategory.TranslatedSubcategory;
+                    existingTranslation.TranslatedDetails = request.UpdatedCategory.TranslatedDetails;
+                }
+                else
+                {
+                    // Add new translation
+                    var newTranslation = new tblAssetCategoryTranslations
+                    {
+                        CategoryId = existingCategory.CategoryId,
+                        LanguageId = langId,
+                        TranslatedCategoryName = request.UpdatedCategory.TranslatedCategoryName,
+                        TranslatedSubcategory = request.UpdatedCategory.TranslatedSubcategory,
+                        TranslatedDetails = request.UpdatedCategory.TranslatedDetails,
+                        CreatedAt = DateTime.UtcNow
+                    };
+
+                    await _repository.AddAssetCategoryTranslationAsync(newTranslation);
+                }
+
+                await _repository.SaveAsync();
+            }
 
             // Snapshot after update
             var afterDto = new AuditAssetCategoryDto
