@@ -1,19 +1,14 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
-using MediatR;
-using Microsoft.Extensions.Logging;
+﻿using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Application.Contracts.Transactions;
+using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
 using AuctionManagementSystem.Domain.Entities.Transaction;
-using AuctionManagementSystem.Application.Contracts.AuditTrail;
-using AuctionManagementSystem.Application.Contracts.Auth;
+using AutoMapper;
+using MediatR;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using AuctionManagementSystem.Application.Contracts.User;
-using Stripe;
-using Microsoft.EntityFrameworkCore;
+using static System.Net.WebRequestMethods;
 
 public class CreateTransactionCommandHandler : IRequestHandler<CreateTransactionCommand, TransactionDto>
 {
@@ -46,36 +41,34 @@ public class CreateTransactionCommandHandler : IRequestHandler<CreateTransaction
         {
             var entity = _mapper.Map<TblTransaction>(request.Transaction);
             entity.TransactionNumber = await _repository.GetTransactionNumberFromDbAsync();
-
+            
             await _repository.AddAsync(entity);
 
             // 💾 Save associated documents
-            if (request.Transaction.Documents != null && request.Transaction.Documents.Any())
+            if (request.Transaction.Documents != null)
             {
-                var documents = new List<TblTransactionDocument>();
+                var file = request.Transaction.Documents;
 
-                foreach (var file in request.Transaction.Documents)
+                if (file.Length > 2 * 1024 * 1024)
+                    throw new ArgumentException("Document size must not exceed 2 MB");
+
+                var extension = Path.GetExtension(file.FileName).ToLower();
+                if (extension != ".pdf")
+                    throw new ArgumentException("Only PDF files are allowed");
+
+                var filePath = await _fileService.SaveFileAsync(file, "TransactionDocuments");
+
+                var document = new TblTransactionDocument
                 {
-                    if (file.Length > 2 * 1024 * 1024)
-                        throw new ArgumentException("Document size must not exceed 2 MB");
+                    TransactionId = entity.TransactionId,
+                    DocumentType = "Supporting Document",
+                    FilePath = "https://localhost:62627/" + filePath,
+                    UploadedAt = DateTime.UtcNow
+                };
 
-                    var extension = Path.GetExtension(file.FileName).ToLower();
-                    if (extension != ".pdf")
-                        throw new ArgumentException("Only PDF files are allowed");
-
-                    var filePath = await _fileService.SaveFileAsync(file, "TransactionDocuments");
-
-                    documents.Add(new TblTransactionDocument
-                    {
-                        TransactionId = entity.TransactionId,
-                        DocumentType = "Supporting Document",
-                        FilePath = filePath,
-                        UploadedAt = DateTime.UtcNow
-                    });
-                }
-
-                await _repository.AddTransactionDocumentsAsync(documents);
+                await _repository.AddTransactionDocumentsAsync(new List<TblTransactionDocument> { document });
             }
+
 
 
             var savedEntity = await _repository.GetTransactionWithDetailsAsync(entity.TransactionId);
