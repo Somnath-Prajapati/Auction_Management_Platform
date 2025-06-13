@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AuctionManagementSystem.Domain.Entities;
-using AuctionManagementSystem.Domain.Entities.Asset;
+﻿using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Domain.Entities.User;
 
@@ -27,7 +24,7 @@ public partial class TblTransaction
 
     public string? MerchantTransactionId { get; set; }
 
-    public DateTime TransactionDateTime { get; set; }
+    public DateTime? TransactionDateTime { get; set; }
 
     public int StatusId { get; set; }
 

@@ -95,6 +95,7 @@ temp/
 .env
 
 
+# Add to .gitignore
 # Ignore Hangfire logs
 AuctionManagementSystem.Api/Logs/
 

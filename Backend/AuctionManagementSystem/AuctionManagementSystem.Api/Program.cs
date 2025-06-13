@@ -40,10 +40,10 @@ namespace AuctionManagementSystem.Api
         public static void Main(string[] args)
         {
 
-            Log.Logger = new LoggerConfiguration()
-               .MinimumLevel.Debug()
-               .WriteTo.File("Logs/hangfire-errors.txt", rollingInterval: RollingInterval.Day)
-               .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+            //   .MinimumLevel.Debug()
+            //   .WriteTo.File("Logs/hangfire-errors.txt", rollingInterval: RollingInterval.Day)
+            //   .CreateLogger();
 
 
             var builder = WebApplication.CreateBuilder(args);

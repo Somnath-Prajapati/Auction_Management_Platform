@@ -687,5 +687,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         {
             return await _context.TblSellers.Include(s=> s.User).ToListAsync();
         }
+
     }
 }
