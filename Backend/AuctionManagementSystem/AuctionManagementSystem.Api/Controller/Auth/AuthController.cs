@@ -1,11 +1,12 @@
-﻿using AuctionManagementSystem.Application.Features.AuthFeatures.Command.VerifyOtp;
-using AuctionManagementSystem.Application.Features.AuthFeatures.Command;
-using AuctionManagementSystem.Application.Exceptions;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Dtos.Assets.Auth;
+using AuctionManagementSystem.Application.Exceptions;
+using AuctionManagementSystem.Application.Features.AuthFeatures.Command;
+using AuctionManagementSystem.Application.Features.AuthFeatures.Command.VerifyOtp;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionManagementSystem.Api.Controller.Auth
 {
@@ -14,7 +15,7 @@ namespace AuctionManagementSystem.Api.Controller.Auth
     public class AuthController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly ILogger<AuthController> _logger; 
+        private readonly ILogger<AuthController> _logger;
 
         public AuthController(IMediator mediator, ILogger<AuthController> logger)
         {
@@ -42,7 +43,7 @@ namespace AuctionManagementSystem.Api.Controller.Auth
             return Ok(Result);
         }
 
-       
+
 
         //[HttpPost("register")]
         //public async Task<IActionResult> Register([FromBody] RegisterUserCommand command)
@@ -88,6 +89,14 @@ namespace AuctionManagementSystem.Api.Controller.Auth
         //        return StatusCode(500, new { message = "An unexpected error occurred during registration." });
         //    }
         //}
+        [HttpGet("validate")]
+        [Authorize] // This ensures JWT validation is applied by the middleware
+        public IActionResult Validate()
+        {
+            // If this action is reached, JWT is valid because of [Authorize]
+            return Ok(new { message = "Token is valid" });
+        }
     }
+
 }
-    
+
