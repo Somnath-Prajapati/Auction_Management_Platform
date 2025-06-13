@@ -1,14 +1,16 @@
 ﻿
 using System.Formats.Asn1;
 using AuctionManagementSystem.Application.Contracts.Assets;
-using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Application.Contracts.AuditTrail;
 using AuctionManagementSystem.Application.Contracts.Bids;
+using AuctionManagementSystem.Application.Contracts.Notification;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Notification;
+using AuctionManagementSystem.Domain.Entities.Translations;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -59,6 +61,22 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
             }
 
             var createdAsset = await _assetsRepository.AddAssetForGallery(assetEntity);
+            if(dto.LanguageId.HasValue && dto.LanguageId != 0)
+            {
+            var assetTranslation = new tblAssetTranslation
+            {
+                AssetId = createdAsset.AssetId,
+                LanguageId = dto.LanguageId.Value,
+                Title = dto.TranslatedTitle,
+                Description = dto.TranslatedDescription,
+                SalesNotes = dto.TranslatedSalesNotes,
+                CreatedAt = DateTime.UtcNow
+            };
+            await _assetsRepository.AddAssetTranslationAsync(assetTranslation);
+
+            }
+
+
             var notification = new TblNotification
             {
                 Id = Guid.NewGuid(),

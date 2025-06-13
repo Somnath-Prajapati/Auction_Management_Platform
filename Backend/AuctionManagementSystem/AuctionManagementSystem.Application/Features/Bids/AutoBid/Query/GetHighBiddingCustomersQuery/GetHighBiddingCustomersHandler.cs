@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using AuctionManagementSystem.Application.Contracts.Reports;
-using AuctionManagementSystem.Application.Dtos.Listings;
+using AuctionManagementSystem.Application.Dtos.Reports;
 using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Query.GetHighBiddingCustomersQuery

@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using AuctionManagementSystem.Application.Contracts.Transactions;
+using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Models;
@@ -279,34 +280,7 @@ public class TransactionRepository : ITransactionRepository
     }
 
 
-    public async Task<List<AuctionMonthlyRevenueDto>> GetAuctionMonthlyRevenueAsync()
-    {
-        var revenueList = new List<AuctionMonthlyRevenueDto>();
-
-        using var command = _context.Database.GetDbConnection().CreateCommand();
-        command.CommandText = "GetAuctionAssetsMonthlyRevenue"; // Your SP name
-        command.CommandType = CommandType.StoredProcedure;
-
-        if (command.Connection.State != ConnectionState.Open)
-            await command.Connection.OpenAsync();
-
-        using var reader = await command.ExecuteReaderAsync();
-
-        while (await reader.ReadAsync())
-        {
-            var dto = new AuctionMonthlyRevenueDto
-            {
-                Year = reader.GetInt32(0),
-                Month = reader.GetInt32(1),
-                TotalAmount = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2)
-            };
-
-            revenueList.Add(dto);
-        }
-
-        await reader.CloseAsync();
-        return revenueList;
-    }
+   
 
 
 }

@@ -4,6 +4,7 @@ using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Application.Dtos.AuditTrial;
 using AuctionManagementSystem.Application.Exceptions;
 using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Domain.Entities.Translations;
 using AutoMapper;
 using MediatR;
 using Newtonsoft.Json;
@@ -52,6 +53,21 @@ namespace AuctionManagementSystem.Application.Features.Assets.AssetCategory.Comm
 
             // Save entity
             var created = await _repository.AddWithPaymentMethodsAsync(entity, dto.PaymentMethodIds);
+            if (dto.LanguageId.HasValue && dto.LanguageId.Value != 0)
+            {
+                var translation = new tblAssetCategoryTranslations
+                {
+                    CategoryId = created.CategoryId,
+                    LanguageId = dto.LanguageId.Value,
+                    TranslatedCategoryName = dto.TranslatedCategoryName,
+                    TranslatedSubcategory = dto.TranslatedSubcategory,
+                    TranslatedDetails = dto.TranslatedDetails,
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                await _repository.AddAssetCategoryTranslationAsync(translation);
+            }
+
 
             // Prepare DTO for audit trail
             var afterDto = new AuditAssetCategoryDto

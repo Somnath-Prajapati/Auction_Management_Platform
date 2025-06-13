@@ -44,6 +44,16 @@ namespace AuctionManagementSystem.Application.Features.Assets.AssetCategory.Quer
                                         .Select(pm => pm.PaymentMethodId)
                                         .ToList();
 
+            var translation = await _context.GetTranslationByLanguageIdAsync(request.id, 2);
+
+            if (translation != null)
+            {
+                dto.TranslatedCategoryName = translation.TranslatedCategoryName;
+                dto.TranslatedSubcategory = translation.TranslatedSubcategory;
+                dto.TranslatedDetails = translation.TranslatedDetails;
+                dto.LanguageId = 2;
+            }
+
             return dto;
         }
     }

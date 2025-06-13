@@ -45,6 +45,12 @@ artifacts/
 # Logs
 *.log
 
+# Hangfire logs
+hangfire-errors*.txt
+
+# VS DocumentLayout files
+.vs/**/DocumentLayout*.json
+
 # Database files
 *.mdf
 *.ldf
@@ -90,5 +96,6 @@ temp/
 
 
 # Add to .gitignore
+# Ignore Hangfire logs
 AuctionManagementSystem.Api/Logs/
 

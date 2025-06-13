@@ -1,5 +1,7 @@
 ﻿
+using AuctionManagementSystem.Application.Dtos.Translations;
 using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Domain.Entities.Translations;
 
 namespace AuctionManagementSystem.Application.Contracts.Assets
 {
@@ -16,5 +18,10 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
 
         Task<TblAssetCategory> AddWithPaymentMethodsAsync(TblAssetCategory category, List<int> paymentMethodIds);
         Task UpdateWithPaymentMethodsAsync(TblAssetCategory existingCategory, List<int> paymentMethodIds);
+        Task<List<AuctionCategoryTranslationDto>> GetTranslationsByLangCodeAsync(string langCode);
+        Task<List<AssetCategoryTranslationDto>> GetAssetCategoryTranslationsByLangCodeAsync(string langCode);
+        Task AddAssetCategoryTranslationAsync(tblAssetCategoryTranslations translation);
+
+        Task<tblAssetCategoryTranslations?> GetTranslationByLanguageIdAsync(int categoryId, int languageId);
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Linq.Expressions;
-using AuctionManagementSystem.Application.Contracts;
+﻿using AuctionManagementSystem.Application.Contracts;
 using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Application.Contracts.Bids;
@@ -33,7 +32,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
         private readonly INotificationBroadcaster _notificationBroadcaster;
         private readonly IUserDepositRepository _userDepositRepository;
 
-        public AddBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService, IUserRepository userRepository, INotificationRepository notificationRepository, INotificationBroadcaster notificationBroadcaster , IAutoBidRepository autoBidRepo, IUserDepositRepository userDepositRepository)
+        public AddBidCommandHandler(IBidRepository bidRepository, IMapper mapper, IAuctionAssetRepository auctionAssetRepository, IUnitOfWorkAuth unitOfWork, IAssetsRepository assetsRepository, IAuctionRepository auctionRepository, IBidNotificationService notificationService, IUserRepository userRepository, INotificationRepository notificationRepository, INotificationBroadcaster notificationBroadcaster, IAutoBidRepository autoBidRepo, IUserDepositRepository userDepositRepository)
         {
             _bidRepository = bidRepository;
             _mapper = mapper;
@@ -58,7 +57,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
 
                 bool isValid = await _auctionAssetRepository.AssetExistsInAuctionAsync(request.AuctionId, request.AssetId);
                 var user = await _userRepository.GetUserById(request.UserId);
-                if(user == null)
+                if (user == null)
                 {
                     throw new BadRequestException("No User Available");
                 }
@@ -93,7 +92,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
                     if (request.BidAmount < requiredMinBid)
                         throw new BadRequestException($"Bid must be at least {requiredMinBid} (Min Increment: {asset.MinIncrement})");
                 }
-                
+
                 var previousWinningBid = await _bidRepository.GetWinningBidByAssetIdAsync(request.AssetId);
 
                 if (previousWinningBid != null && previousWinningBid.UserId != request.UserId)
@@ -124,7 +123,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
                         OldTotalLimit = user1.TotalLimit, // No change here
                         NewTotalLimit = user1.TotalLimit,
                         OldAvailableLimit = user1.AvailableLimit,
-                        NewAvailableLimit = user1.AvailableLimit+previousWinningBid.BidAmount,
+                        NewAvailableLimit = user1.AvailableLimit + previousWinningBid.BidAmount,
                         Notes = $"Outbid for the {user1.UserId} on the asset ID {asset.AssetId}",
                         ChangedBy = user.UserId, // or system/admin ID if different
                         ChangedDate = DateTime.UtcNow
@@ -159,7 +158,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
                 await _unitOfWork.CommitAsync();
 
                 var updatedBidCount = await _bidRepository.CountBidsByAssetIdAsync(request.AssetId);
-                
+
                 await _notificationService.NotifyNewBidAsync(
                    request.AuctionId,
                    request.AssetId,

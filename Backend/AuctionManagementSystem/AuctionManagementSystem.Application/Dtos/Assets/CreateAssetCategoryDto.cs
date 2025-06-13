@@ -19,6 +19,11 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public decimal? Vatpercentage { get; set; }
         public int StatusId { get; set; }
         public int? Vatid { get; set; }
+        public int? LanguageId { get; set; }
+        public string? TranslatedCategoryName { get; set; }
+        public string? TranslatedSubcategory { get; set; }
+        public string? TranslatedDetails { get; set; }
+
 
 
         // for multiple payment methods
