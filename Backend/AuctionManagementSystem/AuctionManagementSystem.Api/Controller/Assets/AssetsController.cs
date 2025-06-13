@@ -4,6 +4,7 @@ using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAs
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDirectSaleAssets;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetSellers;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.SearchAsset;
 using AuctionManagementSystem.Application.Features.Assets.AssetAuction.Command.AddAssetAuction;
 using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Command;
@@ -43,6 +44,12 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         //    return Ok(assets);
         //}
 
+        [HttpGet("getSellers")]
+        public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetSellers()
+        {
+            var sellers = await _mediator.Send(new GetSellersQuery());
+            return Ok(sellers);
+        }
 
 
         [HttpGet("directsaleasset")]
