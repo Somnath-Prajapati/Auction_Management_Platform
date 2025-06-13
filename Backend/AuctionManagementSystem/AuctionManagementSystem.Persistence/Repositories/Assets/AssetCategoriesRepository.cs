@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Dtos.Translations;
 using AuctionManagementSystem.Domain.Entities.Asset;
+using AuctionManagementSystem.Domain.Entities.Translations;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -120,17 +121,45 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
         public async Task<List<AssetCategoryTranslationDto>> GetAssetCategoryTranslationsByLangCodeAsync(string langCode)
         {
-            return await _context.TblAssetCategoryTranslations
-                .Where(t => t.Language.Code == langCode)
-                .Select(t => new AssetCategoryTranslationDto
+            var language = await _context.TblLanguages
+                .FirstOrDefaultAsync(l => l.Code.ToLower() == langCode.ToLower());
+
+            if (language == null)
+                return new List<AssetCategoryTranslationDto>();
+
+            var translations = await _context.TblAssetCategoryTranslations
+                .Where(t => t.LanguageId == language.LanguageId)
+                .ToListAsync();
+
+            var baseCategories = await _context.TblAssetCategories.ToListAsync();
+
+            var result = baseCategories.Select(category =>
+            {
+                var translation = translations.FirstOrDefault(t => t.CategoryId == category.CategoryId);
+
+                return new AssetCategoryTranslationDto
                 {
-                    CategoryId = t.CategoryId,
-                    TranslatedCategoryName = t.TranslatedCategoryName,
-                    TranslatedSubcategory = t.TranslatedSubcategory,
-                    TranslatedDetails = t.TranslatedDetails
-                }).ToListAsync();
+                    CategoryId = category.CategoryId,
+                    TranslatedCategoryName = translation?.TranslatedCategoryName ?? category.CategoryName,
+                    TranslatedSubcategory = translation?.TranslatedSubcategory ?? category.Subcategory,
+                    TranslatedDetails = translation?.TranslatedDetails ?? category.Details
+                };
+            }).ToList();
+
+            return result;
         }
 
+        public async Task AddAssetCategoryTranslationAsync(tblAssetCategoryTranslations translation)
+        {
+            _context.TblAssetCategoryTranslations.Add(translation);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<tblAssetCategoryTranslations?> GetTranslationByLanguageIdAsync(int categoryId, int languageId)
+        {
+            return await _context.TblAssetCategoryTranslations
+                .FirstOrDefaultAsync(t => t.CategoryId == categoryId && t.LanguageId == languageId);
+        }
 
     }
 }
