@@ -21,7 +21,9 @@ namespace AuctionManagementSystem.Application.Dtos.TransactionsDtos
         public DateTime TransactionDateTime { get; set; }
         public int StatusId { get; set; }
         public string? Notes { get; set; }
-        public string? DocumentPath { get; set; }
+        //public string? DocumentPath { get; set; }
+        public string? DocumentUrl { get; set; }
+
         public long? CreatedByAdminId { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }

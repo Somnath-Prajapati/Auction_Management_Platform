@@ -14,9 +14,7 @@ namespace AuctionManagementSystem.Application.Features.Transactions.Queries.GetA
     //}
 
 
-    public class GetAllTransactionsQuery : IRequest<List<GetTransactionDto>>
-    {
-    }
+    public class GetAllTransactionsQuery : IRequest<List<GetTransactionDto>>;
 
 
 

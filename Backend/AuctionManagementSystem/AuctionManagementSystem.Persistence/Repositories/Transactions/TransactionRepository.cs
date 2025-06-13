@@ -97,14 +97,24 @@ public class TransactionRepository : ITransactionRepository
         .ToListAsync(cancellationToken);
     }
 
+    public async Task<string?> GetDocumentPathByTransactionIdAsync(int transactionId, CancellationToken cancellationToken)
+    {
+        return await _context.TblTransactionDocuments
+            .Where(d => d.TransactionId == transactionId)
+            .Select(d => d.FilePath)
+            .FirstOrDefaultAsync(cancellationToken);
+    }
+
+
 
     public async Task<TblTransaction> AddAsync(TblTransaction entity)
     {
         // Generate Transaction Number
         entity.TransactionNumber = await GetTransactionNumberFromDbAsync();
-
         // Add transaction to DB
         await _context.TblTransactions.AddAsync(entity);
+
+
         await _context.SaveChangesAsync();
 
         // === Handle Approved Deposit Logic ===
