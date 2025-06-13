@@ -9,6 +9,7 @@ using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Translations;
+using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -686,5 +687,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         {
             return await _context.TblSellers.Include(s=> s.User).ToListAsync();
         }
+
     }
 }
