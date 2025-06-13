@@ -20,6 +20,11 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public int StatusId { get; set; }
         public int? Vatid { get; set; }
 
+        public int? LanguageId { get; set; }
+        public string? TranslatedCategoryName { get; set; }
+        public string? TranslatedSubcategory { get; set; }
+        public string? TranslatedDetails { get; set; }
+
         public List<int> PaymentMethodIds { get; set; } = new List<int>();
     }
 }

@@ -43,6 +43,11 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public bool RequestForInquiry { get; set; } = true;
 
         public bool IsAvailableForDirectSale { get; set; }
+        public int? LanguageId { get; set; }
+        public string? TranslatedTitle { get; set; }
+        public string? TranslatedDescription { get; set; }
+        public string? TranslatedSalesNotes { get; set; }
+
 
         public List<IFormFile> GalleryFiles { get; set; } = new List<IFormFile>();
         public List<IFormFile> DocumentFiles { get; set; } = new List<IFormFile>();

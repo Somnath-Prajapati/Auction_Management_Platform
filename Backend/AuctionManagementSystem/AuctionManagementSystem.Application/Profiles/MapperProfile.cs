@@ -74,6 +74,8 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<UpdateRequestDto, UdpRequestCommand>();
             CreateMap<TblRequest, RequestDto>();
 
+            CreateMap<TblSeller, SellerDto>().ReverseMap();
+            
 
 
             CreateMap<GetAssetsDto, TblAsset>().ReverseMap();
