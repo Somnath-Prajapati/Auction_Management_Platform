@@ -1,8 +1,10 @@
 ﻿using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddNewWinner;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetBidders;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDirectSaleAssets;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetSellers;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.SearchAsset;
@@ -90,7 +92,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         //{
         //    var result = await _mediator.Send(new AddAssetCommand(createAsset));
 
-          
+
 
         //    return Ok(result);
         //}
@@ -100,7 +102,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAsset(int id, [FromQuery] string lang)
         {
-            var assets = await _mediator.Send(new GetAssetByIdQuery(id,lang));
+            var assets = await _mediator.Send(new GetAssetByIdQuery(id, lang));
             return Ok(assets);
         }
 
@@ -262,6 +264,23 @@ namespace AuctionManagementSystem.Api.Controller.Assets
 
             return Ok(result);
         }
+
+
+        [HttpGet("GetBidders")]
+        public async Task<IActionResult> GetBidders([FromQuery] int auctionId, [FromQuery] int assetId)
+        {
+            var result = await _mediator.Send(new GetBidderQuery(auctionId, assetId));
+            return Ok(result);
+        }
+
+
+        [HttpPost("replace-winner")]
+        public async Task<IActionResult> ReplaceWinner([FromBody] ReplaceAssetWinnerDto dto)
+        {
+            var winnerId = await _mediator.Send(new ReplaceAssetWinnerCommand(dto));
+            return Ok(new { WinnerId = winnerId });
+        }
+
 
     }
 }

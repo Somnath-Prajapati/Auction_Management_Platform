@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -11,6 +12,7 @@ using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Translations;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Persistence.Context;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Persistence.Repositories.Assets
@@ -686,6 +688,81 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         public async Task<IEnumerable<TblSeller>> getAllSeller()
         {
             return await _context.TblSellers.Include(s=> s.User).ToListAsync();
+        }
+
+        public async Task<IEnumerable<TopBidderRaw>> GetAllBidders(int assetId, int auctionId)
+        {
+            var result = new List<TopBidderRaw>();
+
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                if (connection.State != ConnectionState.Open)
+                    await connection.OpenAsync();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "sp_GetHighestBidders";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    var auctionParam = command.CreateParameter();
+                    auctionParam.ParameterName = "@AuctionId";
+                    auctionParam.Value = auctionId;
+                    command.Parameters.Add(auctionParam);
+
+                    var assetParam = command.CreateParameter();
+                    assetParam.ParameterName = "@AssetId";
+                    assetParam.Value = assetId;
+                    command.Parameters.Add(assetParam);
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            result.Add(new TopBidderRaw
+                            {
+                                UserId = reader.GetInt32(0),         
+                                UserName = reader.GetString(1),       
+                                BidAmount = reader.GetDecimal(2),     
+                                BidTime = reader.GetDateTime(3),      
+                                IsAutoBid = reader.GetBoolean(4)      
+                            });
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public async Task<int> ReplaceAssetWinnerAsync(int assetId, int userId, decimal awardedPrice, string? reason, string? note, bool approved)
+        {
+            var connection = _context.Database.GetDbConnection();
+
+            if (connection.State == ConnectionState.Closed)
+                await connection.OpenAsync();
+
+            using var command = connection.CreateCommand();
+            command.CommandText = "sp_ReplaceAssetWinner";
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.Add(new SqlParameter("@AssetId", assetId));
+            command.Parameters.Add(new SqlParameter("@UserId", userId));
+            command.Parameters.Add(new SqlParameter("@AwardedPrice", awardedPrice));
+            command.Parameters.Add(new SqlParameter("@Reason", reason ?? (object)DBNull.Value));
+            command.Parameters.Add(new SqlParameter("@Note", note ?? (object)DBNull.Value));
+            command.Parameters.Add(new SqlParameter("@Approved", approved));
+
+            int winnerId = 0;
+
+            using var reader = await command.ExecuteReaderAsync();
+
+            if (await reader.ReadAsync())
+            {
+                winnerId = Convert.ToInt32(reader["WinnerId"]);
+            }
+
+            await reader.DisposeAsync();
+            return winnerId;
         }
 
     }
