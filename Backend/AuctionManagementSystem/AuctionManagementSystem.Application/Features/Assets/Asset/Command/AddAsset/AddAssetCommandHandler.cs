@@ -77,7 +77,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddA
 
             var notification = new TblNotification
             {
-                Id = Guid.NewGuid(),
+                NotificationId = Guid.NewGuid(),
                 UserId = null,
                 Title = $"New Asset Created with id :: {createdAsset.AssetId}",
                 Message = $"Asset '{createdAsset.Title}' has been added.",

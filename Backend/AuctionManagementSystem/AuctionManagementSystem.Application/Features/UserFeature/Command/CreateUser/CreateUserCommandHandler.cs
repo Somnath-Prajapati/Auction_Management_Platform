@@ -87,7 +87,7 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Command.Creat
 
             var userNotification = new TblNotification
             {
-                Id = Guid.NewGuid(),
+                NotificationId = Guid.NewGuid(),
                 UserId = null,
                 Title = "New User Added",
                 Message = $"New User Added {user.Name}",
