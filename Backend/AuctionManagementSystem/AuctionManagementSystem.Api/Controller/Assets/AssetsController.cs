@@ -10,7 +10,9 @@ using AuctionManagementSystem.Application.Features.Assets.AssetAuction.Command.A
 using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Command;
 using AuctionManagementSystem.Application.Features.Assets.AssetDocuments.Command.AddDocument;
 using AuctionManagementSystem.Application.Features.Assets.AssetGallery.Command.AddAssetGallery;
+using AuctionManagementSystem.Application.Features.Assets.AssetResults;
 using AuctionManagementSystem.Application.Features.Assets.Query.GetAssets;
+using AuctionManagementSystem.Application.Features.Requests.Queries.GetAllRequests;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -259,6 +261,47 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         public async Task<IActionResult> UpdateAsset([FromForm] UpdateAssetAllDto dto)
         {
             var result = await _mediator.Send(new UpdateAssetAllCommand(dto));
+
+            return Ok(result);
+        }
+
+        [HttpGet("results/{assetId}")]
+        public async Task<IActionResult> GetResults(int assetId)
+        {
+            var result = await _mediator.Send(new GetAssetResultsQuery(assetId));
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
+        }
+
+
+        //[HttpGet("{assetId}/latest-request")]
+        [HttpGet("{assetId}/requests")]
+        public async Task<IActionResult> GetRequestsForAsset(int assetId)
+        {
+            var allRequests = await _mediator.Send(new GetAllRequestQuery());
+            if (allRequests == null || !allRequests.Any())
+                return NotFound("No requests found.");
+
+            var assetRequests = allRequests
+                .Where(r => r.AssetId == assetId)
+                .OrderByDescending(r => r.CreatedOn)
+                .ToList();
+
+            if (!assetRequests.Any())
+                return NotFound($"No requests found for asset ID {assetId}.");
+
+            return Ok(assetRequests);
+        }
+
+
+        [HttpGet("{assetId}/transactions")]
+        public async Task<IActionResult> GetAssetTransactions(int assetId)
+        {
+            var result = await _mediator.Send(new GetAssetTransactionQuery(assetId));
+            if (result == null || result.Count == 0)
+                return NotFound("No transactions found for this asset.");
 
             return Ok(result);
         }

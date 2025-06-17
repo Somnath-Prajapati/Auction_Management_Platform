@@ -7,6 +7,10 @@ using AuctionManagementSystem.Domain.Models;
 using AuctionManagementSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using AuctionManagementSystem.Application.Dtos.Assets;
+using Microsoft.Data.SqlClient;
+using EventStore.ClientAPI;
+using Microsoft.Extensions.Configuration;
 
 namespace AuctionManagementSystem.Infrastructure.Persistence.Repositories;
 
@@ -14,11 +18,13 @@ public class TransactionRepository : ITransactionRepository
 {
     private readonly AuctionManagementDbContext _context;
     private readonly ILogger<TransactionRepository> _logger;
+    private readonly string _connectionString;
 
-    public TransactionRepository(AuctionManagementDbContext context, ILogger<TransactionRepository> logger)
+    public TransactionRepository(AuctionManagementDbContext context, ILogger<TransactionRepository> logger, IConfiguration configuration)
     {
         _context = context;
         _logger = logger;
+        _connectionString = configuration.GetConnectionString("DefaultConnection");
     }
 
     public async Task<string> GetTransactionNumberFromDbAsync()
@@ -290,7 +296,49 @@ public class TransactionRepository : ITransactionRepository
     }
 
 
-   
+    public async Task<List<AssetTransactionDto>> GetAssetTransactionsAsync(int assetId)
+    {
+        var result = new List<AssetTransactionDto>();
+        using (var connection = new SqlConnection(_connectionString))
+        {
+            await connection.OpenAsync();
+            using (var command = new SqlCommand("GetAssetTransaction", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                var assetIdparam = command.CreateParameter();
+                assetIdparam.ParameterName = "@assetID";
+                assetIdparam.Value = assetId;
+                command.Parameters.Add(assetIdparam);
+
+                //if (connection.State == ConnectionState.Closed)
+                //    await connection.OpenAsync();
+
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        var dto = new AssetTransactionDto
+                        {
+                            AssetId = reader.GetInt32(reader.GetOrdinal("AssetId")),
+                            //OrderId = reader.GetInt32(reader.GetOrdinal("OrderId")),
+                            TransactionNumber = reader.GetString(reader.GetOrdinal("TransactionNumber")),
+                            Amount = reader.GetDecimal(reader.GetOrdinal("Amount")),
+                            TransactionDateTime = reader.GetDateTime(reader.GetOrdinal("TransactionDateTime")),
+                            TransactionType = reader.GetString(reader.GetOrdinal("TransactionType"))
+                            // Assuming "Transaction" is a string column
+                            //OrderNumber = reader.GetString(reader.GetOrdinal("OrderNumber"))
+                            // Map more fields as needed
+                        };
+                        result.Add(dto);
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
 
 
 }

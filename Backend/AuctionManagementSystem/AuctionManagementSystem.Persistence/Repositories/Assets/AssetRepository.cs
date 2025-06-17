@@ -573,11 +573,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                    a.Type == "Direct Sale");
         }
 
-
-
-
-
-
         public async Task UpdateAsync(TblAsset asset)
         {
            
@@ -686,6 +681,38 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         public async Task<IEnumerable<TblSeller>> getAllSeller()
         {
             return await _context.TblSellers.Include(s=> s.User).ToListAsync();
+        }
+
+        public async Task<AssetResultsDto> GetAssetResultsAsync(int assetId)
+        {
+            var asset = await _context.TblAssets
+                .Include(a => a.TblBids)
+                .FirstOrDefaultAsync(a => a.AssetId == assetId && !a.IsDeleted);
+
+            if (asset == null)
+                return null;
+
+            var totalBids = asset.TblBids.Count;
+            var totalBidders = asset.TblBids.Select(b => b.UserId).Distinct().Count();
+            var startPrice = asset.StartingPrice;
+            var highestPrice = asset.TblBids.Any() ? asset.TblBids.Max(b => b.BidAmount) : 0;
+
+            var deposit = asset.Deposit ?? 0;
+            var vat = asset.Vatpercent ?? 0;
+            var buyerCommission = asset.BuyerCommission ?? 0;
+
+            var commissionPercentage = deposit + vat + buyerCommission;
+            var totalPayable = highestPrice + (highestPrice * commissionPercentage / 100);
+
+            return new AssetResultsDto
+            {
+                TotalBids = totalBids,
+                TotalBidders = totalBidders,
+                StartPrice = startPrice,
+                HighestPrice = highestPrice,
+                CommissionPercentage = commissionPercentage,
+                TotalPayable = totalPayable
+            };
         }
 
     }

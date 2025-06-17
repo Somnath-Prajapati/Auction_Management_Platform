@@ -1,4 +1,5 @@
 ﻿
+using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 
@@ -26,8 +27,10 @@ namespace AuctionManagementSystem.Application.Contracts.Transactions
 
         Task<List<UserTransactionDto>> GetUserTransactionsAsync(int userId);
 
-      
-      
+        Task<List<AssetTransactionDto>> GetAssetTransactionsAsync(int assetId);
+
+
+
 
 
 
