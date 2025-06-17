@@ -163,7 +163,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
 
                         var notification = new TblNotification
                         {
-                            Id = Guid.NewGuid(),
+                            NotificationId = Guid.NewGuid(),
                             UserId = request.UserId,
                             Title = "You've set limit been outbid",
                             Message = $"Your bid on asset '{asset.Title}' Limit has been Reached.",
@@ -205,7 +205,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.AutoBid.Command.Crea
                     // Send outbid notification
                     var notification = new TblNotification
                     {
-                        Id = Guid.NewGuid(),
+                        NotificationId = Guid.NewGuid(),
                         UserId = previousWinningBid.UserId,
                         Title = "You've been outbid",
                         Message = $"Your bid on asset '{asset.Title}' has been outbid by another user.",

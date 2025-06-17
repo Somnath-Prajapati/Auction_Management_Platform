@@ -42,5 +42,6 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
 
         Task<AssetResultsDto> GetAssetResultsAsync(int assetId);
 
+        Task<GetAssetsFormTranslatedDto> GetByIdAllDetailsAsync(int id);
     }
 }

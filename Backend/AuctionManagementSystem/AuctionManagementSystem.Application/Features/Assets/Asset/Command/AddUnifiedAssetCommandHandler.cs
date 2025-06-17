@@ -79,7 +79,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
 
             var notification = new TblNotification
             {
-                Id = Guid.NewGuid(),
+                NotificationId = Guid.NewGuid(),
                 UserId = null,
                 Title = $"New Asset Created with id :: {createdAsset}",
                 Message = $"Asset '{dto.Title}' has been added.",
