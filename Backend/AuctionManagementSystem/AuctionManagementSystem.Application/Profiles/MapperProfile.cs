@@ -69,6 +69,8 @@ namespace AuctionManagementSystem.Application.Profiles
             // Update
             CreateMap<UpdateTransactionDto, TblTransaction>().ForMember(dest => dest.TransactionId, opt => opt.Ignore()); // ID shouldn't be overwritten
 
+            CreateMap<TopBidderDto, TopBidderRaw>().ReverseMap();
+
             //Mapping for Create,Upadte Request Dto
             CreateMap<CreateRequestDto, AddRequestCommand>();
             CreateMap<UpdateRequestDto, UdpRequestCommand>();

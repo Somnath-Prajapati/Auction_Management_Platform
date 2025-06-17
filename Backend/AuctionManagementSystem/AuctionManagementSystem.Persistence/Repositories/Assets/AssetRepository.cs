@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -11,6 +12,7 @@ using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Translations;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Persistence.Context;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Persistence.Repositories.Assets
@@ -169,146 +171,146 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
              isDeleted = a.IsDeleted,
              AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
 
-             // for auctionids 
-             AuctionIds = a.TblAuctionAssets
-                .Select(aa => aa.AuctionId)
-                .ToList(),
-             Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
-             {
-                 GalleryId = g.GalleryId,
-                 MediaType = g.MediaType,
-                 FilePath = g.FilePath,
-                 SortOrder = g.SortOrder
-             }).ToList(),
-             Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
-             {
-                 DocumentId = d.DocumentId,
-                 DocumentType = d.DocumentType,
-                 FilePath = d.FilePath
-             }).ToList(),
-             // Add the asset details (attributes) here
-             Attributes = a.TblAssetDetails.Select(d => new AssetDetailDtoo
-             {
-                 AttributeName = d.AttributeName,
-                 AttributeValue = d.AttributeValue
-             }).ToList()
-         })
-         .FirstOrDefaultAsync();
+                 // for auctionids 
+                 AuctionIds = a.TblAuctionAssets
+                    .Select(aa => aa.AuctionId)
+                    .ToList(),
+                 Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
+                 {
+                     GalleryId = g.GalleryId,
+                     MediaType = g.MediaType,
+                     FilePath = g.FilePath,
+                     SortOrder = g.SortOrder
+                 }).ToList(),
+                 Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
+                 {
+                     DocumentId = d.DocumentId,
+                     DocumentType = d.DocumentType,
+                     FilePath = d.FilePath
+                 }).ToList(),
+                 // Add the asset details (attributes) here
+                 Attributes = a.TblAssetDetails.Select(d => new AssetDetailDtoo
+                 {
+                     AttributeName = d.AttributeName,
+                     AttributeValue = d.AttributeValue
+                 }).ToList()
+             })
+             .FirstOrDefaultAsync();
 
-            return asset;
-        }
-
-
-
-        public async Task<GetAssetsFormDto> GetByIdViewAsync(int id, string languageCode)
-        {
-            // Step 1: Get LanguageId from Code
-            var language = await _context.TblLanguages
-                .Where(l => l.Code == languageCode && l.IsActive)
-                .FirstOrDefaultAsync();
-
-            if (language == null)
-            {
-                throw new Exception("Invalid or inactive language code.");
+                return asset;
             }
 
-            int languageId = language.LanguageId;
 
-            // Step 2: Fetch the asset
-            var asset = await _context.TblAssets
-                .Include(a => a.Category)
-                .Include(a => a.Status)
-                .Include(a => a.Seller)
-                .Include(a => a.Awarding)
-                .Include(a => a.Vat)
-                .Include(a => a.Winner)
-                    .ThenInclude(w => w.User)
-                .Include(a => a.TblAssetGalleries)
-                .Include(a => a.TblAssetDocuments)
-                .Include(a => a.TblAssetDetails)
-                .Include(a => a.TblAuctionAssets)
-                    .ThenInclude(aa => aa.Auction)
-                .Where(a => a.AssetId == id)
-                .Select(a => new GetAssetsFormDto
+
+            public async Task<GetAssetsFormDto> GetByIdViewAsync(int id, string languageCode)
+            {
+                // Step 1: Get LanguageId from Code
+                var language = await _context.TblLanguages
+                    .Where(l => l.Code == languageCode && l.IsActive)
+                    .FirstOrDefaultAsync();
+
+                if (language == null)
                 {
-                    AssetId = a.AssetId,
-                    Title = a.Title,
-                    CategoryId = a.CategoryId, 
-                    CategoryName = a.Category != null ? a.Category.CategoryName : null,
-                    Deposit = a.Deposit,
-                    SellerId = a.SellerId,
-                    Commission = a.Commission,
-                    StartingPrice = a.StartingPrice,
-                    ReserveAmount = a.ReserveAmount,
-                    IncrementalTime = a.IncrementalTime,
-                    MinIncrement = a.MinIncrement,
-                    MakeOffer = a.MakeOffer,
-                    Featured = a.Featured,
-                    AwardingId = a.AwardingId,
-                    AwardingMethod = a.Awarding != null ? a.Awarding.AwardingMethod : null,
-                    StatusId = a.StatusId,
-                    StatusName = a.Status != null ? a.Status.StatusName : null,
-                    Vatid = a.Vatid,
-                    VatType = a.Vat != null ? a.Vat.Vattype : null,
-                    Vatpercent = a.Vatpercent,
-                    CourtCaseNumber = a.CourtCaseNumber,
-                    RegistrationDeadline = a.RegistrationDeadline,
-                    Description = a.Description,
-                    MapLatitude = a.MapLatitude,
-                    MapLongitude = a.MapLongitude,
-                    AdminFees = a.AdminFees,
-                    AuctionFees = a.AuctionFees,
-                    BuyerCommission = a.BuyerCommission,
-                    WinnerId = a.WinnerId,
-                    WinnerName = a.Winner != null && a.Winner.User != null ? a.Winner.User.Name : null,
-                    AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null,
-                    SalesNotes = a.SalesNotes,
-                    AssetNumber = a.AssetNumber,
-                    CreatedAt = a.CreatedAt,
-                    UpdatedAt = a.UpdatedAt,
-                    RequestForInquiry = a.RequestForInquiry,
-                    RequestForViewing = a.RequestForViewing,
-                    IsAvailableForDirectSale = a.IsAvailableForDirectSale,
-                    isDeleted = a.IsDeleted,
-                    AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
-                    AuctionIds = a.TblAuctionAssets.Select(aa => aa.AuctionId).ToList(),
-                    Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
-                    {
-                        GalleryId = g.GalleryId,
-                        MediaType = g.MediaType,
-                        FilePath = g.FilePath,
-                        SortOrder = g.SortOrder
-                    }).ToList(),
-                    Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
-                    {
-                        DocumentId = d.DocumentId,
-                        DocumentType = d.DocumentType,
-                        FilePath = d.FilePath
-                    }).ToList(),
-                    Attributes = a.TblAssetDetails.Select(d => new AssetDetailDtoo
-                    {
-                        AttributeName = d.AttributeName,
-                        AttributeValue = d.AttributeValue
-                    }).ToList()
-                })
-                .FirstOrDefaultAsync();
+                    throw new Exception("Invalid or inactive language code.");
+                }
 
-            if (asset == null) return null;
+                int languageId = language.LanguageId;
 
-            // Step 3: Override with translated values
-            var translation = await _context.TblAssetTranslations
-                .Where(t => t.AssetId == id && t.LanguageId == languageId)
-                .FirstOrDefaultAsync();
+                // Step 2: Fetch the asset
+                var asset = await _context.TblAssets
+                    .Include(a => a.Category)
+                    .Include(a => a.Status)
+                    .Include(a => a.Seller)
+                    .Include(a => a.Awarding)
+                    .Include(a => a.Vat)
+                    .Include(a => a.Winner)
+                        .ThenInclude(w => w.User)
+                    .Include(a => a.TblAssetGalleries)
+                    .Include(a => a.TblAssetDocuments)
+                    .Include(a => a.TblAssetDetails)
+                    .Include(a => a.TblAuctionAssets)
+                        .ThenInclude(aa => aa.Auction)
+                    .Where(a => a.AssetId == id)
+                    .Select(a => new GetAssetsFormDto
+                    {
+                        AssetId = a.AssetId,
+                        Title = a.Title,
+                        CategoryId = a.CategoryId,
+                        CategoryName = a.Category != null ? a.Category.CategoryName : null,
+                        Deposit = a.Deposit,
+                        SellerId = a.SellerId,
+                        Commission = a.Commission,
+                        StartingPrice = a.StartingPrice,
+                        ReserveAmount = a.ReserveAmount,
+                        IncrementalTime = a.IncrementalTime,
+                        MinIncrement = a.MinIncrement,
+                        MakeOffer = a.MakeOffer,
+                        Featured = a.Featured,
+                        AwardingId = a.AwardingId,
+                        AwardingMethod = a.Awarding != null ? a.Awarding.AwardingMethod : null,
+                        StatusId = a.StatusId,
+                        StatusName = a.Status != null ? a.Status.StatusName : null,
+                        Vatid = a.Vatid,
+                        VatType = a.Vat != null ? a.Vat.Vattype : null,
+                        Vatpercent = a.Vatpercent,
+                        CourtCaseNumber = a.CourtCaseNumber,
+                        RegistrationDeadline = a.RegistrationDeadline,
+                        Description = a.Description,
+                        MapLatitude = a.MapLatitude,
+                        MapLongitude = a.MapLongitude,
+                        AdminFees = a.AdminFees,
+                        AuctionFees = a.AuctionFees,
+                        BuyerCommission = a.BuyerCommission,
+                        WinnerId = a.WinnerId,
+                        WinnerName = a.Winner != null && a.Winner.User != null ? a.Winner.User.Name : null,
+                        AwardedPrice = a.Winner != null ? a.Winner.AwardedPrice : null,
+                        SalesNotes = a.SalesNotes,
+                        AssetNumber = a.AssetNumber,
+                        CreatedAt = a.CreatedAt,
+                        UpdatedAt = a.UpdatedAt,
+                        RequestForInquiry = a.RequestForInquiry,
+                        RequestForViewing = a.RequestForViewing,
+                        IsAvailableForDirectSale = a.IsAvailableForDirectSale,
+                        isDeleted = a.IsDeleted,
+                        AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
+                        AuctionIds = a.TblAuctionAssets.Select(aa => aa.AuctionId).ToList(),
+                        Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
+                        {
+                            GalleryId = g.GalleryId,
+                            MediaType = g.MediaType,
+                            FilePath = g.FilePath,
+                            SortOrder = g.SortOrder
+                        }).ToList(),
+                        Documents = a.TblAssetDocuments.Select(d => new AssetDocumentFormDto
+                        {
+                            DocumentId = d.DocumentId,
+                            DocumentType = d.DocumentType,
+                            FilePath = d.FilePath
+                        }).ToList(),
+                        Attributes = a.TblAssetDetails.Select(d => new AssetDetailDtoo
+                        {
+                            AttributeName = d.AttributeName,
+                            AttributeValue = d.AttributeValue
+                        }).ToList()
+                    })
+                    .FirstOrDefaultAsync();
 
-            if (translation != null)
-            {
-                asset.Title = translation.Title ?? asset.Title;
-                asset.Description = translation.Description ?? asset.Description;
-                asset.SalesNotes = translation.SalesNotes ?? asset.SalesNotes;
+                if (asset == null) return null;
+
+                // Step 3: Override with translated values
+                var translation = await _context.TblAssetTranslations
+                    .Where(t => t.AssetId == id && t.LanguageId == languageId)
+                    .FirstOrDefaultAsync();
+
+                if (translation != null)
+                {
+                    asset.Title = translation.Title ?? asset.Title;
+                    asset.Description = translation.Description ?? asset.Description;
+                    asset.SalesNotes = translation.SalesNotes ?? asset.SalesNotes;
+                }
+
+                return asset;
             }
-
-            return asset;
-        }
 
 
 
@@ -423,7 +425,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
 
             return dto;
         }
-
 
         public async Task<List<GetAssetsFormDto>> GetDirectAllAsync(Expression<Func<TblAsset, bool>> predicate,string languageCode)
         {
@@ -795,6 +796,81 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         public async Task<IEnumerable<TblSeller>> getAllSeller()
         {
             return await _context.TblSellers.Include(s=> s.User).ToListAsync();
+        }
+
+        public async Task<IEnumerable<TopBidderRaw>> GetAllBidders(int assetId, int auctionId)
+        {
+            var result = new List<TopBidderRaw>();
+
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                if (connection.State != ConnectionState.Open)
+                    await connection.OpenAsync();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "sp_GetHighestBidders";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    var auctionParam = command.CreateParameter();
+                    auctionParam.ParameterName = "@AuctionId";
+                    auctionParam.Value = auctionId;
+                    command.Parameters.Add(auctionParam);
+
+                    var assetParam = command.CreateParameter();
+                    assetParam.ParameterName = "@AssetId";
+                    assetParam.Value = assetId;
+                    command.Parameters.Add(assetParam);
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            result.Add(new TopBidderRaw
+                            {
+                                UserId = reader.GetInt32(0),         
+                                UserName = reader.GetString(1),       
+                                BidAmount = reader.GetDecimal(2),     
+                                BidTime = reader.GetDateTime(3),      
+                                IsAutoBid = reader.GetBoolean(4)      
+                            });
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public async Task<int> ReplaceAssetWinnerAsync(int assetId, int userId, decimal awardedPrice, string? reason, string? note, bool approved)
+        {
+            var connection = _context.Database.GetDbConnection();
+
+            if (connection.State == ConnectionState.Closed)
+                await connection.OpenAsync();
+
+            using var command = connection.CreateCommand();
+            command.CommandText = "sp_ReplaceAssetWinner";
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.Add(new SqlParameter("@AssetId", assetId));
+            command.Parameters.Add(new SqlParameter("@UserId", userId));
+            command.Parameters.Add(new SqlParameter("@AwardedPrice", awardedPrice));
+            command.Parameters.Add(new SqlParameter("@Reason", reason ?? (object)DBNull.Value));
+            command.Parameters.Add(new SqlParameter("@Note", note ?? (object)DBNull.Value));
+            command.Parameters.Add(new SqlParameter("@Approved", approved));
+
+            int winnerId = 0;
+
+            using var reader = await command.ExecuteReaderAsync();
+
+            if (await reader.ReadAsync())
+            {
+                winnerId = Convert.ToInt32(reader["WinnerId"]);
+            }
+
+            await reader.DisposeAsync();
+            return winnerId;
         }
 
         public async Task<AssetResultsDto> GetAssetResultsAsync(int assetId)

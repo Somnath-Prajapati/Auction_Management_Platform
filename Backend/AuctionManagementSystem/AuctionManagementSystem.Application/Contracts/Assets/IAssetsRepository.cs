@@ -42,6 +42,12 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
 
         Task<AssetResultsDto> GetAssetResultsAsync(int assetId);
 
+
+        Task <IEnumerable<TopBidderRaw>> GetAllBidders(int assetId, int auctionId);
+
+
+        Task<int> ReplaceAssetWinnerAsync(int assetId, int userId, decimal awardedPrice, string? reason, string? note, bool approved);
+
         Task<GetAssetsFormTranslatedDto> GetByIdAllDetailsAsync(int id);
     }
 }
