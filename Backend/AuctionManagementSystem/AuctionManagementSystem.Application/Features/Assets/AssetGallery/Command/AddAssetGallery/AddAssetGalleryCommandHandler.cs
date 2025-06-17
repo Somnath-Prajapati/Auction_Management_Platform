@@ -30,7 +30,7 @@ namespace AuctionManagementSystem.Application.Features.Assets.AssetGallery.Comma
 
             if (request.Dto.File != null)
             {
-                if (request.Dto.File.Length > 1 * 1024 * 1024)
+                if (request.Dto.File.Length > 2 * 1024 * 1024)
                     throw new ArgumentException("File size should not exceed 1 MB");
 
                 string[] allowedExtensions = [".jpg", ".jpeg", ".png"];

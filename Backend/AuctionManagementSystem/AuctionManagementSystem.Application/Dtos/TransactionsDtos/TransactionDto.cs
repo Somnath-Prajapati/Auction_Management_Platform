@@ -16,7 +16,7 @@ namespace AuctionManagementSystem.Application.Dtos.TransactionsDtos
         public string Notes { get; set; }
         public string PaymentMethod { get; set; }
         public string Status { get; set; }
-        public DateTime TransactionDateTime { get; set; }
+        public DateTime? TransactionDateTime { get; set; }
         public string TransactionType { get; set; }
         public int UserId { get; set; }
         public string UserFullName { get; set; }

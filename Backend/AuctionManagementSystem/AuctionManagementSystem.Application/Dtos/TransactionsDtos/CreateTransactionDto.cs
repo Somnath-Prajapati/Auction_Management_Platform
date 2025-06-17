@@ -15,10 +15,10 @@ namespace AuctionManagementSystem.Application.Dtos.TransactionsDtos
         public int PaymentMethodId { get; set; }
         public int? CardTypeId { get; set; }
         public string? MerchantTransactionId { get; set; }
-        public DateTime TransactionDateTime { get; set; }
+        public DateTime? TransactionDateTime { get; set; }
         public int StatusId { get; set; }
         public string? Notes { get; set; }
-        public List<IFormFile>? Documents { get; set; }
+        public IFormFile? Documents { get; set; }
         public string? DocumentPath { get; set; }
     }
 

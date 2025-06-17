@@ -4,6 +4,7 @@ using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAs
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDirectSaleAssets;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetSellers;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.SearchAsset;
 using AuctionManagementSystem.Application.Features.Assets.AssetAuction.Command.AddAssetAuction;
 using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Command;
@@ -43,15 +44,21 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         //    return Ok(assets);
         //}
 
+        [HttpGet("getSellers")]
+        public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetSellers()
+        {
+            var sellers = await _mediator.Send(new GetSellersQuery());
+            return Ok(sellers);
+        }
 
 
         [HttpGet("directsaleasset")]
-        public async Task<IActionResult> GetDirectSaleAssets([FromQuery] int categoryId)
+        public async Task<IActionResult> GetDirectSaleAssets([FromQuery] int categoryId, [FromQuery] string lang)
         {
             if (categoryId <= 0)
                 return BadRequest(new { Message = "Invalid category ID." });
 
-            var result = await _mediator.Send(new GetDirectSaleAssetsByCategoryQuery { CategoryId = categoryId });
+            var result = await _mediator.Send(new GetDirectSaleAssetsByCategoryQuery { CategoryId = categoryId, lang = lang });
 
             if (result == null || result.Count == 0)
                 return NotFound(new { Message = "No direct sale assets found for this category." });
@@ -61,12 +68,12 @@ namespace AuctionManagementSystem.Api.Controller.Assets
 
 
         [HttpGet("auctionasset")]
-        public async Task<IActionResult> GetAuctionAssets([FromQuery] int categoryId)
+        public async Task<IActionResult> GetAuctionAssets([FromQuery] int categoryId, [FromQuery] string lang)
         {
             if (categoryId <= 0)
                 return BadRequest(new { Message = "Invalid category ID." });
 
-            var result = await _mediator.Send(new GetAuctionAssetsByCategoryQuery { CategoryId = categoryId });
+            var result = await _mediator.Send(new GetAuctionAssetsByCategoryQuery { CategoryId = categoryId, lang = lang });
 
             if (result == null || result.Count == 0)
                 return NotFound(new { Message = "No auction assets found for this category." });

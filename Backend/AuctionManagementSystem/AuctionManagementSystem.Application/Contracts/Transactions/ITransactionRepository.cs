@@ -16,6 +16,7 @@ namespace AuctionManagementSystem.Application.Contracts.Transactions
 
         Task<List<TblTransaction>> GetAllAsync();
         Task<List<TblTransaction>> GetAllWithDetailsAsync(CancellationToken cancellationToken);
+        Task<string?> GetDocumentPathByTransactionIdAsync(int transactionId, CancellationToken cancellationToken);
 
         Task<TblTransaction> AddAsync(TblTransaction entity);
         Task UpdateAsync(TblTransaction entity);

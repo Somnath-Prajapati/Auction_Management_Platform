@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Dtos.Auctions;
+using AuctionManagementSystem.Application.Dtos.AuditTrial;
 using AuctionManagementSystem.Application.Dtos.Bids;
+using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Application.Dtos.Requests;
+using AuctionManagementSystem.Application.Dtos.Roles;
 using AuctionManagementSystem.Application.Dtos.Settings;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
-using AuctionManagementSystem.Application.Features.Requests.Command.AddRequest;
-using AuctionManagementSystem.Application.Features.Requests.Command.UpdRequest;
 using AuctionManagementSystem.Application.Dtos.UserDtos;
 using AuctionManagementSystem.Application.Features.Auctions.Commands.CreateAuction;
-using AuctionManagementSystem.Application.Features.Auctions.Commands.UpdateAuction;
+using AuctionManagementSystem.Application.Features.Bids.CreateBid.Command;
 using AuctionManagementSystem.Application.Features.Requests.Command.AddRequest;
 using AuctionManagementSystem.Application.Features.Requests.Command.UpdRequest;
 using AuctionManagementSystem.Application.Features.Settings.DirectSaleSettings.Commands.CreateDirectSaleSettings;
@@ -23,34 +19,29 @@ using AuctionManagementSystem.Application.Features.Settings.FinanceSettings.Comm
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.CreateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.FooterLinksSettings.Command.UpdateFooterLinksSettings;
 using AuctionManagementSystem.Application.Features.Settings.StaticPagesSettings.Command.CreateStaticPagesSettings;
+using AuctionManagementSystem.Domain;
+using AuctionManagementSystem.Domain.Entities;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
+using AuctionManagementSystem.Domain.Entities.AuditTrail;
+using AuctionManagementSystem.Domain.Entities.Bids;
+using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Domain.Entities.Request;
+using AuctionManagementSystem.Domain.Entities.Roles;
 using AuctionManagementSystem.Domain.Entities.Settings;
 using AuctionManagementSystem.Domain.Entities.Transaction;
 using AuctionManagementSystem.Domain.Entities.User;
 using AutoMapper;
 using EventStore.ClientAPI;
-using AuctionManagementSystem.Domain.Entities.Bids;
-using AuctionManagementSystem.Domain.Entities;
-using AuctionManagementSystem.Application.Features.Bids.CreateBid.Command;
-using AuctionManagementSystem.Application.Dtos.AuditTrial;
-using AuctionManagementSystem.Domain.Entities.AuditTrail;
-using AuctionManagementSystem.Application.Dtos.Roles;
-using System.Data;
-using AuctionManagementSystem.Domain.Entities.Notification;
-using AuctionManagementSystem.Application.Dtos.Notification;
-using AuctionManagementSystem.Domain;
-using AuctionManagementSystem.Domain.Entities.Roles;
 
 
 namespace AuctionManagementSystem.Application.Profiles
 {
-    public class MapperProfile:Profile
+    public class MapperProfile : Profile
     {
         public MapperProfile()
         {
-            CreateMap<TblUser,UserDto>().ReverseMap();
+            CreateMap<TblUser, UserDto>().ReverseMap();
             CreateMap<TblNotification, NotificationDto>().ReverseMap();
             CreateMap<TblUser, GetUserDto>().ReverseMap();
             CreateMap<TblAssetWinner, AssetWinnerDto>().ReverseMap();
@@ -82,6 +73,8 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<CreateRequestDto, AddRequestCommand>();
             CreateMap<UpdateRequestDto, UdpRequestCommand>();
             CreateMap<TblRequest, RequestDto>();
+
+            CreateMap<TblSeller, SellerDto>().ReverseMap();
             
 
 
@@ -97,15 +90,15 @@ namespace AuctionManagementSystem.Application.Profiles
             CreateMap<UpdateAssetCategoryDto, TblAssetCategory>();
 
             CreateMap<CreateAssetsDto, TblAsset>().ReverseMap();
-            
+
             CreateMap<UpdateAssetDto, TblAsset>()
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-                .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false)); 
+                .ForMember(dest => dest.IsDeleted, opt => opt.MapFrom(_ => false));
 
             CreateMap<AssetsGalleryDto, TblAssetGallery>().ReverseMap();
             CreateMap<AuctionBaseCommand, TblAuction>()
             .ForMember(dest => dest.AuctionId, opt => opt.Ignore());
-            CreateMap<AssetsGalleryDto , TblAssetGallery>().ReverseMap();
+            CreateMap<AssetsGalleryDto, TblAssetGallery>().ReverseMap();
 
             CreateMap<AssetsGalleryDto, TblAssetGallery>()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
@@ -128,18 +121,18 @@ namespace AuctionManagementSystem.Application.Profiles
             .ForMember(dest => dest.AuctionId, opt => opt.MapFrom(src => src.AuctionId))
             .ForMember(dest => dest.AssetId, opt => opt.MapFrom(src => src.AssetId))
             .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
-            .ForMember(dest => dest.BidAmount, opt => opt.MapFrom(src => src.BidAmount)).ReverseMap() ;
-        
+            .ForMember(dest => dest.BidAmount, opt => opt.MapFrom(src => src.BidAmount)).ReverseMap();
 
-             CreateMap<TblTransaction, TransactionDto>()
-            .ForMember(dest => dest.UserFullName, opt => opt.MapFrom(src => src.User.Name))
-            .ForMember(dest => dest.TransactionType, opt => opt.MapFrom(src => src.TransactionType.TransactionTypeName))
-            .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.PaymentMethodName))
-            .ForMember(dest => dest.CardType, opt => opt.MapFrom(src => src.CardType != null ? src.CardType.CardTypeName : null))
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.StatusName))
-            .ForMember(dest => dest.DocumentUrl, opt => opt.MapFrom(src =>
-                src.TblTransactionDocuments.Select(d => d.FilePath ?? "").ToList()
-            ));
+
+            CreateMap<TblTransaction, TransactionDto>()
+           .ForMember(dest => dest.UserFullName, opt => opt.MapFrom(src => src.User.Name))
+           .ForMember(dest => dest.TransactionType, opt => opt.MapFrom(src => src.TransactionType.TransactionTypeName))
+           .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.PaymentMethod.PaymentMethodName))
+           .ForMember(dest => dest.CardType, opt => opt.MapFrom(src => src.CardType != null ? src.CardType.CardTypeName : null))
+           .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.StatusName))
+           .ForMember(dest => dest.DocumentUrl, opt => opt.MapFrom(src =>
+               src.TblTransactionDocuments.Select(d => d.FilePath ?? "").ToList()
+           ));
 
             CreateMap<TblTransaction, GetTransactionDto>()
              .ForMember(dest => dest.UserFullName, opt => opt.MapFrom(src => src.User.Name))
@@ -224,5 +217,5 @@ namespace AuctionManagementSystem.Application.Profiles
     }
 
 }
-    
+
 

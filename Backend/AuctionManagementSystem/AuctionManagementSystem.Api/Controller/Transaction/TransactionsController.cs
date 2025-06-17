@@ -1,13 +1,13 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using AuctionManagementSystem.Application.Contracts.Transactions;
 using AuctionManagementSystem.Application.Dtos.TransactionsDtos;
+using AuctionManagementSystem.Application.Features.Transactions;
 using AuctionManagementSystem.Application.Features.Transactions.Commands.CreateTransaction;
 using AuctionManagementSystem.Application.Features.Transactions.Commands.DeleteTransaction;
 using AuctionManagementSystem.Application.Features.Transactions.Commands.UpdateTransaction;
-using AuctionManagementSystem.Application.Features.Transactions.Queries.GetTransactionById;
 using AuctionManagementSystem.Application.Features.Transactions.Queries.GetAllTransactions;
-using AuctionManagementSystem.Application.Features.Transactions;
-using AuctionManagementSystem.Application.Contracts.Transactions;
+using AuctionManagementSystem.Application.Features.Transactions.Queries.GetTransactionById;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionManagementSystem.API.Controllers;
 
@@ -16,18 +16,6 @@ namespace AuctionManagementSystem.API.Controllers;
 public class TransactionsController : ControllerBase
 {
     private readonly IMediator _mediator;
-
-    public TransactionsController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
-    //[HttpGet(Name ="GetAll Transactions")]
-    //public async Task<ActionResult<List<TransactionDto>>> GetAll()
-    //{
-    //    var result = await _mediator.Send(new GetAllTransactionsQuery());
-    //    return Ok(result);
-    //}
 
     private readonly ITransactionRepository _transactionRepository; // Add a field for ITransactionRepository
 
@@ -45,14 +33,14 @@ public class TransactionsController : ControllerBase
     }
 
 
-    [HttpGet("{id}",Name ="Get Transaction")]
+    //[HttpGet("{id}",Name ="Get Transaction")]
     //public async Task<ActionResult<TransactionDto>> GetById(int id)
     //{
     //    var result = await _mediator.Send(new GetTransactionByIdQuery { TransactionId = id });
     //    return Ok(result);
     //}
 
-    //[HttpGet("{id}")]
+    [HttpGet("{id}")]
     public async Task<ActionResult<TransactionDto>> GetTransactionById(int id)
     {
         var query = new GetTransactionByIdQuery(id);
@@ -66,15 +54,16 @@ public class TransactionsController : ControllerBase
         return Ok(transaction);
     }
 
-    [HttpPost(Name ="Create Transaction")]
-    public async Task<ActionResult<TransactionDto>> Create([FromBody] CreateTransactionDto dto)
+    [HttpPost(Name = "Create Transaction")]
+    public async Task<ActionResult<TransactionDto>> Create([FromForm] CreateTransactionDto dto)
     {
+        Console.WriteLine("Received date: " + dto.TransactionDateTime);
         var command = new CreateTransactionCommand { Transaction = dto };
         var result = await _mediator.Send(command);
         return CreatedAtAction(nameof(GetTransactionById), new { id = result.TransactionId }, result);
     }
 
-    [HttpPut("{id}", Name ="Update Transaction")]
+    [HttpPut("{id}", Name = "Update Transaction")]
     public async Task<ActionResult<TransactionDto>> Update(int id, [FromBody] UpdateTransactionDto dto)
     {
         if (id != dto.TransactionId)
@@ -85,7 +74,7 @@ public class TransactionsController : ControllerBase
         return Ok(result);
     }
 
-    [HttpDelete("{id}",Name ="Delete Transaction")]
+    [HttpDelete("{id}", Name = "Delete Transaction")]
     public async Task<ActionResult> Delete(int id)
     {
         var result = await _mediator.Send(new DeleteTransactionCommand { TransactionId = id });

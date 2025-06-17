@@ -24,7 +24,15 @@ public class GetAllTransactionsQueryHandler : IRequestHandler<GetAllTransactions
         // Exclude soft-deleted transactions
         var activeTransactions = transactions.Where(t => !t.IsDeleted).ToList();
 
-        return _mapper.Map<List<GetTransactionDto>>(activeTransactions);
+        var result = _mapper.Map<List<GetTransactionDto>>(activeTransactions);
+
+        foreach (var txn in result)
+        {
+            txn.DocumentUrl = await _transactionRepository
+                .GetDocumentPathByTransactionIdAsync(txn.TransactionId, cancellationToken);
+        }
+
+        return result;
     }
 }
 
