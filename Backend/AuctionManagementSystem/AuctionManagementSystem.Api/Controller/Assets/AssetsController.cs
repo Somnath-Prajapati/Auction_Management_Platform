@@ -3,6 +3,7 @@ using AuctionManagementSystem.Application.Features.Assets.Asset.Command;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetWithTranslationById;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDirectSaleAssets;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetSellers;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.SearchAsset;
@@ -259,6 +260,16 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         public async Task<IActionResult> UpdateAsset([FromForm] UpdateAssetAllDto dto)
         {
             var result = await _mediator.Send(new UpdateAssetAllCommand(dto));
+
+            return Ok(result);
+        }
+
+        [HttpGet("AllDetails/{id}")]
+        public async Task<ActionResult<GetAssetsFormTranslatedDto>> GetAssetById(int id)
+        {
+            var result = await _mediator.Send(new GetAssetWithTranslationByIdQuery(id));
+            if (result == null)
+                return NotFound();
 
             return Ok(result);
         }

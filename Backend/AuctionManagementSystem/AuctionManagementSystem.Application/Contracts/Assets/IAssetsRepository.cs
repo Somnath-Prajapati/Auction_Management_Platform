@@ -39,5 +39,6 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
 
 
         Task <IEnumerable<TblSeller>> getAllSeller();
+        Task<GetAssetsFormTranslatedDto> GetByIdAllDetailsAsync(int id);
     }
 }
