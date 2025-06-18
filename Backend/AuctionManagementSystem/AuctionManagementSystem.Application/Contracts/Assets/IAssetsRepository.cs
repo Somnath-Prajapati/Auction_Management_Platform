@@ -49,5 +49,9 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task<int> ReplaceAssetWinnerAsync(int assetId, int userId, decimal awardedPrice, string? reason, string? note, bool approved);
 
         Task<GetAssetsFormTranslatedDto> GetByIdAllDetailsAsync(int id);
+        Task UpdateAssetTranslationAsync(tblAssetTranslation translation);
+        Task<tblAssetTranslation?> GetAssetTranslationByAssetIdAsync(int assetId);
+        Task DeleteAssetTranslationAsync(tblAssetTranslation translation);
+
     }
 }

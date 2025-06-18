@@ -904,6 +904,21 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 TotalPayable = totalPayable
             };
         }
+        public async Task UpdateAssetTranslationAsync(tblAssetTranslation translation)
+        {
+            _context.TblAssetTranslations.Update(translation);
+            await _context.SaveChangesAsync();
+        }
+        public async Task<tblAssetTranslation?> GetAssetTranslationByAssetIdAsync(int assetId)
+        {
+            return await _context.TblAssetTranslations
+                .FirstOrDefaultAsync(t => t.AssetId == assetId && t.LanguageId == 2);
+        }
+        public async Task DeleteAssetTranslationAsync(tblAssetTranslation translation)
+        {
+            _context.TblAssetTranslations.Remove(translation);
+            await _context.SaveChangesAsync();
+        }
 
     }
 }

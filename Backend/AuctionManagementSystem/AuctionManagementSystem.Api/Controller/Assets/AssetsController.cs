@@ -259,7 +259,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             public string FileName { get; set; }
         }
 
-
+        //update Asset
         [HttpPut("update-asset-all")]
         public async Task<IActionResult> UpdateAsset([FromForm] UpdateAssetAllDto dto)
         {
