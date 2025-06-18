@@ -3,6 +3,7 @@ using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Dtos.Auctions;
 using AuctionManagementSystem.Application.Dtos.AuditTrial;
 using AuctionManagementSystem.Application.Dtos.Bids;
+using AuctionManagementSystem.Application.Dtos.GetFeaturedAssets;
 using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Application.Dtos.Requests;
 using AuctionManagementSystem.Application.Dtos.Roles;
@@ -213,6 +214,10 @@ namespace AuctionManagementSystem.Application.Profiles
                 .ForMember(dest => dest.ManageRequests, opt => opt.MapFrom(src => src.ManageRequests))
                 .ForMember(dest => dest.ViewAuditTrail, opt => opt.MapFrom(src => src.ViewAuditTrail))
                 .ForMember(dest => dest.ChangeCommission, opt => opt.MapFrom(src => src.ChangeCommission));
+            
+            CreateMap<TblAsset, FeaturedAssetDto>();
+
+
         }
     }
 

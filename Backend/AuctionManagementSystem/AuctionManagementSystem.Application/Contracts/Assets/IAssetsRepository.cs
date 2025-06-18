@@ -8,6 +8,7 @@ using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Domain.Entities.Translations;
+using AuctionManagementSystem.Application.Dtos.GetFeaturedAssets;
 
 namespace AuctionManagementSystem.Application.Contracts.Assets
 {
@@ -30,7 +31,7 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task UpdateAsync(TblAsset asset);
         Task<bool> AssetsIsExist(int id);
         Task<IEnumerable<TblAsset>> SearchAsset(string name);
-
+            
         Task<bool> HasAnyDirectAndActiveAuctionAsync(int auctionIds); // this is for directsale
         Task DeactivateExpiredAssetsBasedOnDeadlineAsync();        // added for hangfire 
 
@@ -39,5 +40,7 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
 
 
         Task <IEnumerable<TblSeller>> getAllSeller();
+
+        Task<List<FeaturedAssetDto>> GetFeaturedAssetsAsync();
     }
 }

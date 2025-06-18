@@ -263,5 +263,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             return Ok(result);
         }
 
+
+
     }
 }

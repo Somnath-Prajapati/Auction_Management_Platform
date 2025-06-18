@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using AuctionManagementSystem.Application.Dtos;
+using AuctionManagementSystem.Application.Dtos.GetFeaturedAssets;
 using AuctionManagementSystem.Application.Features.FAQs.Queries.GetFAQsQuery;
 using AuctionManagementSystem.Domain;
 using AuctionManagementSystem.Domain.Entities;
@@ -1469,19 +1470,19 @@ public partial class AuctionManagementDbContext : DbContext
                 entity.Property(e => e.OldDeposit).HasColumnType("decimal(18, 2)");
                 entity.Property(e => e.OldTotalLimit).HasColumnType("decimal(18, 2)");
             });
+        modelBuilder.Entity<FeaturedAssetDto>().HasNoKey().ToView(null);
+        //modelBuilder.Entity<Tbltempdatum>(entity =>
+        //{
+        //    entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
 
-            //modelBuilder.Entity<Tbltempdatum>(entity =>
-            //{
-            //    entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
+        //    entity.ToTable("tbltempdata");
 
-            //    entity.ToTable("tbltempdata");
-
-            //    entity.Property(e => e.Id).HasColumnName("id");
-            //    entity.Property(e => e.Name)
-            //        .HasMaxLength(1)
-            //        .HasColumnName("name");
-            //});
-            OnModelCreatingPartial(modelBuilder);
+        //    entity.Property(e => e.Id).HasColumnName("id");
+        //    entity.Property(e => e.Name)
+        //        .HasMaxLength(1)
+        //        .HasColumnName("name");
+        //});
+        OnModelCreatingPartial(modelBuilder);
 
     }
 
