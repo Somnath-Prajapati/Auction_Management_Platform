@@ -1,5 +1,8 @@
 ﻿using System.Net;
 using AuctionManagementSystem.Application.Exceptions;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuctionManagementSystem.Api.Middleware
 {
@@ -21,6 +24,9 @@ namespace AuctionManagementSystem.Api.Middleware
                 await HandleExceptionAsync(httpContext, ex);
             }
         }
+
+ 
+
 
         private static async Task<Task> HandleExceptionAsync(HttpContext httpContext, Exception ex)
         {

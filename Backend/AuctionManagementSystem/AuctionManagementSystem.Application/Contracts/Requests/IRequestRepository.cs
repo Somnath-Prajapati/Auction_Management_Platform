@@ -23,5 +23,10 @@ namespace AuctionManagementSystem.Application.Contracts.Request
        
         Task DeleteRequestByNumberAsync(string requestNumber);
        
+        Task<List<AuctionManagementSystem.Application.Dtos.Requests.RequestDto>> GetAllRequestsWithTypeNameAsync();
+
+        Task<List<AuctionManagementSystem.Application.Dtos.Requests.RequestTypeDto>> GetAllRequestTypesSPAsync();
+
+        Task<List<AuctionManagementSystem.Application.Dtos.Requests.RequestStatusDto>> GetAllDistinctRequestStatusesSPAsync();
     }
 }

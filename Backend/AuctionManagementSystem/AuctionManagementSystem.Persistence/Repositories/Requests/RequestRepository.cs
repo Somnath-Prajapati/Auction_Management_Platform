@@ -1,5 +1,4 @@
-﻿
-using AuctionManagementSystem.Application.Contracts.Request;
+﻿using AuctionManagementSystem.Application.Contracts.Request;
 using AuctionManagementSystem.Application.Contracts.User;
 using AuctionManagementSystem.Domain.Entities.Request;
 using AuctionManagementSystem.Persistence.Context;
@@ -110,6 +109,27 @@ namespace AuctionManagementSystem.Persistence.Repositories.Requests
         {
             _context.TblRequests.Remove(request);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<AuctionManagementSystem.Application.Dtos.Requests.RequestDto>> GetAllRequestsWithTypeNameAsync()
+        {
+            return await _context.Set<AuctionManagementSystem.Application.Dtos.Requests.RequestDto>()
+                .FromSqlRaw("EXEC GetAllRequestsWithTypeName")
+                .ToListAsync();
+        }
+
+        public async Task<List<AuctionManagementSystem.Application.Dtos.Requests.RequestTypeDto>> GetAllRequestTypesSPAsync()
+        {
+            return await _context.Set<AuctionManagementSystem.Application.Dtos.Requests.RequestTypeDto>()
+                .FromSqlRaw("EXEC GetAllRequestTypes")
+                .ToListAsync();
+        }
+
+        public async Task<List<AuctionManagementSystem.Application.Dtos.Requests.RequestStatusDto>> GetAllDistinctRequestStatusesSPAsync()
+        {
+            return await _context.Set<AuctionManagementSystem.Application.Dtos.Requests.RequestStatusDto>()
+                .FromSqlRaw("EXEC GetAllDistinctRequestStatuses")
+                .ToListAsync();
         }
     }
 }

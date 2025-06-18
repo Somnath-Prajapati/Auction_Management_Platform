@@ -23,10 +23,8 @@ namespace AuctionManagementSystem.Application.Features.Requests.Queries.GetAllRe
         }
 
         public async Task<IEnumerable<RequestDto>> Handle(GetAllRequestQuery request, CancellationToken cancellationToken)
-
         {
-            var requests = await _requestRepository.GetAllRequestQuery();
-            return _mapper.Map<IEnumerable<RequestDto>>(requests);
+            return await _requestRepository.GetAllRequestsWithTypeNameAsync();
         }
     }
 }

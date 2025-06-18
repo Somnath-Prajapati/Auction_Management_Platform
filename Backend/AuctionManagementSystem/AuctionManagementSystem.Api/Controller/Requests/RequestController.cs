@@ -5,6 +5,7 @@ using AuctionManagementSystem.Application.Features.Requests.Command.DelRequest;
 using AuctionManagementSystem.Application.Features.Requests.Command.UpdRequest;
 using AuctionManagementSystem.Application.Features.Requests.Queries.GetAllRequestById;
 using AuctionManagementSystem.Application.Features.Requests.Queries.GetAllRequests;
+using AuctionManagementSystem.Application.Features.Requests.Queries.GetAllRequestTypes;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,7 @@ namespace AuctionManagementSystem.Api.Controllers.Request
             _repository = repository;
         }
 
+
         [HttpGet]
         public async Task<IActionResult> GetAllRequests()
 
@@ -36,6 +38,9 @@ namespace AuctionManagementSystem.Api.Controllers.Request
             var result = await _mediator.Send(new GetAllRequestQuery());
             return Ok(result);
         }
+
+
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRequestById(int id)
@@ -61,7 +66,7 @@ namespace AuctionManagementSystem.Api.Controllers.Request
         //        RequestDateTime = now,          
         //        CreatedOn = now,
         //        UpdatedOn = now,
-        //        //  defaults (e.g. RequestStatusId = 1 for “Pending”)
+        //        //  defaults (e.g. RequestStatusId = 1 for "Pending")
         //    };
         //    return Ok(dto);
         //}
@@ -79,6 +84,20 @@ namespace AuctionManagementSystem.Api.Controllers.Request
                 updatedOn = now.ToString("yyyy-MM-ddTHH:mm:ss.fff")
                 // …any other defaults, as literals or DTO‐mapped…
             });
+        }
+
+        [HttpGet("types")]
+        public async Task<IActionResult> GetAllRequestTypes()
+        {
+            var result = await _mediator.Send(new GetAllRequestTypesQuery());
+            return Ok(result);
+        }
+
+        [HttpGet("statuses")]
+        public async Task<IActionResult> GetAllRequestStatuses()
+        {
+            var result = await _mediator.Send(new AuctionManagementSystem.Application.Features.Requests.Queries.GetAllRequestStatuses.GetAllRequestStatusesQuery());
+            return Ok(result);
         }
 
 

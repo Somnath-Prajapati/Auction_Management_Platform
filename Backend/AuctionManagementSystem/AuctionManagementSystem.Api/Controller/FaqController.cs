@@ -66,10 +66,42 @@ namespace AuctionManagementSystem.Api.Controller
             return Ok(dto);
         }
 
+        //// POST: api/faq
+        //[HttpPost]
+        //public async Task<ActionResult<FaqDto>> CreateFaq([FromBody] FaqDto faqDto)
+        //{
+        //    var faq = new Faq
+        //    {
+        //        Question = faqDto.Question,
+        //        Answer = faqDto.Answer,
+        //        Category = faqDto.Category,
+        //        Tags = faqDto.Tags,
+        //        CreatedAt = System.DateTime.UtcNow,
+        //        UpdatedAt = System.DateTime.UtcNow
+        //    };
+        //    _context.Faqs.Add(faq);
+        //    await _context.SaveChangesAsync();
+        //    faqDto.Id = faq.Id;
+        //    faqDto.CreatedAt = faq.CreatedAt;
+        //    faqDto.UpdatedAt = faq.UpdatedAt;
+        //    return CreatedAtAction(nameof(GetFaq), new { id = faq.Id }, faqDto);
+        //}
+
+
+
         // POST: api/faq
         [HttpPost]
         public async Task<ActionResult<FaqDto>> CreateFaq([FromBody] FaqDto faqDto)
         {
+            // Check if a question with the same text already exists
+            bool questionExists = await _context.Faqs
+                .AnyAsync(f => f.Question.Trim().ToLower() == faqDto.Question.Trim().ToLower());
+
+            if (questionExists)
+            {
+                return BadRequest("This question already exists.");
+            }
+
             var faq = new Faq
             {
                 Question = faqDto.Question,
@@ -79,13 +111,18 @@ namespace AuctionManagementSystem.Api.Controller
                 CreatedAt = System.DateTime.UtcNow,
                 UpdatedAt = System.DateTime.UtcNow
             };
+
             _context.Faqs.Add(faq);
             await _context.SaveChangesAsync();
+
             faqDto.Id = faq.Id;
             faqDto.CreatedAt = faq.CreatedAt;
             faqDto.UpdatedAt = faq.UpdatedAt;
+
             return CreatedAtAction(nameof(GetFaq), new { id = faq.Id }, faqDto);
         }
+
+
 
         // PUT: api/faq/5
         [HttpPut("{id}")]
@@ -103,6 +140,19 @@ namespace AuctionManagementSystem.Api.Controller
             return NoContent();
         }
 
+        //// DELETE: api/faq/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteFaq(int id)
+        //{
+        //    var faq = await _context.Faqs.FindAsync(id);
+        //    if (faq == null)
+        //        return NotFound();
+        //    _context.Faqs.Remove(faq);
+        //    await _context.SaveChangesAsync();
+        //    return NoContent();
+        //}
+
+
         // DELETE: api/faq/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFaq(int id)
@@ -110,13 +160,25 @@ namespace AuctionManagementSystem.Api.Controller
             var faq = await _context.Faqs.FindAsync(id);
             if (faq == null)
                 return NotFound();
-            _context.Faqs.Remove(faq);
+
+            // Soft delete by setting IsDeleted to true (1)
+            faq.IsDeleted = true;
+            faq.UpdatedAt = DateTime.UtcNow;
+
+            _context.Faqs.Update(faq);
             await _context.SaveChangesAsync();
+
             return NoContent();
         }
 
 
-       
+
+
+
+
+
+
+
 
 
         [HttpGet("GetCategory")]

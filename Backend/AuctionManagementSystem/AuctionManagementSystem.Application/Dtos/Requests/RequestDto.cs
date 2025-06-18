@@ -15,6 +15,7 @@ namespace AuctionManagementSystem.Application.Dtos.Requests
         public string MobileNumber { get; set; }
         public string Email { get; set; }
         public int RequestTypeId { get; set; }
+        public string RequestTypeName { get; set; }
         public int AssetId { get; set; }
         public int? TransactionId { get; set; }
         public DateTime RequestDateTime { get; set; }

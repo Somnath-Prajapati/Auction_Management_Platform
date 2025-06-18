@@ -139,6 +139,10 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<tblLanguages> TblLanguages { get; set; }
     public virtual DbSet<tblAssetCategoryTranslations> TblAssetCategoryTranslations { get; set; }
     public virtual DbSet<TblUserLimitAuditLog> TblUserLimitAuditLogs { get; set; }
+    public DbSet<AuctionManagementSystem.Application.Dtos.Requests.RequestDto> RequestDtos { get; set; }
+    public DbSet<AuctionManagementSystem.Application.Dtos.Requests.RequestTypeDto> RequestTypeDtos { get; set; }
+    public DbSet<AuctionManagementSystem.Application.Dtos.Requests.RequestStatusDto> RequestStatusDtos { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
@@ -1481,6 +1485,9 @@ public partial class AuctionManagementDbContext : DbContext
             //        .HasMaxLength(1)
             //        .HasColumnName("name");
             //});
+            modelBuilder.Entity<AuctionManagementSystem.Application.Dtos.Requests.RequestDto>().HasNoKey();
+            modelBuilder.Entity<AuctionManagementSystem.Application.Dtos.Requests.RequestTypeDto>().HasNoKey();
+            modelBuilder.Entity<AuctionManagementSystem.Application.Dtos.Requests.RequestStatusDto>().HasNoKey();
             OnModelCreatingPartial(modelBuilder);
 
     }

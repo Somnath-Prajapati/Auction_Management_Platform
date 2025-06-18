@@ -14,5 +14,7 @@ namespace AuctionManagementSystem.Domain.Entities
         public string Tags { get; set; } // Comma-separated tags for search/filter
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public bool IsDeleted { get; set; } = false;
+
     }
 } 
