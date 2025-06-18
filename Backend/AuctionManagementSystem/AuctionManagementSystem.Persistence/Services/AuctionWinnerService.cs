@@ -79,7 +79,7 @@ namespace AuctionManagementSystem.Persistence.Services
 
                     var notification = new TblNotification
                     {
-                        Id = Guid.NewGuid(),
+                        NotificationId = Guid.NewGuid(),
                         UserId = null,
                         Title = $"Winner Announced for Asset :: {asset.Title}",
                         Message = $"Asset'{winner.AssetId}' been won by {user.Name}.",
@@ -92,7 +92,7 @@ namespace AuctionManagementSystem.Persistence.Services
                     await _notificationRepository.CreateAsync(notification);
                     var UserNotification = new TblNotification
                     {
-                        Id = Guid.NewGuid(),
+                        NotificationId = Guid.NewGuid(),
                         UserId = winner.UserId,
                         Title = $"Winner Announced for Asset :: {asset.Title}",
                         Message = $"Asset'{winner.AssetId}' been won by you.",

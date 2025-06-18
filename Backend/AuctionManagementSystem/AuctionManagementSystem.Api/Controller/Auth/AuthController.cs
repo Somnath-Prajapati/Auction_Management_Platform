@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using AuctionManagementSystem.Application.Dtos.Assets.Auth;
-using AuctionManagementSystem.Application.Exceptions;
+﻿using AuctionManagementSystem.Application.Dtos.Assets.Auth;
 using AuctionManagementSystem.Application.Features.AuthFeatures.Command;
 using AuctionManagementSystem.Application.Features.AuthFeatures.Command.VerifyOtp;
 using MediatR;

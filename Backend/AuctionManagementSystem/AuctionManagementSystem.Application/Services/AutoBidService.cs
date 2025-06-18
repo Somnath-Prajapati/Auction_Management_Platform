@@ -96,7 +96,7 @@ namespace AuctionManagementSystem.Application.Services
                         // Send outbid notification
                         var notification = new TblNotification
                         {
-                            Id = Guid.NewGuid(),
+                            NotificationId = Guid.NewGuid(),
                             UserId = previousWinningBid.UserId,
                             Title = "You've been outbid",
                             Message = $"Your bid on asset '{asset.Title}' has been outbid by another user.",

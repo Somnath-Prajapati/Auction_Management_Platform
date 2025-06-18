@@ -69,7 +69,7 @@ namespace AuctionManagementSystem.Application.Features.Auctions.Commands.CreateA
             // Notification
             var notification = new TblNotification
             {
-                Id = Guid.NewGuid(),
+                NotificationId = Guid.NewGuid(),
                 UserId = null,
                 Title = $"New Auction Created with ID: {auction.AuctionNumber}",
                 Message = $"Auction '{auction.Title}' has been added.",

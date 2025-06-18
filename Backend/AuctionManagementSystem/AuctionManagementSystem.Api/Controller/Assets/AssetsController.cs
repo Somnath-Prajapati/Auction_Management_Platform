@@ -1,8 +1,11 @@
 ﻿using AuctionManagementSystem.Application.Dtos.Assets;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Command.AddNewWinner;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.DeleteAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Command.UpdateAsset;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetById;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetBidders;
+using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetAssetWithTranslationById;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetDirectSaleAssets;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.GetSellers;
 using AuctionManagementSystem.Application.Features.Assets.Asset.Query.SearchAsset;
@@ -10,7 +13,9 @@ using AuctionManagementSystem.Application.Features.Assets.AssetAuction.Command.A
 using AuctionManagementSystem.Application.Features.Assets.AssetDetails.Command;
 using AuctionManagementSystem.Application.Features.Assets.AssetDocuments.Command.AddDocument;
 using AuctionManagementSystem.Application.Features.Assets.AssetGallery.Command.AddAssetGallery;
+using AuctionManagementSystem.Application.Features.Assets.AssetResults;
 using AuctionManagementSystem.Application.Features.Assets.Query.GetAssets;
+using AuctionManagementSystem.Application.Features.Requests.Queries.GetAllRequests;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -90,7 +95,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         //{
         //    var result = await _mediator.Send(new AddAssetCommand(createAsset));
 
-          
+
 
         //    return Ok(result);
         //}
@@ -100,7 +105,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<GetAssetsFormDto>>> GetAsset(int id, [FromQuery] string lang)
         {
-            var assets = await _mediator.Send(new GetAssetByIdQuery(id,lang));
+            var assets = await _mediator.Send(new GetAssetByIdQuery(id, lang));
             return Ok(assets);
         }
 
@@ -254,7 +259,7 @@ namespace AuctionManagementSystem.Api.Controller.Assets
             public string FileName { get; set; }
         }
 
-
+        //update Asset
         [HttpPut("update-asset-all")]
         public async Task<IActionResult> UpdateAsset([FromForm] UpdateAssetAllDto dto)
         {
@@ -264,6 +269,74 @@ namespace AuctionManagementSystem.Api.Controller.Assets
         }
 
 
+
+
+        [HttpGet("GetBidders")]
+        public async Task<IActionResult> GetBidders([FromQuery] int auctionId, [FromQuery] int assetId)
+        {
+            var result = await _mediator.Send(new GetBidderQuery(auctionId, assetId));
+            return Ok(result);
+        }
+
+
+        [HttpPost("replace-winner")]
+        public async Task<IActionResult> ReplaceWinner([FromBody] ReplaceAssetWinnerDto dto)
+        {
+            var winnerId = await _mediator.Send(new ReplaceAssetWinnerCommand(dto));
+            return Ok(new { WinnerId = winnerId });
+        }
+
+
+        [HttpGet("results/{assetId}")]
+        public async Task<IActionResult> GetResults(int assetId)
+        {
+            var result = await _mediator.Send(new GetAssetResultsQuery(assetId));
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
+        }
+
+
+        //[HttpGet("{assetId}/latest-request")]
+        [HttpGet("{assetId}/requests")]
+        public async Task<IActionResult> GetRequestsForAsset(int assetId)
+        {
+            var allRequests = await _mediator.Send(new GetAllRequestQuery());
+            if (allRequests == null || !allRequests.Any())
+                return NotFound("No requests found.");
+
+            var assetRequests = allRequests
+                .Where(r => r.AssetId == assetId)
+                .OrderByDescending(r => r.CreatedOn)
+                .ToList();
+
+            if (!assetRequests.Any())
+                return NotFound($"No requests found for asset ID {assetId}.");
+
+            return Ok(assetRequests);
+        }
+
+
+        [HttpGet("{assetId}/transactions")]
+        public async Task<IActionResult> GetAssetTransactions(int assetId)
+        {
+            var result = await _mediator.Send(new GetAssetTransactionQuery(assetId));
+            if (result == null || result.Count == 0)
+                return NotFound("No transactions found for this asset.");
+
+            return Ok(result);
+        }
+
+        [HttpGet("AllDetails/{id}")]
+        public async Task<ActionResult<GetAssetsFormTranslatedDto>> GetAssetById(int id)
+        {
+            var result = await _mediator.Send(new GetAssetWithTranslationByIdQuery(id));
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
+        }
 
     }
 }
