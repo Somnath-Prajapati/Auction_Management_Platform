@@ -25,7 +25,7 @@ namespace AuctionManagementSystem.Application.Contracts.User
         Task<TblUser?> GetByEmailOrMobileForUpdateAsync(string email, string mobileNumber, int excludeUserId);
 
         Task<TblUser?> GetUserByEmailAsync(string email);
-        Task<IEnumerable<TblNotification>> GetNotificationByUserId(int UserId);
+        Task<IEnumerable<NotificationDto>> GetNotificationByUserId(int UserId, string langCode);
 
     }
 

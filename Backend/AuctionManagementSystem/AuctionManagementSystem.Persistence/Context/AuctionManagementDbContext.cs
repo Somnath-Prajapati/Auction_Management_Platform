@@ -139,6 +139,8 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<tblLanguages> TblLanguages { get; set; }
     public virtual DbSet<tblAssetCategoryTranslations> TblAssetCategoryTranslations { get; set; }
     public virtual DbSet<TblUserLimitAuditLog> TblUserLimitAuditLogs { get; set; }
+    public DbSet<tblNotificationTranslation>    TblNotificationTranslations { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
@@ -1447,8 +1449,37 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasMaxLength(500);
 
         });
+        modelBuilder.Entity<tblNotificationTranslation>(entity =>
+        {
+            entity.ToTable("tblNotificationTranslations", "AuctionM_dbuser");
 
-            modelBuilder.Entity<TblUserLimitAuditLog>(entity =>
+            entity.HasKey(e => e.NotificationTranslationId);
+
+            entity.Property(e => e.NotificationTranslationId)
+                .ValueGeneratedOnAdd();
+
+            entity.Property(e => e.NotificationId)
+                .IsRequired();
+
+            entity.Property(e => e.LanguageId)
+                .IsRequired();
+
+            entity.Property(e => e.Title)
+                .HasMaxLength(255);
+
+            entity.Property(e => e.Message)
+                .HasColumnType("nvarchar(max)");
+
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("GETUTCDATE()");
+
+            entity.HasOne(e => e.Notification)
+                .WithMany(n => n.NotificationTranslations)
+                .HasForeignKey(e => e.NotificationId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<TblUserLimitAuditLog>(entity =>
             {
                 entity.HasKey(e => e.AuditLogId).HasName("PK__tblUserL__EB5F6CBDDF0E18DD");
 

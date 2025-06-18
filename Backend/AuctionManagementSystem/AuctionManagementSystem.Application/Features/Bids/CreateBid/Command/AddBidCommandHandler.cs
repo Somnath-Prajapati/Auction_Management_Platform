@@ -70,7 +70,7 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
                     throw new NotFoundException("Cannot place a bid. The auction has expired or is inactive.");
                 }
 
-                var asset = await _assetsRepository.GetByIdAsync(request.AssetId);
+                var asset = await _assetsRepository.GetByIdAllDetailsAsync(request.AssetId);
                 if (asset == null)
                     throw new NotFoundException("Asset not found.");
 
@@ -98,9 +98,11 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
                 if (previousWinningBid != null && previousWinningBid.UserId != request.UserId)
                 {
                     // Send outbid notification
+                    var notificationId = Guid.NewGuid();
+
                     var notification = new TblNotification
                     {
-                        NotificationId = Guid.NewGuid(),
+                        NotificationId = notificationId,
                         UserId = previousWinningBid.UserId,
                         Title = "You've been outbid",
                         Message = $"Your bid on asset '{asset.Title}' has been outbid by another user.",
@@ -112,6 +114,18 @@ namespace AuctionManagementSystem.Application.Features.Bids.CreateBid.Command
                     };
 
                     await _notificationRepository.CreateAsync(notification);
+
+                    // Arabic Translation (LanguageId = 2)
+                    var notificationTranslation = new tblNotificationTranslation
+                    {
+                        NotificationId = notificationId,
+                        Title = "تم تجاوز عرضك",
+                        Message = $"تم تجاوز عرضك على الأصل '{asset.TitleTranslated}' من قبل مستخدم آخر.",
+                        LanguageId = 2
+                    };
+
+                    await _notificationRepository.AddNotificationTranslationAsync(notificationTranslation);
+
                     var uid = previousWinningBid.UserId;
                     var user1 = await _userRepository.GetUserById(uid);
                     var auditLog = new TblUserLimitAuditLog

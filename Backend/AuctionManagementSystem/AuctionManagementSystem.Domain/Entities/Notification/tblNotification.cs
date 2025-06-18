@@ -34,5 +34,7 @@ namespace AuctionManagementSystem.Domain.Entities.Notification
 
         [ForeignKey(nameof(AuctionId))]
         public virtual TblAuction? Auction { get; set; }
+        public ICollection<tblNotificationTranslation> NotificationTranslations { get; set; } = new List<tblNotificationTranslation>();
+
     }
 }
