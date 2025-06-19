@@ -13,6 +13,8 @@ namespace AuctionManagementSystem.Application.Contracts.Notification
         Task CreateAsync(TblNotification notification);
         Task MarkAsReadAsync(Guid notificationId);
         Task DeleteNotififcationByUserId(int userId);
+        Task AddNotificationTranslationAsync(tblNotificationTranslation translation);
+
     }
 
 }
