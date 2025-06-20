@@ -1,5 +1,6 @@
 ﻿using AuctionManagementSystem.Application.Features.Reports;
 using AuctionManagementSystem.Application.Features.Reports.GetHighBiddingCustomersQuery;
+using AuctionManagementSystem.Application.Features.Reports.Queries.GetFilteredTransactions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -106,6 +107,14 @@ namespace AuctionManagementSystem.Api.Controller
             var result = await _mediator.Send(new GetAuctionReportQuery(reportType));
             return Ok(result);
         }
+
+        [HttpGet("filtered-transactions")]
+        public async Task<IActionResult> GetFilteredTransactions([FromQuery] GetFilteredTransactionsQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
     }
 }
 

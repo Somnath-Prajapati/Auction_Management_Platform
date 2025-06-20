@@ -30,7 +30,7 @@ namespace AuctionManagementSystem.Application.Dtos.Reports
         public int? VATId { get; set; }
         public decimal? VATPercent { get; set; }
         public string? CourtCaseNumber { get; set; }
-        public DateTime? RegistrationDeadline { get; set; }
+        public int? RegistrationDeadline { get; set; }
         public string? Description { get; set; }
         public string? MapLatitude { get; set; }
         public string? MapLongitude { get; set; }

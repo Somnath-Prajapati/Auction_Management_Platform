@@ -27,7 +27,17 @@ namespace AuctionManagementSystem.Application.Contracts.Reports
 
         Task<AuctionReportResultDto> GetAuctionReportAsync(string reportType);
 
-
+        Task<FilteredTransactionResultDto> GetFilteredSortedTransactionsAsync(
+            int page,
+            int pageSize,
+            int? statusId,
+            int? cardTypeId,
+            int? transactionTypeId,
+            int? paymentMethodId,
+            string searchText,
+            string sortColumn,
+            string sortDirection
+        );
 
     }
 }
