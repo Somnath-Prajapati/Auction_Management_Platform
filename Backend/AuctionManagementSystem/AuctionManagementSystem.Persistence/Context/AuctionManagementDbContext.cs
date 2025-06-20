@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using AuctionManagementSystem.Application.Dtos;
+using AuctionManagementSystem.Application.Dtos.GetFeaturedAssets;
 using AuctionManagementSystem.Application.Features.FAQs.Queries.GetFAQsQuery;
 using AuctionManagementSystem.Domain;
 using AuctionManagementSystem.Domain.Entities;
@@ -139,6 +140,8 @@ public partial class AuctionManagementDbContext : DbContext
     public virtual DbSet<tblLanguages> TblLanguages { get; set; }
     public virtual DbSet<tblAssetCategoryTranslations> TblAssetCategoryTranslations { get; set; }
     public virtual DbSet<TblUserLimitAuditLog> TblUserLimitAuditLogs { get; set; }
+    public DbSet<tblNotificationTranslation>    TblNotificationTranslations { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("AuctionM_dbuser");
@@ -1447,8 +1450,37 @@ public partial class AuctionManagementDbContext : DbContext
                 .HasMaxLength(500);
 
         });
+        modelBuilder.Entity<tblNotificationTranslation>(entity =>
+        {
+            entity.ToTable("tblNotificationTranslations", "AuctionM_dbuser");
 
-            modelBuilder.Entity<TblUserLimitAuditLog>(entity =>
+            entity.HasKey(e => e.NotificationTranslationId);
+
+            entity.Property(e => e.NotificationTranslationId)
+                .ValueGeneratedOnAdd();
+
+            entity.Property(e => e.NotificationId)
+                .IsRequired();
+
+            entity.Property(e => e.LanguageId)
+                .IsRequired();
+
+            entity.Property(e => e.Title)
+                .HasMaxLength(255);
+
+            entity.Property(e => e.Message)
+                .HasColumnType("nvarchar(max)");
+
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("GETUTCDATE()");
+
+            entity.HasOne(e => e.Notification)
+                .WithMany(n => n.NotificationTranslations)
+                .HasForeignKey(e => e.NotificationId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<TblUserLimitAuditLog>(entity =>
             {
                 entity.HasKey(e => e.AuditLogId).HasName("PK__tblUserL__EB5F6CBDDF0E18DD");
 
@@ -1469,19 +1501,19 @@ public partial class AuctionManagementDbContext : DbContext
                 entity.Property(e => e.OldDeposit).HasColumnType("decimal(18, 2)");
                 entity.Property(e => e.OldTotalLimit).HasColumnType("decimal(18, 2)");
             });
+        modelBuilder.Entity<FeaturedAssetDto>().HasNoKey().ToView(null);
+        //modelBuilder.Entity<Tbltempdatum>(entity =>
+        //{
+        //    entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
 
-            //modelBuilder.Entity<Tbltempdatum>(entity =>
-            //{
-            //    entity.HasKey(e => e.Id).HasName("PK__tbltempd__3213E83F07257A51");
+        //    entity.ToTable("tbltempdata");
 
-            //    entity.ToTable("tbltempdata");
-
-            //    entity.Property(e => e.Id).HasColumnName("id");
-            //    entity.Property(e => e.Name)
-            //        .HasMaxLength(1)
-            //        .HasColumnName("name");
-            //});
-            OnModelCreatingPartial(modelBuilder);
+        //    entity.Property(e => e.Id).HasColumnName("id");
+        //    entity.Property(e => e.Name)
+        //        .HasMaxLength(1)
+        //        .HasColumnName("name");
+        //});
+        OnModelCreatingPartial(modelBuilder);
 
     }
 

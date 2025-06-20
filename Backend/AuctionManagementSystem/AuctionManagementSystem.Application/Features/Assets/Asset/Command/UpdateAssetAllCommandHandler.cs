@@ -13,6 +13,7 @@ using AuctionManagementSystem.Application.Features.Assets.AssetDocuments.Command
 using AuctionManagementSystem.Application.Features.Assets.AssetGallery.Command.AddAssetGallery;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Auction;
+using AuctionManagementSystem.Domain.Entities.Translations;
 using MediatR;
 using Newtonsoft.Json;
 
@@ -105,6 +106,46 @@ namespace AuctionManagementSystem.Application.Features.Assets.Asset.Command
             asset.RequestForInquiry = dto.RequestForInquiry;
             asset.RequestForViewing = dto.RequestForViewing;
             asset.UpdatedAt = DateTime.UtcNow;
+
+
+            if (dto.LanguageId == 2)
+            {
+                var translation = await _assetsRepository.GetAssetTranslationByAssetIdAsync(dto.AssetId);
+
+                if (translation != null)
+                {
+                    translation.Title = dto.TranslatedTitle;
+                    translation.Description = dto.TranslatedDescription;
+                    translation.SalesNotes = dto.TranslatedSalesNotes;
+                    translation.CreatedAt = DateTime.UtcNow;
+
+                    await _assetsRepository.UpdateAssetTranslationAsync(translation);
+                }
+                else
+                {
+                    var newTranslation = new tblAssetTranslation
+                    {
+                        AssetId = dto.AssetId,
+                        Title = dto.TranslatedTitle,
+                        Description = dto.TranslatedDescription,
+                        SalesNotes = dto.TranslatedSalesNotes,
+                        LanguageId = 2, // Arabic
+                        CreatedAt = DateTime.UtcNow,
+                    };
+
+                    await _assetsRepository.AddAssetTranslationAsync(newTranslation);
+                }
+            }
+            else if (dto.LanguageId == 0 && dto.RemoveTranslation == true)
+            {
+                var translation = await _assetsRepository.GetAssetTranslationByAssetIdAsync(dto.AssetId);
+                if (translation != null)
+                {
+                    await _assetsRepository.DeleteAssetTranslationAsync(translation);
+                }
+            }
+
+
 
             // Update details
             if (details.Any())

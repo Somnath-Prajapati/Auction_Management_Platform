@@ -23,7 +23,7 @@ namespace AuctionManagementSystem.Application.Features.UserFeature.Query.GetNoti
         }
         public async Task<IEnumerable<NotificationDto>> Handle(GetNotificationByUserIdQuery request, CancellationToken cancellationToken)
         {
-            var result = await _userRepository.GetNotificationByUserId(request.UserId);
+            var result = await _userRepository.GetNotificationByUserId(request.UserId, request.langCode);
 
             if (result == null || !result.Any())
             {

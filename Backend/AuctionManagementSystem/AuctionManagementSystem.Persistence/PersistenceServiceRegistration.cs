@@ -116,11 +116,6 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<IUserDepositRepository, UserDepositRepository>();
             services.AddScoped<ProcessAutoRefundHandler>();
 
-            services.AddScoped<DapperHelper>(provider =>
-            {
-                var connectionString = configuration.GetConnectionString("DefaultConnection");
-                return new DapperHelper(connectionString);
-            });
             return services;
         }
     }
