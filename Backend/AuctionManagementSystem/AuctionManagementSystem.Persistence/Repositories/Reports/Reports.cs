@@ -472,7 +472,6 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
             return new AuctionReportResultDto
             {
                 TotalCount = totalCount,
-
                 Auctions = auctionList
             };
         }
