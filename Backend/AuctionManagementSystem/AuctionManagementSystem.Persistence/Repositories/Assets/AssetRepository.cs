@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -8,22 +9,27 @@ using System.Threading;
 using System.Threading.Tasks;
 using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Dtos.Assets;
+using AuctionManagementSystem.Application.Dtos.GetFeaturedAssets;
 using AuctionManagementSystem.Domain.Entities.Asset;
 using AuctionManagementSystem.Domain.Entities.Translations;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Persistence.Context;
+using EventStore.ClientAPI;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace AuctionManagementSystem.Persistence.Repositories.Assets
 {
     public class AssetRepository : IAssetsRepository
     {
         private readonly AuctionManagementDbContext _context;
+        private readonly string _connectionString;
 
-        public AssetRepository(AuctionManagementDbContext context)
+        public AssetRepository(AuctionManagementDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
 
@@ -797,6 +803,65 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
         {
             return await _context.TblSellers.Include(s=> s.User).ToListAsync();
         }
+        public async Task<List<FeaturedAssetDto>> GetFeaturedAssetsAsync()
+        {
+            var results = new List<FeaturedAssetDto>();
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+
+                using (var command = new SqlCommand("AuctionM_dbuser.GetFeaturedAssets", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            var asset = new FeaturedAssetDto
+                            {
+                                AssetId = reader.GetInt32(reader.GetOrdinal("AssetId")),
+                                Title = reader["Title"] as string,
+                                CategoryId = Convert.ToInt32(reader["CategoryId"]),
+                                CategoryName = reader["CategoryName"] as string,
+                                Deposit = Convert.ToDecimal(reader["Deposit"]),
+                                SellerId = Convert.ToInt32(reader["SellerId"]),
+                                Commission = Convert.ToDecimal(reader["Commission"]),
+                                StartingPrice = Convert.ToDecimal(reader["StartingPrice"]),
+                                IncrementalTime = Convert.ToInt32(reader["IncrementalTime"]),
+                                MinIncrement = Convert.ToDecimal(reader["MinIncrement"]),
+                                MakeOffer = Convert.ToBoolean(reader["MakeOffer"]),
+                                Featured = Convert.ToBoolean(reader["Featured"]),
+                                AwardingId = Convert.ToInt32(reader["AwardingId"]),
+                                StatusId = Convert.ToInt32(reader["StatusId"]),
+                                StatusName = reader["StatusName"] as string,
+                                VATId = Convert.ToInt32(reader["VATId"]),
+                                VATPercent = Convert.ToDecimal(reader["VATPercent"]),
+                                CourtCaseNumber = reader["CourtCaseNumber"] as string,
+                                RegistrationDeadline = reader["RegistrationDeadline"] as DateTime?,
+                                Description = reader["Description"] as string,
+                                MapLatitude = reader["MapLatitude"] as string,
+                                MapLongitude = reader["MapLongitude"] as string,
+                                AdminFees = Convert.ToDecimal(reader["AdminFees"]),
+                                AuctionFees = Convert.ToDecimal(reader["AuctionFees"]),
+                                BuyerCommission = Convert.ToDecimal(reader["BuyerCommission"]),
+                                WinnerId = reader["WinnerId"] as int?,
+                                AssetNumber = reader["AssetNumber"] as string,
+                                RequestForViewing = Convert.ToBoolean(reader["RequestForViewing"]),
+                                RequestForInquiry = Convert.ToBoolean(reader["RequestForInquiry"]),
+                                GalleryFilePaths = reader["GalleryFilePaths"] as string,
+                                DocumentFilePaths = reader["DocumentFilePaths"] as string
+                            };
+                            results.Add(asset);
+                        }
+                    }
+                }
+            }
+
+            return results;
+        }
+
 
         public async Task<IEnumerable<TopBidderRaw>> GetAllBidders(int assetId, int auctionId)
         {
@@ -903,6 +968,21 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                 CommissionPercentage = commissionPercentage,
                 TotalPayable = totalPayable
             };
+        }
+        public async Task UpdateAssetTranslationAsync(tblAssetTranslation translation)
+        {
+            _context.TblAssetTranslations.Update(translation);
+            await _context.SaveChangesAsync();
+        }
+        public async Task<tblAssetTranslation?> GetAssetTranslationByAssetIdAsync(int assetId)
+        {
+            return await _context.TblAssetTranslations
+                .FirstOrDefaultAsync(t => t.AssetId == assetId && t.LanguageId == 2);
+        }
+        public async Task DeleteAssetTranslationAsync(tblAssetTranslation translation)
+        {
+            _context.TblAssetTranslations.Remove(translation);
+            await _context.SaveChangesAsync();
         }
 
     }

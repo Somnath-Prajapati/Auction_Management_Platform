@@ -1,4 +1,5 @@
 ﻿using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Application.Dtos.Notification;
 using AuctionManagementSystem.Domain.Entities.Notification;
 using AuctionManagementSystem.Domain.Entities.User;
 using AuctionManagementSystem.Persistence.Context;
@@ -112,19 +113,36 @@ namespace AuctionManagementSystem.Persistence.Repositories.User
             return await _context.TblUsers.Where(u => !(u.IsDeleted ?? false)).FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public async Task<IEnumerable<TblNotification>> GetNotificationByUserId(int userId)
+        public async Task<IEnumerable<NotificationDto>> GetNotificationByUserId(int UserId, string langCode)
         {
             var now = DateTime.UtcNow;
+            int languageId = langCode.ToLower() == "ar" ? 2 : 1;
 
-            return await _context.TblNotifications
-                .Where(n =>
-                    !n.IsDeleted &&
-                    (n.UserId == userId || n.UserId == null) &&
-                    (n.ExpiresAt == null || n.ExpiresAt > now)
+            var query = from n in _context.TblNotifications
+                        where !n.IsDeleted
+                           && (n.UserId == UserId || n.UserId == null)
+                           && (n.ExpiresAt == null || n.ExpiresAt > now)
+                           && n.Title != "New User Added"
+                        join t in _context.TblNotificationTranslations
+                            .Where(t => t.LanguageId == languageId)
+                            on n.NotificationId equals t.NotificationId into nt
+                        from trans in nt.DefaultIfEmpty()
+                        select new NotificationDto
+                        {
+                            Id = n.NotificationId,
+                            UserId = n.UserId,
+                            Title = trans != null && !string.IsNullOrEmpty(trans.Title) ? trans.Title : n.Title,
+                            Message = trans != null && !string.IsNullOrEmpty(trans.Message) ? trans.Message : n.Message,
+                            IsRead = n.IsRead,
+                            CreatedAt = n.CreatedAt,
+                            ExpiresAt = n.ExpiresAt,
+                            AssetId = n.AssetId,
+                            AuctionId = n.AuctionId
+                        };
 
-                )
-                .ToListAsync();
+            return await query.ToListAsync();
         }
+
 
 
 

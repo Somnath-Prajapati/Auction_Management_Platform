@@ -88,9 +88,9 @@ namespace AuctionManagementSystem.Api.Controller.User
         }
         [AllowAnonymous]
         [HttpGet("Notification/{UserId}")]
-        public async Task<IActionResult> GetUserNotifications(int UserId)
+        public async Task<IActionResult> GetUserNotifications(int UserId, string langCode)
         {
-            var Query = new GetNotificationByUserIdQuery(UserId);
+            var Query = new GetNotificationByUserIdQuery(UserId,langCode);
             var result = await _mediator.Send(Query);
             return Ok(result);
         }

@@ -8,5 +8,5 @@ using MediatR;
 
 namespace AuctionManagementSystem.Application.Features.UserFeature.Query.GetNotificationByUserId
 {
-    public record GetNotificationByUserIdQuery(int UserId) : IRequest<IEnumerable<NotificationDto>>;
+    public record GetNotificationByUserIdQuery(int UserId, string langCode) : IRequest<IEnumerable<NotificationDto>>;
 }

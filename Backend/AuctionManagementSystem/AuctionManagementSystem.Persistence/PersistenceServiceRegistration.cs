@@ -117,7 +117,6 @@ namespace AuctionManagementSystem.Persistence
             services.AddScoped<ProcessAutoRefundHandler>();
 
 
-
             return services;
         }
     }

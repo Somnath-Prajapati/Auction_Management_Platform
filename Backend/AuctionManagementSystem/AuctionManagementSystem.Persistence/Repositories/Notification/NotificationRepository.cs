@@ -56,6 +56,12 @@ namespace AuctionManagementSystem.Persistence.Repositories.Notification
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task AddNotificationTranslationAsync(tblNotificationTranslation translation)
+        {
+            await _context.TblNotificationTranslations.AddAsync(translation);
+            await _context.SaveChangesAsync();
+        }
+
 
     }
 
