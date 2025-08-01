@@ -1,37 +1,27 @@
 ﻿
-using AuctionManagementSystem.Application.Contracts.User;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
-using AuctionManagementSystem.Application.Contracts;
-using AuctionManagementSystem.Application.Profiles;
-using AuctionManagementSystem.Api.Middleware;
-using ProtoBuf.Meta;
-using AuctionManagementSystem.Application.Contracts.Auth;
 using AuctionManagementSystem.Api.Hubs;
-using AuctionManagementSystem.Application.Contracts.RealTime;
+using AuctionManagementSystem.Api.Middleware;
+using AuctionManagementSystem.Api.Services;
 using AuctionManagementSystem.Application;
+using AuctionManagementSystem.Application.Contracts.Auth;
+using AuctionManagementSystem.Application.Contracts.Chatbot;
+using AuctionManagementSystem.Application.Contracts.FAQ;
+using AuctionManagementSystem.Application.Contracts.Notification;
+using AuctionManagementSystem.Application.Contracts.RealTime;
+using AuctionManagementSystem.Application.Contracts.User;
+using AuctionManagementSystem.Application.Services;
 using AuctionManagementSystem.Identity;
 using AuctionManagementSystem.Persistence;
+using AuctionManagementSystem.Persistence.Repositories.Chatbot;
+using AuctionManagementSystem.Persistence.Repositories.FAQs;
 using Hangfire;
-using AuctionManagementSystem.Api.Services;
-using AuctionManagementSystem.Application.Services;
-using AuctionManagementSystem.Application.Contracts.Bids;
-using Hangfire.Server;
-using Stripe;
-using FileService = AuctionManagementSystem.Api.Services.FileService;
-using AuctionManagementSystem.Application.Contracts.Notification;
-using Microsoft.AspNetCore.SignalR;
-using Stripe;
-using Serilog;
 using Hangfire.Common;
 using Hangfire.States;
 using Hangfire.Storage;
-using Hangfire.SqlServer;
-using AuctionManagementSystem.Application.Contracts.Chatbot;
-using AuctionManagementSystem.Persistence.Repositories.Chatbot;
-using AuctionManagementSystem.Persistence.Repositories.FAQs;
-using AuctionManagementSystem.Application.Contracts.FAQ;
+using Microsoft.AspNetCore.SignalR;
+using Serilog;
+using Stripe;
+using FileService = AuctionManagementSystem.Api.Services.FileService;
 
 namespace AuctionManagementSystem.Api
 {

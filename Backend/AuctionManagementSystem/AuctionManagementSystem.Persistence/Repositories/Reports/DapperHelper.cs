@@ -1,8 +1,6 @@
 ﻿using System.Data;
 using Dapper;
-using EventStore.ClientAPI;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
 
 
 namespace AuctionManagementSystem.Persistence.Repositories.Reports
@@ -40,11 +38,23 @@ namespace AuctionManagementSystem.Persistence.Repositories.Reports
             return (first, second);
         }
 
+        //public async Task<List<T>> QueryListAsync<T>(string spName, object parameters = null)
+        //{
+        //    var result = await QueryAsync<T>(spName, parameters);
+        //    return result.ToList();
+        //}
+
         public async Task<List<T>> QueryListAsync<T>(string spName, object parameters = null)
         {
-            var result = await QueryAsync<T>(spName, parameters);
-            return result.ToList();
+            using var connection = new SqlConnection(_connectionString);
+            var result = await connection.QueryAsync<T>(
+                spName,
+                parameters,
+                commandType: CommandType.StoredProcedure);
+
+            return result.AsList(); // avoids LINQ .ToList() call
         }
+
 
         public async Task<int> ExecuteAsync(string spName, object parameters = null)
         {
