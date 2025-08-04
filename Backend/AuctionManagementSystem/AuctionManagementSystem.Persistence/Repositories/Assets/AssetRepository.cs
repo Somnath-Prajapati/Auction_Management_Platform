@@ -83,6 +83,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                     CreatedAt = a.CreatedAt,
                     UpdatedAt = a.UpdatedAt,
                     isDeleted = a.IsDeleted,
+                    RemainingDaysTracked= a.RemainingDaysTracked,
                     IsAvailableForDirectSale = a.IsAvailableForDirectSale,
                     AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
 
@@ -272,6 +273,7 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
                         RequestForViewing = a.RequestForViewing,
                         IsAvailableForDirectSale = a.IsAvailableForDirectSale,
                         isDeleted = a.IsDeleted,
+                        RemainingDaysTracked = a.RemainingDaysTracked,
                         AuctionStatusId = a.TblAuctionAssets.Select(aa => aa.Auction.StatusId).FirstOrDefault(),
                         AuctionIds = a.TblAuctionAssets.Select(aa => aa.AuctionId).ToList(),
                         Galleries = a.TblAssetGalleries.Select(g => new AssetGalleryDtos
@@ -920,5 +922,20 @@ namespace AuctionManagementSystem.Persistence.Repositories.Assets
             await _context.SaveChangesAsync();
         }
 
+        public async Task UpdateRemaningDays()
+        {
+            using var connection = _context.Database.GetDbConnection();
+            if (connection.State == ConnectionState.Closed)
+                await connection.OpenAsync();
+
+            using var command = connection.CreateCommand();
+            command.CommandText = "UpdateAssetStatusByRemainingDays";
+            command.CommandType = CommandType.StoredProcedure;
+
+
+            Console.WriteLine("Updated the Remanining days");
+
+            await command.ExecuteNonQueryAsync();
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace AuctionManagementSystem.Api.Controller.Bid
         }
 
 
-
+        
 
         [HttpPost("auto")]
         public async Task<IActionResult> PlaceAutoBid([FromBody] AddAutoBidCommand command)

@@ -121,10 +121,12 @@ namespace AuctionManagementSystem.Api
                 using var scope = app.Services.CreateScope();
                 var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
                 recurringJobManager.RemoveIfExists("AutoBidJob");
-
+                recurringJobManager.RemoveIfExists("UpdateRemaniningDays");
                 var scheduler = scope.ServiceProvider.GetRequiredService<HangfireAutoBidJobScheduler>();
                 scheduler.ScheduleAutoBidJob();
+                scheduler.RunRemainingDays();
             });
+
 
 
 

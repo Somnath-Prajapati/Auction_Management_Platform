@@ -50,7 +50,7 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public bool IsAvailableForDirectSale { get; set; } // for asset direct sale
 
 
-
+        public int? RemainingDaysTracked { get; set; }
         public List<int> AuctionIds { get; set; }
 
 

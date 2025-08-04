@@ -79,6 +79,8 @@ public partial class TblAsset
 
     public bool? RequestForInquiry { get; set; } = true;
 
+    public int? RemainingDaysTracked { get; set; }
+
 
     public virtual TblWinnerAwardingOption Awarding { get; set; }
 

@@ -53,5 +53,8 @@ namespace AuctionManagementSystem.Application.Contracts.Assets
         Task<tblAssetTranslation?> GetAssetTranslationByAssetIdAsync(int assetId);
         Task DeleteAssetTranslationAsync(tblAssetTranslation translation);
 
+
+        Task UpdateRemaningDays();
+
     }
 }

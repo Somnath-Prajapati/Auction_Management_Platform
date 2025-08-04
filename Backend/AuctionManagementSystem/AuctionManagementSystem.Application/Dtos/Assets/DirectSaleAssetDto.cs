@@ -20,6 +20,11 @@ namespace AuctionManagementSystem.Application.Dtos.Assets
         public string ThumbnailUrl { get; set; }
         public string CategoryName { get; set; }
         public string AssetNumber { get; set; }
+
+        public decimal? MapLatitude { get; set; }
+
+        public decimal? MapLongitude { get; set; }
+
         public bool IsAvailableForDirectSale { get; set; }
 
         public int? AuctionId { get; set; }

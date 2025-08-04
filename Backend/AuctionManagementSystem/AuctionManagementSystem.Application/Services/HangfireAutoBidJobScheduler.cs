@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AuctionManagementSystem.Application.Contracts.Assets;
 using AuctionManagementSystem.Application.Contracts.Bids;
 using Hangfire;
 using Hangfire.Common;
@@ -14,36 +15,49 @@ namespace AuctionManagementSystem.Application.Services
         private readonly IAutoBidService _autoBidService;
         private readonly IAutoBidRepository _autoBidRepository;
         private readonly IRecurringJobManager _recurringJobManager;
+        private readonly IAssetsRepository _assetRepository;
 
-        public HangfireAutoBidJobScheduler(IAutoBidService autoBidService, 
-            IAutoBidRepository autoBidRepository, IRecurringJobManager recurringJobManager)
+        public HangfireAutoBidJobScheduler(IAutoBidService autoBidService,
+            IAutoBidRepository autoBidRepository, IRecurringJobManager recurringJobManager, IAssetsRepository assetRepository)
         {
             _autoBidService = autoBidService;
             _autoBidRepository = autoBidRepository;
             _recurringJobManager = recurringJobManager;
+            _assetRepository = assetRepository;
         }
 
         public void ScheduleAutoBidJob()
-      {
+        {
             _recurringJobManager.RemoveIfExists("AutoBidJob");
-
-
-
-            //_recurringJobManager.AddOrUpdate(
-            //        "AutoBidJob",
-            //        Job.FromExpression<HangfireAutoBidJobScheduler>(x => x.RunAutoBidForAllActiveAssets()),
-            //        "*/50 * * * * *");
-
 
             _recurringJobManager.AddOrUpdate<HangfireAutoBidJobScheduler>(
                      "AutoBidJob",
                        x => x.RunAutoBidForAllActiveAssets(),
                        "*/50 * * * * *"
-               );
-
+            );
 
         }
 
+        public void RunRemainingDays()
+        {
+            _recurringJobManager.RemoveIfExists("UpdateRemaniningDays");
+
+            _recurringJobManager.AddOrUpdate<HangfireAutoBidJobScheduler>(
+                     "UpdateRemaniningDays",
+                     x => x.RunRemainingDay(),
+                     Cron.Minutely
+            );
+
+        }
+
+
+
+
+
+        public async Task RunRemainingDay()
+        {
+            await _assetRepository.UpdateRemaningDays();
+        }
         public void demo()
         {   
             var count = 0;
